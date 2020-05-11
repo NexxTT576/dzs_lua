@@ -10,3 +10,4 @@ publish/
 **/*.idb
 **/*.pdb
 **/*.prefs
+**/*.user
