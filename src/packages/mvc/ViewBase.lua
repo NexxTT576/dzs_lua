@@ -20,6 +20,7 @@ function ViewBase:ctor(app, name)
     if self.onCreate then self:onCreate() end
 end
 
+
 function ViewBase:getApp()
     return self.app_
 end
