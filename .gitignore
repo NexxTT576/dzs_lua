@@ -1,0 +1,12 @@
+frameworks/runtime-src/proj.win32/.vs/
+frameworks/runtime-src/proj.win32/Debug.win32/
+frameworks/runtime-src/proj.win32/Release.win32/
+simulator/
+publish/
+**/*.obj
+**/*.log
+**/*.tlog
+**/*.pch
+**/*.idb
+**/*.pdb
+**/*.prefs

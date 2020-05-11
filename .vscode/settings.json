@@ -1,0 +1,26 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.exclude": {
+        "**/*.obj": true,
+        "**/*.log": true,
+        "**/*.tlog": true,
+        "**/*.user": true,
+        "**/*.pch": true,
+        "**/*.idb": true,
+        "**/*.pdb": true,
+        "frameworks/runtime-src/proj.win32/.vs/": true,
+        "frameworks/runtime-src/proj.win32/Debug.win32/": true,
+        "**/proj.android": true
+    },
+    "editor.snippetSuggestions": "bottom",
+    "Lua.workspace.maxPreload": 1000,
+    "Lua.workspace.ignoreDir": [
+        ".vscode",
+        "src/cocos",
+        "frameworks",
+        "simulator"
+    ],
+    "Lua.workspace.library": {
+        "src/cocos": true
+    }
+}
