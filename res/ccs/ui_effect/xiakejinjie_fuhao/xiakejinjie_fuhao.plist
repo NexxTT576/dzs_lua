@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>xkjj_xiaojiantou.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{27,41}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{27,41}}</string>
+                <key>sourceSize</key>
+                <string>{27,41}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>xiakejinjie_fuhao.png</string>
+            <key>size</key>
+            <string>{31,45}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:40ec6ec6526ba4b9921c5899addeda09:1/1$</string>
+            <key>textureFileName</key>
+            <string>xiakejinjie_fuhao.png</string>
+        </dict>
+    </dict>
+</plist>

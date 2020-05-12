@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>94_2_baiban.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{32,32}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{32,32}}</string>
+                <key>sourceSize</key>
+                <string>{32,32}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>richudongfang_feixing_beijing.png</string>
+            <key>size</key>
+            <string>{36,36}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:23f91d4f77494f91f9ee384379efddfb:1/1$</string>
+            <key>textureFileName</key>
+            <string>richudongfang_feixing_beijing.png</string>
+        </dict>
+    </dict>
+</plist>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>104_02_dao hen.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,24},{249,58}}</string>
+                <key>offset</key>
+                <string>{-3,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{249,58}}</string>
+                <key>sourceSize</key>
+                <string>{255,58}</string>
+            </dict>
+            <key>104_02_daoguanfg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{421,20}}</string>
+                <key>offset</key>
+                <string>{1,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{9,3},{421,20}}</string>
+                <key>sourceSize</key>
+                <string>{437,26}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>wanhuajianfa_feixing.png</string>
+            <key>size</key>
+            <string>{425,84}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:772cfac9bb528b2ba97c4915bfb4b6ca:1/1$</string>
+            <key>textureFileName</key>
+            <string>wanhuajianfa_feixing.png</string>
+        </dict>
+    </dict>
+</plist>
