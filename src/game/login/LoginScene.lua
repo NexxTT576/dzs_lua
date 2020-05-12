@@ -68,6 +68,36 @@ function LoginScene:init()
     listener:registerScriptHandler(
         function()
             print("Ffffffffffffffffff2 准备实现网络模块")
+            --@RefType luaIde#cc.WebSocket
+            wsSendString = cc.WebSocket:create("ws://127.0.0.1:8080/ws")
+            wsSendString:registerScriptHandler(
+                function()
+                    print("ws WEBSOCKET_OPEN")
+                    if cc.WEBSOCKET_STATE_OPEN == wsSendString:getReadyState() then
+                        print("发送消息")
+                        wsSendString:sendString("hello")
+                    end
+                end,
+                cc.WEBSOCKET_OPEN
+            )
+            wsSendString:registerScriptHandler(
+                function()
+                    print("ws WEBSOCKET_MESSAGE")
+                end,
+                cc.WEBSOCKET_MESSAGE
+            )
+            wsSendString:registerScriptHandler(
+                function()
+                    print("ws WEBSOCKET_CLOSE")
+                end,
+                cc.WEBSOCKET_CLOSE
+            )
+            wsSendString:registerScriptHandler(
+                function()
+                    print("ws WEBSOCKET_ERROR")
+                end,
+                cc.WEBSOCKET_ERROR
+            )
         end,
         cc.Handler.EVENT_TOUCH_ENDED
     )
