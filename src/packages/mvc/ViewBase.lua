@@ -1,9 +1,6 @@
-
----@class ViewBase
+--@SuperType cc.Node
 local ViewBase = class("ViewBase", cc.Node)
 
----@param app AppBase
----@param name string
 function ViewBase:ctor(app, name)
     self:enableNodeEvents()
     self.app_ = app
@@ -20,15 +17,21 @@ function ViewBase:ctor(app, name)
         self:createResourceBinding(binding)
     end
 
-    if self.onCreate then self:onCreate() end
+    if self.onCreate then
+        self:onCreate()
+    end
 end
 
----@return AppBase
+--[[
+    @desc: 
+    author:tulilu
+    time:2020-05-12 16:27:22
+    @return: AppBase
+]]
 function ViewBase:getApp()
     return self.app_
 end
 
----@return string
 function ViewBase:getName()
     return self.name_
 end
@@ -37,14 +40,13 @@ function ViewBase:getResourceNode()
     return self.resourceNode_
 end
 
----@param resourceFilename string
 function ViewBase:createResourceNode(resourceFilename)
     if self.resourceNode_ then
         self.resourceNode_:removeSelf()
         self.resourceNode_ = nil
     end
     self.resourceNode_ = cc.CSLoader:createNode(resourceFilename)
-    assert(self.resourceNode_, string.format("ViewBase:createResourceNode() - load resouce node from file \"%s\" failed", resourceFilename))
+    assert(self.resourceNode_, string.format('ViewBase:createResourceNode() - load resouce node from file "%s" failed', resourceFilename))
     self:addChild(self.resourceNode_)
 end
 

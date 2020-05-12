@@ -21,7 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ]]
-
 function printLog(tag, fmt, ...)
     local t = {
         "[",
@@ -38,19 +37,23 @@ function printError(fmt, ...)
 end
 
 function printInfo(fmt, ...)
-    if type(DEBUG) ~= "number" or DEBUG < 2 then return end
+    if type(DEBUG) ~= "number" or DEBUG < 2 then
+        return
+    end
     printLog("INFO", fmt, ...)
 end
 
 local function dump_value_(v)
     if type(v) == "string" then
-        v = "\"" .. v .. "\""
+        v = '"' .. v .. '"'
     end
     return tostring(v)
 end
 
 function dump(value, description, nesting)
-    if type(nesting) ~= "number" then nesting = 3 end
+    if type(nesting) ~= "number" then
+        nesting = 3
+    end
 
     local lookupTable = {}
     local result = {}
@@ -65,16 +68,17 @@ function dump(value, description, nesting)
             spc = string.rep(" ", keylen - string.len(dump_value_(description)))
         end
         if type(value) ~= "table" then
-            result[#result +1 ] = string.format("%s%s%s = %s", indent, dump_value_(description), spc, dump_value_(value))
+            result[#result + 1] =
+                string.format("%s%s%s = %s", indent, dump_value_(description), spc, dump_value_(value))
         elseif lookupTable[tostring(value)] then
-            result[#result +1 ] = string.format("%s%s%s = *REF*", indent, dump_value_(description), spc)
+            result[#result + 1] = string.format("%s%s%s = *REF*", indent, dump_value_(description), spc)
         else
             lookupTable[tostring(value)] = true
             if nest > nesting then
-                result[#result +1 ] = string.format("%s%s = *MAX NESTING*", indent, dump_value_(description))
+                result[#result + 1] = string.format("%s%s = *MAX NESTING*", indent, dump_value_(description))
             else
-                result[#result +1 ] = string.format("%s%s = {", indent, dump_value_(description))
-                local indent2 = indent.."    "
+                result[#result + 1] = string.format("%s%s = {", indent, dump_value_(description))
+                local indent2 = indent .. "    "
                 local keys = {}
                 local keylen = 0
                 local values = {}
@@ -82,20 +86,25 @@ function dump(value, description, nesting)
                     keys[#keys + 1] = k
                     local vk = dump_value_(k)
                     local vkl = string.len(vk)
-                    if vkl > keylen then keylen = vkl end
+                    if vkl > keylen then
+                        keylen = vkl
+                    end
                     values[k] = v
                 end
-                table.sort(keys, function(a, b)
-                    if type(a) == "number" and type(b) == "number" then
-                        return a < b
-                    else
-                        return tostring(a) < tostring(b)
+                table.sort(
+                    keys,
+                    function(a, b)
+                        if type(a) == "number" and type(b) == "number" then
+                            return a < b
+                        else
+                            return tostring(a) < tostring(b)
+                        end
                     end
-                end)
+                )
                 for i, k in ipairs(keys) do
                     dump_(values[k], k, indent2, nest + 1, keylen)
                 end
-                result[#result +1] = string.format("%s}", indent)
+                result[#result + 1] = string.format("%s}", indent)
             end
         end
     end
@@ -123,7 +132,9 @@ function checkbool(value)
 end
 
 function checktable(value)
-    if type(value) ~= "table" then value = {} end
+    if type(value) ~= "table" then
+        value = {}
+    end
     return value
 end
 
@@ -143,7 +154,9 @@ setmetatableindex_ = function(t, index)
         setmetatableindex_(peer, index)
     else
         local mt = getmetatable(t)
-        if not mt then mt = {} end
+        if not mt then
+            mt = {}
+        end
         if not mt.__index then
             mt.__index = index
             setmetatable(t, mt)
@@ -178,23 +191,31 @@ function class(classname, ...)
     local supers = {...}
     for _, super in ipairs(supers) do
         local superType = type(super)
-        assert(superType == "nil" or superType == "table" or superType == "function",
-            string.format("class() - create class \"%s\" with invalid super class type \"%s\"",
-                classname, superType))
+        assert(
+            superType == "nil" or superType == "table" or superType == "function",
+            string.format('class() - create class "%s" with invalid super class type "%s"', classname, superType)
+        )
 
         if superType == "function" then
-            assert(cls.__create == nil,
-                string.format("class() - create class \"%s\" with more than one creating function",
-                    classname));
+            assert(
+                cls.__create == nil,
+                string.format('class() - create class "%s" with more than one creating function', classname)
+            )
             -- if super is function, set it to __create
             cls.__create = super
         elseif superType == "table" then
             if super[".isclass"] then
                 -- super is native class
-                assert(cls.__create == nil,
-                    string.format("class() - create class \"%s\" with more than one creating function or native class",
-                        classname));
-                cls.__create = function() return super:create() end
+                assert(
+                    cls.__create == nil,
+                    string.format(
+                        'class() - create class "%s" with more than one creating function or native class',
+                        classname
+                    )
+                )
+                cls.__create = function()
+                    return super:create()
+                end
             else
                 -- super is pure lua class
                 cls.__supers = cls.__supers or {}
@@ -205,8 +226,7 @@ function class(classname, ...)
                 end
             end
         else
-            error(string.format("class() - create class \"%s\" with invalid super type",
-                        classname), 0)
+            error(string.format('class() - create class "%s" with invalid super type', classname), 0)
         end
     end
 
@@ -214,18 +234,26 @@ function class(classname, ...)
     if not cls.__supers or #cls.__supers == 1 then
         setmetatable(cls, {__index = cls.super})
     else
-        setmetatable(cls, {__index = function(_, key)
-            local supers = cls.__supers
-            for i = 1, #supers do
-                local super = supers[i]
-                if super[key] then return super[key] end
-            end
-        end})
+        setmetatable(
+            cls,
+            {
+                __index = function(_, key)
+                    local supers = cls.__supers
+                    for i = 1, #supers do
+                        local super = supers[i]
+                        if super[key] then
+                            return super[key]
+                        end
+                    end
+                end
+            }
+        )
     end
 
     if not cls.ctor then
         -- add default constructor
-        cls.ctor = function() end
+        cls.ctor = function()
+        end
     end
     cls.new = function(...)
         local instance
@@ -239,6 +267,7 @@ function class(classname, ...)
         instance:ctor(...)
         return instance
     end
+
     cls.create = function(_, ...)
         return cls.new(...)
     end
@@ -249,24 +278,36 @@ end
 local iskindof_
 iskindof_ = function(cls, name)
     local __index = rawget(cls, "__index")
-    if type(__index) == "table" and rawget(__index, "__cname") == name then return true end
+    if type(__index) == "table" and rawget(__index, "__cname") == name then
+        return true
+    end
 
-    if rawget(cls, "__cname") == name then return true end
+    if rawget(cls, "__cname") == name then
+        return true
+    end
     local __supers = rawget(__index, "__supers")
-    if not __supers then return false end
+    if not __supers then
+        return false
+    end
     for _, super in ipairs(__supers) do
-        if iskindof_(super, name) then return true end
+        if iskindof_(super, name) then
+            return true
+        end
     end
     return false
 end
 
 function iskindof(obj, classname)
     local t = type(obj)
-    if t ~= "table" and t ~= "userdata" then return false end
+    if t ~= "table" and t ~= "userdata" then
+        return false
+    end
 
     local mt
     if t == "userdata" then
-        if tolua.iskindof(obj, classname) then return true end
+        if tolua.iskindof(obj, classname) then
+            return true
+        end
         mt = getmetatable(tolua.getpeer(obj))
     else
         mt = getmetatable(obj)
@@ -294,7 +335,7 @@ function import(moduleName, currentModuleName)
 
         if not currentModuleNameParts then
             if not currentModuleName then
-                local n,v = debug.getlocal(3, 1)
+                local n, v = debug.getlocal(3, 1)
                 currentModuleName = v
             end
 
@@ -313,9 +354,12 @@ function handler(obj, method)
 end
 
 function math.newrandomseed()
-    local ok, socket = pcall(function()
-        return require("socket")
-    end)
+    local ok, socket =
+        pcall(
+        function()
+            return require("socket")
+        end
+    )
 
     if ok then
         math.randomseed(socket.gettime() * 1000)
@@ -365,7 +409,9 @@ function io.writefile(path, content, mode)
     mode = mode or "w+b"
     local file = io.open(path, mode)
     if file then
-        if file:write(content) == nil then return false end
+        if file:write(content) == nil then
+            return false
+        end
         io.close(file)
         return true
     else
@@ -455,14 +501,18 @@ end
 
 function table.indexof(array, value, begin)
     for i = begin or 1, #array do
-        if array[i] == value then return i end
+        if array[i] == value then
+            return i
+        end
     end
     return false
 end
 
 function table.keyof(hashtable, value)
     for k, v in pairs(hashtable) do
-        if v == value then return k end
+        if v == value then
+            return k
+        end
     end
     return nil
 end
@@ -475,7 +525,9 @@ function table.removebyvalue(array, value, removeall)
             c = c + 1
             i = i - 1
             max = max - 1
-            if not removeall then break end
+            if not removeall then
+                break
+            end
         end
         i = i + 1
     end
@@ -489,14 +541,16 @@ function table.map(t, fn)
 end
 
 function table.walk(t, fn)
-    for k,v in pairs(t) do
+    for k, v in pairs(t) do
         fn(v, k)
     end
 end
 
 function table.filter(t, fn)
     for k, v in pairs(t) do
-        if not fn(v, k) then t[k] = nil end
+        if not fn(v, k) then
+            t[k] = nil
+        end
     end
 end
 
@@ -520,7 +574,7 @@ end
 
 string._htmlspecialchars_set = {}
 string._htmlspecialchars_set["&"] = "&amp;"
-string._htmlspecialchars_set["\""] = "&quot;"
+string._htmlspecialchars_set['"'] = "&quot;"
 string._htmlspecialchars_set["'"] = "&#039;"
 string._htmlspecialchars_set["<"] = "&lt;"
 string._htmlspecialchars_set[">"] = "&gt;"
@@ -554,10 +608,14 @@ end
 function string.split(input, delimiter)
     input = tostring(input)
     delimiter = tostring(delimiter)
-    if (delimiter=='') then return false end
-    local pos,arr = 0, {}
+    if (delimiter == "") then
+        return false
+    end
+    local pos, arr = 0, {}
     -- for each divider found
-    for st,sp in function() return string.find(input, delimiter, pos, true) end do
+    for st, sp in function()
+        return string.find(input, delimiter, pos, true)
+    end do
         table.insert(arr, string.sub(input, pos, st - 1))
         pos = sp + 1
     end
@@ -595,20 +653,27 @@ function string.urlencode(input)
 end
 
 function string.urldecode(input)
-    input = string.gsub (input, "+", " ")
-    input = string.gsub (input, "%%(%x%x)", function(h) return string.char(checknumber(h,16)) end)
-    input = string.gsub (input, "\r\n", "\n")
+    input = string.gsub(input, "+", " ")
+    input =
+        string.gsub(
+        input,
+        "%%(%x%x)",
+        function(h)
+            return string.char(checknumber(h, 16))
+        end
+    )
+    input = string.gsub(input, "\r\n", "\n")
     return input
 end
 
 function string.utf8len(input)
-    local len  = string.len(input)
+    local len = string.len(input)
     local left = len
-    local cnt  = 0
-    local arr  = {0, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc}
+    local cnt = 0
+    local arr = {0, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc}
     while left ~= 0 do
         local tmp = string.byte(input, -left)
-        local i   = #arr
+        local i = #arr
         while arr[i] do
             if tmp >= arr[i] then
                 left = left - i
@@ -625,8 +690,10 @@ function string.formatnumberthousands(num)
     local formatted = tostring(checknumber(num))
     local k
     while true do
-        formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", '%1,%2')
-        if k == 0 then break end
+        formatted, k = string.gsub(formatted, "^(-?%d+)(%d%d%d)", "%1,%2")
+        if k == 0 then
+            break
+        end
     end
     return formatted
 end

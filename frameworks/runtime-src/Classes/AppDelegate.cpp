@@ -106,6 +106,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
     FileUtils::getInstance()->addSearchPath("src");
     FileUtils::getInstance()->addSearchPath("res");
+	
     if (engine->executeScriptFile("main.lua"))
     {
         return false;

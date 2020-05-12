@@ -1,8 +1,6 @@
-
-cc.FileUtils:getInstance():setPopupNotify(false)
-
 require "config"
 require "cocos.init"
+cc.FileUtils:getInstance():setPopupNotify(false)
 
 local function main()
     require("app.MyApp"):create():run()

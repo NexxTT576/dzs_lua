@@ -13,17 +13,11 @@
         "**/proj.android": true
     },
     "editor.snippetSuggestions": "bottom",
-    "Lua.workspace.maxPreload": 1000,
-    "Lua.workspace.ignoreDir": [
-        ".vscode",
-        "src/cocos",
-        "frameworks",
-        "simulator"
-    ],
-    "Lua.workspace.library": {
-        "src/cocos": true
-    },
     "[lua]":{
         "editor.formatOnSave": true
-    }
+    },
+    "luaide.apiType": "cocos2dx3",
+    "luaide.scriptRoots": [
+        "${workspaceRoot}/src"
+    ]
 }

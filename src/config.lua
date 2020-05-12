@@ -1,4 +1,3 @@
-
 -- 0 - disable debug info, 1 - less debug info, 2 - verbose debug info
 DEBUG = 2
 
@@ -9,7 +8,7 @@ CC_USE_FRAMEWORK = true
 CC_SHOW_FPS = true
 
 -- disable create unexpected global variable
-CC_DISABLE_GLOBAL = true
+CC_DISABLE_GLOBAL = false
 
 -- for module display
 CC_DESIGN_RESOLUTION = {

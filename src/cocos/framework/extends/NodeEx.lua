@@ -21,7 +21,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ]]
-
 local Node = cc.Node
 
 function Node:add(child, zorder, tag)
@@ -147,19 +146,21 @@ function Node:enableNodeEvents()
         return self
     end
 
-    self:registerScriptHandler(function(state)
-        if state == "enter" then
-            self:onEnter_()
-        elseif state == "exit" then
-            self:onExit_()
-        elseif state == "enterTransitionFinish" then
-            self:onEnterTransitionFinish_()
-        elseif state == "exitTransitionStart" then
-            self:onExitTransitionStart_()
-        elseif state == "cleanup" then
-            self:onCleanup_()
+    self:registerScriptHandler(
+        function(state)
+            if state == "enter" then
+                self:onEnter_()
+            elseif state == "exit" then
+                self:onExit_()
+            elseif state == "enterTransitionFinish" then
+                self:onEnterTransitionFinish_()
+            elseif state == "exitTransitionStart" then
+                self:onExitTransitionStart_()
+            elseif state == "cleanup" then
+                self:onCleanup_()
+            end
         end
-    end)
+    )
     self.isNodeEventEnabled_ = true
 
     return self
@@ -170,7 +171,6 @@ function Node:disableNodeEvents()
     self.isNodeEventEnabled_ = false
     return self
 end
-
 
 function Node:onEnter()
 end

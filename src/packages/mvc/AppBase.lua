@@ -1,12 +1,10 @@
-
----@class AppBase
 local AppBase = class("AppBase")
 
 function AppBase:ctor(configs)
     self.configs_ = {
-        viewsRoot  = "app.views",
+        viewsRoot = "app.views",
         modelsRoot = "app.models",
-        defaultSceneName = "LogoScene",
+        defaultSceneName = "LogoScene"
     }
 
     for k, v in pairs(configs or {}) do
@@ -32,41 +30,37 @@ function AppBase:ctor(configs)
     self:onCreate()
 end
 
----@param initSceneName string
 function AppBase:run(initSceneName)
     initSceneName = initSceneName or self.configs_.defaultSceneName
     self:enterScene(initSceneName)
 end
 
----@param sceneName string
----@param transition string
----@param time number
----@param more any
 function AppBase:enterScene(sceneName, transition, time, more)
     local view = self:createView(sceneName)
     view:showWithScene(transition, time, more)
     return view
 end
 
----@param name string
----@return ViewBase
 function AppBase:createView(name)
     for _, root in ipairs(self.configs_.viewsRoot) do
         local packageName = string.format("%s.%s", root, name)
-        local status, view = xpcall(function()
+        local status, view =
+            xpcall(
+            function()
                 return require(packageName)
-            end, function(msg)
-            if not string.find(msg, string.format("'%s' not found:", packageName)) then
-                print("load view error: ", msg)
+            end,
+            function(msg)
+                if not string.find(msg, string.format("'%s' not found:", packageName)) then
+                    print("load view error: ", msg)
+                end
             end
-        end)
+        )
         local t = type(view)
         if status and (t == "table" or t == "userdata") then
             return view:create(self, name)
         end
     end
-    error(string.format("AppBase:createView() - not found view \"%s\" in search paths \"%s\"",
-        name, table.concat(self.configs_.viewsRoot, ",")), 0)
+    error(string.format('AppBase:createView() - not found view "%s" in search paths "%s"', name, table.concat(self.configs_.viewsRoot, ",")), 0)
 end
 
 function AppBase:onCreate()
