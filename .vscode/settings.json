@@ -22,5 +22,8 @@
     ],
     "Lua.workspace.library": {
         "src/cocos": true
+    },
+    "[lua]":{
+        "editor.formatOnSave": true
     }
 }
