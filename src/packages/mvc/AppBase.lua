@@ -1,4 +1,5 @@
 
+---@class AppBase
 local AppBase = class("AppBase")
 
 function AppBase:ctor(configs)
@@ -31,17 +32,24 @@ function AppBase:ctor(configs)
     self:onCreate()
 end
 
+---@param initSceneName string
 function AppBase:run(initSceneName)
     initSceneName = initSceneName or self.configs_.defaultSceneName
     self:enterScene(initSceneName)
 end
 
+---@param sceneName string
+---@param transition string
+---@param time number
+---@param more any
 function AppBase:enterScene(sceneName, transition, time, more)
     local view = self:createView(sceneName)
     view:showWithScene(transition, time, more)
     return view
 end
 
+---@param name string
+---@return ViewBase
 function AppBase:createView(name)
     for _, root in ipairs(self.configs_.viewsRoot) do
         local packageName = string.format("%s.%s", root, name)

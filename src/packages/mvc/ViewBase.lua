@@ -1,6 +1,9 @@
 
+---@class ViewBase
 local ViewBase = class("ViewBase", cc.Node)
 
+---@param app AppBase
+---@param name string
 function ViewBase:ctor(app, name)
     self:enableNodeEvents()
     self.app_ = app
@@ -20,11 +23,12 @@ function ViewBase:ctor(app, name)
     if self.onCreate then self:onCreate() end
 end
 
-
+---@return AppBase
 function ViewBase:getApp()
     return self.app_
 end
 
+---@return string
 function ViewBase:getName()
     return self.name_
 end
@@ -33,6 +37,7 @@ function ViewBase:getResourceNode()
     return self.resourceNode_
 end
 
+---@param resourceFilename string
 function ViewBase:createResourceNode(resourceFilename)
     if self.resourceNode_ then
         self.resourceNode_:removeSelf()
