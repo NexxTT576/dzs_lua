@@ -92,7 +92,27 @@ function MainMenuScene:onEnter()
     self:addChild(self.bottom, 100)
 
     -- 倒数第2行按钮
-    -- self:bottomBtns_2(self.bottom:getContentSize().height * 1.15)
+    self:bottomBtns_2(self.bottom:getContentSize().height * 1.15)
+    --@TODO 2020-05-13 23:36:52 先做个记号
+end
+--[[
+    @desc: 位于屏幕下方，倒数第2行的按钮
+    侠客， 装备， 经脉， 好友， 聊天， 设置
+    author:tulilu
+    time:2020-05-13 23:31:33
+    --@posY: 
+    @return:
+]]
+function MainMenuScene:bottomBtns_2(posY)
+    local proxy = CCBProxy:create()
+    self._rootnode = self._rootnode or {}
+    local node = CCBReaderLoad("ccbi/mainmenu/bottom_icons.ccbi", proxy, self._rootnode)
+    local layer = tolua.cast(node, "cc.Layer")
+    layer:setPosition(display.width / 2, posY)
+    self:addChild(layer)
+    local moreFuncBtn = self._rootnode["moreFunc_btn"]
+    local moreFuncTouchNode = self._rootnode["moreFunc_touch_node"]
+    local moreFuncNode = self._rootnode["moreFunc_node"]
 end
 
 return MainMenuScene

@@ -82,4 +82,16 @@ function ViewBase:postNotice(key, msg)
     eventDispatcher:dispatchEvent(event)
 end
 
+function ViewBase:regNotice(cb, key)
+    --@RefType luaIde#cc.EventDispatcher
+    local eventDispatcher = self:getEventDispatcher()
+    eventDispatcher:addCustomEventListener(key, cb)
+end
+
+function ViewBase:unRegNotice(key)
+    --@RefType luaIde#cc.EventDispatcher
+    local eventDispatcher = self:getEventDispatcher()
+    eventDispatcher:removeCustomEventListeners(key)
+end
+
 return ViewBase

@@ -59,7 +59,8 @@ function BottomLayer:initBottomFrame(...)
         local btn = cc.MenuItemSprite:create(display.newSprite(bottomImage[k]), display.newSprite(bottomImageDown[k]))
         btn:registerScriptTapHandler(
             function()
-                self:postNotice("hello", "ff")
+                self:postNotice(NoticeKey.REMOVE_TUTOLAYER)
+                self:onTouchBtn(baseBottomItems[k])
             end
         )
         local menu = cc.Menu:create()
@@ -117,30 +118,27 @@ function BottomLayer:refreshShopNotice()
 end
 
 function BottomLayer:onEnter()
-    -- TutoMgr.active()
-    -- -- 抽卡
-    -- RegNotice(
-    --     self,
-    --     function()
-    --         self:refreshShopNotice()
-    --     end,
-    --     NoticeKey.BottomLayer_Chouka
-    -- )
-    -- RegNotice(
-    --     self,
-    --     function()
-    --         self:setMenuItemEnabled(false)
-    --     end,
-    --     NoticeKey.LOCK_BOTTOM
-    -- )
-    -- RegNotice(
-    --     self,
-    --     function()
-    --         self:setMenuItemEnabled(true)
-    --     end,
-    --     NoticeKey.UNLOCK_BOTTOM
-    -- )
-    -- self:refreshShopNotice()
+    TutoMgr.active()
+    -- 抽卡
+    self:regNotice(
+        function()
+            self:refreshShopNotice()
+        end,
+        NoticeKey.BottomLayer_Chouka
+    )
+    self:regNotice(
+        function()
+            self:setMenuItemEnabled(false)
+        end,
+        NoticeKey.LOCK_BOTTOM
+    )
+    self:regNotice(
+        function()
+            self:setMenuItemEnabled(true)
+        end,
+        NoticeKey.UNLOCK_BOTTOM
+    )
+    self:refreshShopNotice()
 end
 
 function BottomLayer:onExit()
@@ -148,9 +146,9 @@ function BottomLayer:onExit()
     TutoMgr.removeBtn("zhujiemian_btn_shangcheng")
     TutoMgr.removeBtn("zhenrong_btn_fuben")
     TutoMgr.removeBtn("zhujiemian_btn_huodong")
-    UnRegNotice(self, NoticeKey.BottomLayer_Chouka)
-    UnRegNotice(self, NoticeKey.LOCK_BOTTOM)
-    UnRegNotice(self, NoticeKey.UNLOCK_BOTTOM)
+    self:unRegNotice(NoticeKey.BottomLayer_Chouka)
+    self:unRegNotice(NoticeKey.LOCK_BOTTOM)
+    self:unRegNotice(NoticeKey.UNLOCK_BOTTOM)
 end
 
 function BottomLayer:getContentSize(...)
@@ -159,19 +157,14 @@ function BottomLayer:getContentSize(...)
 end
 
 --[[
-    游戏底部 按键 event ui跳转
-]]
---[[
-    @desc: 
+    @desc: 游戏底部 按键 event ui跳转
     author:tulilu
     time:2020-05-13 20:07:05
     --@tag: 
     @return:
 ]]
 function BottomLayer:onTouchBtn(tag)
-    -- gameworks 按钮 点击事件
-    SDKGameWorks.GameBtClick(tag)
-
+    --@TODO 2020-05-13 23:37:56 底部按钮事件未完成
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
     local nextState = 0
@@ -190,7 +183,7 @@ function BottomLayer:onTouchBtn(tag)
                     -- dump(data)
                     game.player.m_formation = data
                     nextState = GAME_STATE.STATE_ZHENRONG
-                    GameStateManager:ChangeState(nextState, msg)
+                    self:getApp():changeState(nextState, msg)
                 end
             }
         )
@@ -206,7 +199,7 @@ function BottomLayer:onTouchBtn(tag)
         nextState = GAME_STATE.STATE_SHOP
     end
     for k, v in pairs(G_BOTTOM_BTN) do
-        if (GameStateManager.currentState == v and GameStateManager.currentState > 2) then
+        if (self:getApp().currentState == v and self:getApp().currentState > 2) then
             self.allBtns[k]:selected()
             break
         end
@@ -227,12 +220,12 @@ function BottomLayer:onTouchBtn(tag)
                     game.player.bigmapData = data
                     msg.bigMapID = game.player.bigmapData["1"]
                     msg.subMapID = game.player.bigmapData["2"]
-                    GameStateManager:ChangeState(nextState, msg)
+                    self:getApp():changeState(nextState, msg)
                 end
             }
         )
     else
-        GameStateManager:ChangeState(nextState, msg)
+        self:getApp():changeState(nextState, msg)
     end
 end
 return BottomLayer

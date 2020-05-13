@@ -16,7 +16,6 @@ function ws.init(cb)
     ws.wsSendString:registerScriptHandler(
         function()
             print("WEBSOCKET_OPEN")
-            print(cb)
             if cb then
                 cb()
             end
@@ -63,6 +62,7 @@ end
     @return:
 ]]
 function ws.SendRequest(tableData, callback, errorcb)
+    dump(tableData)
     local msg = {}
     msg._rid = ws._rid
     msg.body = json.encode(tableData)

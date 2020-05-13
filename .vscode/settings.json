@@ -19,5 +19,15 @@
     "luaide.apiType": "cocos2dx3",
     "luaide.scriptRoots": [
         "${workspaceRoot}/src"
-    ]
+    ],
+    "luaide.ignoreDir": [
+        "${workspaceRoot}/src/cocos",
+        
+        "${workspaceRoot}/frameworks",
+        "${workspaceRoot}/res",
+        "${workspaceRoot}/runtime",
+        "${workspaceRoot}/simulator",
+        "**/Template/FunTemplate"
+    ],
+    "luaide.automaticDownloadingDebugFile": false
 }
