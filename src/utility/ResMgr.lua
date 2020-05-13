@@ -31,7 +31,7 @@ ResMgr.TIME_SCALE_BASE_FACTOR = data_atk_number_time_time[1]["game_scale"] / 100
 ResMgr.battleTimeScale = 1
 
 function ResMgr.setTimeScale(scale)
-    CCDirector:sharedDirector():getScheduler():setTimeScale(scale * ResMgr.TIME_SCALE_BASE_FACTOR)
+    cc.Director:getScheduler():setTimeScale(scale * ResMgr.TIME_SCALE_BASE_FACTOR)
 end
 
 ResMgr.spriteFrameCntTable = {}

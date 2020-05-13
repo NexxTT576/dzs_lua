@@ -3,7 +3,9 @@ require "cocos.init"
 cc.FileUtils:getInstance():setPopupNotify(false)
 
 local function main()
-    require("app.MyApp"):create():run()
+    --@RefType MyApp
+    app = require("app.MyApp"):create()
+    app:run()
 end
 
 local status, msg = xpcall(main, __G__TRACKBACK__)

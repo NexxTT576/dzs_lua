@@ -63,6 +63,13 @@ function MyApp:changeState(nextState, msg)
             -- 登陆页面
             local scene = require("game.login.LoginScene"):create(self, "LoginScene")
             scene:showWithScene()
+        elseif nextState == GAME_STATE.STATE_MAIN_MENU then
+            local showNote = nil
+            if (msg ~= nil) then
+                showNote = msg.showNote
+            end
+            local scene = require("game.scenes.MainMenuScene"):create(self, "MainMenuScene", showNote)
+            scene:showWithScene()
         end
     end
 end

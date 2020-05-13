@@ -53,8 +53,8 @@ ENABLE_GUILD = true
 -- 副本战斗跳过
 DEBUG_BATTLE_SKIP = false
 
--- TutoMgr = require("game.Tutorial.TutoMgr")
--- DramaMgr = require("game.Drama.DramaMgr")
+TutoMgr = require("game.Tutorial.TutoMgr")
+DramaMgr = require("game.Drama.DramaMgr")
 -- OpenCheck = require("game.OpenSystem.OpenCheck")
 
 --Model类

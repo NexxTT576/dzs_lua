@@ -1,7 +1,7 @@
 --@SuperType cc.Node
 local ViewBase = class("ViewBase", cc.Node)
 
-function ViewBase:ctor(app, name)
+function ViewBase:ctor(app, name, data)
     self:enableNodeEvents()
     self.app_ = app
     self.name_ = name
@@ -18,7 +18,7 @@ function ViewBase:ctor(app, name)
     end
 
     if self.onCreate then
-        self:onCreate()
+        self:onCreate(data)
     end
 end
 
@@ -71,6 +71,15 @@ function ViewBase:showWithScene(transition, time, more)
     scene:addChild(self)
     display.runScene(scene, transition, time, more)
     return self
+end
+
+function ViewBase:postNotice(key, msg)
+    --@RefType luaIde#cc.EventCustom
+    local event = cc.EventCustom:new(key)
+    event._usedata = msg
+    --@RefType luaIde#cc.EventDispatcher
+    local eventDispatcher = self:getEventDispatcher()
+    eventDispatcher:dispatchEvent(event)
 end
 
 return ViewBase
