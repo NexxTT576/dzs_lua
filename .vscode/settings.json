@@ -28,6 +28,5 @@
         "${workspaceRoot}/runtime",
         "${workspaceRoot}/simulator",
         "**/Template/FunTemplate"
-    ],
-    "luaide.automaticDownloadingDebugFile": false
+    ]
 }

@@ -3,7 +3,19 @@
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [{
+            "name": "cocosLua",
+            "type": "lua",
+            "request": "launch",
+            "runtimeType": "Cocos3",
+            "localRoot": "${workspaceFolder}/src",
+            "commandLine": "-workdir ${workspaceFolder} -file src/main.lua",
+            "port": 7003,
+            "isFoxGloryProject": false,
+            "exePath": "${workspaceRoot}/simulator/win32/dzs_lua.exe",
+            "printType": 1
+        },
+
         {
             "name": "(Windows) 启动",
             "type": "cppvsdbg",
