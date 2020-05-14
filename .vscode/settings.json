@@ -20,9 +20,7 @@
     "luaide.scriptRoots": [
         "${workspaceRoot}/src"
     ],
-    "luaide.ignoreDir": [
-        "${workspaceRoot}/src/cocos",
-        
+    "luaide.ignoreDir": [  
         "${workspaceRoot}/frameworks",
         "${workspaceRoot}/res",
         "${workspaceRoot}/runtime",

@@ -8,5 +8,7 @@ require("utility.Func")
 game = {
     player = require("game.Player").new(),
     --@RefType MyApp
-    app = nil
+    app = nil,
+    --@RefType [packages#mvc#ViewBase]
+    runningScene = nil
 }

@@ -88,9 +88,9 @@ function Player:ctor(...)
 
     self.m_cur_normal_fuben_ID = 1101 --当前普通副本ID
 
-    self.m_fubenDisOffset = CCPointMake(0, 0) -- 当前副本的地图位置
-    self.m_submapOffset = ccp(0, 0) -- submap list 位置
-    self.m_herolistOffset = ccp(0, 0) -- hero list position
+    self.m_fubenDisOffset = cc.p(0, 0) -- 当前副本的地图位置
+    self.m_submapOffset = cc.p(0, 0) -- submap list 位置
+    self.m_herolistOffset = cc.p(0, 0) -- hero list position
 
     self:initNotification()
 

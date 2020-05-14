@@ -117,6 +117,9 @@ function BottomLayer:refreshShopNotice()
     end
 end
 
+function BottomLayer:setMenuItemEnabled(b)
+end
+
 function BottomLayer:onEnter()
     TutoMgr.active()
     -- 抽卡

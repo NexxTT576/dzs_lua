@@ -35,6 +35,7 @@ require("game.game")
 GameAudio = require("utility.GameAudio")
 ResMgr = require("utility.ResMgr")
 
+--@SuperType AppBase
 function MyApp:onCreate()
     game.app = self
     math.randomseed(os.time())
@@ -54,25 +55,22 @@ function MyApp:changeState(nextState, msg)
         self.currentState = nextState
 
         local canShow = true
-
+        local scene = nil
         if nextState == GAME_STATE.STATE_LOGO then
-            local scene = require("app.views.LogoScene"):create(self, "LogoScene")
-            scene:showWithScene()
+            scene = require("app.views.LogoScene"):create(self, "LogoScene")
         elseif nextState == GAME_STATE.STATE_VERSIONCHECK then
-            local scene = require("app.views.VersionCheckScene"):create(self, "VersionCheckScene")
-            scene:showWithScene()
+            scene = require("app.views.VersionCheckScene"):create(self, "VersionCheckScene")
         elseif nextState == GAME_STATE.STATE_LOGIN then
             -- 登陆页面
-            local scene = require("game.login.LoginScene"):create(self, "LoginScene")
-            scene:showWithScene()
+            scene = require("game.login.LoginScene"):create(self, "LoginScene")
         elseif nextState == GAME_STATE.STATE_MAIN_MENU then
             local showNote = nil
             if (msg ~= nil) then
                 showNote = msg.showNote
             end
-            local scene = require("game.scenes.MainMenuScene"):create(self, "MainMenuScene", showNote)
-            scene:showWithScene()
+            scene = require("game.scenes.MainMenuScene"):create(self, "MainMenuScene", showNote)
         end
+        scene:showWithScene()
     end
 end
 

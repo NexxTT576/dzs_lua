@@ -37,12 +37,12 @@ end
 
 function TutoMgr.lockTable()
     print("tututmgr.locktable")
-    PostNotice(NoticeKey.LOCK_TABLEVIEW)
+    game.runningScene:postNotice(NoticeKey.LOCK_TABLEVIEW)
 end
 
 function TutoMgr.unlockTable()
     print("ulocktttt")
-    PostNotice(NoticeKey.UNLOCK_TABLEVIEW)
+    game.runningScene:postNotice(NoticeKey.UNLOCK_TABLEVIEW)
 end
 
 function TutoMgr.notLock()
@@ -289,7 +289,7 @@ function TutoMgr.runTutoFunc(data)
 
         if TutoMgr.isTutoExist() == false then
             local tutoLayer =
-                require("game.Tutorial.TutoLayer").new(
+                require("game.Tutorial.TutoLayer"):create(
                 {
                     btn = actBtn,
                     func = nextFunc,
@@ -308,7 +308,7 @@ function TutoMgr.runTutoFunc(data)
                         ResMgr.intoSubMap = false
                         -- PostNotice(NoticeKey.REV_BEF_TUTO_MASK)
                         ResMgr.removeBefLayer()
-                        PostNotice(NoticeKey.UNLOCK_BOTTOM)
+                        game.runningScene:postNotice(NoticeKey.UNLOCK_BOTTOM)
                         TutoMgr.unlockBtn()
 
                         -- TutoMgr.unlockTable()

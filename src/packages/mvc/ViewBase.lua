@@ -1,12 +1,22 @@
---@SuperType cc.Node
+--@SuperType luaIde#cc.Node
 local ViewBase = class("ViewBase", cc.Node)
 
 function ViewBase:ctor(app, name, data)
-    if type(app) ~= "table" then
+    if type(app) == "table" and app.class and app.class.super and app.class.super.__cname == "AppBase" then
+        app = app
+    else
         data = name
         name = app
         app = game.app
     end
+
+    if name == nil then
+        name = "default"
+    elseif type(name) == "table" then
+        data = name
+        name = "default"
+    end
+
     self:enableNodeEvents()
     self.app_ = app
     self.name_ = name
@@ -73,6 +83,7 @@ end
 function ViewBase:showWithScene(transition, time, more)
     self:setVisible(true)
     local scene = display.newScene(self.name_)
+    game.runningScene = self
     scene:addChild(self)
     display.runScene(scene, transition, time, more)
     return self

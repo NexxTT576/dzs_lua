@@ -55,7 +55,7 @@ function ResMgr.removeSpriteFramesWithFile(plistFilename, image)
 end
 
 function ResMgr:getPosInScene(node)
-    local nodeCenterPos = ccp(node:getContentSize().width / 2, node:getContentSize().height / 2)
+    local nodeCenterPos = cc.p(node:getContentSize().width / 2, node:getContentSize().height / 2)
     local nodePos = node:convertToWorldSpace(nodeCenterPos)
     return nodePos
 end
@@ -65,9 +65,9 @@ function ResMgr.flipCard(sprite, refreshFunc, curTime)
     sprite:runAction(
         transition.sequence(
             {
-                CCScaleTo:create(time, 0.01, 1.0),
-                CCCallFuncN:create(refreshFunc),
-                CCScaleTo:create(time, 1, 1.0)
+                cc.ScaleTo:create(time, 0.01, 1.0),
+                cc.CallFuncN:create(refreshFunc),
+                cc.ScaleTo:create(time, 1, 1.0)
             }
         )
     )
@@ -253,9 +253,9 @@ function ResMgr.getIconSprite(param)
 end
 
 function ResMgr.createMaskLayer(node)
-    local trueColor = ccc4(0, 0, 0, 0)
+    local trueColor = cc.c4b(0, 0, 0, 0)
     if GAME_DEBUG == true and SHOW_MASK_LAYER == true then
-        trueColor = ccc4(0, 100, 0, 100)
+        trueColor = cc.c4b(0, 100, 0, 100)
     end
 
     if ResMgr.greenLayer == nil then
@@ -328,7 +328,7 @@ function ResMgr.setNodeEvent(param)
         cc.NODE_TOUCH_EVENT,
         function(event)
             dump(event)
-            local touchPos = ccp(event.x, event.y)
+            local touchPos = cc.p(event.x, event.y)
             local isInViewBg
             if tableViewRect == nil then --如果没传 说明不是在tableview或者scrollview里
                 isInViewBg = true
@@ -370,9 +370,9 @@ function ResMgr.setNodeEvent(param)
 end
 
 function ResMgr.createTutoMask(node)
-    local trueColor = ccc4(0, 0, 0, 0)
+    local trueColor = cc.c4b(0, 0, 0, 0)
     if GAME_DEBUG == true and SHOW_MASK_LAYER == true then
-        trueColor = ccc4(0, 100, 100, 100)
+        trueColor = cc.c4b(0, 100, 100, 100)
     end
 
     ResMgr.blueLayer = require("utility.SimpleColorLayer").new(trueColor)
@@ -396,10 +396,10 @@ function ResMgr.getArrangedNode(rowTable)
 
     local posX = 0
     for i = 1, #rowTable do
-        if (tolua.type(rowTable[i]) == "CCLabelBMFont") then
-            rowTable[i]:setAnchorPoint(ccp(0, 0.9))
+        if (tolua.type(rowTable[i]) == "cc.LabelBMFont") then
+            rowTable[i]:setAnchorPoint(cc.p(0, 0.9))
         else
-            rowTable[i]:setAnchorPoint(ccp(0, 0.5))
+            rowTable[i]:setAnchorPoint(cc.p(0, 0.5))
         end
 
         --		if i == 1 then
@@ -496,7 +496,7 @@ function ResMgr.getVipIconTTF()
     local vipLv = game.player.m_vip
 
     local vipIcon = display.newSprite("ui/new_btn/vip_icon.png")
-    vipIcon:setAnchorPoint(ccp(0, 0.5))
+    vipIcon:setAnchorPoint(cc.p(0, 0.5))
 
     local lvTTF =
         ui.newBMFontLabel(
@@ -531,9 +531,9 @@ ResMgr.befTutoTable = {}
 function ResMgr.createBefTutoMask(node)
     print("createteetbefffuffu")
 
-    local trueColor = ccc4(0, 0, 0, 0)
+    local trueColor = cc.c4b(0, 0, 0, 0)
     if GAME_DEBUG == true and SHOW_MASK_LAYER == true then
-        trueColor = ccc4(100, 0, 0, 100)
+        trueColor = cc.c4b(100, 0, 0, 100)
     end
 
     local befTutoLayer = display.newColorLayer(trueColor)
@@ -575,9 +575,9 @@ end
 
 function ResMgr.createTouchLayer(node)
     print("toutoutotutu")
-    local trueColor = ccc4(0, 0, 0, 0)
+    local trueColor = cc.c4b(0, 0, 0, 0)
     if GAME_DEBUG == true and SHOW_MASK_LAYER == true then
-        trueColor = ccc4(100, 0, 0, 100)
+        trueColor = cc.c4b(100, 0, 0, 100)
     end
 
     if ResMgr.touchLayer == nil then
@@ -601,7 +601,7 @@ end
 
 function ResMgr.createParticle(filename)
     local path = "ccs/particle/" .. filename .. ".plist"
-    local part = CCParticleSystemQuad:create(path)
+    local part = cc.ParticleSystemQuad:create(path)
     return part
 end
 
@@ -733,7 +733,7 @@ function ResMgr.refreshItemWithTagNumName(param)
     nameLbl:setPosition(itemBg:getContentSize().width / 2 - nameLbl:getContentSize().width / 2, -nameLbl:getContentSize().height / 2)
 
     local numTTF = ResMgr.createShadowMsgTTF({text = itemNum, color = cc.c3b(58, 209, 73), size = 22})
-    numTTF:setAnchorPoint(ccp(1, 0))
+    numTTF:setAnchorPoint(cc.p(1, 0))
     numTTF:setPosition(itemBg:getContentSize().width - numTTF:getContentSize().width - 10, itemBg:getContentSize().height * 0.2)
     itemBg:addChild(numTTF)
 
@@ -931,7 +931,7 @@ function ResMgr.refreshIcon(param)
         end
     end
 
-    itemBg:setContentSize(CCSize(itemBgWidth, itemBgHeight))
+    itemBg:setContentSize(cc.size(itemBgWidth, itemBgHeight))
 
     if isReturn then
         return itemBg
@@ -1042,7 +1042,7 @@ function ResMgr.createArma(param)
     if path ~= "" then
         ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo(path)
         ccs.ArmatureDataManager:getInstance():addArmatureFileInfo(path)
-        local tempArma = CCArmature:create(armaName)
+        local tempArma = ccs.Armature:create(armaName)
         tempArma:getAnimation():setFrameEventCallFunc(
             function(bone, evt, originFrameIndex, currentFrameIndex) --setMovementEventCallFunc(function(armatureBack,movementType,movementID)
                 if evt == frameTag then
@@ -1194,15 +1194,15 @@ function ResMgr.delayFunc(delayTime, func, node)
         display.getRunningScene():addChild(runFuncNode)
     end
 
-    local delayTime = CCDelayTime:create(delayTime)
+    local delayTime = cc.DelayTime:create(delayTime)
     local func =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             func()
         end
     )
     local removeNodeFunc =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             runFuncNode:removeSelf()
         end
@@ -1314,7 +1314,7 @@ function ResMgr.shakeScr(param)
         local interval = shakeData.interval / 1000 or 0.1
         local arr_dir = shakeData.arr_dir or {}
 
-        local startDelayAct = CCDelayTime:create(start_time)
+        local startDelayAct = cc.DelayTime:create(start_time)
         local shakeActions = {}
         shakeActions[#shakeActions + 1] = startDelayAct
 
@@ -1325,20 +1325,20 @@ function ResMgr.shakeScr(param)
             local offsetX = arr_dir[i][1] * node_width / 1000
             local offsetY = arr_dir[i][2] * node_height / 1000
             local setPosFuncAct =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     node:setPosition(orX + offsetX, orY + offsetY)
                 end
             )
             shakeActions[#shakeActions + 1] = setPosFuncAct
             if i ~= #arr_dir then
-                local curDelayAct = CCDelayTime:create(interval)
+                local curDelayAct = cc.DelayTime:create(interval)
                 shakeActions[#shakeActions + 1] = curDelayAct
             else
             end
         end
         local backToAct =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 node:setPosition(orX, orY)
             end
@@ -1347,7 +1347,7 @@ function ResMgr.shakeScr(param)
         shakeActions[#shakeActions + 1] = backToAct
 
         local delayEndTime = 0.08
-        local delayEnd = CCDelayTime:create(delayEndTime)
+        local delayEnd = cc.DelayTime:create(delayEndTime)
         shakeActions[#shakeActions + 1] = delayEnd
 
         local seqAct = transition.sequence(shakeActions)
