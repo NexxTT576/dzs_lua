@@ -59,8 +59,7 @@ function dump(value, description, nesting)
     local result = {}
 
     local traceback = string.split(debug.traceback("", 2), "\n")
-    local input = string.gsub(traceback[3], 'string ".\\', 'string "./src/')
-
+    local input = string.gsub(traceback[3], '%[string ".\\([%w|/]*).lua%"]:(%d*):', '%[string "./src/%1.lua:%2"%]:')
     print("dump from: " .. string.trim(input))
 
     local function dump_(value, description, indent, nest, keylen)

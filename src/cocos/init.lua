@@ -27,7 +27,8 @@ require "cocos.cocos2d.functions"
 
 __G__TRACKBACK__ = function(msg)
     local msg = debug.traceback(msg, 3)
-    print(string.gsub(msg, 'string ".\\', 'string "./src/'))
+    local l = string.gsub(msg, '%[string ".\\([%w|/]*).lua%"]:(%d*):', '%[string "./src/%1.lua:%2"%]:')
+    print(l)
     return msg
 end
 
