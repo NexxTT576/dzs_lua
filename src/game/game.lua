@@ -6,5 +6,7 @@
 ]]
 require("utility.Func")
 game = {
-    player = require("game.Player").new()
+    player = require("game.Player").new(),
+    --@RefType MyApp
+    app = nil
 }

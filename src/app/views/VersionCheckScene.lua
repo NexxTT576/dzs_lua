@@ -26,7 +26,7 @@ function VersionCheckScene:onCreate()
         function()
             if cc.PLATFORM_OS_WINDOWS == cc.Application:getInstance():getTargetPlatform() then
                 print("准备进入游戏")
-                self:getApp():changeState(GAME_STATE.STATE_LOGIN)
+                game.app:changeState(GAME_STATE.STATE_LOGIN)
             end
         end
     )

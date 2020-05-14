@@ -1,6 +1,5 @@
 --@SuperType ViewBase
 local LoginScene = class("LoginScene", cc.load("mvc").ViewBase)
-require("game.game")
 
 function LoginScene:onCreate()
     print("LoginScene onCreate")

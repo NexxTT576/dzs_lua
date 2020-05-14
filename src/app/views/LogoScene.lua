@@ -15,7 +15,7 @@ function LogoScene:onEnter()
     performWithDelay(
         self,
         function()
-            self:getApp():changeState(GAME_STATE.STATE_VERSIONCHECK)
+            game.app:changeState(GAME_STATE.STATE_VERSIONCHECK)
         end,
         2
     )

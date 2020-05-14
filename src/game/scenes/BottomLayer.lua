@@ -98,7 +98,7 @@ function BottomLayer:initBottomFrame(...)
     end
 
     for k, v in pairs(G_BOTTOM_BTN) do
-        if (self:getApp().currentState == v and self:getApp().currentState > 2) then
+        if (game.app.currentState == v and game.app.currentState > 2) then
             items[k]:selected()
             break
         end
@@ -183,7 +183,7 @@ function BottomLayer:onTouchBtn(tag)
                     -- dump(data)
                     game.player.m_formation = data
                     nextState = GAME_STATE.STATE_ZHENRONG
-                    self:getApp():changeState(nextState, msg)
+                    game.app:changeState(nextState, msg)
                 end
             }
         )
@@ -199,7 +199,7 @@ function BottomLayer:onTouchBtn(tag)
         nextState = GAME_STATE.STATE_SHOP
     end
     for k, v in pairs(G_BOTTOM_BTN) do
-        if (self:getApp().currentState == v and self:getApp().currentState > 2) then
+        if (game.app.currentState == v and game.app.currentState > 2) then
             self.allBtns[k]:selected()
             break
         end
@@ -220,12 +220,12 @@ function BottomLayer:onTouchBtn(tag)
                     game.player.bigmapData = data
                     msg.bigMapID = game.player.bigmapData["1"]
                     msg.subMapID = game.player.bigmapData["2"]
-                    self:getApp():changeState(nextState, msg)
+                    game.app:changeState(nextState, msg)
                 end
             }
         )
     else
-        self:getApp():changeState(nextState, msg)
+        game.app:changeState(nextState, msg)
     end
 end
 return BottomLayer

@@ -31,10 +31,12 @@ for _, v in ipairs(SearchPath) do
 end
 
 require("game.GameConst")
+require("game.game")
 GameAudio = require("utility.GameAudio")
 ResMgr = require("utility.ResMgr")
 
 function MyApp:onCreate()
+    game.app = self
     math.randomseed(os.time())
 end
 

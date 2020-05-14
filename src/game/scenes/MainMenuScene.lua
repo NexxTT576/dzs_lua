@@ -88,7 +88,7 @@ function MainMenuScene:onEnter()
     local curMoveNum = 0
 
     -- 最底部按钮
-    self.bottom = require("game.scenes.BottomLayer"):create(self:getApp())
+    self.bottom = require("game.scenes.BottomLayer"):create()
     self:addChild(self.bottom, 100)
 
     -- 倒数第2行按钮

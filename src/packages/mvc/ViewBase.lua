@@ -2,6 +2,11 @@
 local ViewBase = class("ViewBase", cc.Node)
 
 function ViewBase:ctor(app, name, data)
+    if type(app) ~= "table" then
+        data = name
+        name = app
+        app = game.app
+    end
     self:enableNodeEvents()
     self.app_ = app
     self.name_ = name
