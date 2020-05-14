@@ -21,14 +21,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ]]
-
 require "cocos.cocos2d.Cocos2d"
 require "cocos.cocos2d.Cocos2dConstants"
 require "cocos.cocos2d.functions"
 
 __G__TRACKBACK__ = function(msg)
     local msg = debug.traceback(msg, 3)
-    print(msg)
+    print(string.gsub(msg, 'string ".\\', 'string "./src/'))
     return msg
 end
 
@@ -73,7 +72,6 @@ if nil ~= ccs then
     require "cocos.cocostudio.DeprecatedCocoStudioClass"
     require "cocos.cocostudio.DeprecatedCocoStudioFunc"
 end
-
 
 -- register_cocosbuilder_module
 require "cocos.cocosbuilder.DeprecatedCocosBuilderClass"

@@ -13,7 +13,7 @@
             "port": 7003,
             "isFoxGloryProject": false,
             "exePath": "${workspaceRoot}/simulator/win32/dzs_lua.exe",
-            "printType": 1
+            "printType": 2
         },
 
         {

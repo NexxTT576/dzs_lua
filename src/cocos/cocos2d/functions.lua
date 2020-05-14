@@ -59,7 +59,9 @@ function dump(value, description, nesting)
     local result = {}
 
     local traceback = string.split(debug.traceback("", 2), "\n")
-    print("dump from: " .. string.trim(traceback[3]))
+    local input = string.gsub(traceback[3], 'string ".\\', 'string "./src/')
+
+    print("dump from: " .. string.trim(input))
 
     local function dump_(value, description, indent, nest, keylen)
         description = description or "<var>"
@@ -68,8 +70,7 @@ function dump(value, description, nesting)
             spc = string.rep(" ", keylen - string.len(dump_value_(description)))
         end
         if type(value) ~= "table" then
-            result[#result + 1] =
-                string.format("%s%s%s = %s", indent, dump_value_(description), spc, dump_value_(value))
+            result[#result + 1] = string.format("%s%s%s = %s", indent, dump_value_(description), spc, dump_value_(value))
         elseif lookupTable[tostring(value)] then
             result[#result + 1] = string.format("%s%s%s = *REF*", indent, dump_value_(description), spc)
         else
@@ -191,28 +192,16 @@ function class(classname, ...)
     local supers = {...}
     for _, super in ipairs(supers) do
         local superType = type(super)
-        assert(
-            superType == "nil" or superType == "table" or superType == "function",
-            string.format('class() - create class "%s" with invalid super class type "%s"', classname, superType)
-        )
+        assert(superType == "nil" or superType == "table" or superType == "function", string.format('class() - create class "%s" with invalid super class type "%s"', classname, superType))
 
         if superType == "function" then
-            assert(
-                cls.__create == nil,
-                string.format('class() - create class "%s" with more than one creating function', classname)
-            )
+            assert(cls.__create == nil, string.format('class() - create class "%s" with more than one creating function', classname))
             -- if super is function, set it to __create
             cls.__create = super
         elseif superType == "table" then
             if super[".isclass"] then
                 -- super is native class
-                assert(
-                    cls.__create == nil,
-                    string.format(
-                        'class() - create class "%s" with more than one creating function or native class',
-                        classname
-                    )
-                )
+                assert(cls.__create == nil, string.format('class() - create class "%s" with more than one creating function or native class', classname))
                 cls.__create = function()
                     return super:create()
                 end
