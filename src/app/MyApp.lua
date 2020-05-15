@@ -71,6 +71,14 @@ function MyApp:changeState(nextState, msg)
             scene = require("game.scenes.MainMenuScene"):create(self, "MainMenuScene", showNote)
         end
         scene:showWithScene()
+    else
+        if nextState == GAME_STATE.STATE_MAIN_MENU then
+            for k, v in pairs(MAIN_MENU_SUBMENU) do
+                if game.runningScene:getChildByTag(v) then
+                    game.runningScene:removeChildByTag(v)
+                end
+            end
+        end
     end
 end
 

@@ -60,7 +60,7 @@ function BottomLayer:initBottomFrame(...)
         btn:registerScriptTapHandler(
             function()
                 self:postNotice(NoticeKey.REMOVE_TUTOLAYER)
-                self:onTouchBtn(baseBottomItems[k])
+                -- self:onTouchBtn(baseBottomItems[k])
             end
         )
         local menu = cc.Menu:create()

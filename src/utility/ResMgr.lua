@@ -26,7 +26,7 @@ ResMgr.isInSubInfo = false
 ResMgr.intoSubMap = false
 
 -- 战斗缩放的基数
-ResMgr.TIME_SCALE_BASE_FACTOR = data_atk_number_time_time[1]["game_scale"] / 1000 or 1
+ResMgr.TIME_SCALE_BASE_FACTOR = (data_atk_number_time_time[1]["game_scale"] / 1000 )or 1
 
 ResMgr.battleTimeScale = 1
 
@@ -1310,8 +1310,8 @@ function ResMgr.shakeScr(param)
     if shakeId ~= 0 then
         node:stopAllActions()
         local shakeData = data_shake_shake[shakeId]
-        local start_time = shakeData.start_time / 1000 or 0.1
-        local interval = shakeData.interval / 1000 or 0.1
+        local start_time = (shakeData.start_time / 1000) or 0.1
+        local interval = (shakeData.interval / 1000) or 0.1
         local arr_dir = shakeData.arr_dir or {}
 
         local startDelayAct = cc.DelayTime:create(start_time)

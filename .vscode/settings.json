@@ -13,18 +13,18 @@
         "**/proj.android": true
     },
     "editor.snippetSuggestions": "bottom",
-    "[lua]":{
+    "[lua]": {
         "editor.formatOnSave": true
     },
-    "luaide.apiType": "cocos2dx3",
     "luaide.scriptRoots": [
         "${workspaceRoot}/src"
     ],
-    "luaide.ignoreDir": [  
+    "luaide.ignoreDir": [
         "${workspaceRoot}/frameworks",
         "${workspaceRoot}/res",
         "${workspaceRoot}/runtime",
         "${workspaceRoot}/simulator",
         "**/Template/FunTemplate"
-    ]
+    ],
+    "luaide.apiType": "cocos2dx3"
 }

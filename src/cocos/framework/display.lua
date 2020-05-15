@@ -517,7 +517,7 @@ end
 local function newAnimation(frames, time)
     local count = #frames
     assert(count > 0, "display.newAnimation() - invalid frames")
-    time = time or 1.0 / count
+    time = (time or 1.0) / count
     return cc.Animation:createWithSpriteFrames(frames, time), cc.Sprite:createWithSpriteFrame(frames[1])
 end
 

@@ -62,7 +62,7 @@ function TutoLayer:onCreate(param)
 
     self.touchType = param.isTouch
 
-    local delay = param.delay / 1000 or 0
+    local delay = (param.delay / 1000) or 0
 
     local btnCenterPos = cc.p(btn:getContentSize().width / 2, btn:getContentSize().height / 2)
     btnPos = btn:convertToWorldSpace(btnCenterPos)
@@ -75,9 +75,10 @@ function TutoLayer:onCreate(param)
     clippingNode:setContentSize(btnSize)
     -- 创建裁剪模板，裁剪节点将按照这个模板来裁剪区域
     local stencil = cc.DrawNode:create()
-    stencil:drawRect(cc.p(0, 0), cc.p(clippingNode:getContentSize().width, clippingNode:getContentSize().height), cc.c4f(1, 1, 1, 1))
+    local stencilPos1 = cc.p(btnPos.x - btnSize.width / 2, btnPos.y - btnSize.height / 2)
+    local stencilPos2 = cc.p(stencilPos1.x + clippingNode:getContentSize().width, stencilPos1.y + clippingNode:getContentSize().height)
+    stencil:drawSolidRect(stencilPos1, stencilPos2, cc.c4f(1, 1, 1, 1))
     stencil:setAnchorPoint(cc.p(0.5, 0.5))
-    stencil:setPosition(cc.p(btnPos.x - btnSize.width / 2, btnPos.y - btnSize.height / 2))
     stencil:setScale(btnScale)
 
     clippingNode:setStencil(stencil)
@@ -106,7 +107,17 @@ function TutoLayer:onCreate(param)
     local listener = cc.EventListenerTouchOneByOne:create()
     listener:setSwallowTouches(true)
     listener:registerScriptHandler(
-        function()
+        --@event: luaIde#cc.Touch
+        function(event)
+            -- 如果在镂空的按钮位置，则让它可点击下面的按钮
+            --@RefType luaIde#cc.Rect
+            local loKongRect = cc.rect(btnPos.x - btnSize.width / 2, btnPos.y - btnSize.height / 2, btnSize.width, btnSize.height)
+            if cc.rectContainsPoint(loKongRect, event:getLocation()) == true then
+                if self.touchType == 1 then
+                    self.callBackFunc()
+                end
+                return false
+            end
             return true
         end,
         cc.Handler.EVENT_TOUCH_BEGAN
@@ -115,30 +126,6 @@ function TutoLayer:onCreate(param)
     local eventDispatcher = pLayer:getEventDispatcher()
     eventDispatcher:addEventListenerWithSceneGraphPriority(listener, pLayer)
     local bTouch = false
-    -- pLayer:addNodeEventListener(
-    --     cc.NODE_TOUCH_CAPTURE_EVENT,
-    --     function(event, x, y)
-    --         -- dump(event)
-    --         if "began" == event.name then
-    --             --如果在镂空的按钮位置，则让它可点击下面的按钮
-
-    --             local loKongRect = CCRectMake(btnPos.x - btnSize.width / 2, btnPos.y - btnSize.height / 2, btnSize.width, btnSize.height)
-    --             if loKongRect:containsPoint(cc.p(event.x, event.y)) then
-    --                 if self.touchType == 1 then
-    --                     --执行回调函数
-
-    --                     self.callBackFunc()
-    --                 end
-
-    --                 return false
-    --             else
-    --                 print("ttrrrue")
-    --                 return true
-    --             end
-    --         end
-    --     end,
-    --     1
-    -- )
 
     local function getAppearAct(times)
         local delayTime = times[1] / 1000
