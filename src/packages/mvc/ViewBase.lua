@@ -89,25 +89,4 @@ function ViewBase:showWithScene(transition, time, more)
     return self
 end
 
-function ViewBase:postNotice(key, msg)
-    --@RefType luaIde#cc.EventCustom
-    local event = cc.EventCustom:new(key)
-    event._usedata = msg
-    --@RefType luaIde#cc.EventDispatcher
-    local eventDispatcher = self:getEventDispatcher()
-    eventDispatcher:dispatchEvent(event)
-end
-
-function ViewBase:regNotice(cb, key)
-    --@RefType luaIde#cc.EventDispatcher
-    local eventDispatcher = self:getEventDispatcher()
-    eventDispatcher:addCustomEventListener(key, cb)
-end
-
-function ViewBase:unRegNotice(key)
-    --@RefType luaIde#cc.EventDispatcher
-    local eventDispatcher = self:getEventDispatcher()
-    eventDispatcher:removeCustomEventListeners(key)
-end
-
 return ViewBase
