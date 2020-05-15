@@ -4,11 +4,18 @@
     author:tulilu
     time:2020-05-14 17:17:10
 ]]
---@SuperType ViewBase
-local TutoLayer = class("TutoLayer", cc.load("mvc").ViewBase)
+--@SuperType luaIde#cc.Node
+local TutoLayer =
+    class(
+    "TutoLayer",
+    function(data)
+        return display.newNode()
+    end
+)
 
 function TutoLayer:onEnter()
-    self:regNotice(
+    RegNotice(
+        self,
         function()
             self.callBackFunc()
         end,
@@ -28,10 +35,10 @@ function TutoLayer:onEnter()
 end
 
 function TutoLayer:onExit()
-    self:unRegNotice(NoticeKey.REMOVE_TUTOLAYER)
+    UnRegNotice(self, NoticeKey.REMOVE_TUTOLAYER)
 end
 
-function TutoLayer:onCreate(param)
+function TutoLayer:ctor(param)
     TutoMgr.lockTable()
     local tuData = param.tuData
     local isMask = param.isMask

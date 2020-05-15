@@ -1,8 +1,13 @@
---@SuperType ViewBase
-local LoginScene = class("LoginScene", cc.load("mvc").ViewBase)
+--@SuperType luaIde#cc.Scene
+local LoginScene =
+    class(
+    "LoginScene",
+    function(...)
+        return display.newScene("LoginScene")
+    end
+)
 
-function LoginScene:onCreate()
-    print("LoginScene onCreate")
+function LoginScene:ctor()
     self:init()
     GameAudio.preloadMusic(ResMgr.getSFX(SFX_NAME.u_queding))
     GameAudio.playMainmenuMusic(true)

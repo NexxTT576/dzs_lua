@@ -4,7 +4,7 @@
     author:tulilu
     time:2020-05-15 15:10:37
 ]]
---@SuperType [ luaIde#cc.LayerColor]
+--@SuperType luaIde#cc.LayerColor
 local SimpleColorLayer =
     class(
     "SimpleColorLayer",
@@ -15,7 +15,7 @@ local SimpleColorLayer =
 
 function SimpleColorLayer:ctor(param)
     self:enableNodeEvents()
-    self:setTouchSwallowEnabled(true)
+    -- self:setTouchSwallowEnabled(true)
 end
 
 function SimpleColorLayer:onEnter()

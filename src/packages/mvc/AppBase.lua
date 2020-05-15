@@ -67,15 +67,4 @@ end
 function AppBase:onCreate()
 end
 
---[[
-    @desc: 
-    author:tulilu
-    time:2020-05-12 19:34:15
-    --@nextState: game.GameConst#GAME_STATE
-	--@msg: 
-    @return:
-]]
-function AppBase:changeState(nextState, msg)
-end
-
 return AppBase

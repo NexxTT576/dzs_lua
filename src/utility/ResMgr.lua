@@ -26,7 +26,7 @@ ResMgr.isInSubInfo = false
 ResMgr.intoSubMap = false
 
 -- 战斗缩放的基数
-ResMgr.TIME_SCALE_BASE_FACTOR = (data_atk_number_time_time[1]["game_scale"] / 1000 )or 1
+ResMgr.TIME_SCALE_BASE_FACTOR = (data_atk_number_time_time[1]["game_scale"] / 1000) or 1
 
 ResMgr.battleTimeScale = 1
 
@@ -376,7 +376,7 @@ function ResMgr.createTutoMask(node)
     end
 
     ResMgr.blueLayer = require("utility.SimpleColorLayer").new(trueColor)
-    ResMgr.blueLayer:setTouchSwallowEnabled(true)
+    -- ResMgr.blueLayer:setTouchSwallowEnabled(true)
     ResMgr.blueLayer:retain()
 
     if node == nil then

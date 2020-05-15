@@ -9,6 +9,8 @@ game = {
     player = require("game.Player").new(),
     --@RefType MyApp
     app = nil,
-    --@RefType [packages#mvc#ViewBase]
+    --@RefType luaIde#cc.Scene
     runningScene = nil
 }
+
+GameStateManager = require("game.GameStateManager")

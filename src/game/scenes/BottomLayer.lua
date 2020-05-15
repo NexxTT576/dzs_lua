@@ -4,9 +4,15 @@
     author:tulilu
     time:2020-05-13 18:40:32
 ]]
---@SuperType ViewBase
-local BottomLayer = class("BottomLayer", cc.load("mvc").ViewBase)
-function BottomLayer:onCreate()
+--@SuperType luaIde#cc.Node
+local BottomLayer =
+    class(
+    "BottomLayer",
+    function(showbg)
+        return display.newNode()
+    end
+)
+function BottomLayer:ctor()
     self:enableNodeEvents()
     display.loadSpriteFrames("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
     local showbg = showbg or true
@@ -59,8 +65,7 @@ function BottomLayer:initBottomFrame(...)
         local btn = cc.MenuItemSprite:create(display.newSprite(bottomImage[k]), display.newSprite(bottomImageDown[k]))
         btn:registerScriptTapHandler(
             function()
-                self:postNotice(NoticeKey.REMOVE_TUTOLAYER)
-                -- self:onTouchBtn(baseBottomItems[k])
+                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
             end
         )
         local menu = cc.Menu:create()
@@ -123,19 +128,22 @@ end
 function BottomLayer:onEnter()
     TutoMgr.active()
     -- 抽卡
-    self:regNotice(
+    RegNotice(
+        self,
         function()
             self:refreshShopNotice()
         end,
         NoticeKey.BottomLayer_Chouka
     )
-    self:regNotice(
+    RegNotice(
+        self,
         function()
             self:setMenuItemEnabled(false)
         end,
         NoticeKey.LOCK_BOTTOM
     )
-    self:regNotice(
+    RegNotice(
+        self,
         function()
             self:setMenuItemEnabled(true)
         end,
@@ -149,9 +157,9 @@ function BottomLayer:onExit()
     TutoMgr.removeBtn("zhujiemian_btn_shangcheng")
     TutoMgr.removeBtn("zhenrong_btn_fuben")
     TutoMgr.removeBtn("zhujiemian_btn_huodong")
-    self:unRegNotice(NoticeKey.BottomLayer_Chouka)
-    self:unRegNotice(NoticeKey.LOCK_BOTTOM)
-    self:unRegNotice(NoticeKey.UNLOCK_BOTTOM)
+    UnRegNotice(self, NoticeKey.BottomLayer_Chouka)
+    UnRegNotice(self, NoticeKey.LOCK_BOTTOM)
+    UnRegNotice(self, NoticeKey.UNLOCK_BOTTOM)
 end
 
 function BottomLayer:getContentSize(...)
@@ -186,7 +194,7 @@ function BottomLayer:onTouchBtn(tag)
                     -- dump(data)
                     game.player.m_formation = data
                     nextState = GAME_STATE.STATE_ZHENRONG
-                    game.app:changeState(nextState, msg)
+                    GameStateManager:ChangeState(nextState, msg)
                 end
             }
         )
@@ -223,12 +231,12 @@ function BottomLayer:onTouchBtn(tag)
                     game.player.bigmapData = data
                     msg.bigMapID = game.player.bigmapData["1"]
                     msg.subMapID = game.player.bigmapData["2"]
-                    game.app:changeState(nextState, msg)
+                    GameStateManager:ChangeState(nextState, msg)
                 end
             }
         )
     else
-        game.app:changeState(nextState, msg)
+        GameStateManager:ChangeState(nextState, msg)
     end
 end
 return BottomLayer

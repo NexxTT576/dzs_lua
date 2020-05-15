@@ -9,3 +9,27 @@ function GetSystemTime(...)
     local curTime = os.date("%H:%M", os.time())
     return curTime
 end
+
+function PostNotice(key, msg)
+    local n = cc.Director:getInstance():getEventDispatcher()
+    if msg == nil then
+        local event = cc.EventCustom:new(key)
+        n:dispatchEvent(event)
+    else
+        local event = cc.EventCustom:new(key)
+        event._usedata = msg
+        n:dispatchEvent(event)
+    end
+end
+
+function RegNotice(target, cb, key)
+    --@RefType luaIde#cc.EventDispatcher
+    local eventDispatcher = target:getEventDispatcher()
+    eventDispatcher:addCustomEventListener(key, cb)
+end
+
+function UnRegNotice(target, key)
+    --@RefType luaIde#cc.EventDispatcher
+    local eventDispatcher = target:getEventDispatcher()
+    eventDispatcher:removeCustomEventListeners(key)
+end

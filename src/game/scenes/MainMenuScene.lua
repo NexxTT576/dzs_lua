@@ -4,13 +4,20 @@
     author:tulilu
     time:2020-05-13 17:42:52
 ]]
---@SuperType ViewBase
-local MainMenuScene = class("MainMenuScene", cc.load("mvc").ViewBase)
+--@SuperType luaIde#cc.Scene
+local MainMenuScene =
+    class(
+    "MainMenuScene",
+    function()
+        return display.newScene("MainMenuScene")
+    end
+)
 
-function MainMenuScene:onCreate(showNote)
+function MainMenuScene:ctor(showNote)
     self.showNote = showNote
     ccs.ArmatureDataManager:getInstance()
     ccs.ArmatureDataManager:destroyInstance()
+    self:enableNodeEvents()
 end
 
 function MainMenuScene:onEnter()

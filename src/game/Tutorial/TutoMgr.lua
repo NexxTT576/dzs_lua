@@ -37,12 +37,12 @@ end
 
 function TutoMgr.lockTable()
     print("tututmgr.locktable")
-    game.runningScene:postNotice(NoticeKey.LOCK_TABLEVIEW)
+    PostNotice(NoticeKey.LOCK_TABLEVIEW)
 end
 
 function TutoMgr.unlockTable()
     print("ulocktttt")
-    game.runningScene:postNotice(NoticeKey.UNLOCK_TABLEVIEW)
+    PostNotice(NoticeKey.UNLOCK_TABLEVIEW)
 end
 
 function TutoMgr.notLock()
@@ -308,7 +308,7 @@ function TutoMgr.runTutoFunc(data)
                         ResMgr.intoSubMap = false
                         -- PostNotice(NoticeKey.REV_BEF_TUTO_MASK)
                         ResMgr.removeBefLayer()
-                        game.runningScene:postNotice(NoticeKey.UNLOCK_BOTTOM)
+                        PostNotice(NoticeKey.UNLOCK_BOTTOM)
                         TutoMgr.unlockBtn()
 
                         -- TutoMgr.unlockTable()

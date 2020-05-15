@@ -1,3 +1,4 @@
+--@SuperType AppBase
 local MyApp = class("MyApp", cc.load("mvc").AppBase)
 
 GAME_SETTING = {
@@ -41,45 +42,9 @@ function MyApp:onCreate()
     math.randomseed(os.time())
 end
 
---[[
-    @desc: 
-    author:tulilu
-    time:2020-05-12 19:34:15
-    --@nextState: game.GameConst#GAME_STATE
-	--@msg: 
-    @return:
-]]
-function MyApp:changeState(nextState, msg)
-    if self.currentState ~= nextState then
-        local lastState = self.currentState
-        self.currentState = nextState
-
-        local canShow = true
-        local scene = nil
-        if nextState == GAME_STATE.STATE_LOGO then
-            scene = require("app.views.LogoScene"):create(self, "LogoScene")
-        elseif nextState == GAME_STATE.STATE_VERSIONCHECK then
-            scene = require("app.views.VersionCheckScene"):create(self, "VersionCheckScene")
-        elseif nextState == GAME_STATE.STATE_LOGIN then
-            -- 登陆页面
-            scene = require("game.login.LoginScene"):create(self, "LoginScene")
-        elseif nextState == GAME_STATE.STATE_MAIN_MENU then
-            local showNote = nil
-            if (msg ~= nil) then
-                showNote = msg.showNote
-            end
-            scene = require("game.scenes.MainMenuScene"):create(self, "MainMenuScene", showNote)
-        end
-        scene:showWithScene()
-    else
-        if nextState == GAME_STATE.STATE_MAIN_MENU then
-            for k, v in pairs(MAIN_MENU_SUBMENU) do
-                if game.runningScene:getChildByTag(v) then
-                    game.runningScene:removeChildByTag(v)
-                end
-            end
-        end
-    end
+function MyApp:run()
+    local scene = require("app.views.LogoScene").new()
+    display.runScene(scene)
 end
 
 return MyApp

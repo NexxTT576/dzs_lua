@@ -1,7 +1,13 @@
---@SuperType ViewBase
-local VersionCheckScene = class("VersionCheckScene", cc.load("mvc").ViewBase)
+--@SuperType luaIde#cc.Scene
+local VersionCheckScene =
+    class(
+    "VersionCheckScene",
+    function()
+        return display.newScene("VersionCheckScene")
+    end
+)
 
-function VersionCheckScene:onCreate()
+function VersionCheckScene:ctor()
     display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     local bgSprite = display.newSprite("ui/jpg_bg/gamelogo.jpg")
     if (display.sizeInPixels.width / display.sizeInPixels.height) == 0.75 then
@@ -26,7 +32,7 @@ function VersionCheckScene:onCreate()
         function()
             if cc.PLATFORM_OS_WINDOWS == cc.Application:getInstance():getTargetPlatform() then
                 print("准备进入游戏")
-                game.app:changeState(GAME_STATE.STATE_LOGIN)
+                GameStateManager:ChangeState(GAME_STATE.STATE_LOGIN)
             end
         end
     )

@@ -164,7 +164,7 @@ function DramaMgr.createChoseLayer(data)
         msg.dramaSceneId = 1
         msg.battleData = data["6"]
         msg.nextFunc = dramaEndStartLogin
-        game.app:changeState(GAME_STATE.DRAMA_SCENE, msg)
+        GameStateManager:ChangeState(GAME_STATE.DRAMA_SCENE, msg)
     else
         dramaEndStartLogin()
     end
@@ -190,7 +190,7 @@ function DramaMgr.request(data)
     TutoMgr.getServerNum(
         function(plotNum)
             if plotNum == 0 and game.player.m_level == 1 then
-                game.app:changeState(GAME_STATE.STATE_NORMAL_BATTLE, {levelData = {id = 110101}, grade = 1, star = 0})
+                GameStateManager:ChangeState(GAME_STATE.STATE_NORMAL_BATTLE, {levelData = {id = 110101}, grade = 1, star = 0})
             else
                 if plotNum == 0 then
                     --剧情值为0 且玩家级别不为1，则证明玩家已经打过第一场战斗了
@@ -199,7 +199,7 @@ function DramaMgr.request(data)
                 end
                 local msg = {}
                 msg.showNote = true
-                game.app:changeState(GAME_STATE.STATE_MAIN_MENU, msg)
+                GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU, msg)
             end
         end
     )
