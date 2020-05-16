@@ -157,11 +157,11 @@ function SpiritUpgradeScene:ctor(index)
         local curExp = _item.data.curExp
         local maxExp = get_max_exp(_item.data.level, _item.data.quality)
         self._rootnode["expBar"]:setTextureRect(
-            CCRectMake(self._rootnode["expBar"]:getTextureRect().origin.x, self._rootnode["expBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
+            cc.rect(self._rootnode["expBar"]:getTextureRect().origin.x, self._rootnode["expBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
         )
 
         self._rootnode["tmpExpBar"]:setTextureRect(
-            CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
+            cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
         )
 
         self._rootnode["curExpLabel"]:setString(tostring(curExp))
@@ -227,7 +227,7 @@ function SpiritUpgradeScene:ctor(index)
         end
         self._rootnode["curExpLabel"]:setString(tostring(tmpExp))
         self._rootnode["tmpExpBar"]:setTextureRect(
-            CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * scaleX, BAR_RECT.size.height)
+            cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * scaleX, BAR_RECT.size.height)
         )
         if tmpLv > _item.data.level then
             self._rootnode["nextLevelLabel"]:setVisible(true)

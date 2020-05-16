@@ -402,13 +402,13 @@ function DuobaoScene:createDuobaoItem(showType, index)
             local touchSize = self._currentItemNode:getCanTouchSize()
             local cntSz = self._currentItemNode:getContentSize()
             local point = self._currentItemNode:convertToNodeSpaceAR(cc.p(event.x, event.y))
-            if (CCRectMake((cntSz.width - touchSize.width) / 2, (cntSz.height - touchSize.height) / 2, touchSize.width, touchSize.height):containsPoint(point)) then
+            if (cc.rect((cntSz.width - touchSize.width) / 2, (cntSz.height - touchSize.height) / 2, touchSize.width, touchSize.height):containsPoint(point)) then
                 bTouch = true
                 bMoved = true
             end
 
             local sz = touchNode:getContentSize()
-            if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
+            if (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
                 targPosX, targPosY = self._currentItemNode:getPosition()
 
                 offsetX = event.x

@@ -109,7 +109,7 @@ function GuildFubenCell:updateHp(itemData)
     end
 
     bar:setTextureRect(
-        CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
+        cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
         rotated,
         cc.size(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
     )

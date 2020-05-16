@@ -213,7 +213,7 @@ function BattleResult:initWin(rewards)
         percent = 1
     end
     -- local bar = rootnode["tag_lv_bar"]
-    -- bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y,
+    -- bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y,
     --     bar:getContentSize().width*percent, bar:getTextureRect().size.height))
 
     self.addBar = display.newProgressTimer("#bw_exp_green.png", display.PROGRESS_TIMER_BAR)

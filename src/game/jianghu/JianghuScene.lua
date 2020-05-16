@@ -199,7 +199,7 @@ function JianghuScene:ctor()
     end
 
     local rect = self._rootnode["blueBar"]:getTextureRect()
-    self._rootnode["blueBar"]:setTextureRect(CCRectMake(rect.origin.x, rect.origin.y, 0, rect.size.height))
+    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.origin.x, rect.origin.y, 0, rect.size.height))
 end
 
 function JianghuScene:refreshGift(data)
@@ -257,8 +257,8 @@ function JianghuScene:initTouchNode()
     local offsetX = 0
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if self._index and (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
-            local rect = CCRectMake(0, 0, self._rootnode["propNode"]:getContentSize().width, self._rootnode["propNode"]:getContentSize().height)
+        if self._index and (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
+            local rect = cc.rect(0, 0, self._rootnode["propNode"]:getContentSize().width, self._rootnode["propNode"]:getContentSize().height)
             if rect:containsPoint(self._rootnode["propNode"]:convertToNodeSpace(cc.p(event.x, event.y))) then
                 return false
             else
@@ -412,7 +412,7 @@ function JianghuScene:refreshExpBar(info)
     self._rootnode["lvLabel"]:setString(tostring(info.level))
 
     local w = size.width * (info.curExp / maxExp)
-    self._rootnode["blueBar"]:setTextureRect(CCRectMake(rect.origin.x, rect.origin.y, w, size.height))
+    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.origin.x, rect.origin.y, w, size.height))
 
     --    直接升级几率=1/（当前等级+2）+当前经验/升级所需经验/（当前等级+2）
     local prop = 1 / (info.level + 2) + info.curExp / maxExp / (info.level + 2)

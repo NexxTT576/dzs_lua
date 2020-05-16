@@ -143,7 +143,7 @@ function IconObj:refresh(param)
                 end
 
                 local rect = redBar:getTextureRect().size
-                greenBar:setTextureRect(CCRectMake(greenBar:getTextureRect().origin.x, greenBar:getTextureRect().origin.y, rect.width * (param.hp[1] / param.hp[2]), rect.height))
+                greenBar:setTextureRect(cc.rect(greenBar:getTextureRect().origin.x, greenBar:getTextureRect().origin.y, rect.width * (param.hp[1] / param.hp[2]), rect.height))
             else
                 redBar:setVisible(false)
             end

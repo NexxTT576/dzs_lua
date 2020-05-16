@@ -5,6 +5,7 @@
     time:2020-05-13 16:35:22
 ]]
 require("utility.Func")
+require("network.GameRequest")
 game = {
     player = require("game.Player").new(),
     --@RefType MyApp

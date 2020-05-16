@@ -59,7 +59,7 @@ OpenCheck = require("game.OpenSystem.OpenCheck")
 
 --Model类
 
--- ModelMgr = require("game.model.ModelMgr")
+ModelMgr = require("game.model.ModelMgr")
 
 DEVICE_TYPE = {
     HIGH = 1,

@@ -141,7 +141,7 @@ function ChallengeFubenRewardLayer:createListView(rewardDataList)
                     for i = 1, 5 do
                         local icon = cell:getIcon(i)
                         local pos = icon:convertToNodeSpace(cc.p(posX, posY))
-                        if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
+                        if cc.rect(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                             self._hasShowInfo = true
                             self:onInformation(rewardDataList[idx].cellDatas[i])
                             break

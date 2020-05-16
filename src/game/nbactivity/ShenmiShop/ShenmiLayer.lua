@@ -480,14 +480,14 @@ function ShenmiLayer:onEnter()
                 self._rootnode["lianhuaBtn"]
             },
             contents = {
-                CCRectMake(
+                cc.rect(
                     self._listViewNode:convertToWorldSpace(cc.p(0, 0)).x,
                     self._listViewNode:convertToWorldSpace(cc.p(0, 0)).y,
                     self._listViewNode:getContentSize().width,
                     self._listViewNode:getContentSize().height
                 ),
-                CCRectMake(0, 0, display.width, game.runningScene:getBottomHeight()),
-                CCRectMake(0, display.height - game.runningScene:getTopHeight(), display.width, game.runningScene:getTopHeight())
+                cc.rect(0, 0, display.width, game.runningScene:getBottomHeight()),
+                cc.rect(0, display.height - game.runningScene:getTopHeight(), display.width, game.runningScene:getTopHeight())
             }
         }
     )

@@ -7,7 +7,7 @@ require("network.gameWebsocket")
 local function request(msg, callback, errcallback)
     msg.acc = game.player.m_uid
     msg.serverKey = game.player.m_serverKey
-    ws:SendRequest(msg, callback, errcallback)
+    ws.SendRequest(msg, callback, errcallback)
 end
 
 --英雄

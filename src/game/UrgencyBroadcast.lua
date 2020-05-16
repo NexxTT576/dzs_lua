@@ -47,8 +47,8 @@ function UrgencyBroadcast:setNextBroadcast()
             {
                 text = self._curBroadLblStr,
                 size = 26,
-                color = ccc3(255, 255, 255),
-                outlineColor = ccc3(0, 0, 0),
+                color = cc.c3b(255, 255, 255),
+                outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
                 align = ui.TEXT_ALIGN_LEFT
             }

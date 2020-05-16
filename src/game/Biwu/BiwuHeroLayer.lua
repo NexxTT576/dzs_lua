@@ -26,7 +26,7 @@ function BiwuHeroLayer:ctor(param)
     self:setContentSize(param.size)
     --设置背景
     --以0.7为基准进行屏幕适配
-    local bng = CCSprite:create("bg/biwu_bg.jpg", CCRectMake(0, 0, display.width, display.width / 0.77))
+    local bng = CCSprite:create("bg/biwu_bg.jpg", cc.rect(0, 0, display.width, display.width / 0.77))
     bng:setScaleY((param.size.height / display.width) * 0.77)
     self:addChild(bng)
     bng:setAnchorPoint(cc.p(0, 0))

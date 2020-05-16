@@ -233,7 +233,7 @@ function JingmaiScene:refreshBg()
         self._bg:removeSelf()
     end
 
-    self._bg = display.newScale9Sprite(string.format("#jingmai_hero_bg_%d.png", self._index), 0, 0, CCSize(display.width, self:getContentHeight()), CCRectMake(10, 10, 20, 20))
+    self._bg = display.newScale9Sprite(string.format("#jingmai_hero_bg_%d.png", self._index), 0, 0, CCSize(display.width, self:getContentHeight()), cc.rect(10, 10, 20, 20))
     self._bg:setPosition(display.width / 2, self:getBottomHeight() + self:getContentHeight() / 2)
     self:addChild(self._bg)
 end

@@ -169,7 +169,7 @@ function ShengjiLayer:initAllData()
     -- local maxExp = data_level_level[self._uplevel].exp
     --    local percent = self._curExp/maxExp
     --    local bar = self._rootnode["addBar"]
-    --    bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y,
+    --    bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y,
     --        bar:getTextureRect().size.width*percent, bar:getTextureRect().size.height))
 
     -- 更新玩家数据

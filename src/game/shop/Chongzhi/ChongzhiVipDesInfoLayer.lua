@@ -113,7 +113,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
 
     local percent = curVipExp / vipExpLimit
     local addBar = self._rootnode["addBar"]
-    addBar:setTextureRect(CCRectMake(addBar:getTextureRect().origin.x, addBar:getTextureRect().origin.y, addBar:getContentSize().width * percent, addBar:getTextureRect().size.height))
+    addBar:setTextureRect(cc.rect(addBar:getTextureRect().origin.x, addBar:getTextureRect().origin.y, addBar:getContentSize().width * percent, addBar:getTextureRect().size.height))
 
     local vipNode = self._rootnode["vipInfo_node"]
     local bottomNode = self._rootnode["bottom_node"]

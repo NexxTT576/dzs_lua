@@ -116,7 +116,7 @@ function GuildFubenInfoLayer:ctor(param)
         rotated = true
     end
     bar:setTextureRect(
-        CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
+        cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
         rotated,
         cc.size(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
     )
@@ -241,7 +241,7 @@ function GuildFubenInfoLayer:createRewardList(cellDatas)
                 if self._hasShowInfo == false then
                     local icon = cell:getRewardIcon()
                     local pos = icon:convertToNodeSpace(cc.p(posX, posY))
-                    if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
+                    if cc.rect(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self._hasShowInfo = true
                         local idx = cell:getIdx() + 1
                         local itemData = cellDatas[idx]

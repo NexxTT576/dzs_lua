@@ -28,15 +28,12 @@ function Broadcast:getBroadList()
         {
             callback = function(data)
                 self._hasGetList = true
-                -- dump(data)
-                if string.len(data["0"]) > 0 then
-                    dump(data["0"])
+                if data == nil then
                     local data_guangbo_guangbo = require("data.data_guangbo_guangbo")
                     self._allBroadcastList = data_guangbo_guangbo
                 else
-                    self._allBroadcastList = data["1"]
+                    self._allBroadcastList = data
                 end
-
                 self:createRandomBroadList()
                 self:setNextBroadcast()
                 self:reqCurBList()
@@ -50,16 +47,16 @@ function Broadcast:reqCurBList()
     GameRequest.Broadcast.updateList(
         {
             callback = function(data)
-                -- dump(data)
-                GameModel.updateData(data["5"])
-                if data["0"] ~= "" then
+                if data == nil then
                     dump(data["0"])
                 else
+                    GameModel.updateData(data["otherObj"])
                     -- 编辑当前的广播内容
-                    game.urgencyBroadcast:addToUrgencyBroadcast(data["2"])
-                    self:addBroadStrFromSever(data)
+                    --@TODO 2020-05-16 20:40:23 一个是紧急广播 一个是普通广播 后端逻辑对不上 先放一放
+                    game.urgencyBroadcast:addToUrgencyBroadcast(data["broadMap"])
+                    self:addBroadStrFromSever(data["broadMap"])
 
-                    local mailTip = data["4"]
+                    local mailTip = data["mailMap"]
                     if (mailTip ~= nil) then
                         game.player:setMailTip(mailTip)
                         PostNotice(NoticeKey.MAIL_TIP_UPDATE)
@@ -74,9 +71,9 @@ function Broadcast:getColorByType(param)
     local color
     if param.color ~= nil then
         if type(param.color) == "table" then
-            color = ccc3(param.color[1], param.color[2], param.color[3])
+            color = cc.c3b(param.color[1], param.color[2], param.color[3])
         else
-            color = ccc3(0, 0, 0)
+            color = cc.c3b(0, 0, 0)
         end
     else
         if param.type == -1 then
@@ -93,8 +90,8 @@ function Broadcast:getColorByType(param)
 end
 
 function Broadcast:createBroadStrByParam(param)
-    self._broadLbl:removeAllChildrenWithCleanup(true)
-    self._broadLbl:setContentSize(CCSizeMake(0, 0))
+    self._broadLbl:removeAllChildren(true)
+    self._broadLbl:setContentSize(cc.size(0, 0))
     for _, v in ipairs(param) do
         -- local lbl = CCLabelTTF:create(v.str, "Microsoft Yahei", 19)
         local lbl = CCLabelTTF:create(v.str, FONTS_NAME.font_fzcy, 19)
@@ -102,7 +99,7 @@ function Broadcast:createBroadStrByParam(param)
         lbl:setAnchorPoint(cc.p(0, 0.58))
         lbl:setPosition(self._broadLbl:getContentSize().width, 0)
         self._broadLbl:addChild(lbl)
-        self._broadLbl:setContentSize(CCSizeMake(self._broadLbl:getContentSize().width + lbl:getContentSize().width, lbl:getContentSize().height))
+        self._broadLbl:setContentSize(cc.size(self._broadLbl:getContentSize().width + lbl:getContentSize().width, lbl:getContentSize().height))
     end
 end
 
@@ -133,7 +130,7 @@ function Broadcast:createBroadParamByData(param)
 
     for i, v in ipairs(strList) do
         if i % 2 == 0 then
-            local color = self:getColorByType(data[i / 2]) or ccc3(0, 0, 0)
+            local color = self:getColorByType(data[i / 2]) or cc.c3b(0, 0, 0)
             table.insert(
                 contentStr,
                 {
@@ -142,9 +139,9 @@ function Broadcast:createBroadParamByData(param)
                 }
             )
         else
-            local color = ccc3(0, 0, 0)
+            local color = cc.c3b(0, 0, 0)
             if param.color ~= nil then
-                color = ccc3(param.color[1], param.color[2], param.color[3])
+                color = cc.c3b(param.color[1], param.color[2], param.color[3])
             end
             table.insert(
                 contentStr,
@@ -169,12 +166,12 @@ function Broadcast:addBroadStrFromSever(data)
         self._waitBroadcastList = {}
     end
 
-    for i, v in ipairs(data["1"]) do
-        if data["1"][i].time > 0 then
-            table.insert(self._waitBroadcastList, data["1"][i])
+    for i, v in ipairs(data) do
+        if data[i].time > 0 then
+            table.insert(self._waitBroadcastList, data[i])
         else
             -- dump(data["1"][i])
-            local contentStr = self:createBroadParamByData(data["1"][i])
+            local contentStr = self:createBroadParamByData(data[i])
             if contentStr ~= nil then
                 table.insert(self._bufferBStr, contentStr)
             end
@@ -188,10 +185,10 @@ function Broadcast:createRandomBroadList()
     for _, v in ipairs(self._allBroadcastList) do
         if v.type == 3 then
             local strParam = {}
-            local color = ccc3(0, 0, 0)
+            local color = cc.c3b(0, 0, 0)
             if v.color ~= nil then
                 if type(v.color) == "table" then
-                    color = ccc3(v.color[1], v.color[2], v.color[3])
+                    color = cc.c3b(v.color[1], v.color[2], v.color[3])
                 end
             end
 
@@ -240,20 +237,14 @@ function Broadcast:initBroadcastLbl()
     clippingNode:setPosition(self._viewSize.width / 2, 0)
 
     -- 创建裁剪模板，裁剪节点将按照这个模板来裁剪区域
-    local stencil = display.newDrawNode()
-    stencil:drawRect(
-        {
-            x = 0,
-            y = 0,
-            w = clippingNode:getContentSize().width,
-            h = clippingNode:getContentSize().height
-        }
-    )
+    local stencil = cc.DrawNode:create()
+    stencil:drawRect(cc.p(0, 0), cc.p(clippingNode:getContentSize().width, clippingNode:getContentSize().height), cc.c4f(1, 1, 1, 1))
 
     clippingNode:setStencil(stencil)
     clippingNode:setInverted(false)
     self:addChild(clippingNode)
 
+    --@RefType luaIde#cc.Node
     self._broadLbl = display.newNode()
     self._broadLbl:setPosition(clippingNode:getContentSize().width, clippingNode:getContentSize().height / 2)
     clippingNode:addChild(self._broadLbl)
@@ -273,8 +264,8 @@ function Broadcast:initTimeSchedule()
             end
         end
     end
-    self.scheduler = require("framework.scheduler")
-    self._schedule = self.scheduler.scheduleGlobal(updateLblPos, 0.01, false)
+
+    schedule(self, updateLblPos, 0.01)
 
     -- 从服务器端获取的广播，判断时间间隔大于0s的，需要倒计时
     local function checkBroadcast()
@@ -300,7 +291,7 @@ function Broadcast:initTimeSchedule()
         end
     end
 
-    self._checkSchedule = self.scheduler.scheduleGlobal(checkBroadcast, 1, false)
+    schedule(self, checkBroadcast, 1)
 end
 
 function Broadcast:getBroadItemById(id)
@@ -423,13 +414,6 @@ function Broadcast:onEnter()
 end
 
 function Broadcast:onExit()
-    if self._schedule ~= nil then
-        self.scheduler.unscheduleGlobal(self._schedule)
-    end
-
-    if self._checkSchedule ~= nil then
-        self.scheduler.unscheduleGlobal(self._checkSchedule)
-    end
 end
 
 return Broadcast

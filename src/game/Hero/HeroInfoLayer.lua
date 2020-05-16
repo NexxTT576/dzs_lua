@@ -946,7 +946,7 @@ function HeroInfoLayer:ctor(param, infoType)
                 self._rootnode["closeBtn"]
             },
             contents = {
-                CCRectMake(0, 81, self._rootnode["descView"]:getContentSize().width, self._rootnode["descView"]:getContentSize().height)
+                cc.rect(0, 81, self._rootnode["descView"]:getContentSize().width, self._rootnode["descView"]:getContentSize().height)
             }
         }
     )

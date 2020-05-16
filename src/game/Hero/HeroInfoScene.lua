@@ -304,7 +304,7 @@ function HeroInfoScene:ctor(param, infoType)
         require("utility.TouchMaskLayer").new(
         {
             contents = {
-                CCRectMake(pt.x, pt.y, display.width, self._rootnode["scrollView"]:getViewSize().height)
+                cc.rect(pt.x, pt.y, display.width, self._rootnode["scrollView"]:getViewSize().height)
             },
             btns = {
                 self._rootnode["closeBtn"],

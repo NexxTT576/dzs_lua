@@ -273,7 +273,7 @@ function SpiritDescLayer:ctor(closeListener)
                 local nodes = self._tableLayout:getNodes()
                 for k, v in ipairs(nodes) do
                     local pos = v:convertToNodeSpace(cc.p(event.x, event.y))
-                    if CCRectMake(0, 0, v:getContentSize().width, v:getContentSize().height):containsPoint(pos) then
+                    if cc.rect(0, 0, v:getContentSize().width, v:getContentSize().height):containsPoint(pos) then
                         dump(self._selectTypeSpirits[k])
 
                         local descLayer =

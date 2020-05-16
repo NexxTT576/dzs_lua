@@ -386,10 +386,10 @@ function SkillQiangHuaLayer:refreshSkillInfo()
     end
     -- self._rootnode["blueBar"]:setScaleX(percent)
     local bar = self._rootnode["blueBar"]
-    bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
+    bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
 
     bar = self._rootnode["greenBar"]
-    bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
+    bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
 
     --
     local baseNameStrs = {"生命：", "攻击：", "物防：", "法防："}
@@ -505,7 +505,7 @@ function SkillQiangHuaLayer:refreshIcon()
     self._rootnode["expLabel"]:setString(string.format("%d/%d", self._info["exp"] + cost, self._info["limit"]))
 
     local bar = self._rootnode["greenBar"]
-    bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
+    bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, BAR_SIZE.size.width * percent, BAR_SIZE.size.height))
 
     --    本次提升的经验值*（内外功品质-1）*5
     self._rootnode["costNum"]:setString(cost * (data_item_item[self._info.resId].quality - 1) * 5)

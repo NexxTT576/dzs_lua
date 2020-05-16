@@ -170,7 +170,7 @@ function FormSettingCard:ctor(param)
     end
 
     self.isInCard = function(_, x, y)
-        if (CCRectMake(0, 0, _sz.width, _sz.height):containsPoint(_bg:convertToNodeSpace(cc.p(x, y)))) then
+        if (cc.rect(0, 0, _sz.width, _sz.height):containsPoint(_bg:convertToNodeSpace(cc.p(x, y)))) then
             return true
         else
             return false

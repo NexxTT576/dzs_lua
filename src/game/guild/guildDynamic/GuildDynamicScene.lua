@@ -171,7 +171,7 @@ function GuildDynamicScene:createDynamicListView(listData)
                         local icon = cell:getPlayerIcon()
                         local pos = icon:convertToNodeSpace(cc.p(posX, posY))
 
-                        if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
+                        if cc.rect(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                             self._bHasShowFormLayer = true
 
                             local layer =

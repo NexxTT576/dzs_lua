@@ -74,7 +74,7 @@ function Item:refresh(param)
 
         local origin = self._rootnode["expBar"]:getTextureRect().origin
         local size = self._rootnode["barBg"]:getTextureRect().size
-        self._rootnode["expBar"]:setTextureRect(CCRectMake(origin.x, origin.y, size.width * (_stars / _itemData.good), size.height))
+        self._rootnode["expBar"]:setTextureRect(cc.rect(origin.x, origin.y, size.width * (_stars / _itemData.good), size.height))
     end
 end
 

@@ -287,7 +287,7 @@ function ChongzhiLayer:initTopVipInfo(isRefresh)
 
     local addBar = self._rootnode["vip_addBar"]
     local normalBar = self._rootnode["vip_normalBar"]
-    addBar:setTextureRect(CCRectMake(addBar:getTextureRect().origin.x, addBar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, normalBar:getTextureRect().size.height))
+    addBar:setTextureRect(cc.rect(addBar:getTextureRect().origin.x, addBar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, normalBar:getTextureRect().size.height))
 end
 
 function ChongzhiLayer:initVipRewardInfo(viplevelData)
@@ -647,7 +647,7 @@ function ChongzhiLayer:initShopItemDataInfo(isRefresh)
                 for i = 1, 3 do
                     local icon = cell:getIcon(i)
                     local pos = icon:convertToNodeSpace(cc.p(posX, posY))
-                    if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
+                    if cc.rect(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self._shopListView:setTouchEnabled(false)
                         buyListen(
                             idx + 1,

@@ -89,7 +89,7 @@ local ItemTop =
         -- 等级条
         local percent = exp / maxExp
         local bar = rootnode["addBar"]
-        bar:setTextureRect(CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, bar:getTextureRect().size.width * percent, bar:getTextureRect().size.height))
+        bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, bar:getTextureRect().size.width * percent, bar:getTextureRect().size.height))
 
         return node
     end

@@ -476,7 +476,7 @@ function EnemyFormScene:initTouchNode()
     --    local bTouch
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
+        if (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
 
             targPosX, targPosY = currentNode:getPosition()
