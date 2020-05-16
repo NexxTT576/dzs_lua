@@ -22,7 +22,7 @@ function SettingLayer:ctor()
     self:addChild(node)
 
     rootnode["titleLabel"]:setString("设 置")
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -38,7 +38,7 @@ function SettingLayer:ctor()
     --
     -- CDKey兑换
     local cdkeyBtn = rootnode["cdkeyBtn"]
-    cdkeyBtn:addHandleOfControlEvent(
+    cdkeyBtn:registerControlEventHandler(
         function(eventName, sender)
             cdkeyBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -65,7 +65,7 @@ function SettingLayer:ctor()
         rootnode["music_bg_open_btn"]:setVisible(false)
     end
 
-    rootnode["music_bg_open_btn"]:addHandleOfControlEvent(
+    rootnode["music_bg_open_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSoundEnable(false)
@@ -76,7 +76,7 @@ function SettingLayer:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["music_bg_close_btn"]:addHandleOfControlEvent(
+    rootnode["music_bg_close_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSoundEnable(true)
@@ -98,7 +98,7 @@ function SettingLayer:ctor()
         rootnode["music_sfx_open_btn"]:setVisible(false)
     end
 
-    rootnode["music_sfx_open_btn"]:addHandleOfControlEvent(
+    rootnode["music_sfx_open_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSfxEnable(false)
@@ -108,7 +108,7 @@ function SettingLayer:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["music_sfx_close_btn"]:addHandleOfControlEvent(
+    rootnode["music_sfx_close_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSfxEnable(true)
@@ -119,7 +119,7 @@ function SettingLayer:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["handbook_btn"]:addHandleOfControlEvent(
+    rootnode["handbook_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_HANDBOOK)
@@ -155,7 +155,7 @@ function SettingLayer:ctor()
     end
     -- sdk 用户中心
     sdkCenter()
-    rootnode["returnLoginBtn"]:addHandleOfControlEvent(
+    rootnode["returnLoginBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (device.platform == "android") then
@@ -176,7 +176,7 @@ function SettingLayer:ctor()
         CCControlEventTouchUpInside
     )
     -- 返回登录 （只加了PP的）
-    --   rootnode["returnLoginBtn"]:addHandleOfControlEvent(function(eventName,sender)
+    --   rootnode["returnLoginBtn"]:registerControlEventHandler(function(eventName,sender)
     -- if( CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_PP) then
 
     -- 	CSDKShell.showToolbar()

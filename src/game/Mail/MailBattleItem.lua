@@ -49,7 +49,7 @@ function MailBattleItem:create(param)
 
     self:refreshItem(itemData)
 
-    self._rootnode["duobaoBtn"]:addHandleOfControlEvent(
+    self._rootnode["duobaoBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_DUOBAO)
@@ -57,7 +57,7 @@ function MailBattleItem:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["arenaBtn"]:addHandleOfControlEvent(
+    self._rootnode["arenaBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ARENA)

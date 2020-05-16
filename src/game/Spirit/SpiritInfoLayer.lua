@@ -138,7 +138,7 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
         end
     end
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             if closeListener then
                 closeListener()
@@ -159,8 +159,8 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
         rootnode["returnBtn"]:setPositionX(sz.width / 2)
         rootnode["changeBtn"]:setVisible(false)
     end
-    rootnode["returnBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
-    rootnode["changeBtn"]:addHandleOfControlEvent(upgrade, CCControlEventTouchUpInside)
+    rootnode["returnBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
+    rootnode["changeBtn"]:registerControlEventHandler(upgrade, CCControlEventTouchUpInside)
 end
 
 return SpiritInfoLayer

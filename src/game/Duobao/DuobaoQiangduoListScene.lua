@@ -291,7 +291,7 @@ function DuobaoQiangduoListScene:ctor(param)
     self._rootnode["xiaohao_num"]:setString(tostring(math.abs(nailiAry[1])))
     self._rootnode["naili_num"]:setString(game.player.m_energy .. "/" .. game.player.m_maxEnergy)
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             CCDirector:sharedDirector():popToRootScene()
@@ -299,7 +299,7 @@ function DuobaoQiangduoListScene:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["changeBtn"]:addHandleOfControlEvent(
+    self._rootnode["changeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:requestUpdateList()

@@ -91,7 +91,7 @@ function GuildQLBossRankLayer:ctor(param)
 
     self._rootnode["top_msg_lbl"]:setString(data_ui_ui[8].content)
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then

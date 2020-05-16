@@ -26,7 +26,7 @@ function LianzhanMsgBox:ctor(param)
     rootnode["goldNumLbl"]:setString(gold)
 
     -- 确认
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if listener ~= nil then
@@ -38,7 +38,7 @@ function LianzhanMsgBox:ctor(param)
     )
 
     -- 关闭
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -47,7 +47,7 @@ function LianzhanMsgBox:ctor(param)
     )
 
     -- 关闭
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)

@@ -83,32 +83,39 @@ function BottomBtnEvent.registerBottomEvent(btnMaps)
     end
 
     if btnMaps["mainSceneBtn"] then
-        local te = cc.MenuItem:new()
-        local n = cc.Node:new()
         --@RefType luaIde#cc.MenuItemImage
         local bt = btnMaps["mainSceneBtn"]
-        btnMaps["mainSceneBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        bt:onClicked(onTouchBtn)
     end
 
     if btnMaps["formSettingBtn"] then
+        --@RefType luaIde#cc.MenuItemImage
         local bt = btnMaps["formSettingBtn"]
-        bt:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        bt:onClicked(onTouchBtn)
     end
 
     if btnMaps["battleBtn"] then
-        btnMaps["battleBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        --@RefType luaIde#cc.MenuItemImage
+        local bt = btnMaps["battleBtn"]
+        bt:onClicked(onTouchBtn)
     end
 
     if btnMaps["activityBtn"] then
-        btnMaps["activityBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        --@RefType luaIde#cc.MenuItemImage
+        local bt = btnMaps["activityBtn"]
+        bt:onClicked(onTouchBtn)
     end
 
     if btnMaps["bagBtn"] then
-        btnMaps["bagBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        --@RefType luaIde#cc.MenuItemImage
+        local bt = btnMaps["bagBtn"]
+        bt:onClicked(onTouchBtn)
     end
 
     if btnMaps["shopBtn"] then
-        btnMaps["shopBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTouchBtn)
+        --@RefType luaIde#cc.MenuItemImage
+        local bt = btnMaps["shopBtn"]
+        bt:onClicked(onTouchBtn)
     end
 end
 

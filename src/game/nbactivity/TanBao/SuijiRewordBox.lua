@@ -20,8 +20,8 @@ function SuijiRewordBox:initButton()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
-    self._rootnode["okBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["okBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 end
 
 function SuijiRewordBox:initRewardListView(cellDatas)

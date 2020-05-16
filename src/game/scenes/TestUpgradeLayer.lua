@@ -38,21 +38,21 @@ function TestUpgradeLayer:ctor()
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             self:removeSelf()
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["testMusic"]:addHandleOfControlEvent(
+    rootnode["testMusic"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX("u_testmusic"))
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["testAnim"]:addHandleOfControlEvent(
+    rootnode["testAnim"]:registerControlEventHandler(
         function()
             local path = "testanim/yanlong/yanlong.ExportJson"
             CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo(path)
@@ -73,7 +73,7 @@ function TestUpgradeLayer:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["testRes"]:addHandleOfControlEvent(
+    rootnode["testRes"]:registerControlEventHandler(
         function()
             local sprite = display.newSprite("testanim/bixiejiandian1.png")
             rootnode["spriteNode"]:addChild(sprite)

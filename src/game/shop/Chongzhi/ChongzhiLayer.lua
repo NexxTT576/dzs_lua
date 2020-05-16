@@ -116,7 +116,7 @@ function ChongzhiLayer:ctor()
 
     self._rootnode["title_sprite"]:setPosition(display.cx, self._totalSize.height - 10)
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -178,7 +178,7 @@ function ChongzhiLayer:initData(data, isRefresh)
     else
         checkVipBtn:setVisible(true)
         if not isRefresh then
-            checkVipBtn:addHandleOfControlEvent(
+            checkVipBtn:registerControlEventHandler(
                 function()
                     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                     checkVipBtn:setEnabled(false)
@@ -450,7 +450,7 @@ end
 
 function ChongzhiLayer:initMonthCardDataInfo()
     -- 查看月卡
-    self._rootnode["month_checkBtn"]:addHandleOfControlEvent(
+    self._rootnode["month_checkBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
@@ -465,7 +465,7 @@ function ChongzhiLayer:initMonthCardDataInfo()
     )
 
     -- 月卡充值
-    self._rootnode["month_chongzhiBtn"]:addHandleOfControlEvent(
+    self._rootnode["month_chongzhiBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if not ENABLE_IAP_BUY then

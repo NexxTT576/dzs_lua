@@ -70,7 +70,7 @@ function GuildDadianContributeItem:create(param)
     elseif hasContribute == false then
         contributeBtn:setEnabled(true)
 
-        contributeBtn:addHandleOfControlEvent(
+        contributeBtn:registerControlEventHandler(
             function(eventName, sender)
                 if contributeFunc ~= nil then
                     contributeFunc(self)

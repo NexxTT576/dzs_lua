@@ -56,7 +56,7 @@ local STItem =
             end
 
             rootnode["descLabel"]:setString(v.info.type)
-            rootnode["upgradeBtn"]:addHandleOfControlEvent(c_func(upgradeFunc, k - 1, v), CCControlEventTouchDown)
+            rootnode["upgradeBtn"]:registerControlEventHandler(c_func(upgradeFunc, k - 1, v), CCControlEventTouchDown)
             table.insert(nodes, infoNode)
             --        table.insert(nodes, rootnode)
 
@@ -152,7 +152,7 @@ local STItem =
             node:addChild(nodes[i])
         end
 
-        rootnode["resetBtn"]:addHandleOfControlEvent(
+        rootnode["resetBtn"]:registerControlEventHandler(
             function()
                 local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.ShenTong, game.player:getLevel(), game.player:getVip())
                 if not bHasOpen then
@@ -261,7 +261,7 @@ local JBItem =
         end
 
         --
-        --    rootnode["helpBtn"]:addHandleOfControlEvent(function()
+        --    rootnode["helpBtn"]:registerControlEventHandler(function()
         --        show_tip_label("羁绊可以增加侠客更")
         --    end, CCControlEventTouchDown)
 
@@ -653,10 +653,10 @@ function HeroInfoScene:ctor(param, infoType)
         end
     end
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchDown)
-    self._rootnode["changeBtn"]:addHandleOfControlEvent(change, CCControlEventTouchDown)
-    self._rootnode["qiangHuBtn"]:addHandleOfControlEvent(qiangHua, CCControlEventTouchDown)
-    self._rootnode["jinJieBtn"]:addHandleOfControlEvent(jinJie, CCControlEventTouchDown)
+    self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchDown)
+    self._rootnode["changeBtn"]:registerControlEventHandler(change, CCControlEventTouchDown)
+    self._rootnode["qiangHuBtn"]:registerControlEventHandler(qiangHua, CCControlEventTouchDown)
+    self._rootnode["jinJieBtn"]:registerControlEventHandler(jinJie, CCControlEventTouchDown)
 
     TutoMgr.addBtn("hero_info_qianghua_btn", self._rootnode["qiangHuBtn"])
 

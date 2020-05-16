@@ -411,7 +411,7 @@ function HeroJinJie:ctor(param)
 
     if self.first == nil then
         self.first = true
-        self._rootnode["backBtn"]:addHandleOfControlEvent(
+        self._rootnode["backBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
                 if self.removeListener ~= nil then
@@ -424,7 +424,7 @@ function HeroJinJie:ctor(param)
             CCControlEventTouchUpInside
         )
         self._rootnode["jingLianBtn"]:setEnabled(false)
-        self._rootnode["jingLianBtn"]:addHandleOfControlEvent(
+        self._rootnode["jingLianBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 

@@ -46,7 +46,7 @@ function SubMapScrollCell:create(param)
     headIcon:setPosition(self._rootnode["headIcon"]:getContentSize().width / 2, self._rootnode["headIcon"]:getContentSize().height / 2)
     self._rootnode["headIcon"]:addChild(headIcon, 1, 100)
 
-    self._rootnode["okBtn"]:addHandleOfControlEvent(
+    self._rootnode["okBtn"]:registerControlEventHandler(
         function()
             if _onBtn then
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

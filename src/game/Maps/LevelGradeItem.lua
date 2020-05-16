@@ -75,7 +75,7 @@ function LevelGradeItem:ctor(param)
             self._fight10Btn:setVisible(false)
         else
             self._fight10Btn:setVisible(true)
-            self._fight10Btn:addHandleOfControlEvent(
+            self._fight10Btn:registerControlEventHandler(
                 function(eventName, sender)
                     self:setBtnDisabled()
                     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -135,7 +135,7 @@ function LevelGradeItem:ctor(param)
         end
     end
 
-    self._fightBtn:addHandleOfControlEvent(
+    self._fightBtn:registerControlEventHandler(
         function(eventName, sender)
             self:setBtnDisabled()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

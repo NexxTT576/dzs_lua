@@ -218,7 +218,7 @@ function EquipListScene:init(data)
 
     --按星级出售界面
     if self._bInit ~= true then
-        self._rootnode["sellStarBtn"]:addHandleOfControlEvent(
+        self._rootnode["sellStarBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 self._rootnode["sellStarBtn"]:setEnabled(false)
@@ -243,7 +243,7 @@ function EquipListScene:init(data)
     numTag:setZOrder(20)
 
     if self._bInit ~= true then
-        self._rootnode["sellBtn"]:addHandleOfControlEvent(
+        self._rootnode["sellBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 self:onSaleView()
@@ -251,7 +251,7 @@ function EquipListScene:init(data)
             CCControlEventTouchUpInside
         )
 
-        self._rootnode["backBtn"]:addHandleOfControlEvent(
+        self._rootnode["backBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
                 self:onCommonView()
@@ -294,7 +294,7 @@ function EquipListScene:init(data)
     end
 
     if self._bInit ~= true then
-        self._rootnode["expandBtn"]:addHandleOfControlEvent(
+        self._rootnode["expandBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if self._cost[1] ~= -1 then

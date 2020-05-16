@@ -93,7 +93,7 @@ function CDKeyRewardLayer:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 
     rootnode["confirmBtn"]:addNodeEventListener(
         cc.MENU_ITEM_CLICKED_EVENT,

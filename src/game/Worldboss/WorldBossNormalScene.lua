@@ -92,18 +92,18 @@
 
  function WorldBossNormalScene:ctor(data)  
  	 ResMgr.removeBefLayer()
- 	self._rootnode["backBtn"]:addHandleOfControlEvent(function(eventName, sender)
+ 	self._rootnode["backBtn"]:registerControlEventHandler(function(eventName, sender)
  		 		GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi)) 
             GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
         end, CCControlEventTouchUpInside) 
 
- 	self._rootnode["shuchuBtn"]:addHandleOfControlEvent(function(eventName, sender)
+ 	self._rootnode["shuchuBtn"]:registerControlEventHandler(function(eventName, sender)
 
  		GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
             self:addChild(require("game.Worldboss.WorldBossRankLayer").new(), MAX_ZORDER)
         end, CCControlEventTouchUpInside) 
 
- 	self._rootnode["extraRewardBtn"]:addHandleOfControlEvent(function(eventName, sender) 
+ 	self._rootnode["extraRewardBtn"]:registerControlEventHandler(function(eventName, sender) 
  			GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
             self:addChild(require("game.Worldboss.WorldBossExtraRewardLayer").new({
                 rewardListData = data_boss_boss, 
@@ -113,7 +113,7 @@
 
         end, CCControlEventTouchUpInside) 
 
- 	self._rootnode["battleBtn"]:addHandleOfControlEvent(function(eventName, sender)
+ 	self._rootnode["battleBtn"]:registerControlEventHandler(function(eventName, sender)
  		GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
             GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS)
         end, CCControlEventTouchUpInside)

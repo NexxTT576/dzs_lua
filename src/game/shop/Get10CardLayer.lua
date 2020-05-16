@@ -22,7 +22,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
     end
 
     -- close button
-    subNode["tag_close"]:addHandleOfControlEvent(
+    subNode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
@@ -71,7 +71,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
         end
     )
 
-    subNode["tag_zhaojiang_10"]:addHandleOfControlEvent(
+    subNode["tag_zhaojiang_10"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if listener then

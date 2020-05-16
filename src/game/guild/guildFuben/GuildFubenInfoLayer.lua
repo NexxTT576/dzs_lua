@@ -35,7 +35,7 @@ function GuildFubenInfoLayer:ctor(param)
     end
 
     -- X按钮
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeBtnFunc()
@@ -55,7 +55,7 @@ function GuildFubenInfoLayer:ctor(param)
     end
 
     -- 关闭按钮
-    closeBtn:addHandleOfControlEvent(
+    closeBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeBtnFunc()
@@ -68,7 +68,7 @@ function GuildFubenInfoLayer:ctor(param)
     end
 
     -- 进入按钮
-    enterBtn:addHandleOfControlEvent(
+    enterBtn:registerControlEventHandler(
         function(eventName, sender)
             enterBtnEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

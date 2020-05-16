@@ -29,7 +29,7 @@ function Item:create(param)
     node:setPosition(_viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 
-    self._rootnode["upgradeBtn"]:addHandleOfControlEvent(
+    self._rootnode["upgradeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["upgradeBtn"]:setEnabled(false)
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
@@ -153,7 +153,7 @@ function SkillChooseScene:ctor(param)
     ResMgr.createBefTutoMask(self)
 
     local _sz = self._rootnode["listView"]:getContentSize()
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["backBtn"]:setEnabled(false)
             _callback()

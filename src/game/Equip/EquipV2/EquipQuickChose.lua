@@ -54,7 +54,7 @@ function EquipQuickChose:ctor(callback)
         self._rootnode["selectedFlag_" .. tostring(tag)]:setVisible(selected[tag])
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(
                 sender,
@@ -67,14 +67,14 @@ function EquipQuickChose:ctor(callback)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["chooseAllBtn"]:addHandleOfControlEvent(
+    self._rootnode["chooseAllBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(sender, onSelecteAllBtn)
         end,
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(sender, onConfirmBtn)
         end,

@@ -217,7 +217,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
     node:addChild(infoNode)
 
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if _confirmFunc ~= nil then

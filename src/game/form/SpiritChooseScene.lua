@@ -39,7 +39,7 @@ function Item:create(param)
     self:addChild(node)
 
     resetctrbtnimage(self._rootnode["upgradeBtn"], "#item_board_zb.png")
-    self._rootnode["upgradeBtn"]:addHandleOfControlEvent(
+    self._rootnode["upgradeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["upgradeBtn"]:setEnabled(false)
             if _listener then
@@ -140,7 +140,7 @@ function SpiritChooseScene:ctor(param)
 
     local _sz = self._rootnode["listView"]:getContentSize()
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["backBtn"]:setEnabled(false)
             pop_scene()

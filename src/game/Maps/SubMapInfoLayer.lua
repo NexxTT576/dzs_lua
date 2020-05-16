@@ -157,7 +157,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     -- end)}))
 
     -- 关闭按钮
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             ResMgr.isInSubInfo = false
@@ -172,7 +172,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
         CCControlEventTouchUpInside
     )
 
-    rootnode["tag_info_buzhen"]:addHandleOfControlEvent(
+    rootnode["tag_info_buzhen"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             rootnode["tag_info_buzhen"]:setEnabled(false)

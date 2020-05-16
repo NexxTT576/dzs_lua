@@ -72,7 +72,7 @@ function FormSettingLayer:ctor(param)
     end
 
     rootnode["titleLabel"]:setString("设置阵型")
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()

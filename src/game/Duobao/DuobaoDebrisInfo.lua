@@ -68,7 +68,7 @@ function DuobaoDebrisInfo:ctor(param)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
@@ -90,7 +90,7 @@ function DuobaoDebrisInfo:ctor(param)
     )
 
     self._snatchBtn = rootnode["snatchBtn"]
-    self._snatchBtn:addHandleOfControlEvent(
+    self._snatchBtn:registerControlEventHandler(
         function()
             if (self.closeListener ~= nil) then
                 self.closeListener()

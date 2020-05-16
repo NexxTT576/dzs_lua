@@ -172,7 +172,7 @@ function GuildListScene:ctor(isFromMainMenuScene)
 
     if self._isFromMainMenuScene == true then
         -- 创建帮派
-        self._rootnode["createGuildBtn"]:addHandleOfControlEvent(
+        self._rootnode["createGuildBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 self:addChild(require("game.guild.GuildCreateMsgBox").new(), MAX_ZORDER)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -184,7 +184,7 @@ function GuildListScene:ctor(isFromMainMenuScene)
     end
 
     -- 排行榜
-    self._rootnode["rankBtn"]:addHandleOfControlEvent(
+    self._rootnode["rankBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self:addChild(require("game.guild.guildRank.GuildRankLayer").new(), MAX_ZORDER)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -193,7 +193,7 @@ function GuildListScene:ctor(isFromMainMenuScene)
     )
 
     -- 返回
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._isFromMainMenuScene == true then
@@ -212,7 +212,7 @@ function GuildListScene:createSearchBox()
     self._rootnode["tag_search_node"]:setVisible(true)
 
     -- 查询
-    self._rootnode["searchBtn"]:addHandleOfControlEvent(
+    self._rootnode["searchBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local textStr = self._editBox:getText()

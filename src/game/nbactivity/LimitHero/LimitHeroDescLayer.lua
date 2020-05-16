@@ -29,7 +29,7 @@ function LimitHeroDescLayer:ctor()
 
     rootnode["tag_bg"]:setContentSize(preferSize)
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()

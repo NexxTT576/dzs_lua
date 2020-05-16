@@ -127,7 +127,7 @@ function HuaShanSettingScene:ctor(param)
         return formList
     end
 
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function()
             for k, v in ipairs(self._formHero) do
                 if self._heros[v.index] then
@@ -140,7 +140,7 @@ function HuaShanSettingScene:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["setFormBtn"]:addHandleOfControlEvent(
+    self._rootnode["setFormBtn"]:registerControlEventHandler(
         function()
             self._rootnode["setFormBtn"]:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -208,7 +208,7 @@ function HuaShanSettingScene:ctor(param)
         )
     end
 
-    self._rootnode["startBtn"]:addHandleOfControlEvent(
+    self._rootnode["startBtn"]:registerControlEventHandler(
         function()
             if #self._formHero == 0 then
                 show_tip_label("请选择上阵侠客")

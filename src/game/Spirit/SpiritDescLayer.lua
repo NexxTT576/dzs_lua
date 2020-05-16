@@ -72,7 +72,7 @@ function SpiritDescLayer:ctor(closeListener)
     node:setPosition(self:getContentSize().width / 2, self:getContentSize().height / 2)
     self:addChild(node, 100)
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function()
             if closeListener then
                 closeListener()

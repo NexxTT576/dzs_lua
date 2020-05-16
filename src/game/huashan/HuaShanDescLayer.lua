@@ -44,9 +44,9 @@ function HuaShanDescLayer:ctor()
         self:removeSelf()
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
+    self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
 
-    self._rootnode["okBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
+    self._rootnode["okBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
 end
 
 return HuaShanDescLayer

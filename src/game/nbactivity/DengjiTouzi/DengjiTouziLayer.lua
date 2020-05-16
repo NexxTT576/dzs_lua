@@ -127,7 +127,7 @@ function DengjiTouziLayer:initData(data)
 
     -- 充值按钮
     local chongzhiBtn = self._rootnode["chongzhiBtn"]
-    chongzhiBtn:addHandleOfControlEvent(
+    chongzhiBtn:registerControlEventHandler(
         function(eventName, sender)
             local chongzhiLayer = require("game.shop.Chongzhi.ChongzhiLayer").new()
             game.runningScene:addChild(chongzhiLayer, MAX_ZORDER)
@@ -138,7 +138,7 @@ function DengjiTouziLayer:initData(data)
 
     -- 购买按钮
     local buyBtn = self._rootnode["buyBtn"]
-    buyBtn:addHandleOfControlEvent(
+    buyBtn:registerControlEventHandler(
         function(eventName, sender)
             if self._hasBuy == false then
                 local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.DengjiTouzi_buy, game.player:getLevel(), game.player:getVip())

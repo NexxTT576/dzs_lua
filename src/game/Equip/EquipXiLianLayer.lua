@@ -107,7 +107,7 @@ function EquipXiLianLayer:ctor(param)
     node:setAnchorPoint(ccp(0.5, 0))
     node:setPosition(display.width / 2, self.bottom:getContentSize().height)
     self:addChild(node)
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             self:removeSelf()
         end,
@@ -221,7 +221,7 @@ function EquipXiLianLayer:ctor(param)
         )
     end
 
-    self._rootnode["xi_lian_btn"]:addHandleOfControlEvent(
+    self._rootnode["xi_lian_btn"]:registerControlEventHandler(
         function()
             -- self:removeSelf()
             --是否够洗炼一次的？
@@ -230,7 +230,7 @@ function EquipXiLianLayer:ctor(param)
         CCControlEventTouchDown
     )
 
-    self._rootnode["xi_lian_10_btn"]:addHandleOfControlEvent(
+    self._rootnode["xi_lian_10_btn"]:registerControlEventHandler(
         function()
             -- self:removeSelf()
             --是否够洗炼一次的
@@ -240,7 +240,7 @@ function EquipXiLianLayer:ctor(param)
     )
 
     self._rootnode["ti_huan_btn"]:setVisible(false)
-    self._rootnode["ti_huan_btn"]:addHandleOfControlEvent(
+    self._rootnode["ti_huan_btn"]:registerControlEventHandler(
         function()
             -- self:removeSelf()
             tiHuanFunc()

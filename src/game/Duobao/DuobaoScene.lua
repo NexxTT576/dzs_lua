@@ -723,7 +723,7 @@ function DuobaoScene:ctor()
     self.isAllTouchItem = false
     self._bScrollEnabled = true
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
@@ -734,7 +734,7 @@ function DuobaoScene:ctor()
 
     -- 免战
     local avoidWarBtn = self._rootnode["avoidWarBtn"]
-    avoidWarBtn:addHandleOfControlEvent(
+    avoidWarBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             avoidWarBtn:setEnabled(false)
@@ -794,7 +794,7 @@ function DuobaoScene:ctor()
         end
     end
 
-    mixBtn:addHandleOfControlEvent(
+    mixBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             mixBtn:setEnabled(false)
@@ -804,7 +804,7 @@ function DuobaoScene:ctor()
         CCControlEventTouchUpInside
     )
 
-    mixAllBtn:addHandleOfControlEvent(
+    mixAllBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             mixAllBtn:setEnabled(false)

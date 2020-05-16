@@ -125,7 +125,7 @@ function VipFuliLayer:initData(data)
 
     -- 查看VIP特权
     local checkVipBtn = self._rootnode["checkBtn"]
-    checkVipBtn:addHandleOfControlEvent(
+    checkVipBtn:registerControlEventHandler(
         function(eventName, sender)
             checkVipBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -146,7 +146,7 @@ function VipFuliLayer:initData(data)
     )
 
     -- 领取奖励按钮
-    self._rootnode["getRewardBtn"]:addHandleOfControlEvent(
+    self._rootnode["getRewardBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if not self._isHasGet then

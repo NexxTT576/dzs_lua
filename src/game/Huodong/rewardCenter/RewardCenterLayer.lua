@@ -298,7 +298,7 @@ function RewardCenterLayer:ctor(data)
     self._rootnode["reward_count_label"]:setString("当前奖励数：0")
 
     -- 关闭
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
@@ -318,7 +318,7 @@ function RewardCenterLayer:ctor(data)
 
     -- 全部领取
     local collectAllBtn = self._rootnode["collect_all_btn"]
-    collectAllBtn:addHandleOfControlEvent(
+    collectAllBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             collectAllBtn:setEnabled(false)

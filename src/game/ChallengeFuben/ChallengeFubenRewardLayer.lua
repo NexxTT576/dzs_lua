@@ -27,7 +27,7 @@ function ChallengeFubenRewardLayer:ctor(param)
     self._rootnode["titleLabel"]:setString("概率掉落预览")
 
     -- 关闭按钮
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if closeFunc ~= nil then

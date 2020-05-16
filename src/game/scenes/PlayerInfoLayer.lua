@@ -24,7 +24,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     layer:setTouchEnabled(true)
 
     local closeBtn = self._rootNode["tag_close"]
-    closeBtn:addHandleOfControlEvent(
+    closeBtn:registerControlEventHandler(
         function(eventName, sender)
             if (cb ~= nil) then
                 cb()
@@ -36,7 +36,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     )
 
     local okBtn = self._rootNode["tag_ok_btn"]
-    okBtn:addHandleOfControlEvent(
+    okBtn:registerControlEventHandler(
         function(eventName, sender)
             sender:runAction(
                 transition.sequence(

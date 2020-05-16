@@ -149,7 +149,7 @@ function GuildMemberScene:ctor(param)
     self:addChild(_bg, 0)
 
     -- 返回
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
@@ -158,7 +158,7 @@ function GuildMemberScene:ctor(param)
     )
 
     -- 按时间排序
-    self._rootnode["sort_time_btn"]:addHandleOfControlEvent(
+    self._rootnode["sort_time_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:setVerifySortType(SORT_TYPE.time)
@@ -167,7 +167,7 @@ function GuildMemberScene:ctor(param)
     )
 
     -- 默认排序
-    self._rootnode["sort_normal_btn"]:addHandleOfControlEvent(
+    self._rootnode["sort_normal_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
@@ -177,7 +177,7 @@ function GuildMemberScene:ctor(param)
     )
 
     -- 一键拒绝
-    self._rootnode["reject_total_btn"]:addHandleOfControlEvent(
+    self._rootnode["reject_total_btn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["reject_total_btn"]:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

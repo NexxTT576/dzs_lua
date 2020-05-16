@@ -152,7 +152,7 @@ function BagScene:ctor(tag)
     )
 
     --  返回按钮
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function()
             self:onUseView()
             self._rootnode["saleView"]:setVisible(false)
@@ -225,7 +225,7 @@ function BagScene:ctor(tag)
     end
 
     --  确认卖出按钮
-    self._rootnode["confirSellBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirSellBtn"]:registerControlEventHandler(
         function()
             onConfirmSell()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

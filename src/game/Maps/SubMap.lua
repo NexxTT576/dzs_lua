@@ -99,7 +99,7 @@ function SubMap:ctor(param)
     self._rootnode["level_name_lbl"]:setString(data_field_field[subMapID].name)
     self._rootnode["level_name_lbl"]:setPositionX(LvIcon:getContentSize().width * LvIcon:getScaleX() + 10)
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if ResMgr.isInSubInfo ~= true and ResMgr.intoSubMap ~= true then
@@ -113,7 +113,7 @@ function SubMap:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["zhenrongBtn"]:addHandleOfControlEvent(
+    self._rootnode["zhenrongBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if ResMgr.isInSubInfo ~= true and ResMgr.intoSubMap ~= true then

@@ -58,7 +58,7 @@ function GuildNormalMsgBox:ctor(param)
         self._rootnode["single_confirmBtn"]:setVisible(true)
         self._rootnode["normal_btn_node"]:setVisible(false)
 
-        self._rootnode["single_confirmBtn"]:addHandleOfControlEvent(
+        self._rootnode["single_confirmBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 confirm()
@@ -69,7 +69,7 @@ function GuildNormalMsgBox:ctor(param)
         self._rootnode["single_confirmBtn"]:setVisible(false)
         self._rootnode["normal_btn_node"]:setVisible(true)
 
-        self._rootnode["cancelBtn"]:addHandleOfControlEvent(
+        self._rootnode["cancelBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 closeFunc()
@@ -77,7 +77,7 @@ function GuildNormalMsgBox:ctor(param)
             CCControlEventTouchUpInside
         )
 
-        self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+        self._rootnode["confirmBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 confirm()
@@ -86,7 +86,7 @@ function GuildNormalMsgBox:ctor(param)
         )
     end
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()

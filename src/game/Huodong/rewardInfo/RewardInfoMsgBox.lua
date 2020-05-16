@@ -73,7 +73,7 @@ function RewardInfoMsgBox:ctor(param)
     local cellDatas = param.cellDatas
     self._num = param.num
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -81,7 +81,7 @@ function RewardInfoMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:removeFromParentAndCleanup(true)

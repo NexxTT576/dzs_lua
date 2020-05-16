@@ -224,7 +224,7 @@ function GuildZuofangLayer:ctor(data)
 
     self._rootnode["titleLabel"]:setString("帮派作坊")
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -242,7 +242,7 @@ function GuildZuofangLayer:ctor(data)
         levelupBtn:setVisible(false)
     else
         levelupBtn:setVisible(true)
-        levelupBtn:addHandleOfControlEvent(
+        levelupBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if guildMgr:checkIsReachMaxLevel(self._buildType, self._level) == true then
@@ -391,7 +391,7 @@ function GuildZuofangLayer:initBtnEvent()
     end
 
     -- 普通生产
-    normalBuildBtn:addHandleOfControlEvent(
+    normalBuildBtn:registerControlEventHandler(
         function(eventName, sender)
             buildFunc(GUILD_ZF_WORK_TYPE.normal)
         end,
@@ -399,7 +399,7 @@ function GuildZuofangLayer:initBtnEvent()
     )
 
     -- 加班生产
-    fastBuildBtn:addHandleOfControlEvent(
+    fastBuildBtn:registerControlEventHandler(
         function(eventName, sender)
             buildFunc(GUILD_ZF_WORK_TYPE.fast)
         end,
@@ -407,7 +407,7 @@ function GuildZuofangLayer:initBtnEvent()
     )
 
     -- 普通生产立即结束
-    normalEndBtn:addHandleOfControlEvent(
+    normalEndBtn:registerControlEventHandler(
         function(eventName, sender)
             endFunc()
         end,
@@ -415,7 +415,7 @@ function GuildZuofangLayer:initBtnEvent()
     )
 
     -- 加班生产立即结束
-    fastEndBtn:addHandleOfControlEvent(
+    fastEndBtn:registerControlEventHandler(
         function(eventName, sender)
             endFunc()
         end,

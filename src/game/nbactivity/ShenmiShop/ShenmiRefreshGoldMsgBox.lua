@@ -30,7 +30,7 @@ function ShenmiRefreshGoldMsgBox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             if game.player:getGold() < costNum then
                 show_tip_label(data_error_error[100004].prompt)
@@ -42,14 +42,14 @@ function ShenmiRefreshGoldMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             onClose()
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             onClose()
         end,

@@ -65,7 +65,7 @@ function SubmapRewardLayer:ctor(param)
     self._rootnode["msg_1"]:setPositionX(starIcon:getPositionX() - starNumLbl:getContentSize().width)
 
     local rewardBtn = self._rootnode["rewardBtn"]
-    rewardBtn:addHandleOfControlEvent(
+    rewardBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
@@ -75,7 +75,7 @@ function SubmapRewardLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)

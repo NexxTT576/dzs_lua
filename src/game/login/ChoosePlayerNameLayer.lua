@@ -49,21 +49,21 @@ function ChoosePlayerNameLayer:ctor(listener)
     -- self._rootnode["playerIcon"]:setDisplayFrame(ResMgr.getHeroFrame(self._sexType, 0))
     self:changeSex(PLAYERTYPE.GIRL)
 
-    self._rootnode["boyBtn"]:addHandleOfControlEvent(
+    self._rootnode["boyBtn"]:registerControlEventHandler(
         function()
             self:changeSex(PLAYERTYPE.BOY)
         end,
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["girlBtn"]:addHandleOfControlEvent(
+    self._rootnode["girlBtn"]:registerControlEventHandler(
         function()
             self:changeSex(PLAYERTYPE.GIRL)
         end,
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["nextBtn"]:addHandleOfControlEvent(
+    self._rootnode["nextBtn"]:registerControlEventHandler(
         function()
             self:createNameLayer()
         end,
@@ -117,14 +117,14 @@ function ChoosePlayerNameLayer:createNameLayer()
 
     rootnode["playerIcon"]:setDisplayFrame(ResMgr.getHeroFrame(self._sexType, 0))
 
-    rootnode["returnBtn"]:addHandleOfControlEvent(
+    rootnode["returnBtn"]:registerControlEventHandler(
         function()
             node:removeFromParentAndCleanup(true)
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["createBtn"]:addHandleOfControlEvent(
+    rootnode["createBtn"]:registerControlEventHandler(
         function()
             if (self.m_hascreated == false) then
                 self:setBtnDisabled()
@@ -134,7 +134,7 @@ function ChoosePlayerNameLayer:createNameLayer()
         CCControlEventTouchUpInside
     )
 
-    rootnode["randomBtn"]:addHandleOfControlEvent(
+    rootnode["randomBtn"]:registerControlEventHandler(
         function()
             if self._editBox ~= nil then
                 self._editBox:setText(self:genName())

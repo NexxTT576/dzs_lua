@@ -140,7 +140,7 @@ function SkillRefineLayer:ctor(param)
 
     --    self._rootnode["titleLabel"]:setString("武学精炼")
 
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function()
             self:removeSelf()
 
@@ -149,7 +149,7 @@ function SkillRefineLayer:ctor(param)
         CCControlEventTouchDown
     )
 
-    self._rootnode["jinglianBtn"]:addHandleOfControlEvent(
+    self._rootnode["jinglianBtn"]:registerControlEventHandler(
         function()
             if self._bAllow == 1 then
                 local req =

@@ -177,7 +177,7 @@ function GuildFubenScene:ctor(param)
     self._listViewSize = cc.size(self._rootnode["listView"]:getContentSize().width, self:getCenterHeightWithSubTop())
 
     -- 返回
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
@@ -187,7 +187,7 @@ function GuildFubenScene:ctor(param)
 
     -- 输出排行
     local shuchuBtn = self._rootnode["shuchuBtn"]
-    shuchuBtn:addHandleOfControlEvent(
+    shuchuBtn:registerControlEventHandler(
         function(eventName, sender)
             shuchuBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -198,7 +198,7 @@ function GuildFubenScene:ctor(param)
 
     -- 帮派副本 说明
     local helpBtn = self._rootnode["helpBtn"]
-    helpBtn:addHandleOfControlEvent(
+    helpBtn:registerControlEventHandler(
         function(eventName, sender)
             helpBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -221,7 +221,7 @@ function GuildFubenScene:ctor(param)
 
     local levelupBtn = self._rootnode["levelup_btn"]
     if jopType == GUILD_JOB_TYPE.leader or jopType == GUILD_JOB_TYPE.assistant then
-        levelupBtn:addHandleOfControlEvent(
+        levelupBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if guildMgr:checkIsReachMaxLevel(self._buildType, self._level) == true then

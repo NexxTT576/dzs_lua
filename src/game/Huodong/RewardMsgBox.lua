@@ -18,9 +18,9 @@ function RewardMsgBox:initButton()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["confirmBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 
     TutoMgr.addBtn("lingqu_confirm", self._rootnode["confirmBtn"])
     -- TutoMgr.addBtn("lingqu_close_btn",self._rootnode["closeBtn"])

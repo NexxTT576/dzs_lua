@@ -32,7 +32,7 @@ function SkillItem:create(param)
     self.typeNode = display.newNode()
     node:addChild(self.typeNode)
 
-    self._rootnode["qianghuaBtn"]:addHandleOfControlEvent(
+    self._rootnode["qianghuaBtn"]:registerControlEventHandler(
         function()
             if _useListener then
                 self._rootnode["qianghuaBtn"]:setEnabled(false)
@@ -43,7 +43,7 @@ function SkillItem:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["jinglianBtn"]:addHandleOfControlEvent(
+    self._rootnode["jinglianBtn"]:registerControlEventHandler(
         function()
             local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.NeiWaiGong_JingLian, game.player:getLevel(), game.player:getVip())
             if not bHasOpen then

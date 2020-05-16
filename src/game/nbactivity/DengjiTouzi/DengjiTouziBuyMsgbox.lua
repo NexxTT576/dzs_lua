@@ -32,21 +32,21 @@ function DengjiTouziBuyMsgbox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             if confirmListen ~= nil then
                 confirmListen()

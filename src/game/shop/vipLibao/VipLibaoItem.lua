@@ -59,7 +59,7 @@ function VipLibaoItem:create(param)
     self:refreshItem(cellDatas)
 
     -- 购买按钮
-    self._rootnode["buyBtn"]:addHandleOfControlEvent(
+    self._rootnode["buyBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if buyFunc ~= nil then

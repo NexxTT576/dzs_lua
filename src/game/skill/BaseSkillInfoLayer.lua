@@ -152,7 +152,7 @@ function BaseSkillInfoLayer:ctor(param)
 
     self._rootnode["titleLabel"]:setString("武学信息")
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             if _closeListener then
                 _closeListener()
@@ -384,8 +384,8 @@ function BaseSkillInfoLayer:ctor(param)
 
     refresh()
     if _subIndex and _index then
-        self._rootnode["changeBtn"]:addHandleOfControlEvent(change, CCControlEventTouchUpInside)
-        self._rootnode["takeOffBtn"]:addHandleOfControlEvent(takeOff, CCControlEventTouchUpInside)
+        self._rootnode["changeBtn"]:registerControlEventHandler(change, CCControlEventTouchUpInside)
+        self._rootnode["takeOffBtn"]:registerControlEventHandler(takeOff, CCControlEventTouchUpInside)
     else
         self._rootnode["changeBtn"]:setVisible(false)
         self._rootnode["takeOffBtn"]:setVisible(false)
@@ -435,7 +435,7 @@ function BaseSkillInfoLayer:ctor(param)
         RequestHelperV2.request(req)
     end
 
-    self._rootnode["qiangHuBtn"]:addHandleOfControlEvent(qiangHu, CCControlEventTouchUpInside)
+    self._rootnode["qiangHuBtn"]:registerControlEventHandler(qiangHu, CCControlEventTouchUpInside)
 
     --    if data_refine_refine[_info.resId] and data_refine_refine[_info.resId].Refine and data_refine_refine[_info.resId].Refine > 0 then
     --        self._rootnode["xiLianBtn"]:setVisible(true)
@@ -448,7 +448,7 @@ function BaseSkillInfoLayer:ctor(param)
         self._rootnode["qiangHuBtn"]:setVisible(false)
     end
 
-    self._rootnode["xiLianBtn"]:addHandleOfControlEvent(refine, CCControlEventTouchUpInside)
+    self._rootnode["xiLianBtn"]:registerControlEventHandler(refine, CCControlEventTouchUpInside)
 end
 
 return BaseSkillInfoLayer

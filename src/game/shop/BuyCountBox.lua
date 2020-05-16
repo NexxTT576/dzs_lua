@@ -36,7 +36,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     --    closeBtn:setPosition(-closeBtn:getContentSize().width / 2, -closeBtn:getContentSize().height / 2)
     --    rootnode["closeBtnPos"]:addChild(closeBtn)
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
@@ -44,7 +44,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
         CCControlEventTouchDown
     )
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
@@ -157,14 +157,14 @@ function BuyCountBox:ctor(param, callback, errorCB)
         --        printf("basePrice = %d, addPrice = %d, curNum = %d, buyNum = %d, allMoney = %d", param.baseprice, param.addPrice, num, param.hadBuy, costNum)
     end
 
-    rootnode["add10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["add1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
 
     onNumBtn(_, rootnode["add1Btn"])
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if num > 0 then

@@ -59,7 +59,7 @@ function HeroShowScene:ctor(param)
     _bg:setScaleY(_bgH / _bg:getContentSize().height)
     self:addChild(_bg, 0)
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             pop_scene()

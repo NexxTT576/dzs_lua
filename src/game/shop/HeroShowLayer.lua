@@ -164,7 +164,7 @@ function HeroShowLayer:init()
         end
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
+    self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
     self._listData = {
         [HEROTYPE.HAOJIE] = {},
         [HEROTYPE.GAOSHO] = {},

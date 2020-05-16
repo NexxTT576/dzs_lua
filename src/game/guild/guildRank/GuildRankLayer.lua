@@ -125,7 +125,7 @@ function GuildRankLayer:ctor()
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)

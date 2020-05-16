@@ -281,7 +281,7 @@ function GuildShopScene:ctor(param)
     end
 
     -- 返回
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
@@ -294,7 +294,7 @@ function GuildShopScene:ctor(param)
 
     local levelupBtn = self._rootnode["levelup_btn"]
     if jopType == GUILD_JOB_TYPE.leader or jopType == GUILD_JOB_TYPE.assistant then
-        levelupBtn:addHandleOfControlEvent(
+        levelupBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if guildMgr:checkIsReachMaxLevel(self._buildType, self._level) == true then

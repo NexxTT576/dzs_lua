@@ -61,7 +61,7 @@ function GuildListItem:create(param)
     self:addChild(node)
 
     -- 申请按钮
-    self._rootnode["applyBtn"]:addHandleOfControlEvent(
+    self._rootnode["applyBtn"]:registerControlEventHandler(
         function()
             if applyFunc ~= nil then
                 self:setBtnEnabled(false)
@@ -73,7 +73,7 @@ function GuildListItem:create(param)
     )
 
     -- 取消申请按钮
-    self._rootnode["cancelApplyBtn"]:addHandleOfControlEvent(
+    self._rootnode["cancelApplyBtn"]:registerControlEventHandler(
         function()
             if applyFunc ~= nil then
                 self:setBtnEnabled(false)

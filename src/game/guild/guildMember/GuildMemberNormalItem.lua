@@ -52,7 +52,7 @@ function GuildMemberNormalItem:create(param)
     self._buildLbl:setPosition(-self._buildLbl:getContentSize().width / 2, self._buildLbl:getContentSize().height / 2)
 
     -- 帮务按钮
-    self._rootnode["job_btn"]:addHandleOfControlEvent(
+    self._rootnode["job_btn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if jobFunc ~= nil then

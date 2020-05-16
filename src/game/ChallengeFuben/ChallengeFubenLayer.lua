@@ -40,7 +40,7 @@ function ChallengeFubenLayer:ctor(param)
     self:setFormation(self._cards, attrack)
 
     -- 关闭按钮
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -54,7 +54,7 @@ function ChallengeFubenLayer:ctor(param)
 
     if fbInfo.isbuy == 1 then
         buyBtn:setVisible(true)
-        buyBtn:addHandleOfControlEvent(
+        buyBtn:registerControlEventHandler(
             function(eventName, sender)
                 if HuoDongFuBenModel.getRestNum(self._fbId) > 0 then
                     ResMgr.showMsg(6)
@@ -88,7 +88,7 @@ function ChallengeFubenLayer:ctor(param)
 
     -- 查看概率掉落
     local checkBtn = self._rootnode["check_reward_btn"]
-    checkBtn:addHandleOfControlEvent(
+    checkBtn:registerControlEventHandler(
         function(eventName, sender)
             checkBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -108,7 +108,7 @@ function ChallengeFubenLayer:ctor(param)
 
     -- 布阵按钮
     local buzhenBtn = self._rootnode["buzhen_btn"]
-    buzhenBtn:addHandleOfControlEvent(
+    buzhenBtn:registerControlEventHandler(
         function(eventName, sender)
             buzhenBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

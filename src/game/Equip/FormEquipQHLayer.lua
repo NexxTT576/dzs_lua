@@ -273,15 +273,15 @@ function FormEquipQHLayer:ctor(param)
         RequestHelperV2.request(req)
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
-    self._rootnode["backBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
-    self._rootnode["autoBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
+    self._rootnode["backBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
+    self._rootnode["autoBtn"]:registerControlEventHandler(
         function()
             qiangHua(1)
         end,
         CCControlEventTouchUpInside
     )
-    self._rootnode["qianghuaBtn"]:addHandleOfControlEvent(
+    self._rootnode["qianghuaBtn"]:registerControlEventHandler(
         function()
             qiangHua(0)
         end,

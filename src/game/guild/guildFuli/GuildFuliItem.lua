@@ -43,7 +43,7 @@ function GuildFuliItem:create(param)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 
-    self._rootnode["openBtn"]:addHandleOfControlEvent(
+    self._rootnode["openBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if openFunc ~= nil then
@@ -54,7 +54,7 @@ function GuildFuliItem:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["rewardBtn"]:addHandleOfControlEvent(
+    self._rootnode["rewardBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rewardFunc ~= nil then

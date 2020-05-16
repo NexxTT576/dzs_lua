@@ -227,7 +227,7 @@ function ZhaojiangResultTen:ctor(param)
     self._rootnode["leftTimeLbl"]:setString(param.leftTime or 10)
 
     -- 退出
-    self._rootnode["exitBtn"]:addHandleOfControlEvent(
+    self._rootnode["exitBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -237,7 +237,7 @@ function ZhaojiangResultTen:ctor(param)
     )
 
     -- 购买1个
-    self._rootnode["buyOneBtn"]:addHandleOfControlEvent(
+    self._rootnode["buyOneBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             --            self:getOneHero(1)
@@ -251,7 +251,7 @@ function ZhaojiangResultTen:ctor(param)
 
     -- 购买10个
     self._rootnode["buyTenBtn"]:setEnabled(false)
-    self._rootnode["buyTenBtn"]:addHandleOfControlEvent(
+    self._rootnode["buyTenBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             --            self:getOneHero(10)

@@ -47,7 +47,7 @@ function GuildDynamicScene:ctor(data)
     self._rootnode["tab1"]:selected()
 
     -- 返回
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)

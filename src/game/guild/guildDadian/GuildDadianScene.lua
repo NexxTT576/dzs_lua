@@ -134,7 +134,7 @@ function GuildDadianScene:ctor(data)
 
     self._rootnode["titleLabel"]:setString("帮派大殿")
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
@@ -152,7 +152,7 @@ function GuildDadianScene:ctor(data)
         levelupBtn:setVisible(false)
     else
         levelupBtn:setVisible(true)
-        levelupBtn:addHandleOfControlEvent(
+        levelupBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 

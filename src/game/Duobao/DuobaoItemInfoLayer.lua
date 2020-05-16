@@ -124,7 +124,7 @@ function DuobaoItemInfoLayer:ctor(param)
     end
 
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -132,7 +132,7 @@ function DuobaoItemInfoLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()

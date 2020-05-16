@@ -50,9 +50,9 @@ function HuaShanHeroLessTip:ctor(param)
         self:removeSelf()
     end
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
+    self._rootnode["backBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
 
-    self._rootnode["confirm_btn"]:addHandleOfControlEvent(
+    self._rootnode["confirm_btn"]:registerControlEventHandler(
         function()
             self._rootnode["confirm_btn"]:setEnabled(false)
             if listener then
@@ -63,7 +63,7 @@ function HuaShanHeroLessTip:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["cancel_btn"]:addHandleOfControlEvent(close, CCControlEventTouchUpInside)
+    self._rootnode["cancel_btn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)
 end
 
 return HuaShanHeroLessTip

@@ -32,7 +32,7 @@ function ItemInformation:ctor(param)
         node:setPosition(display.cx, display.cy)
         self:addChild(node)
 
-        subnode["closeBtn"]:addHandleOfControlEvent(
+        subnode["closeBtn"]:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
                 sender:runAction(

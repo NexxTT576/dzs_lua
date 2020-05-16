@@ -132,7 +132,7 @@ function GuildFubenRewardMsgBox:ctor(param)
         end
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if closeFunc ~= nil then
@@ -143,7 +143,7 @@ function GuildFubenRewardMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["rewardBtn"]:addHandleOfControlEvent(
+    self._rootnode["rewardBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self:setBtnEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

@@ -133,7 +133,7 @@ function DuobaoResult:initWin(data)
     self._rootnode["confirmBtn"]:setEnabled(false)
 
     local snatchAgainBtn = self._rootnode["snatchBtn"]
-    snatchAgainBtn:addHandleOfControlEvent(
+    snatchAgainBtn:registerControlEventHandler(
         function()
             snatchAgainBtn:setEnabled(false)
             self:setBtnDisabled(true)
@@ -151,7 +151,7 @@ function DuobaoResult:initWin(data)
         CCControlEventTouchUpInside
     )
     --
-    --    self._rootnode["zhenrongBtn"]:addHandleOfControlEvent(function()
+    --    self._rootnode["zhenrongBtn"]:registerControlEventHandler(function()
     --        self._rootnode["zhenrongBtn"]:setEnabled(false)
     --        snatchAgainBtn:setEnabled(false)
     --
@@ -443,7 +443,7 @@ function DuobaoResult:initLost(data)
     end
 
     -- 武将强化
-    self._rootnode["wujiangBtn"]:addHandleOfControlEvent(
+    self._rootnode["wujiangBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_XIAKE)
@@ -452,7 +452,7 @@ function DuobaoResult:initLost(data)
     )
 
     -- 装备强化
-    self._rootnode["zhuangbeiBtn"]:addHandleOfControlEvent(
+    self._rootnode["zhuangbeiBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_EQUIPMENT)
@@ -461,7 +461,7 @@ function DuobaoResult:initLost(data)
     )
 
     -- 阵容
-    self._rootnode["goZhenrongBtn"]:addHandleOfControlEvent(
+    self._rootnode["goZhenrongBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ZHENRONG)
@@ -470,7 +470,7 @@ function DuobaoResult:initLost(data)
     )
 
     -- 侠客送礼
-    self._rootnode["heroRewardBtn"]:addHandleOfControlEvent(
+    self._rootnode["heroRewardBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
@@ -479,7 +479,7 @@ function DuobaoResult:initLost(data)
     )
 
     -- 真气
-    self._rootnode["zhenqiBtn"]:addHandleOfControlEvent(
+    self._rootnode["zhenqiBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameStateManager:ChangeState(GAME_STATE.STATE_JINGYUAN)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -598,7 +598,7 @@ function DuobaoResult:ctor(param)
         end
     end
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self:setBtnDisabled(false)
             self:confirmFunc()
@@ -609,7 +609,7 @@ function DuobaoResult:ctor(param)
     )
 
     local replayBtn = self._rootnode["replayBtn"]
-    replayBtn:addHandleOfControlEvent(
+    replayBtn:registerControlEventHandler(
         function(eventName, sender)
             self:setBtnDisabled(false)
             local function closeFunc(node)

@@ -70,7 +70,7 @@ function GuildBottomBtnEvent.registerBottomEvent(btnMaps)
 
     for i, v in ipairs(btnNames) do 
         if btnMaps[v] ~= nil then 
-            btnMaps[v]:addHandleOfControlEvent(function(eventName, sender)
+            btnMaps[v]:registerControlEventHandler(function(eventName, sender)
                 onTouchBtn(sender) 
             end, CCControlEventTouchUpInside)
         end     

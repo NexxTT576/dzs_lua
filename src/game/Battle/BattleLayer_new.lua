@@ -745,7 +745,7 @@ function BattleLayer:initSkipDramaBtn()
         self.skipDramaBtn = CCControlButton:create("", FONTS_NAME.font_fzcy, 30)
         self.skipDramaBtn:setBackgroundSpriteForState(btnSprite, CCControlStateNormal)
         self.skipDramaBtn:setPreferredSize(cc.size(144, 50))
-        self.skipDramaBtn:addHandleOfControlEvent(
+        self.skipDramaBtn:registerControlEventHandler(
             function()
                 self:skipDrama()
             end,

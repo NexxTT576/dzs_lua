@@ -107,7 +107,7 @@ function SkillQiangHuaLayer:ctor(param)
         self._rootnode["btn" .. i]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onChooseLayer)
     end
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             _callback()
@@ -116,7 +116,7 @@ function SkillQiangHuaLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["qianghuaBtn"]:addHandleOfControlEvent(
+    self._rootnode["qianghuaBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if checkint(self._rootnode["costNum"]:getString()) > game.player:getSilver() then
@@ -134,7 +134,7 @@ function SkillQiangHuaLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["autoBtn"]:addHandleOfControlEvent(
+    self._rootnode["autoBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self:autoSelected()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

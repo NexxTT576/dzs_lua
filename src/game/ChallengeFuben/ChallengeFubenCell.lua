@@ -30,7 +30,7 @@ function ChallengeFubenCell:create(param)
     node:setPosition(viewSize.width * 0.5, 0)
     self:addChild(node)
 
-    self._rootnode["challenge_btn"]:addHandleOfControlEvent(
+    self._rootnode["challenge_btn"]:registerControlEventHandler(
         function(eventName, sender)
             self:setBtnEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

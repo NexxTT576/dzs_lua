@@ -23,7 +23,7 @@ function jiefuRuleLayer:ctor(data)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
-    self._rootnode["confirm_btn"]:addHandleOfControlEvent(
+    self._rootnode["confirm_btn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self.jumpFunc()
@@ -31,7 +31,7 @@ function jiefuRuleLayer:ctor(data)
         CCControlEventTouchDown
     )
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()

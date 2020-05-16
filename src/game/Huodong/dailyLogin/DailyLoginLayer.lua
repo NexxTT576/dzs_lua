@@ -275,7 +275,7 @@ function DailyLoginLayer:ctor(data)
 
     self._rootnode["titleLabel"]:setString("签到奖励")
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             sender:runAction(

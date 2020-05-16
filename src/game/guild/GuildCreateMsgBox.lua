@@ -83,7 +83,7 @@ function GuildCreateMsgBox:ctor()
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -91,7 +91,7 @@ function GuildCreateMsgBox:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
@@ -99,7 +99,7 @@ function GuildCreateMsgBox:ctor()
         CCControlEventTouchUpInside
     )
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local textStr = self._editBox:getText()

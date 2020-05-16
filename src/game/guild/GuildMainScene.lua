@@ -107,7 +107,7 @@ function GuildMainScene:ctor(buildType)
     end
 
     -- 其他帮派
-    self._rootnode["check_guildList_btn"]:addHandleOfControlEvent(
+    self._rootnode["check_guildList_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD_GUILDLIST)
@@ -117,7 +117,7 @@ function GuildMainScene:ctor(buildType)
 
     -- 修改帮派公告
     local modifyBtn = self._rootnode["modify_btn"]
-    modifyBtn:addHandleOfControlEvent(
+    modifyBtn:registerControlEventHandler(
         function(eventName, sender)
             modifyBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -254,7 +254,7 @@ function GuildMainScene:initBuildBtnFunc()
 
     for i, v in ipairs(btnNames) do
         if self._rootnode[v] ~= nil then
-            self._rootnode[v]:addHandleOfControlEvent(
+            self._rootnode[v]:registerControlEventHandler(
                 function(eventName, sender)
                     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                     local tag = sender:getTag()

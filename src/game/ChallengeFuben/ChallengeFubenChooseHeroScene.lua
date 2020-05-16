@@ -137,7 +137,7 @@ function ChallengeFubenChooseHeroScene:ctor(param)
     end
 
     -- 返回
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function()
             if self._bHasChangeFormation == true then
                 if self._bHasSaveFormaiton == true then
@@ -176,7 +176,7 @@ function ChallengeFubenChooseHeroScene:ctor(param)
 
     -- 保存阵容
     local saveFormBtn = self._rootnode["saveFormBtn"]
-    saveFormBtn:addHandleOfControlEvent(
+    saveFormBtn:registerControlEventHandler(
         function()
             if #self._formHero == 0 then
                 ResMgr.showErr(2900097)
@@ -205,7 +205,7 @@ function ChallengeFubenChooseHeroScene:ctor(param)
 
     -- 布阵
     local setFormBtn = self._rootnode["setFormBtn"]
-    setFormBtn:addHandleOfControlEvent(
+    setFormBtn:registerControlEventHandler(
         function()
             setFormBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

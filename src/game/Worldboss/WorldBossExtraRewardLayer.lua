@@ -32,7 +32,7 @@ function WorldBossExtraRewardLayer:ctor(param)
     self:addChild(layer)
 
     -- 关闭
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then

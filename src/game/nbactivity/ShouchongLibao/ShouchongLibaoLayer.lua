@@ -52,7 +52,7 @@ end
 
 function ShouchongLibaoLayer:initData()
     -- 前往充值
-    self._rootnode["buyBtn"]:addHandleOfControlEvent(
+    self._rootnode["buyBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local chongzhiLayer = require("game.shop.Chongzhi.ChongzhiLayer").new()

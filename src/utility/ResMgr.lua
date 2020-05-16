@@ -290,7 +290,7 @@ end
 function ResMgr.setControlBtnEvent(btn, func, sound, maxInterval)
     btn.lastPressTime = 0
     local maxInter = maxInterval or 0.4 --0.4秒默认间隔
-    btn:addHandleOfControlEvent(
+    btn:registerControlEventHandler(
         function()
             local curTime = GameModel.getLocalTimeInSec()
             if curTime - btn.lastPressTime < maxInter then

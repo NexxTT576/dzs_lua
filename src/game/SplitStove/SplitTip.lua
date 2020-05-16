@@ -42,7 +42,7 @@ function SplitTip:ctor(param)
     self:addChild(node)
 
     self._rootnode["tipLabel"]:setString(_str)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()
@@ -50,7 +50,7 @@ function SplitTip:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["cancelBtn"]:addHandleOfControlEvent(
+    self._rootnode["cancelBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()
@@ -58,7 +58,7 @@ function SplitTip:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             _listener()

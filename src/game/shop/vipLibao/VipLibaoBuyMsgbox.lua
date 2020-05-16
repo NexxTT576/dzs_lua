@@ -41,7 +41,7 @@ function VipLibaoBuyMsgbox:ctor(param)
     )
 
     -- 确定
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             if confirmFunc ~= nil then
                 local result = confirmFunc(self)
@@ -61,14 +61,14 @@ function VipLibaoBuyMsgbox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function()
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function()
             closeFunc()
         end,

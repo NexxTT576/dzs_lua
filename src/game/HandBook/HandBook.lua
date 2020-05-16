@@ -166,7 +166,7 @@ function HandBook:ctor()
     game.runningScene = self
     ResMgr.removeBefLayer()
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
         end,

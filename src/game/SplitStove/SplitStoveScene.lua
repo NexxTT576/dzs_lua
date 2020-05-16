@@ -356,7 +356,7 @@ function SplitStoveScene:ctor()
         self._rootnode[key]:setTouchEnabled(true)
     end
 
-    self._rootnode["lianhuaBtn"]:addHandleOfControlEvent(
+    self._rootnode["lianhuaBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local bShow = false
@@ -403,7 +403,7 @@ function SplitStoveScene:ctor()
     )
 
     for i = 1, 4 do
-        self._rootnode["quickAddBtn_" .. tostring(i)]:addHandleOfControlEvent(onQuickAddBtn, CCControlEventTouchDown)
+        self._rootnode["quickAddBtn_" .. tostring(i)]:registerControlEventHandler(onQuickAddBtn, CCControlEventTouchDown)
     end
 
     --    onTabBtn(1)
@@ -411,11 +411,11 @@ function SplitStoveScene:ctor()
     self:onRefineView()
 
     --    self._rootnode["btn0"]:addNodeEventListener(cc.NODE_TOUCH_EVENT, onAddBtn)
-    self._rootnode["rebornBtn"]:addHandleOfControlEvent(onReborn, CCControlEventTouchDown)
+    self._rootnode["rebornBtn"]:registerControlEventHandler(onReborn, CCControlEventTouchDown)
     self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
     self._rootnode["tab2"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["descBtn"]:addHandleOfControlEvent(onDescBtn, CCControlEventTouchDown)
-    self._rootnode["secretShopBtn"]:addHandleOfControlEvent(handler(self, SplitStoveScene.onSecretShopBtn), CCControlEventTouchDown)
+    self._rootnode["descBtn"]:registerControlEventHandler(onDescBtn, CCControlEventTouchDown)
+    self._rootnode["secretShopBtn"]:registerControlEventHandler(handler(self, SplitStoveScene.onSecretShopBtn), CCControlEventTouchDown)
 
     self._itemsData = {
         [VIEW_TYPE.REFINE] = {

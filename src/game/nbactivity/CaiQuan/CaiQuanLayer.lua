@@ -29,7 +29,7 @@ function CaiQuanLayer:onFanPaiView()
 
     if self.firstShowFanPai == nil then
         self.firstShowFanPai = 1
-        self._rootnode["fanpai_confirm"]:addHandleOfControlEvent(
+        self._rootnode["fanpai_confirm"]:registerControlEventHandler(
             function()
                 if self.isTimeOut == true then
                     show_tip_label("活动已结束")
@@ -136,7 +136,7 @@ function CaiQuanLayer:onMainView(data)
         end
 
         for i = 1, 3 do
-            self._rootnode["hand_btn_" .. i]:addHandleOfControlEvent(
+            self._rootnode["hand_btn_" .. i]:registerControlEventHandler(
                 function()
                     if self.isTimeOut == true then
                         show_tip_label("活动已结束")
@@ -154,7 +154,7 @@ function CaiQuanLayer:onMainView(data)
             )
         end
 
-        self._rootnode["jingjiu_btn"]:addHandleOfControlEvent(
+        self._rootnode["jingjiu_btn"]:registerControlEventHandler(
             function()
                 if self.isTimeOut == true then
                     show_tip_label("活动已结束")
@@ -528,7 +528,7 @@ function CaiQuanLayer:ctor(param)
         end
     end
 
-    self._rootnode["start_fan_pai_btn"]:addHandleOfControlEvent(
+    self._rootnode["start_fan_pai_btn"]:registerControlEventHandler(
         function()
             if self.isTimeOut == true then
                 show_tip_label("活动已结束")

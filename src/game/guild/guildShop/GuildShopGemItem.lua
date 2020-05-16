@@ -166,7 +166,7 @@ function GuildShopGemItem:create(param)
 
     -- 兑换按钮
     local exchangeBtn = self._rootnode["exchangeBtn"]
-    exchangeBtn:addHandleOfControlEvent(
+    exchangeBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if exchangeFunc ~= nil then

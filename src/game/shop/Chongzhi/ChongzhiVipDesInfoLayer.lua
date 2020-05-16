@@ -96,7 +96,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             if confirmFunc ~= nil then
                 confirmFunc()

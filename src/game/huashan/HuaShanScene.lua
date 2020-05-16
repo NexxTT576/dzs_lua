@@ -41,7 +41,7 @@ local HUASHAN_HIGHT = 3420
 local HUASHAN_FLOOR = "huashan_floor" .. tostring(game.player.m_uid)
 function HuaShanScene:ctor()
     ResMgr.removeBefLayer()
-    self._rootnode["resetBtn"]:addHandleOfControlEvent(
+    self._rootnode["resetBtn"]:registerControlEventHandler(
         function()
             self:onReset()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -50,7 +50,7 @@ function HuaShanScene:ctor()
     )
 
     self._floor = 0
-    self._rootnode["infoBtn"]:addHandleOfControlEvent(
+    self._rootnode["infoBtn"]:registerControlEventHandler(
         function()
             self:onInfo()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -126,7 +126,7 @@ function HuaShanScene:ctor()
     )
     self._rootnode["yunNode"]:addChild(effect, 100)
 
-    self._rootnode["rewardShowBtn"]:addHandleOfControlEvent(
+    self._rootnode["rewardShowBtn"]:registerControlEventHandler(
         function(eventName, sender)
             local layer = require("game.huashan.HuaShanRewardShow").new()
             self:addChild(layer, 100)

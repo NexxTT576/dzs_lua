@@ -89,7 +89,7 @@ function EquipListCellVTwo:create(param)
     self.selIcon = self._rootnode["selIcon"]
     self.unSelIcon = self._rootnode["unSelIcon"]
 
-    -- self._rootnode["qianghuaBtn"]:addHandleOfControlEvent(function(eventName,sender)
+    -- self._rootnode["qianghuaBtn"]:registerControlEventHandler(function(eventName,sender)
     ResMgr.setControlBtnEvent(
         self._rootnode["qianghuaBtn"],
         function()

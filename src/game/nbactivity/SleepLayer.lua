@@ -69,7 +69,7 @@ function SleepLayer:ctor(param)
         )
     end
 
-    rootnode["restBtn"]:addHandleOfControlEvent(
+    rootnode["restBtn"]:registerControlEventHandler(
         function()
             RequestHelper.nbHuodong.sleep(
                 {

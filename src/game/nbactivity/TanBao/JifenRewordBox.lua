@@ -20,7 +20,7 @@ function JifenRewordBox:initButton()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
     self._rootnode["okBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, confirmFun)
 
     if self._jifen < self._num then

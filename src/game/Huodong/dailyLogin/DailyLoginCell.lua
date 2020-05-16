@@ -176,7 +176,7 @@ function DailyLoginCell:create(param)
 
     -- 领取按钮
     local rewardBtn = self._rootnode["rewardBtn"]
-    rewardBtn:addHandleOfControlEvent(
+    rewardBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rewardListener then

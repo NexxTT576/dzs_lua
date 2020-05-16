@@ -540,10 +540,10 @@ function SpiritUpgradeScene:ctor(index)
     --    initListView()
     --    refreshListView()
 
-    self._rootnode["quickBtn"]:addHandleOfControlEvent(onQuickSelected, CCControlEventTouchDown)
-    self._rootnode["cancelBtn"]:addHandleOfControlEvent(onCancel, CCControlEventTouchDown)
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(onConfirm, CCControlEventTouchUpInside)
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["quickBtn"]:registerControlEventHandler(onQuickSelected, CCControlEventTouchDown)
+    self._rootnode["cancelBtn"]:registerControlEventHandler(onCancel, CCControlEventTouchDown)
+    self._rootnode["confirmBtn"]:registerControlEventHandler(onConfirm, CCControlEventTouchUpInside)
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             pop_scene()
         end,

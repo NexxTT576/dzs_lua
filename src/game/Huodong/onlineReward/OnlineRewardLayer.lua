@@ -259,7 +259,7 @@ function OnlineRewardLayer:ctor(data)
         )
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
@@ -278,7 +278,7 @@ function OnlineRewardLayer:ctor(data)
     )
 
     local getRewardBtn = self._rootnode["getRewardBtn"]
-    getRewardBtn:addHandleOfControlEvent(
+    getRewardBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             getRewardBtn:setEnabled(false)

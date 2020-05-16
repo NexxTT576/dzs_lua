@@ -144,9 +144,9 @@ function ItemChooseScene:ctor(param)
     end
 
     self._rootnode["returnBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, close)
-    self._rootnode["okBtn"]:addHandleOfControlEvent(onConfirmBtn, CCControlEventTouchDown)
+    self._rootnode["okBtn"]:registerControlEventHandler(onConfirmBtn, CCControlEventTouchDown)
 
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(function()
+    self._rootnode["returnBtn"]:registerControlEventHandler(function()
         close(_select)
     end, CCControlEventTouchDown)
 

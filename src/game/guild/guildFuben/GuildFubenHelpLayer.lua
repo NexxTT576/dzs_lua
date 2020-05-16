@@ -27,7 +27,7 @@ function GuildFubenHelpLayer:ctor(param)
     rootnode["titleLabel"]:setString(title or "提示")
     rootnode["msg_lbl"]:setString(msg)
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if closeFunc ~= nil then

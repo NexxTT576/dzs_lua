@@ -105,7 +105,7 @@ function BaseEquipInfoLayer:ctor(param)
     self._rootnode["qiangHuBtn"]:setVisible(false)
 
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then

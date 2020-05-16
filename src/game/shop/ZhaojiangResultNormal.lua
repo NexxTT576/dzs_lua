@@ -178,7 +178,7 @@ function ZhaojiangResultNormal:ctor(param)
     end
 
     -- 退出
-    self._rootnode["exitBtn"]:addHandleOfControlEvent(
+    self._rootnode["exitBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -191,7 +191,7 @@ function ZhaojiangResultNormal:ctor(param)
     TutoMgr.addBtn("zhaojiang_result_exit", self._rootnode["exitBtn"])
     TutoMgr.active()
     --  继续招将
-    self._rootnode["zhaojiangBtn"]:addHandleOfControlEvent(
+    self._rootnode["zhaojiangBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (_type == 1 and _zhaomulingNum <= 0) then
@@ -233,7 +233,7 @@ function ZhaojiangResultNormal:ctor(param)
 
     --    dump(self._heroList[1])
 
-    -- self._rootnode["chakanBtn"]:addHandleOfControlEvent(function()
+    -- self._rootnode["chakanBtn"]:registerControlEventHandler(function()
     --     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
     -- end, CCControlEventTouchUpInside)

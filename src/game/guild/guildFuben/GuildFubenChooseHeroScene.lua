@@ -91,7 +91,7 @@ function GuildFubenChooseHeroScene:ctor(param)
     end
 
     -- 返回
-    self._rootnode["returnBtn"]:addHandleOfControlEvent(
+    self._rootnode["returnBtn"]:registerControlEventHandler(
         function()
             pop_scene()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
@@ -101,7 +101,7 @@ function GuildFubenChooseHeroScene:ctor(param)
 
     -- 布阵
     local setFormBtn = self._rootnode["setFormBtn"]
-    setFormBtn:addHandleOfControlEvent(
+    setFormBtn:registerControlEventHandler(
         function()
             setFormBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -173,7 +173,7 @@ function GuildFubenChooseHeroScene:ctor(param)
     end
 
     -- 开始战斗
-    self._rootnode["startBtn"]:addHandleOfControlEvent(
+    self._rootnode["startBtn"]:registerControlEventHandler(
         function()
             if #self._formHero == 0 then
                 ResMgr.showErr(2900097)

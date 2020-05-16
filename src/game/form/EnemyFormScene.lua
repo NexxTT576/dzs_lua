@@ -187,7 +187,7 @@ function EnemyFormScene:ctor(showType, enemyID)
         end
     end
 
-    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(
+    self._rootnode["spiritAndEquipBtn"]:registerControlEventHandler(
         function(eventName, sender)
             if self._showType == SHOWTYPE.SPIRIT then
                 self._showType = 1

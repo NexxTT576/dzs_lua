@@ -39,7 +39,7 @@ function HeroChoseLayer:ctor(param)
     self.topNode["title"]:setDisplayFrame(titleSp:getDisplayFrame())
 
     local topBtn = self.topNode["backBtn"]
-    topBtn:addHandleOfControlEvent(
+    topBtn:registerControlEventHandler(
         function(eventName, sender)
             PostNotice(NoticeKey.MAINSCENE_SHOW_BOTTOM_LAYER)
             self.updateFunc()
@@ -69,7 +69,7 @@ function HeroChoseLayer:ctor(param)
     self.expNum:setString(0)
 
     local confirmBtn = self.bottomNode["confirmBtn"]
-    confirmBtn:addHandleOfControlEvent(
+    confirmBtn:registerControlEventHandler(
         function(eventName, sender)
             PostNotice(NoticeKey.MAINSCENE_SHOW_BOTTOM_LAYER)
             self.setUpBottomVisible()

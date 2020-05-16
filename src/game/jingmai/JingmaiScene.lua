@@ -80,7 +80,7 @@ function JingmaiScene:ctor()
         self._rootnode["jingmai_bg_female"]:setVisible(true)
     end
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
@@ -88,7 +88,7 @@ function JingmaiScene:ctor()
         CCControlEventTouchDown
     )
 
-    self._rootnode["upgradeBgn"]:addHandleOfControlEvent(
+    self._rootnode["upgradeBgn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._info.level == 0 and self._info.order == 0 then
@@ -172,7 +172,7 @@ function JingmaiScene:ctor()
     end
 
     --  洗经伐脉
-    self._rootnode["resetBtn"]:addHandleOfControlEvent(
+    self._rootnode["resetBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if 50 > game.player:getGold() then
@@ -212,7 +212,7 @@ function JingmaiScene:ctor()
     end
 
     for i = 1, 3 do
-        self._rootnode["jingmaiBtn_" .. tostring(i)]:addHandleOfControlEvent(onChangeView, CCControlEventTouchDown)
+        self._rootnode["jingmaiBtn_" .. tostring(i)]:registerControlEventHandler(onChangeView, CCControlEventTouchDown)
     end
 
     self._index = 1

@@ -26,7 +26,7 @@ function CollectLayer:ctor(itemId, itemType)
     self:addChild(node)
 
     local closeBtn = self._rootnode["closeBtn"]
-    closeBtn:addHandleOfControlEvent(
+    closeBtn:registerControlEventHandler(
         function()
             self:removeSelf()
         end,

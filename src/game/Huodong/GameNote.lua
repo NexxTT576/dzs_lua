@@ -126,7 +126,7 @@ function GameNote:ctor()
 
     -- 进入游戏按钮
     local okBtn = rootnode["btn_ok"]
-    okBtn:addHandleOfControlEvent(
+    okBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 

@@ -109,7 +109,7 @@ function ServerChooseLayer:ctor(serverList, callback)
         self:removeSelf()
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             if callback then
                 callback()

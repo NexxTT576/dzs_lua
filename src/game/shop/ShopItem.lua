@@ -32,7 +32,7 @@ function ShopItem:create(param)
     node:setPosition(_viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 
-    self._rootnode["buyBtn"]:addHandleOfControlEvent(
+    self._rootnode["buyBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if _listener then

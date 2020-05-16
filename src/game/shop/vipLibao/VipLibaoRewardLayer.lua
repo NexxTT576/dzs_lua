@@ -27,7 +27,7 @@ function VipLibaoRewardLayer:ctor(param)
     self._rootnode["vip_level_lbl"]:setString(tostring(vipLv))
     self._rootnode["title_lbl"]:setString(tostring(title))
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             if closeFunc ~= nil then
                 closeFunc()

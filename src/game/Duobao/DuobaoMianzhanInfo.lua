@@ -81,7 +81,7 @@ function DuobaoMianzhanInfo:ctor(param)
 
     self._rootnode["numLbl"]:setString(tostring(self._warFreeCnt))
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:closeFunc()
@@ -91,7 +91,7 @@ function DuobaoMianzhanInfo:ctor(param)
 
     -- 使用免战牌
     local mianzhanBtn = self._rootnode["mianzhanBtn"]
-    mianzhanBtn:addHandleOfControlEvent(
+    mianzhanBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             mianzhanBtn:setEnabled(false)
@@ -102,7 +102,7 @@ function DuobaoMianzhanInfo:ctor(param)
 
     -- 使用金币
     local coinBtn = self._rootnode["coinBtn"]
-    coinBtn:addHandleOfControlEvent(
+    coinBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             coinBtn:setEnabled(false)

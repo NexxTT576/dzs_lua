@@ -146,14 +146,14 @@ function SkillChooseScene:ctor(param)
         pop_scene()
     end
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(_, sender)
             sender:setEnabled(false)
             close()
         end,
         CCControlEventTouchDown
     )
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             _sel = _selected
             close()

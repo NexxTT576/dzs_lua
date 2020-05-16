@@ -120,10 +120,10 @@ function BiwuByTimesCountBox:ctor(param, successCallBack)
         rootnode["costLabel"]:setString(tostring(getCost()))
     end
 
-    rootnode["add10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["add1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
 
     onNumBtn(_, rootnode["add1Btn"])
 

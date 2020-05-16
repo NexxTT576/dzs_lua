@@ -32,7 +32,7 @@ function WorldBossBattleResultLayer:ctor(param)
         end
     end
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if confirmFunc ~= nil then
@@ -42,7 +42,7 @@ function WorldBossBattleResultLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then

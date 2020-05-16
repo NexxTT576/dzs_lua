@@ -37,7 +37,7 @@ function GuildFubenRankItem:create(param)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 
-    self._rootnode["zhenrongBtn"]:addHandleOfControlEvent(
+    self._rootnode["zhenrongBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if checkFunc ~= nil then

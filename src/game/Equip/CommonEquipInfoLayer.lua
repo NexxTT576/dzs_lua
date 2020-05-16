@@ -105,7 +105,7 @@ function CommonEquipInfoLayer:ctor(param, infoType)
     end
 
     self._rootnode["closeBtn"]:setVisible(true)
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             if _closeListener then
                 _closeListener()
@@ -245,12 +245,12 @@ function CommonEquipInfoLayer:ctor(param, infoType)
 
     self._rootnode["cardName"]:setString(_baseInfo.name)
 
-    self._rootnode["changeBtn"]:addHandleOfControlEvent(change, CCControlEventTouchDown)
-    self._rootnode["takeOffBtn"]:addHandleOfControlEvent(takeOff, CCControlEventTouchDown)
-    self._rootnode["qiangHuBtn"]:addHandleOfControlEvent(qiangHua, CCControlEventTouchUpInside)
+    self._rootnode["changeBtn"]:registerControlEventHandler(change, CCControlEventTouchDown)
+    self._rootnode["takeOffBtn"]:registerControlEventHandler(takeOff, CCControlEventTouchDown)
+    self._rootnode["qiangHuBtn"]:registerControlEventHandler(qiangHua, CCControlEventTouchUpInside)
 
     if _baseInfo.polish == 1 then
-        self._rootnode["xiLianBtn"]:addHandleOfControlEvent(xiLian, CCControlEventTouchUpInside)
+        self._rootnode["xiLianBtn"]:registerControlEventHandler(xiLian, CCControlEventTouchUpInside)
     else
         self._rootnode["xiLianBtn"]:setVisible(false)
     end

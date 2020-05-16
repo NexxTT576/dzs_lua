@@ -23,14 +23,14 @@ function SplitResultLayer:ctor(data, callback)
 
     rootnode["titleLabel"]:setString("炼化成功")
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             self:removeSelf()
         end,
         CCControlEventTouchDown
     )
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(
+    rootnode["closeBtn"]:registerControlEventHandler(
         function()
             self:removeSelf()
         end,

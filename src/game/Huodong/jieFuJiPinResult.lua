@@ -65,7 +65,7 @@ function JieFuJiPinResult:ctor(data)
 
     self._rootnode["listView"]:addChild(self.curSilverNum)
 
-    self._rootnode["confirm_btn"]:addHandleOfControlEvent(
+    self._rootnode["confirm_btn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self.jumpFunc()

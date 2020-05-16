@@ -139,7 +139,7 @@ function LeijiLoginItem:create(param)
     self:addChild(node)
 
     -- 领取按钮
-    self._rootnode["rewardBtn"]:addHandleOfControlEvent(
+    self._rootnode["rewardBtn"]:registerControlEventHandler(
         function()
             if rewardListener ~= nil then
                 self._rootnode["rewardBtn"]:setEnabled(false)

@@ -116,7 +116,7 @@ function ShenmiLayer:ctor(param)
     self._listViewNode:setPosition(self._rootnode["listView_node"]:getContentSize().width - 5, listSize.height * 0.02)
     self._rootnode["listView_node"]:addChild(self._listViewNode)
 
-    self._rootnode["lianhuaBtn"]:addHandleOfControlEvent(
+    self._rootnode["lianhuaBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_LIANHUALU)
@@ -124,7 +124,7 @@ function ShenmiLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["refreshBtn"]:addHandleOfControlEvent(
+    self._rootnode["refreshBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:Refresh()

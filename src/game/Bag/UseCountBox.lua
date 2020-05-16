@@ -27,7 +27,7 @@ function UseCountBox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
@@ -126,14 +126,14 @@ function UseCountBox:ctor(param)
         rootnode["useCountLabel"]:setString(tostring(num))
     end
 
-    rootnode["add10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["add1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce10Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
-    rootnode["reduce1Btn"]:addHandleOfControlEvent(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["add1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
+    rootnode["reduce1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
 
     onNumBtn(_, rootnode["add1Btn"])
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if num > 0 then

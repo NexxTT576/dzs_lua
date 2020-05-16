@@ -34,7 +34,7 @@ function BagItem:create(param)
     self.typeNode = display.newNode()
     node:addChild(self.typeNode)
 
-    self._rootnode["useBtn"]:addHandleOfControlEvent(
+    self._rootnode["useBtn"]:registerControlEventHandler(
         function()
             if _useListener then
                 _useListener(self, 1)

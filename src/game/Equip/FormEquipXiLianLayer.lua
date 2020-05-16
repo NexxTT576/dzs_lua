@@ -293,10 +293,10 @@ function EquipXiLianScene:ctor(param)
         RequestHelperV2.request(repreq)
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchDown)
-    self._rootnode["xi_lian_btn"]:addHandleOfControlEvent(c_func(xilian, 1), CCControlEventTouchDown)
-    self._rootnode["xi_lian_10_btn"]:addHandleOfControlEvent(c_func(xilian, 10), CCControlEventTouchDown)
-    self._rootnode["ti_huan_btn"]:addHandleOfControlEvent(replace, CCControlEventTouchDown)
+    self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchDown)
+    self._rootnode["xi_lian_btn"]:registerControlEventHandler(c_func(xilian, 1), CCControlEventTouchDown)
+    self._rootnode["xi_lian_10_btn"]:registerControlEventHandler(c_func(xilian, 10), CCControlEventTouchDown)
+    self._rootnode["ti_huan_btn"]:registerControlEventHandler(replace, CCControlEventTouchDown)
 end
 
 return EquipXiLianScene

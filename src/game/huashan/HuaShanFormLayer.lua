@@ -50,7 +50,7 @@ function HuaShanFormLayer:ctor(param)
 
     self._rootnode["titleLabel"]:setString(string.format("论剑第%d层", _floor))
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             self:removeSelf()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
@@ -58,7 +58,7 @@ function HuaShanFormLayer:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["enterBtn"]:addHandleOfControlEvent(
+    self._rootnode["enterBtn"]:registerControlEventHandler(
         function()
             if _index <= _floor then
                 show_tip_label("当前层级已经挑战")

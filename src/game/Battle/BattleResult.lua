@@ -398,7 +398,7 @@ function BattleResult:initWin(rewards)
     --     })
     -- okBtn:setFont(okText)
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self.jumpFunc ~= nil then
@@ -474,7 +474,7 @@ function BattleResult:initLost(rewards)
     end
 
     -- 武将强化
-    rootnode["wujiangBtn"]:addHandleOfControlEvent(
+    rootnode["wujiangBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_XIAKE)
@@ -483,7 +483,7 @@ function BattleResult:initLost(rewards)
     )
 
     -- 装备强化
-    rootnode["zhuangbeiBtn"]:addHandleOfControlEvent(
+    rootnode["zhuangbeiBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_EQUIPMENT)
@@ -492,7 +492,7 @@ function BattleResult:initLost(rewards)
     )
 
     -- 阵容
-    rootnode["goZhenrongBtn"]:addHandleOfControlEvent(
+    rootnode["goZhenrongBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ZHENRONG)
@@ -501,7 +501,7 @@ function BattleResult:initLost(rewards)
     )
 
     -- 侠客送礼
-    rootnode["heroRewardBtn"]:addHandleOfControlEvent(
+    rootnode["heroRewardBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
@@ -510,7 +510,7 @@ function BattleResult:initLost(rewards)
     )
 
     -- 真气
-    rootnode["zhenqiBtn"]:addHandleOfControlEvent(
+    rootnode["zhenqiBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameStateManager:ChangeState(GAME_STATE.STATE_JINGYUAN)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -518,7 +518,7 @@ function BattleResult:initLost(rewards)
         CCControlEventTouchUpInside
     )
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self.jumpFunc ~= nil then

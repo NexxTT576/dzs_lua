@@ -75,7 +75,7 @@ function GuildMemberVerifyItem:create(param)
     self._onlineLbl:setPosition(-self._onlineLbl:getContentSize().width / 2, -self._onlineLbl:getContentSize().height / 2)
 
     -- 接收按钮
-    self._rootnode["accept_btn"]:addHandleOfControlEvent(
+    self._rootnode["accept_btn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if acceptFunc ~= nil then
@@ -87,7 +87,7 @@ function GuildMemberVerifyItem:create(param)
     )
 
     -- 拒绝按钮
-    self._rootnode["reject_btn"]:addHandleOfControlEvent(
+    self._rootnode["reject_btn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rejectFunc ~= nil then

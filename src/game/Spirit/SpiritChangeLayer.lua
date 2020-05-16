@@ -49,8 +49,8 @@ function SpiritChangeLayer:ctor(data)
         self:removeSelf()
     end
 
-    rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchDown)
-    rootnode["tag_close"]:addHandleOfControlEvent(close, CCControlEventTouchDown)
+    rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchDown)
+    rootnode["tag_close"]:registerControlEventHandler(close, CCControlEventTouchDown)
 end
 
 return SpiritChangeLayer

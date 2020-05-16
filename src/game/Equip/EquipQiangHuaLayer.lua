@@ -63,7 +63,7 @@ function EquipQiangHuaLayer:ctor(param)
 
     self._rootnode["titleLabel"]:setString("装备强化")
 
-    self._rootnode["back_btn"]:addHandleOfControlEvent(
+    self._rootnode["back_btn"]:registerControlEventHandler(
         function()
             self:removeSelf()
         end,
@@ -109,7 +109,7 @@ function EquipQiangHuaLayer:ctor(param)
 
     self.itemData = data_item_item[itemId]
 
-    self._rootnode["qianghua_btn"]:addHandleOfControlEvent(
+    self._rootnode["qianghua_btn"]:registerControlEventHandler(
         function()
             if self.weaponLimit <= self.lvl then --如果武器达到上限
                 self:createTips(TIP_REACH_LIMIT)
@@ -122,7 +122,7 @@ function EquipQiangHuaLayer:ctor(param)
         CCControlEventTouchDown
     )
 
-    self._rootnode["auto_btn"]:addHandleOfControlEvent(
+    self._rootnode["auto_btn"]:registerControlEventHandler(
         function()
             if self.weaponLimit <= self.lvl then --如果武器达到上限
                 print("达到上限")

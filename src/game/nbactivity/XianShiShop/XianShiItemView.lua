@@ -132,7 +132,7 @@ function XianShiItemView:refreshItem(param)
             confirmFunc(param.index, self)
         end
     end
-    self._rootnode["rewardBtn"]:addHandleOfControlEvent(closeFun, CCControlEventTouchUpInside)
+    self._rootnode["rewardBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 
     local vip = game.player:getVip()
     local numTotal = data_xianshishangdian_xianshishangdian[param.itemData.id].arr_sum2[vip]

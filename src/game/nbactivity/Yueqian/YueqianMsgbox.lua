@@ -117,7 +117,7 @@ function YueqianMsgbox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -125,7 +125,7 @@ function YueqianMsgbox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
@@ -133,7 +133,7 @@ function YueqianMsgbox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["getRewardBtn"]:addHandleOfControlEvent(
+    rootnode["getRewardBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if confirmFunc ~= nil then

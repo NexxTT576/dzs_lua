@@ -137,7 +137,7 @@ function HeroCollectCell:create(param)
 
     self.goto_btn = self._rootnode["goto_btn"]
 
-    self.goto_btn:addHandleOfControlEvent(
+    self.goto_btn:registerControlEventHandler(
         function(eventName, sender)
             self:getLvlList()
         end,

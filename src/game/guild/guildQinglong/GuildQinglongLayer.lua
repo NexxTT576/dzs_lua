@@ -101,7 +101,7 @@ function GuildQinglongLayer:ctor(data)
 
     self:createShadowLbl(tostring(self._bossLevel), cc.c3b(0, 219, 52), self._rootnode["boss_level_lbl"], 20)
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParentAndCleanup(true)
@@ -122,7 +122,7 @@ function GuildQinglongLayer:ctor(data)
     local openBtn = self._rootnode["open_btn"]
 
     if jopType == GUILD_JOB_TYPE.leader or jopType == GUILD_JOB_TYPE.assistant then
-        levelupBtn:addHandleOfControlEvent(
+        levelupBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if guildMgr:checkIsReachMaxLevel(self._buildType, self._level) == true then
@@ -151,7 +151,7 @@ function GuildQinglongLayer:ctor(data)
             CCControlEventTouchUpInside
         )
 
-        openBtn:addHandleOfControlEvent(
+        openBtn:registerControlEventHandler(
             function(eventName, sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 if self._currentUnionMoney < self._openCostCoin then
@@ -168,7 +168,7 @@ function GuildQinglongLayer:ctor(data)
     local shuchuBtn = self._rootnode["shuchuBtn"]
     local extraRewardBtn = self._rootnode["extraRewardBtn"]
     -- 输出排行
-    shuchuBtn:addHandleOfControlEvent(
+    shuchuBtn:registerControlEventHandler(
         function(eventName, sender)
             shuchuBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -195,7 +195,7 @@ function GuildQinglongLayer:ctor(data)
     )
 
     -- 奖励预览
-    extraRewardBtn:addHandleOfControlEvent(
+    extraRewardBtn:registerControlEventHandler(
         function(eventName, sender)
             extraRewardBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

@@ -75,7 +75,7 @@ function HeroQuickChose:ctor(callback, removeListener)
         self._rootnode["selectedFlag_" .. tostring(tag)]:setVisible(selected[tag])
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(
                 sender,
@@ -88,14 +88,14 @@ function HeroQuickChose:ctor(callback, removeListener)
         CCControlEventTouchDown
     )
 
-    self._rootnode["chooseAllBtn"]:addHandleOfControlEvent(
+    self._rootnode["chooseAllBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(sender, onSelecteAllBtn)
         end,
         CCControlEventTouchDown
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             btn_effect(sender, onConfirmBtn)
         end,

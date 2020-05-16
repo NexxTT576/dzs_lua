@@ -138,7 +138,7 @@ function GuildManagerLayer:ctor()
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -210,7 +210,7 @@ function GuildManagerLayer:ctor()
 
     for i, v in ipairs(tags) do
         if rootnode[v] ~= nil then
-            rootnode[v]:addHandleOfControlEvent(
+            rootnode[v]:registerControlEventHandler(
                 function(eventName, sender)
                     onTouchBtn(v)
                 end,

@@ -298,7 +298,7 @@ function ArenaCell:create(param)
         print("nonono")
     end
 
-    self._rootnode["challenge_btn"]:addHandleOfControlEvent(
+    self._rootnode["challenge_btn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self.btnFunc()

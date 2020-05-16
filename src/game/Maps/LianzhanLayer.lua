@@ -229,7 +229,7 @@ function LianzhanLayer:ctor(param)
     levelNameLbl:setString(tostring(levelData.name))
 
     -- 关闭
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             local submapID = game.player.m_cur_normal_fuben_ID
             local data_field_field = require("data.data_field_field")

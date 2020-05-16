@@ -50,7 +50,7 @@ function ArenaExchangeCell:create(param)
 
     self:updateItem(param.itemData)
 
-    self._rootnode["exchangeBtn"]:addHandleOfControlEvent(
+    self._rootnode["exchangeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._exchangeFunc ~= nil then

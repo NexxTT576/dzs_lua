@@ -28,7 +28,7 @@ function GuildFuliRewardMsgBox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
@@ -36,7 +36,7 @@ function GuildFuliRewardMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()

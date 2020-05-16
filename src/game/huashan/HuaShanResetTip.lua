@@ -48,7 +48,7 @@ function HuaShanResetTip:ctor(param)
     self._rootnode["cost_num"]:setString(tostring(_costNum or 0))
     self._rootnode["remainLabel"]:setString(tostring(_remainNum or 0))
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+    self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()
@@ -56,7 +56,7 @@ function HuaShanResetTip:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["cancelBtn"]:addHandleOfControlEvent(
+    self._rootnode["cancelBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if _cancelListener then
@@ -67,7 +67,7 @@ function HuaShanResetTip:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             _listener()

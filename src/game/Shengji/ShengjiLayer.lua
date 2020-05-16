@@ -54,7 +54,7 @@ function ShengjiLayer:ctor(param)
 
     TutoMgr.lvlupSet(self._uplevel)
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+    self._rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
             if confirmFunc ~= nil then

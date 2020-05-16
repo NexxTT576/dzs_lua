@@ -145,7 +145,7 @@ function EquipDebrisCellVTwo:create(param)
     self.doneTTF = self._rootnode["done"]
     self.unDoneTTF = self._rootnode["undone"]
 
-    self.checkBtn:addHandleOfControlEvent(
+    self.checkBtn:registerControlEventHandler(
         function(eventName, sender)
             print("itete" .. self.itemId)
             createDiaoLuoLayer(self.itemId)
@@ -153,7 +153,7 @@ function EquipDebrisCellVTwo:create(param)
         CCControlEventTouchUpInside
     )
 
-    self.hechengBtn:addHandleOfControlEvent(
+    self.hechengBtn:registerControlEventHandler(
         function(eventName, sender)
             hechengFunc(
                 {

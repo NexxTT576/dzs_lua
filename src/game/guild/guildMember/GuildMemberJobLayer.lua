@@ -173,7 +173,7 @@ function GuildMemberJobLayer:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(
+    self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -333,7 +333,7 @@ function GuildMemberJobLayer:registerBtnEvent()
 
     for i, v in ipairs(self._btnTags) do
         if self._rootnode[v] ~= nil then
-            self._rootnode[v]:addHandleOfControlEvent(
+            self._rootnode[v]:registerControlEventHandler(
                 function(eventName, sender)
                     onTouchBtn(v)
                 end,

@@ -180,7 +180,7 @@ function ShopWindow:ctor(bGoShowList)
         self._rootnode["pubNode"]:setPositionY(self._rootnode["pubNode"]:getPositionY() + 25)
     end
 
-    self._rootnode["tag_preview"]:addHandleOfControlEvent(
+    self._rootnode["tag_preview"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["tag_preview"]:setEnabled(false)
 

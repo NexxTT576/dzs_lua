@@ -352,7 +352,7 @@ function ChallengeScene:ctor(viewType)
     self.listView = self._rootnode["listView"]
     self.jingyingPlusBtn = self._rootnode["jingying_plus_btn"]
 
-    self.jingyingPlusBtn:addHandleOfControlEvent(
+    self.jingyingPlusBtn:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addJingYingNum()
@@ -360,7 +360,7 @@ function ChallengeScene:ctor(viewType)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(
+    self._rootnode["backBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)

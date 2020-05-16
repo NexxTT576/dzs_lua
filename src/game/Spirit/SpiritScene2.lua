@@ -65,7 +65,7 @@ function SpiritScene2:ctor(param)
         self._rootnode["vip_level_10"]:setVisible(false)
     end
 
-    self._rootnode["spiritInfoBtn"]:addHandleOfControlEvent(
+    self._rootnode["spiritInfoBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self._rootnode["spiritInfoBtn"]:setEnabled(false)
             self._rootnode["equipSpiritBtn"]:setEnabled(false)
@@ -82,7 +82,7 @@ function SpiritScene2:ctor(param)
         CCControlEventTouchDown
     )
 
-    self._rootnode["equipSpiritBtn"]:addHandleOfControlEvent(
+    self._rootnode["equipSpiritBtn"]:registerControlEventHandler(
         function(eventName, sender)
             local equipSpiritScene = require("game.form.HeroSettingScene").new(2)
             display.replaceScene(equipSpiritScene)
@@ -168,9 +168,9 @@ function SpiritScene2:ctor(param)
             end
         )
     end
-    self._rootnode["startOneBtn"]:addHandleOfControlEvent(onStart, CCControlEventTouchDown)
-    self._rootnode["superStartBtn"]:addHandleOfControlEvent(onStart, CCControlEventTouchDown)
-    self._rootnode["start10Btn"]:addHandleOfControlEvent(
+    self._rootnode["startOneBtn"]:registerControlEventHandler(onStart, CCControlEventTouchDown)
+    self._rootnode["superStartBtn"]:registerControlEventHandler(onStart, CCControlEventTouchDown)
+    self._rootnode["start10Btn"]:registerControlEventHandler(
         function(eventName, sender)
             local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.LianShici_Zhenqi, game.player:getLevel(), game.player:getVip())
             if not bHasOpen then

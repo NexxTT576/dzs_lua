@@ -71,7 +71,7 @@ function JianghuScene:ctor()
         end
     )
 
-    self._rootnode["heroShowBtn"]:addHandleOfControlEvent(
+    self._rootnode["heroShowBtn"]:registerControlEventHandler(
         function(a, b, c, d)
             --        dump(self._groupHerosData)
             --        self._rootnode["heroShowBtn"]:setEnabled(false)
@@ -97,7 +97,7 @@ function JianghuScene:ctor()
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["heroTargetBtn"]:addHandleOfControlEvent(
+    self._rootnode["heroTargetBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self._rootnode["heroShowBtn"]:setEnabled(false)
@@ -107,7 +107,7 @@ function JianghuScene:ctor()
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["sendAllBtn"]:addHandleOfControlEvent(
+    self._rootnode["sendAllBtn"]:registerControlEventHandler(
         function()
             --
 
@@ -146,7 +146,7 @@ function JianghuScene:ctor()
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["onShopBtn"]:addHandleOfControlEvent(
+    self._rootnode["onShopBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_SHOP, true)
@@ -154,7 +154,7 @@ function JianghuScene:ctor()
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["onBattleBtn"]:addHandleOfControlEvent(
+    self._rootnode["onBattleBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ARENA)

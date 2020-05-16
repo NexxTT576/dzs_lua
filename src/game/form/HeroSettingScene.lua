@@ -211,7 +211,7 @@ function HeroSettingScene:ctor(showType)
         end
     end
 
-    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(
+    self._rootnode["spiritAndEquipBtn"]:registerControlEventHandler(
         function(eventName, sender)
             if self._showType == SHOWTYPE.SPIRIT then
                 self._showType = 1
@@ -224,7 +224,7 @@ function HeroSettingScene:ctor(showType)
         CCControlEventTouchDown
     )
 
-    self._rootnode["quickEquipBtn"]:addHandleOfControlEvent(
+    self._rootnode["quickEquipBtn"]:registerControlEventHandler(
         function(eventName, sender)
             -- if game.player:getLevel() < 11 then
             --     show_tip_label("此功能11级开放")
@@ -304,7 +304,7 @@ function HeroSettingScene:ctor(showType)
         CCControlEventTouchDown
     )
 
-    self._rootnode["heroSettingBtn"]:addHandleOfControlEvent(
+    self._rootnode["heroSettingBtn"]:registerControlEventHandler(
         function(eventName, sender)
             self:setForm()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -312,7 +312,7 @@ function HeroSettingScene:ctor(showType)
         CCControlEventTouchDown
     )
 
-    self._rootnode["changeHeroBtn"]:addHandleOfControlEvent(
+    self._rootnode["changeHeroBtn"]:registerControlEventHandler(
         function()
             self:performWithDelay(
                 function()

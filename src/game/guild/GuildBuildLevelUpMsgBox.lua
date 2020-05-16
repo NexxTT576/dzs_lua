@@ -43,7 +43,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
         self:removeFromParentAndCleanup(true)
     end
 
-    rootnode["tag_close"]:addHandleOfControlEvent(
+    rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
@@ -51,7 +51,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(
+    rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
@@ -59,7 +59,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
         CCControlEventTouchUpInside
     )
 
-    rootnode["confirmBtn"]:addHandleOfControlEvent(
+    rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 

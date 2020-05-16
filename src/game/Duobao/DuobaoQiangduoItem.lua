@@ -71,7 +71,7 @@ function DuobaoQiangduoItem:create(param)
     self:updateItem(param.itemData)
 
     local qiangduoBtn = self._rootnode["qiangduoBtn"]
-    qiangduoBtn:addHandleOfControlEvent(
+    qiangduoBtn:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             ResMgr.oppName = self._itemData.name
