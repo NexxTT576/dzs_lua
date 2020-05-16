@@ -43,7 +43,7 @@ function ItemInformation:ctor(param)
                                     if endFunc ~= nil then
                                         endFunc()
                                     end
-                                    self:removeFromParentAndCleanup(true)
+                                    self:removeFromParent(true)
                                 end
                             )
                         }

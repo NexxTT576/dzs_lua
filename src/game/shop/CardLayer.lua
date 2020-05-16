@@ -31,7 +31,7 @@ function CardLayer:ctor(heroInfo)
         {
             img = "#com_btn_large_red.png",
             listener = function()
-                self:removeFromParentAndCleanup(true)
+                self:removeFromParent(true)
             end
         }
     )
@@ -40,7 +40,7 @@ function CardLayer:ctor(heroInfo)
 
     --
     --    cardroot["closeBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, function()
-    --        self:removeFromParentAndCleanup(true)
+    --        self:removeFromParent(true)
     --    end)
 end
 

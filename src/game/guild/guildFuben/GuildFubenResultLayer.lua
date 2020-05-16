@@ -26,7 +26,7 @@ function GuildFubenResultLayer:ctor(param)
         if confirmFunc ~= nil then
             confirmFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     -- 关闭按钮

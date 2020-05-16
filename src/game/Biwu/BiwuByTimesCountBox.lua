@@ -18,7 +18,7 @@ function BiwuByTimesCountBox:ctor(param, successCallBack)
 
     local function onClose()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     ResMgr.setControlBtnEvent(

@@ -120,7 +120,7 @@ function DuobaoItemInfoLayer:ctor(param)
         if _confirmListen ~= nil then
             _confirmListen()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     self._rootnode["closeBtn"]:setVisible(true)

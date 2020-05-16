@@ -114,7 +114,7 @@ function YueqianMsgbox:ctor(param)
         if cancleFunc ~= nil then
             cancleFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["tag_close"]:registerControlEventHandler(
@@ -139,7 +139,7 @@ function YueqianMsgbox:ctor(param)
             if confirmFunc ~= nil then
                 confirmFunc()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

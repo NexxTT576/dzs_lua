@@ -14,7 +14,7 @@ function RewardMsgBox:initButton()
             self._confirmFunc()
         end
         PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 

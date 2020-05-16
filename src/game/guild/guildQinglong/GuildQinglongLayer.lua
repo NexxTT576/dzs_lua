@@ -33,7 +33,7 @@ function GuildQinglongLayer:reqLevelup(msgBox)
                 else
                     ResMgr.showErr(2900083)
                     local rtnObj = data.rtnObj
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                     self:updateLevel(rtnObj.buildLevel, rtnObj.currentUnionMoney)
                     self:checkBtnState(self._level, self._curState)
 
@@ -104,7 +104,7 @@ function GuildQinglongLayer:ctor(data)
     self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

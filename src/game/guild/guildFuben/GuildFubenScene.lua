@@ -53,7 +53,7 @@ function GuildFubenScene:reqLevelup(msgBox)
                 else
                     ResMgr.showErr(2900083)
                     local rtnObj = data.rtnObj
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                     self:updateLevel(rtnObj.buildLevel, rtnObj.currentUnionMoney)
 
                     game.player:getGuildInfo():updateData({fubenLevel = rtnObj.buildLevel, currentUnionMoney = rtnObj.currentUnionMoney})
@@ -129,7 +129,7 @@ function GuildFubenScene:getReward(showType, cell, itemData, msgBox)
                     ResMgr.showErr(2900090)
                     itemData.boxState = FUBEN_REWARD_STATE.hasGet
                     cell:setBoxState(itemData.boxState)
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                 end
             end
         }
@@ -488,7 +488,7 @@ end
 
 function GuildFubenScene:reloadListView(listData)
     if self._listTable ~= nil then
-        self._listTable:removeFromParentAndCleanup(true)
+        self._listTable:removeFromParent(true)
     end
 
     local dataList = {}
@@ -648,7 +648,7 @@ function GuildFubenScene:onEnter()
         self._bExit = false
         local broadcastBg = self._rootnode["broadcast_tag"]
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end

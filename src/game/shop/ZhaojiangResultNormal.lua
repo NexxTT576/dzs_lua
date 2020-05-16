@@ -181,7 +181,7 @@ function ZhaojiangResultNormal:ctor(param)
     self._rootnode["exitBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
             PostNotice(NoticeKey.CommonUpdate_Label_Gold)
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
         end,

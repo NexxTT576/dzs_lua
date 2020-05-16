@@ -613,7 +613,7 @@ function DuobaoResult:ctor(param)
         function(eventName, sender)
             self:setBtnDisabled(false)
             local function closeFunc(node)
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
                 replayBtn:setEnabled(true)
             end
             self:addChild(require("game.Duobao.DuobaoBattleReplayLayer").new(data, closeFunc), MAX_ZORDER)

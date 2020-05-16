@@ -68,7 +68,7 @@ function TopLayer:ctor(isOther)
     if broadcastBg ~= nil and self._broadcast == nil then
         -- self._broadcast = require("game.Broadcast").new(broadcastBg:getContentSize())
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         self._broadcast = game.broadcast
         broadcastBg:addChild(self._broadcast)

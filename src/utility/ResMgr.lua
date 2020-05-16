@@ -1058,7 +1058,7 @@ function ResMgr.createArma(param)
                     if isRetain ~= true then
                         ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo(path)
 
-                        tempArma:removeFromParentAndCleanup(true)
+                        tempArma:removeFromParent(true)
                     end
                     if finishFunc ~= nil then
                         finishFunc()

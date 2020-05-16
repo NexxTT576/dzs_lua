@@ -365,7 +365,7 @@ function LevelRewardLayer:ctor(data)
                         CCCallFunc:create(
                             function()
                                 --layer:removeSelf()
-                                self:removeFromParentAndCleanup(true)
+                                self:removeFromParent(true)
                             end
                         )
                     }

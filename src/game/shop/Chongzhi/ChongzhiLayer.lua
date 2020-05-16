@@ -119,7 +119,7 @@ function ChongzhiLayer:ctor()
     self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -407,7 +407,7 @@ function ChongzhiLayer:initVipRewardInfo(viplevelData)
     local cellContentSize = require("game.shop.Chongzhi.ChongzhiRewardItem").new():getContentSize()
 
     if self.ListTable ~= nil then
-        self.ListTable:removeFromParentAndCleanup(true)
+        self.ListTable:removeFromParent(true)
     end
 
     self.ListTable =
@@ -456,7 +456,7 @@ function ChongzhiLayer:initMonthCardDataInfo()
 
             if GameStateManager.currentState == GAME_STATE.STATE_JINGCAI_HUODONG then
                 game.runningScene:changeShowLayer(nbActivityShowType.MonthCard)
-                self:removeFromParentAndCleanup(true)
+                self:removeFromParent(true)
             else
                 GameStateManager:ChangeState(GAME_STATE.STATE_JINGCAI_HUODONG, nbActivityShowType.MonthCard)
             end
@@ -719,7 +719,7 @@ function ChongzhiLayer:buyItemMsgbox(param)
                 if (closeListener ~= nil) then
                     closeListener()
                 end
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
             end,
             closeListener = closeListener
         }

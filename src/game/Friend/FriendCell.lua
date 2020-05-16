@@ -313,7 +313,7 @@ function FriendCell:createDelMsgBox()
                 if (closeListener ~= nil) then
                     closeListener()
                 end
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
             end,
             closeListener = closeListener
         }

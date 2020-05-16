@@ -102,7 +102,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
                 confirmFunc()
             end
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

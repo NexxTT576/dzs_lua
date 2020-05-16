@@ -42,7 +42,7 @@ function DuobaoDebrisInfo:initDuobaoListScene(data)
         )
     )
 
-    self:removeFromParentAndCleanup(true)
+    self:removeFromParent(true)
 end
 
 function DuobaoDebrisInfo:onExit()
@@ -79,7 +79,7 @@ function DuobaoDebrisInfo:ctor(param)
                                 if (self.closeListener ~= nil) then
                                     self.closeListener()
                                 end
-                                self:removeFromParentAndCleanup(true)
+                                self:removeFromParent(true)
                             end
                         )
                     }

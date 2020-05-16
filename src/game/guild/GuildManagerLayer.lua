@@ -35,7 +35,7 @@ local function modifyManifesto(text, node)
                         -- 修改本地存储的帮派宣言
                         game.player:getGuildMgr():getGuildInfo().m_unionOutdes = text
 
-                        node:removeFromParentAndCleanup(true)
+                        node:removeFromParent(true)
                     end
                 end
             end
@@ -57,7 +57,7 @@ local function zijian(node)
                     local rtnObj = data.rtnObj
                     game.player:getGuildMgr():setCoverVo(rtnObj)
                     PostNotice(NoticeKey.GUILD_UPDATE_ZIJIAN)
-                    node:removeFromParentAndCleanup(true)
+                    node:removeFromParent(true)
 
                     -- 成功开启自荐提示
                     game.runningScene:addChild(
@@ -67,7 +67,7 @@ local function zijian(node)
                                 msg = data_ui_ui[6].content,
                                 isSingleBtn = true,
                                 confirmFunc = function(msgBox)
-                                    msgBox:removeFromParentAndCleanup(true)
+                                    msgBox:removeFromParent(true)
                                 end
                             }
                         ),
@@ -76,7 +76,7 @@ local function zijian(node)
                 end
             end,
             errback = function(data)
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
             end
         }
     )
@@ -109,11 +109,11 @@ local function reqDemise(node)
                         end
                     end
 
-                    node:removeFromParentAndCleanup(true)
+                    node:removeFromParent(true)
                 end
             end,
             errback = function(data)
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
             end
         }
     )
@@ -135,7 +135,7 @@ function GuildManagerLayer:ctor()
     rootnode["titleLabel"]:setString("帮派功能")
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["tag_close"]:registerControlEventHandler(
@@ -171,7 +171,7 @@ function GuildManagerLayer:ctor()
             --             zijian(node)
             --         end
             --     }), MAX_ZORDER)
-            -- self:removeFromParentAndCleanup(true)
+            -- self:removeFromParent(true)
             show_tip_label(data_error_error[2800001].prompt)
         elseif tag == tags[3] then
             -- 修改帮派宣言
@@ -188,7 +188,7 @@ function GuildManagerLayer:ctor()
                 ),
                 MAX_ZORDER
             )
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         elseif tag == tags[4] then
             -- 禅让帮主
             game.runningScene:addChild(
@@ -204,7 +204,7 @@ function GuildManagerLayer:ctor()
                 ),
                 MAX_ZORDER
             )
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end
     end
 

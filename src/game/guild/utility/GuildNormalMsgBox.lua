@@ -44,7 +44,7 @@ function GuildNormalMsgBox:ctor(param)
         if cancelFunc ~= nil then
             cancelFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     local function confirm()

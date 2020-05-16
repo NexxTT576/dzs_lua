@@ -344,10 +344,10 @@ function WorldBossScene:ctor()
                         resTable = rowAll,
                         confirmFunc = function(node)
                             GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
-                            node:removeFromParentAndCleanup(true)
+                            node:removeFromParent(true)
                         end,
                         closeFunc = function(node)
-                            node:removeFromParentAndCleanup(true)
+                            node:removeFromParent(true)
                         end
                     }
                 )

@@ -55,7 +55,7 @@ function RewardCenterLayer:getRewardMsgBox(cellDatas)
         PostNotice(NoticeKey.MainMenuScene_RewardCenter)
     end
 
-    self:removeFromParentAndCleanup(true)
+    self:removeFromParent(true)
 end
 
 -- 全部领取
@@ -306,7 +306,7 @@ function RewardCenterLayer:ctor(data)
                     {
                         CCCallFunc:create(
                             function()
-                                self:removeFromParentAndCleanup(true)
+                                self:removeFromParent(true)
                             end
                         )
                     }

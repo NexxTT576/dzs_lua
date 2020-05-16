@@ -212,7 +212,7 @@ end
 
 function DengjiTouziLayer:initRewardListView()
     if self._listTable ~= nil then
-        self._listTable:removeFromParentAndCleanup(true)
+        self._listTable:removeFromParent(true)
     end
 
     -- 创建

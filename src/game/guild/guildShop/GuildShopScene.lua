@@ -58,7 +58,7 @@ function GuildShopScene:reqLevelup(msgBox)
                 else
                     ResMgr.showErr(2900083)
                     local rtnObj = data.rtnObj
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                     self:updateLevel(rtnObj.buildLevel, rtnObj.currentUnionMoney)
 
                     game.player:getGuildInfo():updateData({qinglongLevel = rtnObj.buildLevel, currentUnionMoney = rtnObj.currentUnionMoney})
@@ -593,7 +593,7 @@ end
 
 function GuildShopScene:reloadListData(showType, dataList)
     if self._listTable ~= nil then
-        self._listTable:removeFromParentAndCleanup(true)
+        self._listTable:removeFromParent(true)
     end
 
     -- 点击图标，显示道具详细信息

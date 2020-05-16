@@ -46,7 +46,7 @@ function VipLibaoBuyMsgbox:ctor(param)
             if confirmFunc ~= nil then
                 local result = confirmFunc(self)
                 if result == true then
-                    self:removeFromParentAndCleanup(true)
+                    self:removeFromParent(true)
                 end
             end
         end,
@@ -58,7 +58,7 @@ function VipLibaoBuyMsgbox:ctor(param)
         if cancelFunc ~= nil then
             cancelFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["cancelBtn"]:registerControlEventHandler(

@@ -47,7 +47,7 @@ function SubmapNewMsg:ctor(title, levelName)
             CCFadeOut:create(1.0),
             CCCallFunc:create(
                 function()
-                    self:removeFromParentAndCleanup(true)
+                    self:removeFromParent(true)
                 end
             )
         }

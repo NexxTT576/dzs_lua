@@ -32,7 +32,7 @@ function LianzhanMsgBox:ctor(param)
             if listener ~= nil then
                 listener()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -41,7 +41,7 @@ function LianzhanMsgBox:ctor(param)
     rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -50,7 +50,7 @@ function LianzhanMsgBox:ctor(param)
     rootnode["cancelBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

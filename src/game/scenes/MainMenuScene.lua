@@ -104,7 +104,7 @@ function MainMenuScene:onEnter()
     local broadcastBg = rootnode["broadcast_tag"]
     local g = broadcastBg:getParent()
     if game.broadcast:getParent() ~= nil then
-        game.broadcast:removeFromParentAndCleanup(true)
+        game.broadcast:removeFromParent(true)
     end
     broadcastBg:addChild(game.broadcast)
     print("hieieieieiei")
@@ -421,7 +421,7 @@ end
 -- 紧急广播
 function MainMenuScene:checkUrgencyBroadcast()
     if game.urgencyBroadcast:getParent() ~= nil then
-        game.urgencyBroadcast:removeFromParentAndCleanup(true)
+        game.urgencyBroadcast:removeFromParent(true)
     end
 
     game.urgencyBroadcast:setIsShow(true)
@@ -897,8 +897,8 @@ function MainMenuScene:initTopFrame(...)
     -- local rootnode = rootnode or {}
     self._rootnode = self._rootnode or {}
 
-    local node = CCBuilderReaderLoad("ccbi/mainmenu/top_icons.ccbi", proxy, self._rootnode)
-    local layer = tolua.cast(node, "CCLayer")
+    local node = CCBReaderLoad("ccbi/mainmenu/top_icons.ccbi", proxy, self._rootnode)
+    local layer = tolua.cast(node, "cc.Layer")
     layer:setPosition(0, self.topFrame:getPositionY() - 30)
     self.topFrame:addChild(layer)
 
@@ -1022,21 +1022,21 @@ function MainMenuScene:refreshPlayerBoard(...)
         end
         local barWidth = self.playerInfoNode["tag_tili"]:getContentSize().width
         local bar = self.playerInfoNode["tag_tili_bar"]
-        bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, barWidth * percent, bar:getTextureRect().size.height))
+        bar:setTextureRect(cc.rect(bar:getTextureRect().x, bar:getTextureRect().y, barWidth * percent, bar:getTextureRect().height))
 
         percent = game.player.m_energy / game.player.m_maxEnergy
         if (percent > 1) then
             percent = 1
         end
         local bar = self.playerInfoNode["tag_naili_bar"]
-        bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, barWidth * percent, bar:getTextureRect().size.height))
+        bar:setTextureRect(cc.rect(bar:getTextureRect().x, bar:getTextureRect().y, barWidth * percent, bar:getTextureRect().height))
 
         percent = game.player.m_exp / game.player.m_maxExp
         if (percent > 1) then
             percent = 1
         end
         local bar = self.playerInfoNode["tag_exp_bar"]
-        bar:setTextureRect(cc.rect(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, barWidth * percent, bar:getTextureRect().size.height))
+        bar:setTextureRect(cc.rect(bar:getTextureRect().x, bar:getTextureRect().y, barWidth * percent, bar:getTextureRect().height))
         -- dump("===============")
     end
     refreshBar()

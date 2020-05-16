@@ -238,10 +238,10 @@ function FormSettingCard:switchWithCard(touchCard, x, y)
 
         if cardA then
             cardA:retain()
-            cardA:removeFromParentAndCleanup(false)
+            cardA:removeFromParent(false)
         end
         cardB:retain()
-        cardB:removeFromParentAndCleanup(false)
+        cardB:removeFromParent(false)
         cardB:setPosition(self._bg:convertToNodeSpace(cc.p(x, y)))
 
         self:addHeroImage(cardB)

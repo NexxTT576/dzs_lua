@@ -78,7 +78,7 @@ function SubmapRewardLayer:ctor(param)
     self._rootnode["tag_close"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -176,7 +176,7 @@ function SubmapRewardLayer:getReward()
 
                         game.runningScene:addChild(msgBox, self:getZOrder())
 
-                        self:removeFromParentAndCleanup(true)
+                        self:removeFromParent(true)
                     end
                 end
             }

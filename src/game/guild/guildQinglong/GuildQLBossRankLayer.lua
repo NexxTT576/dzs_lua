@@ -97,7 +97,7 @@ function GuildQLBossRankLayer:ctor(param)
             if confirmFunc ~= nil then
                 confirmFunc()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

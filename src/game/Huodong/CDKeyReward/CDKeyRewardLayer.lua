@@ -90,7 +90,7 @@ function CDKeyRewardLayer:ctor(param)
         if endFunc ~= nil then
             endFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
@@ -101,7 +101,7 @@ function CDKeyRewardLayer:ctor(param)
             if endFunc ~= nil then
                 endFunc()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end
     )
 

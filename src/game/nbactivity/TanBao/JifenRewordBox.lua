@@ -8,7 +8,7 @@ local JifenRewordBox =
 
 function JifenRewordBox:initButton()
     local function closeFun(eventName, sender)
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
     end
 
@@ -16,7 +16,7 @@ function JifenRewordBox:initButton()
         if self._confirmFunc ~= nil then
             self._confirmFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 

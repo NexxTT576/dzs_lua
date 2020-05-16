@@ -41,7 +41,7 @@ function OpenLayer:ctor(param)
             if self._confirmFunc ~= nil then
                 self._confirmFunc()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -62,7 +62,7 @@ function OpenLayer:ctor(param)
                 GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
             end
 
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

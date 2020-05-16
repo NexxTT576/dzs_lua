@@ -138,7 +138,7 @@ function GuildFubenRewardMsgBox:ctor(param)
             if closeFunc ~= nil then
                 closeFunc(self)
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

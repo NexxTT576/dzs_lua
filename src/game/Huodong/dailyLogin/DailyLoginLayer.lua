@@ -285,7 +285,7 @@ function DailyLoginLayer:ctor(data)
                             function()
                                 --layer:removeSelf()
                                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                                self:removeFromParentAndCleanup(true)
+                                self:removeFromParent(true)
                             end
                         )
                     }

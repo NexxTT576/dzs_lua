@@ -25,7 +25,7 @@ function GuildFuliRewardMsgBox:ctor(param)
     rootnode["naili_lbl"]:setString(tostring(naili))
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["confirmBtn"]:registerControlEventHandler(

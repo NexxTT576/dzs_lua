@@ -115,7 +115,7 @@ end
 function GuildDynamicScene:createDynamicListView(listData)
     -- dump(listData)
     if self._listViewTable ~= nil then
-        self._listViewTable:removeFromParentAndCleanup(true)
+        self._listViewTable:removeFromParent(true)
         self._listViewTable = nil
     end
 

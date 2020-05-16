@@ -59,7 +59,7 @@ function GuildModifyMsgBox:ctor(param)
         if cancelFunc ~= nil then
             cancelFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["tag_close"]:registerControlEventHandler(

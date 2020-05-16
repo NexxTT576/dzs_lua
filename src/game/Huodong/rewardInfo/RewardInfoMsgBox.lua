@@ -76,7 +76,7 @@ function RewardInfoMsgBox:ctor(param)
     self._rootnode["closeBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -84,7 +84,7 @@ function RewardInfoMsgBox:ctor(param)
     self._rootnode["confirmBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

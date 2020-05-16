@@ -177,7 +177,7 @@ function DuobaoScene:createDuobaoIconList(showType)
     end
 
     if (self._ListTable ~= nil) then
-        self._ListTable:removeFromParentAndCleanup(true)
+        self._ListTable:removeFromParent(true)
     end
 
     local cellContentSize = require("game.Duobao.DuobaoIconCell").new():getContentSize()
@@ -319,7 +319,7 @@ function DuobaoScene:createDuobaoItem(showType, index)
     local boardHeight = touchNode:getContentSize().height
 
     if (self._currentItemNode ~= nil) then
-        self._currentItemNode:removeFromParentAndCleanup(true)
+        self._currentItemNode:removeFromParent(true)
         self._currentItemNode = nil
     end
 
@@ -835,7 +835,7 @@ function DuobaoScene:onEnter()
         self._bExit = false
         local broadcastBg = self._rootnode["broadcast_tag"]
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end

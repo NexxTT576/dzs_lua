@@ -82,7 +82,7 @@ function OnlineRewardLayer:onReward()
 
                         PostNotice(NoticeKey.MainMenuScene_OnlineReward)
 
-                        self:removeFromParentAndCleanup(true)
+                        self:removeFromParent(true)
                     end
                 end
             }
@@ -267,7 +267,7 @@ function OnlineRewardLayer:ctor(data)
                     {
                         CCCallFunc:create(
                             function()
-                                self:removeFromParentAndCleanup(true)
+                                self:removeFromParent(true)
                             end
                         )
                     }

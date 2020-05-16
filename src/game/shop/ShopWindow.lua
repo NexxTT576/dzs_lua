@@ -129,7 +129,7 @@ function ShopWindow:ctor(bGoShowList)
                         end
 
                         self._nextNBCardTime = data["3"]
-                         --下次获得金卡的招募次数
+                        --下次获得金卡的招募次数
                         dump(self._nextNBCardTime)
 
                         self._rootnode["zhaomulingNumLabel"]:setString(tostring(self._zhaomulingNum))
@@ -341,7 +341,7 @@ function ShopWindow:onPubView()
                             end
 
                             if fromLayer ~= nil then
-                                fromLayer:removeFromParentAndCleanup(true)
+                                fromLayer:removeFromParent(true)
                             end
                         end
                     end,
@@ -516,7 +516,7 @@ function ShopWindow:onItemsView()
     end
 
     if self._scrollItemList then
-        self._scrollItemList:removeFromParentAndCleanup(true)
+        self._scrollItemList:removeFromParent(true)
         self._scrollItemList = nil
     end
     self._scrollItemList =
@@ -655,7 +655,7 @@ function ShopWindow:createVipLibaoListView(param)
     end
 
     if self._scrollItemList then
-        self._scrollItemList:removeFromParentAndCleanup(true)
+        self._scrollItemList:removeFromParent(true)
         self._scrollItemList = nil
     end
 
@@ -739,7 +739,7 @@ function ShopWindow:onEnter()
         self._bExit = false
         local broadcastBg = self._rootnode["broadcast_tag"]
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end

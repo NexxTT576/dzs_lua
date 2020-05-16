@@ -229,7 +229,7 @@ function GuildFuliLayer:ctor(data)
     self._rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -326,7 +326,7 @@ end
 
 function GuildFuliLayer:reloadListView()
     if self._listViewTable ~= nil then
-        self._listViewTable:removeFromParentAndCleanup(true)
+        self._listViewTable:removeFromParent(true)
         self._listViewTable = nil
     end
 

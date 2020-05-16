@@ -338,14 +338,15 @@ function HeroSettingScene:ctor(showType)
     local broadcastBg = self._rootnode["broadcast_tag"]
     if broadcastBg ~= nil then
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end
 
     if self._rootnode["nowTimeLabel"] then
         self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
-        self._rootnode["nowTimeLabel"]:schedule(
+        schedule(
+            self._rootnode["nowTimeLabel"],
             function()
                 self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
             end,
@@ -1594,7 +1595,7 @@ function HeroSettingScene:onEnter()
     if self._bExit then
         local broadcastBg = self._rootnode["broadcast_tag"]
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end

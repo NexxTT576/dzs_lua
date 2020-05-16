@@ -444,7 +444,7 @@ function EquipListScene:init(data)
                         require("utility.TableViewExt").new(
                         {
                             size = cc.size(self.listView:getContentSize().width, self.listView:getContentSize().height),
-                             -- numBg:getContentSize().height - 20),
+                            -- numBg:getContentSize().height - 20),
                             direction = kCCScrollViewDirectionVertical,
                             createFunc = createFunc,
                             refreshFunc = refreshFunc,
@@ -684,7 +684,7 @@ function EquipListScene:init(data)
                 require("utility.TableViewExt").new(
                 {
                     size = cc.size(self:getContentSize().width, self.getCenterHeightWithSubTop()),
-                     -- numBg:getContentSize().height - 20),
+                    -- numBg:getContentSize().height - 20),
                     direction = kCCScrollViewDirectionVertical,
                     createFunc = createFunc,
                     refreshFunc = refreshFunc,
@@ -706,7 +706,7 @@ function EquipListScene:init(data)
                 require("utility.TableViewExt").new(
                 {
                     size = cc.size(self:getContentSize().width, self.getCenterHeightWithSubTop()),
-                     -- numBg:getContentSize().height - 20),
+                    -- numBg:getContentSize().height - 20),
                     direction = kCCScrollViewDirectionVertical,
                     createFunc = createFunc,
                     refreshFunc = refreshSellFunc,
@@ -846,7 +846,7 @@ end
 function EquipListScene:reloadBroadcast()
     local broadcastBg = self._rootnode["broadcast_tag"]
     if game.broadcast:getParent() ~= nil then
-        game.broadcast:removeFromParentAndCleanup(true)
+        game.broadcast:removeFromParent(true)
     end
     broadcastBg:addChild(game.broadcast)
 end

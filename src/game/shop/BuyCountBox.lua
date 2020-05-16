@@ -27,7 +27,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
 
     local function onClose()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
     --    local closeBtn = require("utility.CommonButton").new({
     --        img = "#popwin_close.png",

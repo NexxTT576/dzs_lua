@@ -48,7 +48,7 @@ function GuildMainScene:modifyNote(text, node)
                         show_tip_label(data_error_error[2900043].prompt)
 
                         self._rootnode["guild_note_lbl"]:setString(text)
-                        node:removeFromParentAndCleanup(true)
+                        node:removeFromParent(true)
 
                         -- 修改本地存储的帮派公告
                         game.player:getGuildMgr():getGuildInfo().m_unionIndes = text

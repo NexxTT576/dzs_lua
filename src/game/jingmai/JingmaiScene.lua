@@ -304,7 +304,7 @@ function JingmaiScene:onFullLevel()
         self._rootnode[key2]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_3.png"))
     end
 
-    self._animNode:removeFromParentAndCleanup(false)
+    self._animNode:removeFromParent(false)
     self:setPropValue(10, 9)
 end
 
@@ -400,7 +400,7 @@ function JingmaiScene:refresh()
 
                 if i == 1 then
                     self._animNode:setPosition(self._rootnode[key]:getContentSize().width / 2, self._rootnode[key]:getContentSize().height / 2)
-                    self._animNode:removeFromParentAndCleanup(false)
+                    self._animNode:removeFromParent(false)
                     self._rootnode[key]:addChild(self._animNode)
                 end
             else
@@ -413,7 +413,7 @@ function JingmaiScene:refresh()
             self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level - 1))
 
             self._animNode:setPosition(self._rootnode[key]:getContentSize().width / 2, self._rootnode[key]:getContentSize().height / 2)
-            self._animNode:removeFromParentAndCleanup(false)
+            self._animNode:removeFromParent(false)
             self._rootnode[key]:addChild(self._animNode)
         else
             self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))

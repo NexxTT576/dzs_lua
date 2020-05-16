@@ -402,7 +402,7 @@ function ArenaResult:ctor(param)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             replayBtn:setEnabled(false)
             local function closeFunc(node)
-                node:removeFromParentAndCleanup(true)
+                node:removeFromParent(true)
                 replayBtn:setEnabled(true)
             end
             self:addChild(require("game.Duobao.DuobaoBattleReplayLayer").new(data, closeFunc), MAX_ZORDER)

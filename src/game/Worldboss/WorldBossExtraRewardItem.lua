@@ -78,7 +78,7 @@ function WorldBossExtraRewardItem:refreshItem(cellData)
     self._rootnode["top_bg_node"]:addChild(topBg)
 
     if self._ListTable ~= nil then
-        self._ListTable:removeFromParentAndCleanup(true)
+        self._ListTable:removeFromParent(true)
     end
 
     local listView = self._rootnode["listView"]

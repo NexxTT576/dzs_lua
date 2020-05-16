@@ -29,7 +29,7 @@ function DengjiTouziBuyMsgbox:ctor(param)
         if cancelListen ~= nil then
             cancelListen()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(
@@ -51,7 +51,7 @@ function DengjiTouziBuyMsgbox:ctor(param)
             if confirmListen ~= nil then
                 confirmListen()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

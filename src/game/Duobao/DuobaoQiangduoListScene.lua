@@ -219,7 +219,7 @@ end
 
 function DuobaoQiangduoListScene:createListView()
     if self._listTable ~= nil then
-        self._listTable:removeFromParentAndCleanup(true)
+        self._listTable:removeFromParent(true)
         self._listTable = nil
     end
 

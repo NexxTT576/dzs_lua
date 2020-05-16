@@ -36,7 +36,7 @@ function UseDialog:ctor()
                             CCScaleTo:create(0.2, 0),
                             CCCallFunc:create(
                                 function()
-                                    self:removeFromParentAndCleanup(true)
+                                    self:removeFromParent(true)
                                 end
                             )
                         }

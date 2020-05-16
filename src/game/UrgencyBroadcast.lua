@@ -159,7 +159,7 @@ function UrgencyBroadcast:setIsShow(isShow)
                     CCFadeOut:create(0.3),
                     CCCallFunc:create(
                         function()
-                            self:removeFromParentAndCleanup(true)
+                            self:removeFromParent(true)
                         end
                     )
                 }

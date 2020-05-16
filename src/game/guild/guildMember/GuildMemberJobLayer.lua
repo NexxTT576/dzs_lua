@@ -69,7 +69,7 @@ local function kickRole(roleId, msgBox)
                         if kParentScene ~= nil then
                             local index = kParentScene:removeItemFromNormalList(roleId)
                             kParentScene:forceReloadNormalListView(index - 1)
-                            msgBox:removeFromParentAndCleanup(true)
+                            msgBox:removeFromParent(true)
                         end
                     else
                         msgBox:setBtnEnabled(true)
@@ -100,7 +100,7 @@ function GuildMemberJobLayer:setPosition(roleId, jopType)
                         self._itemData.jopType = jopType
                         if kParentScene ~= nil then
                             kParentScene:forceReloadNormalListView(0)
-                            self:removeFromParentAndCleanup(true)
+                            self:removeFromParent(true)
                         end
                     else
                         self:setBtnEnabled(true)
@@ -124,7 +124,7 @@ function GuildMemberJobLayer:reqAddFriend(param)
             end,
             callback = function(data)
                 self:setBtnEnabled(true)
-                box:removeFromParentAndCleanup()
+                box:removeFromParent()
 
                 --result  1-申请成功 2-已申请过
                 local result = data.rtnObj.result
@@ -170,7 +170,7 @@ function GuildMemberJobLayer:ctor(param)
     self._rootnode["titleLabel"]:setString(title)
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     self._rootnode["tag_close"]:registerControlEventHandler(
@@ -311,7 +311,7 @@ function GuildMemberJobLayer:registerBtnEvent()
                 ),
                 MAX_ZORDER
             )
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         elseif tag == self._btnTags[9] then
             -- 提示退出帮派后需要等待24小时的CD时间才可再次申请加入帮派
             game.runningScene:addChild(
@@ -327,7 +327,7 @@ function GuildMemberJobLayer:registerBtnEvent()
                 ),
                 MAX_ZORDER
             )
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end
     end
 

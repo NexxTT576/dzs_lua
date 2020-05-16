@@ -33,7 +33,7 @@ local ZhaojiangResultTen =
 --                    delayTime = data["2"],
 --                    gold = data["3"]
 --            		})
---            	self:removeFromParentAndCleanup(true)
+--            	self:removeFromParent(true)
 --            end
 --        end,
 --        t = self._type,
@@ -230,7 +230,7 @@ function ZhaojiangResultTen:ctor(param)
     self._rootnode["exitBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
             PostNotice(NoticeKey.CommonUpdate_Label_Gold)
         end,
         CCControlEventTouchUpInside

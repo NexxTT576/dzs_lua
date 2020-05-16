@@ -35,7 +35,7 @@ function RewardCenterCell:refreshItem(param)
     self._rootnode["reward_time"]:setString(param.time)
 
     if self.ListTable ~= nil then
-        self.ListTable:removeFromParentAndCleanup(true)
+        self.ListTable:removeFromParent(true)
     end
 
     self.cellData = param.cellData

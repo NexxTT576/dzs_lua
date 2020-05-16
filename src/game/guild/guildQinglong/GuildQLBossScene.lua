@@ -348,11 +348,11 @@ function GuildQLBossScene:ctor(param)
                     {
                         resTable = rowAll,
                         confirmFunc = function(node)
-                            node:removeFromParentAndCleanup(true)
+                            node:removeFromParent(true)
                             self:exitScene()
                         end,
                         closeFunc = function(node)
-                            node:removeFromParentAndCleanup(true)
+                            node:removeFromParent(true)
                         end
                     }
                 )

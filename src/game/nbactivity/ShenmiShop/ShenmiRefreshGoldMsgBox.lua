@@ -27,7 +27,7 @@ function ShenmiRefreshGoldMsgBox:ctor(param)
     self:addChild(node)
 
     local function onClose()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["confirmBtn"]:registerControlEventHandler(

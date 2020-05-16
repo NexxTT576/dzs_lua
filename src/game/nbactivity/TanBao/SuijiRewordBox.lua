@@ -16,7 +16,7 @@ function SuijiRewordBox:initButton()
         if self._confirmFunc ~= nil then
             self._confirmFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
     end
 

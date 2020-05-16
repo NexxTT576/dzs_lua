@@ -19,7 +19,7 @@ function ChongzhiBuyMonthCardMsgbox:ctor(param)
     rootnode["leftDay_lbl"]:setString("剩余天数：" .. tostring(leftDay))
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(

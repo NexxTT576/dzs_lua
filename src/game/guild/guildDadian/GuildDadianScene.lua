@@ -99,7 +99,7 @@ function GuildDadianScene:reqLevelup(msgBox)
                     msgBox:setBtnEnabled(true)
                 else
                     ResMgr.showErr(2900083)
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                     self:updateLevel(data.rtnObj.buildLevel, data.rtnObj.currentUnionMoney)
                     self:updateContributeNum(self._curContributedNum, data.rtnObj.roleMaxNum)
                     levelupBtn:setEnabled(true)
@@ -290,7 +290,7 @@ end
 -- 创建捐献列表
 function GuildDadianScene:reloadCrontributeListView()
     if self._conListTable ~= nil then
-        self._conListTable:removeFromParentAndCleanup(true)
+        self._conListTable:removeFromParent(true)
         self._conListTable = nil
     end
 
@@ -356,7 +356,7 @@ end
 -- 创建动态列表
 function GuildDadianScene:reloadDynamicListView(listData)
     if self._dynamicListTable ~= nil then
-        self._dynamicListTable:removeFromParentAndCleanup(true)
+        self._dynamicListTable:removeFromParent(true)
         self._dynamicListTable = nil
     end
 

@@ -206,7 +206,7 @@ function EnemyFormScene:ctor(showType, enemyID)
     local broadcastBg = self._rootnode["broadcast_tag"]
     if broadcastBg ~= nil then
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end
@@ -541,7 +541,7 @@ function EnemyFormScene:onEnter()
     if self._bExit then
         local broadcastBg = self._rootnode["broadcast_tag"]
         if game.broadcast:getParent() ~= nil then
-            game.broadcast:removeFromParentAndCleanup(true)
+            game.broadcast:removeFromParent(true)
         end
         broadcastBg:addChild(game.broadcast)
     end

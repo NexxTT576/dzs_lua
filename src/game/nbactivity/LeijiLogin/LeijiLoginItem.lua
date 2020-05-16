@@ -57,7 +57,7 @@ function LeijiLoginItem:refreshItem(cellDatas)
     self._rootnode["title_lbl"]:setString("登录第" .. tostring(self._day) .. "天礼包")
 
     if self._ListTable ~= nil then
-        self._ListTable:removeFromParentAndCleanup(true)
+        self._ListTable:removeFromParent(true)
     end
 
     local listView = self._rootnode["reward_list"]

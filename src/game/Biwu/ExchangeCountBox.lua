@@ -32,7 +32,7 @@ function ExchangeCountBox:ctor(param)
         if closeFunc ~= nil then
             closeFunc()
         end
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     ResMgr.setControlBtnEvent(

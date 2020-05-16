@@ -31,7 +31,7 @@ function GuildFubenInfoLayer:ctor(param)
     self:addChild(node)
 
     local function closeBtnFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     -- X按钮

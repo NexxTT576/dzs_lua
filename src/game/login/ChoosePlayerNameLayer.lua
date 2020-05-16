@@ -119,7 +119,7 @@ function ChoosePlayerNameLayer:createNameLayer()
 
     rootnode["returnBtn"]:registerControlEventHandler(
         function()
-            node:removeFromParentAndCleanup(true)
+            node:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

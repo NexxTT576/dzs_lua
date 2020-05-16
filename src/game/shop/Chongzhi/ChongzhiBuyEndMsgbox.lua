@@ -69,7 +69,7 @@ function ChongzhiBuyEndMsgbox:ctor(param)
     end
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(

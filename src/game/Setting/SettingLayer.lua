@@ -25,7 +25,7 @@ function SettingLayer:ctor()
     rootnode["tag_close"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -167,7 +167,7 @@ function SettingLayer:ctor()
                  then
                     CSDKShell.enterPlatform()
                 else
-                    self:removeFromParentAndCleanup(true)
+                    self:removeFromParent(true)
                 end
             else
                 CSDKShell.enterPlatform()

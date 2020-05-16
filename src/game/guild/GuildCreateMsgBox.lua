@@ -80,7 +80,7 @@ function GuildCreateMsgBox:ctor()
     editBoxNode:addChild(self._editBox)
 
     local function closeFunc()
-        self:removeFromParentAndCleanup(true)
+        self:removeFromParent(true)
     end
 
     rootnode["tag_close"]:registerControlEventHandler(

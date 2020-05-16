@@ -223,7 +223,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
             if _confirmFunc ~= nil then
                 _confirmFunc()
             end
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )

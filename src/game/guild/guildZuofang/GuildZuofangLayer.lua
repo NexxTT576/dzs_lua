@@ -34,7 +34,7 @@ function GuildZuofangLayer:reqLevelup(msgBox)
                 else
                     ResMgr.showErr(2900083)
                     local rtnObj = data.rtnObj
-                    msgBox:removeFromParentAndCleanup(true)
+                    msgBox:removeFromParent(true)
                     self:updateLevel(rtnObj.buildLevel, rtnObj.currentUnionMoney)
 
                     game.player:getGuildInfo():updateData({workshopLevel = rtnObj.buildLevel, currentUnionMoney = rtnObj.currentUnionMoney})
@@ -227,7 +227,7 @@ function GuildZuofangLayer:ctor(data)
     self._rootnode["closeBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            self:removeFromParentAndCleanup(true)
+            self:removeFromParent(true)
         end,
         CCControlEventTouchUpInside
     )
@@ -368,7 +368,7 @@ function GuildZuofangLayer:initBtnEvent()
                             show_tip_label(data_error_error[2900050].prompt)
                             resetBtns(true)
                         else
-                            node:removeFromParentAndCleanup(true)
+                            node:removeFromParent(true)
                             confirmBuildFunc()
                         end
                     end

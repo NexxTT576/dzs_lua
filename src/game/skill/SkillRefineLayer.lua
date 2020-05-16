@@ -276,7 +276,7 @@ function SkillRefineLayer:refresh()
 
     --  消耗物品
     if self._iconList then
-        self._iconList:removeFromParentAndCleanup(true)
+        self._iconList:removeFromParent(true)
     end
 
     self._iconList =

@@ -61,7 +61,7 @@ function DuobaoMianzhanInfo:closeFunc()
     if self._closeFunc ~= nil then
         self._closeFunc()
     end
-    self:removeFromParentAndCleanup(true)
+    self:removeFromParent(true)
 end
 
 function DuobaoMianzhanInfo:ctor(param)
