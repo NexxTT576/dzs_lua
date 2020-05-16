@@ -51,7 +51,7 @@ function UseCountBox:ctor(param)
             text = string.format("%s", param.name),
             font = FONTS_NAME.font_haibao,
             size = 24,
-            color = ccc3(255, 243, 0),
+            color = cc.c3b(255, 243, 0),
             align = ui.TEXT_ALIGN_CENTER
         }
     )

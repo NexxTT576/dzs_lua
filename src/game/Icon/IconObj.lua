@@ -24,9 +24,13 @@
 --
 
 display.addSpriteFramesWithFile("ui_icon_frame.plist", "ui_icon_frame.png")
-local IconObj = class("IconObj", function()
-    return display.newNode()
-end)
+local IconObj =
+    class(
+    "IconObj",
+    function()
+        return display.newNode()
+    end
+)
 
 function IconObj:ctor(param)
     local proxy = CCBProxy:create()
@@ -39,55 +43,61 @@ function IconObj:ctor(param)
     self:setContentSize(node:getContentSize())
     self:setAnchorPoint(0.5, 0.5)
 
-    self.levelLabel = ui.newTTFLabelWithShadow({
-        text = "",
-        font = FONTS_NAME.font_fzcy,
-        size = 18,
-    })
+    self.levelLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "",
+            font = FONTS_NAME.font_fzcy,
+            size = 18
+        }
+    )
     self._rootnode["lvLabel"]:addChild(self.levelLabel)
 
-    self.nameLabel = ui.newTTFLabelWithShadow({
-        text = "",
-        font = FONTS_NAME.font_fzcy,
-        size = 20,
-        align = ui.TEXT_ALIGN_CENTER
-    })
+    self.nameLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "",
+            font = FONTS_NAME.font_fzcy,
+            size = 20,
+            align = ui.TEXT_ALIGN_CENTER
+        }
+    )
     self._rootnode["heroNameLabel"]:addChild(self.nameLabel)
 
-    self.clsLabel = ui.newTTFLabelWithShadow({
-        text = "",
-        font = FONTS_NAME.font_haibao,
-        size = 18,
-        color = ccc3(0, 228,62),
-        align = ui.TEXT_ALIGN_CENTER,
-    })
+    self.clsLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "",
+            font = FONTS_NAME.font_haibao,
+            size = 18,
+            color = cc.c3b(0, 228, 62),
+            align = ui.TEXT_ALIGN_CENTER
+        }
+    )
     self._rootnode["heroNameLabel"]:addChild(self.clsLabel)
 
     self:refresh(param)
 end
 
-
 function IconObj:setState(a)
     if a == 1 then
         self._rootnode["maskSprite"]:setVisible(true)
         self._rootnode["tipLabel"]:setString("已上阵")
-        self._rootnode["tipLabel"]:setColor(ccc3(0, 228, 62))
+        self._rootnode["tipLabel"]:setColor(cc.c3b(0, 228, 62))
     elseif a == 0 then
         self._rootnode["maskSprite"]:setVisible(true)
         self._rootnode["tipLabel"]:setString("已阵亡")
-        self._rootnode["tipLabel"]:setColor(ccc3(255, 62, 0))
-    elseif a == 3 then 
+        self._rootnode["tipLabel"]:setColor(cc.c3b(255, 62, 0))
+    elseif a == 3 then
         self._rootnode["maskSprite"]:setVisible(true)
         self._rootnode["tipLabel"]:setString("已参战")
-        self._rootnode["tipLabel"]:setColor(ccc3(255, 62, 0))
+        self._rootnode["tipLabel"]:setColor(cc.c3b(255, 62, 0))
     else
         self._rootnode["maskSprite"]:setVisible(false)
     end
 end
 
-
 function IconObj:refresh(param)
-
     local id = param.id
     if id then
         local card
@@ -98,7 +108,7 @@ function IconObj:refresh(param)
         end
         if card then
             local cls = param.cls or 0
-            local path = "hero/icon/" .. card["arr_icon"][cls + 1]..".png"
+            local path = "hero/icon/" .. card["arr_icon"][cls + 1] .. ".png"
             local star = card["star"][cls + 1]
             self._rootnode["bgSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", star)))
             self._rootnode["iconSprite"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
@@ -122,10 +132,10 @@ function IconObj:refresh(param)
             else
                 self.clsLabel:setString("")
             end
-            
+
             local redBar = self._rootnode["redBar"]
             if param.hp then
-                redBar:setVisible(true)  
+                redBar:setVisible(true)
                 local greenBar = self._rootnode["greenBar"]
 
                 if param.hp[1] == 0 then
@@ -135,13 +145,11 @@ function IconObj:refresh(param)
                 local rect = redBar:getTextureRect().size
                 greenBar:setTextureRect(CCRectMake(greenBar:getTextureRect().origin.x, greenBar:getTextureRect().origin.y, rect.width * (param.hp[1] / param.hp[2]), rect.height))
             else
-                redBar:setVisible(false) 
+                redBar:setVisible(false)
             end
         end
     end
     self:setState(param.state)
-
 end
 
 return IconObj
-

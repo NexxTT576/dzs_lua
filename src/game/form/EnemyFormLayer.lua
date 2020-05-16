@@ -30,7 +30,6 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-
 require("utility.BottomBtnEvent")
 local data_jiban_jiban = require("data.data_jiban_jiban")
 local data_shentong_shentong = require("data.data_shentong_shentong")
@@ -44,9 +43,13 @@ local data_item_item = require("data.data_item_item")
 --5：内功部位
 --6：外功部位
 local RequestInfo = require("network.RequestInfo")
-local HeroIcon = class("HeroIcon", function()
-    return CCTableViewCell:new()
-end)
+local HeroIcon =
+    class(
+    "HeroIcon",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
 function HeroIcon:getContentSize()
     --    local sz = display.newSprite("hero/icon/icon_hero_guojing.png"):getContentSize()
@@ -54,7 +57,6 @@ function HeroIcon:getContentSize()
 end
 
 function HeroIcon:ctor()
-
 end
 
 function HeroIcon:selected()
@@ -67,7 +69,7 @@ end
 
 function HeroIcon:create(param)
     local _viewSize = param.viewSize
-    local _itemData  = param.itemData
+    local _itemData = param.itemData
 
     self._heroIcon = display.newSprite("#zhenrong_equip_hero_bg.png")
     self:addChild(self._heroIcon)
@@ -83,7 +85,7 @@ function HeroIcon:create(param)
 end
 
 function HeroIcon:refresh(param)
-    local _itemData  = param.itemData
+    local _itemData = param.itemData
     if param.idx == param.index then
         self:selected()
     else
@@ -91,7 +93,6 @@ function HeroIcon:refresh(param)
     end
 
     if type(_itemData) == "number" then
-
     else
         self._heroIcon:setVisible(true)
         ResMgr.refreshIcon({itemBg = self._heroIcon, cls = _itemData.cls, id = param.itemData.resId, resType = ResMgr.HERO})
@@ -101,7 +102,6 @@ end
 local function getDataOpen(sysID)
     local data_open_open = require("data.data_open_open")
     for k, v in ipairs(data_open_open) do
-
         if sysID == v.system then
             return v
         end
@@ -110,20 +110,24 @@ end
 
 local MOVE_OFFSET = display.width / 3
 
-local EnemyFormLayer = class("EnemyFormLayer", function()
-    return require("utility.ShadeLayer").new()
-end)
+local EnemyFormLayer =
+    class(
+    "EnemyFormLayer",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 
 local SHOWTYPE = {
     FORMATION = 1,
-    SPIRIT    = 2
+    SPIRIT = 2
 }
 
 local ST_COLOR = {
-    ccc3(255, 38, 0),
-    ccc3(43, 164, 45),
-    ccc3(28, 94, 171),
-    ccc3(218, 129, 29)
+    cc.c3b(255, 38, 0),
+    cc.c3b(43, 164, 45),
+    cc.c3b(28, 94, 171),
+    cc.c3b(218, 129, 29)
 }
 
 function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
@@ -149,10 +153,10 @@ function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
     bgSprite:setScaleX(self._rootnode["bgNode"]:getContentSize().width / bgSprite:getContentSize().width)
     bgSprite:setScaleY(self._rootnode["bgNode"]:getContentSize().height / bgSprite:getContentSize().height)
     self._rootnode["bgNode"]:addChild(bgSprite)
---
---    local tmpY = self._rootnode["headList"]:getPositionY()
---    self._rootnode["headList"]:setPosition(display.cx - self._rootnode["headList"]:getContentSize().width / 2, tmpY)
-    
+    --
+    --    local tmpY = self._rootnode["headList"]:getPositionY()
+    --    self._rootnode["headList"]:setPosition(display.cx - self._rootnode["headList"]:getContentSize().width / 2, tmpY)
+
     -- 查看对方阵容，可以看到真气
     self._rootnode["spiritAndEquipBtn"]:setVisible(true)
 
@@ -167,36 +171,42 @@ function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
     local function switchView(bRefresh)
         refreshBtnText()
         if self._showType == SHOWTYPE.SPIRIT then
+            --
             self._rootnode["spiritNode"]:setVisible(true)
             self._rootnode["equipNode"]:setVisible(false)
-            --
         else
+            --
             self._rootnode["spiritNode"]:setVisible(false)
             self._rootnode["equipNode"]:setVisible(true)
-            --
         end
         if bRefresh then
             self:refreshHero(self._index)
         end
     end
 
-    self._rootnode["closeBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi)) 
-        if closeFunc ~= nil then 
-            closeFunc() 
-        end 
-        self:removeSelf()
-    end, CCControlEventTouchDown)
+    self._rootnode["closeBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
+            if closeFunc ~= nil then
+                closeFunc()
+            end
+            self:removeSelf()
+        end,
+        CCControlEventTouchDown
+    )
 
-    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
-        if self._showType == SHOWTYPE.SPIRIT then
-            self._showType = 1
-        else
-            self._showType = 2
-        end
-        switchView(true)
-    end, CCControlEventTouchDown)
+    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            if self._showType == SHOWTYPE.SPIRIT then
+                self._showType = 1
+            else
+                self._showType = 2
+            end
+            switchView(true)
+        end,
+        CCControlEventTouchDown
+    )
 
     --  切换视图
     switchView()
@@ -218,43 +228,44 @@ function EnemyFormLayer:refreshSpiritNode()
     end
 end
 
-
 --进入界面时候的请求
 function EnemyFormLayer:request()
-
     local reqs = {}
 
     --请求阵容
-    table.insert(reqs, RequestInfo.new({
-        modulename = "fmt",
-        funcname   = "list",
-        param      = {acc2 = self._enemyID},
-        oklistener = function(data)
-            dump(data)
-            self._cardList = data["1"]
-            self._equip = data["2"]
-            self._spirit = data["3"]
+    table.insert(
+        reqs,
+        RequestInfo.new(
+            {
+                modulename = "fmt",
+                funcname = "list",
+                param = {acc2 = self._enemyID},
+                oklistener = function(data)
+                    dump(data)
+                    self._cardList = data["1"]
+                    self._equip = data["2"]
+                    self._spirit = data["3"]
 
-
-
-            self._enemyInfo = {
-                level = data["1"][1]["level"],
-                cls = data["1"][1]["cls"],
-                name = data["1"][1]["name"],
-                group = data["4"] or ""
+                    self._enemyInfo = {
+                        level = data["1"][1]["level"],
+                        cls = data["1"][1]["cls"],
+                        name = data["1"][1]["name"],
+                        group = data["4"] or ""
+                    }
+                end
             }
+        )
+    )
 
+    RequestHelperV2.request2(
+        reqs,
+        function()
+            self:update()
         end
-    }))
-
-    RequestHelperV2.request2(reqs, function()
-        self:update()
-    end)
+    )
 end
 
-
 function EnemyFormLayer:refreshHero(index, bScrollHead)
-
     if bScrollHead then
         if (self._index - 1) * 115 < math.abs(self._scrollItemList:getContentOffset().x) then
             self._scrollItemList:setContentOffset(ccp(-(self._index - 1) * 115, 0), true)
@@ -269,7 +280,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
     local hero = self._cardList[index]
 
     HeroSettingModel.cardIndex = index
-    HeroSettingModel.setEnemyList(self._cardList,self._equip)
+    HeroSettingModel.setEnemyList(self._cardList, self._equip)
 
     if hero then
         for i = 1, 6 do
@@ -332,7 +343,6 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
             for k, v in ipairs(card.talent) do
                 local stData = data_shentong_shentong[v]
                 if hero.shenLvAry[k] then
-
                     local tid
                     if hero.shenLvAry[k] == 0 then
                         tid = stData.arr_talent[hero.shenLvAry[k] + 1]
@@ -342,25 +352,24 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
 
                     local talent = data_talent_talent[tid]
                     if talent then
---                        self._rootnode["stIconSprite_" .. tostring(k)]:setVisible(true)
---                        self._rootnode["stIconSprite_" .. tostring(k)]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_st_%d.png", stData.type)))
+                        --                        self._rootnode["stIconSprite_" .. tostring(k)]:setVisible(true)
+                        --                        self._rootnode["stIconSprite_" .. tostring(k)]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_st_%d.png", stData.type)))
 
                         self._rootnode["stNameLabel_" .. tostring(k)]:setString(talent.name)
                         self._rootnode["leadLabel_" .. tostring(k)]:setString(tostring(hero.shenLvAry[k]))
 
                         if hero.shenLvAry[k] > 0 then
+                            --                            self._rootnode["stIconSprite_" .. tostring(k)]:setColor(cc.c3b(255, 255, 255))
                             self._rootnode["stNameLabel_" .. tostring(k)]:setColor(ST_COLOR[stData.type])
                             self._rootnode["leadLabel_" .. tostring(k)]:setColor(ST_COLOR[stData.type])
---                            self._rootnode["stIconSprite_" .. tostring(k)]:setColor(ccc3(255, 255, 255))
                         else
-                            self._rootnode["stNameLabel_" .. tostring(k)]:setColor(ccc3(127, 127, 127))
-                            self._rootnode["leadLabel_" .. tostring(k)]:setColor(ccc3(127, 127, 127))
---                            self._rootnode["stIconSprite_" .. tostring(k)]:setColor(ccc3(127, 127, 127))
+                            --                            self._rootnode["stIconSprite_" .. tostring(k)]:setColor(cc.c3b(127, 127, 127))
+                            self._rootnode["stNameLabel_" .. tostring(k)]:setColor(cc.c3b(127, 127, 127))
+                            self._rootnode["leadLabel_" .. tostring(k)]:setColor(cc.c3b(127, 127, 127))
                         end
                     else
                         show_tip_label("此神通不存在 " .. tostring(tid))
                     end
-
                 end
             end
         end
@@ -379,10 +388,10 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                 local jbKey = string.format("jbLabel_%d", k)
                 self._rootnode[jbKey]:setVisible(true)
                 self._rootnode[jbKey]:setString(data_jiban_jiban[v].name)
-                self._rootnode[jbKey]:setColor(ccc3(119, 119, 119))
+                self._rootnode[jbKey]:setColor(cc.c3b(119, 119, 119))
                 for i, j in ipairs(hero.relation) do
                     if v == j then
-                        self._rootnode[jbKey]:setColor(ccc3(255, 108, 0))
+                        self._rootnode[jbKey]:setColor(cc.c3b(255, 108, 0))
                     end
                 end
             end
@@ -397,15 +406,18 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
 
             for k, v in ipairs(self._spirit[index]) do
                 local spiritNodeName = "spiritNode_" .. tostring(v.subpos - 6)
-                local s = require("game.Spirit.SpiritIcon").new({
-                    id = v._id,
-                    resId = v.resId,
-                    lv = v.level,
-                    exp = v.curExp or 0,
-                    bShowName = true,
-                    bShowLv = true,
-                    offsetY = 8
-                })
+                local s =
+                    require("game.Spirit.SpiritIcon").new(
+                    {
+                        id = v._id,
+                        resId = v.resId,
+                        lv = v.level,
+                        exp = v.curExp or 0,
+                        bShowName = true,
+                        bShowLv = true,
+                        offsetY = 8
+                    }
+                )
                 s:setPosition(self._rootnode[spiritNodeName]:getContentSize().width / 2, self._rootnode[spiritNodeName]:getContentSize().height / 2 - 12)
                 self._rootnode[spiritNodeName]:addChild(s, 100, 100)
 
@@ -422,42 +434,51 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
             for k, v in ipairs(self._equip[index]) do
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage( equipBaseInfo.icon, ResMgr.EQUIP))
-                local s = ResMgr.getIconSprite( {id = v.resId, resType = ResMgr.EQUIP, hasCorner=true})--display.newSprite(path)
+                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
+                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
                 self._rootnode[equipNodeName]:addChild(s, 100, 100)
 
                 if equipBaseInfo.Suit then
-                    local quas = {"","pinzhikuangliuguang_lv","pinzhikuangliuguang_lan","pinzhikuangliuguang_zi","pinzhikuangliuguang_jin"}
+                    local quas = {"", "pinzhikuangliuguang_lv", "pinzhikuangliuguang_lan", "pinzhikuangliuguang_zi", "pinzhikuangliuguang_jin"}
                     local holoName = quas[equipBaseInfo.quality]
 
-                    local suitArma = ResMgr.createArma({
-                        resType = ResMgr.UI_EFFECT,
-                        armaName = holoName,
-                        isRetain = true
-                    })
+                    local suitArma =
+                        ResMgr.createArma(
+                        {
+                            resType = ResMgr.UI_EFFECT,
+                            armaName = holoName,
+                            isRetain = true
+                        }
+                    )
                     suitArma:setPosition(s:getContentSize().width / 2, s:getContentSize().height / 2)
                     s:addChild(suitArma)
                 end
 
-                local label = ui.newTTFLabelWithOutline({
-                    text =  data_item_item[v.resId].name,
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-                    align = ui.TEXT_ALIGN_CENTER,
-                    color = NAME_COLOR[data_item_item[v.resId].quality]
-                })
+                local label =
+                    ui.newTTFLabelWithOutline(
+                    {
+                        text = data_item_item[v.resId].name,
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy,
+                        align = ui.TEXT_ALIGN_CENTER,
+                        color = NAME_COLOR[data_item_item[v.resId].quality]
+                    }
+                )
                 label:setPosition(s:getContentSize().width / 2, -label:getContentSize().height / 2)
                 s:addChild(label)
 
-                label = ui.newTTFLabelWithOutline({
-                    text =  string.format("%d",  v.level),
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-                })
+                label =
+                    ui.newTTFLabelWithOutline(
+                    {
+                        text = string.format("%d", v.level),
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy
+                    }
+                )
                 s:addChild(label)
                 label:setPosition(ccp(20 - label:getContentSize().width / 2, s:getContentSize().height - 14))
-
             end
         end
 
@@ -466,7 +487,6 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
         else
             refreshEquipIcon()
         end
-
     end
 end
 
@@ -479,7 +499,6 @@ function EnemyFormLayer:resetHeadData()
 end
 
 function EnemyFormLayer:initHeadList()
-
     self:resetHeadData()
 
     if self._scrollItemList then
@@ -491,41 +510,46 @@ function EnemyFormLayer:initHeadList()
         return
     end
 
-    self._scrollItemList = require("utility.TableViewExt").new({
-        size        = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
-        createFunc  = function(idx)
-            idx = idx + 1
-            local item = HeroIcon.new()
-            return item:create({
-                viewSize = self._rootnode["headList"]:getContentSize(),
-                itemData = self._headData[idx],
-                idx      = idx,
-                index    = self._index
-            })
+    self._scrollItemList =
+        require("utility.TableViewExt").new(
+        {
+            size = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+            createFunc = function(idx)
+                idx = idx + 1
+                local item = HeroIcon.new()
+                return item:create(
+                    {
+                        viewSize = self._rootnode["headList"]:getContentSize(),
+                        itemData = self._headData[idx],
+                        idx = idx,
+                        index = self._index
+                    }
+                )
+            end,
+            refreshFunc = function(cell, idx)
+                idx = idx + 1
+                cell:refresh(
+                    {
+                        idx = idx,
+                        itemData = self._headData[idx],
+                        index = self._index
+                    }
+                )
+            end,
+            cellNum = #self._headData,
+            cellSize = HeroIcon.new():getContentSize(),
+            touchFunc = function(cell)
+                local idx = cell:getIdx() + 1
+                self._rootnode["touchNode"]:setTouchEnabled(true)
 
-        end,
-        refreshFunc = function(cell, idx)
-            idx = idx + 1
-            cell:refresh({
-                idx = idx,
-                itemData = self._headData[idx],
-                index    = self._index
-            })
-        end,
-        cellNum   = #self._headData,
-        cellSize    = HeroIcon.new():getContentSize(),
-        touchFunc = function(cell)
-            local idx = cell:getIdx() + 1
-            self._rootnode["touchNode"]:setTouchEnabled(true)
-
-
-            if type(self._headData[idx]) == "table" then
-                self._index = idx
-                self:refreshHero(idx)
+                if type(self._headData[idx]) == "table" then
+                    self._index = idx
+                    self:refreshHero(idx)
+                end
             end
-        end
-    })
---    self._rootnode["headList"]:convertToWorldSpace(ccp(0, 0))
+        }
+    )
+    --    self._rootnode["headList"]:convertToWorldSpace(ccp(0, 0))
     self._scrollItemList:setPosition(ccp(0, 0))
     self._rootnode["headList"]:addChild(self._scrollItemList)
 end
@@ -542,9 +566,9 @@ function EnemyFormLayer:initTouchNode()
     end
 
     local function resetHeroImage(side)
-        if side  == 1 then --左滑动
+        if side == 1 then --左滑动
             currentNode:setPosition(display.width * 1.5, targPosY)
-        elseif side == 2 then  --右滑动
+        elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
         currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
@@ -553,11 +577,10 @@ function EnemyFormLayer:initTouchNode()
     local offsetX = 0
     --    local bTouch
     local function onTouchBegan(event)
-
         local sz = touchNode:getContentSize()
         if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
---            targPosX, targPosY = currentNode:getPosition()
+            --            targPosX, targPosY = currentNode:getPosition()
             offsetX = event.x
             return true
         end
@@ -571,7 +594,7 @@ function EnemyFormLayer:initTouchNode()
 
     local function onTouchEnded(event)
         offsetX = event.x - offsetX
-        if offsetX >= MOVE_OFFSET  then
+        if offsetX >= MOVE_OFFSET then
             if self._index > 1 then
                 self._index = self._index - 1
                 self:refreshHero(self._index, true)
@@ -592,32 +615,37 @@ function EnemyFormLayer:initTouchNode()
         end
     end
 
-    touchNode:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-        if event.name == "began" then
-            return onTouchBegan(event)
-        elseif event.name == "moved" then
-            onTouchMove(event)
-        elseif event.name == "ended" then
-            onTouchEnded(event)
+    touchNode:addNodeEventListener(
+        cc.NODE_TOUCH_EVENT,
+        function(event)
+            if event.name == "began" then
+                return onTouchBegan(event)
+            elseif event.name == "moved" then
+                onTouchMove(event)
+            elseif event.name == "ended" then
+                onTouchEnded(event)
+            end
         end
-    end)
+    )
 end
 
 function EnemyFormLayer:initEquip()
-
     local function onIcon(tag, info)
         if tag < 5 then
             if info then
                 self:setVisible(false)
-                local layer = require("game.Equip.CommonEquipInfoLayer").new({
-                    index = self._index,
-                    subIndex = tag,
-                    info = info,
-                    bEnemy = true,
-                    closeListener = function()
-                        self:setVisible(true)
-                    end
-                })
+                local layer =
+                    require("game.Equip.CommonEquipInfoLayer").new(
+                    {
+                        index = self._index,
+                        subIndex = tag,
+                        info = info,
+                        bEnemy = true,
+                        closeListener = function()
+                            self:setVisible(true)
+                        end
+                    }
+                )
                 game.runningScene:addChild(layer, self:getZOrder() + 1)
             else
                 printf("数据为空")
@@ -625,15 +653,18 @@ function EnemyFormLayer:initEquip()
         else
             if info then
                 self:setVisible(false)
-                local layer = require("game.skill.BaseSkillInfoLayer").new({
-                    index = self._index,
-                    subIndex = tag,
-                    info = info,
-                    bEnemy = true,
-                    closeListener = function()
-                        self:setVisible(true)
-                    end
-                })
+                local layer =
+                    require("game.skill.BaseSkillInfoLayer").new(
+                    {
+                        index = self._index,
+                        subIndex = tag,
+                        info = info,
+                        bEnemy = true,
+                        closeListener = function()
+                            self:setVisible(true)
+                        end
+                    }
+                )
                 game.runningScene:addChild(layer, self:getZOrder() + 1)
             else
                 printf("数据为空")
@@ -654,17 +685,19 @@ function EnemyFormLayer:initEquip()
     for i = 1, 6 do
         local key = "equipBtn_" .. tostring(i)
         self._rootnode[key]:setTouchEnabled(true)
-        self._rootnode[key]:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-            if event.name == "began" then
-                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                onClick(i)
+        self._rootnode[key]:addNodeEventListener(
+            cc.NODE_TOUCH_EVENT,
+            function(event)
+                if event.name == "began" then
+                    PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                    onClick(i)
+                end
             end
-        end)
+        )
     end
 end
 
 function EnemyFormLayer:initSpirit()
-
     local function onSpiritIcon(spiritData, tag)
         local descLayer = require("game.Spirit.SpiritInfoLayer").new(4, spiritData)
         self:addChild(descLayer, 2)
@@ -685,21 +718,22 @@ function EnemyFormLayer:initSpirit()
 end
 
 function EnemyFormLayer:update()
-
     local teamName = ""
-
 
     if #self._enemyInfo.group > 0 then
         teamName = string.format("  [%s]", self._enemyInfo.group)
     end
 
-    local nameLabel = ui.newTTFLabelWithOutline({
-        text =  tostring(self._enemyInfo.name) .. teamName,
-        size = 26,
-        font = FONTS_NAME.font_haibao,
-        align = ui.TEXT_ALIGN_CENTER,
-        color = ccc3(255, 234, 0)
-    })
+    local nameLabel =
+        ui.newTTFLabelWithOutline(
+        {
+            text = tostring(self._enemyInfo.name) .. teamName,
+            size = 26,
+            font = FONTS_NAME.font_haibao,
+            align = ui.TEXT_ALIGN_CENTER,
+            color = cc.c3b(255, 234, 0)
+        }
+    )
 
     self._rootnode["titleNameLabel"]:addChild(nameLabel)
     self:refreshSpiritNode()
@@ -712,7 +746,6 @@ function EnemyFormLayer:update()
 end
 
 function EnemyFormLayer:onEnter()
-
 end
 
 function EnemyFormLayer:onExit()
@@ -721,6 +754,3 @@ end
 
 --
 return EnemyFormLayer
-
-
-

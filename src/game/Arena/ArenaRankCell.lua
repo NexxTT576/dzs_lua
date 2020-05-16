@@ -130,8 +130,8 @@ function ArenaRankCell:create(param)
     -- self.rankName = ui.newTTFLabelWithOutline({
     --     text = "排名:",
     --     size = 26,
-    --     color = ccc3(205,3,3),
-    --     outlineColor = ccc3(255,255,255),
+    --     color = cc.c3b(205,3,3),
+    --     outlineColor = cc.c3b(255,255,255),
     --     font = FONTS_NAME.font_haibao,
     --     align = ui.TEXT_ALIGN_LEFT
     -- })

@@ -76,7 +76,7 @@ function RoadItemView:setUpView()
     local marginLeft  = 20
     local marginRight = 30
     self._titleLabel  = ui.newTTFLabelWithShadow({text = self._data.name,font = FONTS_NAME.font_fzcy,size = 22, 
-        color = ccc3(255,255,255) ,shadowColor = ccc3(255, 255, 255), align = ui.TEXT_ALIGN_LEFT})
+        color = cc.c3b(255,255,255) ,shadowColor = cc.c3b(255, 255, 255), align = ui.TEXT_ALIGN_LEFT})
         :pos(marginLeft, titleBngSize.height / 2)
         :addTo(titleBng)
     self._titleLabel:setAnchorPoint(cc.p(0,0.5))
@@ -86,7 +86,7 @@ function RoadItemView:setUpView()
     --进度
     local text = tonumber(self._data.totalStep) >= 10000 and math.floor((tonumber(self._data.totalStep) / 10000)).."万"  or tonumber(self._data.totalStep)
     self._progresslabel  = ui.newTTFLabel({text = "/"..text, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(0,219,52) })
+        size = 22,color = cc.c3b(0,219,52) })
         :pos(titleBngSize.width - marginRight, titleBngSize.height / 2)
         :addTo(titleBng)
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
@@ -99,15 +99,15 @@ function RoadItemView:setUpView()
     local preWidth = self._progresslabel:getContentSize().width
     local text = tonumber(self._data.missionDetail) >= 10000 and math.floor((tonumber(self._data.missionDetail) / 10000)).."万"  or tonumber(self._data.missionDetail)
     self._progresslabel = ui.newTTFLabel({  text = text, font = FONTS_NAME.font_fzcy,  align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(255,222,0)}) 
+        size = 22,color = cc.c3b(255,222,0)}) 
         :pos(posPreX - preWidth, posPreY)
         :addTo(titleBng) 
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
 
 	if tonumber(self._data.missionDetail) >= tonumber(self._data.totalStep) then
-		self._progresslabel:setColor(ccc3(0,219,52))
+		self._progresslabel:setColor(cc.c3b(0,219,52))
 	else 
-		self._progresslabel:setColor(ccc3(255,222,0))
+		self._progresslabel:setColor(cc.c3b(255,222,0))
 	end 
 
     local posPreX = self._progresslabel:getPositionX()
@@ -116,7 +116,7 @@ function RoadItemView:setUpView()
     local marginRight = 130
     --进度
     self._progresslabel = ui.newTTFLabel({  text = "进度：", font = FONTS_NAME.font_fzcy,  align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(0,219,52)}) 
+        size = 22,color = cc.c3b(0,219,52)}) 
         :pos(titleBngSize.width - marginRight, posPreY)
         :addTo(titleBng) 
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
@@ -129,7 +129,7 @@ function RoadItemView:setUpView()
     local marginTop  = 15
     
     self._disLabel = ui.newTTFLabelWithShadow({text = self._data.dis, size = 20, 
-         align = ui.TEXT_ALIGN_LEFT , font = FONTS_NAME.font_fzcy , color = ccc3(170, 91, 28) ,shadowColor = ccc3(0,0,0)})
+         align = ui.TEXT_ALIGN_LEFT , font = FONTS_NAME.font_fzcy , color = cc.c3b(170, 91, 28) ,shadowColor = cc.c3b(0,0,0)})
         :pos(titleBngPosX + marginLeft, titleBngPosY - titleBngSize.height - marginTop)
         :addTo(self._containner)
 
@@ -140,7 +140,7 @@ function RoadItemView:setUpView()
     local marginLeft = 5
     local marginTop  = 15
     self._disLabel = ui.newTTFLabelWithShadow({text = "奖励", size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(170, 91, 28),shadowColor = ccc3(0,0,0)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(170, 91, 28),shadowColor = cc.c3b(0,0,0)})
         :pos(titleBngPosX + marginLeft, dislabelPosY - dislabelSize.height - marginTop)
         :addTo(self._containner)
     self._disLabel:setAnchorPoint(cc.p(0,1))
@@ -257,7 +257,7 @@ function RoadItemView:createMoney(index,v)
     local offset = 10
     local iconSize = icon:getContentSize()
     local countLabel = ui.newTTFLabel({text = v.num, size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(147, 5, 5)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(147, 5, 5)})
         :pos(iconSize.width + offset , 0)
     local labelSize = countLabel:getContentSize()
     icon:setAnchorPoint(cc.p(0,0))
@@ -271,7 +271,7 @@ function RoadItemView:createMoney(index,v)
     local namelabel
     if v.id > 13 then
     	 -- 名称
-	    local nameColor = ccc3(255, 255, 255) 
+	    local nameColor = cc.c3b(255, 255, 255) 
 	    if v.iconType == ResMgr.HERO then 
 	        nameColor = ResMgr.getHeroNameColor(v.id)
 	    elseif v.iconType == ResMgr.ITEM or v.iconType == ResMgr.EQUIP then 

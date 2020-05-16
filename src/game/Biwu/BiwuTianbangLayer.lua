@@ -26,7 +26,7 @@ function BiwuTianbangLayer:setUpView(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 20,
-            color = ccc3(99, 47, 8)
+            color = cc.c3b(99, 47, 8)
         }
     ):pos(titleBng:getContentSize().width * 0.02, titleBng:getContentSize().height * 0.5):addTo(titleBng)
     local txt2 =
@@ -36,7 +36,7 @@ function BiwuTianbangLayer:setUpView(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 20,
-            color = ccc3(99, 47, 8)
+            color = cc.c3b(99, 47, 8)
         }
     ):pos(titleBng:getContentSize().width * 0.02, titleBng:getContentSize().height * 0.1):addTo(titleBng)
     txt1:setAnchorPoint(cc.p(0, 0))

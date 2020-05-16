@@ -1,8 +1,10 @@
-
-
-local HandBookCell = class("HandBookCell", function (data)
-    return display.newNode()
-end)
+local HandBookCell =
+    class(
+    "HandBookCell",
+    function(data)
+        return display.newNode()
+    end
+)
 
 function HandBookCell:ctor(param)
     local cellData = param.cellData
@@ -12,10 +14,10 @@ function HandBookCell:ctor(param)
     self._rootnode = {}
 
     local bgNode = CCBuilderReaderLoad("handbook/handbook_cell.ccbi", self._proxy, self._rootnode)
-    self:addChild(bgNode) 
+    self:addChild(bgNode)
 
-    local orX = -self._rootnode["cell_bg"]:getContentSize().width/2 + 75
-    local orY = -45-self._rootnode["star_bg"]:getContentSize().height/2 - 40
+    local orX = -self._rootnode["cell_bg"]:getContentSize().width / 2 + 75
+    local orY = -45 - self._rootnode["star_bg"]:getContentSize().height / 2 - 40
 
     local curX = orX
     local curY = orY
@@ -23,9 +25,9 @@ function HandBookCell:ctor(param)
     local arrId = cellData.data.arr_id
     local star = cellData.data.star
 
-    for i = 1,5 do
+    for i = 1, 5 do
         if i > star then
-            self._rootnode["star_"..i]:setVisible(false)
+            self._rootnode["star_" .. i]:setVisible(false)
         end
     end
 
@@ -48,8 +50,8 @@ function HandBookCell:ctor(param)
 
     local iconHeight = 105
     local iconCount = 1
-    local exNum = 0 
-    for i = 1,#arrId do
+    local exNum = 0
+    for i = 1, #arrId do
         local headIcon = display.newSprite()
         local isIconGray = true
 
@@ -58,22 +60,24 @@ function HandBookCell:ctor(param)
             exNum = exNum + 1
         end
 
-        ResMgr.refreshItemWithTagNumName({
-            id = arrId[i],
-            itemBg = headIcon,
-            resType = resType,
-            isShowIconNum = 0,
-            isGray = isIconGray,
-            cls = 0
-            })
-        headIcon:setPosition(curX,curY)
+        ResMgr.refreshItemWithTagNumName(
+            {
+                id = arrId[i],
+                itemBg = headIcon,
+                resType = resType,
+                isShowIconNum = 0,
+                isGray = isIconGray,
+                cls = 0
+            }
+        )
+        headIcon:setPosition(curX, curY)
         self:addChild(headIcon)
 
         if isIconGray ~= true then
             local touchNode = display.newNode()
             local iconWidth = headIcon:getContentSize().width
             local iconHeight = headIcon:getContentSize().height
-            touchNode:setContentSize(iconWidth,iconHeight)
+            touchNode:setContentSize(iconWidth, iconHeight)
             headIcon:addChild(touchNode)
 
             touchNode:setTouchEnabled(true)
@@ -84,38 +88,47 @@ function HandBookCell:ctor(param)
             local viewWidth = viewBg:getContentSize().width
             local viewHeight = viewBg:getContentSize().height
 
-            local viewWorldPos = viewBg:getParent():convertToWorldSpace(ccp(viewBg:getPositionX(),viewBg:getPositionY()))
+            local viewWorldPos = viewBg:getParent():convertToWorldSpace(ccp(viewBg:getPositionX(), viewBg:getPositionY()))
 
+            local viewRect = CCRect(viewWorldPos.x - viewWidth / 2, viewWorldPos.y, viewWidth, viewHeight)
 
-            local viewRect = CCRect(viewWorldPos.x - viewWidth/2, viewWorldPos.y, viewWidth, viewHeight)
+            touchNode:addNodeEventListener(
+                cc.NODE_TOUCH_EVENT,
+                function(event)
+                    local touchPos = ccp(event.x, event.y)
+                    local isInViewBg = viewRect:containsPoint(touchPos)
+                    if isInViewBg == true then
+                        if event.name == "began" then
+                            touchNode:setTouchEnabled(false)
 
-            touchNode:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-                local touchPos =  ccp(event.x,event.y)
-                local isInViewBg =  viewRect:containsPoint(touchPos)
-                if isInViewBg == true then
-                    if event.name == "began" then 
-                        touchNode:setTouchEnabled(false)
-
-                        return true
-                    elseif event.name == "moved" then
-                        if math.abs(event.y - event.prevY) > 5 then
-                           isMoved = true
-                        end
-                    elseif event.name == "ended" then                        
-                        ResMgr.delayFunc(0.8,function()
-                            touchNode:setTouchEnabled(true)
-                            isMoved = false
-                            end,self)
-                        if isMoved ~= true then
-                            local itemInfo = require("game.Huodong.ItemInformation").new({
+                            return true
+                        elseif event.name == "moved" then
+                            if math.abs(event.y - event.prevY) > 5 then
+                                isMoved = true
+                            end
+                        elseif event.name == "ended" then
+                            ResMgr.delayFunc(
+                                0.8,
+                                function()
+                                    touchNode:setTouchEnabled(true)
+                                    isMoved = false
+                                end,
+                                self
+                            )
+                            if isMoved ~= true then
+                                local itemInfo =
+                                    require("game.Huodong.ItemInformation").new(
+                                    {
                                         id = arrId[i],
-                                        type = itemType                       
-                                        })
-                            display.getRunningScene():addChild(itemInfo, 100000)
+                                        type = itemType
+                                    }
+                                )
+                                display.getRunningScene():addChild(itemInfo, 100000)
+                            end
                         end
                     end
                 end
-            end)
+            )
         end
 
         curX = curX + headIcon:getContentSize().height + 20
@@ -123,49 +136,50 @@ function HandBookCell:ctor(param)
         if i % 5 == 0 then
             curY = curY - headIcon:getContentSize().height - 32
             curX = orX
-            -- 
+        --
         end
 
-        if i >1 and (i -1) % 5 == 0 then
+        if i > 1 and (i - 1) % 5 == 0 then
             iconCount = iconCount + 1
         end
         iconHeight = headIcon:getContentSize().height + 32
-
     end
-    iconHeight = iconHeight 
+    iconHeight = iconHeight
 
-    
-
-
-    self._rootnode["cell_bg"]:setContentSize(CCSize(self._rootnode["cell_bg"]:getContentSize().width,iconCount * iconHeight  +self._rootnode["star_bg"]:getContentSize().height+20))
+    self._rootnode["cell_bg"]:setContentSize(CCSize(self._rootnode["cell_bg"]:getContentSize().width, iconCount * iconHeight + self._rootnode["star_bg"]:getContentSize().height + 20))
 
     local totalNum = #arrId
-    local totalTTF = ui.newTTFLabelWithShadow({
-        text = "/"..totalNum,
-        size = 24,
-        -- color = nameColor,
-        shadowColor = ccc3(0,0,0),
-        font = FONTS_NAME.font_haibao,
-        align = ui.TEXT_ALIGN_RIGHT 
-        })
+    local totalTTF =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "/" .. totalNum,
+            size = 24,
+            -- color = nameColor,
+            shadowColor = cc.c3b(0, 0, 0),
+            font = FONTS_NAME.font_haibao,
+            align = ui.TEXT_ALIGN_RIGHT
+        }
+    )
     self._rootnode["cell_bg"]:addChild(totalTTF)
-    totalTTF:setPosition(self._rootnode["cell_bg"]:getContentSize().width-20, self._rootnode["cell_bg"]:getContentSize().height-25)
-    
-    local exTTF = ui.newTTFLabelWithShadow({
-        text = exNum,
-        size = 24,
-        color = ccc3(36,255,0),
-        shadowColor = ccc3(0,0,0),
-        font = FONTS_NAME.font_haibao,
-        align = ui.TEXT_ALIGN_RIGHT 
-        })
-    self._rootnode["cell_bg"]:addChild(exTTF)
-    exTTF:setPosition(totalTTF:getPositionX()-totalTTF:getContentSize().width,totalTTF:getPositionY())
+    totalTTF:setPosition(self._rootnode["cell_bg"]:getContentSize().width - 20, self._rootnode["cell_bg"]:getContentSize().height - 25)
 
+    local exTTF =
+        ui.newTTFLabelWithShadow(
+        {
+            text = exNum,
+            size = 24,
+            color = cc.c3b(36, 255, 0),
+            shadowColor = cc.c3b(0, 0, 0),
+            font = FONTS_NAME.font_haibao,
+            align = ui.TEXT_ALIGN_RIGHT
+        }
+    )
+    self._rootnode["cell_bg"]:addChild(exTTF)
+    exTTF:setPosition(totalTTF:getPositionX() - totalTTF:getContentSize().width, totalTTF:getPositionY())
 end
 
 function HandBookCell:getHeight()
-    return self._rootnode["cell_bg"]:getContentSize().height + self._rootnode["star_bg"]:getContentSize().height/2
+    return self._rootnode["cell_bg"]:getContentSize().height + self._rootnode["star_bg"]:getContentSize().height / 2
 end
 
 return HandBookCell

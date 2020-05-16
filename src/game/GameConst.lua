@@ -55,7 +55,7 @@ DEBUG_BATTLE_SKIP = false
 
 TutoMgr = require("game.Tutorial.TutoMgr")
 DramaMgr = require("game.Drama.DramaMgr")
--- OpenCheck = require("game.OpenSystem.OpenCheck")
+OpenCheck = require("game.OpenSystem.OpenCheck")
 
 --Model类
 

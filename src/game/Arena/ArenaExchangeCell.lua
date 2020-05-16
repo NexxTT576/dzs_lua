@@ -122,8 +122,8 @@ function ArenaExchangeCell:updateItem(itemData)
             iconNum = self._itemData.num,
             isShowIconNum = false,
             numLblSize = 22,
-            numLblColor = ccc3(0, 255, 0),
-            numLblOutColor = ccc3(0, 0, 0)
+            numLblColor = cc.c3b(0, 255, 0),
+            numLblOutColor = cc.c3b(0, 0, 0)
         }
     )
 
@@ -142,7 +142,7 @@ function ArenaExchangeCell:updateItem(itemData)
     end
 
     -- 名称
-    local nameColor = ccc3(255, 255, 255)
+    local nameColor = cc.c3b(255, 255, 255)
     if self._itemData.iconType == ResMgr.ITEM or self._itemData.iconType == ResMgr.EQUIP then
         nameColor = ResMgr.getItemNameColor(self._itemData.id)
     elseif self._itemData.iconType == ResMgr.HERO then
@@ -155,7 +155,7 @@ function ArenaExchangeCell:updateItem(itemData)
             text = self._itemData.name,
             size = 24,
             color = nameColor,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = ui.TEXT_ALIGN_CENTER
         }

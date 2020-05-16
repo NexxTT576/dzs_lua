@@ -44,18 +44,18 @@ function ChatItem:ctor(param)
         self._contentSz = CCSizeMake(w, 50)
     end
 
-    local color = ccc3(0, 129, 220)
+    local color = cc.c3b(0, 129, 220)
     if self._isLeft and gender == 2 then
-        color = ccc3(221, 1, 221)
+        color = cc.c3b(221, 1, 221)
     elseif not self._isLeft then
-        color = ccc3(1, 170, 48)
+        color = cc.c3b(1, 170, 48)
     end
 
     -- local nameLbl = ui.newTTFLabel({
     --         text = name,
     --         size = 22,
     --         color = color,
-    --         -- outlineColor = ccc3(225, 255, 255),
+    --         -- outlineColor = cc.c3b(225, 255, 255),
     --         font = FONTS_NAME.font_fzcy,
     --         align = ui.TEXT_ALIGN_LEFT
     --         })
@@ -91,7 +91,7 @@ function ChatItem:ctor(param)
     -- rootnode["nameLbl"]:addChild(nameLbl)
 
     rootnode["msgLbl"]:setString(msg)
-    -- rootnode["msgLbl"]:setColor(ccc3(255, 255, 255))
+    -- rootnode["msgLbl"]:setColor(cc.c3b(255, 255, 255))
 end
 
 return ChatItem

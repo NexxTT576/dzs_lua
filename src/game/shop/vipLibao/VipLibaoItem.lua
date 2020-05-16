@@ -4,133 +4,134 @@
  -- 2014.12.04 
  --
  --]]
+local MAX_ZORDER = 150
 
- local MAX_ZORDER = 150 
+local VipLibaoItem =
+    class(
+    "VipLibaoItem",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
- local VipLibaoItem = class("VipLibaoItem", function()
- 		return CCTableViewCell:new() 
- 	end)
-
-
- function VipLibaoItem:getContentSize()
-	local proxy = CCBProxy:create()
+function VipLibaoItem:getContentSize()
+    local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("shop/shop_vipLibao_item.ccbi", proxy, rootNode) 
-	local size = rootNode["itemBg"]:getContentSize()
+    local node = CCBuilderReaderLoad("shop/shop_vipLibao_item.ccbi", proxy, rootNode)
+    local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
     return size
- end 
+end
 
+function VipLibaoItem:setBuyBtnEnabled(bEnable)
+    if bEnable == true then
+        self._rootnode["has_buy_tag"]:setVisible(false)
+        self._rootnode["buyBtn"]:setVisible(true)
+        self._rootnode["buyBtn"]:setEnabled(true)
+    else
+        self._rootnode["has_buy_tag"]:setVisible(true)
+        self._rootnode["buyBtn"]:setVisible(false)
+        self._rootnode["buyBtn"]:setEnabled(false)
+    end
+end
 
- function VipLibaoItem:setBuyBtnEnabled(bEnable) 
- 	if bEnable == true then 
- 		self._rootnode["has_buy_tag"]:setVisible(false) 
-		self._rootnode["buyBtn"]:setVisible(true)  
-		self._rootnode["buyBtn"]:setEnabled(true) 
-	else 
-		self._rootnode["has_buy_tag"]:setVisible(true) 
-		self._rootnode["buyBtn"]:setVisible(false) 
-		self._rootnode["buyBtn"]:setEnabled(false) 
-	end 
+function VipLibaoItem:getVipLevel()
+    return self._vipLv
+end
 
- end 
+function VipLibaoItem:create(param)
+    local viewSize = param.viewSize
+    local buyFunc = param.buyFunc
+    self._getLevelGiftAry = param.getLevelGiftAry or {}
+    local cellDatas = param.cellDatas
 
+    local proxy = CCBProxy:create()
+    self._rootnode = {}
 
- function VipLibaoItem:getVipLevel()
- 	return self._vipLv 
- end 
+    local node = CCBuilderReaderLoad("shop/shop_vipLibao_item.ccbi", proxy, self._rootnode)
+    node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height / 2)
+    self:addChild(node)
 
+    self._rootnode["itemDesLbl"]:setColor(cc.c3b(99, 47, 8))
 
- function VipLibaoItem:create(param)
- 	local viewSize = param.viewSize 
-	local buyFunc = param.buyFunc  
-	self._getLevelGiftAry = param.getLevelGiftAry or {} 
-	local cellDatas = param.cellDatas 
+    self:refreshItem(cellDatas)
 
-	local proxy = CCBProxy:create()
-	self._rootnode = {}
+    -- 购买按钮
+    self._rootnode["buyBtn"]:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            if buyFunc ~= nil then
+                self._rootnode["buyBtn"]:setEnabled(false)
+                buyFunc(self)
+            end
+        end,
+        CCControlEventTouchUpInside
+    )
 
-	local node = CCBuilderReaderLoad("shop/shop_vipLibao_item.ccbi", proxy, self._rootnode)
-	node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height/2)
-	self:addChild(node) 
+    local itemIcon = self._rootnode["itemIcon"]
+    itemIcon:setTouchEnabled(true)
 
-	self._rootnode["itemDesLbl"]:setColor(ccc3(99, 47, 8)) 
+    -- 礼包详情
+    local function itemInformation()
+        local layer =
+            require("game.shop.vipLibao.VipLibaoRewardLayer").new(
+            {
+                vipLv = self._vipLv,
+                title = self._title,
+                itemData = self._itemData,
+                closeFunc = function()
+                    itemIcon:setTouchEnabled(true)
+                end
+            }
+        )
+        game.runningScene:addChild(layer, MAX_ZORDER)
+    end
 
-	self:refreshItem(cellDatas) 
+    itemIcon:addNodeEventListener(
+        cc.NODE_TOUCH_EVENT,
+        function(event)
+            if (event.name == "began") then
+                itemIcon:setTouchEnabled(false)
+                itemInformation()
+                return true
+            end
+        end
+    )
 
-	-- 购买按钮 
-	self._rootnode["buyBtn"]:addHandleOfControlEvent(function()
-			GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
-	        if buyFunc ~= nil then 
-	        	self._rootnode["buyBtn"]:setEnabled(false) 
-	            buyFunc(self)
-	        end
-		end, CCControlEventTouchUpInside) 
+    return self
+end
 
+function VipLibaoItem:refresh(cellDatas)
+    self:refreshItem(cellDatas)
+end
 
-	local itemIcon = self._rootnode["itemIcon"] 
-	itemIcon:setTouchEnabled(true) 
+function VipLibaoItem:refreshItem(cellDatas)
+    self._itemData = cellDatas.itemData
+    self._vipLv = cellDatas.vipLv
+    self._title = cellDatas.title
 
-	-- 礼包详情 
-	local function itemInformation()
-		local layer = require("game.shop.vipLibao.VipLibaoRewardLayer").new({
-			vipLv = self._vipLv, 
-			title = self._title, 
-			itemData = self._itemData, 
-			closeFunc = function()
-				itemIcon:setTouchEnabled(true)  
-			end
-			}) 
-		game.runningScene:addChild(layer, MAX_ZORDER) 
-	end 
+    self._rootnode["vip_level_lbl"]:setString(tostring(self._vipLv))
+    self._rootnode["newPrice_lbl"]:setString(tostring(cellDatas.newPrice))
+    self._rootnode["oldPrice_lbl"]:setString(tostring(cellDatas.oldPrice))
+    self._rootnode["itemDesLbl"]:setString(tostring(cellDatas.describe))
+    self._rootnode["title_lbl"]:setString(tostring(self._title))
 
-	itemIcon:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)  
-        if (event.name == "began") then
-        	itemIcon:setTouchEnabled(false) 
-        	itemInformation() 
-        	return true  
-        end 
-    end)
+    local bBuyEnabled = true
+    for i, v in ipairs(self._getLevelGiftAry) do
+        if self._vipLv == v then
+            bBuyEnabled = false
+            break
+        end
+    end
 
- 	return self 
- end 
+    self:setBuyBtnEnabled(bBuyEnabled)
+end
 
+function VipLibaoItem:getReward(getLevelGiftAry)
+    self._getLevelGiftAry = getLevelGiftAry
+    self:setBuyBtnEnabled(false)
+end
 
- function VipLibaoItem:refresh(cellDatas)
- 	self:refreshItem(cellDatas) 
- end 
-
-
- function VipLibaoItem:refreshItem(cellDatas) 
- 	self._itemData = cellDatas.itemData 
- 	self._vipLv = cellDatas.vipLv
- 	self._title = cellDatas.title  
-
-	self._rootnode["vip_level_lbl"]:setString(tostring(self._vipLv)) 
-	self._rootnode["newPrice_lbl"]:setString(tostring(cellDatas.newPrice)) 
-	self._rootnode["oldPrice_lbl"]:setString(tostring(cellDatas.oldPrice)) 
-	self._rootnode["itemDesLbl"]:setString(tostring(cellDatas.describe)) 
-	self._rootnode["title_lbl"]:setString(tostring(self._title)) 
-
-	local bBuyEnabled = true  
-	for i, v in ipairs(self._getLevelGiftAry) do 
-		if self._vipLv == v then 
-			bBuyEnabled = false  
-			break 
-		end 
-	end 
-
-	self:setBuyBtnEnabled(bBuyEnabled) 
-
- end 
-
-
- function VipLibaoItem:getReward(getLevelGiftAry) 
- 	self._getLevelGiftAry = getLevelGiftAry 
- 	self:setBuyBtnEnabled(false) 
- end 
-
-
- return VipLibaoItem 
+return VipLibaoItem

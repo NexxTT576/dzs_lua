@@ -75,7 +75,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(92, 38, 1)
+            color = cc.c3b(92, 38, 1)
         }
     )
     nameDis:setAnchorPoint(cc.p(0, 0.5))
@@ -90,7 +90,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(147, 5, 5)
+            color = cc.c3b(147, 5, 5)
         }
     )
     fightDis:setAnchorPoint(cc.p(1, 0.5))
@@ -123,7 +123,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(255, 255, 255)
+            color = cc.c3b(255, 255, 255)
         }
     )
     levelDis:setAnchorPoint(cc.p(0, 0.5))
@@ -147,7 +147,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(4, 90, 106)
+            color = cc.c3b(4, 90, 106)
         }
     ):pos(self.viewSize.width * 0.85, self.viewSize.height * 0.6):addTo(self.bng)
 
@@ -193,7 +193,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(216, 30, 0)
+            color = cc.c3b(216, 30, 0)
         }
     ):pos(self.viewSize.width * 0.22, self.viewSize.height * 0.15):addTo(self.bng)
     --积分title
@@ -203,7 +203,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(147, 5, 5)
+            color = cc.c3b(147, 5, 5)
         }
     ):pos(self.viewSize.width * 0.5, self.viewSize.height * 0.15):addTo(self.bng)
     --积分数值
@@ -213,7 +213,7 @@ function BiwuTianbangItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(216, 30, 0)
+            color = cc.c3b(216, 30, 0)
         }
     ):pos(self.viewSize.width * 0.6, self.viewSize.height * 0.15):addTo(self.bng)
 end

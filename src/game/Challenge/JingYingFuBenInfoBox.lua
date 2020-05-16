@@ -87,8 +87,8 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
         {
             text = name,
             size = 30,
-            color = ccc3(255, 239, 166),
-            outlineColor = ccc3(161, 53, 0),
+            color = cc.c3b(255, 239, 166),
+            outlineColor = cc.c3b(161, 53, 0),
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT
         }
@@ -125,7 +125,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
                 --                     })
 
                 -- ResMgr.refreshItemName({label=self._rootnode["reward_name_"..i],resId = resId})
-                local nameColor = ccc3(255, 255, 255)
+                local nameColor = cc.c3b(255, 255, 255)
                 if curType == ResMgr.ITEM or curType == ResMgr.EQUIP then
                     nameColor = ResMgr.getItemNameColor(resId)
                 elseif curType == ResMgr.HERO then
@@ -138,7 +138,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
                         text = itemData.name,
                         size = 20,
                         color = nameColor,
-                        shadowColor = ccc3(0, 0, 0),
+                        shadowColor = cc.c3b(0, 0, 0),
                         font = FONTS_NAME.font_fzcy,
                         align = ui.TEXT_ALIGN_CENTER
                     }

@@ -59,7 +59,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(110, 0, 0)
+            color = cc.c3b(110, 0, 0)
         }
     )
     nameDis:setAnchorPoint(cc.p(0, 0.5))
@@ -74,7 +74,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(216, 30, 0)
+            color = cc.c3b(216, 30, 0)
         }
     )
     nameDis:setAnchorPoint(cc.p(0, 0.5))
@@ -89,7 +89,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(99, 47, 8)
+            color = cc.c3b(99, 47, 8)
         }
     )
     levelDisIcon:setAnchorPoint(cc.p(0, 0.5))
@@ -104,7 +104,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(216, 30, 0)
+            color = cc.c3b(216, 30, 0)
         }
     )
     levelDis:setAnchorPoint(cc.p(0, 0.5))
@@ -125,8 +125,8 @@ function BiwuDuihuanItem:refresh(param)
             iconNum = self._data.num,
             isShowIconNum = false,
             numLblSize = 22,
-            numLblColor = ccc3(0, 255, 0),
-            numLblOutColor = ccc3(0, 0, 0)
+            numLblColor = cc.c3b(0, 255, 0),
+            numLblOutColor = cc.c3b(0, 0, 0)
         }
     )
     icon:setPosition(contentBng:getContentSize().width * 0.02, contentBng:getContentSize().height * 0.92)
@@ -134,7 +134,7 @@ function BiwuDuihuanItem:refresh(param)
     contentBng:addChild(icon)
 
     -- 名称
-    local nameColor = ccc3(255, 255, 255)
+    local nameColor = cc.c3b(255, 255, 255)
     if self._data.iconType == ResMgr.HERO then
         nameColor = ResMgr.getHeroNameColor(self._data.item)
     elseif self._data.iconType == ResMgr.ITEM or self._data.iconType == ResMgr.EQUIP then
@@ -168,7 +168,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 18,
-            color = ccc3(6, 129, 18)
+            color = cc.c3b(6, 129, 18)
         }
     )
     timeLiftDis:setPosition(contentBng:getContentSize().width * 0.95, contentBng:getContentSize().height * 0.8)
@@ -193,7 +193,7 @@ function BiwuDuihuanItem:refresh(param)
         kCCTextAlignmentLeft,
         kCCVerticalTextAlignmentTop
     )
-    contentDis:setColor(ccc3(99, 47, 8))
+    contentDis:setColor(cc.c3b(99, 47, 8))
 
     contentDis:setPosition(contentBng:getContentSize().width * 0.25, contentBng:getContentSize().height * 0.35)
     contentDis:setAnchorPoint(cc.p(0, 0.5))
@@ -215,7 +215,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(0, 219, 52)
+            color = cc.c3b(0, 219, 52)
         }
     )
     nameDis:setAnchorPoint(cc.p(0, 0.5))
@@ -230,7 +230,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(0, 219, 52)
+            color = cc.c3b(0, 219, 52)
         }
     )
     fightDis:setAnchorPoint(cc.p(0, 0.5))
@@ -250,7 +250,7 @@ function BiwuDuihuanItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(0, 219, 52)
+            color = cc.c3b(0, 219, 52)
         }
     )
     levelDis:setAnchorPoint(cc.p(0, 0.5))
@@ -343,8 +343,8 @@ function BiwuDuihuanItem:createHeroView(index, node)
             iconNum = 11,
             isShowIconNum = true,
             numLblSize = 22,
-            numLblColor = ccc3(0, 255, 0),
-            numLblOutColor = ccc3(0, 0, 0)
+            numLblColor = cc.c3b(0, 255, 0),
+            numLblOutColor = cc.c3b(0, 0, 0)
         }
     )
     icon:setAnchorPoint(cc.p(0, 0.5))

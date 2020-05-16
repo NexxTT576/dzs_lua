@@ -37,8 +37,8 @@ function ChallengeFubenRewardCell:updateItem(itemData)
                 iconNum = v.num,
                 isShowIconNum = false,
                 numLblSize = 22,
-                numLblColor = ccc3(0, 255, 0),
-                numLblOutColor = ccc3(0, 0, 0)
+                numLblColor = cc.c3b(0, 255, 0),
+                numLblOutColor = cc.c3b(0, 0, 0)
             }
         )
 
@@ -58,7 +58,7 @@ function ChallengeFubenRewardCell:updateItem(itemData)
 
         -- 名称
         local nameKey = "reward_name_" .. tostring(i)
-        local nameColor = ccc3(255, 255, 255)
+        local nameColor = cc.c3b(255, 255, 255)
         if v.iconType == ResMgr.ITEM or v.iconType == ResMgr.EQUIP then
             nameColor = ResMgr.getItemNameColor(v.id)
         elseif v.iconType == ResMgr.HERO then
@@ -71,7 +71,7 @@ function ChallengeFubenRewardCell:updateItem(itemData)
                 text = v.name,
                 size = 20,
                 color = nameColor,
-                shadowColor = ccc3(0, 0, 0),
+                shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
                 align = ui.TEXT_ALIGN_LEFT
             }

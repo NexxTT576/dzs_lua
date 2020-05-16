@@ -62,9 +62,9 @@ function HuoDongCell:refresh(aid)
     self._rootnode["bg_node"]:addChild(item)
     self._rootnode["bg_node"]:addChild(itemCover)
 
-    local color = ccc3(255, 255, 255)
+    local color = cc.c3b(255, 255, 255)
     if self.isAllowPlay then
-        color = ccc3(0, 255, 0)
+        color = cc.c3b(0, 255, 0)
     end
 
     if self.isAllowPlay == true then
@@ -80,7 +80,7 @@ function HuoDongCell:refresh(aid)
                 text = "今日剩余次数：" .. tostring(actTimes),
                 size = 22,
                 color = color,
-                outlineColor = ccc3(0, 0, 0),
+                outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
                 align = ui.TEXT_ALIGN_LEFT
             }
@@ -117,7 +117,7 @@ function HuoDongCell:refresh(aid)
             local rowTable = {}
             local nameColor = NAME_COLOR[5]
 
-            local useStr = ResMgr.createShadowMsgTTF({text = "可使用", color = ccc3(0, 255, 0)}) --可使用
+            local useStr = ResMgr.createShadowMsgTTF({text = "可使用", color = cc.c3b(0, 255, 0)}) --可使用
             rowTable[#rowTable + 1] = useStr
             local itemData = data_item_item[itemID]
             local itemColor = NAME_COLOR[itemData.quality]
@@ -125,7 +125,7 @@ function HuoDongCell:refresh(aid)
             rowTable[#rowTable + 1] = itemStr
             local itemIcon = display.newSprite("#jiefuling.png")
             rowTable[#rowTable + 1] = itemIcon
-            local chaStr = ResMgr.createShadowMsgTTF({text = "挑战(拥有:" .. itemNum .. ")", color = ccc3(0, 255, 0)}) --可使用
+            local chaStr = ResMgr.createShadowMsgTTF({text = "挑战(拥有:" .. itemNum .. ")", color = cc.c3b(0, 255, 0)}) --可使用
             rowTable[#rowTable + 1] = chaStr
 
             local jiefuDescNode = ResMgr.getArrangedNode(rowTable)
@@ -143,7 +143,7 @@ function HuoDongCell:refresh(aid)
                 text = tostring(huodongData.index),
                 size = 26,
                 color = color,
-                outlineColor = ccc3(0, 0, 0),
+                outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
                 align = ui.TEXT_ALIGN_LEFT
             }

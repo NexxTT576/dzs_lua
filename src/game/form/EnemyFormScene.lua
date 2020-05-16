@@ -6,7 +6,6 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-
 require("utility.BottomBtnEvent")
 local data_jiban_jiban = require("data.data_jiban_jiban")
 local data_item_item = require("data.data_item_item")
@@ -18,22 +17,25 @@ local data_item_item = require("data.data_item_item")
 --5：内功部位
 --6：外功部位
 local RequestInfo = require("network.RequestInfo")
-local HeroIcon = class("HeroIcon", function()
-    return CCTableViewCell:new()
-end)
+local HeroIcon =
+    class(
+    "HeroIcon",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
 function HeroIcon:getContentSize()
---    local sz = display.newSprite("hero/icon/icon_hero_guojing.png"):getContentSize()
+    --    local sz = display.newSprite("hero/icon/icon_hero_guojing.png"):getContentSize()
     return CCSizeMake(115, 115)
 end
 
 function HeroIcon:ctor()
-
 end
 
 function HeroIcon:create(param)
     local _viewSize = param.viewSize
-    local _itemData  = param.itemData
+    local _itemData = param.itemData
 
     self._heroIcon = display.newSprite("#zhenrong_equip_bg.png")
     self:addChild(self._heroIcon)
@@ -43,10 +45,13 @@ function HeroIcon:create(param)
     self:addChild(self._actIcon)
     self._actIcon:setPosition(self._actIcon:getContentSize().width / 2, _viewSize.height / 2)
 
-    local label = ui.newTTFLabel({
-        text = "",
-        size = 20
-    })
+    local label =
+        ui.newTTFLabel(
+        {
+            text = "",
+            size = 20
+        }
+    )
     label:setPosition(self._actIcon:getContentSize().width / 2, self._actIcon:getContentSize().height / 2)
     self._actIcon:addChild(label)
     label:setTag(1)
@@ -66,8 +71,7 @@ function HeroIcon:create(param)
 end
 
 function HeroIcon:refresh(param)
-
-    local _itemData  = param.itemData
+    local _itemData = param.itemData
     self._heroIcon:setVisible(false)
     self._actIcon:setVisible(false)
 
@@ -95,7 +99,6 @@ end
 local function getDataOpen(sysID)
     local data_open_open = require("data.data_open_open")
     for k, v in ipairs(data_open_open) do
-
         if sysID == v.system then
             return v
         end
@@ -104,13 +107,17 @@ end
 
 local MOVE_OFFSET = display.width / 3
 
-local EnemyFormScene = class("EnemyFormScene", function()
-    return display.newScene("EnemyFormScene")
-end)
+local EnemyFormScene =
+    class(
+    "EnemyFormScene",
+    function()
+        return display.newScene("EnemyFormScene")
+    end
+)
 
 local SHOWTYPE = {
     FORMATION = 1,
-    SPIRIT    = 2
+    SPIRIT = 2
 }
 
 function EnemyFormScene:ctor(showType, enemyID)
@@ -118,7 +125,7 @@ function EnemyFormScene:ctor(showType, enemyID)
 
     local bg = display.newSprite("bg/formation_bg.jpg")
     bg:setPosition(display.cx, display.cy)
-    bg:setScaleX(display.width/bg:getContentSize().width)
+    bg:setScaleX(display.width / bg:getContentSize().width)
     bg:setScaleY((display.height - 300) / bg:getContentSize().height)
     self:addChild(bg, 0)
 
@@ -167,27 +174,30 @@ function EnemyFormScene:ctor(showType, enemyID)
     local function switchView(bRefresh)
         refreshBtnText()
         if self._showType == SHOWTYPE.SPIRIT then
+            --
             self._rootnode["spiritNode"]:setVisible(true)
             self._rootnode["equipNode"]:setVisible(false)
---
         else
+            --
             self._rootnode["spiritNode"]:setVisible(false)
             self._rootnode["equipNode"]:setVisible(true)
---
         end
         if bRefresh then
             self:refreshHero(self._index)
         end
     end
 
-    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        if self._showType == SHOWTYPE.SPIRIT then
-            self._showType = 1
-        else
-            self._showType = 2
-        end
-        switchView(true)
-    end, CCControlEventTouchDown)
+    self._rootnode["spiritAndEquipBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            if self._showType == SHOWTYPE.SPIRIT then
+                self._showType = 1
+            else
+                self._showType = 2
+            end
+            switchView(true)
+        end,
+        CCControlEventTouchDown
+    )
 
     self._rootnode["quickEquipBtn"]:setVisible(false)
     self._rootnode["heroSettingBtn"]:setVisible(false)
@@ -195,44 +205,47 @@ function EnemyFormScene:ctor(showType, enemyID)
     -- 广播
     local broadcastBg = self._rootnode["broadcast_tag"]
     if broadcastBg ~= nil then
-        if game.broadcast:getParent() ~= nil then 
+        if game.broadcast:getParent() ~= nil then
             game.broadcast:removeFromParentAndCleanup(true)
         end
         broadcastBg:addChild(game.broadcast)
     end
 
---  切换视图
+    --  切换视图
     switchView()
     self:request()
 end
 
-
 --进入界面时候的请求
 function EnemyFormScene:request()
-
     local reqs = {}
 
     --请求阵容
-    table.insert(reqs, RequestInfo.new({
-        modulename = "fmt",
-        funcname   = "list",
-        param      = {acc2 = self._enemyID},
-        oklistener = function(data)
+    table.insert(
+        reqs,
+        RequestInfo.new(
+            {
+                modulename = "fmt",
+                funcname = "list",
+                param = {acc2 = self._enemyID},
+                oklistener = function(data)
+                    dump(data)
 
-            dump(data)
+                    self._cardList = data["1"]
+                    self._equip = data["2"]
+                    self._spirit = data["3"]
+                end
+            }
+        )
+    )
 
-            self._cardList = data["1"]
-            self._equip = data["2"]
-            self._spirit = data["3"]
-
+    RequestHelperV2.request2(
+        reqs,
+        function()
+            self:update()
         end
-    }))
-
-    RequestHelperV2.request2(reqs, function()
-        self:update()
-    end)
+    )
 end
-
 
 function EnemyFormScene:refreshHero(index)
     printf("refreshHero")
@@ -243,7 +256,7 @@ function EnemyFormScene:refreshHero(index)
     end
 
     if index > #self._cardList then
---        self:onPartnerView()
+        --        self:onPartnerView()
         return
     end
     self._rootnode["bottomInfoView"]:setVisible(true)
@@ -253,27 +266,27 @@ function EnemyFormScene:refreshHero(index)
     local hero = self._cardList[index]
 
     if hero then
---名字
+        --名字
         self._rootnode["nameLabel"]:setString(hero.name)
         self._rootnode["nameLabel"]:setColor(NAME_COLOR[hero.star])
---图像
+        --图像
         local heroImg = ResMgr.getCardData(hero.resId)["arr_body"][hero.cls + 1]
         local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
         self._rootnode["heroImg"]:setDisplayFrame(display.newSprite(heroPath):getDisplayFrame())
---等级
+        --等级
         self._rootnode["currentLevelLabel"]:setString(tostring(hero["level"]))
         self._rootnode["maxLevelLabel"]:setString(tostring(hero["levelLimit"]))
---属性
+        --属性
         self._rootnode["hpLabel"]:setString(tostring(hero.base[1]))
         self._rootnode["atkLabel"]:setString(tostring(hero.base[2]))
         self._rootnode["defLabel1"]:setString(tostring(hero.base[3]))
         self._rootnode["defLabel2"]:setString(tostring(hero.base[4]))
---领导力
+        --领导力
 
         for k, v in ipairs(hero.lead) do
             self._rootnode[string.format("leadLabel_%d", k)]:setString(tostring(v))
         end
---羁绊
+        --羁绊
         if ResMgr.getCardData(hero.resId).fate1 then
             for k, v in ipairs(ResMgr.getCardData(hero.resId).fate1) do
                 if k > 6 then
@@ -282,10 +295,10 @@ function EnemyFormScene:refreshHero(index)
                 local jbKey = string.format("jbLabel_%d", k)
                 self._rootnode[jbKey]:setVisible(true)
                 self._rootnode[jbKey]:setString(data_jiban_jiban[v].name)
-                self._rootnode[jbKey]:setColor(ccc3(119, 119, 119))
+                self._rootnode[jbKey]:setColor(cc.c3b(119, 119, 119))
                 for i, j in ipairs(hero.relation) do
                     if v == j then
-                        self._rootnode[jbKey]:setColor(ccc3(255, 108, 0))
+                        self._rootnode[jbKey]:setColor(cc.c3b(255, 108, 0))
                     end
                 end
             end
@@ -307,21 +320,26 @@ function EnemyFormScene:refreshHero(index)
                 lvBg:setPosition(s:getContentSize().width, lvBg:getContentSize().height / 2)
                 s:addChild(lvBg)
 
-                local label = ui.newTTFLabel({
-                    text =  data_item_item[v.resId].name,
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-                    color = NAME_COLOR[data_item_item[v.resId].quality]
-                })
+                local label =
+                    ui.newTTFLabel(
+                    {
+                        text = data_item_item[v.resId].name,
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy,
+                        color = NAME_COLOR[data_item_item[v.resId].quality]
+                    }
+                )
                 label:setPosition(s:getContentSize().width / 2, -label:getContentSize().height / 2)
                 s:addChild(label)
 
-                label = ui.newTTFLabel({
-                    text =  string.format("%d", v.level),
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-
-                })
+                label =
+                    ui.newTTFLabel(
+                    {
+                        text = string.format("%d", v.level),
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy
+                    }
+                )
                 label:setPosition(lvBg:getContentSize().height / 3.5, label:getContentSize().height * 0.75)
                 lvBg:addChild(label)
             end
@@ -336,30 +354,36 @@ function EnemyFormScene:refreshHero(index)
             for k, v in ipairs(self._equip[index]) do
                 local equipNodeName = "equipBtn_" .. tostring(v.subpos)
 
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage( data_item_item[v.resId].icon, ResMgr.EQUIP))
-                local s = ResMgr.getIconSprite( {id = v.resId, resType = ResMgr.EQUIP, hasCorner=true})--display.newSprite(path)
+                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(data_item_item[v.resId].icon, ResMgr.EQUIP))
+                local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
+                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
                 self._rootnode[equipNodeName]:addChild(s, 100, 100)
 
-                local label = ui.newTTFLabelWithOutline({
-                    text =  data_item_item[v.resId].name,
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-                    align = ui.TEXT_ALIGN_CENTER,
-                    color = NAME_COLOR[data_item_item[v.resId].quality]
-                })
+                local label =
+                    ui.newTTFLabelWithOutline(
+                    {
+                        text = data_item_item[v.resId].name,
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy,
+                        align = ui.TEXT_ALIGN_CENTER,
+                        color = NAME_COLOR[data_item_item[v.resId].quality]
+                    }
+                )
                 label:setPosition(s:getContentSize().width / 2, -label:getContentSize().height / 2)
                 s:addChild(label)
 
-                label = ui.newTTFLabel({
-                    text =  string.format("%d", v.level),
-                    size = 22,
-                    font = FONTS_NAME.font_fzcy,
-                    x = 15,
-                    y = s:getContentSize().height-15
-                })
+                label =
+                    ui.newTTFLabel(
+                    {
+                        text = string.format("%d", v.level),
+                        size = 22,
+                        font = FONTS_NAME.font_fzcy,
+                        x = 15,
+                        y = s:getContentSize().height - 15
+                    }
+                )
                 s:addChild(label)
-
             end
         end
 
@@ -368,23 +392,18 @@ function EnemyFormScene:refreshHero(index)
         else
             refreshEquipIcon()
         end
-
     end
 end
 
 function EnemyFormScene:resetHeadData()
-
-
     self._headData = {}
     --  根据数据插入数据
     for k, v in ipairs(self._cardList) do
         table.insert(self._headData, v)
-
     end
 end
 
 function EnemyFormScene:initHeadList()
-
     self:resetHeadData()
 
     if self._scrollItemList then
@@ -392,38 +411,43 @@ function EnemyFormScene:initHeadList()
         return
     end
 
-    self._scrollItemList = require("utility.TableViewExt").new({
-        size        = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
-        createFunc  = function(idx)
-            idx = idx + 1
-            local item = HeroIcon.new()
-            return item:create({
-                viewSize = self._rootnode["headList"]:getContentSize(),
-                itemData = self._headData[idx],
-                idx      = idx,
-            })
+    self._scrollItemList =
+        require("utility.TableViewExt").new(
+        {
+            size = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+            createFunc = function(idx)
+                idx = idx + 1
+                local item = HeroIcon.new()
+                return item:create(
+                    {
+                        viewSize = self._rootnode["headList"]:getContentSize(),
+                        itemData = self._headData[idx],
+                        idx = idx
+                    }
+                )
+            end,
+            refreshFunc = function(cell, idx)
+                idx = idx + 1
+                cell:refresh(
+                    {
+                        idx = idx,
+                        itemData = self._headData[idx]
+                    }
+                )
+            end,
+            cellNum = #self._headData,
+            cellSize = HeroIcon.new():getContentSize(),
+            touchFunc = function(cell)
+                local idx = cell:getIdx() + 1
+                self._rootnode["touchNode"]:setTouchEnabled(true)
 
-        end,
-        refreshFunc = function(cell, idx)
-            idx = idx + 1
-            cell:refresh({
-                idx = idx,
-                itemData = self._headData[idx],
-            })
-        end,
-        cellNum   = #self._headData,
-        cellSize    = HeroIcon.new():getContentSize(),
-        touchFunc = function(cell)
-            local idx = cell:getIdx() + 1
-            self._rootnode["touchNode"]:setTouchEnabled(true)
-
-
-            if type(self._headData[idx]) == "table" then
-                self._index = idx
-                self:refreshHero(idx)
+                if type(self._headData[idx]) == "table" then
+                    self._index = idx
+                    self:refreshHero(idx)
+                end
             end
-        end
-    })
+        }
+    )
     self._scrollItemList:setPosition(0, 0)
     self._rootnode["headList"]:addChild(self._scrollItemList)
 end
@@ -440,25 +464,24 @@ function EnemyFormScene:initTouchNode()
     end
 
     local function resetHeroImage(side)
-        if side  == 1 then --左滑动
+        if side == 1 then --左滑动
             currentNode:setPosition(display.width * 1.5, targPosY)
-        elseif side == 2 then  --右滑动
+        elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
         currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
     end
 
     local offsetX = 0
---    local bTouch
+    --    local bTouch
     local function onTouchBegan(event)
-
         local sz = touchNode:getContentSize()
         if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
 
             targPosX, targPosY = currentNode:getPosition()
             offsetX = event.x
---            bTouch = true
+            --            bTouch = true
             return true
         end
         return false
@@ -471,7 +494,7 @@ function EnemyFormScene:initTouchNode()
 
     local function onTouchEnded(event)
         offsetX = event.x - offsetX
-        if offsetX >= MOVE_OFFSET  then
+        if offsetX >= MOVE_OFFSET then
             if self._index > 1 then
                 self._index = self._index - 1
                 self:refreshHero(self._index)
@@ -492,15 +515,18 @@ function EnemyFormScene:initTouchNode()
         end
     end
 
-    touchNode:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-        if event.name == "began" then
-            return onTouchBegan(event)
-        elseif event.name == "moved" then
-            onTouchMove(event)
-        elseif event.name == "ended" then
-            onTouchEnded(event)
+    touchNode:addNodeEventListener(
+        cc.NODE_TOUCH_EVENT,
+        function(event)
+            if event.name == "began" then
+                return onTouchBegan(event)
+            elseif event.name == "moved" then
+                onTouchMove(event)
+            elseif event.name == "ended" then
+                onTouchEnded(event)
+            end
         end
-    end)
+    )
 end
 
 function EnemyFormScene:update()
@@ -511,20 +537,19 @@ end
 
 function EnemyFormScene:onEnter()
     game.runningScene = self
-     -- 广播
+    -- 广播
     if self._bExit then
-        local broadcastBg = self._rootnode["broadcast_tag"] 
-        if game.broadcast:getParent() ~= nil then 
+        local broadcastBg = self._rootnode["broadcast_tag"]
+        if game.broadcast:getParent() ~= nil then
             game.broadcast:removeFromParentAndCleanup(true)
         end
         broadcastBg:addChild(game.broadcast)
     end
-    
+
     if self._bExit and self._formSettingView == nil then
         self._bExit = false
         self:refreshHero(self._index)
     end
-
 end
 --
 function EnemyFormScene:onExit()
@@ -532,4 +557,3 @@ function EnemyFormScene:onExit()
 end
 --
 return EnemyFormScene
-

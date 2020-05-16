@@ -135,8 +135,8 @@ function ArenaResult:createTreasure(lostDebris, data)
                     iconNum = v.n,
                     isShowIconNum = false,
                     numLblSize = 22,
-                    numLblColor = ccc3(0, 255, 0),
-                    numLblOutColor = ccc3(0, 0, 0)
+                    numLblColor = cc.c3b(0, 255, 0),
+                    numLblOutColor = cc.c3b(0, 0, 0)
                 }
             )
             rewardIcon:setTag(i)
@@ -147,7 +147,7 @@ function ArenaResult:createTreasure(lostDebris, data)
 
             -- 名称
             local nameKey = "reward_name_" .. tostring(i)
-            local nameColor = ccc3(255, 255, 255)
+            local nameColor = cc.c3b(255, 255, 255)
             local name
             if resType == ResMgr.ITEM or resType == ResMgr.EQUIP then
                 local data_item_item = require("data.data_item_item")
@@ -165,7 +165,7 @@ function ArenaResult:createTreasure(lostDebris, data)
                     text = name,
                     size = 20,
                     color = nameColor,
-                    shadowColor = ccc3(0, 0, 0),
+                    shadowColor = cc.c3b(0, 0, 0),
                     font = FONTS_NAME.font_fzcy,
                     align = ui.TEXT_ALIGN_LEFT
                 }

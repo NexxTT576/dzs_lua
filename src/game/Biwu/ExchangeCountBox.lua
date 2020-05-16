@@ -62,7 +62,7 @@ function ExchangeCountBox:ctor(param)
     end
 
     -- 名称
-    local nameColor = ccc3(255, 255, 255)
+    local nameColor = cc.c3b(255, 255, 255)
     if itemData.iconType == ResMgr.ITEM or itemData.iconType == ResMgr.EQUIP then
         nameColor = ResMgr.getItemNameColor(itemData.id)
     elseif itemData.iconType == ResMgr.HERO then
@@ -75,7 +75,7 @@ function ExchangeCountBox:ctor(param)
             text = itemData.name,
             size = 24,
             color = nameColor,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = ui.TEXT_ALIGN_CENTER
         }

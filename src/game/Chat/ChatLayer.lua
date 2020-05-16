@@ -553,8 +553,8 @@ function ChatLayer:initFriendData()
 end
 
 function ChatLayer:initFriendContent()
-    self.heroNameTTF = ResMgr.createShadowMsgTTF({text = "", color = ccc3(255, 210, 0)})
-     --n
+    self.heroNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 210, 0)})
+    --n
     self._rootnode["heroName"]:getParent():addChild(self.heroNameTTF)
 
     self._rootnode["zhanli_num"]:setString(self.battlepoint)

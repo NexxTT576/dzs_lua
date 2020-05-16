@@ -34,7 +34,7 @@ function BiwuDuihuanLayer:setUpView(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 30,
-            color = ccc3(238, 184, 104)
+            color = cc.c3b(238, 184, 104)
         }
     )
     self.nameDis:setAnchorPoint(cc.p(0, 0.5))

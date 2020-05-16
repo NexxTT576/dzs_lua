@@ -92,8 +92,8 @@ function BiwuBuyMsgBox:setUpView(param)
         {
             text = "花费",
             size = 20,
-            color = ccc3(92, 38, 1),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(92, 38, 1),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -103,8 +103,8 @@ function BiwuBuyMsgBox:setUpView(param)
         {
             text = param.cost,
             size = 20,
-            color = ccc3(6, 129, 18),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(6, 129, 18),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -115,8 +115,8 @@ function BiwuBuyMsgBox:setUpView(param)
         {
             text = "购买1挑战次数",
             size = 20,
-            color = ccc3(92, 38, 1),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(92, 38, 1),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -136,8 +136,8 @@ function BiwuBuyMsgBox:setUpView(param)
         {
             text = string.format("今日剩余购买次数:%d", param.timeleft),
             size = 20,
-            color = ccc3(6, 129, 18),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(6, 129, 18),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -153,7 +153,7 @@ function BiwuBuyMsgBox:createMask()
     local winSize = CCDirector:sharedDirector():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
-    mask:setColor(ccc3(0, 0, 0))
+    mask:setColor(cc.c3b(0, 0, 0))
     mask:setOpacity(150)
     mask:setAnchorPoint(cc.p(0, 0))
     mask:setTouchEnabled(true)

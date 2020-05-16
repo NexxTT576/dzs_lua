@@ -27,9 +27,13 @@ local data_item_nature = require("data.data_item_nature")
 local data_item_item = require("data.data_item_item")
 
 local RequestInfo = require("network.RequestInfo")
-local EquipXiLianScene = class("EquipXiLianScene", function()
-    return require("utility.ShadeLayer").new()
-end)
+local EquipXiLianScene =
+    class(
+    "EquipXiLianScene",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 
 local ICON_MAPS = {
     [1] = "icon_lv_silver.png",
@@ -38,7 +42,6 @@ local ICON_MAPS = {
 }
 
 function EquipXiLianScene:ctor(param)
-
     self._proxy = CCBProxy:create()
     self._rootnode = {}
 
@@ -49,23 +52,26 @@ function EquipXiLianScene:ctor(param)
     local _info = param.info
     local _baseInfo = data_item_item[_info.resId]
     local _listener = param.listener
-    local _xlType = 1    --洗练类型， 默认是初级洗练
+    local _xlType = 1 --洗练类型， 默认是初级洗练
     local _stoneNum = 0
 
     dump(_info)
     local _xlInfo = {}
 
-    local nameLabel = ui.newTTFLabelWithShadow({
-        text = _baseInfo.name,
-        font = FONTS_NAME.font_haibao,
-        size = 30,
-        align = ui.TEXT_ALIGN_CENTER
-    })
+    local nameLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = _baseInfo.name,
+            font = FONTS_NAME.font_haibao,
+            size = 30,
+            align = ui.TEXT_ALIGN_CENTER
+        }
+    )
     self._rootnode["itemNameLabel"]:addChild(nameLabel)
     nameLabel:setColor(NAME_COLOR[_baseInfo.quality])
 
     self._rootnode["lvLabel"]:setString("LV." .. tostring(_info.level))
-    local path = ResMgr.getLargeImage( _baseInfo.bicon, ResMgr.EQUIP )
+    local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
     self._rootnode["imageSprite"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
     self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getDisplayFrame())
 
@@ -79,7 +85,6 @@ function EquipXiLianScene:ctor(param)
         for x = 1, 5 do
             local v = _xlInfo[x]
             if v then
-
                 for propK, propV in ipairs(_info.base) do
                     if propV > 0 then
                         if EQUIP_BASE_PROP_MAPPPING[propK] == v.id then
@@ -106,18 +111,18 @@ function EquipXiLianScene:ctor(param)
                     self._rootnode["ti_huan_btn"]:setVisible(true)
                     if v.noequip > 0 then
                         self._rootnode[string.format("maxNum%d", x)]:setString(string.format("+%d", v.noequip))
-                        self._rootnode[string.format("maxNum%d", x)]:setColor(ccc3(73, 144, 72))
+                        self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(73, 144, 72))
                         self._rootnode[string.format("arrow_%d", x)]:setVisible(true)
                         self._rootnode[string.format("arrow_%d", x)]:setDisplayFrame(display.newSpriteFrame("equip_up_arrow.png"))
                     else
                         self._rootnode[string.format("maxNum%d", x)]:setString(string.format("%d", v.noequip))
                         if v.noequip == 0 then
                             self._rootnode[string.format("arrow_%d", x)]:setVisible(false)
-                            self._rootnode[string.format("maxNum%d", x)]:setColor(ccc3(73, 144, 72))
+                            self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(73, 144, 72))
                         else
                             self._rootnode[string.format("arrow_%d", x)]:setVisible(true)
                             self._rootnode[string.format("arrow_%d", x)]:setDisplayFrame(display.newSpriteFrame("equip_down_arrow.png"))
-                            self._rootnode[string.format("maxNum%d", x)]:setColor(ccc3(255, 0, 0))
+                            self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(255, 0, 0))
                         end
                     end
                 else
@@ -125,7 +130,7 @@ function EquipXiLianScene:ctor(param)
                     for i, j in ipairs(_baseInfo.arr_xilian) do
                         if v.id == j then
                             --洗练属性上限=初始上限*（1+强化等级/10
-                            self._rootnode[string.format("maxNum%d", x)]:setColor(ccc3(73, 144, 72))
+                            self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(73, 144, 72))
                             self._rootnode[string.format("arrow_%d", x)]:setVisible(false)
                             self._rootnode[string.format("maxNum%d", x)]:setString("最大" .. tostring(math.floor(_baseInfo.arr_beginning[i] * (1 + _info.level / 10))))
                             break
@@ -153,7 +158,7 @@ function EquipXiLianScene:ctor(param)
         self._rootnode[string.format("tab%d", i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onXiLianType)
     end
 
---    data_baptize_baptize[self.type]["arr_silver"]
+    --    data_baptize_baptize[self.type]["arr_silver"]
     for k, v in ipairs(data_baptize_baptize) do
         local idx = 1
         for i, j in ipairs(v.arr_silver) do
@@ -162,7 +167,6 @@ function EquipXiLianScene:ctor(param)
                 self._rootnode[string.format("cost_%d_%d", k, idx)]:setString(tostring(j))
                 idx = idx + 1
             else
-
             end
         end
         if idx == 2 then
@@ -176,14 +180,16 @@ function EquipXiLianScene:ctor(param)
         _xlInfo = {}
         bShowNoEquipNum = false
         for k, v in ipairs(data["1"]) do
-            table.insert(_xlInfo, {
-                id = v,
-                val = data["2"][k],
-                equip = data["3"][k],
-                noequip = data["4"][k]
-            })
---            if data["4"][k] ~= 0 then
-
+            table.insert(
+                _xlInfo,
+                {
+                    id = v,
+                    val = data["2"][k],
+                    equip = data["3"][k],
+                    noequip = data["4"][k]
+                }
+            )
+            --            if data["4"][k] ~= 0 then
 
             if (bInit and data["4"][k] ~= 0) or (bInit == false) then
                 bShowNoEquipNum = true
@@ -203,36 +209,42 @@ function EquipXiLianScene:ctor(param)
             end
 
             if b and data["3"][k] > 0 then
-                table.insert(_info.props, {
-                    idx = v,
-                    val = data["3"][k]
-                })
+                table.insert(
+                    _info.props,
+                    {
+                        idx = v,
+                        val = data["3"][k]
+                    }
+                )
             end
         end
         PostNotice(NoticeKey.CommonUpdate_Label_Silver)
         PostNotice(NoticeKey.CommonUpdate_Label_Gold)
 
---
---        self._rootnode["silverLabel"]:setString(tostring(game.player:getSilver()))
---        self._rootnode["goldLabel"]:setString(tostring(game.player:getGold()))
+        --
+        --        self._rootnode["silverLabel"]:setString(tostring(game.player:getSilver()))
+        --        self._rootnode["goldLabel"]:setString(tostring(game.player:getGold()))
         refresh()
     end
 
     onXiLianType(1)
-    local req = RequestInfo.new({
-        modulename = "equip",
-        funcname   = "xlstate",
-        param      = {
-            id = _info._id
-        },
-        oklistener = function(data)
-            bInit = true
-            _stoneNum = data["5"]
-            onXilian(data)
---            onXilian(data)
-            bInit = false
-        end
-    })
+    local req =
+        RequestInfo.new(
+        {
+            modulename = "equip",
+            funcname = "xlstate",
+            param = {
+                id = _info._id
+            },
+            oklistener = function(data)
+                bInit = true
+                _stoneNum = data["5"]
+                onXilian(data)
+                --            onXilian(data)
+                bInit = false
+            end
+        }
+    )
     RequestHelperV2.request(req)
 
     local function close()
@@ -241,46 +253,50 @@ function EquipXiLianScene:ctor(param)
     end
 
     local function xilian(num)
-        local xilianreq = RequestInfo.new({
-            modulename = "equip",
-            funcname   = "xl",
-            param      = {
-                id = _info._id,
-                t = _xlType,
-                num = num
-            },
-            oklistener = function(data)
-                _stoneNum = data["7"]
-                game.player:setSilver(data["5"])
-                game.player:setGold(data["6"])
-                onXilian(data)
-            end
-        })
+        local xilianreq =
+            RequestInfo.new(
+            {
+                modulename = "equip",
+                funcname = "xl",
+                param = {
+                    id = _info._id,
+                    t = _xlType,
+                    num = num
+                },
+                oklistener = function(data)
+                    _stoneNum = data["7"]
+                    game.player:setSilver(data["5"])
+                    game.player:setGold(data["6"])
+                    onXilian(data)
+                end
+            }
+        )
         RequestHelperV2.request(xilianreq)
     end
 
     local function replace()
-        local repreq = RequestInfo.new({
-            modulename = "equip",
-            funcname   = "replace",
-            param      = {
-                id = _info._id,
-            },
-            oklistener = function(data)
-                game.player:setSilver(data["5"])
-                game.player:setGold(data["6"])
-                onXilian(data, true)
-
-            end
-        })
+        local repreq =
+            RequestInfo.new(
+            {
+                modulename = "equip",
+                funcname = "replace",
+                param = {
+                    id = _info._id
+                },
+                oklistener = function(data)
+                    game.player:setSilver(data["5"])
+                    game.player:setGold(data["6"])
+                    onXilian(data, true)
+                end
+            }
+        )
         RequestHelperV2.request(repreq)
     end
 
     self._rootnode["closeBtn"]:addHandleOfControlEvent(close, CCControlEventTouchDown)
-    self._rootnode["xi_lian_btn"]:addHandleOfControlEvent(c_func(xilian, 1) , CCControlEventTouchDown)
-    self._rootnode["xi_lian_10_btn"]:addHandleOfControlEvent(c_func(xilian, 10) , CCControlEventTouchDown)
-    self._rootnode["ti_huan_btn"]:addHandleOfControlEvent(replace , CCControlEventTouchDown)
+    self._rootnode["xi_lian_btn"]:addHandleOfControlEvent(c_func(xilian, 1), CCControlEventTouchDown)
+    self._rootnode["xi_lian_10_btn"]:addHandleOfControlEvent(c_func(xilian, 10), CCControlEventTouchDown)
+    self._rootnode["ti_huan_btn"]:addHandleOfControlEvent(replace, CCControlEventTouchDown)
 end
 
 return EquipXiLianScene
-

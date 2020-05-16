@@ -58,14 +58,14 @@ function TaskItemView:setUpView()
     local marginLeft  = 10
     local marginRight = 10
     self._titleLabel  = ui.newTTFLabelWithShadow({text = self._data.name,font = FONTS_NAME.font_fzcy,size = 22, 
-        color = ccc3(255,255,255) ,shadowColor = ccc3(255, 255, 255), align = ui.TEXT_ALIGN_LEFT})
+        color = cc.c3b(255,255,255) ,shadowColor = cc.c3b(255, 255, 255), align = ui.TEXT_ALIGN_LEFT})
         :pos(marginLeft, titleBngSize.height / 2)
         :addTo(titleBng)
     self._titleLabel:setAnchorPoint(cc.p(0,0.5))
 
     --进度
     self._progresslabel  = ui.newTTFLabel({text = "/"..self._data.totalStep, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(0,219,52) })
+        size = 22,color = cc.c3b(0,219,52) })
         :pos(titleBngSize.width - marginRight, titleBngSize.height / 2)
         :addTo(titleBng)
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
@@ -76,7 +76,7 @@ function TaskItemView:setUpView()
     local preWidth = self._progresslabel:getContentSize().width
     self._data.missionDetail = tonumber(self._data.missionDetail) >= tonumber(self._data.totalStep) and tonumber(self._data.totalStep) or tonumber(self._data.missionDetail)
     self._progresslabel = ui.newTTFLabel({  text = self._data.missionDetail, font = FONTS_NAME.font_fzcy,  align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(255,222,0)}) 
+        size = 22,color = cc.c3b(255,222,0)}) 
         :pos(posPreX - preWidth, posPreY)
         :addTo(titleBng) 
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
@@ -88,7 +88,7 @@ function TaskItemView:setUpView()
     local marginRight = 60
     --进度
     self._progresslabel = ui.newTTFLabel({  text = "进度：", font = FONTS_NAME.font_fzcy,  align = ui.TEXT_ALIGN_LEFT,
-        size = 22,color = ccc3(0,219,52)}) 
+        size = 22,color = cc.c3b(0,219,52)}) 
         :pos(titleBngSize.width - marginRight, posPreY)
         :addTo(titleBng) 
     self._progresslabel:setAnchorPoint(cc.p(1,0.5))
@@ -101,7 +101,7 @@ function TaskItemView:setUpView()
     local marginTop  = 15
     
     self._disLabel = ui.newTTFLabelWithShadow({text = self._data.dis, size = 20, 
-         align = ui.TEXT_ALIGN_LEFT , font = FONTS_NAME.font_fzcy , color = ccc3(170, 91, 28) ,shadowColor = ccc3(0,0,0)})
+         align = ui.TEXT_ALIGN_LEFT , font = FONTS_NAME.font_fzcy , color = cc.c3b(170, 91, 28) ,shadowColor = cc.c3b(0,0,0)})
         :pos(titleBngPosX + marginLeft, titleBngPosY - titleBngSize.height - marginTop)
         :addTo(self._containner)
 
@@ -113,14 +113,14 @@ function TaskItemView:setUpView()
     local marginLeft = 10
     local marginTop  = 10
     self._disLabel = ui.newTTFLabelWithShadow({text = "获得积分", size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(170, 91, 28),shadowColor = ccc3(0,0,0)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(170, 91, 28),shadowColor = cc.c3b(0,0,0)})
         :pos(titleBngPosX + marginLeft, dislabelPosY - dislabelSize.height - marginTop)
         :addTo(self._containner)
     self._disLabel:setAnchorPoint(cc.p(0,1))
     self._disLabel:setVisible(self._data.missionCategory == 1)
     local size = self._disLabel:getContentSize()
     self._disLabel = ui.newTTFLabel({text = self._data.jifen, size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(147, 5, 5)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(147, 5, 5)})
         :pos(titleBngPosX + marginLeft + size.width + 10, dislabelPosY - dislabelSize.height )
         :addTo(self._containner)
     self._disLabel:setAnchorPoint(cc.p(0,1))
@@ -130,7 +130,7 @@ function TaskItemView:setUpView()
     local marginLeft = 10
     local marginTop  = 10
     self._disLabel = ui.newTTFLabelWithShadow({text = "奖励", size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(170, 91, 28),shadowColor = ccc3(0,0,0)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(170, 91, 28),shadowColor = cc.c3b(0,0,0)})
         :pos(titleBngPosX + marginLeft, dislabelPosY - dislabelSize.height)
         :addTo(self._containner)
     self._disLabel:setAnchorPoint(cc.p(0,1))
@@ -231,7 +231,7 @@ function TaskItemView:createMoney(type,count)
     local offset = 10
     local iconSize = icon:getContentSize()
     local countLabel = ui.newTTFLabel({text = count, size = 20, align = ui.TEXT_ALIGN_LEFT,
-        font = FONTS_NAME.font_fzcy, color = ccc3(147, 5, 5)})
+        font = FONTS_NAME.font_fzcy, color = cc.c3b(147, 5, 5)})
         :pos(iconSize.width + offset , 0)
     local labelSize = countLabel:getContentSize()
     icon:setAnchorPoint(cc.p(0,0))

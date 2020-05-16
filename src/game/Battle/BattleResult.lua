@@ -122,7 +122,7 @@ function BattleResult:initWin(rewards)
                 font = FONTS_NAME.font_haibao,
                 size = 28,
                 color = FONT_COLOR.LEVEL_NAME,
-                -- outlineColor = ccc3(100,17,2),
+                -- outlineColor = cc.c3b(100,17,2),
                 align = ui.TEXT_ALIGN_CENTER,
                 x = rootnode["tag_level_name"]:getContentSize().width / 2,
                 y = rootnode["tag_level_name"]:getContentSize().height / 2
@@ -161,7 +161,7 @@ function BattleResult:initWin(rewards)
                 y = _y,
                 font = FONTS_NAME.font_fzcy,
                 size = 20,
-                color = ccc3(0, 0, 0),
+                color = cc.c3b(0, 0, 0),
                 align = ui.TEXT_ALIGN_LEFT
             }
         )
@@ -301,7 +301,7 @@ function BattleResult:initWin(rewards)
         rewardBg:addChild(item)
 
         local y = -10
-        local nameColor = ccc3(255, 216, 0)
+        local nameColor = cc.c3b(255, 216, 0)
         if itemType == ResMgr.ITEM or itemType == ResMgr.EQUIP then
             nameColor = ResMgr.getItemNameColor(v.id)
         elseif itemType == ResMgr.HERO then
@@ -329,7 +329,7 @@ function BattleResult:initWin(rewards)
             {
                 text = v.n,
                 size = 22,
-                color = ccc3(0, 255, 0),
+                color = cc.c3b(0, 255, 0),
                 outlineColor = display.COLOR_BLACK,
                 font = FONTS_NAME.font_fzcy,
                 align = ui.TEXT_ALIGN_CENTER
@@ -446,7 +446,7 @@ function BattleResult:initLost(rewards)
                 font = FONTS_NAME.font_haibao,
                 size = 28,
                 color = FONT_COLOR.LEVEL_NAME,
-                -- outlineColor = ccc3(100,17,2),
+                -- outlineColor = cc.c3b(100,17,2),
                 align = ui.TEXT_ALIGN_CENTER,
                 x = rootnode["tag_level_name"]:getContentSize().width / 2,
                 y = rootnode["tag_level_name"]:getContentSize().height / 2

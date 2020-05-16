@@ -51,7 +51,7 @@ function BiwuEnemyItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(110, 0, 0)
+            color = cc.c3b(110, 0, 0)
         }
     )
     nameDis:setAnchorPoint(cc.p(0, 0.5))
@@ -67,7 +67,7 @@ function BiwuEnemyItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(216, 30, 0)
+            color = cc.c3b(216, 30, 0)
         }
     ):pos(titleBng:getContentSize().width * 0.92, titleBng:getContentSize().height * 0.5):addTo(titleBng)
 
@@ -84,7 +84,7 @@ function BiwuEnemyItem:refresh(param)
             font = FONTS_NAME.font_fzcy,
             align = ui.TEXT_ALIGN_LEFT,
             size = 22,
-            color = ccc3(255, 255, 255)
+            color = cc.c3b(255, 255, 255)
         }
     )
     levelDis:setAnchorPoint(cc.p(0, 0.5))

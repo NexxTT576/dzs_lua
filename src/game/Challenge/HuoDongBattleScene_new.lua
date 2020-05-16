@@ -102,8 +102,8 @@ function HuoDongBattleScene:initJiefuJiPin()
         {
             text = "0",
             size = 21,
-            color = ccc3(255, 240, 0),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(255, 240, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = ui.TEXT_ALIGN_LEFT
         }
@@ -118,8 +118,8 @@ function HuoDongBattleScene:initJiefuJiPin()
         {
             text = "0",
             size = 21,
-            color = ccc3(231, 230, 228),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(231, 230, 228),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = ui.TEXT_ALIGN_LEFT
         }
@@ -134,8 +134,8 @@ function HuoDongBattleScene:initJiefuJiPin()
         {
             text = "0/5",
             size = 21,
-            color = ccc3(4, 246, 38),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(4, 246, 38),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = ui.TEXT_ALIGN_LEFT
         }

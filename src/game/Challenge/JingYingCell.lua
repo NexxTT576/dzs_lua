@@ -50,7 +50,7 @@ function JingYingCell:refresh(id, isAllLvlDone)
         item = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
         -- itemCover = display.newGraySprite(imageCoverName, {0.4, 0.4, 0.3, 0.1})
         itemCover = display.newScale9Sprite(imageCoverNameGray, 0, 0, CCSize(item:getContentSize().width + 20, item:getContentSize().height + 20))
-        -- itemCover:setColor(ccc3(100,100,100))
+        -- itemCover:setColor(cc.c3b(100,100,100))
         self.isAllowPlay = false
     end
     item:setPosition(self._rootnode["bg_node"]:getContentSize().width / 2, self._rootnode["bg_node"]:getContentSize().height / 2)

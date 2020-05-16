@@ -31,9 +31,13 @@ local function get_max_exp(lv, quality)
     return data_soul_soul[lv + 1].arr_exp[quality]
 end
 
-local SpiritTouchIcon = class("SpiritTouchIcon", function(param)
-    return require("game.Spirit.SpiritIcon").new(param)
-end)
+local SpiritTouchIcon =
+    class(
+    "SpiritTouchIcon",
+    function(param)
+        return require("game.Spirit.SpiritIcon").new(param)
+    end
+)
 
 function SpiritTouchIcon:ctor()
     self._selectedTagSprite = display.newSprite("#spirit_list_gou.png")
@@ -45,10 +49,13 @@ function SpiritTouchIcon:setSelected(b)
     self._selectedTagSprite:setVisible(b)
 end
 
-
-local SpiritItem = class("SpiritShowItem", function()
-    return CCTableViewCell:new()
-end)
+local SpiritItem =
+    class(
+    "SpiritShowItem",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
 function SpiritItem:getContentSize()
     return CCSizeMake(display.width, 152)
@@ -75,15 +82,18 @@ function SpiritItem:refresh(param)
         self._rootnode[string.format("headIcon_%d", i)]:removeAllChildrenWithCleanup(true)
         if _itemData[i] then
             local name = string.format("headIcon_%d", i)
-            local icon = SpiritTouchIcon.new({
-                id          = _itemData[i].data._id,
-                resId       = _itemData[i].data.resId,
-                lv          = _itemData[i].data.level,
-                exp         = _itemData[i].data.curExp or 0,
-                bShowName   = true,
-                bShowNameBg = true,
-                bShowLv     = true
-            })
+            local icon =
+                SpiritTouchIcon.new(
+                {
+                    id = _itemData[i].data._id,
+                    resId = _itemData[i].data.resId,
+                    lv = _itemData[i].data.level,
+                    exp = _itemData[i].data.curExp or 0,
+                    bShowName = true,
+                    bShowNameBg = true,
+                    bShowLv = true
+                }
+            )
             icon:setPosition(self._rootnode[name]:getContentSize().width / 2, self._rootnode[name]:getContentSize().height / 2)
             self._rootnode[name]:addChild(icon)
 
@@ -97,36 +107,39 @@ function SpiritItem:touch(param)
     PostNotice(NoticeKey.SpiritUpgradeScene_UpdateExpBar)
 end
 
-local SpiritUpgradeScene = class("SpiritUpgradeScene", function()
-    return require("game.BaseScene").new({
-        contentFile = "spirit/spirit_upgrade_scene.ccbi",
-        subTopFile = "spirit/spirit_upgrade_sub_top.ccbi"
-    })
-end)
+local SpiritUpgradeScene =
+    class(
+    "SpiritUpgradeScene",
+    function()
+        return require("game.BaseScene").new(
+            {
+                contentFile = "spirit/spirit_upgrade_scene.ccbi",
+                subTopFile = "spirit/spirit_upgrade_sub_top.ccbi"
+            }
+        )
+    end
+)
 
 local BAR_RECT
 
 function SpiritUpgradeScene:ctor(index)
-     ResMgr.removeBefLayer()
+    ResMgr.removeBefLayer()
 
     local _spiritCtrl = require("game.Spirit.SpiritCtrl")
     local _spiritList = {}
-    local _selected   = {}
+    local _selected = {}
     local _item = _spiritCtrl.get("spiritList")[index]
     local _listdata = _spiritCtrl.get("spiritList")
-
 
     _spiritCtrl.groupUpgradeSpirit(_item, _spiritList)
     display.addSpriteFramesWithFile("ui/ui_spirit_list.plist", "ui/ui_spirit_list.png")
 
-
     BAR_RECT = self._rootnode["tmpExpBar"]:getTextureRect()
     --  根据屏幕缩放部分
-    local _listHeight = self:getCenterHeightWithSubTop() - self._rootnode["btnNodeView"]:getContentSize().height -
-            self._rootnode["topInfoView"]:getContentSize().height
+    local _listHeight = self:getCenterHeightWithSubTop() - self._rootnode["btnNodeView"]:getContentSize().height - self._rootnode["topInfoView"]:getContentSize().height
     local _sz = CCSizeMake(display.width, _listHeight)
 
------------------------------------------------------------------------------------
+    -----------------------------------------------------------------------------------
     --  隐藏预览效果
     local function hideTmpView()
         self._rootnode["lvArrowSprite"]:setVisible(false)
@@ -143,11 +156,13 @@ function SpiritUpgradeScene:ctor(index)
 
         local curExp = _item.data.curExp
         local maxExp = get_max_exp(_item.data.level, _item.data.quality)
-        self._rootnode["expBar"]:setTextureRect(CCRectMake(self._rootnode["expBar"]:getTextureRect().origin.x, self._rootnode["expBar"]:getTextureRect().origin.y,
-            BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height))
+        self._rootnode["expBar"]:setTextureRect(
+            CCRectMake(self._rootnode["expBar"]:getTextureRect().origin.x, self._rootnode["expBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
+        )
 
-        self._rootnode["tmpExpBar"]:setTextureRect(CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y,
-            BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height))
+        self._rootnode["tmpExpBar"]:setTextureRect(
+            CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
+        )
 
         self._rootnode["curExpLabel"]:setString(tostring(curExp))
         self._rootnode["maxExp"]:setString(tostring(maxExp))
@@ -157,12 +172,15 @@ function SpiritUpgradeScene:ctor(index)
             self._rootnode[l]:setString(data_item_nature[v.idx].nature .. "：")
             self._rootnode[l]:setVisible(true)
             self._rootnode[l]:removeChildByTag(100)
-            local valueLabel = ui.newTTFLabel({
-                text = tostring(v.val),
-                size = 22,
-                font = FONTS_NAME.font_haibao,
-                color = ccc3(224, 190, 127)
-            })
+            local valueLabel =
+                ui.newTTFLabel(
+                {
+                    text = tostring(v.val),
+                    size = 22,
+                    font = FONTS_NAME.font_haibao,
+                    color = cc.c3b(224, 190, 127)
+                }
+            )
             valueLabel:setAnchorPoint(0, 0.5)
             valueLabel:setPosition(self._rootnode[l]:getContentSize().width, self._rootnode[l]:getContentSize().height / 2)
             self._rootnode[l]:addChild(valueLabel)
@@ -208,8 +226,9 @@ function SpiritUpgradeScene:ctor(index)
             scaleX = 1
         end
         self._rootnode["curExpLabel"]:setString(tostring(tmpExp))
-        self._rootnode["tmpExpBar"]:setTextureRect(CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y,
-            BAR_RECT.size.width * scaleX, BAR_RECT.size.height))
+        self._rootnode["tmpExpBar"]:setTextureRect(
+            CCRectMake(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * scaleX, BAR_RECT.size.height)
+        )
         if tmpLv > _item.data.level then
             self._rootnode["nextLevelLabel"]:setVisible(true)
             self._rootnode["nextLevelLabel"]:setString(tostring(tmpLv))
@@ -236,14 +255,17 @@ function SpiritUpgradeScene:ctor(index)
             self._rootnode[string.format("star_%d_%d", (_item.baseData.quality % 2), i)]:setVisible(true)
         end
 
-        local icon = require("game.Spirit.SpiritIcon").new({
-            id = _item.data._id,
-            resId = _item.data.resId,
-            lv = _item.data.level,
-            exp = _item.data.curExp or 0,
-            bShowName = false,
-            bShowLv = false
-        })
+        local icon =
+            require("game.Spirit.SpiritIcon").new(
+            {
+                id = _item.data._id,
+                resId = _item.data.resId,
+                lv = _item.data.level,
+                exp = _item.data.curExp or 0,
+                bShowName = false,
+                bShowLv = false
+            }
+        )
         icon:setPosition(self._rootnode["iconSprite"]:getContentSize().width / 2, self._rootnode["iconSprite"]:getContentSize().height / 2)
         self._rootnode["iconSprite"]:addChild(icon)
 
@@ -272,24 +294,27 @@ function SpiritUpgradeScene:ctor(index)
 
     --  更新上下箭头
     local function updateArrow()
-        self:performWithDelay(function()
-            local posY = self._spiritListView:getContentOffset().y
-            local maxOffsetY = self._spiritListView:maxContainerOffset().y
-            local minOffsetY = self._spiritListView:minContainerOffset().y
+        self:performWithDelay(
+            function()
+                local posY = self._spiritListView:getContentOffset().y
+                local maxOffsetY = self._spiritListView:maxContainerOffset().y
+                local minOffsetY = self._spiritListView:minContainerOffset().y
 
-            if maxOffsetY ~= minOffsetY then
-                if posY >= maxOffsetY then
-                    self._rootnode["upArrow"]:setVisible(true)
-                    self._rootnode["downArrow"]:setVisible(false)
-                elseif  posY <= minOffsetY then
-                    self._rootnode["upArrow"]:setVisible(false)
-                    self._rootnode["downArrow"]:setVisible(true)
-                else
-                    self._rootnode["upArrow"]:setVisible(true)
-                    self._rootnode["downArrow"]:setVisible(true)
+                if maxOffsetY ~= minOffsetY then
+                    if posY >= maxOffsetY then
+                        self._rootnode["upArrow"]:setVisible(true)
+                        self._rootnode["downArrow"]:setVisible(false)
+                    elseif posY <= minOffsetY then
+                        self._rootnode["upArrow"]:setVisible(false)
+                        self._rootnode["downArrow"]:setVisible(true)
+                    else
+                        self._rootnode["upArrow"]:setVisible(true)
+                        self._rootnode["downArrow"]:setVisible(true)
+                    end
                 end
-            end
-        end, 0.5)
+            end,
+            0.5
+        )
     end
 
     --  选择精元
@@ -300,9 +325,9 @@ function SpiritUpgradeScene:ctor(index)
         local i = 0
         if pos.x > sz.width * (4 / 5) and pos.x < sz.width then
             i = 5
-        elseif pos.x > sz.width * (3 / 5)  then
+        elseif pos.x > sz.width * (3 / 5) then
             i = 4
-        elseif pos.x > sz.width * (2 / 5)  then
+        elseif pos.x > sz.width * (2 / 5) then
             i = 3
         elseif pos.x > sz.width * (1 / 5) then
             i = 2
@@ -322,11 +347,13 @@ function SpiritUpgradeScene:ctor(index)
                     _selected[idx][i] = true
                 end
 
-                cell:touch({
-                    idx = idx,
-                    itemData = _spiritList[idx],
-                    selected = _selected[idx]
-                })
+                cell:touch(
+                    {
+                        idx = idx,
+                        itemData = _spiritList[idx],
+                        selected = _selected[idx]
+                    }
+                )
             end
         end
     end
@@ -337,43 +364,53 @@ function SpiritUpgradeScene:ctor(index)
         self._rootnode["touchNode"]:setZOrder(1)
         local posX = 0
         local posY = 0
-        self._rootnode["touchNode"]:addNodeEventListener(cc.NODE_TOUCH_CAPTURE_EVENT, function(event)
-            if event.name == "began" then
-                posX = event.x
-                posY = event.y
-                return true
-            elseif event.name == "ended" then
-                updateArrow()
+        self._rootnode["touchNode"]:addNodeEventListener(
+            cc.NODE_TOUCH_CAPTURE_EVENT,
+            function(event)
+                if event.name == "began" then
+                    posX = event.x
+                    posY = event.y
+                    return true
+                elseif event.name == "ended" then
+                    updateArrow()
+                end
             end
-        end)
+        )
         self._rootnode["touchNode"]:setTouchSwallowEnabled(false)
 
-        self._spiritListView = require("utility.TableViewExt").new({
-            size        = _sz,
-            direction   = kCCScrollViewDirectionVertical,
-            createFunc  = function(idx)
-                local item = SpiritItem.new()
-                idx = idx + 1
-                return item:create({
-                    viewSize = _sz,
-                    itemData = _spiritList[idx],
-                    idx      = idx,
-                })
-            end,
-            refreshFunc = function(cell, idx)
-                idx = idx + 1
-                cell:refresh({
-                    idx = idx,
-                    itemData = _spiritList[idx],
-                    selected = _selected[idx]
-                })
-            end,
-            cellNum   = #_spiritList,
-            cellSize    = SpiritItem.new():getContentSize(),
-            touchFunc = function(cell)
-                onTouch(posX, posY, cell)
-            end
-        })
+        self._spiritListView =
+            require("utility.TableViewExt").new(
+            {
+                size = _sz,
+                direction = kCCScrollViewDirectionVertical,
+                createFunc = function(idx)
+                    local item = SpiritItem.new()
+                    idx = idx + 1
+                    return item:create(
+                        {
+                            viewSize = _sz,
+                            itemData = _spiritList[idx],
+                            idx = idx
+                        }
+                    )
+                end,
+                refreshFunc = function(cell, idx)
+                    idx = idx + 1
+                    cell:refresh(
+                        {
+                            idx = idx,
+                            itemData = _spiritList[idx],
+                            selected = _selected[idx]
+                        }
+                    )
+                end,
+                cellNum = #_spiritList,
+                cellSize = SpiritItem.new():getContentSize(),
+                touchFunc = function(cell)
+                    onTouch(posX, posY, cell)
+                end
+            }
+        )
         self._spiritListView:setPosition(0, 0)
         self._rootnode["spiritContainer"]:addChild(self._spiritListView)
     end
@@ -461,14 +498,18 @@ function SpiritUpgradeScene:ctor(index)
 
         local ids = getSelectedID()
         if #ids > 0 then
-            _spiritCtrl.upgrade(_item.data._id, ids, function(data)
-                _item.data.curExp = data["1"].curExp
-                _item.data.level = data["1"].level
-                _item.data.props = data["1"].props
+            _spiritCtrl.upgrade(
+                _item.data._id,
+                ids,
+                function(data)
+                    _item.data.curExp = data["1"].curExp
+                    _item.data.level = data["1"].level
+                    _item.data.props = data["1"].props
 
-                refreshListView()
-                refreshExpBar()
-            end)
+                    refreshListView()
+                    refreshExpBar()
+                end
+            )
         else
             show_tip_label("请选择真气")
         end
@@ -496,15 +537,18 @@ function SpiritUpgradeScene:ctor(index)
 
     initBaseInfo()
     resetContentSize()
---    initListView()
---    refreshListView()
+    --    initListView()
+    --    refreshListView()
 
     self._rootnode["quickBtn"]:addHandleOfControlEvent(onQuickSelected, CCControlEventTouchDown)
     self._rootnode["cancelBtn"]:addHandleOfControlEvent(onCancel, CCControlEventTouchDown)
     self._rootnode["confirmBtn"]:addHandleOfControlEvent(onConfirm, CCControlEventTouchUpInside)
-    self._rootnode["backBtn"]:addHandleOfControlEvent(function()
-        pop_scene()
-    end, CCControlEventTouchUpInside)
+    self._rootnode["backBtn"]:addHandleOfControlEvent(
+        function()
+            pop_scene()
+        end,
+        CCControlEventTouchUpInside
+    )
 
     self.initListView = initListView
     RegNotice(self, refreshTmpExpBar, NoticeKey.SpiritUpgradeScene_UpdateExpBar)
@@ -514,9 +558,12 @@ function SpiritUpgradeScene:onEnter()
     self:regNotice()
     PostNotice(NoticeKey.UNLOCK_BOTTOM)
 
-    self:performWithDelay(function()
-        self.initListView()
-    end, 0.05)
+    self:performWithDelay(
+        function()
+            self.initListView()
+        end,
+        0.05
+    )
 end
 
 function SpiritUpgradeScene:onExit()
@@ -525,6 +572,4 @@ function SpiritUpgradeScene:onExit()
     CCTextureCache:sharedTextureCache():removeUnusedTextures()
 end
 
-
 return SpiritUpgradeScene
-

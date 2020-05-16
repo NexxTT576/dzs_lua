@@ -135,7 +135,7 @@ function BiwuMainScene:initTopRadios(index)
             size = 22,
             align = ui.TEXT_ALIGN_CENTE,
             color = FONT_COLOR.YELLOW,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )

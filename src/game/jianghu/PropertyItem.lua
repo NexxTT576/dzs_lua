@@ -24,9 +24,13 @@
 --
 
 local data_item_nature = require("data.data_item_nature")
-local PropertyItem = class("HeroGiftItem", function()
-    return CCTableViewCell:new()
-end)
+local PropertyItem =
+    class(
+    "HeroGiftItem",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
 function PropertyItem:getContentSize()
     return CCSizeMake(211, 37)
@@ -41,9 +45,9 @@ function PropertyItem:create(param)
     self._bg = CCBuilderReaderLoad("jianghulu/jianghulu_prop_item.ccbi", proxy, self._rootnode)
     self._bg:setPosition(_viewSize.width / 2, self._bg:getContentSize().height / 2)
     self:addChild(self._bg)
---
---    self._rootnode["needHeartLabel"]:setString(tostring(_idx))
---    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx%2)))
+    --
+    --    self._rootnode["needHeartLabel"]:setString(tostring(_idx))
+    --    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx%2)))
 
     self:refresh(param)
 
@@ -51,13 +55,12 @@ function PropertyItem:create(param)
 end
 
 function PropertyItem:refresh(param)
---    dump(param)
+    --    dump(param)
     local _idx = param.idx
     local _itemData = param.itemData
-    local _heroLv   = param.heroLv
-    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx%2)))
+    local _heroLv = param.heroLv
+    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx % 2)))
     self._rootnode["needHeartLabel"]:setString(tostring(_idx))
-
 
     local nature = data_item_nature[_itemData.id]
     self._rootnode["nameLabel"]:setString(nature.nature)
@@ -70,18 +73,16 @@ function PropertyItem:refresh(param)
     self._rootnode["valueLabel"]:setString(str)
 
     if _idx > _heroLv then
-        self._rootnode["valueLabel"]:setColor(ccc3(59, 29, 1))
+        self._rootnode["valueLabel"]:setColor(cc.c3b(59, 29, 1))
         self._rootnode["iconSprite"]:setDisplayFrame(display.newSpriteFrame("jianghulu_love_1.png"))
-        self._rootnode["needHeartLabel"]:setColor(ccc3(59, 29, 1))
-        self._rootnode["nameLabel"]:setColor(ccc3(59, 29, 1))
+        self._rootnode["needHeartLabel"]:setColor(cc.c3b(59, 29, 1))
+        self._rootnode["nameLabel"]:setColor(cc.c3b(59, 29, 1))
     else
-        self._rootnode["valueLabel"]:setColor(ccc3(147, 45, 40))
+        self._rootnode["valueLabel"]:setColor(cc.c3b(147, 45, 40))
         self._rootnode["iconSprite"]:setDisplayFrame(display.newSpriteFrame("jianghulu_love.png"))
-        self._rootnode["needHeartLabel"]:setColor(ccc3(147, 45, 40))
-        self._rootnode["nameLabel"]:setColor(ccc3(76, 39, 0))
+        self._rootnode["needHeartLabel"]:setColor(cc.c3b(147, 45, 40))
+        self._rootnode["nameLabel"]:setColor(cc.c3b(76, 39, 0))
     end
 end
 
-
 return PropertyItem
-

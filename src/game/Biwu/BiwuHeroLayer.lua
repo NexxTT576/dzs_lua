@@ -177,7 +177,7 @@ function BiwuHeroLayer:setUpLabelView()
             text = "下次刷新",
             size = 22,
             color = FONT_COLOR.WHITE,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -189,8 +189,8 @@ function BiwuHeroLayer:setUpLabelView()
         {
             text = "00:00:00",
             size = 22,
-            color = ccc3(0, 219, 52),
-            shadowColor = ccc3(0, 0, 0),
+            color = cc.c3b(0, 219, 52),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -272,7 +272,7 @@ function BiwuHeroLayer:creatDislabel(titleicon, count, fontType)
             color = FONT_COLOR.YELLOW,
             size = self._titleDisFontSize,
             align = ui.TEXT_ALIGN_LEFT,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = fontType
         }
     )
@@ -293,7 +293,7 @@ function BiwuHeroLayer:createHeros(pos, index)
             size = 24,
             color = FONT_COLOR.YELLOW,
             align = ui.TEXT_ALIGN_CENTE,
-            outlineColor = ccc3(0, 0, 0),
+            outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -303,7 +303,7 @@ function BiwuHeroLayer:createHeros(pos, index)
             text = "",
             size = 22,
             color = FONT_COLOR.WHITE,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             align = ui.TEXT_ALIGN_CENTE,
             font = FONTS_NAME.font_fzcy
         }
@@ -315,7 +315,7 @@ function BiwuHeroLayer:createHeros(pos, index)
             size = 22,
             align = ui.TEXT_ALIGN_CENTE,
             color = FONT_COLOR.YELLOW,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -326,7 +326,7 @@ function BiwuHeroLayer:createHeros(pos, index)
             size = 22,
             align = ui.TEXT_ALIGN_CENTE,
             color = FONT_COLOR.WHITE,
-            shadowColor = ccc3(0, 0, 0),
+            shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )

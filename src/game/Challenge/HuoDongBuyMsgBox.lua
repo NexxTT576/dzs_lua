@@ -37,23 +37,23 @@ function HuoDongBuyMsgBox:previewInit(data)
     local rowOneTable = {}
     local isBuy = ResMgr.createNomarlMsgTTF({text = "是否花费"}) --是否花费
     rowOneTable[#rowOneTable + 1] = isBuy
-    local goldNum = ResMgr.createShadowMsgTTF({text = self.buyData.spend .. "元宝", color = ccc3(255, 210, 0)}) --10元宝
+    local goldNum = ResMgr.createShadowMsgTTF({text = self.buyData.spend .. "元宝", color = cc.c3b(255, 210, 0)}) --10元宝
     rowOneTable[#rowOneTable + 1] = goldNum
     local buyOne = ResMgr.createNomarlMsgTTF({text = "购买一次"})
-     --购买一次
+    --购买一次
     rowOneTable[#rowOneTable + 1] = buyOne
-    local fubenName = ResMgr.createShadowMsgTTF({text = data_huodongfuben_huodongfuben[self.aid].name, color = ccc3(255, 210, 0)})
-     ----某副本
+    local fubenName = ResMgr.createShadowMsgTTF({text = data_huodongfuben_huodongfuben[self.aid].name, color = cc.c3b(255, 210, 0)})
+    ----某副本
     rowOneTable[#rowOneTable + 1] = fubenName
     local atkTime = ResMgr.createNomarlMsgTTF({text = "攻打次数"})
-     --攻打次数
+    --攻打次数
     rowOneTable[#rowOneTable + 1] = atkTime
 
     --第二行
     local rowTwoTable = {}
     local todayBuy = ResMgr.createNomarlMsgTTF({text = "您今天已购买"}) --您今天已购买
     rowTwoTable[#rowTwoTable + 1] = todayBuy
-    local buyNume = ResMgr.createShadowMsgTTF({text = self.buyData.buyCnt, color = ccc3(58, 209, 73)})
+    local buyNume = ResMgr.createShadowMsgTTF({text = self.buyData.buyCnt, color = cc.c3b(58, 209, 73)})
     rowTwoTable[#rowTwoTable + 1] = buyNume
     local buytime = ResMgr.createNomarlMsgTTF({text = "次"}) --次
     rowTwoTable[#rowTwoTable + 1] = buytime
@@ -61,20 +61,20 @@ function HuoDongBuyMsgBox:previewInit(data)
     --第三行
     local rowThreeTable = {}
     local youAre = ResMgr.createNomarlMsgTTF({text = "你是"})
-     --你是
+    --你是
     rowThreeTable[#rowThreeTable + 1] = youAre
     local vipIcon, vipTTF = ResMgr.getVipIconTTF() --VIP
     rowThreeTable[#rowThreeTable + 1] = vipIcon
     rowThreeTable[#rowThreeTable + 1] = vipTTF
 
     local todayAble = ResMgr.createNomarlMsgTTF({text = "用户，今日可购买"})
-     --用户，今日可购买
+    --用户，今日可购买
     rowThreeTable[#rowThreeTable + 1] = todayAble
-    local ableTime = ResMgr.createShadowMsgTTF({text = self.buyData.limit - self.buyData.buyCnt, color = ccc3(58, 209, 73)})
-     --n
+    local ableTime = ResMgr.createShadowMsgTTF({text = self.buyData.limit - self.buyData.buyCnt, color = cc.c3b(58, 209, 73)})
+    --n
     rowThreeTable[#rowThreeTable + 1] = ableTime
     local ableCi = ResMgr.createNomarlMsgTTF({text = "次"})
-     --次
+    --次
     rowThreeTable[#rowThreeTable + 1] = ableCi
 
     local rowAll = {rowOneTable, rowTwoTable, rowThreeTable}
