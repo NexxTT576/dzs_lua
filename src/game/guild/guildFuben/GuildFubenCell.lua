@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2015.03.06 
- --
- --]]
 local GuildFubenCell =
     class(
     "GuildFubenCell",
@@ -16,7 +10,7 @@ function GuildFubenCell:getContentSize()
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("guild/guild_fuben_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("guild/guild_fuben_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -34,7 +28,7 @@ function GuildFubenCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("guild/guild_fuben_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_fuben_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, 0)
     self:addChild(node)
 
@@ -117,7 +111,7 @@ function GuildFubenCell:updateHp(itemData)
     bar:setTextureRect(
         CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
         rotated,
-        CCSizeMake(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
+        cc.size(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
     )
 end
 

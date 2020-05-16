@@ -12,7 +12,7 @@ function BiwuByTimesCountBox:ctor(param, successCallBack)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("shop/biwu_buy_item_count.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("shop/biwu_buy_item_count.ccbi", proxy, rootnode)
     node:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
     self:addChild(node)
 

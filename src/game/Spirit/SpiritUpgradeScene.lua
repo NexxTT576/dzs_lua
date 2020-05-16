@@ -58,7 +58,7 @@ local SpiritItem =
 )
 
 function SpiritItem:getContentSize()
-    return CCSizeMake(display.width, 152)
+    return cc.size(display.width, 152)
 end
 
 function SpiritItem:create(param)
@@ -67,7 +67,7 @@ function SpiritItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    self._bg = CCBuilderReaderLoad("spirit/spirit_show_item.ccbi", proxy, self._rootnode)
+    self._bg = CCBReaderLoad("spirit/spirit_show_item.ccbi", proxy, self._rootnode)
     self._bg:setPosition(_viewSize.width / 2, self._bg:getContentSize().height / 2)
     self:addChild(self._bg)
 
@@ -137,7 +137,7 @@ function SpiritUpgradeScene:ctor(index)
     BAR_RECT = self._rootnode["tmpExpBar"]:getTextureRect()
     --  根据屏幕缩放部分
     local _listHeight = self:getCenterHeightWithSubTop() - self._rootnode["btnNodeView"]:getContentSize().height - self._rootnode["topInfoView"]:getContentSize().height
-    local _sz = CCSizeMake(display.width, _listHeight)
+    local _sz = cc.size(display.width, _listHeight)
 
     -----------------------------------------------------------------------------------
     --  隐藏预览效果
@@ -286,7 +286,7 @@ function SpiritUpgradeScene:ctor(index)
         self._rootnode["spiritListView"]:setContentSize(_sz)
         self._rootnode["touchNode"]:setContentSize(_sz)
         self._rootnode["spiritContainer"]:setPosition(_sz.width / 2, _sz.height / 2)
-        _sz = CCSizeMake(_sz.width, _sz.height * 0.92)
+        _sz = cc.size(_sz.width, _sz.height * 0.92)
         self._rootnode["upArrow"]:setPositionY(_sz.height)
         self._rootnode["spiritContainer"]:setContentSize(_sz)
         self._rootnode["spiritListView"]:setPosition(display.width / 2, self._rootnode["btnNodeView"]:getContentSize().height)

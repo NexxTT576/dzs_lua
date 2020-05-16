@@ -174,7 +174,7 @@ function GuildFubenScene:ctor(param)
 
     dump(data, "帮派副本", 8)
 
-    self._listViewSize = CCSizeMake(self._rootnode["listView"]:getContentSize().width, self:getCenterHeightWithSubTop())
+    self._listViewSize = cc.size(self._rootnode["listView"]:getContentSize().width, self:getCenterHeightWithSubTop())
 
     -- 返回
     self._rootnode["backBtn"]:addHandleOfControlEvent(

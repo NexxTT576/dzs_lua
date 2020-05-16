@@ -31,7 +31,7 @@ local GuildShopScene =
                 contentFile = "guild/guild_shop_layer.ccbi",
                 topFile = "guild/guild_shop_up_tab.ccbi",
                 bottomFile = bottomFile,
-                adjustSize = CCSizeMake(0, -108)
+                adjustSize = cc.size(0, -108)
             }
         )
     end
@@ -342,7 +342,7 @@ function GuildShopScene:ctor(param)
             girl:setScale(listBg:getContentSize().height / girl:getContentSize().height)
         end
 
-        self._listViewSize = CCSizeMake(480, listBgHeight - 25)
+        self._listViewSize = cc.size(480, listBgHeight - 25)
         self._listViewNode = display.newNode()
         self._listViewNode:setContentSize(self._listViewSize)
         self._listViewNode:setAnchorPoint(1, 0.5)

@@ -9,7 +9,7 @@ local ChatItem =
 function ChatItem:getContentSize()
     -- 必须初始化之后才可以获取，否则为0
     if self._contentSz == nil then
-        self._contentSz = CCSizeMake(0, 0)
+        self._contentSz = cc.size(0, 0)
     end
 
     return self._contentSz
@@ -35,13 +35,13 @@ function ChatItem:ctor(param)
     local length = string.utf8len(msg)
 
     if length > 22 then
-        self._contentSz = CCSizeMake(500, 80)
+        self._contentSz = cc.size(500, 80)
     else
         local len = string.len(msg)
         -- local w = 70 + 20 * length - (length * 3 - len)*20 * 0.3
         local w = 70 + (440 / 22 * len * 0.34)
 
-        self._contentSz = CCSizeMake(w, 50)
+        self._contentSz = cc.size(w, 50)
     end
 
     local color = cc.c3b(0, 129, 220)
@@ -66,22 +66,22 @@ function ChatItem:ctor(param)
 
     if self._isLeft then
         -- pos = CCPointMake(0, nameLbl:getContentSize().height/2)
-        nameNode = CCBuilderReaderLoad("chat/chat_left_name.ccbi", proxy, rootnode)
+        nameNode = CCBReaderLoad("chat/chat_left_name.ccbi", proxy, rootnode)
         if gender == 1 then
-            msgNode = CCBuilderReaderLoad("chat/chat_left_msg_boy.ccbi", proxy, rootnode, self, self._contentSz)
+            msgNode = CCBReaderLoad("chat/chat_left_msg_boy.ccbi", proxy, rootnode, self, self._contentSz)
         else
-            msgNode = CCBuilderReaderLoad("chat/chat_left_msg_girl.ccbi", proxy, rootnode, self, self._contentSz)
+            msgNode = CCBReaderLoad("chat/chat_left_msg_girl.ccbi", proxy, rootnode, self, self._contentSz)
         end
     else
         -- pos = CCPointMake(-nameLbl:getContentSize().width, nameLbl:getContentSize().height/2)
-        nameNode = CCBuilderReaderLoad("chat/chat_right_name.ccbi", proxy, rootnode)
-        msgNode = CCBuilderReaderLoad("chat/chat_right_msg.ccbi", proxy, rootnode, self, self._contentSz)
+        nameNode = CCBReaderLoad("chat/chat_right_name.ccbi", proxy, rootnode)
+        msgNode = CCBReaderLoad("chat/chat_right_msg.ccbi", proxy, rootnode, self, self._contentSz)
     end
 
     rootnode["nameLbl"]:setString(name)
     rootnode["nameLbl"]:setColor(color)
 
-    self._contentSz = CCSizeMake(msgNode:getContentSize().width, msgNode:getContentSize().height + nameNode:getContentSize().height + 10)
+    self._contentSz = cc.size(msgNode:getContentSize().width, msgNode:getContentSize().height + nameNode:getContentSize().height + 10)
     self:addChild(nameNode)
 
     msgNode:setPosition(0, -nameNode:getContentSize().height - 10)

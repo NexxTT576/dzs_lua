@@ -36,7 +36,7 @@ function LevelGradeItem:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("ccbi/battle/level_grade.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("ccbi/battle/level_grade.ccbi", proxy, rootnode)
     local _sz = node:getContentSize()
     self:setContentSize(_sz)
     self:addChild(node)

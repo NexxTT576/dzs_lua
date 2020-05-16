@@ -39,7 +39,7 @@ function BiwuEnemyLayer:setUpView(param)
     self._tableView =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight),
+            size = cc.size(boardWidth, boardHeight),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,

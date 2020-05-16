@@ -33,7 +33,7 @@ local PropertyItem =
 )
 
 function PropertyItem:getContentSize()
-    return CCSizeMake(211, 37)
+    return cc.size(211, 37)
 end
 
 function PropertyItem:create(param)
@@ -42,7 +42,7 @@ function PropertyItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    self._bg = CCBuilderReaderLoad("jianghulu/jianghulu_prop_item.ccbi", proxy, self._rootnode)
+    self._bg = CCBReaderLoad("jianghulu/jianghulu_prop_item.ccbi", proxy, self._rootnode)
     self._bg:setPosition(_viewSize.width / 2, self._bg:getContentSize().height / 2)
     self:addChild(self._bg)
     --

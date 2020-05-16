@@ -23,7 +23,7 @@ function GuildDadianContributeItem:getContentSize()
     if self._contentSz == nil then
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("guild/guild_dadian_contribute_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("guild/guild_dadian_contribute_item.ccbi", proxy, rootnode)
         self._contentSz = rootnode["item_bg"]:getContentSize()
     end
 
@@ -45,7 +45,7 @@ function GuildDadianContributeItem:create(param)
     local contributeFunc = param.contributeFunc
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("guild/guild_dadian_contribute_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_dadian_contribute_item.ccbi", proxy, self._rootnode)
     node:setPosition(0, viewSize.height / 2)
     self:addChild(node)
 

@@ -13,7 +13,7 @@ local CardObj =
     function()
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local bg = CCBuilderReaderLoad("formation/formation_cardobj.ccbi", proxy, rootnode)
+        local bg = CCBReaderLoad("formation/formation_cardobj.ccbi", proxy, rootnode)
         bg._rootnode = rootnode
         return bg
     end

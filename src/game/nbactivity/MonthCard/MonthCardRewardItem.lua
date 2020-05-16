@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.27 
- --
- --]]
 local MonthCardRewardItem =
     class(
     "MonthCardRewardItem",
@@ -16,12 +10,12 @@ function MonthCardRewardItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/month_card_rewardItem.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("nbhuodong/month_card_rewardItem.ccbi", proxy, rootnode)
     local contentSize = rootnode["reward"]:getContentSize()
 
     self:addChild(node)
     node:removeSelf()
-    return CCSizeMake(contentSize.width + 15, contentSize.height)
+    return cc.size(contentSize.width + 15, contentSize.height)
 end
 
 function MonthCardRewardItem:refreshItem(param)
@@ -90,7 +84,7 @@ function MonthCardRewardItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/month_card_rewardItem.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("nbhuodong/month_card_rewardItem.ccbi", proxy, self._rootnode)
     local contentSize = self._rootnode["reward"]:getContentSize()
     node:setPosition(contentSize.width * 0.7, _viewSize.height * 0.5)
     self:addChild(node)

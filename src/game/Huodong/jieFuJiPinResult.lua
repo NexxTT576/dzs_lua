@@ -25,7 +25,7 @@ function JieFuJiPinResult:ctor(data)
 
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("ccbi/huodong/jiefujipin_result_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("ccbi/huodong/jiefujipin_result_layer.ccbi", proxy, self._rootnode)
 
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)

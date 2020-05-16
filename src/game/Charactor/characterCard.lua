@@ -245,7 +245,7 @@ function characterCard:playShow(specialData)
             self.befCloud:setScale(0.13)
             self.befCloud:setOpacity(255)
             self.befCloud:setPosition(0, 0)
-         --(cPos.x + 20,cPos.y)
+            --(cPos.x + 20,cPos.y)
         end
     )
     local befFadeIn = CCFadeTo:create(biggerTime, 255)
@@ -275,7 +275,7 @@ function characterCard:playShow(specialData)
             self.aftCloud:setScale(0.13)
             self.aftCloud:setOpacity(255)
             self.aftCloud:setPosition(0, 0)
-         --(cPos.x + 20,cPos.y)
+            --(cPos.x + 20,cPos.y)
         end
     )
     local aftFadeIn = CCFadeTo:create(biggerTime, 255)
@@ -299,7 +299,7 @@ function characterCard:playShow(specialData)
         math.newrandomseed()
         --随机Y轴 a-b
         local yTa = {}
-         --{-100,-90,-80,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70,80,90,100}
+        --{-100,-90,-80,-60,-50,-40,-30,-20,-10,0,10,20,30,40,50,60,70,80,90,100}
         for i = -100, 100 do
             yTa[#yTa + 1] = i
         end
@@ -530,7 +530,7 @@ function characterCard:ctor(param)
         self.cardWidth = self.cardBg:getContentSize().width
         self.cardHeight = self.cardBg:getContentSize().height
 
-        self:setContentSize(CCSizeMake(self.cardWidth, self.cardHeight))
+        self:setContentSize(cc.size(self.cardWidth, self.cardHeight))
         self.cardBg:setPosition(self.cardWidth / 2, self.cardHeight / 2)
 
         self:setEventCallfunc(self.battleCBFunc)

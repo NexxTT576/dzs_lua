@@ -412,7 +412,7 @@ function HuaShanScene:createArrow(index, t)
     if t == 1 then
         box = self._rootnode[string.format("posNode_%d", index + 1)]
         if box then
-            box:setContentSize(CCSizeMake(0, 120))
+            box:setContentSize(cc.size(0, 120))
         else
             return
         end

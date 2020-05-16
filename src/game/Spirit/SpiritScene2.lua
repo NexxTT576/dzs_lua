@@ -10,13 +10,18 @@ local data_item_item = require("data.data_item_item")
 local data_collect_collect = require("data.data_collect_collect")
 require("data.data_error_error")
 
-local SpiritScene2 = class("SpiritScene", function()
-
-    return require("game.BaseScene").new({
-        contentFile = "spirit/spirit_scene.ccbi",
-        subTopFile = "spirit/tab_view.ccbi"
-    })
-end)
+local SpiritScene2 =
+    class(
+    "SpiritScene",
+    function()
+        return require("game.BaseScene").new(
+            {
+                contentFile = "spirit/spirit_scene.ccbi",
+                subTopFile = "spirit/tab_view.ccbi"
+            }
+        )
+    end
+)
 
 local RequestInfo = require("network.RequestInfo")
 local TAB_TAG = {
@@ -27,11 +32,10 @@ local TAB_TAG = {
 local LISTVIEW_TAG = 100
 
 function SpiritScene2:ctor(param)
-    
     ResMgr.removeBefLayer()
     game.runningScene = self
 
---    dump(param)
+    --    dump(param)
     local tag = param.tag
     self._ctrl = param.ctrl
 
@@ -49,7 +53,7 @@ function SpiritScene2:ctor(param)
     end
 
     self._rootnode["spiritListNode"]:setScale(s)
-    self._rootnode["itemsBg"]:setContentSize(CCSizeMake(display.width, self:getCenterHeightWithSubTop() - 346 - 20))
+    self._rootnode["itemsBg"]:setContentSize(cc.size(display.width, self:getCenterHeightWithSubTop() - 346 - 20))
     self._rootnode["touchNode"]:setContentSize(self._rootnode["itemsBg"]:getContentSize())
     self._rootnode["upArrow"]:setPositionY(self._rootnode["itemsBg"]:getContentSize().height)
     self._rootnode["numBgSprite"]:setPosition(display.width / 2, 346 + self._rootnode["numBgSprite"]:getContentSize().height / 2)
@@ -57,27 +61,35 @@ function SpiritScene2:ctor(param)
     self._rootnode["start10CostSilverLabel"]:setString(tostring(data_config_config[1]["collTenSilver"]))
     self._rootnode["costGoldLabel"]:setString(tostring(data_config_config[1]["juYuanGold"]))
 
-    if(game.player.m_level >=50 or game.player.m_vip >= 1) then
+    if (game.player.m_level >= 50 or game.player.m_vip >= 1) then
         self._rootnode["vip_level_10"]:setVisible(false)
     end
 
-    self._rootnode["spiritInfoBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        self._rootnode["spiritInfoBtn"]:setEnabled(false)
-        self._rootnode["equipSpiritBtn"]:setEnabled(false)
-        local spiritInfoLayer = require("game.Spirit.SpiritDescLayer").new(function()
-            self._rootnode["spiritInfoBtn"]:setEnabled(true)
-            self._rootnode["equipSpiritBtn"]:setEnabled(true)
-        end)
-        self:addChild(spiritInfoLayer, 3)
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-    end, CCControlEventTouchDown)
+    self._rootnode["spiritInfoBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            self._rootnode["spiritInfoBtn"]:setEnabled(false)
+            self._rootnode["equipSpiritBtn"]:setEnabled(false)
+            local spiritInfoLayer =
+                require("game.Spirit.SpiritDescLayer").new(
+                function()
+                    self._rootnode["spiritInfoBtn"]:setEnabled(true)
+                    self._rootnode["equipSpiritBtn"]:setEnabled(true)
+                end
+            )
+            self:addChild(spiritInfoLayer, 3)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+        end,
+        CCControlEventTouchDown
+    )
 
     self._rootnode["equipSpiritBtn"]:addHandleOfControlEvent(
-        function(eventName,sender)
+        function(eventName, sender)
             local equipSpiritScene = require("game.form.HeroSettingScene").new(2)
             display.replaceScene(equipSpiritScene)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        end, CCControlEventTouchDown)
+        end,
+        CCControlEventTouchDown
+    )
 
     local function updateLabel()
         self._rootnode["iconCountLabel"]:setString(tostring(self._ctrl.get("size").num))
@@ -90,22 +102,24 @@ function SpiritScene2:ctor(param)
 
     --    选项卡切换
     local function onTabBtn(tag)
-
         if TAB_TAG.INFO == tag then
             self._rootnode["infoView"]:setVisible(true)
             self._rootnode["listView"]:removeAllChildrenWithCleanup(true)
             if self._refresh then
---                self:refresh()
+                --                self:refresh()
                 self._ctrl.refresh()
                 self:initListView2()
                 self._refresh = false
             end
         elseif TAB_TAG.LIST == tag then
             self._rootnode["infoView"]:setVisible(false)
-            local listView = require("game.Spirit.SpiritListLayer").new({
-                sz = self._rootnode["listView"]:getContentSize(),
-                items = self._ctrl.get("spiritList")
-            })
+            local listView =
+                require("game.Spirit.SpiritListLayer").new(
+                {
+                    sz = self._rootnode["listView"]:getContentSize(),
+                    items = self._ctrl.get("spiritList")
+                }
+            )
             self._rootnode["listView"]:addChild(listView)
             listView:setTag(LISTVIEW_TAG)
         else
@@ -115,11 +129,11 @@ function SpiritScene2:ctor(param)
 
         for i = 1, 2 do
             if tag == i then
-                self._rootnode["tab" ..tostring(i)]:selected()
-                self._rootnode["tab" ..tostring(i)]:setZOrder(2)
+                self._rootnode["tab" .. tostring(i)]:selected()
+                self._rootnode["tab" .. tostring(i)]:setZOrder(2)
             else
-                self._rootnode["tab" ..tostring(i)]:unselected()
-                self._rootnode["tab" ..tostring(i)]:setZOrder(1)
+                self._rootnode["tab" .. tostring(i)]:unselected()
+                self._rootnode["tab" .. tostring(i)]:setZOrder(1)
             end
         end
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_yeqian))
@@ -128,9 +142,9 @@ function SpiritScene2:ctor(param)
     --初始化选项卡
     local function initTab()
         for i = 1, 2 do
-            self._rootnode["tab" ..tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
         end
-        if self._currentTab == TAB_TAG.INFO then 
+        if self._currentTab == TAB_TAG.INFO then
             self._rootnode["tab1"]:selected()
         else
             self._rootnode["tab2"]:selected()
@@ -139,29 +153,35 @@ function SpiritScene2:ctor(param)
 
     initTab()
     local moveFront
-    local function onStart(eventName,sender)
+    local function onStart(eventName, sender)
         local tag = sender:getTag()
-        self._ctrl.onStart(tag, function(data)
-            if tag == 3 then
-                local tipLayer = require("game.Spirit.SpiritGetTip").new(data)
-                self:addChild(tipLayer, 100)
+        self._ctrl.onStart(
+            tag,
+            function(data)
+                if tag == 3 then
+                    local tipLayer = require("game.Spirit.SpiritGetTip").new(data)
+                    self:addChild(tipLayer, 100)
+                end
+                updateLabel()
+                moveFront(self._ctrl.get("level"))
+                self:initListView2()
             end
-            updateLabel()
-            moveFront(self._ctrl.get("level"))
-            self:initListView2()
-        end)
+        )
     end
     self._rootnode["startOneBtn"]:addHandleOfControlEvent(onStart, CCControlEventTouchDown)
     self._rootnode["superStartBtn"]:addHandleOfControlEvent(onStart, CCControlEventTouchDown)
-    self._rootnode["start10Btn"]:addHandleOfControlEvent(function(eventName,sender)
-            local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.LianShici_Zhenqi, game.player:getLevel(), game.player:getVip()) 
-            if not bHasOpen then 
-                show_tip_label(prompt) 
+    self._rootnode["start10Btn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.LianShici_Zhenqi, game.player:getLevel(), game.player:getVip())
+            if not bHasOpen then
+                show_tip_label(prompt)
             else
-                onStart(eventName,sender)
+                onStart(eventName, sender)
             end
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        end, CCControlEventTouchDown)
+        end,
+        CCControlEventTouchDown
+    )
 
     local function getPositionByTag(tag)
         return CCPointMake(self._rootnode["pos" .. tostring(tag)]:getPosition())
@@ -184,16 +204,16 @@ function SpiritScene2:ctor(param)
             local system = CCParticleSystemQuad:new()
             system:initWithFile("Particle/spirit.plist")
             system:setPosition(person:getContentSize().width / 2, person:getContentSize().height / 2)
-            person:addChild(system, 10);
+            person:addChild(system, 10)
             table.insert(persons, person)
         end
     end
     initPerson()
 
---  从左到右依次为：1, 2, 3, 4,  5,  6, 7, 8, 9
---                1， 2， 3，4， 0， 1， 2，3， 4
+    --  从左到右依次为：1, 2, 3, 4,  5,  6, 7, 8, 9
+    --                1， 2， 3，4， 0， 1， 2，3， 4
 
---  中间的为：5
+    --  中间的为：5
     local function getIndexByPos(x, y)
         for i = 1, 9 do
             local k = "pos" .. tostring(i)
@@ -204,7 +224,7 @@ function SpiritScene2:ctor(param)
         end
     end
 
---  右移动为正，左移动为负
+    --  右移动为正，左移动为负
     local function countOffset(personIdx)
         local posIndex = getIndexByPos(persons[personIdx]:getPosition())
         local offset = 5 - posIndex
@@ -217,7 +237,6 @@ function SpiritScene2:ctor(param)
         self._rootnode["startOneCostSilverLabel"]:setString(tostring(data_collect_collect[personIdx].price))
         local offset, dir = countOffset(personIdx)
         if offset == 0 then
-
         else
             self._rootnode["startOneBtn"]:setEnabled(false)
             self._rootnode["superStartBtn"]:setEnabled(false)
@@ -233,30 +252,45 @@ function SpiritScene2:ctor(param)
                         tag = posTag - i
                     end
 
-                    table.insert(act, CCCallFunc:create(function()
-                        if tag > 5 then
-                            v:setZOrder(5 - tag % 5)
-                        else
-                            v:setZOrder(tag)
-                        end
-                    end))
+                    table.insert(
+                        act,
+                        CCCallFunc:create(
+                            function()
+                                if tag > 5 then
+                                    v:setZOrder(5 - tag % 5)
+                                else
+                                    v:setZOrder(tag)
+                                end
+                            end
+                        )
+                    )
                     local moveTo = CCMoveTo:create(delayTime / offset, getPositionByTag(tag))
                     local scaleTo = CCScaleTo:create(delayTime / offset, getScaleByTag(tag))
                     table.insert(act, CCSpawn:createWithTwoActions(moveTo, scaleTo))
 
                     if tag == 5 then
-                        table.insert(act, CCCallFunc:create(function()
-                            self._rootnode["spiritName"]:setDisplayFrame(display.newSpriteFrame(string.format("spirit_icon_label_%d.png", k)))
-                        end))
+                        table.insert(
+                            act,
+                            CCCallFunc:create(
+                                function()
+                                    self._rootnode["spiritName"]:setDisplayFrame(display.newSpriteFrame(string.format("spirit_icon_label_%d.png", k)))
+                                end
+                            )
+                        )
                     end
---                    table.insert(act, CCDelayTime:create(0.2 / offset))
+                    --                    table.insert(act, CCDelayTime:create(0.2 / offset))
                 end
                 if k == #persons then
-                    table.insert(act, CCCallFunc:create(function()
-                        self._rootnode["startOneBtn"]:setEnabled(true)
-                        self._rootnode["superStartBtn"]:setEnabled(true)
-                        self._rootnode["start10Btn"]:setEnabled(true)
-                    end))
+                    table.insert(
+                        act,
+                        CCCallFunc:create(
+                            function()
+                                self._rootnode["startOneBtn"]:setEnabled(true)
+                                self._rootnode["superStartBtn"]:setEnabled(true)
+                                self._rootnode["start10Btn"]:setEnabled(true)
+                            end
+                        )
+                    )
                 end
 
                 v:runAction(transition.sequence(act))
@@ -273,7 +307,6 @@ function SpiritScene2:ctor(param)
 end
 
 function SpiritScene2:initListView2()
-
     if self._spiritListView then
         self:refreshSpiritList(true)
         return
@@ -283,92 +316,103 @@ function SpiritScene2:initListView2()
     self._rootnode["touchNode"]:setZOrder(1)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(cc.NODE_TOUCH_CAPTURE_EVENT, function(event)
-        if event.name == "began" then
-            posX = event.x
-            posY = event.y
-            return true
-        elseif event.name == "ended" then
-            self:refreshArrow()
+    self._rootnode["touchNode"]:addNodeEventListener(
+        cc.NODE_TOUCH_CAPTURE_EVENT,
+        function(event)
+            if event.name == "began" then
+                posX = event.x
+                posY = event.y
+                return true
+            elseif event.name == "ended" then
+                self:refreshArrow()
+            end
         end
-    end)
+    )
     self._rootnode["touchNode"]:setTouchSwallowEnabled(false)
     local showList = self._ctrl.get("showList")
     local sz = self._rootnode["itemsBg"]:getContentSize()
     local item = require("game.Spirit.SpiritShowItem")
-    self._spiritListView = require("utility.TableViewExt").new({
-        size        = CCSizeMake(sz.width, sz.height),
-        direction   = kCCScrollViewDirectionVertical,
-        createFunc  = function(idx)
-            local item = item.new()
-            idx = idx + 1
-            return item:create({
-                viewSize = sz,
-                itemData = showList[idx],
-                idx      = idx,
-            })
-        end,
-        refreshFunc = function(cell, idx)
-            idx = idx + 1
-            cell:refresh({
-                idx = idx,
-                itemData = showList[idx]
-            })
-        end,
-        cellNum   = #showList,
-        cellSize    = item.new():getContentSize(),
-        touchFunc = function(cell)
+    self._spiritListView =
+        require("utility.TableViewExt").new(
+        {
+            size = cc.size(sz.width, sz.height),
+            direction = kCCScrollViewDirectionVertical,
+            createFunc = function(idx)
+                local item = item.new()
+                idx = idx + 1
+                return item:create(
+                    {
+                        viewSize = sz,
+                        itemData = showList[idx],
+                        idx = idx
+                    }
+                )
+            end,
+            refreshFunc = function(cell, idx)
+                idx = idx + 1
+                cell:refresh(
+                    {
+                        idx = idx,
+                        itemData = showList[idx]
+                    }
+                )
+            end,
+            cellNum = #showList,
+            cellSize = item.new():getContentSize(),
+            touchFunc = function(cell)
+                local idx = cell:getIdx() + 1
+                local pos = cell:convertToNodeSpace(ccp(posX, posY))
+                printf("pos.x = %d, pos.y = %d", pos.x, pos.y)
+                local sz = cell:getContentSize()
+                local i = 0
+                if pos.x > sz.width * (4 / 5) and pos.x < sz.width then
+                    i = 5
+                elseif pos.x > sz.width * (3 / 5) then
+                    i = 4
+                elseif pos.x > sz.width * (2 / 5) then
+                    i = 3
+                elseif pos.x > sz.width * (1 / 5) then
+                    i = 2
+                elseif pos.x > 0 then
+                    i = 1
+                end
 
-            local idx = cell:getIdx() + 1
-            local pos = cell:convertToNodeSpace(ccp(posX, posY))
-            printf("pos.x = %d, pos.y = %d", pos.x, pos.y)
-            local sz = cell:getContentSize()
-            local i = 0
-            if pos.x > sz.width * (4 / 5) and pos.x < sz.width then
-                i = 5
-            elseif pos.x > sz.width * (3 / 5)  then
-                i = 4
-            elseif pos.x > sz.width * (2 / 5)  then
-                i = 3
-            elseif pos.x > sz.width * (1 / 5) then
-                i = 2
-            elseif pos.x > 0 then
-                i = 1
-            end
-
-            if i >= 1 and i <= 5 then
-                local info = showList[idx]
-                if info and info[i] then
-                    self:onTouchIcon(info[i].data._id)
+                if i >= 1 and i <= 5 then
+                    local info = showList[idx]
+                    if info and info[i] then
+                        self:onTouchIcon(info[i].data._id)
+                    end
                 end
             end
-        end
-    })
+        }
+    )
     self._spiritListView:setPosition(0, 0)
     self._rootnode["itemsBg"]:addChild(self._spiritListView)
     self:refreshSpiritList()
 end
 
 function SpiritScene2:refreshArrow()
-    self:performWithDelay(function()
-        local posY = self._spiritListView:getContentOffset().y
-        local maxOffsetY = self._spiritListView:maxContainerOffset().y
-        local minOffsetY = self._spiritListView:minContainerOffset().y
-        if minOffsetY < 0 then
-            if posY >= maxOffsetY then
-                self._rootnode["upArrow"]:setVisible(true)
-                self._rootnode["downArrow"]:setVisible(false)
-            elseif  posY <= minOffsetY then
-                self._rootnode["upArrow"]:setVisible(false)
-                self._rootnode["downArrow"]:setVisible(true)
-            else
-                self._rootnode["upArrow"]:setVisible(true)
-                self._rootnode["downArrow"]:setVisible(true)
+    self:performWithDelay(
+        function()
+            local posY = self._spiritListView:getContentOffset().y
+            local maxOffsetY = self._spiritListView:maxContainerOffset().y
+            local minOffsetY = self._spiritListView:minContainerOffset().y
+            if minOffsetY < 0 then
+                if posY >= maxOffsetY then
+                    self._rootnode["upArrow"]:setVisible(true)
+                    self._rootnode["downArrow"]:setVisible(false)
+                elseif posY <= minOffsetY then
+                    self._rootnode["upArrow"]:setVisible(false)
+                    self._rootnode["downArrow"]:setVisible(true)
+                else
+                    self._rootnode["upArrow"]:setVisible(true)
+                    self._rootnode["downArrow"]:setVisible(true)
+                end
             end
-        end
-    end, 0.5)
+        end,
+        0.5
+    )
 end
-
 
 function SpiritScene2:resetArrow()
     self._rootnode["upArrow"]:setZOrder(3)
@@ -415,10 +459,15 @@ function SpiritScene2:onTouchIcon(id)
 end
 
 function SpiritScene2:onIcon(index)
-    local descLayer = require("game.Spirit.SpiritInfoLayer").new(2, self._ctrl.get("spiritList")[index].data, function()
---        push_scene(require("game.Spirit.SpiritUpgradeScene").new(self._ctrl.get("spiritList")[index], self._ctrl.get("spiritList")))
-        self._ctrl.pushUpgradeScene(index)
-    end)
+    local descLayer =
+        require("game.Spirit.SpiritInfoLayer").new(
+        2,
+        self._ctrl.get("spiritList")[index].data,
+        function()
+            --        push_scene(require("game.Spirit.SpiritUpgradeScene").new(self._ctrl.get("spiritList")[index], self._ctrl.get("spiritList")))
+            self._ctrl.pushUpgradeScene(index)
+        end
+    )
     game.runningScene:addChild(descLayer, 5)
 end
 
@@ -439,10 +488,13 @@ function SpiritScene2:onEnter()
             self:initListView2()
         end
     else
-        self._rootnode["infoView"]:performWithDelay(function()
-            self:initListView2()
-            self:resetArrow()
-        end, 0.05)
+        self._rootnode["infoView"]:performWithDelay(
+            function()
+                self:initListView2()
+                self:resetArrow()
+            end,
+            0.05
+        )
     end
 end
 

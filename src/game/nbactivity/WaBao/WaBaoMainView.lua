@@ -336,7 +336,7 @@ function WaBaoMainView:showResetPopup()
     local msgBox =
         require("utility.MsgBox").new(
         {
-            size = CCSizeMake(500, 300),
+            size = cc.size(500, 300),
             content = "----------",
             showClose = true,
             directclose = true,

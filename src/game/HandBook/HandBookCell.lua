@@ -13,7 +13,7 @@ function HandBookCell:ctor(param)
     self._proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local bgNode = CCBuilderReaderLoad("handbook/handbook_cell.ccbi", self._proxy, self._rootnode)
+    local bgNode = CCBReaderLoad("handbook/handbook_cell.ccbi", self._proxy, self._rootnode)
     self:addChild(bgNode)
 
     local orX = -self._rootnode["cell_bg"]:getContentSize().width / 2 + 75

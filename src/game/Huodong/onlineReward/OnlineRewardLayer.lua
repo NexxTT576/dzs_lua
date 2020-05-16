@@ -236,7 +236,7 @@ function OnlineRewardLayer:ctor(data)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/online_reward_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/online_reward_layer.ccbi", proxy, self._rootnode)
     local layer = tolua.cast(node, "CCLayer")
     layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(layer)

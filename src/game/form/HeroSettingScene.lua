@@ -14,7 +14,7 @@ local HeroIcon =
     class(
     "HeroIcon",
     function()
-        return CCTableViewCell:new()
+        return cc.TableViewCell:new()
     end
 )
 
@@ -156,12 +156,12 @@ function HeroSettingScene:ctor(showType)
         self._showType = 1
     end
 
-    self:setContentSize(CCSizeMake(display.width, display.height))
+    self:setContentSize(cc.size(display.width, display.height))
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("formation/formation_scene.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("formation/formation_scene.ccbi", proxy, self._rootnode)
     node:setPosition(self:getContentSize().width / 2, self:getContentSize().height / 2)
     self:addChild(node, 1)
     -- 高亮选择中的底部按钮
@@ -379,7 +379,7 @@ function HeroSettingScene:setForm()
             parentNode = self,
             touchEnabled = false,
             list = self._cardList,
-            sz = CCSizeMake(display.width * 0.9, display.height - 297),
+            sz = cc.size(display.width * 0.9, display.height - 297),
             pos = ccp(display.cx, display.cy - 20),
             closeListener = function()
                 self:refreshHero(self._index)
@@ -1025,7 +1025,7 @@ function HeroSettingScene:initHeadList()
     self._scrollItemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+            size = cc.size(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
             createFunc = function(idx)
                 idx = idx + 1
                 local item = HeroIcon.new()

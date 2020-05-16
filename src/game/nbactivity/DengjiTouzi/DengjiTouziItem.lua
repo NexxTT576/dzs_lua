@@ -16,7 +16,7 @@ function DengjiTouziItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/dengjiTouzi_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("nbhuodong/dengjiTouzi_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -38,7 +38,7 @@ function DengjiTouziItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/dengjiTouzi_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("nbhuodong/dengjiTouzi_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

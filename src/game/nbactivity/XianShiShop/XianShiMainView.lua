@@ -21,7 +21,7 @@ function XianShiMainView:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/xianshishangdian_layer.ccbi", proxy, self._rootnode, self, viewSize)
+    local node = CCBReaderLoad("nbhuodong/xianshishangdian_layer.ccbi", proxy, self._rootnode, self, viewSize)
     self:addChild(node)
 
     local titleSize = self._rootnode["titlebng"]:getContentSize()
@@ -109,7 +109,7 @@ function XianShiMainView:setUpView()
         return item:create(
             {
                 index = index,
-                viewSize = CCSizeMake(boardWidth, boardHeight),
+                viewSize = cc.size(boardWidth, boardHeight),
                 itemData = self._data[index + 1],
                 confirmFunc = showBuyBox
             }
@@ -129,7 +129,7 @@ function XianShiMainView:setUpView()
     self.ListTable =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight),
+            size = cc.size(boardWidth, boardHeight),
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #self._data,

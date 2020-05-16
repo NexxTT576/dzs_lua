@@ -4,49 +4,57 @@
  -- 2014.11.28 
  --
  --]]
+local DengjiTouziBuyMsgbox =
+    class(
+    "DengjiTouziBuyMsgbox",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 
- local DengjiTouziBuyMsgbox = class("DengjiTouziBuyMsgbox", function()
- 		return require("utility.ShadeLayer").new()
- 	end)
+function DengjiTouziBuyMsgbox:ctor(param)
+    local needGold = param.needGold
+    local cancelListen = param.cancelListen
+    local confirmListen = param.confirmListen
 
+    local rootnode = {}
+    local proxy = CCBProxy:create()
+    local node = CCBReaderLoad("nbhuodong/dengjiTouzi_buyMsgbox.ccbi", proxy, rootnode)
+    node:setPosition(display.cx, display.cy)
+    self:addChild(node)
 
- function DengjiTouziBuyMsgbox:ctor(param)
- 	local needGold = param.needGold 
- 	local cancelListen = param.cancelListen 
- 	local confirmListen = param.confirmListen 
+    rootnode["needGold_lbl"]:setString(tostring(needGold) .. "元宝")
 
- 	local rootnode = {} 
- 	local proxy = CCBProxy:create() 
- 	local node = CCBuilderReaderLoad("nbhuodong/dengjiTouzi_buyMsgbox.ccbi", proxy, rootnode)
- 	node:setPosition(display.cx, display.cy) 
- 	self:addChild(node) 
+    local function closeFunc()
+        if cancelListen ~= nil then
+            cancelListen()
+        end
+        self:removeFromParentAndCleanup(true)
+    end
 
- 	rootnode["needGold_lbl"]:setString(tostring(needGold) .. "元宝") 
+    rootnode["closeBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            closeFunc()
+        end,
+        CCControlEventTouchUpInside
+    )
 
- 	local function closeFunc() 
- 		if cancelListen ~= nil then 
- 			cancelListen() 
- 		end 
- 		self:removeFromParentAndCleanup(true) 
- 	end 
+    rootnode["cancelBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            closeFunc()
+        end,
+        CCControlEventTouchUpInside
+    )
 
- 	rootnode["closeBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        closeFunc() 
-    end, CCControlEventTouchUpInside) 
+    rootnode["confirmBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            if confirmListen ~= nil then
+                confirmListen()
+            end
+            self:removeFromParentAndCleanup(true)
+        end,
+        CCControlEventTouchUpInside
+    )
+end
 
-    rootnode["cancelBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        closeFunc() 
-    end, CCControlEventTouchUpInside) 
-
-    rootnode["confirmBtn"]:addHandleOfControlEvent(function(eventName,sender)
-    	if confirmListen ~= nil then 
-    		confirmListen() 
-    	end 
-        self:removeFromParentAndCleanup(true) 
-    end, CCControlEventTouchUpInside)
-
- end 
-
-
- return DengjiTouziBuyMsgbox 
-
+return DengjiTouziBuyMsgbox

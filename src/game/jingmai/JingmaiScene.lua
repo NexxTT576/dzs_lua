@@ -7,12 +7,18 @@
 --
 local data_jingmai_jingmai = require("data.data_jingmai_jingmai")
 local data_item_nature = require("data.data_item_nature")
-local JingmaiScene = class("JingmaiScene", function()
-    return require("game.BaseSceneExt").new({
-        -- topFile    = "public/top_frame.ccbi",
-        contentFile = "jingmai/jingmai_scene.ccbi"
-    })
-end)
+local JingmaiScene =
+    class(
+    "JingmaiScene",
+    function()
+        return require("game.BaseSceneExt").new(
+            {
+                -- topFile    = "public/top_frame.ccbi",
+                contentFile = "jingmai/jingmai_scene.ccbi"
+            }
+        )
+    end
+)
 
 -- tp:  经脉【1-3】
 -- pos: 当前穴位【1-8】
@@ -38,153 +44,165 @@ local function getValue(t, l)
     return ret
 end
 
-
 local NAME_MAPPING = {"强控", "坚守", "急攻"}
 function JingmaiScene:ctor()
     game.runningScene = self
     ResMgr.createBefTutoMask(self)
 
---    local _bg = display.newSprite("ui_common/jingmai_gx_bg.jpg")
---    local _bg = display.newSprite("ui_common/jingmai_sw_bg.jpg")
+    --    local _bg = display.newSprite("ui_common/jingmai_gx_bg.jpg")
+    --    local _bg = display.newSprite("ui_common/jingmai_sw_bg.jpg")
 
---    _bg:setScaleX(display.width / _bg:getContentSize().width)
---    _bg:setScaleY(self:getContentHeight() / _bg:getContentSize().height)
+    --    _bg:setScaleX(display.width / _bg:getContentSize().width)
+    --    _bg:setScaleY(self:getContentHeight() / _bg:getContentSize().height)
 
     local proxy = CCBProxy:create()
-    self._animNode = CCBuilderReaderLoad("jingmai/jingmai_open_anim.ccbi", proxy, self._rootnode)
+    self._animNode = CCBReaderLoad("jingmai/jingmai_open_anim.ccbi", proxy, self._rootnode)
     self._animNode:retain()
---    animNode:setPosition(display.cx, display.cy)
---    self:addChild(animNode, 100)
+    --    animNode:setPosition(display.cx, display.cy)
+    --    self:addChild(animNode, 100)
     self:setNodeEventEnabled(true)
 
     self.top = require("game.scenes.TopLayer").new()
-    self:addChild(self.top,1)
+    self:addChild(self.top, 1)
     if (display.widthInPixels / display.heightInPixels) == 0.75 then
-        self._rootnode["tag_hero_pos"]:setScale(0.9)
         -- self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+45)
-    elseif(display.widthInPixels / display.heightInPixels) > 0.66 then
-        -- self._rootnode["tag_hero_pos"]:setScale(0.85)       
-        -- self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+150)    
-    else -- 
-        self._rootnode["tag_hero_pos"]:setScale(1.2)  
-        self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+70)    
+        self._rootnode["tag_hero_pos"]:setScale(0.9)
+    elseif (display.widthInPixels / display.heightInPixels) > 0.66 then
+        -- self._rootnode["tag_hero_pos"]:setScale(0.85)
+        -- self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+150)
+    else --
+        self._rootnode["tag_hero_pos"]:setScale(1.2)
+        self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY() + 70)
     end
-    
 
-    if(game.player.m_gender == 2) then
+    if (game.player.m_gender == 2) then
         self._rootnode["jingmai_bg_male"]:setVisible(false)
         self._rootnode["jingmai_bg_female"]:setVisible(true)
     end
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi)) 
-        GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
-    end, CCControlEventTouchDown)
+    self._rootnode["backBtn"]:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
+            GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
+        end,
+        CCControlEventTouchDown
+    )
 
-    self._rootnode["upgradeBgn"]:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
-        if self._info.level == 0 and self._info.order == 0 then
-            show_tip_label("已经达到最大等级")
-            return
-        end
+    self._rootnode["upgradeBgn"]:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            if self._info.level == 0 and self._info.order == 0 then
+                show_tip_label("已经达到最大等级")
+                return
+            end
 
-        if self._info.type ~= 0 and self._index ~= self._info.type then
-            show_tip_label(string.format("请切换到【%s】界面", NAME_MAPPING[self._info.type]))
-            return
-        end
+            if self._info.type ~= 0 and self._index ~= self._info.type then
+                show_tip_label(string.format("请切换到【%s】界面", NAME_MAPPING[self._info.type]))
+                return
+            end
 
-        if checknumber(self._rootnode["needStarLabel"]:getString()) > self._starNum then
---            show_tip_label("副本星数不足，通关新关卡可获得更多副本星数")
-            show_tip_label(data_error_error[2200005].prompt)
-            return
-        end
+            if checknumber(self._rootnode["needStarLabel"]:getString()) > self._starNum then
+                --            show_tip_label("副本星数不足，通关新关卡可获得更多副本星数")
+                show_tip_label(data_error_error[2200005].prompt)
+                return
+            end
 
-        if checknumber(self._rootnode["needSilverLabel"]:getString()) > game.player:getSilver() then
-            show_tip_label("当前银币不足")
-            return
-        end
+            if checknumber(self._rootnode["needSilverLabel"]:getString()) > game.player:getSilver() then
+                show_tip_label("当前银币不足")
+                return
+            end
 
-        local t
-        if self._info.type == 0 then
-            t = self._index
-        else
-            t = nil
-        end
-        RequestHelper.channel.upgrade({
-            callback = function(data)
-                dump(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Tip")
-                else
+            local t
+            if self._info.type == 0 then
+                t = self._index
+            else
+                t = nil
+            end
+            RequestHelper.channel.upgrade(
+                {
+                    callback = function(data)
+                        dump(data)
+                        if string.len(data["0"]) > 0 then
+                            CCMessageBox(data["0"], "Tip")
+                        else
+                            self:runAnim(self._info.order - 1, self._info.order)
 
-                    self:runAnim(self._info.order - 1, self._info.order)
+                            self._starNum = data["1"] --副本星数
+                            game.player:setSilver(data["2"]) --银币数
+                            self._info.type = self._index
+                            self._info.order = data["4"] --穴位
+                            self._info.level = data["3"] --等级
 
-                    self._starNum = data["1"]        --副本星数
-                    game.player:setSilver(data["2"]) --银币数
-                    self._info.type = self._index
-                    self._info.order = data["4"]           --穴位
-                    self._info.level = data["3"]           --等级
-
-                    self:refresh()
-                end
-            end,
-            t = t
-        })
---        self:runAnim(1, 6)
-    end, CCControlEventTouchDown)
+                            self:refresh()
+                        end
+                    end,
+                    t = t
+                }
+            )
+            --        self:runAnim(1, 6)
+        end,
+        CCControlEventTouchDown
+    )
 
     local function reset()
-        RequestHelper.channel.reset({
-            callback = function(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Tip")
-                else
-                    dump(data)
-                    self._rootnode["previewSprite"]:setVisible(true)
-                    self._rootnode["upgradeBgn"]:setVisible(true)
+        RequestHelper.channel.reset(
+            {
+                callback = function(data)
+                    if string.len(data["0"]) > 0 then
+                        CCMessageBox(data["0"], "Tip")
+                    else
+                        dump(data)
+                        self._rootnode["previewSprite"]:setVisible(true)
+                        self._rootnode["upgradeBgn"]:setVisible(true)
 
-                    self._starNum = data["1"]        --副本星数
-                    game.player:setGold(data["2"])   --金币数
-                    self._itemNum = data["3"]        --道具数
+                        self._starNum = data["1"] --副本星数
+                        game.player:setGold(data["2"]) --金币数
+                        self._itemNum = data["3"] --道具数
 
-                    self._info = {
-                        type  = 0,           --类型
-                        order = 1,           --穴位
-                        level = 1            --等级
-                    }
-                    self:refresh()
+                        self._info = {
+                            type = 0, --类型
+                            order = 1, --穴位
+                            level = 1 --等级
+                        }
+                        self:refresh()
+                    end
                 end
-
-            end})
+            }
+        )
     end
 
---  洗经伐脉
-    self._rootnode["resetBtn"]:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding)) 
-        if 50 > game.player:getGold() then
-            show_tip_label("元宝不足")
-            return
-        end
-
-        if self._info.type == 0 then
-            show_tip_label("当前没有可重置的经脉")
-            return
-        end
-
-        local layer = require("utility.MsgBox").new({
-            size = CCSizeMake(500, 200),
-            leftBtnName = "取消",
-            rightBtnName = "确定",
-            content = "确定花费50元宝重置经脉吗？",
-            leftBtnFunc = function()
-
-            end,
-            rightBtnFunc = function()
-                reset()
+    --  洗经伐脉
+    self._rootnode["resetBtn"]:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            if 50 > game.player:getGold() then
+                show_tip_label("元宝不足")
+                return
             end
-        })
-        self:addChild(layer, 100)
-    end, CCControlEventTouchDown)
+
+            if self._info.type == 0 then
+                show_tip_label("当前没有可重置的经脉")
+                return
+            end
+
+            local layer =
+                require("utility.MsgBox").new(
+                {
+                    size = cc.size(500, 200),
+                    leftBtnName = "取消",
+                    rightBtnName = "确定",
+                    content = "确定花费50元宝重置经脉吗？",
+                    leftBtnFunc = function()
+                    end,
+                    rightBtnFunc = function()
+                        reset()
+                    end
+                }
+            )
+            self:addChild(layer, 100)
+        end,
+        CCControlEventTouchDown
+    )
 
     local function onChangeView(_, sender)
         self._index = sender:getTag()
@@ -211,12 +229,11 @@ function JingmaiScene:refreshBg()
         end
     end
 
-
     if self._bg then
         self._bg:removeSelf()
     end
 
-    self._bg = display.newScale9Sprite(string.format("#jingmai_hero_bg_%d.png", self._index), 0,0,CCSize(display.width, self:getContentHeight()),  CCRectMake(10, 10, 20, 20))
+    self._bg = display.newScale9Sprite(string.format("#jingmai_hero_bg_%d.png", self._index), 0, 0, CCSize(display.width, self:getContentHeight()), CCRectMake(10, 10, 20, 20))
     self._bg:setPosition(display.width / 2, self:getBottomHeight() + self:getContentHeight() / 2)
     self:addChild(self._bg)
 end
@@ -224,7 +241,6 @@ end
 -- pos1: 原始点
 -- pos2: 目标点
 function JingmaiScene:runAnim(pos1, pos2)
-
     local anim = {}
     for i = pos1, pos2 do
         if i > 0 and i < pos2 then
@@ -238,16 +254,25 @@ function JingmaiScene:runAnim(pos1, pos2)
         end
     end
 
-    table.insert(anim, CCCallFunc:create(function()
-        local proxy = CCBProxy:create()
-        local node = CCBuilderReaderLoad("jingmai/jingmai_upgrade_anim.ccbi", proxy, {})
-        node:runAction(transition.sequence({
-            CCDelayTime:create(0.5),
-            CCRemoveSelf:create()
-        }))
-        node:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos2)]:convertToWorldSpace(ccp(42.5, 42.5)))
-        self:addChild(node, 101)
-    end))
+    table.insert(
+        anim,
+        CCCallFunc:create(
+            function()
+                local proxy = CCBProxy:create()
+                local node = CCBReaderLoad("jingmai/jingmai_upgrade_anim.ccbi", proxy, {})
+                node:runAction(
+                    transition.sequence(
+                        {
+                            CCDelayTime:create(0.5),
+                            CCRemoveSelf:create()
+                        }
+                    )
+                )
+                node:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos2)]:convertToWorldSpace(ccp(42.5, 42.5)))
+                self:addChild(node, 101)
+            end
+        )
+    )
     table.insert(anim, CCFadeOut:create(0))
     table.insert(anim, CCDelayTime:create(0.1))
     table.insert(anim, CCRemoveSelf:create())
@@ -266,7 +291,6 @@ function JingmaiScene:onFullLevel()
     self._rootnode["upgradeBgn"]:setVisible(false)
 
     show_tip_label("经脉已修炼至顶级，无法提升")
-
 
     for i = 1, 8 do
         if i < 8 then
@@ -325,8 +349,7 @@ end
 
 --更新界面
 function JingmaiScene:refresh()
-
---  获得穴位
+    --  获得穴位
     local _level = 1
     local _order = 1
     local item
@@ -340,7 +363,7 @@ function JingmaiScene:refresh()
         end
     end
 
-    item = getChannel(self._index,_order)
+    item = getChannel(self._index, _order)
     local nature = data_item_nature[item.nature]
 
     -- self._rootnode["silverLabel"]:setString(tostring(game.player:getSilver()))         --银子
@@ -356,19 +379,19 @@ function JingmaiScene:refresh()
     end
 
     self._rootnode["effectValueLabel"]:setString(str) --描述
-    self._rootnode["needStarLabel"]:setString(tostring(item.arr_star[_level]))                                 --需要星数
-    self._rootnode["needSilverLabel"]:setString(tostring(item.arr_coin[_level]))                               --需要银子
+    self._rootnode["needStarLabel"]:setString(tostring(item.arr_star[_level])) --需要星数
+    self._rootnode["needSilverLabel"]:setString(tostring(item.arr_coin[_level])) --需要银子
 
-    self._rootnode["starCountLabel"]:setString("x" .. tostring(self._starNum))                                 --星数
-    self._rootnode["totalItemLabel"]:setString(tostring(self._itemNum))                                        --总共需要物品
+    self._rootnode["starCountLabel"]:setString("x" .. tostring(self._starNum)) --星数
+    self._rootnode["totalItemLabel"]:setString(tostring(self._itemNum)) --总共需要物品
 
     self:setPropValue(_level, _order)
 
---  设置穴位
+    --  设置穴位
     for i = 1, 8 do
         local key = string.format("board_%d_%d", self._index, i)
 
-        if i < _order or (_level > 1 and _order == 1)then
+        if i < _order or (_level > 1 and _order == 1) then
             self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
             self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_2.png"))
 
@@ -380,7 +403,6 @@ function JingmaiScene:refresh()
                     self._animNode:removeFromParentAndCleanup(false)
                     self._rootnode[key]:addChild(self._animNode)
                 end
-
             else
                 self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level))
                 printf("3")
@@ -397,7 +419,6 @@ function JingmaiScene:refresh()
             self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))
             self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_0.png"))
             self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level - 1))
-
         end
 
         if _level > 1 then
@@ -410,7 +431,7 @@ function JingmaiScene:refresh()
         end
     end
 
---  设置线条
+    --  设置线条
     for i = 1, 7 do
         local key = string.format("line_%d_%d", self._index, i)
         if i < _order - 1 then
@@ -435,44 +456,44 @@ function JingmaiScene:refresh()
     else
         self._rootnode["infoNode"]:setVisible(false)
     end
-
 end
 --
 function JingmaiScene:request()
---    1:副本星数
---    2:下个升级穴位	[0-8]
---    3:金币数
---    4:银币数
---    5:升级后等级 [0-10]
---    6:经脉类型  	0-无 1-神武 2-太乙 3-归墟
---    7:道具数
-    RequestHelper.channel.info({
-        callback = function(data)
-            dump(data)
-            if string.len(data["0"])  > 0 then
-                CCMessageBox(data["0"], "Error")
-            else
-                self._starNum = data["1"]        --副本星数
-                game.player:setGold(data["3"])   --金币数
-                game.player:setSilver(data["4"]) --银币数
+    --    1:副本星数
+    --    2:下个升级穴位	[0-8]
+    --    3:金币数
+    --    4:银币数
+    --    5:升级后等级 [0-10]
+    --    6:经脉类型  	0-无 1-神武 2-太乙 3-归墟
+    --    7:道具数
+    RequestHelper.channel.info(
+        {
+            callback = function(data)
+                dump(data)
+                if string.len(data["0"]) > 0 then
+                    CCMessageBox(data["0"], "Error")
+                else
+                    self._starNum = data["1"] --副本星数
+                    game.player:setGold(data["3"]) --金币数
+                    game.player:setSilver(data["4"]) --银币数
 
-                self._info = {
-                    type  = data["6"],   --类型
+                    self._info = {
+                        type = data["6"], --类型
+                        order = data["2"], --穴位 穴位和等级都为0时候，满级
+                        level = data["5"] --等级
+                    }
+                    self._itemNum = data["7"] --道具数
 
-                    order = data["2"],   --穴位 穴位和等级都为0时候，满级
-                    level = data["5"]    --等级
-                }
-                self._itemNum = data["7"]        --道具数
-
-                self:refresh()
+                    self:refresh()
+                end
             end
-        end
-    })
+        }
+    )
 end
 
 function JingmaiScene:onEnter()
     local tisheng_btn = self._rootnode["upgradeBgn"]
-    TutoMgr.addBtn("tisheng_btn",tisheng_btn)
+    TutoMgr.addBtn("tisheng_btn", tisheng_btn)
     TutoMgr.active()
 end
 
@@ -482,4 +503,3 @@ function JingmaiScene:onExit()
 end
 
 return JingmaiScene
-

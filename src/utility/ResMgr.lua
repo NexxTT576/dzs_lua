@@ -536,7 +536,7 @@ function ResMgr.createBefTutoMask(node)
         trueColor = cc.c4b(100, 0, 0, 100)
     end
 
-    local befTutoLayer = display.newColorLayer(trueColor)
+    local befTutoLayer = display.newLayer(trueColor)
     befTutoLayer:setTouchEnabled(true)
     befTutoLayer:retain()
     ResMgr.befTutoTable[#ResMgr.befTutoTable + 1] = befTutoLayer

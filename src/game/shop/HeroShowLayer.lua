@@ -32,7 +32,7 @@ local Item =
     end
 )
 
-local CELLSIZE = CCSizeMake(display.width, 140)
+local CELLSIZE = cc.size(display.width, 140)
 function Item:getContentSize()
     return CELLSIZE
 end
@@ -41,7 +41,7 @@ function Item:create(param)
     local _viewSize = param.viewSize
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    self._bg = CCBuilderReaderLoad("shop/shop_show_item.ccbi", proxy, self._rootnode, display.newNode(), _viewSize)
+    self._bg = CCBReaderLoad("shop/shop_show_item.ccbi", proxy, self._rootnode, display.newNode(), _viewSize)
     self._bg:setPosition(_viewSize.width / 2, 0)
     self:addChild(self._bg)
 
@@ -119,7 +119,7 @@ function HeroShowLayer:init()
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("shop/shop_hero_show.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("shop/shop_hero_show.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 
@@ -210,7 +210,7 @@ function HeroShowLayer:initScrollView()
     self._scrollView =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["scrollView"]:getContentSize().width, self._rootnode["scrollView"]:getContentSize().height),
+            size = cc.size(self._rootnode["scrollView"]:getContentSize().width, self._rootnode["scrollView"]:getContentSize().height),
             direction = kCCScrollViewDirectionVertical,
             createFunc = function(idx)
                 idx = idx + 1

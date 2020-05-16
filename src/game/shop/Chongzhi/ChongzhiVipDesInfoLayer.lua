@@ -23,7 +23,7 @@ local Item =
         local height = 0
 
         local node = display.newNode()
-        node:setContentSize(CCSizeMake(viewSize.width, 0))
+        node:setContentSize(cc.size(viewSize.width, 0))
         node:setAnchorPoint(0.5, 1)
 
         -- 描述
@@ -43,7 +43,7 @@ local Item =
                     size = 22,
                     align = ui.TEXT_ALIGN_LEFT,
                     valign = ui.TEXT_VALIGN_TOP,
-                    dimensions = CCSizeMake(bossLblNode:getContentSize().width, 0)
+                    dimensions = cc.size(bossLblNode:getContentSize().width, 0)
                 }
             )
             lbl:setAnchorPoint(0.5, 1)
@@ -75,7 +75,7 @@ local Item =
         bossLblNode:setPosition(viewSize.width / 2, vipIcon:getPositionY() - vipIcon:getContentSize().height - 10)
         node:setContentSize(node:getContentSize().width, height)
 
-        local bgSprite = display.newScale9Sprite("#win_base_inner_bg_dark.png", 0, 0, CCSizeMake(node:getContentSize().width, height))
+        local bgSprite = display.newScale9Sprite("#win_base_inner_bg_dark.png", 0, 0, cc.size(node:getContentSize().width, height))
         bgSprite:setAnchorPoint(0.5, 0.5)
         bgSprite:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
         node:addChild(bgSprite, -1)
@@ -92,7 +92,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("ccbi/shop/shop_vipDesInfo_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("ccbi/shop/shop_vipDesInfo_layer.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 
@@ -125,9 +125,9 @@ function ChongzhiVipDesInfoLayer:ctor(param)
 
     listHeight = listHeight - vipNode:getContentSize().height - 10
 
-    local listViewSize = CCSizeMake(bottomNode:getContentSize().width, listHeight)
+    local listViewSize = cc.size(bottomNode:getContentSize().width, listHeight)
 
-    scrollNode = CCBuilderReaderLoad("ccbi/shop/shop_vipDesInfo_scrollNode.ccbi", proxy, self._rootnode, self, listViewSize)
+    scrollNode = CCBReaderLoad("ccbi/shop/shop_vipDesInfo_scrollNode.ccbi", proxy, self._rootnode, self, listViewSize)
     scrollNode:setPosition(bottomNode:getContentSize().width / 2, 0)
     bottomNode:addChild(scrollNode)
 
@@ -149,7 +149,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
         height = height + item:getContentSize().height + dis
     end
 
-    local sz = CCSizeMake(contentViewSize.width, contentViewSize.height + height)
+    local sz = cc.size(contentViewSize.width, contentViewSize.height + height)
     self._rootnode["descView"]:setContentSize(sz)
     self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
     local scrollView = self._rootnode["scrollView"]

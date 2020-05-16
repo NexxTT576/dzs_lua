@@ -71,7 +71,7 @@ function BiwuDuihuanLayer:setUpView(param)
     self._tableView =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight - titleBng:getContentSize().height - 10),
+            size = cc.size(boardWidth, boardHeight - titleBng:getContentSize().height - 10),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,

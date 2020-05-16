@@ -53,7 +53,7 @@ function SkillQiangHuaLayer:ctor(param)
     self._proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local bgNode = CCBuilderReaderLoad("skill/skill_qianghua.ccbi", self._proxy, self._rootnode)
+    local bgNode = CCBReaderLoad("skill/skill_qianghua.ccbi", self._proxy, self._rootnode)
     bgNode:setPosition(display.cx, display.cy)
     self:addChild(bgNode)
 

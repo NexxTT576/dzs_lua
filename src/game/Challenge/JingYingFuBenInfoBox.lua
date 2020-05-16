@@ -33,7 +33,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
     local rootnode = rootnode or {}
 
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("ccbi/challenge/jingying_fuben_infoBox.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("ccbi/challenge/jingying_fuben_infoBox.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

@@ -13,11 +13,11 @@ local LevelRewardCell =
 )
 
 function LevelRewardCell:getContentSize()
-    -- return CCSizeMake(display.width, 200)
+    -- return cc.size(display.width, 200)
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("reward/level_reward_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("reward/level_reward_item.ccbi", proxy, rootNode)
 
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
@@ -168,7 +168,7 @@ function LevelRewardCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/level_reward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/level_reward_item.ccbi", proxy, self._rootnode)
     node:setPosition(self.viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

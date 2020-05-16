@@ -65,7 +65,7 @@ function ChallengeScene:updateJingYingList()
         local item = require("game.Challenge.JingYingCell").new()
         return item:create(
             {
-                viewSize = CCSizeMake(self._rootnode["list_bg"]:getContentSize().width, self._rootnode["list_bg"]:getContentSize().height * 0.95),
+                viewSize = cc.size(self._rootnode["list_bg"]:getContentSize().width, self._rootnode["list_bg"]:getContentSize().height * 0.95),
                 idx = idx,
                 totalNum = totalNum,
                 isAllLvlDone = isAllLvlDone
@@ -80,18 +80,18 @@ function ChallengeScene:updateJingYingList()
     local itemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["list_bg"]:getContentSize().width, self.getCenterHeightWithSubTop()),
-             -- numBg:getContentSize().height - 20),
+            size = cc.size(self._rootnode["list_bg"]:getContentSize().width, self.getCenterHeightWithSubTop()),
+            -- numBg:getContentSize().height - 20),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = totalNum,
             cellSize = CCSize(display.width * 0.9, 200),
-             --require("game.Arena.ArenaCell").new():getContentSize(),
+            --require("game.Arena.ArenaCell").new():getContentSize(),
             touchFunc = function(cell)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 print(totalNum - cell:getIdx())
-                 -- 因为是反着的  所以需要进行一些处理
+                -- 因为是反着的  所以需要进行一些处理
                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                 local function removeFunc()
                     self.isTouchJingYingCell = false
@@ -185,7 +185,7 @@ function ChallengeScene:updateHuoDongList()
         local item = require(filename).new()
         return item:create(
             {
-                viewSize = CCSizeMake(self._rootnode["list_bg"]:getContentSize().width, self._rootnode["list_bg"]:getContentSize().height * 0.95),
+                viewSize = cc.size(self._rootnode["list_bg"]:getContentSize().width, self._rootnode["list_bg"]:getContentSize().height * 0.95),
                 aid = huodongIdList[idx + 1],
                 fubenTimes = self.huodong_fuben_list,
                 refreshFunc = function()
@@ -202,8 +202,8 @@ function ChallengeScene:updateHuoDongList()
     local itemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["list_bg"]:getContentSize().width, self.getCenterHeightWithSubTop()),
-             -- numBg:getContentSize().height - 20),
+            size = cc.size(self._rootnode["list_bg"]:getContentSize().width, self.getCenterHeightWithSubTop()),
+            -- numBg:getContentSize().height - 20),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,

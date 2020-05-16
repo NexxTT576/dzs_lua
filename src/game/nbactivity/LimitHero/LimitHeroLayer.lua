@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.08
- --
- --]]
 local data_item_item = require("data.data_item_item")
 local data_card_card = require("data.data_card_card")
 require("data.data_error_error")
@@ -60,7 +54,7 @@ function LimitHeroLayer:ctor(param)
     self._rootnode = {}
 
     -- 创建UI
-    local contentNode = CCBuilderReaderLoad("nbhuodong/limit_hero_layer.ccbi", proxy, self._rootnode, self, viewSize)
+    local contentNode = CCBReaderLoad("nbhuodong/limit_hero_layer.ccbi", proxy, self._rootnode, self, viewSize)
     self:addChild(contentNode)
 
     LimitHeroModel.sendInitRes(
@@ -93,7 +87,7 @@ function LimitHeroLayer:init()
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #self.heroList,
-            cellSize = CCSizeMake(display.width, self.viewSize.height)
+            cellSize = cc.size(display.width, self.viewSize.height)
         }
     )
 
@@ -317,7 +311,7 @@ function LimitHeroLayer:updateDownTableView()
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #self.curList,
-            cellSize = CCSizeMake(self._rootnode["table_bg"]:getContentSize().width, 22)
+            cellSize = cc.size(self._rootnode["table_bg"]:getContentSize().width, 22)
         }
     )
     self.rankList:setTouchEnabled(true)

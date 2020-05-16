@@ -21,7 +21,7 @@ function GuildMemberVerifyItem:getContentSize()
     if self._contentSz == nil then
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("guild/guild_guildMember_verify_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("guild/guild_guildMember_verify_item.ccbi", proxy, rootnode)
         self._contentSz = rootnode["item_bg"]:getContentSize()
     end
 
@@ -49,7 +49,7 @@ function GuildMemberVerifyItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("guild/guild_guildMember_verify_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_guildMember_verify_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 

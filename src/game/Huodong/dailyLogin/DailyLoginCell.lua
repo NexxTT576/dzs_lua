@@ -13,11 +13,11 @@ local DailyLoginCell =
 )
 
 function DailyLoginCell:getContentSize()
-    -- return CCSizeMake(display.width, 200)
+    -- return cc.size(display.width, 200)
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("reward/daily_login_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("reward/daily_login_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -170,7 +170,7 @@ function DailyLoginCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/daily_login_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/daily_login_item.ccbi", proxy, self._rootnode)
     node:setPosition(self.viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

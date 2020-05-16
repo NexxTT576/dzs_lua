@@ -1,16 +1,18 @@
-
 --[[
  --
  -- add by vicky
  -- 2014.08.25
  --
  --]]
+--
 
- --
-
- local ZhaojiangResultTen = class("ZhaojiangResultTen", function()
- 		return require("utility.ShadeLayer").new()
- end)
+local ZhaojiangResultTen =
+    class(
+    "ZhaojiangResultTen",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 --
 -- function ZhaojiangResultTen:getOneHero(num)
 -- 	if num ~= 1 and num ~= 10 then
@@ -39,40 +41,50 @@
 --    })
 -- end
 
-
- -- 卡牌背面
- function ZhaojiangResultTen:createCard()
+-- 卡牌背面
+function ZhaojiangResultTen:createCard()
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_shilianchouchuxian))
     local time = 0.1
-    for i, v in ipairs(self._heroList) do 
+    for i, v in ipairs(self._heroList) do
         local key = "hero_" .. i .. "_icon"
         local card = self._rootnode[key]
         card:setVisible(false)
         card:setScale(1.3)
         card:setDisplayFrame(display.newSprite("#card_back.png"):getDisplayFrame())
 
-        card:runAction(transition.sequence({
-            CCDelayTime:create((i - 1) * time), 
-            CCCallFuncN:create(function(node)
-                    node:setVisible(true)
-                end), 
-            CCScaleTo:create(time, 0.8)
-            }))
+        card:runAction(
+            transition.sequence(
+                {
+                    CCDelayTime:create((i - 1) * time),
+                    CCCallFuncN:create(
+                        function(node)
+                            node:setVisible(true)
+                        end
+                    ),
+                    CCScaleTo:create(time, 0.8)
+                }
+            )
+        )
     end
 
-    self:runAction(transition.sequence({
-        CCDelayTime:create(#self._heroList * time), 
-        CCCallFunc:create(function()
-                self:refreshCardInfo()
-            end)
-        }))
- end
+    self:runAction(
+        transition.sequence(
+            {
+                CCDelayTime:create(#self._heroList * time),
+                CCCallFunc:create(
+                    function()
+                        self:refreshCardInfo()
+                    end
+                )
+            }
+        )
+    )
+end
 
-
- -- 翻转卡牌
- function ZhaojiangResultTen:refreshCardInfo()
+-- 翻转卡牌
+function ZhaojiangResultTen:refreshCardInfo()
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_shilianchoufanzhuan))
-    
+
     local time = 0.1
     local toScale = 0.37
 
@@ -86,7 +98,7 @@
         local nameBgKey = "hero_" .. tag .. "_namebg"
         local starKey = "hero_" .. tag .. "_star_" .. star
 
-        ResMgr.refreshCardBg({ sprite = node, star = star, resType = ResMgr.HERO_BG_UI })
+        ResMgr.refreshCardBg({sprite = node, star = star, resType = ResMgr.HERO_BG_UI})
         node:setScale(toScale)
 
         local heroImg = heroInfo["arr_image"][1]
@@ -94,9 +106,9 @@
 
         local icon = display.newSprite(heroPath)
         icon:setScale(2.5)
---        icon:setDisplayFrame(ResMgr.getMidImage(heroInfo.name, ResMgr.HERO):getDisplayFrame())
---        icon:setScale(0.7)
-        icon:setPosition(node:getContentSize().width/2, node:getContentSize().height * 0.55 - 1)
+        --        icon:setDisplayFrame(ResMgr.getMidImage(heroInfo.name, ResMgr.HERO):getDisplayFrame())
+        --        icon:setScale(0.7)
+        icon:setPosition(node:getContentSize().width / 2, node:getContentSize().height * 0.55 - 1)
         node:addChild(icon)
 
         node:runAction(CCScaleTo:create(time, toScale, toScale))
@@ -109,14 +121,17 @@
 
         if star == 5 then
             local effectNode = self._rootnode["hero_" .. tag .. "_effect"]
-            local effect = ResMgr.createArma({
-                    resType = ResMgr.UI_EFFECT, 
-                    armaName = "shilianchou_xunhuan", 
+            local effect =
+                ResMgr.createArma(
+                {
+                    resType = ResMgr.UI_EFFECT,
+                    armaName = "shilianchou_xunhuan",
                     isRetain = true
-                })
-            
+                }
+            )
+
             local cntSize = effectNode:getContentSize()
-            effect:setPosition(cntSize.width/2,cntSize.height/2)
+            effect:setPosition(cntSize.width / 2, cntSize.height / 2)
             effectNode:addChild(effect)
         end
     end
@@ -131,114 +146,125 @@
         local iconItem = self._rootnode[iconKey]
         iconItem:setTag(i)
 
-        if star == 5 then 
-            iconItem:runAction(transition.sequence({
-                    CCDelayTime:create(delayTime), 
-                    CCCallFuncN:create(function(node)
-                            local effect = ResMgr.createArma({
-                                resType = ResMgr.UI_EFFECT, 
-                                armaName = "shilianchou_baoguang", 
-                                isRetain = false
-                                })
-                            local cntSize = node:getContentSize()
-                            effect:setPosition(cntSize.width/2,cntSize.height/2)
-                            node:addChild(effect)
-                        end), 
-                    CCScaleTo:create(time/2, 1.1), 
-                    CCScaleTo:create(time/2, 0.8), 
-                    CCScaleTo:create(time, 0.01, 0.8), 
-                    CCCallFuncN:create(resetFrame)
-                }))
+        if star == 5 then
+            iconItem:runAction(
+                transition.sequence(
+                    {
+                        CCDelayTime:create(delayTime),
+                        CCCallFuncN:create(
+                            function(node)
+                                local effect =
+                                    ResMgr.createArma(
+                                    {
+                                        resType = ResMgr.UI_EFFECT,
+                                        armaName = "shilianchou_baoguang",
+                                        isRetain = false
+                                    }
+                                )
+                                local cntSize = node:getContentSize()
+                                effect:setPosition(cntSize.width / 2, cntSize.height / 2)
+                                node:addChild(effect)
+                            end
+                        ),
+                        CCScaleTo:create(time / 2, 1.1),
+                        CCScaleTo:create(time / 2, 0.8),
+                        CCScaleTo:create(time, 0.01, 0.8),
+                        CCCallFuncN:create(resetFrame)
+                    }
+                )
+            )
 
             delayTime = delayTime + 2 * time
         else
-            iconItem:runAction(transition.sequence({
-                    CCDelayTime:create(delayTime), 
-                    CCScaleTo:create(time, 0.01, 0.8), 
-                    CCCallFuncN:create(resetFrame)
-                }))
+            iconItem:runAction(
+                transition.sequence(
+                    {
+                        CCDelayTime:create(delayTime),
+                        CCScaleTo:create(time, 0.01, 0.8),
+                        CCCallFuncN:create(resetFrame)
+                    }
+                )
+            )
             delayTime = delayTime + time
         end
     end
     self._rootnode["buyTenBtn"]:setEnabled(true)
+end
 
- end
-
- function ZhaojiangResultTen:onExit()
-
+function ZhaojiangResultTen:onExit()
     ResMgr.ReleaseUIArmature("shilianchou_xunhuan")
     ResMgr.ReleaseUIArmature("shilianchou_baoguang")
 
     if self.removeListener ~= nil then
         self.removeListener()
     end
- end
+end
 
-
- function ZhaojiangResultTen:ctor(param) 
+function ZhaojiangResultTen:ctor(param)
     self.removeListener = param.removeListener
 
-     local bg = display.newSprite("ui/jpg_bg/zhaojiang_bg.jpg")
-     bg:setScaleX(display.width / bg:getContentSize().width)
-     bg:setScaleY(display.height / bg:getContentSize().height)
-     bg:setPosition(display.cx, display.cy)
-     self:addChild(bg)
+    local bg = display.newSprite("ui/jpg_bg/zhaojiang_bg.jpg")
+    bg:setScaleX(display.width / bg:getContentSize().width)
+    bg:setScaleY(display.height / bg:getContentSize().height)
+    bg:setPosition(display.cx, display.cy)
+    self:addChild(bg)
 
-     self:setNodeEventEnabled(true)
+    self:setNodeEventEnabled(true)
 
-     local _type = param.type
-     self._heroList = param.herolist
-     self._buyHeroCallback = param.buyHeroCallback
-     local _buyListener = param.buyListener
+    local _type = param.type
+    self._heroList = param.herolist
+    self._buyHeroCallback = param.buyHeroCallback
+    local _buyListener = param.buyListener
 
-     self._rootnode = {}
-     local proxy = CCBProxy:create()
-     display.addSpriteFramesWithFile("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
+    self._rootnode = {}
+    local proxy = CCBProxy:create()
+    display.addSpriteFramesWithFile("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
 
-     local node = CCBuilderReaderLoad("shop/zhaojiang_ten.ccbi", proxy, self._rootnode)
-     node:setPosition(display.width/2, display.height/2)
-     self:addChild(node)
+    local node = CCBReaderLoad("shop/zhaojiang_ten.ccbi", proxy, self._rootnode)
+    node:setPosition(display.width / 2, display.height / 2)
+    self:addChild(node)
 
-     self._rootnode["leftTimeLbl"]:setString(param.leftTime or 10)
+    self._rootnode["leftTimeLbl"]:setString(param.leftTime or 10)
 
-     -- 退出
-     self._rootnode["exitBtn"]:addHandleOfControlEvent(
-         function(eventName,sender)
-             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-             self:removeFromParentAndCleanup(true)
-             PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-         end,
-         CCControlEventTouchUpInside)
+    -- 退出
+    self._rootnode["exitBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
+            self:removeFromParentAndCleanup(true)
+            PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+        end,
+        CCControlEventTouchUpInside
+    )
 
-     -- 购买1个
-     self._rootnode["buyOneBtn"]:addHandleOfControlEvent(
-         function(eventName,sender)
+    -- 购买1个
+    self._rootnode["buyOneBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-         --            self:getOneHero(1)
-             if _buyListener then
-                 _buyListener(_type, _, 1, self)
-             end
-             -- self:removeSelf()
-         end,
-         CCControlEventTouchUpInside)
+            --            self:getOneHero(1)
+            if _buyListener then
+                _buyListener(_type, _, 1, self)
+            end
+            -- self:removeSelf()
+        end,
+        CCControlEventTouchUpInside
+    )
 
-     -- 购买10个
-     self._rootnode["buyTenBtn"]:setEnabled(false)
-     self._rootnode["buyTenBtn"]:addHandleOfControlEvent(
-         function(eventName,sender)
+    -- 购买10个
+    self._rootnode["buyTenBtn"]:setEnabled(false)
+    self._rootnode["buyTenBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-         --            self:getOneHero(10)
-             if _buyListener then
-                 _buyListener(_type, _, 10, self)
-             end
+            --            self:getOneHero(10)
+            if _buyListener then
+                _buyListener(_type, _, 10, self)
+            end
 
-             -- self:removeSelf()
-         end,
-         CCControlEventTouchUpInside)
+            -- self:removeSelf()
+        end,
+        CCControlEventTouchUpInside
+    )
 
-     self:createCard()
+    self:createCard()
+end
 
- end
-
-
- return ZhaojiangResultTen
+return ZhaojiangResultTen

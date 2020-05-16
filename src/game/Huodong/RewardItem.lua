@@ -13,7 +13,7 @@ local RewardItem =
 )
 
 function RewardItem:getContentSize()
-    return CCSizeMake(105, 120)
+    return cc.size(105, 120)
 end
 
 function RewardItem:getRewardIcon()
@@ -104,7 +104,7 @@ function RewardItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/reward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/reward_item.ccbi", proxy, self._rootnode)
     local contentSize = self._rootnode["reward"]:getContentSize()
     node:setPosition(self:getContentSize().width * 0.5, _viewSize.height * 0.5)
     self:addChild(node)

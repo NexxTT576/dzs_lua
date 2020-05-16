@@ -13,7 +13,7 @@ local RankListCell =
 local MAX_ZORDER = 100000
 
 function RankListCell:getContentSize()
-    return CCSizeMake(display.width, self._rootnode["itemBg"]:getContentSize().height)
+    return cc.size(display.width, self._rootnode["itemBg"]:getContentSize().height)
 end
 
 function RankListCell:refresh(id)
@@ -89,7 +89,7 @@ function RankListCell:refreshCellContent()
     end
 
     self.rankTTF = ResMgr.createShadowMsgTTF({text = self.rank, color = cc.c3b(251, 239, 197), size = fontSize})
-     --n
+    --n
     self.rankTTF:setPosition(self._rootnode["rank_icon_bg"]:getContentSize().width / 2 - self.rankTTF:getContentSize().width / 2, self._rootnode["rank_icon_bg"]:getContentSize().height / 2)
 
     self.rankTTFNode:removeAllChildren()
@@ -124,7 +124,7 @@ function RankListCell:ctor()
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("rankList/rank_scene_cell.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("rankList/rank_scene_cell.ccbi", proxy, self._rootnode)
     self.baseNode = node
     self.baseNode:setPosition(display.width * 0.47, self._rootnode["itemBg"]:getContentSize().height)
 
@@ -148,22 +148,22 @@ function RankListCell:create(param)
     end
 
     self.heroNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(0, 0, 0), size = 24})
-     --n
+    --n
     self._rootnode["hero_name"]:getParent():addChild(self.heroNameTTF)
 
     self.gonghuiNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 222, 0), size = 24})
-     --n
+    --n
     self._rootnode["gonghui_name"]:getParent():addChild(self.gonghuiNameTTF)
     self.gonghuiNameTTF:setPosition(ccp(self._rootnode["gonghui_name"]:getPositionX(), self._rootnode["gonghui_name"]:getPositionY()))
 
     self.lvlTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 222, 0), size = 22})
-     --n
+    --n
     self._rootnode["level"]:getParent():addChild(self.lvlTTF)
 
     self.tableViewRect = param.tableViewRect
 
     local jianghu_jinduTTF = ResMgr.createShadowMsgTTF({text = "江湖进度:", color = cc.c3b(255, 255, 255), size = 24})
-     --n
+    --n
     self:mirrorPos(self._rootnode["jianghu"], jianghu_jinduTTF)
 
     self.headIcon = self._rootnode["headIcon"]
@@ -174,7 +174,7 @@ function RankListCell:create(param)
     self._rootnode["rank_icon_bg"]:addChild(self.rankTTFNode)
 
     self.zhanliTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(36, 255, 0), size = 24})
-     --n
+    --n
     self._rootnode["zhanli_num"]:getParent():addChild(self.zhanliTTF)
     self.zhanliTTF:setPosition(ccp(self._rootnode["zhanli_num"]:getPositionX(), self._rootnode["zhanli_num"]:getPositionY()))
 

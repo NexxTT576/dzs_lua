@@ -6,13 +6,16 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-local SplitItem = class("SplitItem", function()
-    return CCTableViewCell:new()
-end)
+local SplitItem =
+    class(
+    "SplitItem",
+    function()
+        return CCTableViewCell:new()
+    end
+)
 
 function SplitItem:getContentSize()
-
-    return CCSizeMake(display.width, 152)
+    return cc.size(display.width, 152)
 end
 
 function SplitItem:create(param)
@@ -22,25 +25,31 @@ function SplitItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("lianhualu/choose_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("lianhualu/choose_item.ccbi", proxy, self._rootnode)
     node:setPosition(_viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 
     for i = 1, 2 do
-        self[string.format("nameLabel_%d", i)] = ui.newTTFLabelWithShadow({
-            text = "",
-            font = FONTS_NAME.font_fzcy,
-            size = 30,
-        })
+        self[string.format("nameLabel_%d", i)] =
+            ui.newTTFLabelWithShadow(
+            {
+                text = "",
+                font = FONTS_NAME.font_fzcy,
+                size = 30
+            }
+        )
         self._rootnode[string.format("itemNameLabel_%d", i)]:addChild(self[string.format("nameLabel_%d", i)])
     end
 
-    self.hjLabel = ui.newTTFLabelWithShadow({
-        text = "",
-        font = FONTS_NAME.font_fzcy,
-        size = 20,
-        align = ui.TEXT_ALIGN_LEFT
-    })
+    self.hjLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "",
+            font = FONTS_NAME.font_fzcy,
+            size = 20,
+            align = ui.TEXT_ALIGN_LEFT
+        }
+    )
     self.hjLabel:setPosition(5, self._rootnode["hjSprite"]:getContentSize().height / 2)
     self._rootnode["hjSprite"]:addChild(self.hjLabel)
     self:refresh(param)
@@ -57,8 +66,7 @@ function SplitItem:refreshLabel(param)
     nameLabel:setPosition(nameLabel:getContentSize().width / 2, 0)
 
     self._rootnode["lvLabel"]:setString(tostring(string.format("LV.%d", _itemData.level)))
---    self._rootnode["lvLabel"]:setString(tostring(_itemData.id))
-
+    --    self._rootnode["lvLabel"]:setString(tostring(_itemData.id))
 end
 
 function SplitItem:selected()
@@ -74,7 +82,6 @@ function SplitItem:touch()
 end
 
 function SplitItem:changeState(sel)
-
     if sel then
         self:selected()
     else
@@ -84,7 +91,7 @@ end
 
 function SplitItem:refresh(param)
     local _itemData = param.itemData
-    local _sel      = param.sel
+    local _sel = param.sel
 
     self:changeState(_sel)
     self:refreshLabel(param)
@@ -106,11 +113,13 @@ function SplitItem:refresh(param)
     end
 
     if param.itemType == LIAN_HUA_TYEP.HERO then
-        ResMgr.refreshIcon({
-            itemBg = self._rootnode["headIcon"],
-            id = _itemData.resId,
-            resType = ResMgr.HERO
-        })
+        ResMgr.refreshIcon(
+            {
+                itemBg = self._rootnode["headIcon"],
+                id = _itemData.resId,
+                resType = ResMgr.HERO
+            }
+        )
         local card = ResMgr.getCardData(_itemData.resId)
         if _itemData.cls > 0 then
             self._rootnode["clsLabel"]:setString(string.format("+%d", _itemData.cls))
@@ -124,15 +133,14 @@ function SplitItem:refresh(param)
         self._rootnode["lvLabel"]:setPosition(ccp(74, 17))
     elseif param.itemType == LIAN_HUA_TYEP.EQUIP then
         self._rootnode["lvLabel"]:setPosition(ccp(64, 17))
-        ResMgr.refreshIcon({
-            itemBg = self._rootnode["headIcon"],
-            id = _itemData.resId,
-            resType = ResMgr.EQUIP
-        })
+        ResMgr.refreshIcon(
+            {
+                itemBg = self._rootnode["headIcon"],
+                id = _itemData.resId,
+                resType = ResMgr.EQUIP
+            }
+        )
     end
-
 end
 
-
 return SplitItem
-

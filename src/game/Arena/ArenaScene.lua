@@ -139,7 +139,7 @@ function ArenaScene:createExchangeView()
 
     local boardWidth = self._rootnode["listView"]:getContentSize().width
     local boardHeight = self._rootnode["listView"]:getContentSize().height - self._rootnode["tag_exchange_node"]:getContentSize().height
-    local listViewSize = CCSizeMake(boardWidth, boardHeight)
+    local listViewSize = cc.size(boardWidth, boardHeight)
 
     local function createFunc(index)
         local item = require("game.Arena.ArenaExchangeCell").new()
@@ -446,7 +446,7 @@ function ArenaScene:updateArenaView()
 
     local boardWidth = self._rootnode["listView"]:getContentSize().width
     local boardHeight = self._rootnode["listView"]:getContentSize().height - self._rootnode["tag_normal_node"]:getContentSize().height
-    local lisetViewSize = CCSizeMake(boardWidth, boardHeight)
+    local lisetViewSize = cc.size(boardWidth, boardHeight)
 
     local function createFunc(idx)
         local item = require("game.Arena.ArenaCell").new()
@@ -523,7 +523,7 @@ function ArenaScene:updateRankView()
 
     local boardWidth = self._rootnode["listView"]:getContentSize().width
     local boardHeight = self._rootnode["listView"]:getContentSize().height - self._rootnode["tag_normal_node"]:getContentSize().height
-    local lisetViewSize = CCSizeMake(boardWidth, boardHeight)
+    local lisetViewSize = cc.size(boardWidth, boardHeight)
 
     local function createFunc(idx)
         local item = require("game.Arena.ArenaRankCell").new()

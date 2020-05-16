@@ -21,7 +21,7 @@ local EquipListCellVTwo =
 )
 
 function EquipListCellVTwo:getContentSize()
-    return CCSizeMake(display.width, 154) --sprite:getContentSize()
+    return cc.size(display.width, 154) --sprite:getContentSize()
 end
 
 function EquipListCellVTwo:create(param)
@@ -34,7 +34,7 @@ function EquipListCellVTwo:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("equip/equip_list_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("equip/equip_list_item.ccbi", proxy, self._rootnode)
     node:setPosition(display.width * 0.5, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 
@@ -45,7 +45,7 @@ function EquipListCellVTwo:create(param)
     self.createEquipInfoLayer = param.createEquipInfoLayer
 
     self.bg = self._rootnode["itemBg"]
-     --display.newSprite("#herolist_board.png")
+    --display.newSprite("#herolist_board.png")
 
     self.list = param.listData
     self.saleList = param.saleData

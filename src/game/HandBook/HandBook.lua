@@ -64,7 +64,7 @@ function HandBook:init()
 
     local darkHeight = self.centerHeight - self._rootnode["up_bar"]:getContentSize().height - self._rootnode["mid_node"]:getContentSize().height - 96 - 30
     local darkWidth = self._rootnode["dark_bg"]:getContentSize().width
-    self.innerBgSize = CCSizeMake(darkWidth, darkHeight)
+    self.innerBgSize = cc.size(darkWidth, darkHeight)
     self._rootnode["dark_bg"]:setPreferredSize(self.innerBgSize)
 
     --初始化各个子选项卡

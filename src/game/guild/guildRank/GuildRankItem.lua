@@ -19,7 +19,7 @@ function GuildRankItem:getContentSize()
         local proxy = CCBProxy:create()
         local rootNode = {}
 
-        CCBuilderReaderLoad("guild/guild_rank_item.ccbi", proxy, rootNode)
+        CCBReaderLoad("guild/guild_rank_item.ccbi", proxy, rootNode)
         self.cntSize = rootNode["itemBg"]:getContentSize()
     end
 
@@ -37,7 +37,7 @@ function GuildRankItem:create(param)
 
     self._rootnode = {}
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("guild/guild_rank_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_rank_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

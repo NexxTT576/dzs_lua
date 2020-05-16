@@ -86,7 +86,7 @@ function MonthCardLayer:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/month_card_layer.ccbi", proxy, self._rootnode, self, viewSize)
+    local node = CCBReaderLoad("nbhuodong/month_card_layer.ccbi", proxy, self._rootnode, self, viewSize)
     self:addChild(node)
 
     local titleIcon = self._rootnode["title_icon"]
@@ -280,7 +280,7 @@ function MonthCardLayer:initRewardListView(rewardDatas)
         return item:create(
             {
                 id = index,
-                viewSize = CCSizeMake(boardWidth, boardHeight),
+                viewSize = cc.size(boardWidth, boardHeight),
                 itemData = rewardDatas[index + 1]
             }
         )
@@ -301,7 +301,7 @@ function MonthCardLayer:initRewardListView(rewardDatas)
     self.ListTable =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight),
+            size = cc.size(boardWidth, boardHeight),
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #rewardDatas,

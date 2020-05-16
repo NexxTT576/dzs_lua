@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.08.14
- --
- --]]
 local DuobaoItem =
     class(
     "DuobaoItem",
@@ -13,7 +7,7 @@ local DuobaoItem =
 )
 
 function DuobaoItem:getCanTouchSize()
-    return CCSizeMake(250, 250)
+    return cc.size(250, 250)
 end
 
 function DuobaoItem:getContentSize()
@@ -21,7 +15,7 @@ function DuobaoItem:getContentSize()
         local proxy = CCBProxy:create()
         local rootnode = {}
 
-        local node = CCBuilderReaderLoad("duobao/duobao_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("duobao/duobao_item.ccbi", proxy, rootnode)
         self._CntSize = node:getContentSize()
 
         self:addChild(node)
@@ -220,7 +214,7 @@ function DuobaoItem:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("duobao/duobao_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("duobao/duobao_item.ccbi", proxy, self._rootnode)
     node:setPosition(self._viewSize.width * 0.5, self._viewSize.height * 0.5)
     self:addChild(node)
 

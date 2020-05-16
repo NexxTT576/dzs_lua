@@ -16,11 +16,11 @@ function ChongzhiRewardItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("shop/shop_chongzhi_vipReward_item.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("shop/shop_chongzhi_vipReward_item.ccbi", proxy, rootnode)
     local contentSize = rootnode["reward"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
-    return CCSizeMake(contentSize.width + 15, contentSize.height)
+    return cc.size(contentSize.width + 15, contentSize.height)
 end
 
 function ChongzhiRewardItem:refreshItem(param)
@@ -87,7 +87,7 @@ function ChongzhiRewardItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("shop/shop_chongzhi_vipReward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("shop/shop_chongzhi_vipReward_item.ccbi", proxy, self._rootnode)
     local contentSize = self._rootnode["reward"]:getContentSize()
     node:setPosition(contentSize.width * 0.7, self:getContentSize().height * 0.5)
     self:addChild(node)

@@ -13,7 +13,7 @@ local JinJieCell =
 )
 
 function JinJieCell:getContentSize()
-    return CCSizeMake(95, 95)
+    return cc.size(95, 95)
 end
 
 function JinJieCell:create(param)

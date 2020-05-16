@@ -13,7 +13,7 @@ function ArenaExchangeCell:getContentSize()
     else
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("arena/exchange_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("arena/exchange_item.ccbi", proxy, rootnode)
         self.Cntsize = node:getContentSize()
     end
 
@@ -42,7 +42,7 @@ function ArenaExchangeCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("arena/exchange_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("arena/exchange_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 

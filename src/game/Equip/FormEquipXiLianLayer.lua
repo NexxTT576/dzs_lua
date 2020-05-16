@@ -45,7 +45,7 @@ function EquipXiLianScene:ctor(param)
     self._proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local bgNode = CCBuilderReaderLoad("equip/equip_xilian_scene.ccbi", self._proxy, self._rootnode)
+    local bgNode = CCBReaderLoad("equip/equip_xilian_scene.ccbi", self._proxy, self._rootnode)
     bgNode:setPosition(display.cx, display.cy - bgNode:getContentSize().height / 2)
     self:addChild(bgNode, 1)
 

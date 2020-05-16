@@ -23,15 +23,19 @@
 -- 日期：14-11-4
 --
 
-local HuaShanDescLayer = class("HuaShanDescLayer", function()
-    return require("utility.ShadeLayer").new()
-end)
+local HuaShanDescLayer =
+    class(
+    "HuaShanDescLayer",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 
 function HuaShanDescLayer:ctor()
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("huashan/huashan_desc.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("huashan/huashan_desc.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 

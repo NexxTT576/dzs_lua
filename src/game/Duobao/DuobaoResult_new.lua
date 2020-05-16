@@ -20,7 +20,7 @@ local DuobaoResult =
 -- 胜利并得到碎片
 function DuobaoResult:initWinDebris(data)
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("duobao/duobao_win_debris.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("duobao/duobao_win_debris.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -98,7 +98,7 @@ end
 -- 胜利但没有得到碎片
 function DuobaoResult:initWin(data)
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("duobao/duobao_win.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("duobao/duobao_win.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -439,7 +439,7 @@ end
 -- 战斗失败
 function DuobaoResult:initLost(data)
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("duobao/duobao_lost.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("duobao/duobao_lost.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

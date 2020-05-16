@@ -117,7 +117,7 @@ function GuildDadianScene:ctor(data)
     self._buildType = GUILD_BUILD_TYPE.dadian
 
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("guild/guild_dadian_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_dadian_layer.ccbi", proxy, self._rootnode)
 
     local centerH = self:getCenterHeight()
     local topH = self:getTopHeight()

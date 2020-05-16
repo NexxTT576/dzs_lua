@@ -18,7 +18,7 @@ function UseCountBox:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("bag/use_item_count.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("bag/use_item_count.ccbi", proxy, rootnode)
     -- node:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)

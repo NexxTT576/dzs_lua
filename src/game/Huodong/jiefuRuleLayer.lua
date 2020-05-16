@@ -1,10 +1,3 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-06-03 17:40:45
- -- @version 
- --
- --]]
 require("game.GameConst")
 local data_item_item = require("data.data_item_item")
 local data_jiefujipin_jiefujipin = require("data.data_jiefujipin_jiefujipin")
@@ -25,7 +18,7 @@ function jiefuRuleLayer:ctor(data)
 
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("ccbi/huodong/jiefujipin_rule_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("ccbi/huodong/jiefujipin_rule_layer.ccbi", proxy, self._rootnode)
 
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)

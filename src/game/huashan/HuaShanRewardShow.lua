@@ -36,7 +36,7 @@ local Item =
 )
 
 function Item:getContentSize()
-    return CCSizeMake(640, 200)
+    return cc.size(640, 200)
 end
 
 -- 更新奖励图标、名称、数量
@@ -117,7 +117,7 @@ function Item:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("huashan/huashan_reward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("huashan/huashan_reward_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 
@@ -171,7 +171,7 @@ function HuaShanRewardShow:init()
         local item = Item.new()
         return item:create(
             {
-                viewSize = CCSizeMake(boardWidth, boardHeight),
+                viewSize = cc.size(boardWidth, boardHeight),
                 itemData = data_lunjian_lunjian[index + 1]
             }
         )
@@ -202,7 +202,7 @@ function HuaShanRewardShow:init()
     local tableView =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight),
+            size = cc.size(boardWidth, boardHeight),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,
@@ -235,7 +235,7 @@ function HuaShanRewardShow:ctor()
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/normal_reward_bg.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/normal_reward_bg.ccbi", proxy, self._rootnode)
     local layer = tolua.cast(node, "CCLayer")
     layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(layer)

@@ -10,7 +10,7 @@ local BigMapUpCell =
 
 function BigMapUpCell:getContentSize()
     local sprite = display.newSprite("#bigmap_top_small_bg1.png")
-    return CCSizeMake(sprite:getContentSize().width, sprite:getContentSize().height)
+    return cc.size(sprite:getContentSize().width, sprite:getContentSize().height)
 end
 
 function BigMapUpCell:ctor()

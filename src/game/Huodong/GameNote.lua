@@ -25,7 +25,7 @@ local Item =
         local proxy = CCBProxy:create()
         local rootnode = {}
 
-        local node = CCBuilderReaderLoad("ccbi/gamenote/noteItem.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("ccbi/gamenote/noteItem.ccbi", proxy, rootnode)
         local textNode = rootnode["text_node"]
         -- dump(itemData.tcolor)
 
@@ -72,7 +72,7 @@ local Item =
         titleLabel:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
         node:addChild(titleLabel)
 
-        local viewSize = CCSizeMake(textNode:getContentSize().width, 0)
+        local viewSize = cc.size(textNode:getContentSize().width, 0)
 
         -- dump(itemData.content)
         -- dump(json.encode(itemData.content))
@@ -119,7 +119,7 @@ function GameNote:ctor()
 
     -- 背景卷轴
     local ccb_mm_name = "ccbi/gamenote/gamenote.ccbi"
-    local node = CCBuilderReaderLoad(ccb_mm_name, proxy, rootnode)
+    local node = CCBReaderLoad(ccb_mm_name, proxy, rootnode)
     self.layer = tolua.cast(node, "CCLayer")
     self.layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(self.layer)
@@ -165,7 +165,7 @@ function GameNote:ctor()
         height = height + item:getContentSize().height + contentSizeHeight + 10
     end
 
-    local sz = CCSizeMake(contentViewSize.width, contentViewSize.height + height)
+    local sz = cc.size(contentViewSize.width, contentViewSize.height + height)
 
     rootnode["descView"]:setContentSize(sz)
     rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))

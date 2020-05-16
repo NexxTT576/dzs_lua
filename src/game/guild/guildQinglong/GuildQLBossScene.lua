@@ -36,7 +36,7 @@ local WorldBossHurtNode =
 
         local rootnode = {}
         local proxy = CCBProxy:create()
-        local node = CCBuilderReaderLoad("huodong/worldBoss_hurt_node.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("huodong/worldBoss_hurt_node.ccbi", proxy, rootnode)
 
         rootnode["name_lbl"]:setString(data.name)
         rootnode["hurt_lbl"]:setString("-" .. tostring(data.hurt))
@@ -591,7 +591,7 @@ function GuildQLBossScene:setBoold(curHp, totalHp)
     bar:setTextureRect(
         CCRectMake(bar:getTextureRect().origin.x, bar:getTextureRect().origin.y, normalBar:getContentSize().width * percent, bar:getTextureRect().size.height),
         rotated,
-        CCSizeMake(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
+        cc.size(normalBar:getContentSize().width * percent, normalBar:getContentSize().height * percent)
     )
 end
 

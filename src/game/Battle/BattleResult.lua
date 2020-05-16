@@ -56,8 +56,8 @@ function BattleResult:initWin(rewards)
     local proxy = CCBProxy:create()
     -- local ccbReader = proxy:createCCBReader()
     local rootnode = rootnode or {}
-    local nodeSz = CCSizeMake(640, 850)
-    local boxSz = CCSizeMake(450, 154)
+    local nodeSz = cc.size(640, 850)
+    local boxSz = cc.size(450, 154)
 
     self:setNodeEventEnabled(true)
 
@@ -65,11 +65,11 @@ function BattleResult:initWin(rewards)
     -- rewards.rewardItem[4] = rewards.rewardItem[2]
     -- rewards.rewardItem[5] = rewards.rewardItem[2]
     if #rewards.rewardItem > 4 then
-        nodeSz = CCSizeMake(640, 960)
-        boxSz = CCSizeMake(450, 268)
+        nodeSz = cc.size(640, 960)
+        boxSz = cc.size(450, 268)
     end
 
-    local node = CCBuilderReaderLoad("ccbi/battle/battle_win.ccbi", proxy, rootnode, self, nodeSz)
+    local node = CCBReaderLoad("ccbi/battle/battle_win.ccbi", proxy, rootnode, self, nodeSz)
     node:ignoreAnchorPointForPosition(false)
     node:setPosition(display.width / 2, display.height * 0.58)
     self:addChild(node)
@@ -429,7 +429,7 @@ function BattleResult:initLost(rewards)
     -- local ccbReader = proxy:createCCBReader()
     local rootnode = rootnode or {}
     -- ccb 2.
-    local node = CCBuilderReaderLoad("ccbi/battle/lost.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("ccbi/battle/lost.ccbi", proxy, rootnode)
     local layer = tolua.cast(node, "CCLayer")
     self:addChild(layer)
 

@@ -16,10 +16,10 @@ function RewardInfoCell:getContentSize()
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    CCBuilderReaderLoad("huodong/reward_information_item.ccbi", proxy, rootnode)
+    CCBReaderLoad("huodong/reward_information_item.ccbi", proxy, rootnode)
     local contentSize = rootnode["itemBg"]:getContentSize()
 
-    return CCSizeMake(contentSize.width, contentSize.height)
+    return cc.size(contentSize.width, contentSize.height)
 end
 
 function RewardInfoCell:refreshItem(itemData)
@@ -93,7 +93,7 @@ function RewardInfoCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("huodong/reward_information_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("huodong/reward_information_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

@@ -1,7 +1,3 @@
---
--- Author: Your Name
--- Date: 2015-03-16 13:08:39
---
 local data_item_item = require("data.data_item_item")
 local data_xianshishangdian_xianshishangdian = require("data.data_xianshishangdian_xianshishangdian")
 local XianShiItemView =
@@ -13,7 +9,7 @@ local XianShiItemView =
 )
 
 function XianShiItemView:getContentSize()
-    return CCSizeMake(620, 230)
+    return cc.size(620, 230)
 end
 
 function XianShiItemView:refreshItem(param)
@@ -152,7 +148,7 @@ function XianShiItemView:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/xianshishop_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("nbhuodong/xianshishop_item.ccbi", proxy, self._rootnode)
     node:setAnchorPoint(cc.p(0, 0))
     self:addChild(node)
 

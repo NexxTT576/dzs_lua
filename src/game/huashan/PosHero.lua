@@ -41,7 +41,7 @@ function PosHero:ctor(param)
 
     --    dump(_info)
 
-    local node = CCBuilderReaderLoad("huashan/huashan_hero_pos", proxy, self._rootnode)
+    local node = CCBReaderLoad("huashan/huashan_hero_pos", proxy, self._rootnode)
     self:addChild(node)
 
     if _info and _info.cards then

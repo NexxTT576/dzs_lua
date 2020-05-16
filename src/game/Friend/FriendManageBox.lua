@@ -19,7 +19,7 @@ function FriendManageBox:ctor(id)
     local rootProxy = CCBProxy:create()
     self._rootnode = {}
 
-    local rootnode = CCBuilderReaderLoad("friend/friend_manage_box.ccbi", rootProxy, self._rootnode)
+    local rootnode = CCBReaderLoad("friend/friend_manage_box.ccbi", rootProxy, self._rootnode)
     rootnode:setPosition(display.cx, display.cy)
     self:addChild(rootnode, 1)
 

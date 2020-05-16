@@ -44,7 +44,7 @@ function HuaShanFormLayer:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("huashan/huashan_form_layer", proxy, self._rootnode)
+    local node = CCBReaderLoad("huashan/huashan_form_layer", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 

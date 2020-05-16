@@ -49,7 +49,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
 
     local proxy = CCBProxy:create()
     local levelrootnode = {}
-    local levelBoard = CCBuilderReaderLoad("ccbi/battle/level_grade.ccbi", proxy, levelrootnode)
+    local levelBoard = CCBReaderLoad("ccbi/battle/level_grade.ccbi", proxy, levelrootnode)
     local starboard = levelrootnode["itemBg"]
 
     self._id = levelData.id
@@ -64,7 +64,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     local win_height = originHeight + levelBoardOffHeight + rewardOffHeight + 15
     dump(win_height)
     local rootnode = {}
-    local node = CCBuilderReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode, self, CCSize(display.width, win_height))
+    local node = CCBReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode, self, CCSize(display.width, win_height))
     node:setPosition(display.width * 0.5, display.cy)
     self:addChild(node)
 
@@ -327,7 +327,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
             local itemName
 
             local itemIcon = ResMgr.getIconSprite({id = v, resType = itemType})
-             --display.newSprite(ResMgr.getIconImage( itemData.icon, itemType) )
+            --display.newSprite(ResMgr.getIconImage( itemData.icon, itemType) )
 
             -- local posX = itemIcon:getContentSize().width + (math.floor((k-1)%5)) * itemIcon:getContentSize().width * 1.1
             -- local posY = chanceToLootBoard:getContentSize().height - itemIcon:getContentSize().height*0.74 -  1 * itemIcon:getContentSize().height * ( math.floor((k-1)/5))

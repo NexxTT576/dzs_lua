@@ -20,7 +20,7 @@ function ChallengeFubenRewardLayer:ctor(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("ccbi/challenge/challengeFuben_reward_layer.ccbi", proxy, self._rootnode, self, CCSizeMake(display.width, height))
+    local node = CCBReaderLoad("ccbi/challenge/challengeFuben_reward_layer.ccbi", proxy, self._rootnode, self, cc.size(display.width, height))
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 
@@ -42,7 +42,7 @@ function ChallengeFubenRewardLayer:ctor(param)
     local sizeH = node:getContentSize().height - self._rootnode["top_node"]:getContentSize().height - self._rootnode["bottom_node"]:getContentSize().height
     local sizeW = self._rootnode["top_node"]:getContentSize().width
 
-    self._listViewSize = CCSizeMake(sizeW, sizeH)
+    self._listViewSize = cc.size(sizeW, sizeH)
     self._listViewNode = display.newNode()
     self._listViewNode:setContentSize(self._listViewSize)
     self._listViewNode:setAnchorPoint(0.5, 0)

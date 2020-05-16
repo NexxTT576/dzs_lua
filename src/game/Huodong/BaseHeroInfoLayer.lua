@@ -20,10 +20,10 @@ local BaseHeroInfoLayer =
 )
 
 local DesignSize = {
-    ST = CCSizeMake(display.width, 65),
-    JN = CCSizeMake(display.width, 55),
-    JB = CCSizeMake(display.width, 55),
-    JJ = CCSizeMake(display.width, 150)
+    ST = cc.size(display.width, 65),
+    JN = cc.size(display.width, 55),
+    JB = cc.size(display.width, 55),
+    JJ = cc.size(display.width, 150)
 }
 
 -- 神通
@@ -41,17 +41,17 @@ local STItem =
             local infoSize
             --        dump(v)
             if string.utf8len(v.info.type) > 38 then
-                infoSize = CCSizeMake(display.width, 125)
+                infoSize = cc.size(display.width, 125)
             elseif string.utf8len(v.info.type) > 18 then
-                infoSize = CCSizeMake(display.width, 96)
+                infoSize = cc.size(display.width, 96)
             else
-                infoSize = CCSizeMake(display.width, 70)
+                infoSize = cc.size(display.width, 70)
             end
 
-            local infoNode = CCBuilderReaderLoad("hero/hero_shentong_info.ccbi", proxy, rootnode, display.newNode(), infoSize)
+            local infoNode = CCBReaderLoad("hero/hero_shentong_info.ccbi", proxy, rootnode, display.newNode(), infoSize)
             rootnode["nameItemName"]:setString(string.format("%s(%d/%d)", v.info.name, v.lv, #v.map.arr_talent))
 
-            rootnode["descLabel"]:setDimensions(CCSizeMake(infoNode:getContentSize().width * 0.95, rootnode["descLabel"]:getDimensions().height))
+            rootnode["descLabel"]:setDimensions(cc.size(infoNode:getContentSize().width * 0.95, rootnode["descLabel"]:getDimensions().height))
             rootnode["descLabel"]:setString(v.info.type)
             rootnode["descLabel"]:setColor(cc.c3b(86, 59, 32))
 
@@ -67,7 +67,7 @@ local STItem =
         end
 
         rootnode = {}
-        local node = CCBuilderReaderLoad("hero/hero_shentong_item.ccbi", proxy, rootnode, display.newNode(), CCSizeMake(DesignSize.ST.width, DesignSize.ST.height + height + 10))
+        local node = CCBReaderLoad("hero/hero_shentong_item.ccbi", proxy, rootnode, display.newNode(), cc.size(DesignSize.ST.width, DesignSize.ST.height + height + 10))
         rootnode["item_board_icon"]:setVisible(false)
 
         height = 0
@@ -99,7 +99,7 @@ local JNItem =
 
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("hero/hero_skill_item.ccbi", proxy, rootnode, display.newNode(), CCSizeMake(DesignSize.JN.width, DesignSize.JN.height + height))
+        local node = CCBReaderLoad("hero/hero_skill_item.ccbi", proxy, rootnode, display.newNode(), cc.size(DesignSize.JN.width, DesignSize.JN.height + height))
 
         height = 0
         for i = #nodes, 1, -1 do
@@ -167,7 +167,7 @@ local JBItem =
         height = height - 15
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("hero/hero_jiban_item.ccbi", proxy, rootnode, display.newNode(), CCSizeMake(DesignSize.JB.width, DesignSize.JB.height + height))
+        local node = CCBReaderLoad("hero/hero_jiban_item.ccbi", proxy, rootnode, display.newNode(), cc.size(DesignSize.JB.width, DesignSize.JB.height + height))
 
         height = 0
         for i = #nodes, 1, -1 do
@@ -186,7 +186,7 @@ local JJItem =
     function(str)
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("hero/hero_intr_item.ccbi", proxy, rootnode, display.newNode(), DesignSize.JJ)
+        local node = CCBReaderLoad("hero/hero_intr_item.ccbi", proxy, rootnode, display.newNode(), DesignSize.JJ)
         rootnode["descLabel"]:setString(str)
         return node
     end
@@ -207,12 +207,12 @@ function BaseHeroInfoLayer:ctor(param, infoType)
 
     local bgHeight = display.height
 
-    local node = CCBuilderReaderLoad("hero/hero_info.ccbi", proxy, self._rootnode, self, CCSizeMake(640, bgHeight - 30))
+    local node = CCBReaderLoad("hero/hero_info.ccbi", proxy, self._rootnode, self, cc.size(640, bgHeight - 30))
     node:setAnchorPoint(CCPointMake(0.5, 0.5))
     node:setPosition(display.width / 2, node:getContentSize().height / 2)
     self:addChild(node)
 
-    local infoNode = CCBuilderReaderLoad("hero/hero_info_detail.ccbi", proxy, self._rootnode, self, CCSizeMake(display.width, bgHeight - 55 - 68))
+    local infoNode = CCBReaderLoad("hero/hero_info_detail.ccbi", proxy, self._rootnode, self, cc.size(display.width, bgHeight - 55 - 68))
     infoNode:setPosition(ccp(0, 25))
     node:addChild(infoNode)
 
@@ -369,7 +369,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
         end
 
         local function resizeContent()
-            local sz = CCSizeMake(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height - 40)
+            local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height - 40)
 
             self._rootnode["descView"]:setContentSize(sz)
             self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))

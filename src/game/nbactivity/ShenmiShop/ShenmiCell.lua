@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.08
- --
- --]]
 local ShenmiCell =
     class(
     ShenmiCell,
@@ -17,7 +11,7 @@ function ShenmiCell:getContentSize()
     else
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("nbhuodong/shenmi_duihuan_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("nbhuodong/shenmi_duihuan_item.ccbi", proxy, rootnode)
         self.Cntsize = rootnode["itemBg"]:getContentSize()
     end
 
@@ -33,7 +27,7 @@ function ShenmiCell:create(param)
 
     -- dump(viewSize.width)
 
-    local node = CCBuilderReaderLoad("nbhuodong/shenmi_duihuan_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("nbhuodong/shenmi_duihuan_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

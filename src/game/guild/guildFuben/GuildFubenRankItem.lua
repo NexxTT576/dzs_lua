@@ -17,7 +17,7 @@ function GuildFubenRankItem:getContentSize()
         local proxy = CCBProxy:create()
         local rootNode = {}
 
-        local node = CCBuilderReaderLoad("guild/guild_fuben_rank_item.ccbi", proxy, rootNode)
+        local node = CCBReaderLoad("guild/guild_fuben_rank_item.ccbi", proxy, rootNode)
         self.cntSize = rootNode["itemBg"]:getContentSize()
         self:addChild(node)
         node:removeSelf()
@@ -33,7 +33,7 @@ function GuildFubenRankItem:create(param)
 
     self._rootnode = {}
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("guild/guild_fuben_rank_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_fuben_rank_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

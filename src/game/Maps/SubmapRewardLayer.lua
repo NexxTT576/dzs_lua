@@ -51,7 +51,7 @@ function SubmapRewardLayer:ctor(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("fuben/sub_map_reward_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("fuben/sub_map_reward_layer.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

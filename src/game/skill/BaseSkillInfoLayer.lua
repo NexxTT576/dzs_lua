@@ -44,7 +44,7 @@ local Item =
     function(heroid, data)
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("skill/skill_jiban.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("skill/skill_jiban.ccbi", proxy, rootnode)
 
         rootnode["skillName"]:setString(data.name)
         local color, cls
@@ -117,33 +117,33 @@ function BaseSkillInfoLayer:ctor(param)
     local nodePos
     local bScroll
     if refineInfo and refineInfo.arr_jiban then
-        winSize = CCSizeMake(display.width, display.height - 30)
+        winSize = cc.size(display.width, display.height - 30)
         nodePos = ccp(display.width / 2, 0)
         bScroll = true
     else
         if _bEnemy then
-            winSize = CCSizeMake(display.width, 700)
+            winSize = cc.size(display.width, 700)
         else
-            winSize = CCSizeMake(display.width, 760)
+            winSize = cc.size(display.width, 760)
         end
 
         nodePos = ccp(display.width / 2, display.cy - winSize.height / 2)
         bScroll = false
     end
 
-    local bgNode = CCBuilderReaderLoad("skill/skill_info.ccbi", self._proxy, self._rootnode, self, winSize)
+    local bgNode = CCBReaderLoad("skill/skill_info.ccbi", self._proxy, self._rootnode, self, winSize)
     self:addChild(bgNode, 1)
     bgNode:setPosition(nodePos)
 
     --  屏幕高 - 广播条 - 底部按钮 - 标题栏
     local infoNode
     if _bEnemy then
-        infoNode = CCBuilderReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, CCSizeMake(winSize.width, winSize.height - 2 - 20 - 68))
+        infoNode = CCBReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, winSize.height - 2 - 20 - 68))
         infoNode:setPosition(ccp(0, 20))
         bgNode:addChild(infoNode)
         self._rootnode["bottomMenuNode"]:setVisible(false)
     else
-        infoNode = CCBuilderReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, CCSizeMake(winSize.width, winSize.height - 2 - 85 - 68))
+        infoNode = CCBReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, winSize.height - 2 - 85 - 68))
         infoNode:setPosition(ccp(0, 85))
         bgNode:addChild(infoNode)
     end
@@ -369,14 +369,14 @@ function BaseSkillInfoLayer:ctor(param)
             end
         end
 
-        local jbNode = CCBuilderReaderLoad("skill/skill_jiban_bg.ccbi", self._proxy, self._rootnode, self, CCSizeMake(winSize.width, height - self._rootnode["jiBanNode"]:getContentSize().height + 10))
+        local jbNode = CCBReaderLoad("skill/skill_jiban_bg.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, height - self._rootnode["jiBanNode"]:getContentSize().height + 10))
         jbNode:setPosition(ccp(display.width / 2, -self._rootnode["jiBanNode"]:getContentSize().height + 15))
         self._rootnode["contentView"]:addChild(jbNode, 0)
     else
         self._rootnode["jiBanNode"]:setVisible(false)
     end
 
-    local sz = CCSizeMake(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
+    local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
     self._rootnode["descView"]:setContentSize(sz)
     self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
     self._rootnode["scrollView"]:updateInset()

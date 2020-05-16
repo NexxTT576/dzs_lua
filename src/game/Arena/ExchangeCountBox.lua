@@ -19,7 +19,7 @@ function ExchangeCountBox:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("arena/exchange_item_count.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("arena/exchange_item_count.ccbi", proxy, rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

@@ -70,12 +70,12 @@ function BagScene:ctor(tag)
     local proxy = CCBProxy:create()
 
     --  数量标签
-    local node = CCBuilderReaderLoad("public/item_num_view.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("public/item_num_view.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, self:getBottomHeight())
     self:addChild(node, 3)
 
     --  底部标签
-    node = CCBuilderReaderLoad("bag/bag_bottom_frame.ccbi", proxy, self._rootnode)
+    node = CCBReaderLoad("bag/bag_bottom_frame.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, 0)
     self:addChild(node, 4)
 

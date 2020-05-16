@@ -20,7 +20,7 @@ function CollectLayer:ctor(itemId, itemType)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("hero/hero_collect.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("hero/hero_collect.ccbi", proxy, self._rootnode)
 
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
@@ -78,7 +78,7 @@ function CollectLayer:ctor(itemId, itemType)
             return item:create(
                 {
                     id = idx,
-                    viewSize = CCSizeMake(boardBg:getContentSize().width, boardBg:getContentSize().height * 0.95),
+                    viewSize = cc.size(boardBg:getContentSize().width, boardBg:getContentSize().height * 0.95),
                     listData = data_item_item[itemId].output,
                     lvlData = self.lvlData
                 }
@@ -92,7 +92,7 @@ function CollectLayer:ctor(itemId, itemType)
         local itemList =
             require("utility.TableViewExt").new(
             {
-                size = self._rootnode["inner_bg"]:getContentSize(), --CCSizeMake(boardBg:getContentSize().width, self.getCenterHeightWithSubTop()),-- numBg:getContentSize().height - 20),
+                size = self._rootnode["inner_bg"]:getContentSize(), --cc.size(boardBg:getContentSize().width, self.getCenterHeightWithSubTop()),-- numBg:getContentSize().height - 20),
                 direction = kCCScrollViewDirectionVertical,
                 createFunc = createFunc,
                 refreshFunc = refreshFunc,

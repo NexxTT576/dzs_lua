@@ -93,7 +93,7 @@ function HuoDongBattleScene:initJiefuJiPin()
     local proxy = CCBProxy:create()
     self._numrootnode = {}
 
-    local node = CCBuilderReaderLoad("huodong/jiefujipin.ccbi", proxy, self._numrootnode)
+    local node = CCBReaderLoad("huodong/jiefujipin.ccbi", proxy, self._numrootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node, RESULT_ZORDER - 1)
 

@@ -22,7 +22,7 @@ local ItemTop =
     function(index, lvData, data, otherRewardNum)
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("battle/lianzhan_item_top.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("battle/lianzhan_item_top.ccbi", proxy, rootnode)
 
         local function getNumByIndex(index)
             if index == 1 then
@@ -102,7 +102,7 @@ local ItemBottom =
     function(data, startIndex, endIndex)
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("battle/lianzhan_item_bottom.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("battle/lianzhan_item_bottom.ccbi", proxy, rootnode)
 
         -- dump(#data)
         -- dump(startIndex)
@@ -219,7 +219,7 @@ function LianzhanLayer:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("battle/lianzhan_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("battle/lianzhan_layer.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -301,7 +301,7 @@ function LianzhanLayer:ctor(param)
         end
     end
 
-    local sz = CCSizeMake(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
+    local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
 
     self._rootnode["descView"]:setContentSize(sz)
     self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))

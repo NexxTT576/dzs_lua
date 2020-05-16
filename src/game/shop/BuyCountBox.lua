@@ -21,7 +21,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("shop/buy_item_count.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("shop/buy_item_count.ccbi", proxy, rootnode)
     node:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
     self:addChild(node)
 

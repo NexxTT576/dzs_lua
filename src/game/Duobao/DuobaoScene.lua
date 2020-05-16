@@ -4,132 +4,145 @@
  -- 2014.08.13
  --
  --]]
-
-
-
 local OPENLAYER_ZORDER = 1001
 
 local MOVE_OFFSET = display.width / 3
 local SHOWTYPE = {
-    NONE        = 0,
-    NEIGONG     = 1,
-    WAIGONG     = 2
+    NONE = 0,
+    NEIGONG = 1,
+    WAIGONG = 2
 }
 
-
-local DuobaoScene = class("DuobaoScene", function()
-    return require("game.BaseScene").new({
-        contentFile = "duobao/duobao_bg.ccbi",
-        subTopFile = "duobao/duobao_up_tab.ccbi",
-        bgImage = "bg/duobao_bg.jpg",
-        topFile = "public/top_frame_other.ccbi",
-        isOther = true,
-        scaleMode = 1
-    })
-end)
-
+local DuobaoScene =
+    class(
+    "DuobaoScene",
+    function()
+        return require("game.BaseScene").new(
+            {
+                contentFile = "duobao/duobao_bg.ccbi",
+                subTopFile = "duobao/duobao_up_tab.ccbi",
+                bgImage = "bg/duobao_bg.jpg",
+                topFile = "public/top_frame_other.ccbi",
+                isOther = true,
+                scaleMode = 1
+            }
+        )
+    end
+)
 
 -- 获取内外功列表
 function DuobaoScene:sendReq()
-    RequestHelper.Duobao.getNeiWaiGongList({
-        callback = function(data)
-            dump(data)
-            if string.len(data["0"]) > 0 then
-                CCMessageBox(data["0"], "Tip")
-            else
-                self:createDataList(data)
-
-                if not self._isHasInit then
-                    self._isHasInit = true
-
-                    self:init(data)
+    RequestHelper.Duobao.getNeiWaiGongList(
+        {
+            callback = function(data)
+                dump(data)
+                if string.len(data["0"]) > 0 then
+                    CCMessageBox(data["0"], "Tip")
                 else
-                    self:selectedTab(self._showType)
-                    local index = self:getIndexById(self._showType, self._curItemNodeId)
-                    self:reSetShowType(self._showType, index)
-                end
-            end
-        end
-    })
-end
+                    self:createDataList(data)
 
+                    if not self._isHasInit then
+                        self._isHasInit = true
 
--- 请求合成 
-function DuobaoScene:synthReq(param) 
-    self:setAllBtnEnabled(false) 
-
-    RequestHelper.Duobao.synth({
-        id = param.id,
-        t = param.t,
-        errback = function(data) 
-            self:setAllBtnEnabled(true) 
-            ResMgr.removeMaskLayer() 
-        end, 
-        callback = function(data) 
-            dump(data) 
-            if data["0"] ~= "" then 
-                dump(data["0"]) 
-                self:setAllBtnEnabled(true) 
-                ResMgr.removeMaskLayer() 
-            else 
-                if data["3"] then
-                    self:addChild(require("utility.LackBagSpaceLayer").new({
-                        bagObj = data["4"],
-                    }), 100) 
-
-                    self:setAllBtnEnabled(true) 
-                    return
-                end 
-
-                self._rootnode["mixAllBtn"]:setVisible(false)
-
-                local itemId = data["1"]
-                local itemNum = data["2"]
-                for _, v in ipairs(self._curItemList[self._index].debris) do
-                    v.num = v.num - itemNum
-                    if v.num < 0 then v.num = 0 end
-                end
-
-                self._currentItemNode:refreshItem({
-                    index = self._index,
-                    itemData = self._curItemList[self._index]
-                })
-
-                GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_duobaohecheng))
-                -- 加特效，特效完成之后弹出详细信息界面 
-                local effect = ResMgr.createArma({
-                    resType = ResMgr.UI_EFFECT,
-                    armaName = "lianhuatexiao",
-                    isRetain = false,
-                    finishFunc = function()
-                        show_tip_label("成功合成")
-                        self:detailInfo(itemId, self._showType, true)
-                        ResMgr.removeMaskLayer()
+                        self:init(data)
+                    else
+                        self:selectedTab(self._showType)
+                        local index = self:getIndexById(self._showType, self._curItemNodeId)
+                        self:reSetShowType(self._showType, index)
                     end
-                })
-                self._currentItemNode:getAnimEffectNode():addChild(effect, 1000)
+                end
             end
-        end
-    })
+        }
+    )
 end
 
+-- 请求合成
+function DuobaoScene:synthReq(param)
+    self:setAllBtnEnabled(false)
 
-function DuobaoScene:setAllBtnEnabled(bEnabled) 
-    self:setBottomBtnEnabled(bEnabled) 
-    self:setScrollEnabled(bEnabled) 
-    self._rootnode["touchNode"]:setTouchEnabled(bEnabled) 
-    self._rootnode["mixBtn"]:setEnabled(bEnabled) 
-    self._rootnode["mixAllBtn"]:setEnabled(bEnabled) 
-    self._rootnode["backBtn"]:setEnabled(bEnabled) 
-    self._rootnode["avoidWarBtn"]:setEnabled(bEnabled) 
-    self._currentItemNode:setItemTouchEnabled(bEnabled) 
+    RequestHelper.Duobao.synth(
+        {
+            id = param.id,
+            t = param.t,
+            errback = function(data)
+                self:setAllBtnEnabled(true)
+                ResMgr.removeMaskLayer()
+            end,
+            callback = function(data)
+                dump(data)
+                if data["0"] ~= "" then
+                    dump(data["0"])
+                    self:setAllBtnEnabled(true)
+                    ResMgr.removeMaskLayer()
+                else
+                    if data["3"] then
+                        self:addChild(
+                            require("utility.LackBagSpaceLayer").new(
+                                {
+                                    bagObj = data["4"]
+                                }
+                            ),
+                            100
+                        )
 
-    for i = 1, 2 do 
-        self._rootnode["tab" ..tostring(i)]:setEnabled(bEnabled) 
-    end 
+                        self:setAllBtnEnabled(true)
+                        return
+                    end
 
+                    self._rootnode["mixAllBtn"]:setVisible(false)
+
+                    local itemId = data["1"]
+                    local itemNum = data["2"]
+                    for _, v in ipairs(self._curItemList[self._index].debris) do
+                        v.num = v.num - itemNum
+                        if v.num < 0 then
+                            v.num = 0
+                        end
+                    end
+
+                    self._currentItemNode:refreshItem(
+                        {
+                            index = self._index,
+                            itemData = self._curItemList[self._index]
+                        }
+                    )
+
+                    GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_duobaohecheng))
+                    -- 加特效，特效完成之后弹出详细信息界面
+                    local effect =
+                        ResMgr.createArma(
+                        {
+                            resType = ResMgr.UI_EFFECT,
+                            armaName = "lianhuatexiao",
+                            isRetain = false,
+                            finishFunc = function()
+                                show_tip_label("成功合成")
+                                self:detailInfo(itemId, self._showType, true)
+                                ResMgr.removeMaskLayer()
+                            end
+                        }
+                    )
+                    self._currentItemNode:getAnimEffectNode():addChild(effect, 1000)
+                end
+            end
+        }
+    )
 end
 
+function DuobaoScene:setAllBtnEnabled(bEnabled)
+    self:setBottomBtnEnabled(bEnabled)
+    self:setScrollEnabled(bEnabled)
+    self._rootnode["touchNode"]:setTouchEnabled(bEnabled)
+    self._rootnode["mixBtn"]:setEnabled(bEnabled)
+    self._rootnode["mixAllBtn"]:setEnabled(bEnabled)
+    self._rootnode["backBtn"]:setEnabled(bEnabled)
+    self._rootnode["avoidWarBtn"]:setEnabled(bEnabled)
+    self._currentItemNode:setItemTouchEnabled(bEnabled)
+
+    for i = 1, 2 do
+        self._rootnode["tab" .. tostring(i)]:setEnabled(bEnabled)
+    end
+end
 
 -- 道具icon列表
 function DuobaoScene:createDuobaoIconList(showType)
@@ -143,50 +156,58 @@ function DuobaoScene:createDuobaoIconList(showType)
 
     local function createFunc(index)
         local item = require("game.Duobao.DuobaoIconCell").new()
-        return item:create({
-            id = self._curItemList[index + 1].id,
-            type = self._curItemList[index + 1].type,
-            viewSize = CCSizeMake(boardWidth, boardHeight)
-        })
+        return item:create(
+            {
+                id = self._curItemList[index + 1].id,
+                type = self._curItemList[index + 1].type,
+                viewSize = cc.size(boardWidth, boardHeight)
+            }
+        )
     end
 
     local function refreshFunc(cell, index)
         dump(self._curItemList)
         index = index + 1
-        cell:refresh({
-            id = self._curItemList[index].id,
-            type = self._curItemList[index].type,
-        })
+        cell:refresh(
+            {
+                id = self._curItemList[index].id,
+                type = self._curItemList[index].type
+            }
+        )
     end
 
-    if(self._ListTable ~= nil) then
+    if (self._ListTable ~= nil) then
         self._ListTable:removeFromParentAndCleanup(true)
     end
 
     local cellContentSize = require("game.Duobao.DuobaoIconCell").new():getContentSize()
 
-    self._ListTable = require("utility.TableViewExt").new({
-        size        = CCSizeMake(boardWidth, boardHeight),
-        createFunc  = createFunc,
-        refreshFunc = refreshFunc,
-        cellNum   	= #self._curItemList,
-        cellSize    = cellContentSize,
-        touchFunc   = function(cell)
-            cell:selected()
-            self._index = cell:getIdx() + 1
-            self._curItemNodeId = self._curItemList[self._index].id
+    self._ListTable =
+        require("utility.TableViewExt").new(
+        {
+            size = cc.size(boardWidth, boardHeight),
+            createFunc = createFunc,
+            refreshFunc = refreshFunc,
+            cellNum = #self._curItemList,
+            cellSize = cellContentSize,
+            touchFunc = function(cell)
+                cell:selected()
+                self._index = cell:getIdx() + 1
+                self._curItemNodeId = self._curItemList[self._index].id
 
-            self._currentItemNode:refreshItem({
-                index = self._index,
-                itemData = self._curItemList[self._index]
-            })
-        end
-    })
+                self._currentItemNode:refreshItem(
+                    {
+                        index = self._index,
+                        itemData = self._curItemList[self._index]
+                    }
+                )
+            end
+        }
+    )
 
     self._ListTable:setPosition(0, 0)
     self._rootnode["iconListView"]:addChild(self._ListTable)
 end
-
 
 function DuobaoScene:checkSnatchBtn(itemList)
     -- 判断是否隐藏“合成”、“全部合成”按钮
@@ -206,22 +227,25 @@ function DuobaoScene:checkSnatchBtn(itemList)
     self._rootnode["mixBtn"]:setVisible(true)
 end
 
-
 function DuobaoScene:detailInfo(id, showType, isRefresh)
     self._rootnode["touchNode"]:setTouchEnabled(false)
 
-    self:addChild(require("game.Duobao.DuobaoItemInfoLayer").new({
-        id = id,
-        confirmListen = function()
-            self._rootnode["touchNode"]:setTouchEnabled(true)
-            self:setAllBtnEnabled(true) 
-            if isRefresh then 
-                self:onEnter()
-            end
-        end
-    }), OPENLAYER_ZORDER)
+    self:addChild(
+        require("game.Duobao.DuobaoItemInfoLayer").new(
+            {
+                id = id,
+                confirmListen = function()
+                    self._rootnode["touchNode"]:setTouchEnabled(true)
+                    self:setAllBtnEnabled(true)
+                    if isRefresh then
+                        self:onEnter()
+                    end
+                end
+            }
+        ),
+        OPENLAYER_ZORDER
+    )
 end
-
 
 -- 抢夺碎片成功后，更新现有碎片的数量
 function DuobaoScene:updateDuobaoItem(param)
@@ -259,15 +283,16 @@ function DuobaoScene:updateDuobaoItem(param)
     if bFind then
         if type == self._showType and index == self._index then
             if self._currentItemNode ~= nil then
-                self._currentItemNode:refreshItem({
-                    index = self._index,
-                    itemData = self._curItemList[self._index]
-                })
+                self._currentItemNode:refreshItem(
+                    {
+                        index = self._index,
+                        itemData = self._curItemList[self._index]
+                    }
+                )
             end
         end
     end
 end
-
 
 function DuobaoScene:updateMixAllBtn(showMixAll)
     if showMixAll then
@@ -276,7 +301,6 @@ function DuobaoScene:updateMixAllBtn(showMixAll)
         self._rootnode["mixAllBtn"]:setVisible(false)
     end
 end
-
 
 -- 道具详细列表
 function DuobaoScene:createDuobaoItem(showType, index)
@@ -294,34 +318,37 @@ function DuobaoScene:createDuobaoItem(showType, index)
     local boardWidth = touchNode:getContentSize().width
     local boardHeight = touchNode:getContentSize().height
 
-    if(self._currentItemNode ~= nil) then
+    if (self._currentItemNode ~= nil) then
         self._currentItemNode:removeFromParentAndCleanup(true)
         self._currentItemNode = nil
     end
 
     touchNode:setTouchEnabled(true)
 
-    self._currentItemNode = require("game.Duobao.DuobaoItem").new({
-        index = self._index,
-        viewSize = CCSizeMake(boardWidth, boardHeight),
-        itemData = self._curItemList[self._index],
-        -- itemUpdateListener = handler(self, DuobaoScene.updateDuobaoItem),
-        updateMixAllBtn  = handler(self, DuobaoScene.updateMixAllBtn),
-        getMianzhanTime = function()
-            return self._warFreeTime
-        end
-    })
+    self._currentItemNode =
+        require("game.Duobao.DuobaoItem").new(
+        {
+            index = self._index,
+            viewSize = cc.size(boardWidth, boardHeight),
+            itemData = self._curItemList[self._index],
+            -- itemUpdateListener = handler(self, DuobaoScene.updateDuobaoItem),
+            updateMixAllBtn = handler(self, DuobaoScene.updateMixAllBtn),
+            getMianzhanTime = function()
+                return self._warFreeTime
+            end
+        }
+    )
 
     touchNode:addChild(self._currentItemNode)
 
     local duobaoCellBtn = self._currentItemNode:getTutoBtn()
-    TutoMgr.addBtn("duobao_item",duobaoCellBtn)
-    TutoMgr.addBtn("duobao_hecheng_btn",self._rootnode["mixBtn"])
-    TutoMgr.addBtn("zhujiemian_btn_zhenrong",self._rootnode["formSettingBtn"])
+    TutoMgr.addBtn("duobao_item", duobaoCellBtn)
+    TutoMgr.addBtn("duobao_hecheng_btn", self._rootnode["mixBtn"])
+    TutoMgr.addBtn("zhujiemian_btn_zhenrong", self._rootnode["formSettingBtn"])
 
     local waigongBtn = self._currentItemNode:getWaiGongTutoBtn()
-    TutoMgr.addBtn("waigong_item",waigongBtn)
-    TutoMgr.addBtn("waigong_tag",self._rootnode["tab2"])
+    TutoMgr.addBtn("waigong_item", waigongBtn)
+    TutoMgr.addBtn("waigong_tag", self._rootnode["tab2"])
     self:regLockNotice()
 
     TutoMgr.active()
@@ -330,40 +357,52 @@ function DuobaoScene:createDuobaoItem(showType, index)
     local targPosX, targPosY
     local offsetX = 0
     local bTouch
-    local bMoved = false  
+    local bMoved = false
 
     local function moveToTargetPos()
-        self._currentItemNode:runAction(transition.sequence({
-            CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
-            CCDelayTime:create(0.15),
-            CCCallFunc:create(function()
-                bMoved = false
-            end)
-        }))
+        self._currentItemNode:runAction(
+            transition.sequence(
+                {
+                    CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
+                    CCDelayTime:create(0.15),
+                    CCCallFunc:create(
+                        function()
+                            bMoved = false
+                        end
+                    )
+                }
+            )
+        )
     end
 
     local function resetItemImage(side)
-        if side  == 1 then --左滑动
+        if side == 1 then --左滑动
             self._currentItemNode:setPosition(display.width * 1.5, targPosY)
-        elseif side == 2 then  --右滑动
+        elseif side == 2 then --右滑动
             self._currentItemNode:setPosition(-display.width * 0.5, targPosY)
         end
 
-        self._currentItemNode:runAction(transition.sequence({
-            CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
-            CCDelayTime:create(0.15),
-            CCCallFunc:create(function()
-                bMoved = false
-            end)
-        }))
+        self._currentItemNode:runAction(
+            transition.sequence(
+                {
+                    CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
+                    CCDelayTime:create(0.15),
+                    CCCallFunc:create(
+                        function()
+                            bMoved = false
+                        end
+                    )
+                }
+            )
+        )
     end
 
-    local function onTouchBegan(event) 
+    local function onTouchBegan(event)
         if not bMoved then
             local touchSize = self._currentItemNode:getCanTouchSize()
             local cntSz = self._currentItemNode:getContentSize()
             local point = self._currentItemNode:convertToNodeSpaceAR(ccp(event.x, event.y))
-            if (CCRectMake((cntSz.width - touchSize.width)/2, (cntSz.height - touchSize.height)/2, touchSize.width, touchSize.height):containsPoint(point)) then
+            if (CCRectMake((cntSz.width - touchSize.width) / 2, (cntSz.height - touchSize.height) / 2, touchSize.width, touchSize.height):containsPoint(point)) then
                 bTouch = true
                 bMoved = true
             end
@@ -395,13 +434,15 @@ function DuobaoScene:createDuobaoItem(showType, index)
     local function onTouchEnded(event)
         if self._bScrollEnabled ~= false then
             offsetX = event.x - offsetX
-            if offsetX >= MOVE_OFFSET  then
+            if offsetX >= MOVE_OFFSET then
                 if self._index > 1 then
                     self._index = self._index - 1
-                    self._currentItemNode:refreshItem({
-                        index = self._index,
-                        itemData = self._curItemList[self._index]
-                    })
+                    self._currentItemNode:refreshItem(
+                        {
+                            index = self._index,
+                            itemData = self._curItemList[self._index]
+                        }
+                    )
                     resetItemImage(2)
                 else
                     moveToTargetPos()
@@ -409,10 +450,12 @@ function DuobaoScene:createDuobaoItem(showType, index)
             elseif offsetX <= -MOVE_OFFSET then
                 if self._index < #self._curItemList then
                     self._index = self._index + 1
-                    self._currentItemNode:refreshItem({
-                        index = self._index,
-                        itemData = self._curItemList[self._index]
-                    })
+                    self._currentItemNode:refreshItem(
+                        {
+                            index = self._index,
+                            itemData = self._curItemList[self._index]
+                        }
+                    )
                     resetItemImage(1)
                 else
                     moveToTargetPos()
@@ -421,7 +464,7 @@ function DuobaoScene:createDuobaoItem(showType, index)
                 moveToTargetPos()
             end
 
-            if(offsetX >= MOVE_OFFSET or offsetX <= -MOVE_OFFSET) then
+            if (offsetX >= MOVE_OFFSET or offsetX <= -MOVE_OFFSET) then
                 self:checkSnatchBtn(self._curItemList[self._index])
             end
         end
@@ -437,17 +480,20 @@ function DuobaoScene:createDuobaoItem(showType, index)
     end
 
     if not self._hasAddListen then
-        touchNode:addNodeEventListener(cc.NODE_TOUCH_EVENT, function(event)
-            if event.name == "began" then
-                return onTouchBegan(event)
-            elseif event.name == "moved" then
-                onTouchMove(event)
-            elseif event.name == "ended" then
-                if self.isAllTouchItem == true then
-                    onTouchEnded(event)
+        touchNode:addNodeEventListener(
+            cc.NODE_TOUCH_EVENT,
+            function(event)
+                if event.name == "began" then
+                    return onTouchBegan(event)
+                elseif event.name == "moved" then
+                    onTouchMove(event)
+                elseif event.name == "ended" then
+                    if self.isAllTouchItem == true then
+                        onTouchEnded(event)
+                    end
                 end
             end
-        end)
+        )
         self._hasAddListen = true
     end
 end
@@ -457,26 +503,27 @@ function DuobaoScene:setScrollEnabled(b)
 end
 
 function DuobaoScene:regLockNotice()
-
-        RegNotice(self,
+    RegNotice(
+        self,
         function()
             self:setScrollEnabled(false)
         end,
-        NoticeKey.LOCK_TABLEVIEW)
+        NoticeKey.LOCK_TABLEVIEW
+    )
 
-        RegNotice(self,
+    RegNotice(
+        self,
         function()
             self:setScrollEnabled(true)
         end,
-        NoticeKey.UNLOCK_TABLEVIEW)
-
+        NoticeKey.UNLOCK_TABLEVIEW
+    )
 end
 
 function DuobaoScene:unLockNotice()
-    UnRegNotice(self,NoticeKey.LOCK_TABLEVIEW)
-    UnRegNotice(self,NoticeKey.UNLOCK_TABLEVIEW)
+    UnRegNotice(self, NoticeKey.LOCK_TABLEVIEW)
+    UnRegNotice(self, NoticeKey.UNLOCK_TABLEVIEW)
 end
-
 
 function DuobaoScene:initNeiWaiGongList(param)
     local ary = param.ary
@@ -494,39 +541,47 @@ function DuobaoScene:initNeiWaiGongList(param)
                 local id = checkint(k)
                 if id == vd then
                     local item = data_item_item[id]
-                    table.insert(debris, {
-                        id = id,
-                        num = num,
-                        type = item.type,
-                        name = item.name,
-                        describe = item.describe
-                    })
+                    table.insert(
+                        debris,
+                        {
+                            id = id,
+                            num = num,
+                            type = item.type,
+                            name = item.name,
+                            describe = item.describe
+                        }
+                    )
                 end
             end
         end
 
-        if(aryType == SHOWTYPE.NEIGONG) then
-            table.insert(self._neiList, {
-                id = v.id,
-                type = neiItem.type,
-                name = neiItem.name,
-                debris = debris,
-                posX = neiItem.posX or 0,
-                posY = neiItem.posY or 0
-            })
-        elseif(aryType == SHOWTYPE.WAIGONG) then
-            table.insert(self._waiList, {
-                id = v.id,
-                type = neiItem.type,
-                name = neiItem.name,
-                debris = debris,
-                posX = neiItem.posX or 0,
-                posY = neiItem.posY or 0
-            })
+        if (aryType == SHOWTYPE.NEIGONG) then
+            table.insert(
+                self._neiList,
+                {
+                    id = v.id,
+                    type = neiItem.type,
+                    name = neiItem.name,
+                    debris = debris,
+                    posX = neiItem.posX or 0,
+                    posY = neiItem.posY or 0
+                }
+            )
+        elseif (aryType == SHOWTYPE.WAIGONG) then
+            table.insert(
+                self._waiList,
+                {
+                    id = v.id,
+                    type = neiItem.type,
+                    name = neiItem.name,
+                    debris = debris,
+                    posX = neiItem.posX or 0,
+                    posY = neiItem.posY or 0
+                }
+            )
         end
     end
 end
-
 
 function DuobaoScene:createDataList(data)
     -- 金币数
@@ -543,20 +598,23 @@ function DuobaoScene:createDataList(data)
     -- 内功列表
     local neiAry = data["2"]
     self._neiList = {}
-    self:initNeiWaiGongList({
-        ary = neiAry,
-        aryType = SHOWTYPE.NEIGONG
-    })
+    self:initNeiWaiGongList(
+        {
+            ary = neiAry,
+            aryType = SHOWTYPE.NEIGONG
+        }
+    )
 
     -- 外功列表
     local waiAry = data["3"]
     self._waiList = {}
-    self:initNeiWaiGongList({
-        ary = waiAry,
-        aryType = SHOWTYPE.WAIGONG
-    })
+    self:initNeiWaiGongList(
+        {
+            ary = waiAry,
+            aryType = SHOWTYPE.WAIGONG
+        }
+    )
 end
-
 
 -- 检测id所在的index
 function DuobaoScene:getIndexById(showType, id)
@@ -582,7 +640,6 @@ function DuobaoScene:getIndexById(showType, id)
     return index
 end
 
-
 function DuobaoScene:init()
     self._index = 1
     self._showType = SHOWTYPE.NEIGONG
@@ -597,7 +654,6 @@ function DuobaoScene:init()
     self:createTab()
 end
 
-
 function DuobaoScene:createMianzhanTimeInfo(time, curGold, curWarFreeCnt)
     self._warFreeTime = time
     if (self._warFreeTime > 0) then
@@ -608,26 +664,25 @@ function DuobaoScene:createMianzhanTimeInfo(time, curGold, curWarFreeCnt)
     end
 end
 
-
 function DuobaoScene:initTimeSchedule()
-    self:schedule(function()
-        if (self._warFreeTime > 0) then
-            self._warFreeTime = self._warFreeTime - 1
-            self._rootnode["mianzhanLbl"]:setString("免战剩余时间：" .. format_time(self._warFreeTime))
-        else
-            self._rootnode["mianzhanLbl"]:setVisible(false)
-        end
-    end, 1)
+    self:schedule(
+        function()
+            if (self._warFreeTime > 0) then
+                self._warFreeTime = self._warFreeTime - 1
+                self._rootnode["mianzhanLbl"]:setString("免战剩余时间：" .. format_time(self._warFreeTime))
+            else
+                self._rootnode["mianzhanLbl"]:setVisible(false)
+            end
+        end,
+        1
+    )
 end
-
 
 function DuobaoScene:reSetShowType(showType, index)
     self._showType = showType
     self:createDuobaoItem(self._showType, index)
     self:createDuobaoIconList(self._showType)
-
 end
-
 
 function DuobaoScene:selectedTab(tag)
     if tag == 2 then
@@ -636,15 +691,14 @@ function DuobaoScene:selectedTab(tag)
 
     for i = 1, 2 do
         if tag == i then
-            self._rootnode["tab" ..tostring(i)]:selected()
-            self._rootnode["btn" ..tostring(i)]:setZOrder(10)
+            self._rootnode["tab" .. tostring(i)]:selected()
+            self._rootnode["btn" .. tostring(i)]:setZOrder(10)
         else
-            self._rootnode["tab" ..tostring(i)]:unselected()
-            self._rootnode["btn" ..tostring(i)]:setZOrder(0)
+            self._rootnode["tab" .. tostring(i)]:unselected()
+            self._rootnode["btn" .. tostring(i)]:setZOrder(0)
         end
     end
 end
-
 
 function DuobaoScene:createTab()
     local function onTabBtn(tag)
@@ -656,7 +710,7 @@ function DuobaoScene:createTab()
     --初始化选项卡
     local function initTab()
         for i = 1, 2 do
-            self._rootnode["tab" ..tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
         end
         self:selectedTab(1)
     end
@@ -665,32 +719,41 @@ function DuobaoScene:createTab()
     onTabBtn(SHOWTYPE.NEIGONG)
 end
 
-
 function DuobaoScene:ctor()
     self.isAllTouchItem = false
-    self._bScrollEnabled = true  
+    self._bScrollEnabled = true
 
-    self._rootnode["backBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-        GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
-    end,
-        CCControlEventTouchUpInside)
+    self._rootnode["backBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
+            GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
+        end,
+        CCControlEventTouchUpInside
+    )
     ResMgr.createBefTutoMask(self)
 
     -- 免战
     local avoidWarBtn = self._rootnode["avoidWarBtn"]
-    avoidWarBtn:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        avoidWarBtn:setEnabled(false)
-        game.runningScene:addChild(require("game.Duobao.DuobaoMianzhanInfo").new({
-            warFreeCnt = self._warFreeCnt,
-            gold = self._gold,
-            callback = handler(self, DuobaoScene.createMianzhanTimeInfo),
-            closeFunc = function()
-                avoidWarBtn:setEnabled(true)
-            end
-        }), 100)
-    end, CCControlEventTouchUpInside)
+    avoidWarBtn:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            avoidWarBtn:setEnabled(false)
+            game.runningScene:addChild(
+                require("game.Duobao.DuobaoMianzhanInfo").new(
+                    {
+                        warFreeCnt = self._warFreeCnt,
+                        gold = self._gold,
+                        callback = handler(self, DuobaoScene.createMianzhanTimeInfo),
+                        closeFunc = function()
+                            avoidWarBtn:setEnabled(true)
+                        end
+                    }
+                ),
+                100
+            )
+        end,
+        CCControlEventTouchUpInside
+    )
 
     -- 合成
     local mixBtn = self._rootnode["mixBtn"]
@@ -715,10 +778,12 @@ function DuobaoScene:ctor()
         end
 
         if canMix then
-            self:synthReq({
-                id = self._curItemList[self._index].id,
-                t = t
-            })
+            self:synthReq(
+                {
+                    id = self._curItemList[self._index].id,
+                    t = t
+                }
+            )
         else
             show_tip_label("碎片不足")
             if mixAll then
@@ -729,26 +794,30 @@ function DuobaoScene:ctor()
         end
     end
 
-    mixBtn:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        mixBtn:setEnabled(false)
-        PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-        mixFunc(false)
-    end, CCControlEventTouchUpInside)
+    mixBtn:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            mixBtn:setEnabled(false)
+            PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+            mixFunc(false)
+        end,
+        CCControlEventTouchUpInside
+    )
 
-    mixAllBtn:addHandleOfControlEvent(function()
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        mixAllBtn:setEnabled(false)
-        mixFunc(true)
-    end, CCControlEventTouchUpInside)
+    mixAllBtn:addHandleOfControlEvent(
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            mixAllBtn:setEnabled(false)
+            mixFunc(true)
+        end,
+        CCControlEventTouchUpInside
+    )
 
     self._curItemNodeId = -1
     self._isHasInit = false
     self._hasAddListen = false
     self._bExit = false
-
 end
-
 
 function DuobaoScene:onEnter()
     game.runningScene = self
@@ -757,7 +826,7 @@ function DuobaoScene:onEnter()
     self:sendReq()
 
     self:regNotice()
-        PostNotice(NoticeKey.UNLOCK_BOTTOM)
+    PostNotice(NoticeKey.UNLOCK_BOTTOM)
     PostNotice(NoticeKey.CommonUpdate_Label_Naili)
     PostNotice(NoticeKey.CommonUpdate_Label_Tili)
 
@@ -780,18 +849,21 @@ function DuobaoScene:onEnter()
         local function createOpenLayer()
             if #systemIds > 0 then
                 local systemId = systemIds[1]
-                self:addChild(require("game.OpenSystem.OpenLayer").new({
-                    systemId = systemId,
-                    confirmFunc = createOpenLayer
-                }), OPENLAYER_ZORDER)
+                self:addChild(
+                    require("game.OpenSystem.OpenLayer").new(
+                        {
+                            systemId = systemId,
+                            confirmFunc = createOpenLayer
+                        }
+                    ),
+                    OPENLAYER_ZORDER
+                )
                 table.remove(systemIds, 1)
             end
         end
         createOpenLayer()
     end
-
 end
-
 
 function DuobaoScene:onExit()
     TutoMgr.removeBtn("duobao_item")
@@ -804,6 +876,5 @@ function DuobaoScene:onExit()
     self:unregNotice()
     self:unLockNotice()
 end
-
 
 return DuobaoScene

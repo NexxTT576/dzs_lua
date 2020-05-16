@@ -121,7 +121,7 @@ end
 function GuildRankLayer:ctor()
     self._rootnode = {}
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("guild/guild_rank_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_rank_layer.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

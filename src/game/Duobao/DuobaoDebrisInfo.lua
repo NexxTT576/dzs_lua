@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.08.15
- --
- --]]
 local data_ui_ui = require("data.data_ui_ui")
 
 local DuobaoDebrisInfo =
@@ -70,7 +64,7 @@ function DuobaoDebrisInfo:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("duobao/duobao_debris_info.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("duobao/duobao_debris_info.ccbi", proxy, rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

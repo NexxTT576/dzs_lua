@@ -11,7 +11,7 @@ local HuoDongCell =
 
 function HuoDongCell:getContentSize()
     -- local sprite = display.newSprite("#herolist_board.png")
-    return CCSizeMake(display.width, 200) --sprite:getContentSize()
+    return cc.size(display.width, 200) --sprite:getContentSize()
 end
 
 function HuoDongCell:getIsAllowPlay()
@@ -160,7 +160,7 @@ function HuoDongCell:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("challenge/jingying_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("challenge/jingying_item.ccbi", proxy, self._rootnode)
     self:addChild(node)
 
     self:refresh(aid)

@@ -14,7 +14,7 @@ local HeroDebrisCell =
 
 function HeroDebrisCell:getContentSize()
     -- local sprite = display.newSprite("#herolist_board.png")
-    return CCSizeMake(display.width, 154) --sprite:getContentSize()
+    return cc.size(display.width, 154) --sprite:getContentSize()
 end
 
 function HeroDebrisCell:refresh(id)
@@ -89,7 +89,7 @@ function HeroDebrisCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("hero/hero_soul_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("hero/hero_soul_item.ccbi", proxy, self._rootnode)
     node:setPosition(display.width * 0.5, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 

@@ -17,7 +17,7 @@ function DuobaoQiangduoItem:getContentSize()
     else
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("duobao/duobao_qiangduo_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("duobao/duobao_qiangduo_item.ccbi", proxy, rootnode)
         self.Cntsize = node:getContentSize()
 
         self:addChild(node)
@@ -64,7 +64,7 @@ function DuobaoQiangduoItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("duobao/duobao_qiangduo_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("duobao/duobao_qiangduo_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 

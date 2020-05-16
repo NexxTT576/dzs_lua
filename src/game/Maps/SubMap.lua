@@ -80,8 +80,8 @@ function SubMap:ctor(param)
     -- 关卡列表
     local listViewNode = self._rootnode["listView_node"]
     local listHeigt = self:getCenterHeight() - self._rootnode["bottom_node"]:getContentSize().height - self._rootnode["top_node"]:getContentSize().height
-    local listSize = CCSizeMake(listViewNode:getContentSize().width * 0.95, listHeigt)
-    self._listViewSize = CCSizeMake(listSize.width, listSize.height * 0.97)
+    local listSize = cc.size(listViewNode:getContentSize().width * 0.95, listHeigt)
+    self._listViewSize = cc.size(listSize.width, listSize.height * 0.97)
 
     local listBg = display.newScale9Sprite("#submap_bg.png", 0, 0, listSize)
     listBg:setAnchorPoint(0.5, 0)
@@ -142,8 +142,8 @@ function SubMap:ctor(param)
     -- local function initsubmapinfoRes( ... )
     --     local proxy = CCBProxy:create()
     --     local rootnode = {}
-    --     local levelBoard = CCBuilderReaderLoad("ccbi/battle/level_grade.ccbi", proxy, rootnode)
-    --     local node = CCBuilderReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode)
+    --     local levelBoard = CCBReaderLoad("ccbi/battle/level_grade.ccbi", proxy, rootnode)
+    --     local node = CCBReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode)
     -- end
     -- initsubmapinfoRes()
 end

@@ -53,7 +53,7 @@ local HeroIcon =
 
 function HeroIcon:getContentSize()
     --    local sz = display.newSprite("hero/icon/icon_hero_guojing.png"):getContentSize()
-    return CCSizeMake(115, 115)
+    return cc.size(115, 115)
 end
 
 function HeroIcon:ctor()
@@ -144,7 +144,7 @@ function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("formation/formation_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("formation/formation_layer.ccbi", proxy, self._rootnode)
     node:setPosition(self:getContentSize().width / 2, self:getContentSize().height / 2)
     self:addChild(node, 1)
 
@@ -436,7 +436,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                 local equipBaseInfo = data_item_item[v.resId]
                 local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
-                 --display.newSprite(path)
+                --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
                 self._rootnode[equipNodeName]:addChild(s, 100, 100)
 
@@ -513,7 +513,7 @@ function EnemyFormLayer:initHeadList()
     self._scrollItemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+            size = cc.size(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
             createFunc = function(idx)
                 idx = idx + 1
                 local item = HeroIcon.new()

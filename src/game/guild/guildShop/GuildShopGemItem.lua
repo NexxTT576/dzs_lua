@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2015.02.10 
- --
- --]]
 local GuildShopGemItem =
     class(
     "GuildShopGemItem",
@@ -16,7 +10,7 @@ function GuildShopGemItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("guild/guild_shop_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("guild/guild_shop_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -166,7 +160,7 @@ function GuildShopGemItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("guild/guild_shop_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_shop_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

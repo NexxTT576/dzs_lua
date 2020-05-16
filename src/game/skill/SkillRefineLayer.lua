@@ -46,7 +46,7 @@ local Item =
 )
 
 function Item:getContentSize()
-    return CCSizeMake(98, 91)
+    return cc.size(98, 91)
 end
 
 function Item:create(param)
@@ -55,7 +55,7 @@ function Item:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("skill/skill_refine_icon.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("skill/skill_refine_icon.ccbi", proxy, self._rootnode)
     node:setPosition(node:getContentSize().width / 2, _viewSize.height / 2)
     self:addChild(node, 0)
 
@@ -124,7 +124,7 @@ function SkillRefineLayer:ctor(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("skill/skill_refine_scene.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("skill/skill_refine_scene.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node, 1)
 

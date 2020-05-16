@@ -26,7 +26,7 @@ function RankListScene:ctor()
 
     self.listType = 1
 
-    local viewSize = CCSizeMake(display.width, self:getContentHeight())
+    local viewSize = cc.size(display.width, self:getContentHeight())
     self.baseNode = display.newNode()
     self.baseNode:setContentSize(viewSize)
     self.baseNode:setPosition(display.width / 2, self:getBottomHeight())
@@ -36,12 +36,12 @@ function RankListScene:ctor()
     -- self._rootnode = {}
 
     -- 创建UI
-    local contentNode = CCBuilderReaderLoad("rankList/rank_list_bg.ccbi", proxy, self._rootnode, self, viewSize)
+    local contentNode = CCBReaderLoad("rankList/rank_list_bg.ccbi", proxy, self._rootnode, self, viewSize)
     self.baseNode:addChild(contentNode)
 
-    self.tableScaleBgSize = CCSizeMake(display.width * 0.95, self:getContentHeight() - self._rootnode["up_node"]:getContentSize().height)
+    self.tableScaleBgSize = cc.size(display.width * 0.95, self:getContentHeight() - self._rootnode["up_node"]:getContentSize().height)
 
-    self.tableViewSize = CCSizeMake(self.tableScaleBgSize.width, self.tableScaleBgSize.height * 0.96)
+    self.tableViewSize = cc.size(self.tableScaleBgSize.width, self.tableScaleBgSize.height * 0.96)
 
     local listWorldPos = self._rootnode["table_bg"]:convertToWorldSpace(ccp(0, 0))
     self.tableRect = CCRect(listWorldPos.x, listWorldPos.y, display.width, self.tableScaleBgSize.height)
@@ -72,7 +72,7 @@ function RankListScene:initUpDetail(type)
     else
         self._rootnode["ttf_" .. type .. "_1"]:setString("")
         local norecord = ResMgr.createShadowMsgTTF({text = "2000名以外", color = cc.c3b(255, 222, 0), size = 24})
-         --n
+        --n
         norecord:setPosition(self._rootnode["ttf_" .. type .. "_1"]:getPositionX(), self._rootnode["ttf_" .. type .. "_1"]:getPositionY())
         self._rootnode["ttf_" .. type .. "_1"]:getParent():addChild(norecord)
     end
@@ -118,7 +118,7 @@ function RankListScene:initListByType(type)
     end
     local cellSize = require("game.RankListScene.RankListCell").new():getContentSize()
 
-    local expandSize = CCSizeMake(cellSize.width, cellSize.height + 10)
+    local expandSize = cc.size(cellSize.width, cellSize.height + 10)
 
     local itemList =
         require("utility.TableViewExt").new(
@@ -173,7 +173,7 @@ function RankListScene:initHead()
         local item = require("game.nbactivity.ActivityItem").new()
         return item:create(
             {
-                viewSize = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+                viewSize = cc.size(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
                 itemData = self._data[index + 1]
             }
         )
@@ -190,7 +190,7 @@ function RankListScene:initHead()
     self._scrollItemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
+            size = cc.size(self._rootnode["headList"]:getContentSize().width, self._rootnode["headList"]:getContentSize().height),
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #self._data,

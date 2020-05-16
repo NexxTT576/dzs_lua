@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2015.01.16 
- --
- --]]
 local data_item_item = require("data.data_item_item")
 local data_card_card = require("data.data_card_card")
 require("data.data_error_error")
@@ -224,7 +218,7 @@ function GuildZuofangLayer:ctor(data)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("guild/guild_zuofang_layer.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_zuofang_layer.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

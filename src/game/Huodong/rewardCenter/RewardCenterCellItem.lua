@@ -16,7 +16,7 @@ function RewardCenterCellItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("reward/reward_center_item_reward.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("reward/reward_center_item_reward.ccbi", proxy, rootNode)
     local size = rootNode["item_node"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -31,7 +31,7 @@ function RewardCenterCellItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("reward/reward_center_item_reward.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/reward_center_item_reward.ccbi", proxy, self._rootnode)
     node:setPosition(node:getContentSize().width * 0.5, viewSize.height * 0.5)
     self:addChild(node)
 

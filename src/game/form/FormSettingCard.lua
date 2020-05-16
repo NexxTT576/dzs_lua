@@ -5,29 +5,37 @@
 -- Time: 下午10:28
 -- To change this template use File | Settings | File Templates.
 --
-local FormSettingCard = class("FormSettingCard", function()
-    return display.newNode()
-end)
+local FormSettingCard =
+    class(
+    "FormSettingCard",
+    function()
+        return display.newNode()
+    end
+)
 
-local TouchCard = class("TouchCard", function(param)
-    return require("game.Object.CardObj").new(param)
-end)
+local TouchCard =
+    class(
+    "TouchCard",
+    function(param)
+        return require("game.Object.CardObj").new(param)
+    end
+)
 
 function TouchCard:ctor(param)
     self:setTag(123)
 end
 
 function FormSettingCard:ctor(param)
-    local _data       = param.data
+    local _data = param.data
     local _touchBegan = param.touchBegan
-    local _touchMove  = param.touchMove
-    local _touchEnd   = param.touchEnd
-    local _index      = param.index
+    local _touchMove = param.touchMove
+    local _touchEnd = param.touchEnd
+    local _index = param.index
 
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("formation/formation_setting_card.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("formation/formation_setting_card.ccbi", proxy, rootnode)
     self:addChild(node, 1)
 
     local _bOpen = true
@@ -38,40 +46,46 @@ function FormSettingCard:ctor(param)
     _bg:setTouchEnabled(true)
     rootnode["lvNum_node"]:setVisible(false)
 
-    local nameLabel = ui.newTTFLabelWithShadow({
-        text = "",
-        font = FONTS_NAME.font_fzcy,
-        size = 20,
-    })
+    local nameLabel =
+        ui.newTTFLabelWithShadow(
+        {
+            text = "",
+            font = FONTS_NAME.font_fzcy,
+            size = 20
+        }
+    )
     rootnode["nameNode"]:addChild(nameLabel)
     nameLabel:setPosition(nameLabel:getContentSize().width / 2, 0)
 
     local image
     local function touchBegan(event)
---        dump(event)
---        if image and image:numberOfRunningActions() > 0 then
---            return false
---        end
+        --        dump(event)
+        --        if image and image:numberOfRunningActions() > 0 then
+        --            return false
+        --        end
 
         if self:isInCard(event.x, event.y) then
-
             if _bOpen then
                 image = _bg:getChildByTag(123)
-                if image then--用来检测是否有卡牌
-                    _touchBegan({
-                        cardnode = self,
-                        image    = image,
-                        event    = event
-                    })
+                if image then --用来检测是否有卡牌
+                    _touchBegan(
+                        {
+                            cardnode = self,
+                            image = image,
+                            event = event
+                        }
+                    )
                     return true
                 end
             else
                 show_tip_label(string.format("当前位置%d级开启", self:getOpenLv()))
             end
-            _touchBegan({
-                cardnode = self,
-                event    = event
-            })
+            _touchBegan(
+                {
+                    cardnode = self,
+                    event = event
+                }
+            )
             return false
         end
         return false
@@ -79,21 +93,25 @@ function FormSettingCard:ctor(param)
 
     local function touchMoved(event)
         if image then
-            _touchMove({
-                cardnode = self,
-                image    = image,
-                event    = event
-            })
+            _touchMove(
+                {
+                    cardnode = self,
+                    image = image,
+                    event = event
+                }
+            )
         end
     end
 
     local function touchEnded(event)
         if image then
-            _touchEnd({
-                cardnode = self,
-                image    = image,
-                event    = event
-            })
+            _touchEnd(
+                {
+                    cardnode = self,
+                    image = image,
+                    event = event
+                }
+            )
         end
     end
 
@@ -101,27 +119,33 @@ function FormSettingCard:ctor(param)
         _bg:setTouchEnabled(b)
     end
 
-    _bg:addNodeEventListener(cc.NODE_TOUCH_CAPTURE_EVENT, function(event)
-        if event.name == "began" then
-            return touchBegan(event)
-        elseif event.name == "moved" then
-            touchMoved(event)
-        elseif event.name == "ended" then
-            touchEnded(event)
+    _bg:addNodeEventListener(
+        cc.NODE_TOUCH_CAPTURE_EVENT,
+        function(event)
+            if event.name == "began" then
+                return touchBegan(event)
+            elseif event.name == "moved" then
+                touchMoved(event)
+            elseif event.name == "ended" then
+                touchEnded(event)
+            end
         end
-    end)
+    )
 
     self.equipCard = function(_, cardData)
         if _bOpen and type(cardData) == "table" then
             rootnode["lvLabel"]:setString(tostring(cardData.level))
             rootnode["lvNum_node"]:setVisible(true)
-            local card = TouchCard.new({
-                id  = cardData.resId,
-                cls = cardData.cls,
-                lv  = cardData.level,
-                -- star= cardData.star
-                star = 1, 
-            })
+            local card =
+                TouchCard.new(
+                {
+                    id = cardData.resId,
+                    cls = cardData.cls,
+                    lv = cardData.level,
+                    -- star= cardData.star
+                    star = 1
+                }
+            )
             card:setPosition(_pos)
             _bg:addChild(card)
 
@@ -130,7 +154,6 @@ function FormSettingCard:ctor(param)
             else
                 nameLabel:setString(card:getName())
             end
-
 
             nameLabel:setColor(NAME_COLOR[card:getStar(card:getStar())])
             if card:getCls() > 0 then
@@ -229,7 +252,6 @@ function FormSettingCard:switchWithCard(touchCard, x, y)
         if cardA then
             cardA:release()
         end
-
 
         return true
     else

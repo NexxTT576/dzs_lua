@@ -11,7 +11,7 @@ function ArenaRankCell:getContentSize()
         local proxy = CCBProxy:create()
         local rootNode = {}
 
-        local node = CCBuilderReaderLoad("arena/rank_item.ccbi", proxy, rootNode)
+        local node = CCBReaderLoad("arena/rank_item.ccbi", proxy, rootNode)
         self.cntSize = rootNode["itemBg"]:getContentSize()
         self:addChild(node)
         node:removeSelf()
@@ -123,7 +123,7 @@ function ArenaRankCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("arena/rank_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("arena/rank_item.ccbi", proxy, self._rootnode)
     node:setPosition(_viewSize.width / 2, 0)
     self:addChild(node)
 

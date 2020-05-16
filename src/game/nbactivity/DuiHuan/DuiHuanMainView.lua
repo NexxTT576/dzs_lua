@@ -143,7 +143,7 @@ function DuiHuanMainView:setUpView(param)
     self._tableView =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight - 20),
+            size = cc.size(boardWidth, boardHeight - 20),
             direction = kCCScrollViewDirectionVertical,
             createFunc = createFunc,
             refreshFunc = refreshFunc,

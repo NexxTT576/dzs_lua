@@ -37,7 +37,7 @@ function LeijiLoginLayer:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/leijiLogin_layer.ccbi", proxy, self._rootnode, self, viewSize)
+    local node = CCBReaderLoad("nbhuodong/leijiLogin_layer.ccbi", proxy, self._rootnode, self, viewSize)
     self:addChild(node)
 
     local titleIcon = self._rootnode["title_icon"]
@@ -50,7 +50,7 @@ function LeijiLoginLayer:ctor(param)
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(display.width / 2, 0)
     node:addChild(listBg)
-    self._listViewSize = CCSizeMake(viewSize.width * 0.98, listBgHeight - 25)
+    self._listViewSize = cc.size(viewSize.width * 0.98, listBgHeight - 25)
 
     self._listViewNode = display.newNode()
     self._listViewNode:setContentSize(self._listViewSize)

@@ -36,7 +36,7 @@ function IconObj:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("public/public_icon.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("public/public_icon.ccbi", proxy, self._rootnode)
     node:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
     self:addChild(node, 1)
 

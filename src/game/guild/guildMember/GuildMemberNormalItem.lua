@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2015.01.07 
- --
- --]]
 local data_config_union_config_union = require("data.data_config_union_config_union")
 
 local NORMAL_FONT_SIZE = 22
@@ -21,7 +15,7 @@ function GuildMemberNormalItem:getContentSize()
     if self._contentSz == nil then
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("guild/guild_guildMember_normal_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("guild/guild_guildMember_normal_item.ccbi", proxy, rootnode)
         self._contentSz = rootnode["item_bg"]:getContentSize()
         self:addChild(node)
         node:removeSelf()
@@ -41,7 +35,7 @@ function GuildMemberNormalItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("guild/guild_guildMember_normal_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_guildMember_normal_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 

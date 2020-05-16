@@ -20,7 +20,7 @@ function GuildListItem:getContentSize()
     if self._contentSz == nil then
         local proxy = CCBProxy:create()
         local rootnode = {}
-        local node = CCBuilderReaderLoad("guild/guild_guildList_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("guild/guild_guildList_item.ccbi", proxy, rootnode)
         self._contentSz = rootnode["item_bg"]:getContentSize()
         self:addChild(node)
         node:removeSelf()
@@ -56,7 +56,7 @@ function GuildListItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("guild/guild_guildList_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("guild/guild_guildList_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, 0)
     self:addChild(node)
 

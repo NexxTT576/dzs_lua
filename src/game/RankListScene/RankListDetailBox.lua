@@ -12,7 +12,7 @@ function RankListDetailBox:ctor(cellData)
     local rootProxy = CCBProxy:create()
     self._rootnode = {}
 
-    local rootnode = CCBuilderReaderLoad("rankList/rank_detail_box.ccbi", rootProxy, self._rootnode)
+    local rootnode = CCBReaderLoad("rankList/rank_detail_box.ccbi", rootProxy, self._rootnode)
     rootnode:setPosition(display.cx, display.cy)
     self:addChild(rootnode, 1)
 
@@ -51,7 +51,7 @@ function RankListDetailBox:initContent()
     self._rootnode["player_name"]:setString(self.name)
 
     self.lvlTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 222, 0), size = 22})
-     --n
+    --n
     self._rootnode["lvl_icon"]:getParent():addChild(self.lvlTTF)
     self.lvlTTF:setString(self.grade) -- 等级
     self.lvlTTF:setPosition(self._rootnode["lvl_icon"]:getPositionX() + self._rootnode["lvl_icon"]:getContentSize().width, self._rootnode["lvl_icon"]:getPositionY())

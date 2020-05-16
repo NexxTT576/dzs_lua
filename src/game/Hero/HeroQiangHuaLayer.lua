@@ -1,5 +1,3 @@
---
-
 local QIANGHUA_VIEW = 1
 local XIAHUN_VIEW = 2
 
@@ -502,9 +500,8 @@ function HeroQiangHuaLayer:ctor(param)
         self:sendRes({viewType = XIAHUN_VIEW, op = 1, n = 1})
     end
 
-    local node =
-        CCBuilderReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode, self, CCSizeMake(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height))
-    -- local node = CCBuilderReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode,self,CCSizeMake(display.width, display.height - self.bottom:getContentSize().height - 72))
+    local node = CCBReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode, self, cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height))
+    -- local node = CCBReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode,self,cc.size(display.width, display.height - self.bottom:getContentSize().height - 72))
     node:setAnchorPoint(ccp(0.5, 0))
     node:setPosition(display.width / 2, self.bottom:getContentSize().height)
     self:addChild(node)

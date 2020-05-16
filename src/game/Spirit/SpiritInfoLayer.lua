@@ -1,27 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-8-23
---
 local data_jingyuantype_jingyuantype = require("data.data_jingyuantype_jingyuantype")
 local data_item_nature = require("data.data_item_nature")
 local data_item_item = require("data.data_item_item")
@@ -38,14 +14,14 @@ local SpiritInfoLayer =
 function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
     dump(data)
 
-    local sz = CCSizeMake(615, 425)
+    local sz = cc.size(615, 425)
     --    if optType == 4 then
-    --        sz = CCSizeMake(615, 370)
+    --        sz = cc.size(615, 370)
     --    end
 
     local proxy = CCBProxy:create()
     local rootnode = {}
-    local node = CCBuilderReaderLoad("spirit/spirit_desc.ccbi", proxy, rootnode, self, sz)
+    local node = CCBReaderLoad("spirit/spirit_desc.ccbi", proxy, rootnode, self, sz)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 

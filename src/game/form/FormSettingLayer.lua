@@ -6,32 +6,32 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-
-local FormSettingLayer = class("FormSettingLayer", function(param)
-    if param.bTouchEnabled then
-        return require("utility.ShadeLayer").new(ccc4(100, 100, 100, 150))
-    else
-        return display.newNode()
+local FormSettingLayer =
+    class(
+    "FormSettingLayer",
+    function(param)
+        if param.bTouchEnabled then
+            return require("utility.ShadeLayer").new(ccc4(100, 100, 100, 150))
+        else
+            return display.newNode()
+        end
     end
-
-end)
+)
 
 local function getDataOpen(sysID)
     local data_open_open = require("data.data_open_open")
-    
-    for k, v in ipairs(data_open_open) do
 
+    for k, v in ipairs(data_open_open) do
         if sysID == v.system then
             return v
         end
     end
 end
 
-
 local POS_MAP = {2, 5, 3, 4, 6, 1}
 function FormSettingLayer:ctor(param)
     local _list = param.list
-    local _sz   = param.sz
+    local _sz = param.sz
     local _closeListener = param.closeListener
     local _exchangeFunc = param.exchangeFunc
     local _zdlNum = param.zdlNum
@@ -45,7 +45,7 @@ function FormSettingLayer:ctor(param)
         end
         return nil
     end
---
+    --
     local cardlist = {}
     for i = 1, 6 do
         local h = getHeroByPos(i)
@@ -60,7 +60,7 @@ function FormSettingLayer:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("formation/formation_setting.ccbi", proxy, rootnode, self, _sz)
+    local node = CCBReaderLoad("formation/formation_setting.ccbi", proxy, rootnode, self, _sz)
     if param.bTouchEnabled then
         node:setPosition(display.cx, display.cy)
     end
@@ -72,13 +72,16 @@ function FormSettingLayer:ctor(param)
     end
 
     rootnode["titleLabel"]:setString("设置阵型")
-    rootnode["tag_close"]:addHandleOfControlEvent(function(eventName,sender)
-        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi)) 
-        self:removeSelf()
-        if _closeListener then
-            _closeListener()
-        end
-    end, CCControlEventTouchUpInside)
+    rootnode["tag_close"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
+            self:removeSelf()
+            if _closeListener then
+                _closeListener()
+            end
+        end,
+        CCControlEventTouchUpInside
+    )
 
     local cards = {}
     local function reorderCard(card)
@@ -93,7 +96,6 @@ function FormSettingLayer:ctor(param)
     local function touchBegan(param)
         if param.cardnode:isOpen() then
             if param.cardnode:empty() then
-
             else
                 _x, _y = param.image:getPosition()
                 reorderCard(param.cardnode:getParent())
@@ -116,7 +118,7 @@ function FormSettingLayer:ctor(param)
                 break
             end
         end
---
+        --
         if bSwitch then
             if index ~= 0 then
                 if _exchangeFunc then
@@ -129,33 +131,42 @@ function FormSettingLayer:ctor(param)
             end
         end
 
-        param.image:runAction(transition.sequence({
-            CCCallFunc:create(function()
-                param.cardnode:setTouchEnabled(false)
-            end),
-            CCMoveTo:create(0.1, ccp(_x, _y)),
-            CCCallFunc:create(function()
-                param.cardnode:setTouchEnabled(true)
-            end),
-        }))
+        param.image:runAction(
+            transition.sequence(
+                {
+                    CCCallFunc:create(
+                        function()
+                            param.cardnode:setTouchEnabled(false)
+                        end
+                    ),
+                    CCMoveTo:create(0.1, ccp(_x, _y)),
+                    CCCallFunc:create(
+                        function()
+                            param.cardnode:setTouchEnabled(true)
+                        end
+                    )
+                }
+            )
+        )
     end
-
 
     for k, v in ipairs(cardlist) do
         local key = string.format("card_%d", k)
-        local cardnode = require("game.form.FormSettingCard").new({
-            lv       = 0,
-            data     = v,
-            index    = k,
-            touchBegan = touchBegan,
-            touchEnd   = touchEnd,
-            touchMove  = touchMove})
+        local cardnode =
+            require("game.form.FormSettingCard").new(
+            {
+                lv = 0,
+                data = v,
+                index = k,
+                touchBegan = touchBegan,
+                touchEnd = touchEnd,
+                touchMove = touchMove
+            }
+        )
 
         rootnode[key]:addChild(cardnode)
         table.insert(cards, cardnode)
     end
-
 end
 
 return FormSettingLayer
-

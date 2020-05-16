@@ -28,7 +28,7 @@ function ItemInformation:ctor(param)
 
         local proxy = CCBProxy:create()
         local subnode = {}
-        local node = CCBuilderReaderLoad("reward/item_information.ccbi", proxy, subnode)
+        local node = CCBReaderLoad("reward/item_information.ccbi", proxy, subnode)
         node:setPosition(display.cx, display.cy)
         self:addChild(node)
 

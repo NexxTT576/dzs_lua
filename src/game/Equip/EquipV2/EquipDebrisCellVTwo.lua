@@ -14,7 +14,7 @@ local EquipDebrisCellVTwo =
 
 function EquipDebrisCellVTwo:getContentSize()
     -- local sprite = display.newSprite("#herolist_board.png")
-    return CCSizeMake(display.width, 154) --sprite:getContentSize()
+    return cc.size(display.width, 154) --sprite:getContentSize()
 end
 
 function EquipDebrisCellVTwo:refresh(id)
@@ -83,7 +83,7 @@ function EquipDebrisCellVTwo:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("equip/equip_debris_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("equip/equip_debris_item.ccbi", proxy, self._rootnode)
     node:setPosition(display.width * 0.5, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 

@@ -9,7 +9,7 @@ local BagItem =
 )
 
 function BagItem:getContentSize()
-    return CCSizeMake(display.width * 0.98, 158)
+    return cc.size(display.width * 0.98, 158)
 end
 
 -- 1 使用界面
@@ -28,7 +28,7 @@ function BagItem:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("bag/bag_object_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("bag/bag_object_item.ccbi", proxy, self._rootnode)
     node:setPosition(_viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node, 0)
     self.typeNode = display.newNode()

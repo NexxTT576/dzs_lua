@@ -22,7 +22,7 @@ function ShenmiGoldMsgBox:ctor(param)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("nbhuodong/shenmi_gold_msgBox.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("nbhuodong/shenmi_gold_msgBox.ccbi", proxy, rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

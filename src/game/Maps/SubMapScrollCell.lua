@@ -16,7 +16,7 @@ function SubMapScrollCell:getContentSize()
         local proxy = CCBProxy:create()
         local rootnode = {}
 
-        local node = CCBuilderReaderLoad("ccbi/fuben/sub_map_item.ccbi", proxy, rootnode)
+        local node = CCBReaderLoad("ccbi/fuben/sub_map_item.ccbi", proxy, rootnode)
         self._sz = rootnode["itemBg"]:getContentSize()
 
         self:addChild(node)
@@ -37,7 +37,7 @@ function SubMapScrollCell:create(param)
 
     --    dump(_itemData)
     --    dump(_subMapInfo)
-    local node = CCBuilderReaderLoad("ccbi/fuben/sub_map_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("ccbi/fuben/sub_map_item.ccbi", proxy, self._rootnode)
     node:setPosition(_viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 

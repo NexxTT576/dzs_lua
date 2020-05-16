@@ -16,7 +16,7 @@ local HeroCollectCell =
 
 function HeroCollectCell:getContentSize()
     -- local sprite = display.newSprite("#herolist_board.png")
-    return CCSizeMake(display.width, 140) --sprite:getContentSize()
+    return cc.size(display.width, 140) --sprite:getContentSize()
 end
 
 function HeroCollectCell:refresh(id)
@@ -127,7 +127,7 @@ function HeroCollectCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("hero/hero_collect_cell.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("hero/hero_collect_cell.ccbi", proxy, self._rootnode)
     node:setPosition(0, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 

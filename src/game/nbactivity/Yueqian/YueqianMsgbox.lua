@@ -20,7 +20,7 @@ function YueqianMsgbox:ctor(param)
 
     local proxy = CCBProxy:create()
     local rootnode = {}
-    local node = CCBuilderReaderLoad("nbhuodong/yueqian_msgbox.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("nbhuodong/yueqian_msgbox.ccbi", proxy, rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
 

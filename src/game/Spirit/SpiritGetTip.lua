@@ -24,14 +24,18 @@
 --
 local data_item_item = require("data.data_item_item")
 
-local SpiritGetTip = class("SpiritGetTip", function()
-    return display.newNode()
-end)
+local SpiritGetTip =
+    class(
+    "SpiritGetTip",
+    function()
+        return display.newNode()
+    end
+)
 
 function SpiritGetTip:ctor(info)
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("spirit/spirit_get_tip.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("spirit/spirit_get_tip.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node, 3)
 
@@ -43,13 +47,15 @@ function SpiritGetTip:ctor(info)
         end
     end
 
-    local action = transition.sequence({
-        CCDelayTime:create(2),
-        CCFadeOut:create(0.5),
-        CCRemoveSelf:create(true)
-    })
+    local action =
+        transition.sequence(
+        {
+            CCDelayTime:create(2),
+            CCFadeOut:create(0.5),
+            CCRemoveSelf:create(true)
+        }
+    )
     self:runAction(action)
 end
 
 return SpiritGetTip
-

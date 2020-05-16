@@ -97,14 +97,14 @@ function ChongzhiLayer:ctor()
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    self._totalSize = CCSizeMake(640, display.height - 45)
+    self._totalSize = cc.size(640, display.height - 45)
     if self._totalSize.height > 900 then
         self._totalSize.height = 900
     elseif self._totalSize.height < 650 then
         self._totalSize.height = 650
     end
 
-    self._node = CCBuilderReaderLoad("ccbi/shop/shop_chongzhi_layer.ccbi", proxy, self._rootnode, self, self._totalSize)
+    self._node = CCBReaderLoad("ccbi/shop/shop_chongzhi_layer.ccbi", proxy, self._rootnode, self, self._totalSize)
     self._node:setPosition(display.cx, display.cy)
     self:addChild(self._node)
 
@@ -215,11 +215,11 @@ function ChongzhiLayer:initAllNodePos()
     self._rootnode["monthCard_node"]:setPositionY(self._totalSize.height - height)
     height = height + self._rootnode["monthCard_node"]:getContentSize().height
 
-    local shopBgViewSize = CCSizeMake(615, self._totalSize.height - height - 15)
+    local shopBgViewSize = cc.size(615, self._totalSize.height - height - 15)
     if self._isFullVip then
         shopBgViewSize.height = shopBgViewSize.height + self._rootnode["vipReward_node"]:getContentSize().height - 40
     end
-    self._shopItemViewSize = CCSizeMake(shopBgViewSize.width, shopBgViewSize.height - 20)
+    self._shopItemViewSize = cc.size(shopBgViewSize.width, shopBgViewSize.height - 20)
 
     -- 背景
     self._rootnode["listView_node"]:removeAllChildren()
@@ -413,7 +413,7 @@ function ChongzhiLayer:initVipRewardInfo(viplevelData)
     self.ListTable =
         require("utility.TableViewExt").new(
         {
-            size = CCSizeMake(boardWidth, boardHeight),
+            size = cc.size(boardWidth, boardHeight),
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = #cellDatas,

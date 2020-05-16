@@ -16,7 +16,7 @@ function VipLibaoRewardItem:getContentSize()
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("shop/shop_vipLibao_reward_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("shop/shop_vipLibao_reward_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -30,7 +30,7 @@ function VipLibaoRewardItem:create(param)
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
-    local node = CCBuilderReaderLoad("shop/shop_vipLibao_reward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("shop/shop_vipLibao_reward_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width / 2, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 

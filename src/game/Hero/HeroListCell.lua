@@ -11,7 +11,7 @@ local HeroListCell =
 )
 
 function HeroListCell:getContentSize()
-    return CCSizeMake(display.width, 154) --sprite:getContentSize()
+    return cc.size(display.width, 154) --sprite:getContentSize()
 end
 
 function HeroListCell:getJinjieBtn()
@@ -35,7 +35,7 @@ function HeroListCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("hero/hero_list_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("hero/hero_list_item.ccbi", proxy, self._rootnode)
     node:setPosition(display.width * 0.5, self._rootnode["itemBg"]:getContentSize().height / 2)
     self:addChild(node)
 
@@ -44,7 +44,7 @@ function HeroListCell:create(param)
     self.createQiangHuaLayer = param.createQiangHuaListener
 
     self.bg = self._rootnode["itemBg"]
-     --display.newSprite("#herolist_board.png")
+    --display.newSprite("#herolist_board.png")
 
     self.list = param.listData
     self.saleList = param.saleData
@@ -94,7 +94,7 @@ function HeroListCell:create(param)
             text = "",
             font = FONTS_NAME.font_fzcy,
             x = 0,
-             --self._rootnode["nameBg"]:getContentSize().width/2 + self.headIcon:getContentSize().width+30,
+            --self._rootnode["nameBg"]:getContentSize().width/2 + self.headIcon:getContentSize().width+30,
             y = self._rootnode["nameBg"]:getContentSize().height * 0.5,
             size = 22,
             align = ui.TEXT_ALIGN_LEFT

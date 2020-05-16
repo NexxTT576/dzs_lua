@@ -158,7 +158,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
         self._updateTime = 0
     end
 
-    local node = CCBuilderReaderLoad(path, proxy, self._rootnode)
+    local node = CCBReaderLoad(path, proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -189,7 +189,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
         ui.newEditBox(
         {
             image = "#win_base_inner_bg_black.png",
-            size = CCSizeMake(cntSize.width * 0.9, cntSize.height * 0.9),
+            size = cc.size(cntSize.width * 0.9, cntSize.height * 0.9),
             x = cntSize.width / 2,
             y = cntSize.height / 2
         }
@@ -414,7 +414,7 @@ function ChatLayer:resetScrollView()
     local listViewSize = self._rootnode["listView"]:getContentSize()
     local contentViewSize = self._rootnode["contentView"]:getContentSize()
 
-    local sz = CCSizeMake(contentViewSize.width, contentViewSize.height + self._height)
+    local sz = cc.size(contentViewSize.width, contentViewSize.height + self._height)
 
     self._rootnode["descView"]:setContentSize(sz)
     self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))

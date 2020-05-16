@@ -252,7 +252,7 @@ end
 -- 战斗胜利
 function ArenaResult:initWin(data)
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("arena/arena_win.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("arena/arena_win.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -287,7 +287,7 @@ end
 -- 失败
 function ArenaResult:initLost(data)
     local proxy = CCBProxy:create()
-    local node = CCBuilderReaderLoad("arena/arena_lost.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("arena/arena_lost.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

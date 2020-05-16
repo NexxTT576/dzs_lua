@@ -19,7 +19,7 @@ function SubmapNewMsg:ctor(title, levelName)
     local proxy = CCBProxy:create()
     local rootnode = {}
 
-    local node = CCBuilderReaderLoad("fuben/sub_map_open.ccbi", proxy, rootnode)
+    local node = CCBReaderLoad("fuben/sub_map_open.ccbi", proxy, rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 

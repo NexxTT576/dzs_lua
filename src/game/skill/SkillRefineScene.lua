@@ -33,7 +33,7 @@ local SkillRefineScene =
         return require("game.BaseScene").new(
             {
                 contentFile = "skill/skill_refine_scene.ccbi",
-                adjustSize = CCSizeMake(8, 3)
+                adjustSize = cc.size(8, 3)
             }
         )
     end
@@ -48,7 +48,7 @@ local Item =
 )
 
 function Item:getContentSize()
-    return CCSizeMake(98, 91)
+    return cc.size(98, 91)
 end
 
 function Item:create(param)
@@ -57,7 +57,7 @@ function Item:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("skill/skill_refine_icon.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("skill/skill_refine_icon.ccbi", proxy, self._rootnode)
     node:setPosition(node:getContentSize().width / 2, _viewSize.height / 2)
     self:addChild(node, 0)
 

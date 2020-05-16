@@ -6,29 +6,38 @@
 -- To change this template use File | Settings | File Templates.
 --
 
-
-local SpiritQuickSelectedLayer = class("SpiritQuickSelectedLayer", function()
-    return require("utility.ShadeLayer").new()
-end)
+local SpiritQuickSelectedLayer =
+    class(
+    "SpiritQuickSelectedLayer",
+    function()
+        return require("utility.ShadeLayer").new()
+    end
+)
 
 local function btn_effect(sender, callback)
-    sender:runAction(transition.sequence({
-        CCScaleTo:create(0.08, 0.8),
-        CCScaleTo:create(0.1, 1.01),
-        CCScaleTo:create(0.01, 1),
-        CCCallFunc:create(function()
-            if callback then
-                callback()
-            end
-        end)
-    }))
+    sender:runAction(
+        transition.sequence(
+            {
+                CCScaleTo:create(0.08, 0.8),
+                CCScaleTo:create(0.1, 1.01),
+                CCScaleTo:create(0.01, 1),
+                CCCallFunc:create(
+                    function()
+                        if callback then
+                            callback()
+                        end
+                    end
+                )
+            }
+        )
+    )
 end
 
 function SpiritQuickSelectedLayer:ctor(callback)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("spirit/spirit_quick_select.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("spirit/spirit_quick_select.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)
     self:addChild(node)
 
@@ -53,7 +62,6 @@ function SpiritQuickSelectedLayer:ctor(callback)
             callback(selected)
         end
         self:removeSelf()
-
     end
 
     local function onSelectedStar(tag)
@@ -65,21 +73,31 @@ function SpiritQuickSelectedLayer:ctor(callback)
         self._rootnode["selectedFlag_" .. tostring(tag)]:setVisible(selected[tag])
     end
 
-    self._rootnode["tag_close"]:addHandleOfControlEvent(function(eventName, sender)
-        btn_effect(sender, function()
-            self:removeSelf()
-        end)
-    end, CCControlEventTouchDown)
+    self._rootnode["tag_close"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            btn_effect(
+                sender,
+                function()
+                    self:removeSelf()
+                end
+            )
+        end,
+        CCControlEventTouchDown
+    )
 
-    self._rootnode["chooseAllBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        btn_effect(sender, onSelecteAllBtn)
-    end,
-    CCControlEventTouchDown)
+    self._rootnode["chooseAllBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            btn_effect(sender, onSelecteAllBtn)
+        end,
+        CCControlEventTouchDown
+    )
 
-    self._rootnode["confirmBtn"]:addHandleOfControlEvent(function(eventName,sender)
-        btn_effect(sender, onConfirmBtn)
-    end,
-    CCControlEventTouchDown)
+    self._rootnode["confirmBtn"]:addHandleOfControlEvent(
+        function(eventName, sender)
+            btn_effect(sender, onConfirmBtn)
+        end,
+        CCControlEventTouchDown
+    )
 
     for i = 1, 4 do
         self._rootnode["chooseStarBtn_" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onSelectedStar)

@@ -13,7 +13,7 @@ function ArenaCell:getContentSize()
         local proxy = CCBProxy:create()
         local rootNode = {}
 
-        local node = CCBuilderReaderLoad("arena/arena_item.ccbi", proxy, rootNode)
+        local node = CCBReaderLoad("arena/arena_item.ccbi", proxy, rootNode)
         self.cntSize = rootNode["itemBg"]:getContentSize()
         self:addChild(node)
         node:removeSelf()
@@ -95,7 +95,7 @@ function ArenaCell:refresh(id, restTime, timeType)
     self.rank = cellData["rank"]
     self.isVip = cellData["vip"]
     self.faction = cellData["faction"]
-     --帮会
+    --帮会
     if self.faction == "" then
         self._rootnode["gang_name"]:setVisible(false)
     else
@@ -290,7 +290,7 @@ function ArenaCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("arena/arena_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("arena/arena_item.ccbi", proxy, self._rootnode)
     node:setPosition(_viewSize.width / 2, 0)
     self:addChild(node)
 

@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.09.09
- --
- --]]
 local KaifuRewardCell =
     class(
     "KaifuRewardCell",
@@ -13,11 +7,11 @@ local KaifuRewardCell =
 )
 
 function KaifuRewardCell:getContentSize()
-    -- return CCSizeMake(display.width, 200)
+    -- return cc.size(display.width, 200)
     local proxy = CCBProxy:create()
     local rootNode = {}
 
-    local node = CCBuilderReaderLoad("reward/kaifu_reward_item.ccbi", proxy, rootNode)
+    local node = CCBReaderLoad("reward/kaifu_reward_item.ccbi", proxy, rootNode)
     local size = rootNode["itemBg"]:getContentSize()
     self:addChild(node)
     node:removeSelf()
@@ -163,7 +157,7 @@ function KaifuRewardCell:create(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad("reward/kaifu_reward_item.ccbi", proxy, self._rootnode)
+    local node = CCBReaderLoad("reward/kaifu_reward_item.ccbi", proxy, self._rootnode)
     node:setPosition(viewSize.width * 0.5, self._rootnode["itemBg"]:getContentSize().height * 0.5)
     self:addChild(node)
 

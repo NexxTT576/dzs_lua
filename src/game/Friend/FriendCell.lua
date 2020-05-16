@@ -9,7 +9,7 @@ local FriendCell =
 local MAX_ZORDER = 100000
 
 function FriendCell:getContentSize()
-    return CCSizeMake(display.width, self._rootnode["itemBg"]:getContentSize().height)
+    return cc.size(display.width, self._rootnode["itemBg"]:getContentSize().height)
 end
 
 function FriendCell:ctor(cellType)
@@ -23,7 +23,7 @@ function FriendCell:ctor(cellType)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBuilderReaderLoad(cellPath, proxy, self._rootnode)
+    local node = CCBReaderLoad(cellPath, proxy, self._rootnode)
     node:setPosition(display.width * 0.5, self._rootnode["itemBg"]:getContentSize().height)
     self:addChild(node)
 
@@ -38,7 +38,7 @@ function FriendCell:ctor(cellType)
     end
 
     self.heroNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 210, 0)})
-     --n
+    --n
     self._rootnode["heroName"]:getParent():addChild(self.heroNameTTF)
 
     if self._rootnode["bubble_node"] ~= nil then
