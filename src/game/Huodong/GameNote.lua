@@ -100,11 +100,21 @@ local Item =
 function GameNote:ctor()
     self:enableNodeEvents()
     -- 半透背景
+    --@RefType luaIde#cc.LayerColor
     local bg = display.newLayer(cc.c4b(0, 0, 0, 100))
     bg:setScale(display.height / bg:getContentSize().height)
     self:addChild(bg)
-
     bg:setTouchEnabled(true)
+
+    local bglistener = cc.EventListenerTouchOneByOne:create()
+    bglistener:registerScriptHandler(
+        function(event)
+            return true
+        end,
+        cc.Handler.EVENT_TOUCH_BEGAN
+    )
+    local eventDispatcher = self:getEventDispatcher()
+    eventDispatcher:addEventListenerWithSceneGraphPriority(bglistener, bg)
 
     local proxy = CCBProxy:create()
     -- local ccbReader = proxy:createCCBReader()
