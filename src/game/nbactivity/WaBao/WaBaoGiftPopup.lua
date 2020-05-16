@@ -62,7 +62,7 @@ local WaBaoGiftPopup =
     class(
     "WaBaoGiftPopup",
     function()
-        return display.newLayer("WaBaoGiftPopup")
+        return display.newLayer()
     end
 )
 

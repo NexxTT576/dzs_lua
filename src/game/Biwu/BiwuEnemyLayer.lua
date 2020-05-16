@@ -3,7 +3,7 @@ local BiwuEnemyLayer =
     class(
     "BiwuEnemyLayer",
     function()
-        return display.newLayer("BiwuEnemyLayer")
+        return display.newLayer()
     end
 )
 

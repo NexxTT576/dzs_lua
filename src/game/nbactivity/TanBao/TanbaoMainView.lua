@@ -12,7 +12,7 @@ local TanbaoMainView =
     class(
     "TanbaoMainView",
     function()
-        return display.newLayer("TanbaoMainView")
+        return display.newLayer()
     end
 )
 
@@ -787,7 +787,7 @@ function TanbaoMainView:resetRoadLenth(target)
     self.speed = 0
     self.t1 = 50 -- 加速时间 (缩放因子 100)
     self.t2 = 350
-     -- 减速时间 (缩放因子 100)
+    -- 减速时间 (缩放因子 100)
     self.timer = 0
     self.a1 = ((self._totalRatio * 2) / (self.t1 + self.t2)) / (self.t1)
     self.a2 = ((self._totalRatio * 2) / (self.t1 + self.t2)) / (self.t2)

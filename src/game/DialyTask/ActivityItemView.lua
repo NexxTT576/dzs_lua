@@ -9,7 +9,7 @@ local ActivityItemView =
     class(
     "ActivityItemView",
     function()
-        return display.newLayer("ActivityItemView")
+        return display.newLayer()
     end
 )
 

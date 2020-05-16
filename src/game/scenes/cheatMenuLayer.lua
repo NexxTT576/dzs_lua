@@ -9,7 +9,7 @@ local cheatMenuLayer =
     class(
     "cheatMenuLayer",
     function()
-        return display.newLayer("cheatMenuLayer")
+        return display.newLayer()
     end
 )
 
@@ -165,8 +165,26 @@ function cheatMenuLayer:ctor(...)
         editBox:addChild(onBtn)
     end
 
+    local newTTFLabelMenuItem = function(param)
+        --@RefType luaIde#cc.Label
+        local btLabel = cc.Label:create()
+        btLabel:setString(param.text)
+        btLabel:setTextColor(param.color)
+        btLabel:setWidth(param.size)
+
+        --@RefType luaIde#cc.MenuItemLabel
+        local menuLabelbtn = cc.MenuItemLabel:create(btLabel)
+        if param.tag ~= nil then
+            menuLabelbtn:setTag(param.tag)
+        end
+
+        menuLabelbtn:registerScriptTapHandler(param.listener)
+        return menuLabelbtn
+    end
+
+    --@RefType luaIde#cc.MenuItemLabel
     local addBtn =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加物品",
             color = display.COLOR_BLUE,
@@ -178,9 +196,9 @@ function cheatMenuLayer:ctor(...)
             tag = 1
         }
     )
-    --
+
     local addGold =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加金币",
             color = display.COLOR_BLUE,
@@ -193,7 +211,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addSilver =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加银币",
             color = display.COLOR_BLUE,
@@ -206,7 +224,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addHero =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加武将",
             color = display.COLOR_BLUE,
@@ -219,7 +237,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addEquip =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加装备",
             color = display.COLOR_BLUE,
@@ -232,7 +250,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addTili =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加体力",
             color = display.COLOR_BLUE,
@@ -245,7 +263,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addJingYuan =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加精元",
             color = display.COLOR_BLUE,
@@ -258,7 +276,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addherosoul =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "侠客碎片",
             color = display.COLOR_BLUE,
@@ -271,7 +289,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local unloadHero =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "下阵英雄",
             color = display.COLOR_BLUE,
@@ -284,7 +302,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addReward =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加奖励",
             color = display.COLOR_BLUE,
@@ -301,7 +319,7 @@ function cheatMenuLayer:ctor(...)
         }
     )
     local addStar =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加星星",
             color = display.COLOR_BLUE,
@@ -329,7 +347,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addSkill =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加武学",
             color = display.COLOR_BLUE,
@@ -352,7 +370,7 @@ function cheatMenuLayer:ctor(...)
     )
 
     local addEquipFragment =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加装备碎片",
             color = display.COLOR_GREEN,
@@ -374,7 +392,7 @@ function cheatMenuLayer:ctor(...)
         }
     )
     local addAllHeros =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "添加所有侠客",
             color = display.COLOR_GREEN,
@@ -392,7 +410,7 @@ function cheatMenuLayer:ctor(...)
         }
     )
     local resetAllCount =
-        ui.newTTFLabelMenuItem(
+        newTTFLabelMenuItem(
         {
             text = "重置挑战次数",
             color = display.COLOR_GREEN,
@@ -411,13 +429,13 @@ function cheatMenuLayer:ctor(...)
     )
     --    addGold, addSilver, addHero, addEquip, addTili, addJingYuan,
     if (GAME_DEBUG == true) then
-        local testMenu = ui.newMenu({addBtn, addGold, addHero, addSilver, addherosoul, unloadHero, addReward, addStar, addSkill, addEquipFragment, addAllHeros, resetAllCount})
+        local testMenu = cc.Menu:create(addBtn, addGold, addHero, addSilver, addherosoul, unloadHero, addReward, addStar, addSkill, addEquipFragment, addAllHeros, resetAllCount)
         testMenu:alignItemsVertically()
         testMenu:setPosition(display.width * 0.12, display.height * 0.62)
         self:addChild(testMenu, 19)
 
         local testAnim =
-            ui.newTTFLabelMenuItem(
+            newTTFLabelMenuItem(
             {
                 text = "动画测试界面",
                 color = display.COLOR_GREEN,
@@ -430,7 +448,7 @@ function cheatMenuLayer:ctor(...)
         )
 
         local testFile =
-            ui.newTTFLabelMenuItem(
+            newTTFLabelMenuItem(
             {
                 text = "测试文件读写",
                 color = display.COLOR_GREEN,
@@ -443,7 +461,7 @@ function cheatMenuLayer:ctor(...)
 
         testFile:setPosition(0, -100)
 
-        local settingMenu = ui.newMenu({testAnim, testFile})
+        local settingMenu = cc.Menu:create(testAnim, testFile)
         settingMenu:setPosition(display.width * 0.7, display.height * 0.62)
         self:addChild(settingMenu)
 

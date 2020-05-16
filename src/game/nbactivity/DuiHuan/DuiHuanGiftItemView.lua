@@ -13,7 +13,7 @@ local DuiHuanGiftItemView =
     class(
     "DuiHuanGiftItemView",
     function()
-        return display.newLayer("DuiHuanGiftItemView")
+        return display.newLayer()
     end
 )
 

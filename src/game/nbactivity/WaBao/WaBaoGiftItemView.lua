@@ -13,7 +13,7 @@ local WaBaoGiftItemView =
     class(
     "WaBaoGiftItemView",
     function()
-        return display.newLayer("WaBaoGiftItemView")
+        return display.newLayer()
     end
 )
 

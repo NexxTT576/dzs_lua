@@ -1,12 +1,8 @@
---
--- Author: Daneil
--- Date: 2015-01-25 15:12:18
---
 local YabiaoSpeedUpCommitPopup =
     class(
     "YabiaoSpeedUpCommitPopup",
     function()
-        return display.newLayer("YabiaoSpeedUpCommitPopup")
+        return display.newLayer()
     end
 )
 

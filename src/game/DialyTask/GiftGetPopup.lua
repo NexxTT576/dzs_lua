@@ -62,7 +62,7 @@ local GiftGetPopup =
     class(
     "GiftGetPopup",
     function()
-        return display.newLayer("GiftGetPopup")
+        return display.newLayer()
     end
 )
 

@@ -9,7 +9,7 @@ local GameNote =
     class(
     "GameNote",
     function(...)
-        return display.newLayer("GameNote")
+        return display.newLayer()
     end
 )
 

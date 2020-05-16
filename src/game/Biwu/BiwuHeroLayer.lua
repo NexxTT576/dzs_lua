@@ -18,7 +18,7 @@ local BiwuHeroLayer =
     class(
     "BiwuHeroLayer",
     function()
-        return display.newLayer("BiwuHeroLayer")
+        return display.newLayer()
     end
 )
 

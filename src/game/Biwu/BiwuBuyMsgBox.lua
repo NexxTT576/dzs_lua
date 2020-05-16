@@ -2,7 +2,7 @@ local BiwuBuyMsgBox =
     class(
     "BiwuBuyMsgBox",
     function()
-        return display.newLayer("BiwuBuyMsgBox")
+        return display.newLayer()
     end
 )
 

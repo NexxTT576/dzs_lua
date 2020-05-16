@@ -8,7 +8,7 @@ local BiwuGiftPreItemView =
     class(
     "BiwuGiftPreItemView",
     function()
-        return display.newLayer("BiwuGiftPreItemView")
+        return display.newLayer()
     end
 )
 

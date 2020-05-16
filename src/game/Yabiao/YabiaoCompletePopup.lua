@@ -1,12 +1,8 @@
---
--- Author: Daneil
--- Date: 2015-01-25 15:12:18
---
 local YabiaoCompletePopup =
     class(
     "YabiaoCompletePopup",
     function()
-        return display.newLayer("YabiaoCompletePopup")
+        return display.newLayer()
     end
 )
 

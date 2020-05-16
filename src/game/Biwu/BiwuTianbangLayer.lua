@@ -3,7 +3,7 @@ local BiwuTianbangLayer =
     class(
     "BiwuTianbangLayer",
     function()
-        return display.newLayer("BiwuTianbangLayer")
+        return display.newLayer()
     end
 )
 

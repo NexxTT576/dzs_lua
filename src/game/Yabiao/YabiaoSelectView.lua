@@ -1,7 +1,3 @@
---
--- Author: Daneil
--- Date: 2015-02-02 20:11:29
---
 local data_ui_ui = require("data.data_ui_ui")
 local data_yabiao_jiangli_yabiao_jiangli = require("data.data_yabiao_jiangli_yabiao_jiangli")
 local data_config_yabiao_config_yabiao = require("data.data_config_yabiao_config_yabiao")
@@ -16,7 +12,7 @@ local YabiaoSelectView =
     class(
     "YabiaoSelectView",
     function()
-        return display.newLayer("YabiaoSelectView")
+        return display.newLayer()
     end
 )
 

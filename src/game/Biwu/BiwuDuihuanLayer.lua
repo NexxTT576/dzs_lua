@@ -4,7 +4,7 @@ local BiwuDuihuanLayer =
     class(
     "BiwuDuihuanLayer",
     function()
-        return display.newLayer("BiwuDuihuanLayer")
+        return display.newLayer()
     end
 )
 

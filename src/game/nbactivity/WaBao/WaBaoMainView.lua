@@ -1,13 +1,9 @@
---
--- Author: Daneil
--- Date: 2015-03-12 12:56:56
---
 require("game.Biwu.BiwuFuc")
 local WaBaoMainView =
     class(
     "WaBaoMainView",
     function()
-        return display.newLayer("WaBaoMainView")
+        return display.newLayer()
     end
 )
 

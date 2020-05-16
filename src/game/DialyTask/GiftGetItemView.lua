@@ -9,7 +9,7 @@ local GiftGetItemView =
     class(
     "GiftGetItemView",
     function()
-        return display.newLayer("GiftGetItemView")
+        return display.newLayer()
     end
 )
 

@@ -7,7 +7,7 @@ local DuiHuanMainView =
     class(
     "DuiHuanMainView",
     function()
-        return display.newLayer("DuiHuanMainView")
+        return display.newLayer()
     end
 )
 

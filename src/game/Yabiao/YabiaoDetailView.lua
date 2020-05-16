@@ -1,7 +1,3 @@
---
--- Author: Daneil
--- Date: 2015-02-02 20:11:29
---
 local data_item_item = require("data.data_item_item")
 local btnCloseRes = {
     normal = "#win_base_close.png",
@@ -12,7 +8,7 @@ local YabiaoDetailView =
     class(
     "YabiaoDetailView",
     function()
-        return display.newLayer("YabiaoDetailView")
+        return display.newLayer()
     end
 )
 

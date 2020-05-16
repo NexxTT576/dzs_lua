@@ -62,7 +62,7 @@ local DuiHuanGiftPopup =
     class(
     "DuiHuanGiftPopup",
     function()
-        return display.newLayer("DuiHuanGiftPopup")
+        return display.newLayer()
     end
 )
 

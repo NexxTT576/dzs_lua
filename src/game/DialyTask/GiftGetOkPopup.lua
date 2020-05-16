@@ -20,7 +20,7 @@ local GiftGetOkPopup =
     class(
     "GiftGetOkPopup",
     function()
-        return display.newLayer("GiftGetOkPopup")
+        return display.newLayer()
     end
 )
 

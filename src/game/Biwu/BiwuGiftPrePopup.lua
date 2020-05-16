@@ -64,7 +64,7 @@ local BiwuGiftRrePopup =
     class(
     "BiwuGiftRrePopup",
     function()
-        return display.newLayer("BiwuGiftRrePopup")
+        return display.newLayer()
     end
 )
 
