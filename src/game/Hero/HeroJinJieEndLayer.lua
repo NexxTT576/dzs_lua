@@ -8,7 +8,7 @@ local HeroJinJieEndLayer =
     function()
         display.addSpriteFramesWithFile("ui/ui_herolist_v2.plist", "ui/ui_herolist_v2.png")
         display.addSpriteFramesWithFile("ui/ui_equipV2.plist", "ui/ui_equipV2.png")
-        return display.newColorLayer(ccc4(0, 0, 0, 200))
+        return display.newLayer(cc.c4b(0, 0, 0, 200))
     end
 )
 

@@ -43,7 +43,7 @@ local HeroInfoLayer =
     class(
     "HeroInfoLayer",
     function()
-        return require("utility.ShadeLayer").new(ccc4(100, 100, 100, 0))
+        return require("utility.ShadeLayer").new(cc.c4b(100, 100, 100, 0))
     end
 )
 

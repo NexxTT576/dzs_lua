@@ -18,7 +18,7 @@ local GuildBaseScene =
 --广播下面的ccbi文件，如果没有为空
 
 function GuildBaseScene:ctor(param)
-    -- local unTouchLayer = display.newColorLayer(ccc4(55,55,55,100))
+    -- local unTouchLayer = display.newLayer(cc.c4b(55,55,55,100))
     -- unTouchLayer:setTouchEnabled(true)
     -- self:addChild(unTouchLayer,1000000)
 

@@ -154,7 +154,7 @@ function HuaShanScene:createMaskLayer()
         self.maskLayer = nil
     end
 
-    self.maskLayer = display.newColorLayer(color or ccc4(0, 0, 0, 0))
+    self.maskLayer = display.newLayer(color or cc.c4b(0, 0, 0, 0))
     self.maskLayer:setTouchEnabled(true)
     self.maskLayer:addNodeEventListener(
         cc.NODE_TOUCH_EVENT,

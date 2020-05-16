@@ -734,7 +734,7 @@ function HeroList:ctor(tag)
 
     ResMgr.createBefTutoMask(self)
 
-    -- local layer = display.newColorLayer(ccc4(100, 0, 0, 100))
+    -- local layer = display.newLayer(cc.c4b(100, 0, 0, 100))
     -- layer:setTouchEnabled(true)
     -- self:addChild(layer)
 

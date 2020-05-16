@@ -11,7 +11,7 @@ local FormSettingLayer =
     "FormSettingLayer",
     function(param)
         if param.bTouchEnabled then
-            return require("utility.ShadeLayer").new(ccc4(100, 100, 100, 150))
+            return require("utility.ShadeLayer").new(cc.c4b(100, 100, 100, 150))
         else
             return display.newNode()
         end

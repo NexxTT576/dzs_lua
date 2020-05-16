@@ -100,7 +100,7 @@ function LimitHeroLayer:init()
 
     self._rootnode["limit_bg"]:addChild(self.heroTableList)
 
-    self.touchLayer = display.newColorLayer(ccc4(100, 50, 50, 0))
+    self.touchLayer = display.newLayer(cc.c4b(100, 50, 50, 0))
     self.touchLayer:setPosition(cc.p(0, LIST_HEIGHT))
     self.touchLayer:setContentSize(CCSize(display.width, self.viewSize.height - LIST_HEIGHT))
     self.touchLayer:setTouchEnabled(true)

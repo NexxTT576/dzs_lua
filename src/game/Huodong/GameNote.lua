@@ -1,10 +1,4 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-08-07 11:27:40
- -- @version 
- --
- --]]
+--@SuperType luaIde#cc.Layer
 local GameNote =
     class(
     "GameNote",
@@ -104,10 +98,9 @@ local Item =
 )
 
 function GameNote:ctor()
-    self:setNodeEventEnabled(true)
-
+    self:enableNodeEvents()
     -- 半透背景
-    local bg = display.newColorLayer(ccc4(0, 0, 0, 100))
+    local bg = display.newLayer(cc.c4b(0, 0, 0, 100))
     bg:setScale(display.height / bg:getContentSize().height)
     self:addChild(bg)
 
@@ -120,7 +113,7 @@ function GameNote:ctor()
     -- 背景卷轴
     local ccb_mm_name = "ccbi/gamenote/gamenote.ccbi"
     local node = CCBReaderLoad(ccb_mm_name, proxy, rootnode)
-    self.layer = tolua.cast(node, "CCLayer")
+    self.layer = tolua.cast(node, "cc.Layer")
     self.layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(self.layer)
 

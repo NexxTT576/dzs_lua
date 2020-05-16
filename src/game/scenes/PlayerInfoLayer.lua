@@ -17,7 +17,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     self._rootNode = self._rootNode or {}
 
     local node = CCBReaderLoad("ccbi/mainmenu/playerinfo.ccbi", proxy, self._rootNode)
-    local layer = tolua.cast(node, "CCLayer")
+    local layer = tolua.cast(node, "cc.Layer")
     layer:setPosition(display.width / 2, display.height * 0.53)
     self:addChild(layer)
 

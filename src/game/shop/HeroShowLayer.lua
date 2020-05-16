@@ -88,7 +88,7 @@ local HeroShowLayer =
     class(
     "HeroShowLayer",
     function()
-        return require("utility.ShadeLayer").new(ccc4(0, 0, 0, 0))
+        return require("utility.ShadeLayer").new(cc.c4b(0, 0, 0, 0))
     end
 )
 

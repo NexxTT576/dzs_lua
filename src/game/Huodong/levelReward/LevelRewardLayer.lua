@@ -350,7 +350,7 @@ function LevelRewardLayer:ctor(data)
     self._curInfoIndex = -1
 
     local node = CCBReaderLoad("reward/normal_reward_bg.ccbi", proxy, self._rootnode)
-    local layer = tolua.cast(node, "CCLayer")
+    local layer = tolua.cast(node, "cc.Layer")
     layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(layer)
 

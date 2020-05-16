@@ -430,7 +430,7 @@ function BattleResult:initLost(rewards)
     local rootnode = rootnode or {}
     -- ccb 2.
     local node = CCBReaderLoad("ccbi/battle/lost.ccbi", proxy, rootnode)
-    local layer = tolua.cast(node, "CCLayer")
+    local layer = tolua.cast(node, "cc.Layer")
     self:addChild(layer)
 
     local bg = rootnode["tag_bg"]

@@ -20,7 +20,7 @@ function HeroPub:ctor(...)
     local rootnode = rootnode or {}
 
     local node = CCBReaderLoad("shop/shop_pub.ccbi", proxy, rootnode)
-    local layer = tolua.cast(node, "CCLayer")
+    local layer = tolua.cast(node, "cc.Layer")
     self:addChild(layer)
 
     local function getOneHero(tag)

@@ -23,7 +23,7 @@ function ItemInformation:ctor(param)
     local id = param.id
     if param.type == 7 or param.type == 11 or param.type == 12 then
         -- 7：可使用物品、11：礼品、12材料
-        local shadeLayer = require("utility.ShadeLayer").new(ccc4(0, 0, 0, 0))
+        local shadeLayer = require("utility.ShadeLayer").new(cc.c4b(0, 0, 0, 0))
         self:addChild(shadeLayer)
 
         local proxy = CCBProxy:create()

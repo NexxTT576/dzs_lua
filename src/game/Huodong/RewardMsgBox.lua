@@ -83,7 +83,7 @@ function RewardMsgBox:ctor(param)
     self._rootnode = {}
 
     local node = CCBReaderLoad("reward/reward_msg_box.ccbi", proxy, self._rootnode)
-    local layer = tolua.cast(node, "CCLayer")
+    local layer = tolua.cast(node, "cc.Layer")
     layer:setPosition(display.width / 2, display.height / 2)
     self:addChild(layer)
 

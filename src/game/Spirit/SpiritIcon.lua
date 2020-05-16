@@ -130,7 +130,7 @@ function SpiritIcon:ctor(param)
 
     --
     --    self:setAnchorPoint(0.5, (_sz.height / 2) / szH)
-    --    local l = display.newColorLayer(ccc4(255, 0, 0, 120))
+    --    local l = display.newLayer(cc.c4b(255, 0, 0, 120))
     --    l:setContentSize(self:getContentSize())
     --    self:addChild(l)
 end

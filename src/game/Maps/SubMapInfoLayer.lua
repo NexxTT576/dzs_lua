@@ -36,7 +36,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     self:setNodeEventEnabled(true)
     self:setTouchEnabled(true)
 
-    local colorbg = display.newColorLayer(ccc4(0, 0, 0, 150))
+    local colorbg = display.newLayer(cc.c4b(0, 0, 0, 150))
     colorbg:setContentSize(CCSize(display.width, display.height))
     colorbg:setPosition(0, 0)
     self:addChild(colorbg)

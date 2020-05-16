@@ -541,7 +541,7 @@ function ResMgr.createBefTutoMask(node)
     befTutoLayer:retain()
     ResMgr.befTutoTable[#ResMgr.befTutoTable + 1] = befTutoLayer
     -- if ResMgr.redMaskLayer == nil then
-    -- 	ResMgr.redMaskLayer = display.newColorLayer(trueColor)
+    -- 	ResMgr.redMaskLayer = display.newLayer(trueColor)
     -- 	ResMgr.redMaskLayer:setTouchEnabled(true)
     -- 	ResMgr.redMaskLayer:retain()
 

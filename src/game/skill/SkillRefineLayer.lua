@@ -32,7 +32,7 @@ local SkillRefineLayer =
     class(
     "SkillRefineLayer",
     function(param)
-        return require("utility.ShadeLayer").new(ccc4(0, 0, 0, 155))
+        return require("utility.ShadeLayer").new(cc.c4b(0, 0, 0, 155))
     end
 )
 
