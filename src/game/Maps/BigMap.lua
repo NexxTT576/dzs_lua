@@ -113,7 +113,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                 scrollViewBg:setContentOffset(game.player:getFubenDisOffset(), false)
             end
 
-            game.player:setFubenDisOffset(CCPointMake(0, 0))
+            game.player:setFubenDisOffset(cc.p(0, 0))
         end
         self.bg = scrollViewBg
 
@@ -224,7 +224,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                 end
                 if self.isFirst == true then
                     self.isFirst = false
-                    self.bg:setContentOffset(CCPointMake(0, -(subMapData.y_axis - 1) * TILE_HEIGHT + btnH))
+                    self.bg:setContentOffset(cc.p(0, -(subMapData.y_axis - 1) * TILE_HEIGHT + btnH))
                 end
             end
 

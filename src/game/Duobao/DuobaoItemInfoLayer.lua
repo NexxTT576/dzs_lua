@@ -248,7 +248,7 @@ function DuobaoItemInfoLayer:ctor(param)
     self._rootnode["descView"]:setContentSize(sz)
     self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
     self._rootnode["scrollView"]:updateInset()
-    self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
+    self._rootnode["scrollView"]:setContentOffset(cc.p(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
 
     refresh()
 end

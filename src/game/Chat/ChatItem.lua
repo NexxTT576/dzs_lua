@@ -65,7 +65,7 @@ function ChatItem:ctor(param)
     local pos
 
     if self._isLeft then
-        -- pos = CCPointMake(0, nameLbl:getContentSize().height/2)
+        -- pos = cc.p(0, nameLbl:getContentSize().height/2)
         nameNode = CCBReaderLoad("chat/chat_left_name.ccbi", proxy, rootnode)
         if gender == 1 then
             msgNode = CCBReaderLoad("chat/chat_left_msg_boy.ccbi", proxy, rootnode, self, self._contentSz)
@@ -73,7 +73,7 @@ function ChatItem:ctor(param)
             msgNode = CCBReaderLoad("chat/chat_left_msg_girl.ccbi", proxy, rootnode, self, self._contentSz)
         end
     else
-        -- pos = CCPointMake(-nameLbl:getContentSize().width, nameLbl:getContentSize().height/2)
+        -- pos = cc.p(-nameLbl:getContentSize().width, nameLbl:getContentSize().height/2)
         nameNode = CCBReaderLoad("chat/chat_right_name.ccbi", proxy, rootnode)
         msgNode = CCBReaderLoad("chat/chat_right_msg.ccbi", proxy, rootnode, self, self._contentSz)
     end

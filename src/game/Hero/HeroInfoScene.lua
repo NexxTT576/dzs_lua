@@ -317,7 +317,7 @@ function HeroInfoScene:ctor(param, infoType)
     )
     self:addChild(layer, 100)
     --
-    self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
+    self._rootnode["scrollView"]:setContentOffset(cc.p(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
 
     local _info = param.info
     local _changeHeroListener = param.changeHero
@@ -533,7 +533,7 @@ function HeroInfoScene:ctor(param, infoType)
             self._rootnode["descView"]:setContentSize(sz)
             self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
             self._rootnode["scrollView"]:updateInset()
-            self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
+            self._rootnode["scrollView"]:setContentOffset(cc.p(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
         end
 
         if _baseInfo.talent then

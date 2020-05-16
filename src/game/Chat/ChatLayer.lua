@@ -426,7 +426,7 @@ function ChatLayer:resetScrollView()
     -- dump(self._height .. ", " .. listViewSize.height)
 
     if self._height < listViewSize.height then
-        scrollView:setContentOffset(CCPointMake(0, -sz.height + scrollView:getViewSize().height), false)
+        scrollView:setContentOffset(cc.p(0, -sz.height + scrollView:getViewSize().height), false)
     else
         self._rootnode["scrollView"]:getContainer():setPosition(0, 0)
     end

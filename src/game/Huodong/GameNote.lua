@@ -165,7 +165,7 @@ function GameNote:ctor()
 
     local scrollView = rootnode["scrollView"]
     scrollView:updateInset()
-    scrollView:setContentOffset(CCPointMake(0, -sz.height + scrollView:getViewSize().height), false)
+    scrollView:setContentOffset(cc.p(0, -sz.height + scrollView:getViewSize().height), false)
 end
 
 function GameNote:onExit(...)

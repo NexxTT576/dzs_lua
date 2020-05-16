@@ -186,7 +186,8 @@ function DramaMgr.dramaMachine(index, dramaTable, dramaEndFunc)
 end
 
 function DramaMgr.request(data)
-    game.player:init(data)
+    game.player:init(data["1"])
+    game.player.m_gamenote = data["2"]
     TutoMgr.getServerNum(
         function(plotNum)
             if plotNum == 0 and game.player.m_level == 1 then

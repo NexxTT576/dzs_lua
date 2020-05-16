@@ -208,7 +208,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
     local bgHeight = display.height
 
     local node = CCBReaderLoad("hero/hero_info.ccbi", proxy, self._rootnode, self, cc.size(640, bgHeight - 30))
-    node:setAnchorPoint(CCPointMake(0.5, 0.5))
+    node:setAnchorPoint(cc.p(0.5, 0.5))
     node:setPosition(display.width / 2, node:getContentSize().height / 2)
     self:addChild(node)
 
@@ -242,7 +242,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
     )
     self:addChild(layer, 100)
     --
-    self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
+    self._rootnode["scrollView"]:setContentOffset(cc.p(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
 
     self._rootnode["titleLabel"]:setString("侠客信息")
 
@@ -374,7 +374,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
             self._rootnode["descView"]:setContentSize(sz)
             self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
             self._rootnode["scrollView"]:updateInset()
-            self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
+            self._rootnode["scrollView"]:setContentOffset(cc.p(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
         end
 
         if _baseInfo.talent then

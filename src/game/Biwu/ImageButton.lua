@@ -25,7 +25,7 @@ function ImageButton:addTouchListener(node, callBack)
                     return false
                 end
             elseif event.name == "ended" then
-                if box:containsPoint(node:convertToNodeSpace(CCPointMake(event.x, event.y))) then
+                if box:containsPoint(node:convertToNodeSpace(cc.p(event.x, event.y))) then
                     callBack(node, EventType.ended)
                 else
                     callBack(node, EventType.cancel)
@@ -38,7 +38,7 @@ function ImageButton:addTouchListener(node, callBack)
                     0.5
                 )
             elseif event.name == "moved" then
-                if not box:containsPoint(node:convertToNodeSpace(CCPointMake(event.x, event.y))) then
+                if not box:containsPoint(node:convertToNodeSpace(cc.p(event.x, event.y))) then
                     node:setScale(scalePre)
                 else
                     node:setScale(scaleAft)

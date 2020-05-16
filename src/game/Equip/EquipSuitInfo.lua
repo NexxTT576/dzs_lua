@@ -42,7 +42,7 @@ function EquipSuitInfo:ctor(param)
     self._rootnode = {}
 
     local node = CCBReaderLoad("equip/suit_info.ccbi", proxy, self._rootnode, self, CCSize(640, self.height))
-    node:setAnchorPoint(CCPointMake(0.5, 1))
+    node:setAnchorPoint(cc.p(0.5, 1))
 
     self:addChild(node)
 

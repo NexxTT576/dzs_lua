@@ -82,7 +82,7 @@ function GuildMainScene:ctor(buildType)
     if centerH >= scrollNodeH then
         scrollView:setTouchEnabled(false)
     end
-    scrollView:setContentOffset(CCPointMake(0, -self._rootnode["bottom_msg_node"]:getContentSize().height), false)
+    scrollView:setContentOffset(cc.p(0, -self._rootnode["bottom_msg_node"]:getContentSize().height), false)
 
     if guildInfo.m_unionIndes ~= nil then
         self._rootnode["guild_note_lbl"]:setString(tostring(guildInfo.m_unionIndes))

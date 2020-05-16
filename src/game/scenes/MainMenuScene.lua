@@ -20,6 +20,17 @@ function MainMenuScene:ctor(showNote)
     self:enableNodeEvents()
 end
 
+function MainMenuScene:updateFriendActIcon()
+    if GameModel.isFriendActive() then
+        self._rootnode["friend_red_point"]:setVisible(true)
+    else
+        self._rootnode["friend_red_point"]:setVisible(false)
+    end
+end
+function MainMenuScene:playMusic()
+    GameAudio.playMainmenuMusic(true)
+end
+
 function MainMenuScene:onEnter()
     display.removeUnusedSpriteFrames()
     self.blackLayer = display.newLayer(cc.c4b(0, 0, 0, 0))
@@ -217,12 +228,6 @@ function MainMenuScene:onEnter()
         self._rootnode["tag_pet"]:setVisible(false)
     else
         self._rootnode["tag_pet"]:setVisible(true)
-
-        if (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_APPSTORE_HANS) then
-            local adSprite = display.newSprite("logo/logo_ad.png")
-            adSprite:setPosition(self._rootnode["tag_pet"]:getContentSize().width / 2, self._rootnode["tag_pet"]:getContentSize().height / 2)
-            self._rootnode["tag_pet"]:addChild(adSprite)
-        end
     end
 end
 

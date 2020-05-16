@@ -154,7 +154,7 @@ function ChongzhiVipDesInfoLayer:ctor(param)
     self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
     local scrollView = self._rootnode["scrollView"]
     scrollView:updateInset()
-    scrollView:setContentOffset(CCPointMake(0, -sz.height + scrollView:getViewSize().height), false)
+    scrollView:setContentOffset(cc.p(0, -sz.height + scrollView:getViewSize().height), false)
 end
 
 return ChongzhiVipDesInfoLayer

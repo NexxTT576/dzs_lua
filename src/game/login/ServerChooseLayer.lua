@@ -54,7 +54,7 @@ function ServerChooseLayer:ctor(serverList, callback)
     if height < itemNum * 70 then
         self._rootnode["listLayer"]:setContentSize(cc.size(width, itemNum * 70))
         self._rootnode["scrollView"]:updateInset()
-        self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, height - itemNum * 70), false)
+        self._rootnode["scrollView"]:setContentOffset(cc.p(0, height - itemNum * 70), false)
         height = itemNum * 70
     end
 

@@ -222,7 +222,7 @@ function SpiritDescLayer:ctor(closeListener)
 
         self._scrollView:setContainer(self._tableLayout)
         self._scrollView:updateInset()
-        self._scrollView:setContentOffset(CCPointMake(0, -self._tableLayout:getContentSize().height + rootnode["spiritListView"]:getContentSize().height), false)
+        self._scrollView:setContentOffset(cc.p(0, -self._tableLayout:getContentSize().height + rootnode["spiritListView"]:getContentSize().height), false)
 
         local maxOffsetY = self._scrollView:maxContainerOffset().y
         local minOffsetY = self._scrollView:minContainerOffset().y
@@ -238,7 +238,7 @@ function SpiritDescLayer:ctor(closeListener)
     local function initSpiritListView()
         self._scrollView = CCScrollView:create()
         self._scrollView:setViewSize(cc.size(rootnode["spiritListView"]:getContentSize().width, rootnode["spiritListView"]:getContentSize().height))
-        self._scrollView:setPosition(CCPointMake(0, 0))
+        self._scrollView:setPosition(cc.p(0, 0))
         self._scrollView:setDirection(kCCScrollViewDirectionVertical)
         self._scrollView:setClippingToBounds(true)
         self._scrollView:setBounceable(true)

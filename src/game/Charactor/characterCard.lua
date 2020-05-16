@@ -595,7 +595,7 @@ function characterCard:ctor(param)
             local pos = bgBone:convertToNodeSpace(cc.p(x, y))
 
             if name == "began" then
-                if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(CCPointMake(x, y))) then
+                if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(cc.p(x, y))) then
                     self:runAction(CCScaleTo:create(0.1, 1.1))
                     self:setZOrder(self:getZOrder() + 1)
                     return true

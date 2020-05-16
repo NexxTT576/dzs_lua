@@ -184,7 +184,7 @@ function SpiritScene2:ctor(param)
     )
 
     local function getPositionByTag(tag)
-        return CCPointMake(self._rootnode["pos" .. tostring(tag)]:getPosition())
+        return cc.p(self._rootnode["pos" .. tostring(tag)]:getPosition())
     end
 
     local function getScaleByTag(tag)
