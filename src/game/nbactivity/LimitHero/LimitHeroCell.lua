@@ -15,7 +15,7 @@
 
  	self.heroSprite:setTouchEnabled(true)
  	self.heroSprite:setTouchSwallowEnabled(false)
-    self.heroSprite:setAnchorPoint(ccp(0.5,0))
+    self.heroSprite:setAnchorPoint(cc.p(0.5,0))
     ResMgr.setNodeEvent({
         node = self.heroSprite,
         touchFunc = function()

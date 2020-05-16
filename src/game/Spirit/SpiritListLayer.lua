@@ -155,7 +155,7 @@ function SpiritListLayer:ctor(param)
 
     local hw = display.newSprite("ui_common/common_huawen.png")
     hw:setPosition(_sz.width * 0.514, _sz.height)
-    hw:setAnchorPoint(ccp(0.5, 1))
+    hw:setAnchorPoint(cc.p(0.5, 1))
     self:addChild(hw)
 
     local bg2 = display.newScale9Sprite("ui_common/common_bg2.png")

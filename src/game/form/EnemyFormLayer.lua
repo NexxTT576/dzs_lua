@@ -268,9 +268,9 @@ end
 function EnemyFormLayer:refreshHero(index, bScrollHead)
     if bScrollHead then
         if (self._index - 1) * 115 < math.abs(self._scrollItemList:getContentOffset().x) then
-            self._scrollItemList:setContentOffset(ccp(-(self._index - 1) * 115, 0), true)
+            self._scrollItemList:setContentOffset(cc.p(-(self._index - 1) * 115, 0), true)
         elseif self._index * 115 > (math.abs(self._scrollItemList:getContentOffset().x) + self._scrollItemList:getContentSize().width) then
-            self._scrollItemList:setContentOffset(ccp(-(self._index) * 115 + self._scrollItemList:getContentSize().width, 0), true)
+            self._scrollItemList:setContentOffset(cc.p(-(self._index) * 115 + self._scrollItemList:getContentSize().width, 0), true)
         end
     end
 
@@ -478,7 +478,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                     }
                 )
                 s:addChild(label)
-                label:setPosition(ccp(20 - label:getContentSize().width / 2, s:getContentSize().height - 14))
+                label:setPosition(cc.p(20 - label:getContentSize().width / 2, s:getContentSize().height - 14))
             end
         end
 
@@ -504,7 +504,7 @@ function EnemyFormLayer:initHeadList()
     if self._scrollItemList then
         self._scrollItemList:reloadData()
         if #self._headData - self._index < self._index then
-            self._scrollItemList:setContentOffset(ccp(self._scrollItemList:minContainerOffset().x, 0))
+            self._scrollItemList:setContentOffset(cc.p(self._scrollItemList:minContainerOffset().x, 0))
         end
 
         return
@@ -549,8 +549,8 @@ function EnemyFormLayer:initHeadList()
             end
         }
     )
-    --    self._rootnode["headList"]:convertToWorldSpace(ccp(0, 0))
-    self._scrollItemList:setPosition(ccp(0, 0))
+    --    self._rootnode["headList"]:convertToWorldSpace(cc.p(0, 0))
+    self._scrollItemList:setPosition(cc.p(0, 0))
     self._rootnode["headList"]:addChild(self._scrollItemList)
 end
 
@@ -562,7 +562,7 @@ function EnemyFormLayer:initTouchNode()
     local targPosX, targPosY = self._rootnode["heroImg"]:getPosition()
 
     local function moveToTargetPos()
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local function resetHeroImage(side)
@@ -571,14 +571,14 @@ function EnemyFormLayer:initTouchNode()
         elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local offsetX = 0
     --    local bTouch
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
+        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
             --            targPosX, targPosY = currentNode:getPosition()
             offsetX = event.x

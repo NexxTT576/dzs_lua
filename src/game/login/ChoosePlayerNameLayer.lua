@@ -91,7 +91,7 @@ function ChoosePlayerNameLayer:changeSex(type)
             }
         )
 
-        effect:setAnchorPoint(ccp(0.5, 0))
+        effect:setAnchorPoint(cc.p(0.5, 0))
         effect:setScaleX(1.2)
         effect:setPosition(effNode:getContentSize().width / 2, 0)
         effNode:addChild(effect)

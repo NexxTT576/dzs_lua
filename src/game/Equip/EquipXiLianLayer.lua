@@ -104,7 +104,7 @@ function EquipXiLianLayer:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
     local node = CCBReaderLoad("equip/equip_xilian.ccbi", proxy, self._rootnode, self, cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height))
-    node:setAnchorPoint(ccp(0.5, 0))
+    node:setAnchorPoint(cc.p(0.5, 0))
     node:setPosition(display.width / 2, self.bottom:getContentSize().height)
     self:addChild(node)
     self._rootnode["tag_close"]:registerControlEventHandler(
@@ -180,7 +180,7 @@ function EquipXiLianLayer:ctor(param)
                     iconName = "#icon_xilianshi.png"
                 end
                 local icon = display.newSprite(iconName)
-                icon:setAnchorPoint(ccp(0, 0.5))
+                icon:setAnchorPoint(cc.p(0, 0.5))
                 icon:setPosition(startX, self._rootnode["huafei" .. i]:getPositionY())
                 startX = startX + icon:getContentSize().width * 1.2
                 lowerBg:addChild(icon)
@@ -193,7 +193,7 @@ function EquipXiLianLayer:ctor(param)
                     }
                 )
                 coinNum:setPosition(startX, self._rootnode["huafei" .. i]:getPositionY())
-                coinNum:setAnchorPoint(ccp(0, 0.5))
+                coinNum:setAnchorPoint(cc.p(0, 0.5))
                 startX = startX + offsetX
                 lowerBg:addChild(coinNum)
             end

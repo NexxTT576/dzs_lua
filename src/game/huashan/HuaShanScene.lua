@@ -75,7 +75,7 @@ function HuaShanScene:ctor()
 
     local floor = CCUserDefault:sharedUserDefault():getIntegerForKey(HUASHAN_FLOOR, 0)
     if floor > 0 then
-        local pos = self._rootnode[string.format("posNode_%d", floor - 1)]:convertToWorldSpace(ccp(0, 0))
+        local pos = self._rootnode[string.format("posNode_%d", floor - 1)]:convertToWorldSpace(cc.p(0, 0))
         local offset = pos.y - self:getBottomHeight() - 140
         self._rootnode["imageBg"]:setPositionY(-offset)
     end
@@ -271,7 +271,7 @@ function HuaShanScene:getReward()
         self:createArrow(self._floor)
     else
         local pos, offset
-        pos = self._rootnode[string.format("posNode_%d", self._floor)]:convertToWorldSpace(ccp(0, 0))
+        pos = self._rootnode[string.format("posNode_%d", self._floor)]:convertToWorldSpace(cc.p(0, 0))
         offset = pos.y - self:getBottomHeight() - 140
         if math.abs(-(HUASHAN_HIGHT - self:getCenterHeightWithSubTop())) > math.abs(offset) then
             self._rootnode["imageBg"]:setPositionY(self._rootnode["imageBg"]:getPositionY() - offset)
@@ -372,7 +372,7 @@ end
 
 function HuaShanScene:runNextAnim()
     local pos, offset
-    pos = self._rootnode[string.format("posNode_%d", self._floor)]:convertToWorldSpace(ccp(0, 0))
+    pos = self._rootnode[string.format("posNode_%d", self._floor)]:convertToWorldSpace(cc.p(0, 0))
     offset = pos.y - self:getBottomHeight() - 140
 
     local callFunc = function()
@@ -390,7 +390,7 @@ function HuaShanScene:runNextAnim()
         self._rootnode["imageBg"]:runAction(
             transition.sequence(
                 {
-                    CCMoveBy:create(1, ccp(0, -offset)),
+                    CCMoveBy:create(1, cc.p(0, -offset)),
                     CCCallFunc:create(callFunc)
                 }
             )
@@ -399,7 +399,7 @@ function HuaShanScene:runNextAnim()
         self._rootnode["imageBg"]:runAction(
             transition.sequence(
                 {
-                    CCMoveBy:create(1, ccp(0, -(HUASHAN_HIGHT - self:getCenterHeightWithSubTop()))),
+                    CCMoveBy:create(1, cc.p(0, -(HUASHAN_HIGHT - self:getCenterHeightWithSubTop()))),
                     CCCallFunc:create(callFunc)
                 }
             )
@@ -427,7 +427,7 @@ function HuaShanScene:createArrow(index, t)
 
     arrow:setScale(0.7)
 
-    local move = CCMoveBy:create(0.6, ccp(0, 30))
+    local move = CCMoveBy:create(0.6, cc.p(0, 30))
     local action = CCRepeatForever:create(CCSequence:createWithTwoActions(move, move:reverse()))
     arrow:runAction(action)
 end

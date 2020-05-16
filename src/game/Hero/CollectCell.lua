@@ -21,7 +21,7 @@ function CollectCell:ctor(param)
     local levelBg = display.newSprite("#submap_text_bg.png", bgWidth*0.02, bgHeight*0.6)
     levelBg:setScaleX(0.44)
     levelBg:setScaleY(1.25)
-    levelBg:setAnchorPoint(ccp(0, 0.5))
+    levelBg:setAnchorPoint(cc.p(0, 0.5))
     self:addChild(levelBg)
 
     local lvlName = ui.newTTFLabel({
@@ -29,7 +29,7 @@ function CollectCell:ctor(param)
         size = 22,
         color = FONT_COLOR.YELLOW
         })
-    lvlName:setAnchorPoint(ccp(0, 0.5))
+    lvlName:setAnchorPoint(cc.p(0, 0.5))
     lvlName:setPosition(bgWidth*0.04, bgHeight*0.7)
     self:addChild(lvlName)
 
@@ -38,7 +38,7 @@ function CollectCell:ctor(param)
         size = 18,
         color = FONT_COLOR.LIGHT_ORANGE
         })
-    locaName:setAnchorPoint(ccp(0, 0.5))
+    locaName:setAnchorPoint(cc.p(0, 0.5))
     locaName:setPosition(bgWidth*0.04, bgHeight*0.4)
     self:addChild(locaName)
  

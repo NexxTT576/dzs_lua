@@ -88,14 +88,14 @@ function HandBookCell:ctor(param)
             local viewWidth = viewBg:getContentSize().width
             local viewHeight = viewBg:getContentSize().height
 
-            local viewWorldPos = viewBg:getParent():convertToWorldSpace(ccp(viewBg:getPositionX(), viewBg:getPositionY()))
+            local viewWorldPos = viewBg:getParent():convertToWorldSpace(cc.p(viewBg:getPositionX(), viewBg:getPositionY()))
 
             local viewRect = CCRect(viewWorldPos.x - viewWidth / 2, viewWorldPos.y, viewWidth, viewHeight)
 
             touchNode:addNodeEventListener(
                 cc.NODE_TOUCH_EVENT,
                 function(event)
-                    local touchPos = ccp(event.x, event.y)
+                    local touchPos = cc.p(event.x, event.y)
                     local isInViewBg = viewRect:containsPoint(touchPos)
                     if isInViewBg == true then
                         if event.name == "began" then

@@ -118,7 +118,7 @@ function SpiritDescLayer:ctor(closeListener)
         end
 
         self.desctext = getRichText(_data[selectId].explain)
-        self.desctext:setAnchorPoint(ccp(0.45, 0.5))
+        self.desctext:setAnchorPoint(cc.p(0.45, 0.5))
         self.desctext:setPosition(0, rootnode["spiritDescLabel"]:getContentSize().height / 2)
         rootnode["spiritDescLabel"]:addChild(self.desctext)
 
@@ -272,7 +272,7 @@ function SpiritDescLayer:ctor(closeListener)
             if bTouch then
                 local nodes = self._tableLayout:getNodes()
                 for k, v in ipairs(nodes) do
-                    local pos = v:convertToNodeSpace(ccp(event.x, event.y))
+                    local pos = v:convertToNodeSpace(cc.p(event.x, event.y))
                     if CCRectMake(0, 0, v:getContentSize().width, v:getContentSize().height):containsPoint(pos) then
                         dump(self._selectTypeSpirits[k])
 
@@ -334,7 +334,7 @@ function SpiritDescLayer:ctor(closeListener)
             self.desctext:removeSelf()
         end
         self.desctext = getRichText(_data[selectId].explain)
-        self.desctext:setAnchorPoint(ccp(0.5, 0.5))
+        self.desctext:setAnchorPoint(cc.p(0.5, 0.5))
         self.desctext:setPosition(10, rootnode["spiritDescLabel"]:getContentSize().height / 2)
         rootnode["spiritDescLabel"]:addChild(self.desctext)
 

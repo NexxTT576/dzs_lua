@@ -320,7 +320,7 @@ function SpiritUpgradeScene:ctor(index)
     --  选择精元
     local function onTouch(posX, posY, cell)
         local idx = cell:getIdx() + 1
-        local pos = cell:convertToNodeSpace(ccp(posX, posY))
+        local pos = cell:convertToNodeSpace(cc.p(posX, posY))
         local sz = cell:getContentSize()
         local i = 0
         if pos.x > sz.width * (4 / 5) and pos.x < sz.width then

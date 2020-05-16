@@ -74,7 +74,7 @@ function SubMapScrollCell:create(param)
             -- y = self._rootnode["nameLabel"]:getContentSize().height/2,
         }
     )
-    self.titleLabel:setAnchorPoint(ccp(0, 0.5))
+    self.titleLabel:setAnchorPoint(cc.p(0, 0.5))
     self._rootnode["nameLabel"]:addChild(self.titleLabel)
     self:refresh(param)
     return self

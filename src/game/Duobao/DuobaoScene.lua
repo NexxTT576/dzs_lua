@@ -363,7 +363,7 @@ function DuobaoScene:createDuobaoItem(showType, index)
         self._currentItemNode:runAction(
             transition.sequence(
                 {
-                    CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
+                    CCMoveTo:create(0.1, cc.p(targPosX, targPosY)),
                     CCDelayTime:create(0.15),
                     CCCallFunc:create(
                         function()
@@ -385,7 +385,7 @@ function DuobaoScene:createDuobaoItem(showType, index)
         self._currentItemNode:runAction(
             transition.sequence(
                 {
-                    CCMoveTo:create(0.1, ccp(targPosX, targPosY)),
+                    CCMoveTo:create(0.1, cc.p(targPosX, targPosY)),
                     CCDelayTime:create(0.15),
                     CCCallFunc:create(
                         function()
@@ -401,14 +401,14 @@ function DuobaoScene:createDuobaoItem(showType, index)
         if not bMoved then
             local touchSize = self._currentItemNode:getCanTouchSize()
             local cntSz = self._currentItemNode:getContentSize()
-            local point = self._currentItemNode:convertToNodeSpaceAR(ccp(event.x, event.y))
+            local point = self._currentItemNode:convertToNodeSpaceAR(cc.p(event.x, event.y))
             if (CCRectMake((cntSz.width - touchSize.width) / 2, (cntSz.height - touchSize.height) / 2, touchSize.width, touchSize.height):containsPoint(point)) then
                 bTouch = true
                 bMoved = true
             end
 
             local sz = touchNode:getContentSize()
-            if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
+            if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
                 targPosX, targPosY = self._currentItemNode:getPosition()
 
                 offsetX = event.x

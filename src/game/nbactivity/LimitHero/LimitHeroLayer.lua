@@ -15,7 +15,7 @@ function LimitHeroLayer:adjustHero()
     -- self.heroTableList:unscheduleAllSelectors()
     self:updateHeroName()
 
-    self.heroTableList:setContentOffset(ccp(adjOffX, 0), true)
+    self.heroTableList:setContentOffset(cc.p(adjOffX, 0), true)
 
     self._rootnode["left_arrow"]:setVisible(true)
     self._rootnode["right_arrow"]:setVisible(true)
@@ -101,7 +101,7 @@ function LimitHeroLayer:init()
     self._rootnode["limit_bg"]:addChild(self.heroTableList)
 
     self.touchLayer = display.newColorLayer(ccc4(100, 50, 50, 0))
-    self.touchLayer:setPosition(ccp(0, LIST_HEIGHT))
+    self.touchLayer:setPosition(cc.p(0, LIST_HEIGHT))
     self.touchLayer:setContentSize(CCSize(display.width, self.viewSize.height - LIST_HEIGHT))
     self.touchLayer:setTouchEnabled(true)
     self.touchLayer:setTouchSwallowEnabled(false)
@@ -126,10 +126,10 @@ function LimitHeroLayer:init()
             if event.name == "began" then
                 -- return true
                 preX = event.x
-                local touchPos = ccp(event.x, event.y)
-                local layPos = self.touchLayer:getParent():convertToWorldSpace(ccp(self.touchLayer:getPositionX(), self.touchLayer:getPositionY()))
+                local touchPos = cc.p(event.x, event.y)
+                local layPos = self.touchLayer:getParent():convertToWorldSpace(cc.p(self.touchLayer:getPositionX(), self.touchLayer:getPositionY()))
                 local layRect = CCRect(layPos.x, layPos.y, self.touchLayer:getContentSize().width, self.touchLayer:getContentSize().height)
-                local isInLayer = layRect:containsPoint(ccp(event.x, event.y))
+                local isInLayer = layRect:containsPoint(cc.p(event.x, event.y))
 
                 if isInLayer then
                     return true
@@ -229,9 +229,9 @@ function LimitHeroLayer:init()
     self:updateHeroName()
 
     self.luckBar = display.newProgressTimer("#herolimit_bar.png", display.PROGRESS_TIMER_BAR)
-    self.luckBar:setMidpoint(ccp(0, 0.5))
-    self.luckBar:setBarChangeRate(ccp(1, 0))
-    self.luckBar:setAnchorPoint(ccp(0, 0.5))
+    self.luckBar:setMidpoint(cc.p(0, 0.5))
+    self.luckBar:setBarChangeRate(cc.p(1, 0))
+    self.luckBar:setAnchorPoint(cc.p(0, 0.5))
     self.luckBar:setPosition(0, self._rootnode["luck_bg"]:getContentSize().height / 2)
     self._rootnode["luck_bg"]:addChild(self.luckBar)
 
@@ -373,7 +373,7 @@ function LimitHeroLayer:updateRightDesc()
             font = FONTS_NAME.font_zhaojiang
         }
     )
-    textLabel:setAnchorPoint(ccp(0, 1))
+    textLabel:setAnchorPoint(cc.p(0, 1))
     textLabel:setScale(0.8)
 
     textLabel:setPosition(self._rootnode["table_bg"]:getContentSize().width + 20, self._rootnode["ttf_node"]:getContentSize().height - 20)

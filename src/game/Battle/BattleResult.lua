@@ -78,7 +78,7 @@ function BattleResult:initWin(rewards)
 
     local rewardNode = rootnode["reward_node"]
     local rewardBg = display.newScale9Sprite("#bw_bottom_bg.png", 0, 0, boxSz)
-    rewardBg:setAnchorPoint(ccp(0.5, 1.0))
+    rewardBg:setAnchorPoint(cc.p(0.5, 1.0))
     rewardBg:setPosition(rewardBg:getContentSize().width / 2, 0)
     rewardNode:addChild(rewardBg)
 
@@ -217,9 +217,9 @@ function BattleResult:initWin(rewards)
     --     bar:getContentSize().width*percent, bar:getTextureRect().size.height))
 
     self.addBar = display.newProgressTimer("#bw_exp_green.png", display.PROGRESS_TIMER_BAR)
-    self.addBar:setMidpoint(ccp(0, 0.5))
-    self.addBar:setBarChangeRate(ccp(1, 0))
-    self.addBar:setAnchorPoint(ccp(0, 0.5))
+    self.addBar:setMidpoint(cc.p(0, 0.5))
+    self.addBar:setBarChangeRate(cc.p(1, 0))
+    self.addBar:setAnchorPoint(cc.p(0, 0.5))
     self.addBar:setPosition(0, rootnode["bw_exp_gray"]:getContentSize().height / 2)
     rootnode["bw_exp_gray"]:addChild(self.addBar)
     self.addBar:setPercentage(befPercent * 100)
@@ -342,14 +342,14 @@ function BattleResult:initWin(rewards)
             -- 装备碎片
             local suipianIcon = display.newSprite("#sx_suipian.png")
             suipianIcon:setRotation(-15)
-            suipianIcon:setAnchorPoint(ccp(0, 1))
+            suipianIcon:setAnchorPoint(cc.p(0, 1))
             suipianIcon:setPosition(-0.13 * item:getContentSize().width, 0.9 * item:getContentSize().height)
             item:addChild(suipianIcon)
         elseif v.t == 5 then
             -- 残魂(武将碎片)
             local canhunIcon = display.newSprite("#sx_canhun.png")
             canhunIcon:setRotation(-18)
-            canhunIcon:setAnchorPoint(ccp(0, 1))
+            canhunIcon:setAnchorPoint(cc.p(0, 1))
             canhunIcon:setPosition(-0.13 * item:getContentSize().width, 0.93 * item:getContentSize().height)
             item:addChild(canhunIcon)
         end

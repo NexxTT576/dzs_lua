@@ -221,7 +221,7 @@ end
 function WaBaoGiftPopup:tableCellTouched(table, cell)
     for i = 1, cell:getChildByTag(1):getIconNum() do
         local icon, data = cell:getChildByTag(1):getIcon(i)
-        local pos = icon:convertToNodeSpace(ccp(self.posX, self.posY))
+        local pos = icon:convertToNodeSpace(cc.p(self.posX, self.posY))
         if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
             self:onIconClick(data)
             break

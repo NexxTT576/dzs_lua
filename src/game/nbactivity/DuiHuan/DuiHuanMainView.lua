@@ -153,7 +153,7 @@ function DuiHuanMainView:setUpView(param)
             touchFunc = function(cell)
                 for i = 1, #cell:getData() do
                     local icon = cell:getIcon(i)
-                    local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                    local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                     local itemdata = cell:getItemData(i)
                     if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         if itemdata.type ~= 6 then

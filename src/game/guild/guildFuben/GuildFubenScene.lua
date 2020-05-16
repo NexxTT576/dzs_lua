@@ -599,7 +599,7 @@ function GuildFubenScene:reloadListView(listData)
                 if self._hasShowRewardBox == false then
                     local icon = cell:getRewardBoxIcon()
                     local itemData = dataList[cell:getIdx() + 1]
-                    local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                    local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                     if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self._hasShowRewardBox = true
                         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

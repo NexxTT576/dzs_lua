@@ -299,7 +299,7 @@ function HeroInfoScene:ctor(param, infoType)
     local _index = param.index
     --    ui_zhenrong
     display.addSpriteFramesWithFile("ui_zhenrong.plist", "ui_zhenrong.png")
-    local pt = self._rootnode["scrollView"]:convertToWorldSpace(ccp(0, 0))
+    local pt = self._rootnode["scrollView"]:convertToWorldSpace(cc.p(0, 0))
     local layer =
         require("utility.TouchMaskLayer").new(
         {
@@ -531,7 +531,7 @@ function HeroInfoScene:ctor(param, infoType)
             local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height - 40)
 
             self._rootnode["descView"]:setContentSize(sz)
-            self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+            self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
             self._rootnode["scrollView"]:updateInset()
             self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
         end

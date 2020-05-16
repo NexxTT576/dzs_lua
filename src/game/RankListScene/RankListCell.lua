@@ -154,7 +154,7 @@ function RankListCell:create(param)
     self.gonghuiNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 222, 0), size = 24})
     --n
     self._rootnode["gonghui_name"]:getParent():addChild(self.gonghuiNameTTF)
-    self.gonghuiNameTTF:setPosition(ccp(self._rootnode["gonghui_name"]:getPositionX(), self._rootnode["gonghui_name"]:getPositionY()))
+    self.gonghuiNameTTF:setPosition(cc.p(self._rootnode["gonghui_name"]:getPositionX(), self._rootnode["gonghui_name"]:getPositionY()))
 
     self.lvlTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(255, 222, 0), size = 22})
     --n
@@ -176,7 +176,7 @@ function RankListCell:create(param)
     self.zhanliTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(36, 255, 0), size = 24})
     --n
     self._rootnode["zhanli_num"]:getParent():addChild(self.zhanliTTF)
-    self.zhanliTTF:setPosition(ccp(self._rootnode["zhanli_num"]:getPositionX(), self._rootnode["zhanli_num"]:getPositionY()))
+    self.zhanliTTF:setPosition(cc.p(self._rootnode["zhanli_num"]:getPositionX(), self._rootnode["zhanli_num"]:getPositionY()))
 
     self.starNumTTF = self._rootnode["jindu_num"]
 
@@ -185,11 +185,11 @@ function RankListCell:create(param)
     self.fubenNameTTF = ResMgr.createShadowMsgTTF({text = "", color = cc.c3b(36, 255, 0), size = 24})
     self:mirrorPos(self._rootnode["fuben_name"], self.fubenNameTTF)
 
-    self.lvOrPos = ccp(self._rootnode["lvl_icon"]:getPositionX(), 93)
-    self.nameOrPos = ccp(self._rootnode["hero_name"]:getPositionX(), 62)
+    self.lvOrPos = cc.p(self._rootnode["lvl_icon"]:getPositionX(), 93)
+    self.nameOrPos = cc.p(self._rootnode["hero_name"]:getPositionX(), 62)
 
-    self.lvMidPos = ccp(self._rootnode["lvl_icon"]:getPositionX(), 80)
-    self.nameMidPos = ccp(self._rootnode["hero_name"]:getPositionX(), 44)
+    self.lvMidPos = cc.p(self._rootnode["lvl_icon"]:getPositionX(), 80)
+    self.nameMidPos = cc.p(self._rootnode["hero_name"]:getPositionX(), 44)
 
     self:refresh(param.id)
     return self

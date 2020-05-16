@@ -335,7 +335,7 @@ function HeroJinJie:ctor(param)
     local node = CCBReaderLoad("hero/hero_jinjie.ccbi", proxy, self._rootnode)
     --,self)   --cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height )
     -- local node = CCBReaderLoad("hero/hero_jinjie.ccbi", proxy, self._rootnode,self,cc.size(display.width, display.height - self.bottom:getContentSize().height - 72 ))
-    -- node:setAnchorPoint(ccp(0.5,0))
+    -- node:setAnchorPoint(cc.p(0.5,0))
     node:setPosition(display.width / 2, display.height / 2) --self.bottom:getContentSize().height)
     self:addChild(node)
 

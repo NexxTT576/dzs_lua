@@ -168,7 +168,7 @@ function GameNote:ctor()
     local sz = cc.size(contentViewSize.width, contentViewSize.height + height)
 
     rootnode["descView"]:setContentSize(sz)
-    rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+    rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
 
     local scrollView = rootnode["scrollView"]
     scrollView:updateInset()

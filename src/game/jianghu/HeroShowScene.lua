@@ -140,7 +140,7 @@ function HeroShowScene:refresh()
             touchFunc = function(cell)
                 --            printf("Hello world %d", cell:getIdx())
                 local idx = cell:getIdx() + 1
-                local pos = cell:convertToNodeSpace(ccp(posX, posY))
+                local pos = cell:convertToNodeSpace(cc.p(posX, posY))
                 local sz = cell:getContentSize()
                 local i = 0
                 if pos.x > sz.width * (4 / 5) and pos.x < sz.width then

@@ -485,7 +485,7 @@ function HeroInfoLayer:ctor(param, infoType)
 
     --  屏幕高 - 广播条 - 底部按钮 - 标题栏
     local infoNode = CCBReaderLoad("hero/hero_info_detail.ccbi", self._proxy, self._rootnode, self, cc.size(display.width, bgHeight - 32 - 85 - 68))
-    infoNode:setPosition(ccp(0, 85))
+    infoNode:setPosition(cc.p(0, 85))
     bgNode:addChild(infoNode)
 
     self._rootnode["bottomMenuNode"]:setZOrder(1)
@@ -515,7 +515,7 @@ function HeroInfoLayer:ctor(param, infoType)
 
     local _index = param.index
     display.addSpriteFramesWithFile("ui_zhenrong.plist", "ui_zhenrong.png")
-    local pt = self._rootnode["scrollView"]:convertToWorldSpace(ccp(0, 0))
+    local pt = self._rootnode["scrollView"]:convertToWorldSpace(cc.p(0, 0))
     --
     --    self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
 
@@ -766,7 +766,7 @@ function HeroInfoLayer:ctor(param, infoType)
             local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height - 40)
 
             self._rootnode["descView"]:setContentSize(sz)
-            self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+            self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
             self._rootnode["scrollView"]:updateInset()
             self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
         end

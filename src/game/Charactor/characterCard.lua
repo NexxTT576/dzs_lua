@@ -211,14 +211,14 @@ function characterCard:playShow(specialData)
         heroHeight = display.height * 3 / 4
     end
 
-    local cPos = self:convertToNodeSpace(ccp(display.width / 2, heroHeight))
+    local cPos = self:convertToNodeSpace(cc.p(display.width / 2, heroHeight))
 
     local orX = self.baseNode:getPositionX()
     local orY = self.baseNode:getPositionY()
 
     local bgMoveTo = CCMoveTo:create(biggerTime, cPos)
     local bgDelay = CCDelayTime:create(stayTime)
-    local bgBackTo = CCMoveTo:create(smallTime, ccp(orX, orY))
+    local bgBackTo = CCMoveTo:create(smallTime, cc.p(orX, orY))
     local ccF =
         CCCallFunc:create(
         function()
@@ -251,7 +251,7 @@ function characterCard:playShow(specialData)
     local befFadeIn = CCFadeTo:create(biggerTime, 255)
     local befScale = CCScaleTo:create(biggerTime, 2)
     local befBiggerSpawn = CCSpawn:createWithTwoActions(befFadeIn, befScale)
-    local befmoveToLeft = CCMoveBy:create(stayTime, ccp(-40, 0))
+    local befmoveToLeft = CCMoveBy:create(stayTime, cc.p(-40, 0))
     --small
     local befFadeOut = CCFadeTo:create(smallTime, 0)
     local befSmaller = CCScaleTo:create(smallTime, 0.2)
@@ -281,7 +281,7 @@ function characterCard:playShow(specialData)
     local aftFadeIn = CCFadeTo:create(biggerTime, 255)
     local aftScale = CCScaleTo:create(biggerTime, 2)
     local aftBiggerSpawn = CCSpawn:createWithTwoActions(aftFadeIn, aftScale)
-    local aftmoveToLeft = CCMoveBy:create(stayTime, ccp(40, 0))
+    local aftmoveToLeft = CCMoveBy:create(stayTime, cc.p(40, 0))
     --small
     local aftFadeOut = CCFadeTo:create(smallTime, 0)
     local aftSmaller = CCScaleTo:create(smallTime, 0.2)
@@ -333,7 +333,7 @@ function characterCard:playShow(specialData)
                 sprite:setPosition(startX, yRan)
             end
         )
-        local move = CCMoveTo:create(0.3 * spRan, ccp(endX, yRan))
+        local move = CCMoveTo:create(0.3 * spRan, cc.p(endX, yRan))
         local rev = CCRemoveSelf:create(true)
         sprite:runAction(transition.sequence({st, move, rev}))
         sprite:setScaleY(0.8)
@@ -575,7 +575,7 @@ function characterCard:ctor(param)
         -- local lifeBarX = self.cardBg:getContentSize().width
         -- local lifeBarY = self.cardBg:getContentSize().height
 
-        -- self.lifeBarBg:setPosition(ccp(lifeBarX , lifeBarY))
+        -- self.lifeBarBg:setPosition(cc.p(lifeBarX , lifeBarY))
         self.cardBg:addBone(self.nameBone, "tongyong")
 
         self.nameTouch = 0
@@ -592,7 +592,7 @@ function characterCard:ctor(param)
             local name = event.name
             local x = event.x
             local y = event.y
-            local pos = bgBone:convertToNodeSpace(ccp(x, y))
+            local pos = bgBone:convertToNodeSpace(cc.p(x, y))
 
             if name == "began" then
                 if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(CCPointMake(x, y))) then
@@ -604,7 +604,7 @@ function characterCard:ctor(param)
                     return false
                 end
             elseif name == "moved" then
-                self:setPosition(self:getParent():convertToNodeSpace(ccp(x, y)))
+                self:setPosition(self:getParent():convertToNodeSpace(cc.p(x, y)))
             elseif name == "ended" then
                 self:runAction(CCScaleTo:create(0.1, 1))
                 self:setZOrder(self:getZOrder() - 1)
@@ -625,7 +625,7 @@ function characterCard:ctor(param)
         self.heroImage = CCArmature:create(cardImage)
         self.heroImage:getAnimation():play(self.curAct)
         self.heroImage:setPosition(0, 5)
-        -- self.heroImage:setAnchorPoint(ccp(0,0))
+        -- self.heroImage:setAnchorPoint(cc.p(0,0))
 
         --[[
 			 add by vicky 2015.01.26  
@@ -642,7 +642,7 @@ function characterCard:ctor(param)
 
         --血条背景
         self.lifeBarBg = display.newSprite("#battle_bar_red.png")
-        self.lifeBarBg:setAnchorPoint(ccp(0, 0.5))
+        self.lifeBarBg:setAnchorPoint(cc.p(0, 0.5))
         self.lifeBarBgBone = CCBone:create("lifeBg")
         self.lifeBarBgBone:setIgnoreMovementBoneData(true)
         self.lifeBarBgBone:addDisplay(self.lifeBarBg, 0)
@@ -654,7 +654,7 @@ function characterCard:ctor(param)
         local lifeBarX = self.cardBg:getContentSize().width * -0.34
         local lifeBarY = self.cardBg:getContentSize().height * -0.45
 
-        self.lifeBarBg:setPosition(ccp(lifeBarX, lifeBarY))
+        self.lifeBarBg:setPosition(cc.p(lifeBarX, lifeBarY))
         self.cardBg:addBone(self.lifeBarBgBone, "tongyong")
 
         -- if cardData.bg_eff_image ~= nil cardData.bg_eff_image ~= 0 then
@@ -686,12 +686,12 @@ function characterCard:ctor(param)
         -- self.lifeBar = display.newScale9Sprite("#battle_bar_green.png")
         local Bar = display.newSprite("#battle_bar_green.png")
         self.lifeBar = CCProgressTimer:create(Bar)
-        self.lifeBar:setBarChangeRate(ccp(1, 0))
+        self.lifeBar:setBarChangeRate(cc.p(1, 0))
         self.lifeBar:setType(1)
         self.lifeBar:setVisible(self.isShowHpAndAnger)
 
-        self.lifeBar:setAnchorPoint(ccp(0, 0.5))
-        self.lifeBar:setMidpoint(ccp(0, 0.5))
+        self.lifeBar:setAnchorPoint(cc.p(0, 0.5))
+        self.lifeBar:setMidpoint(cc.p(0, 0.5))
         self.lifeBar:setPercentage(ANGER_ZORDER)
         -- self.lifeBar:setType(2)
         self.lifeBarBone = CCBone:create("lifeBar")
@@ -703,7 +703,7 @@ function characterCard:ctor(param)
         local lifeBarX = self.cardBg:getContentSize().width * -0.34
         local lifeBarY = self.cardBg:getContentSize().height * -0.45
 
-        self.lifeBar:setPosition(ccp(lifeBarX, lifeBarY))
+        self.lifeBar:setPosition(cc.p(lifeBarX, lifeBarY))
         self.cardBg:addBone(self.lifeBarBone, "tongyong")
 
         local starOraX = self.cardBg:getContentSize().width * -0.33
@@ -724,7 +724,7 @@ function characterCard:ctor(param)
             self.angerBones[starNum]:changeDisplayWithIndex(0, false)
             self.angerBones[starNum]:setZOrder(ANGER_ZORDER)
             -- self.angerBones[starNum]:runAction(rep)
-            star:setPosition(ccp(starOraX, starOraY))
+            star:setPosition(cc.p(starOraX, starOraY))
             starOraX = starOraX + offsetStarX
             self.cardBg:addBone(self.angerBones[starNum], "tongyong")
         end
@@ -737,7 +737,7 @@ function characterCard:ctor(param)
         self.extraAnger:addDisplay(star, 0)
         self.extraAnger:changeDisplayWithIndex(0, false)
         self.extraAnger:setZOrder(ANGER_ZORDER)
-        star:setPosition(ccp(starOraX, starOraY))
+        star:setPosition(cc.p(starOraX, starOraY))
         starOraX = starOraX + offsetStarX
         self.cardBg:addBone(self.extraAnger, "tongyong")
 
@@ -751,7 +751,7 @@ function characterCard:ctor(param)
         self.angerLabel:setScale(0.7)
         self.angerLabel:setPosition(starOraX - 8, starOraY - 10)
 
-        self.angerLabel:setAnchorPoint(ccp(0, 0.5))
+        self.angerLabel:setAnchorPoint(cc.p(0, 0.5))
 
         self.labelBone = CCBone:create("angerLabel")
         self.labelBone:setIgnoreMovementBoneData(true)

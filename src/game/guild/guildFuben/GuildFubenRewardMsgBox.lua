@@ -63,7 +63,7 @@ function GuildFubenRewardMsgBox:initRewardListView(cellDatas)
             touchFunc = function(cell)
                 if self._hasShowInfo == false then
                     local icon = cell:getRewardIcon()
-                    local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                    local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                     if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self._hasShowInfo = true
                         local idx = cell:getIdx() + 1

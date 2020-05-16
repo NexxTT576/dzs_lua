@@ -62,7 +62,7 @@ function HandBookScroll:ctor(param)
 
     scrollViewBg:setBounceable(true)
 
-    scrollViewBg:setAnchorPoint(ccp(0.5,0))
+    scrollViewBg:setAnchorPoint(cc.p(0.5,0))
 
 
 

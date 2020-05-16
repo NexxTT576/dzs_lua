@@ -53,7 +53,7 @@ local function createFormSettingLayer(param)
     local _bTouchEnabled = param.touchEnabled or false
     local _sz = param.sz or CONFIG_SIZE
     local _parentNode = param.parentNode
-    local _pos = param.pos or ccp(0, 0)
+    local _pos = param.pos or cc.p(0, 0)
     local _list = param.list
     local _bTmpPos = param.bTmpPos
     local _callback = param.callback

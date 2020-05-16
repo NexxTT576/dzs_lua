@@ -203,7 +203,7 @@ function FormEquipQHLayer:ctor(param)
                                         {
                                             CCDelayTime:create(k - 1),
                                             CCShow:create(),
-                                            CCSpawn:createWithTwoActions(CCMoveBy:create(1.5, ccp(0, 40)), CCFadeOut:create(1.5)),
+                                            CCSpawn:createWithTwoActions(CCMoveBy:create(1.5, cc.p(0, 40)), CCFadeOut:create(1.5)),
                                             CCRemoveSelf:create(true)
                                         }
                                     )
@@ -293,7 +293,7 @@ function FormEquipQHLayer:qiangHuaAnim(finishFunc)
     local EFFECT_ZORDER = 100000
     CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
     local chuiziAnim = CCArmature:create("chuizi")
-    chuiziAnim:setAnchorPoint(ccp(0, 0.5))
+    chuiziAnim:setAnchorPoint(cc.p(0, 0.5))
 
     chuiziAnim:getAnimation():setFrameEventCallFunc(
         function(bone, evt, originFrameIndex, currentFrameIndex) --setMovementEventCallFunc(function(armatureBack,movementType,movementID)
@@ -365,13 +365,13 @@ function FormEquipQHLayer:shake(direction)
         local moveAct1 =
             CCCallFunc:create(
             function()
-                self.cardBg:setPosition(ccp(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
+                self.cardBg:setPosition(cc.p(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
             end
         )
         local moveAct2 =
             CCCallFunc:create(
             function()
-                self.cardBg:setPosition(ccp(cPosX, cPosY))
+                self.cardBg:setPosition(cc.p(cPosX, cPosY))
             end
         )
         local sequence =

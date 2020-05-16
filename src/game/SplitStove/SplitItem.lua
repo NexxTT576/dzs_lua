@@ -130,9 +130,9 @@ function SplitItem:refresh(param)
         self.hjLabel:setString(string.format("资质:%d", card.arr_zizhi[_itemData.cls + 1]))
         self.hjLabel:setPositionX(10 + self.hjLabel:getContentSize().width / 2)
         self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
-        self._rootnode["lvLabel"]:setPosition(ccp(74, 17))
+        self._rootnode["lvLabel"]:setPosition(cc.p(74, 17))
     elseif param.itemType == LIAN_HUA_TYEP.EQUIP then
-        self._rootnode["lvLabel"]:setPosition(ccp(64, 17))
+        self._rootnode["lvLabel"]:setPosition(cc.p(64, 17))
         ResMgr.refreshIcon(
             {
                 itemBg = self._rootnode["headIcon"],

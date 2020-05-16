@@ -247,7 +247,7 @@ function JingmaiScene:runAnim(pos1, pos2)
             printf("============ %d", i)
             --角度 位置
             local angle = self._rootnode[string.format("line_%d_%d", self._index, i)]:getTag()
-            local pos = self._rootnode[string.format("board_%d_%d", self._index, i + 1)]:convertToWorldSpace(ccp(42.5, 42.5))
+            local pos = self._rootnode[string.format("board_%d_%d", self._index, i + 1)]:convertToWorldSpace(cc.p(42.5, 42.5))
 
             table.insert(anim, CCRotateTo:create(0, angle))
             table.insert(anim, CCMoveTo:create(0.1, pos))
@@ -268,7 +268,7 @@ function JingmaiScene:runAnim(pos1, pos2)
                         }
                     )
                 )
-                node:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos2)]:convertToWorldSpace(ccp(42.5, 42.5)))
+                node:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos2)]:convertToWorldSpace(cc.p(42.5, 42.5)))
                 self:addChild(node, 101)
             end
         )
@@ -281,7 +281,7 @@ function JingmaiScene:runAnim(pos1, pos2)
     if pos1 < 1 then
         pos1 = 1
     end
-    sprite:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos1)]:convertToWorldSpace(ccp(42.5, 42.5)))
+    sprite:setPosition(self._rootnode[string.format("board_%d_%d", self._index, pos1)]:convertToWorldSpace(cc.p(42.5, 42.5)))
     self:addChild(sprite, 100)
     sprite:runAction(transition.sequence(anim))
 end

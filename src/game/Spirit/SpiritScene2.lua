@@ -361,7 +361,7 @@ function SpiritScene2:initListView2()
             cellSize = item.new():getContentSize(),
             touchFunc = function(cell)
                 local idx = cell:getIdx() + 1
-                local pos = cell:convertToNodeSpace(ccp(posX, posY))
+                local pos = cell:convertToNodeSpace(cc.p(posX, posY))
                 printf("pos.x = %d, pos.y = %d", pos.x, pos.y)
                 local sz = cell:getContentSize()
                 local i = 0
@@ -435,13 +435,13 @@ function SpiritScene2:refreshSpiritList(bResetCellNum)
         self._spiritListView:resetCellNum(#showList)
     end
     if self._spiritListView:minContainerOffset().y > 0 then
-        self._spiritListView:setContentOffset(ccp(0, self._spiritListView:minContainerOffset().y))
+        self._spiritListView:setContentOffset(cc.p(0, self._spiritListView:minContainerOffset().y))
     else
         if cellNum < self._spiritListView:getCellNum() and cellNum > 2 then
-            self._spiritListView:setContentOffset(ccp(0, self._spiritListView:maxContainerOffset().y - require("game.Spirit.SpiritShowItem").new():getContentSize().height))
-            self._spiritListView:setContentOffset(ccp(0, self._spiritListView:maxContainerOffset().y), true)
+            self._spiritListView:setContentOffset(cc.p(0, self._spiritListView:maxContainerOffset().y - require("game.Spirit.SpiritShowItem").new():getContentSize().height))
+            self._spiritListView:setContentOffset(cc.p(0, self._spiritListView:maxContainerOffset().y), true)
         else
-            self._spiritListView:setContentOffset(ccp(0, self._spiritListView:maxContainerOffset().y))
+            self._spiritListView:setContentOffset(cc.p(0, self._spiritListView:maxContainerOffset().y))
         end
     end
     self:refreshArrow()

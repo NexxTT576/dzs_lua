@@ -540,7 +540,7 @@ function SubMap:createMapNode()
                         game.player.submapOffsetId = self.subMapInfo.id
                         game.player:setSubmapOffset(self._scrollItemList:getContentOffset())
                     else
-                        game.player:setSubmapOffset(ccp(0, 0))
+                        game.player:setSubmapOffset(cc.p(0, 0))
                     end
                     self:addChild(self.dramainfoLayer, 102)
                 end

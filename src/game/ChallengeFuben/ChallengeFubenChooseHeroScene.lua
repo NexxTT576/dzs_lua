@@ -413,7 +413,7 @@ function ChallengeFubenChooseHeroScene:initHeroListView()
             cellSize = heroItem.new():getContentSize(),
             touchFunc = function(cell)
                 local idx = cell:getIdx() + 1
-                local pos = cell:convertToNodeSpace(ccp(posX, posY))
+                local pos = cell:convertToNodeSpace(cc.p(posX, posY))
                 local sz = cell:getContentSize()
                 local i = 0
                 if pos.x > sz.width * (4 / 5) and pos.x < sz.width then
@@ -464,7 +464,7 @@ function ChallengeFubenChooseHeroScene:initHeroListView()
                                         if #self._formHero > 1 then
                                             local w = self._chooseItemList:cellAtIndex(0):getContentSize().width * #self._formHero
                                             if w > self._chooseItemList:getContentSize().width then
-                                                self._chooseItemList:setContentOffset(ccp(self._chooseItemList:getContentSize().width - w, 0), true)
+                                                self._chooseItemList:setContentOffset(cc.p(self._chooseItemList:getContentSize().width - w, 0), true)
                                             end
                                         end
                                     end

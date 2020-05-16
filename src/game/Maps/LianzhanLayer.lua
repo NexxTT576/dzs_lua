@@ -304,7 +304,7 @@ function LianzhanLayer:ctor(param)
     local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
 
     self._rootnode["descView"]:setContentSize(sz)
-    self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+    self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
     self._rootnode["scrollView"]:updateInset()
     self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
 end

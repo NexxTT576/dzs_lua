@@ -43,7 +43,7 @@ function RankListScene:ctor()
 
     self.tableViewSize = cc.size(self.tableScaleBgSize.width, self.tableScaleBgSize.height * 0.96)
 
-    local listWorldPos = self._rootnode["table_bg"]:convertToWorldSpace(ccp(0, 0))
+    local listWorldPos = self._rootnode["table_bg"]:convertToWorldSpace(cc.p(0, 0))
     self.tableRect = CCRect(listWorldPos.x, listWorldPos.y, display.width, self.tableScaleBgSize.height)
 
     self._rootnode["table_scale_bg"]:setContentSize(self.tableScaleBgSize)
@@ -91,7 +91,7 @@ function RankListScene:initUpDetail(type)
 
     if self._rootnode["right_icon_" .. type] ~= nil then
         local iconPos =
-            ccp(self._rootnode["ttf_" .. type .. "_2"]:getPositionX() + self._rootnode["ttf_" .. type .. "_2"]:getContentSize().width, self._rootnode["ttf_" .. type .. "_2"]:getPositionY())
+            cc.p(self._rootnode["ttf_" .. type .. "_2"]:getPositionX() + self._rootnode["ttf_" .. type .. "_2"]:getContentSize().width, self._rootnode["ttf_" .. type .. "_2"]:getPositionY())
         self._rootnode["right_icon_" .. type]:setPosition(iconPos)
     end
 

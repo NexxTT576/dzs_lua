@@ -8,10 +8,8 @@ require("network.gameWebsocket")
 
 RequestHelper = {}
 
-local acc = ""
-
 local function request(msg, callback, errback)
-    msg.acc = acc
+    msg.acc = game.player.m_uid
     ws.SendRequest(msg, callback, errback)
 end
 
@@ -1039,11 +1037,11 @@ RequestHelper.game = {
     -- 登陆
     login = function(param)
         local _callback = param.callback
-        acc = param.acc
+        game.player.m_uid = param.acc
         local msg = {
             m = "usr",
             a = "enter",
-            acc = acc
+            acc = game.player.m_uid
         }
         request(msg, _callback)
     end,

@@ -212,7 +212,7 @@ function HuaShanRewardShow:init()
                 local idx = cell:getIdx()
                 for i = 1, 4 do
                     local icon = cell:getIcon(i)
-                    local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                    local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                     if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self:onInformation(
                             {

@@ -85,7 +85,7 @@ function HeroSellCell:create(param)
         size = 32
 
     })
-    self.itemName:setAnchorPoint(ccp(0,0.5))
+    self.itemName:setAnchorPoint(cc.p(0,0.5))
     self.itemName:setPosition(boardWidth*0.2,boardHeight*0.5)
 
 
@@ -123,7 +123,7 @@ function HeroSellCell:create(param)
         size =22,
         align = ui.TEXT_ALIGN_RIGHT
     })
-    self.costSilver:setAnchorPoint(ccp(0,0.5))
+    self.costSilver:setAnchorPoint(cc.p(0,0.5))
     self.costSilver:setPosition(boardWidth*0.5, boardHeight*0.3)
     self.bg:addChild(self.costSilver)
 
@@ -134,7 +134,7 @@ function HeroSellCell:create(param)
         size = 22,
         align = ui.TEXT_ALIGN_RIGHT
     })
-    self.costNum:setAnchorPoint(ccp(0,0.5))
+    self.costNum:setAnchorPoint(cc.p(0,0.5))
     self.costNum:setPosition(self.costSilver:getPositionX()+self.costSilver:getContentSize().width, self.costSilver:getPositionY())
     self.bg:addChild(self.costNum)
 

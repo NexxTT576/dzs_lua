@@ -105,7 +105,7 @@ function FriendScene:initTableviews()
             end
         end
 
-        local listWorldPos = self._rootnode["list_view"]:convertToWorldSpace(ccp(0, curTablePosY))
+        local listWorldPos = self._rootnode["list_view"]:convertToWorldSpace(cc.p(0, curTablePosY))
         local tableRect = CCRect(listWorldPos.x, listWorldPos.y, tableBgSize.width, tableBgSize.height)
 
         local function createFunc(idx)

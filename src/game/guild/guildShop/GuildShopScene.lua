@@ -694,7 +694,7 @@ function GuildShopScene:reloadListData(showType, dataList)
                     local idx = cell:getIdx() + 1
                     if dataList[idx].hasOpen == false then
                         local icon = cell:getIcon()
-                        local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                        local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                         if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                             show_tip_label(data_error_error[2900031].prompt)
                         end

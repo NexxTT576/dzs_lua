@@ -29,7 +29,7 @@ function BaseEquipInfoLayer:initSuit()
 
     local maxOff = 470 + self.suitInfo:getHeight()
     self.scrollBg:setContentSize(CCSize(display.width, maxOff))
-    self.scrollBg:setContentOffset(ccp(0, -150), false)
+    self.scrollBg:setContentOffset(cc.p(0, -150), false)
     self.contentContainer:setPosition(display.width / 2, maxOff)
 end
 
@@ -70,7 +70,7 @@ function BaseEquipInfoLayer:ctor(param)
     local maxOff = 800
     self.scrollBg:setContentSize(CCSize(display.width, maxOff))
     self.scrollBg:setDirection(kCCScrollViewDirectionVertical)
-    self.scrollBg:setContentOffset(ccp(0, -maxOff / 2 + 55), false)
+    self.scrollBg:setContentOffset(cc.p(0, -maxOff / 2 + 55), false)
     self.scrollBg:ignoreAnchorPointForPosition(true)
     self.scrollBg:updateInset()
     self.contentContainer:setPosition(display.width / 2, maxOff)

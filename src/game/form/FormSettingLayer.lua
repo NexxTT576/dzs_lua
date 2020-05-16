@@ -139,7 +139,7 @@ function FormSettingLayer:ctor(param)
                             param.cardnode:setTouchEnabled(false)
                         end
                     ),
-                    CCMoveTo:create(0.1, ccp(_x, _y)),
+                    CCMoveTo:create(0.1, cc.p(_x, _y)),
                     CCCallFunc:create(
                         function()
                             param.cardnode:setTouchEnabled(true)

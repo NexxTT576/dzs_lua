@@ -53,7 +53,7 @@ function JianghuScene:ctor()
             self._rootnode["propNode"]:runAction(
                 transition.sequence(
                     {
-                        CCMoveBy:create(0.2, ccp(tmpW, 0)),
+                        CCMoveBy:create(0.2, cc.p(tmpW, 0)),
                         CCCallFunc:create(
                             function()
                                 if bShow then
@@ -239,7 +239,7 @@ function JianghuScene:initTouchNode()
         currentNode:runAction(
             transition.sequence(
                 {
-                    CCMoveTo:create(0.2, ccp(targPosX, targPosY))
+                    CCMoveTo:create(0.2, cc.p(targPosX, targPosY))
                 }
             )
         )
@@ -251,15 +251,15 @@ function JianghuScene:initTouchNode()
         elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local offsetX = 0
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if self._index and (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
+        if self._index and (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
             local rect = CCRectMake(0, 0, self._rootnode["propNode"]:getContentSize().width, self._rootnode["propNode"]:getContentSize().height)
-            if rect:containsPoint(self._rootnode["propNode"]:convertToNodeSpace(ccp(event.x, event.y))) then
+            if rect:containsPoint(self._rootnode["propNode"]:convertToNodeSpace(cc.p(event.x, event.y))) then
                 return false
             else
                 currentNode = self._rootnode["imageSprite"]
@@ -396,9 +396,9 @@ function JianghuScene:refreshExpBar(info)
 
     if info.level - 3 > 0 then
         if info.level + 3 < data_shangxiansheding_shangxiansheding[7].level then
-            self._propertyListView:setContentOffset(ccp(0, self._propertyListView:minContainerOffset().y + (info.level - 3) * 37))
+            self._propertyListView:setContentOffset(cc.p(0, self._propertyListView:minContainerOffset().y + (info.level - 3) * 37))
         else
-            self._propertyListView:setContentOffset(ccp(0, self._propertyListView:minContainerOffset().y + 23 * 37))
+            self._propertyListView:setContentOffset(cc.p(0, self._propertyListView:minContainerOffset().y + 23 * 37))
         end
     end
 

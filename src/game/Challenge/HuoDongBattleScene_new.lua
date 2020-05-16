@@ -108,7 +108,7 @@ function HuoDongBattleScene:initJiefuJiPin()
             align = ui.TEXT_ALIGN_LEFT
         }
     )
-    self.curDamageNum:setAnchorPoint(ccp(0, 0.5))
+    self.curDamageNum:setAnchorPoint(cc.p(0, 0.5))
     self.curDamageNum:setPosition(self._numrootnode["cur_damage"]:getContentSize().width + self.curDamageNum:getContentSize().width / 2, self._numrootnode["cur_damage"]:getContentSize().height / 2)
 
     self._numrootnode["cur_damage"]:addChild(self.curDamageNum)
@@ -124,7 +124,7 @@ function HuoDongBattleScene:initJiefuJiPin()
             align = ui.TEXT_ALIGN_LEFT
         }
     )
-    self.curSilverNum:setAnchorPoint(ccp(0, 0.5))
+    self.curSilverNum:setAnchorPoint(cc.p(0, 0.5))
     self.curSilverNum:setPosition(self._numrootnode["get_silver"]:getContentSize().width + self.curSilverNum:getContentSize().width / 2, self._numrootnode["get_silver"]:getContentSize().height / 2)
 
     self._numrootnode["get_silver"]:addChild(self.curSilverNum)
@@ -140,7 +140,7 @@ function HuoDongBattleScene:initJiefuJiPin()
             align = ui.TEXT_ALIGN_LEFT
         }
     )
-    self.restRoundNum:setAnchorPoint(ccp(0, 0.5))
+    self.restRoundNum:setAnchorPoint(cc.p(0, 0.5))
     self.restRoundNum:setPosition(
         self._numrootnode["rest_round"]:getContentSize().width - 10 + self.restRoundNum:getContentSize().width / 2,
         self._numrootnode["rest_round"]:getContentSize().height / 2

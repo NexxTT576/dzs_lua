@@ -140,7 +140,7 @@ function HeroJinJieEndLayer:ctor(param)
 
     local tianFuPng = display.newSprite("#talent_unlock.png")
     tianFuPng:setPosition(display.width * 0.3 - 40, 0.43 * display.height)
-    tianFuPng:setAnchorPoint(ccp(0, 0.5))
+    tianFuPng:setAnchorPoint(cc.p(0, 0.5))
     self:addChild(tianFuPng)
     tianFuPng:setOpacity(0)
 
@@ -216,7 +216,7 @@ function HeroJinJieEndLayer:ctor(param)
     --        size = 30})
     --
     --
-    --    unLockTalTTF:setAnchorPoint(ccp(0,0.5))
+    --    unLockTalTTF:setAnchorPoint(cc.p(0,0.5))
     --    unLockTalTTF:setPosition(tianFuPng:getPositionX()+tianFuPng:getContentSize().width,tianFuPng:getPositionY())
     --    self:addChild(unLockTalTTF)
 
@@ -259,7 +259,7 @@ function HeroJinJieEndLayer:ctor(param)
                 size = 25
             }
         )
-        befNumLabel:setAnchorPoint(ccp(0, 0.5))
+        befNumLabel:setAnchorPoint(cc.p(0, 0.5))
         befNumLabel:setPosition(display.width * 0.3, stateOrY)
         self:addChild(befNumLabel)
 
@@ -276,7 +276,7 @@ function HeroJinJieEndLayer:ctor(param)
                 size = 25
             }
         )
-        aftNumLabel:setAnchorPoint(ccp(0, 0.5))
+        aftNumLabel:setAnchorPoint(cc.p(0, 0.5))
         aftNumLabel:setPosition(display.width * 0.6, stateOrY)
         self:addChild(aftNumLabel)
 

@@ -60,7 +60,7 @@ function SellHeroCell:ctor(data)
         x = bgWidth*0.45,
         y = bgHeight*0.4
         })
-    priceTTF:setAnchorPoint(ccp(0, 0.5))
+    priceTTF:setAnchorPoint(cc.p(0, 0.5))
     self:addChild(priceTTF)
 
     local priceNum = ui.newTTFLabel({
@@ -70,7 +70,7 @@ function SellHeroCell:ctor(data)
         x = priceTTF:getPositionX()+priceTTF:getContentSize().width*0.4,
         y = priceTTF:getPositionY()
         })
-    priceNum:setAnchorPoint(ccp(0, 0.5))
+    priceNum:setAnchorPoint(cc.p(0, 0.5))
     self:addChild(priceNum)
     
 

@@ -51,7 +51,7 @@ function Item:create(param)
             align = ui.TEXT_ALIGN_RIGHT
         }
     )
-    --    self.numLabel:setPosition(ccp(self:getContentSize().width - self.numLabel:getContentSize().width - 10, self:getContentSize().height * 0.5))
+    --    self.numLabel:setPosition(cc.p(self:getContentSize().width - self.numLabel:getContentSize().width - 10, self:getContentSize().height * 0.5))
     self:addChild(self.numLabel)
     self:refresh(param)
     return self
@@ -71,7 +71,7 @@ function Item:refresh(param)
     self.nameLabel:setString(data_item_item[_itemData.id].name)
     self.nameLabel:setColor(NAME_COLOR[data_item_item[_itemData.id].quality])
     self.numLabel:setString(tostring(_itemData.num))
-    self.numLabel:setPosition(ccp(self:getContentSize().width - self.numLabel:getContentSize().width / 2 - 10, self:getContentSize().height * 0.5))
+    self.numLabel:setPosition(cc.p(self:getContentSize().width - self.numLabel:getContentSize().width / 2 - 10, self:getContentSize().height * 0.5))
 end
 
 local SplitStoveScene =

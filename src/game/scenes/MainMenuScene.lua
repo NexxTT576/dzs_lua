@@ -100,6 +100,13 @@ function MainMenuScene:onEnter()
 
     -- 倒数第2行按钮
     self:bottomBtns_2(self.bottom:getContentSize().height * 1.15)
+
+    local broadcastBg = rootnode["broadcast_tag"]
+    local g = broadcastBg:getParent()
+    if game.broadcast:getParent() ~= nil then
+        game.broadcast:removeFromParentAndCleanup(true)
+    end
+    broadcastBg:addChild(game.broadcast)
     --@TODO 2020-05-13 23:36:52 先做个记号
 end
 --[[

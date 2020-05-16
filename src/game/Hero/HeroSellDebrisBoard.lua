@@ -101,7 +101,7 @@ function HeroSellDebrisBoard:init(data)
             color = FONT_COLOR.ORANGE
         }
     )
-    priceNum:setAnchorPoint(ccp(0, 0.5))
+    priceNum:setAnchorPoint(cc.p(0, 0.5))
     priceNum:setPosition(yinbiLable:getPositionX() + yinbiLable:getContentSize().width * 0.75, choiceDetailBg:getPositionY())
     choiceDetailNode:addChild(priceNum)
 

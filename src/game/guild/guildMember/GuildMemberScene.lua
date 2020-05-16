@@ -585,7 +585,7 @@ function GuildMemberScene:reloadListView(showType, listData, lastPosIndex)
                 local idx = cell:getIdx() + 1
                 if listData[idx].isSelf == false and self._bHasShowFormLayer == false then
                     local icon = cell:getPlayerIcon()
-                    local pos = icon:convertToNodeSpace(ccp(posX, posY))
+                    local pos = icon:convertToNodeSpace(cc.p(posX, posY))
                     if CCRectMake(0, 0, icon:getContentSize().width, icon:getContentSize().height):containsPoint(pos) then
                         self._bHasShowFormLayer = true
                         local layer =

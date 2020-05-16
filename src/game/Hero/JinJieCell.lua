@@ -19,7 +19,7 @@ end
 function JinJieCell:create(param)
     self.itemIcon = display.newSprite()
     self:addChild(self.itemIcon)
-    -- self.itemIcon:setAnchorPoint(ccp(0,0))
+    -- self.itemIcon:setAnchorPoint(cc.p(0,0))
 
     self.hasNum =
         ui.newTTFLabelWithOutline(

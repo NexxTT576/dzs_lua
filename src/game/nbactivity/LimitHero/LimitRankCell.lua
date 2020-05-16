@@ -17,7 +17,7 @@ function LimitRankCell:create(idx, width)
         }
     )
     self.rankName:setPosition(15, self.rankName:getContentSize().height / 2 + 5)
-    self.rankName:setAnchorPoint(ccp(0, 0.8))
+    self.rankName:setAnchorPoint(cc.p(0, 0.8))
     self:addChild(self.rankName)
 
     self.rankNum =
@@ -29,7 +29,7 @@ function LimitRankCell:create(idx, width)
             textAlign = ui.TEXT_ALIGN_RIGHT
         }
     )
-    self.rankNum:setAnchorPoint(ccp(1, 0.8))
+    self.rankNum:setAnchorPoint(cc.p(1, 0.8))
     self.rankNum:setPosition(width - 10, self.rankName:getContentSize().height / 2 + 5)
     self:addChild(self.rankNum)
 

@@ -481,8 +481,8 @@ function ShenmiLayer:onEnter()
             },
             contents = {
                 CCRectMake(
-                    self._listViewNode:convertToWorldSpace(ccp(0, 0)).x,
-                    self._listViewNode:convertToWorldSpace(ccp(0, 0)).y,
+                    self._listViewNode:convertToWorldSpace(cc.p(0, 0)).x,
+                    self._listViewNode:convertToWorldSpace(cc.p(0, 0)).y,
                     self._listViewNode:getContentSize().width,
                     self._listViewNode:getContentSize().height
                 ),

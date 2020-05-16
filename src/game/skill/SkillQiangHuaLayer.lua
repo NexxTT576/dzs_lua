@@ -164,7 +164,7 @@ function SkillQiangHuaLayer:runAnim()
             }
         )
         local tmpNode = self._rootnode["iconSprite" .. i]
-        local worldPos = tmpNode:convertToWorldSpace(ccp(tmpNode:getContentSize().width / 2, tmpNode:getContentSize().height / 2))
+        local worldPos = tmpNode:convertToWorldSpace(cc.p(tmpNode:getContentSize().width / 2, tmpNode:getContentSize().height / 2))
         worldPos = self._rootnode["card_bg"]:convertToNodeSpace(worldPos)
         effect:setPosition(worldPos)
         self._rootnode["card_bg"]:addChild(effect)
@@ -206,7 +206,7 @@ function SkillQiangHuaLayer:runAnim()
         effect:runAction(
             transition.sequence(
                 {
-                    CCMoveTo:create(0.2, ccp(self._rootnode["card_bg"]:getContentSize().width / 2, self._rootnode["card_bg"]:getContentSize().height / 2)),
+                    CCMoveTo:create(0.2, cc.p(self._rootnode["card_bg"]:getContentSize().width / 2, self._rootnode["card_bg"]:getContentSize().height / 2)),
                     func
                 }
             )

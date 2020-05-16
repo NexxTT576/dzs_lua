@@ -176,7 +176,7 @@ function DramaLayer:addHeroImage(large, pos, over, offsetX, offsetY, scale, opac
         heroImage:setScale(scale / 1000)
         heroImage:setFlipX(isFlip)
         heroImage:setPosition(self.imageX[pos] + imageOffsetX, imageOffsetY + self.chatBox:getPositionY() + self.chatBox:getContentSize().height / 2 + 40)
-        heroImage:setAnchorPoint(ccp(0.5, 0.33))
+        heroImage:setAnchorPoint(cc.p(0.5, 0.33))
         self:addChild(heroImage, 90)
     end
 end

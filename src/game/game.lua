@@ -10,7 +10,12 @@ game = {
     --@RefType MyApp
     app = nil,
     --@RefType luaIde#cc.Scene
-    runningScene = nil
+    runningScene = nil,
+    broadcast = require("game.Broadcast").new(), -- 广播
+    urgencyBroadcast = require("game.UrgencyBroadcast").new() -- 紧急广播
 }
+
+game.broadcast:retain()
+game.urgencyBroadcast:retain()
 
 GameStateManager = require("game.GameStateManager")

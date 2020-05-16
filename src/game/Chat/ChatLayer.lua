@@ -417,7 +417,7 @@ function ChatLayer:resetScrollView()
     local sz = cc.size(contentViewSize.width, contentViewSize.height + self._height)
 
     self._rootnode["descView"]:setContentSize(sz)
-    self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+    self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
 
     local scrollView = self._rootnode["scrollView"]
     scrollView:updateInset()
@@ -563,7 +563,7 @@ function ChatLayer:initFriendContent()
     self._rootnode["level"]:setString(self.level)
     self.heroNameTTF:setString(self.name)
     local heroPosX, heroPosY = self._rootnode["heroName"]:getPosition()
-    self.heroNameTTF:setPosition(ccp(heroPosX + self.heroNameTTF:getContentSize().width / 2, heroPosY))
+    self.heroNameTTF:setPosition(cc.p(heroPosX + self.heroNameTTF:getContentSize().width / 2, heroPosY))
 
     -- --更新头像
     ResMgr.refreshIcon({id = self.resId, itemBg = self._rootnode["headIcon"], resType = ResMgr.HERO, cls = self.cls})

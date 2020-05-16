@@ -76,7 +76,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
                 align = ui.TEXT_ALIGN_LEFT
             }
         )
-        self.costNumWithShadow:setAnchorPoint(ccp(0, 0.5))
+        self.costNumWithShadow:setAnchorPoint(cc.p(0, 0.5))
         -- self.costNumWithShadow:setPosition(self._rootnode["cost_icon"]:getPositionX()+self._rootnode["cost_icon"]:getContentSize().width,self._rootnode["cost_icon"]:getPositionY())
         self.costNumWithShadow:setPosition(
             self._rootnode["cost_icon"]:getContentSize().width + self.costNumWithShadow:getContentSize().width / 2,
@@ -95,7 +95,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
                 align = ui.TEXT_ALIGN_LEFT
             }
         )
-        self.expNumWithShadow:setAnchorPoint(ccp(0, 0.5))
+        self.expNumWithShadow:setAnchorPoint(cc.p(0, 0.5))
         -- self.expNumWithShadow:setPosition(self._rootnode["exp_label"]:getPositionX()+self._rootnode["exp_label"]:getContentSize().width,self._rootnode["exp_label"]:getPositionY())
         self.expNumWithShadow:setPosition(
             self._rootnode["exp_label"]:getContentSize().width + self.expNumWithShadow:getContentSize().width / 2,
@@ -167,17 +167,17 @@ function HeroQiangHuaLayer:updateQiangHua(param)
 
     if self.addBar == nil then
         self.addBar = display.newProgressTimer("#shine_green_bar.png", display.PROGRESS_TIMER_BAR)
-        self.addBar:setMidpoint(ccp(0, 0.5))
-        self.addBar:setBarChangeRate(ccp(1, 0))
-        self.addBar:setAnchorPoint(ccp(0, 0.5))
+        self.addBar:setMidpoint(cc.p(0, 0.5))
+        self.addBar:setBarChangeRate(cc.p(1, 0))
+        self.addBar:setAnchorPoint(cc.p(0, 0.5))
         self.addBar:setPosition(0, self._rootnode["empty"]:getContentSize().height / 2)
         self._rootnode["empty"]:addChild(self.addBar)
         self.addBar:setPercentage(80)
 
         self.normalBar = display.newProgressTimer("#blue_bar.png", display.PROGRESS_TIMER_BAR)
-        self.normalBar:setMidpoint(ccp(0, 0.5))
-        self.normalBar:setAnchorPoint(ccp(0, 0.5))
-        self.normalBar:setBarChangeRate(ccp(1, 0))
+        self.normalBar:setMidpoint(cc.p(0, 0.5))
+        self.normalBar:setAnchorPoint(cc.p(0, 0.5))
+        self.normalBar:setBarChangeRate(cc.p(1, 0))
         self._rootnode["empty"]:addChild(self.normalBar)
         self.normalBar:setPosition(0, self._rootnode["empty"]:getContentSize().height / 2)
         self.normalBar:setPercentage(60)
@@ -380,17 +380,17 @@ function HeroQiangHuaLayer:updateXiaHun(param)
 
     if self.addBar == nil then
         self.addBar = display.newProgressTimer("#shine_green_bar.png", display.PROGRESS_TIMER_BAR)
-        self.addBar:setMidpoint(ccp(0, 0.5))
-        self.addBar:setBarChangeRate(ccp(1, 0))
-        self.addBar:setAnchorPoint(ccp(0, 0.5))
+        self.addBar:setMidpoint(cc.p(0, 0.5))
+        self.addBar:setBarChangeRate(cc.p(1, 0))
+        self.addBar:setAnchorPoint(cc.p(0, 0.5))
         self.addBar:setPosition(0, self._rootnode["empty"]:getContentSize().height / 2)
         self._rootnode["empty"]:addChild(self.addBar)
         self.addBar:setPercentage(80)
 
         self.normalBar = display.newProgressTimer("#blue_bar.png", display.PROGRESS_TIMER_BAR)
-        self.normalBar:setMidpoint(ccp(0, 0.5))
-        self.normalBar:setAnchorPoint(ccp(0, 0.5))
-        self.normalBar:setBarChangeRate(ccp(1, 0))
+        self.normalBar:setMidpoint(cc.p(0, 0.5))
+        self.normalBar:setAnchorPoint(cc.p(0, 0.5))
+        self.normalBar:setBarChangeRate(cc.p(1, 0))
         self._rootnode["empty"]:addChild(self.normalBar)
         self.normalBar:setPosition(0, self._rootnode["empty"]:getContentSize().height / 2)
         self.normalBar:setPercentage(60)
@@ -502,7 +502,7 @@ function HeroQiangHuaLayer:ctor(param)
 
     local node = CCBReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode, self, cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height))
     -- local node = CCBReaderLoad("hero/hero_qianghua.ccbi", proxy, self._rootnode,self,cc.size(display.width, display.height - self.bottom:getContentSize().height - 72))
-    node:setAnchorPoint(ccp(0.5, 0))
+    node:setAnchorPoint(cc.p(0.5, 0))
     node:setPosition(display.width / 2, self.bottom:getContentSize().height)
     self:addChild(node)
 

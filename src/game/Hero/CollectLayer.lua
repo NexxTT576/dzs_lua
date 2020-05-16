@@ -65,7 +65,7 @@ function CollectLayer:ctor(itemId, itemType)
             color = cc.c3b(87, 53, 34)
         }
     )
-    colMsg:setAnchorPoint(ccp(0, 0.5))
+    colMsg:setAnchorPoint(cc.p(0, 0.5))
     self._rootnode["desc"]:addChild(colMsg)
     local boardBg = self._rootnode["inner_bg"]
 

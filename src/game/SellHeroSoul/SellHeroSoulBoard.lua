@@ -43,7 +43,7 @@ function SellHeroSoulBoard:ctor(setBgVisible,typeIndex)
     	size = 18,
     	color = FONT_COLOR.LIGHT_ORANGE
     	})
-   	choiceDetailLable:setAnchorPoint(ccp(0, 0.5))
+   	choiceDetailLable:setAnchorPoint(cc.p(0, 0.5))
     choiceDetailLable:setPosition(choiceDetailBg:getPositionX()-boardWidth*0.33,choiceDetailBg:getPositionY()) 
     choiceDetailNode:addChild(choiceDetailLable)
 
@@ -52,7 +52,7 @@ function SellHeroSoulBoard:ctor(setBgVisible,typeIndex)
     	size = 18,
     	color = FONT_COLOR.RED
     	})
-    choiceDetailNum:setAnchorPoint(ccp(0, 0.5))
+    choiceDetailNum:setAnchorPoint(cc.p(0, 0.5))
     choiceDetailNum:setPosition(choiceDetailLable:getPositionX()+choiceDetailLable:getContentSize().width,choiceDetailLable:getPositionY())
     choiceDetailNode:addChild(choiceDetailNum)
 
@@ -76,7 +76,7 @@ function SellHeroSoulBoard:ctor(setBgVisible,typeIndex)
         size = 18,
         color = FONT_COLOR.ORANGE
         })
-    priceNum:setAnchorPoint(ccp(0, 0.5))
+    priceNum:setAnchorPoint(cc.p(0, 0.5))
     priceNum:setPosition(yinbiLable:getPositionX()+yinbiLable:getContentSize().width*0.75,choiceDetailBg:getPositionY())
     choiceDetailNode:addChild(priceNum)
 

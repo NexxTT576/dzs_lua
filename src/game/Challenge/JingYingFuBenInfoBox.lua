@@ -152,14 +152,14 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
                     -- 装备碎片
                     local suipianIcon = display.newSprite("#sx_suipian.png")
                     suipianIcon:setRotation(-15)
-                    suipianIcon:setAnchorPoint(ccp(0, 1))
+                    suipianIcon:setAnchorPoint(cc.p(0, 1))
                     suipianIcon:setPosition(-0.13 * itemIcon:getContentSize().width, 0.9 * itemIcon:getContentSize().height)
                     itemIcon:addChild(suipianIcon)
                 elseif itemData.type == 5 then
                     -- 残魂(武将碎片)
                     local canhunIcon = display.newSprite("#sx_canhun.png")
                     canhunIcon:setRotation(-18)
-                    canhunIcon:setAnchorPoint(ccp(0, 1))
+                    canhunIcon:setAnchorPoint(cc.p(0, 1))
                     canhunIcon:setPosition(-0.13 * itemIcon:getContentSize().width, 0.93 * itemIcon:getContentSize().height)
                     itemIcon:addChild(canhunIcon)
                 end

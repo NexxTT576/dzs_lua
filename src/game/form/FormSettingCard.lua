@@ -41,7 +41,7 @@ function FormSettingCard:ctor(param)
     local _bOpen = true
     local _bg = rootnode["imageSprite"]
     local _sz = _bg:getContentSize()
-    local _pos = ccp(_sz.width / 2, _sz.height / 2)
+    local _pos = cc.p(_sz.width / 2, _sz.height / 2)
 
     _bg:setTouchEnabled(true)
     rootnode["lvNum_node"]:setVisible(false)
@@ -170,7 +170,7 @@ function FormSettingCard:ctor(param)
     end
 
     self.isInCard = function(_, x, y)
-        if (CCRectMake(0, 0, _sz.width, _sz.height):containsPoint(_bg:convertToNodeSpace(ccp(x, y)))) then
+        if (CCRectMake(0, 0, _sz.width, _sz.height):containsPoint(_bg:convertToNodeSpace(cc.p(x, y)))) then
             return true
         else
             return false
@@ -242,7 +242,7 @@ function FormSettingCard:switchWithCard(touchCard, x, y)
         end
         cardB:retain()
         cardB:removeFromParentAndCleanup(false)
-        cardB:setPosition(self._bg:convertToNodeSpace(ccp(x, y)))
+        cardB:setPosition(self._bg:convertToNodeSpace(cc.p(x, y)))
 
         self:addHeroImage(cardB)
         touchCard:addHeroImage(cardA)

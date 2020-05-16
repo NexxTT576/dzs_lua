@@ -118,7 +118,7 @@ function BaseSkillInfoLayer:ctor(param)
     local bScroll
     if refineInfo and refineInfo.arr_jiban then
         winSize = cc.size(display.width, display.height - 30)
-        nodePos = ccp(display.width / 2, 0)
+        nodePos = cc.p(display.width / 2, 0)
         bScroll = true
     else
         if _bEnemy then
@@ -127,7 +127,7 @@ function BaseSkillInfoLayer:ctor(param)
             winSize = cc.size(display.width, 760)
         end
 
-        nodePos = ccp(display.width / 2, display.cy - winSize.height / 2)
+        nodePos = cc.p(display.width / 2, display.cy - winSize.height / 2)
         bScroll = false
     end
 
@@ -139,12 +139,12 @@ function BaseSkillInfoLayer:ctor(param)
     local infoNode
     if _bEnemy then
         infoNode = CCBReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, winSize.height - 2 - 20 - 68))
-        infoNode:setPosition(ccp(0, 20))
+        infoNode:setPosition(cc.p(0, 20))
         bgNode:addChild(infoNode)
         self._rootnode["bottomMenuNode"]:setVisible(false)
     else
         infoNode = CCBReaderLoad("skill/skill_detail.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, winSize.height - 2 - 85 - 68))
-        infoNode:setPosition(ccp(0, 85))
+        infoNode:setPosition(cc.p(0, 85))
         bgNode:addChild(infoNode)
     end
 
@@ -370,7 +370,7 @@ function BaseSkillInfoLayer:ctor(param)
         end
 
         local jbNode = CCBReaderLoad("skill/skill_jiban_bg.ccbi", self._proxy, self._rootnode, self, cc.size(winSize.width, height - self._rootnode["jiBanNode"]:getContentSize().height + 10))
-        jbNode:setPosition(ccp(display.width / 2, -self._rootnode["jiBanNode"]:getContentSize().height + 15))
+        jbNode:setPosition(cc.p(display.width / 2, -self._rootnode["jiBanNode"]:getContentSize().height + 15))
         self._rootnode["contentView"]:addChild(jbNode, 0)
     else
         self._rootnode["jiBanNode"]:setVisible(false)
@@ -378,7 +378,7 @@ function BaseSkillInfoLayer:ctor(param)
 
     local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height)
     self._rootnode["descView"]:setContentSize(sz)
-    self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+    self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
     self._rootnode["scrollView"]:updateInset()
     self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
 

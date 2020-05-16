@@ -111,7 +111,7 @@ local BattleLayer =
 function BattleLayer:playDie(card)
     card:playAct("die")
     card:setLife(0)
-    local pos = ccp(card:getPosition())
+    local pos = cc.p(card:getPosition())
     local cardSide = card:getSideID()
     local function die()
         local dieLoop =
@@ -399,7 +399,7 @@ function BattleLayer:init(param)
 
     self.countLayer = display.newColorLayer(ccc4(0, 0, 0, 170))
     self.countLayer:setContentSize(display.width, 30)
-    self.countLayer:setAnchorPoint(ccp(0.5, 1))
+    self.countLayer:setAnchorPoint(cc.p(0.5, 1))
     self.countLayer:setPosition(0, display.height - 30)
     -- self.countNode:addChild(self.countLayer)
 
@@ -469,7 +469,7 @@ function BattleLayer:initJumpBtn()
     if self.isShowJumpBtn == true then
         if (self.jumpBtn == nil) then
             self.jumpBtn = display.newSprite("#battle_jump.png")
-            self.jumpBtn:setAnchorPoint(ccp(1, 0))
+            self.jumpBtn:setAnchorPoint(cc.p(1, 0))
             self.jumpBtn:setPosition(display.width, 0)
             self.shakeNode:addChild(self.jumpBtn, 10000000)
             self.jumpBtn:setTouchEnabled(true)
@@ -594,7 +594,7 @@ function BattleLayer:playSkipBattle()
                                     damageType = hitType,
                                     isRanPos = 1,
                                     numValue = math.abs(maxLife - restLife),
-                                    pos = ccp(curCard:getPositionX(), curCard:getPositionY()),
+                                    pos = cc.p(curCard:getPositionX(), curCard:getPositionY()),
                                     card = curCard
                                 }
                             )
@@ -752,7 +752,7 @@ function BattleLayer:initSkipDramaBtn()
             CCControlEventTouchUpInside
         )
 
-        self.skipDramaBtn:setAnchorPoint(ccp(1, 0))
+        self.skipDramaBtn:setAnchorPoint(cc.p(1, 0))
         self.skipDramaBtn:setPosition(display.width - 22, 60)
         self.shakeNode:addChild(self.skipDramaBtn, 10000000)
         self.skipVis = true
@@ -1070,7 +1070,7 @@ function BattleLayer:cardWalk()
         for k, v in pairs(self.enemyCard) do
             v:setPosition(v:getPositionX(), v:getPositionY() + moveDistance)
             v:setVisible(true)
-            v:runAction(CCMoveBy:create(moveTime, ccp(0, -moveDistance)))
+            v:runAction(CCMoveBy:create(moveTime, cc.p(0, -moveDistance)))
         end
 
         for k, v in pairs(self.friendCard) do
@@ -1080,7 +1080,7 @@ function BattleLayer:cardWalk()
         self.moveBgNode:runAction(
             transition.sequence(
                 {
-                    CCMoveBy:create(moveTime, ccp(0, -moveDistance)),
+                    CCMoveBy:create(moveTime, cc.p(0, -moveDistance)),
                     CCCallFunc:create(
                         function()
                             for k, v in pairs(self.friendCard) do
@@ -1110,7 +1110,7 @@ function BattleLayer:cardWalk()
             v:runAction(
                 transition.sequence(
                     {
-                        CCMoveBy:create(moveTime, ccp(0, -moveDistance)),
+                        CCMoveBy:create(moveTime, cc.p(0, -moveDistance)),
                         CCCallFunc:create(
                             function()
                                 v:playAct("stop")
@@ -1352,7 +1352,7 @@ function BattleLayer:buffEffect(buffData, buffEffectEndFunc)
                         damageType = hitType,
                         isRanPos = 1,
                         numValue = math.abs(buffValue),
-                        pos = ccp(beAtkCard:getPositionX(), beAtkCard:getPositionY()),
+                        pos = cc.p(beAtkCard:getPositionX(), beAtkCard:getPositionY()),
                         card = beAtkCard
                     }
                 )
@@ -1672,7 +1672,7 @@ function BattleLayer:playRage(atkData, fontScale, specialData)
             local small = CCScaleTo:create(0.1, curScale)
             local delay = CCDelayTime:create(0.8)
             local fadeOut = CCFadeOut:create(0.2)
-            local fadeSpawn = CCSpawn:createWithTwoActions(fadeOut, CCMoveBy:create(0.2, ccp(-600, 0)))
+            local fadeSpawn = CCSpawn:createWithTwoActions(fadeOut, CCMoveBy:create(0.2, cc.p(-600, 0)))
             local rev =
                 CCCallFunc:create(
                 function()
@@ -1757,7 +1757,7 @@ function BattleLayer:createTalName(card, talId, endFunc)
         end
     )
     local nodeScale = CCScaleTo:create(0.2, 1)
-    -- local nodeMoveBy = CCMoveBy:create(0.3, ccp(0,100))
+    -- local nodeMoveBy = CCMoveBy:create(0.3, cc.p(0,100))
     local nodeDelay = CCDelayTime:create(1.3)
     local scaleSmaller = CCScaleTo:create(0.2, 0.1)
     local nodeRev =
@@ -1867,8 +1867,8 @@ function BattleLayer:changeProps(curData, talEndFunc)
                 propFont = getPropFont(natureData, propValue)
                 propNum = getPropNum(propValue)
 
-                propFont:setAnchorPoint(ccp(0, 0.5))
-                propNum:setAnchorPoint(ccp(0, 0.5))
+                propFont:setAnchorPoint(cc.p(0, 0.5))
+                propNum:setAnchorPoint(cc.p(0, 0.5))
 
                 local offsetX = (propFont:getContentSize().width + propNum:getContentSize().width) / 2
                 propFont:setPosition(-offsetX, 0)
@@ -1896,7 +1896,7 @@ function BattleLayer:changeProps(curData, talEndFunc)
                 end
             )
             local nodeScale = CCScaleTo:create(0.1, 1)
-            local nodeMoveBy = CCMoveBy:create(0.8, ccp(0, 100))
+            local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 100))
 
             local nodeRev =
                 CCCallFunc:create(
@@ -1941,7 +1941,7 @@ function BattleLayer:createNatureFont(add, natureId, card)
                 end
             )
             local nodeScale = CCScaleTo:create(0.1, 1)
-            local nodeMoveBy = CCMoveBy:create(0.8, ccp(0, add_symbo * 50))
+            local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, add_symbo * 50))
             local nodeRev =
                 CCCallFunc:create(
                 function()
@@ -1978,7 +1978,7 @@ function BattleLayer:playMianYi(card)
         end
     )
     local nodeScale = CCScaleTo:create(0.1, 1)
-    local nodeMoveBy = CCMoveBy:create(0.8, ccp(0, 50))
+    local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 50))
     local nodeRev =
         CCCallFunc:create(
         function()
@@ -2088,7 +2088,7 @@ function BattleLayer:setCardAnger(card, orAnger, targetAnger)
             end
         )
         local nodeScale = CCScaleTo:create(0.1, 1)
-        local nodeMoveBy = CCMoveBy:create(0.8, ccp(0, 50 * propSymbo))
+        local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 50 * propSymbo))
         local nodeRev =
             CCCallFunc:create(
             function()
@@ -2249,7 +2249,7 @@ function BattleLayer:skillEff(funcId, atkData, endFunc)
                 damageType = actType,
                 isRanPos = numCount,
                 numValue = numVal,
-                pos = ccp(beAtkCard:getPositionX(), beAtkCard:getPositionY()),
+                pos = cc.p(beAtkCard:getPositionX(), beAtkCard:getPositionY()),
                 card = beAtkCard
             }
         )
@@ -2261,7 +2261,7 @@ function BattleLayer:skillEff(funcId, atkData, endFunc)
                     sideID = beAtkCard:getSideID(),
                     posID = beAtkCard:getPosID(),
                     count = numCount,
-                    pos = ccp(beAtkCard:getPositionX(), beAtkCard:getPositionY())
+                    pos = cc.p(beAtkCard:getPositionX(), beAtkCard:getPositionY())
                 }
             )
         end
@@ -2389,7 +2389,7 @@ function BattleLayer:skillEff(funcId, atkData, endFunc)
             elseif flipDir == 3 then
                 --自由翻转
                 if j ~= 1 then
-                    local angle = self:getAngleByPos(ccp(effArma:getPosition()), targetPos)
+                    local angle = self:getAngleByPos(cc.p(effArma:getPosition()), targetPos)
                     local rotate =
                         CCCallFunc:create(
                         function()
@@ -2735,10 +2735,10 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
     local pos = {}
     if id == 1 then
         -- 1,施法卡牌当前位置中心点 （普通攻击特效也是在这个位置）
-        pos[1] = ccp(actCard:getPosition())
+        pos[1] = cc.p(actCard:getPosition())
     elseif id == 2 then
         -- 2,施法卡牌靠前位置
-        local tempPos = ccp(actCard:getPosition())
+        local tempPos = cc.p(actCard:getPosition())
         if side == UP_SIDE then
             tempPos.y = tempPos.y - actCard:getContentSize().height * 0.9
         else
@@ -2764,7 +2764,7 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
         end
     elseif id == 4 then
         -- 4,战场中敌方六人中间
-        local tempPos = ccp(display.width / 2, display.height / 2)
+        local tempPos = cc.p(display.width / 2, display.height / 2)
 
         if trSide == UP_SIDE then
             tempPos.y = tempPos.y * 1.5
@@ -2774,10 +2774,10 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
         pos[1] = tempPos
     elseif id == 5 then
         -- 5,战场正中
-        pos[1] = ccp(display.width / 2, display.height / 2)
+        pos[1] = cc.p(display.width / 2, display.height / 2)
     elseif id == 6 then
         -- 6,战场中我方六人中间
-        local tempPos = ccp(display.width / 2, display.height / 2)
+        local tempPos = cc.p(display.width / 2, display.height / 2)
         if side == UP_SIDE then
             tempPos.y = tempPos.y + display.height / 4
         else
@@ -2786,7 +2786,7 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
         pos[1] = tempPos
     elseif id == 7 then
         -- 7,敌方全体的屏幕后方，正中央的后方
-        local tempPos = ccp(display.width / 2, display.height / 2)
+        local tempPos = cc.p(display.width / 2, display.height / 2)
         if trSide == UP_SIDE then
             tempPos.y = display.height
         else
@@ -2795,7 +2795,7 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
         pos[1] = tempPos
     elseif id == 8 then
         -- 8,我方全体的屏幕后方，正中央的后方
-        local tempPos = ccp(display.width / 2, display.height / 2)
+        local tempPos = cc.p(display.width / 2, display.height / 2)
         if side == UP_SIDE then
             tempPos.y = display.height
         else
@@ -2804,7 +2804,7 @@ function BattleLayer:getEffPosByID(id, actCard, tr)
         pos[1] = tempPos
     elseif id == 9 then
         -- 9,施法卡牌当前位置屏幕后的位置，竖列的后方
-        local tempPos = ccp(actCard:getPosition())
+        local tempPos = cc.p(actCard:getPosition())
         if side == UP_SIDE then
             tempPos.y = display.height
         else
@@ -2889,7 +2889,7 @@ function BattleLayer:getCardMovePos(moveID, actCard, tr)
     --通过对应的ID获取相关的pos
     if moveID == 1 then
         -- 1,主卡位置
-        pos[1] = ccp(actCard:getPosition())
+        pos[1] = cc.p(actCard:getPosition())
     elseif moveID == 2 then
         -- 2,目标数组第一个的位置 相对位置，如卡牌在上，相对位置就在其下方 就是之前的普通攻击位置
         local trSide, trP = self:getTruePos(1, tr) --= tr[1]["ms"]
@@ -2912,7 +2912,7 @@ function BattleLayer:getCardMovePos(moveID, actCard, tr)
         end
     elseif moveID == 4 then
         -- 4,战场正中央
-        pos[1] = ccp(display.width / 2, display.height / 2)
+        pos[1] = cc.p(display.width / 2, display.height / 2)
     elseif moveID == 5 then
         -- 5,目标竖列前，固定 无论如何都站在竖列前进行攻击,分上下，目标数组必然是个竖列
 
@@ -2978,17 +2978,17 @@ function BattleLayer:getCardMovePos(moveID, actCard, tr)
         pos[1] = tempPos
     elseif moveID == 9 then
         -- 9,横扫左卡牌被击后向左偏移的位置
-        local tempPos = ccp(actCard:getPosition())
+        local tempPos = cc.p(actCard:getPosition())
         tempPos.x = tempPos.x - actCard:getContentSize().width * 0.9
         pos[1] = tempPos
     elseif moveID == 10 then
         -- 10,横扫右卡牌被击后向右偏移的位置
-        local tempPos = ccp(actCard:getPosition())
+        local tempPos = cc.p(actCard:getPosition())
         tempPos.x = tempPos.x - actCard:getContentSize().width * 0.9
         pos[1] = tempPos
     elseif moveID == 11 then
         -- 11,自身位置向后（被击退）
-        local tempPos = ccp(actCard:getPosition())
+        local tempPos = cc.p(actCard:getPosition())
         local side = actCard:getSideID()
         if side == UP_SIDE then
             tempPos.y = tempPos.y + actCard:getContentSize().height * 0.9
@@ -3135,7 +3135,7 @@ function BattleLayer:initTimeScale(...)
     ResMgr.setTimeScale(self.timeScale)
 
     -- self.speedBtn:setPosition(200,200)
-    self.speedBtn:setAnchorPoint(ccp(0, 0))
+    self.speedBtn:setAnchorPoint(cc.p(0, 0))
 end
 
 --[[<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -3158,23 +3158,23 @@ function BattleLayer:initPos()
     -- 4 5 6
     -- 1 2 3
     self.f2Pos = {
-        ccp(displayWidth * columRate1, displayHight * rowRate2),
-        ccp(displayWidth * columRate2, displayHight * rowRate2),
-        ccp(displayWidth * columRate3, displayHight * rowRate2),
-        ccp(displayWidth * columRate1, displayHight * rowRate1),
-        ccp(displayWidth * columRate2, displayHight * rowRate1),
-        ccp(displayWidth * columRate3, displayHight * rowRate1)
+        cc.p(displayWidth * columRate1, displayHight * rowRate2),
+        cc.p(displayWidth * columRate2, displayHight * rowRate2),
+        cc.p(displayWidth * columRate3, displayHight * rowRate2),
+        cc.p(displayWidth * columRate1, displayHight * rowRate1),
+        cc.p(displayWidth * columRate2, displayHight * rowRate1),
+        cc.p(displayWidth * columRate3, displayHight * rowRate1)
     }
     --我方卡牌位置
     -- 1 2 3
     -- 4 5 6
     self.f1Pos = {
-        ccp(displayWidth * columRate1, displayHight * rowRate3),
-        ccp(displayWidth * columRate2, displayHight * rowRate3),
-        ccp(displayWidth * columRate3, displayHight * rowRate3),
-        ccp(displayWidth * columRate1, displayHight * rowRate4),
-        ccp(displayWidth * columRate2, displayHight * rowRate4),
-        ccp(displayWidth * columRate3, displayHight * rowRate4)
+        cc.p(displayWidth * columRate1, displayHight * rowRate3),
+        cc.p(displayWidth * columRate2, displayHight * rowRate3),
+        cc.p(displayWidth * columRate3, displayHight * rowRate3),
+        cc.p(displayWidth * columRate1, displayHight * rowRate4),
+        cc.p(displayWidth * columRate2, displayHight * rowRate4),
+        cc.p(displayWidth * columRate3, displayHight * rowRate4)
     }
 
     self:resetFontFlag()
@@ -3224,7 +3224,7 @@ function BattleLayer:changeBattleCount(countNum)
 end
 
 function BattleLayer:getPosBySideAndID(side, posID)
-    local tempPos = ccp(0, 0)
+    local tempPos = cc.p(0, 0)
 
     if side == DOWN_SIDE then
         tempPos.x = self.f1Pos[posID].x
@@ -3413,7 +3413,7 @@ function BattleLayer:createFont(param)
             fontTTF = display.newSprite("#battle_shanbi.png")
         elseif dType == HIT_TYPE_CRITICAL then -- 暴击
             fontTTF = display.newSprite("#battle_baoji.png")
-            fontTTF:setAnchorPoint(ccp(0.5, 0))
+            fontTTF:setAnchorPoint(cc.p(0.5, 0))
             fontTTF:setScale(0.1)
             local numDelay = CCDelayTime:create(0.2)
             local numScale = CCScaleTo:create(0.1, 0.8)
@@ -3421,7 +3421,7 @@ function BattleLayer:createFont(param)
             heightOffset = fontTTF:getContentSize().height * 0.7
         elseif dType == HIT_TYPE_BLOCK then -- 格挡
             fontTTF = display.newSprite("#battle_gedang.png")
-            fontTTF:setAnchorPoint(ccp(0.5, 0))
+            fontTTF:setAnchorPoint(cc.p(0.5, 0))
             heightOffset = fontTTF:getContentSize().height * 0.7
             self:playSound("gedang", false)
         end
@@ -3510,7 +3510,7 @@ function BattleLayer:cardCasinoArise(param)
         end
         v:setPosition(backPos)
         local curCardAngel = orAngel + cardCount * offsetAngel
-        local curCardPos = ccp(midPos.x + orPosX + cardCount * offsetPosX, midPos.y - math.abs(curCardAngel) * 0.7)
+        local curCardPos = cc.p(midPos.x + orPosX + cardCount * offsetPosX, midPos.y - math.abs(curCardAngel) * 0.7)
 
         --从后面移动到展开
         local fromBack = CCMoveTo:create(0.1, midPos)

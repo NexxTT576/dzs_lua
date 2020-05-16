@@ -460,7 +460,7 @@ function EnemyFormScene:initTouchNode()
     local targPosX, targPosY
 
     local function moveToTargetPos()
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local function resetHeroImage(side)
@@ -469,14 +469,14 @@ function EnemyFormScene:initTouchNode()
         elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local offsetX = 0
     --    local bTouch
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
+        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
 
             targPosX, targPosY = currentNode:getPosition()

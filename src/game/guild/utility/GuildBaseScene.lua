@@ -139,7 +139,7 @@ function GuildBaseScene:ctor(param)
         if string.find(_bgImagePath, "common_bg.png") then
             local hw = display.newSprite("ui_common/common_huawen.png")
             hw:setPosition(display.width * 0.514, bg:getContentSize().height)
-            hw:setAnchorPoint(ccp(0.5, 1))
+            hw:setAnchorPoint(cc.p(0.5, 1))
             bg:addChild(hw)
 
             local bg2 = display.newScale9Sprite("ui_common/common_bg2.png")

@@ -380,7 +380,7 @@ function HeroSettingScene:setForm()
             touchEnabled = false,
             list = self._cardList,
             sz = cc.size(display.width * 0.9, display.height - 297),
-            pos = ccp(display.cx, display.cy - 20),
+            pos = cc.p(display.cx, display.cy - 20),
             closeListener = function()
                 self:refreshHero(self._index)
                 self._rootnode["touchNode"]:setTouchEnabled(true)
@@ -710,9 +710,9 @@ end
 function HeroSettingScene:refreshHero(index, bScrollHead)
     if bScrollHead then
         if (self._index - 1) * 115 < math.abs(self._scrollItemList:getContentOffset().x) then
-            self._scrollItemList:setContentOffset(ccp(-(self._index - 1) * 115, 0), true)
+            self._scrollItemList:setContentOffset(cc.p(-(self._index - 1) * 115, 0), true)
         elseif self._index * 115 > (math.abs(self._scrollItemList:getContentOffset().x) + self._scrollItemList:getContentSize().width) then
-            self._scrollItemList:setContentOffset(ccp(-(self._index) * 115 + self._scrollItemList:getContentSize().width, 0), true)
+            self._scrollItemList:setContentOffset(cc.p(-(self._index) * 115 + self._scrollItemList:getContentSize().width, 0), true)
         end
     end
 
@@ -957,7 +957,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                     }
                 )
                 s:addChild(label)
-                label:setPosition(ccp(20 - label:getContentSize().width / 2, s:getContentSize().height - 14))
+                label:setPosition(cc.p(20 - label:getContentSize().width / 2, s:getContentSize().height - 14))
             end
         end
 
@@ -1014,9 +1014,9 @@ function HeroSettingScene:initHeadList()
             --            printf("============== min = %d, max = %d", self._scrollItemList:minContainerOffset().x, self._scrollItemList:maxContainerOffset().x)
 
             if self._scrollItemList:minContainerOffset().x > 0 then
-                self._scrollItemList:setContentOffset(ccp(0, 0))
+                self._scrollItemList:setContentOffset(cc.p(0, 0))
             else
-                self._scrollItemList:setContentOffset(ccp(self._scrollItemList:minContainerOffset().x, 0))
+                self._scrollItemList:setContentOffset(cc.p(self._scrollItemList:minContainerOffset().x, 0))
             end
         end
         return
@@ -1104,7 +1104,7 @@ function HeroSettingScene:initTouchNode()
         currentNode:runAction(
             transition.sequence(
                 {
-                    CCMoveTo:create(0.2, ccp(targPosX, targPosY))
+                    CCMoveTo:create(0.2, cc.p(targPosX, targPosY))
                 }
             )
         )
@@ -1116,14 +1116,14 @@ function HeroSettingScene:initTouchNode()
         elseif side == 2 then --右滑动
             currentNode:setPosition(-display.width * 0.5, targPosY)
         end
-        currentNode:runAction(CCMoveTo:create(0.2, ccp(targPosX, targPosY)))
+        currentNode:runAction(CCMoveTo:create(0.2, cc.p(targPosX, targPosY)))
     end
 
     local offsetX = 0
     local bTouch
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
-        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(ccp(event.x, event.y)))) then
+        if (CCRectMake(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
             currentNode = self._rootnode["heroImg"]
             offsetX = event.x
             bTouch = true

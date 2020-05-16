@@ -1,3 +1,4 @@
+require("game.game")
 --@SuperType luaIde#cc.Scene
 local LogoScene =
     class(

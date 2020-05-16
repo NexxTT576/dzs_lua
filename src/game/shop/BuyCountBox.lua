@@ -71,7 +71,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
             -- y = rootnode["nameLabel"]:getContentSize().height/2
         }
     )
-    -- itemNameLabel:setAnchorPoint(ccp(0.5,0.5))
+    -- itemNameLabel:setAnchorPoint(cc.p(0.5,0.5))
     itemNameLabel:setString(string.format("%s", param.name))
     itemNameLabel:setPosition(rootnode["nameLabel"]:getContentSize().width / 2, rootnode["nameLabel"]:getContentSize().height / 2)
     rootnode["nameLabel"]:addChild(itemNameLabel)

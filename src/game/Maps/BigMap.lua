@@ -82,7 +82,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                 TILE_HEIGHT = TILE_HEIGHT * scale_factor
             end
 
-            bgImage:setAnchorPoint(ccp(0, 0))
+            bgImage:setAnchorPoint(cc.p(0, 0))
             bgImage:setPosition(0, 0)
             bg:addChild(bgImage)
 
@@ -94,7 +94,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             bg:setPreferredSize(CCSize(display.width, BG_HEIGHT))
             scrollViewBg:setViewSize(CCSize(display.width, display.height - 259))
 
-            scrollViewBg:setPosition(ccp(0, self.top:getBottomContentSize().height))
+            scrollViewBg:setPosition(cc.p(0, self.top:getBottomContentSize().height))
             scrollViewBg:ignoreAnchorPointForPosition(true)
 
             scrollViewBg:setContainer(bg)

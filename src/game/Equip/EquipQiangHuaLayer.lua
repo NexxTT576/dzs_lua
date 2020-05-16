@@ -57,7 +57,7 @@ function EquipQiangHuaLayer:ctor(param)
     self._rootnode = {}
     local node =
         CCBReaderLoad("equip/equip_qianghua.ccbi", proxy, self._rootnode, self, cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height))
-    node:setAnchorPoint(ccp(0.5, 0.5))
+    node:setAnchorPoint(cc.p(0.5, 0.5))
     node:setPosition(display.width / 2, display.height / 2) --self.bottom:getContentSize().height)
     self:addChild(node)
 
@@ -193,7 +193,7 @@ function EquipQiangHuaLayer:qiangHuaAnim()
     local EFFECT_ZORDER = 100000
     CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
     local chuiziAnim = CCArmature:create("chuizi")
-    chuiziAnim:setAnchorPoint(ccp(0, 0.5))
+    chuiziAnim:setAnchorPoint(cc.p(0, 0.5))
 
     chuiziAnim:getAnimation():setFrameEventCallFunc(
         function(bone, evt, originFrameIndex, currentFrameIndex) --setMovementEventCallFunc(function(armatureBack,movementType,movementID)
@@ -363,7 +363,7 @@ function EquipQiangHuaLayer:createFloatNum(param)
             stateTTF:setVisible(true)
         end
     )
-    local moveUp = CCMoveBy:create(1, ccp(0, 30))
+    local moveUp = CCMoveBy:create(1, cc.p(0, 30))
     local fadeOut = CCFadeOut:create(1)
     local spawn = CCSpawn:createWithTwoActions(moveUp, fadeOut)
     local rev = CCRemoveSelf:create(true)
@@ -420,10 +420,10 @@ function EquipQiangHuaLayer:createSuccessTTF(num)
     end
     local lower = display.newSprite("#equip_tisheng.png", x, y, params)
 
-    lower:setAnchorPoint(ccp(0.5, 1))
+    lower:setAnchorPoint(cc.p(0.5, 1))
     lower:setPosition(upper:getPositionX(), upper:getPositionY() - upper:getContentSize().height / 2)
     local lowerNum = display.newSprite("#equip_qianghua_num_" .. num .. ".png", x, y, params)
-    lowerNum:setAnchorPoint(ccp(0.5, 1))
+    lowerNum:setAnchorPoint(cc.p(0.5, 1))
     lowerNum:setPosition(lower:getContentSize().width * 0.6, lower:getContentSize().height * 1)
     lower:addChild(lowerNum)
     ttfNode:addChild(lower)
@@ -491,13 +491,13 @@ function EquipQiangHuaLayer:shake(direction)
         local moveAct1 =
             CCCallFunc:create(
             function()
-                self.boardBg:setPosition(ccp(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
+                self.boardBg:setPosition(cc.p(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
             end
         )
         local moveAct2 =
             CCCallFunc:create(
             function()
-                self.boardBg:setPosition(ccp(cPosX, cPosY))
+                self.boardBg:setPosition(cc.p(cPosX, cPosY))
             end
         )
         local sequence =

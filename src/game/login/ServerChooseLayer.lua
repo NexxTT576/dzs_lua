@@ -122,7 +122,7 @@ function ServerChooseLayer:ctor(serverList, callback)
     local function onTouchEnded(event)
         if bTouch then
             for k, v in ipairs(nodes) do
-                local pos = v:convertToNodeSpace(ccp(event.x, event.y))
+                local pos = v:convertToNodeSpace(cc.p(event.x, event.y))
                 if CCRectMake(0, 0, v:getContentSize().width, v:getContentSize().height):containsPoint(pos) then
                     local i
                     if pos.x > v:getContentSize().width / 2 then

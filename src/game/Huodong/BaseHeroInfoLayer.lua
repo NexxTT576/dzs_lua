@@ -213,7 +213,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
     self:addChild(node)
 
     local infoNode = CCBReaderLoad("hero/hero_info_detail.ccbi", proxy, self._rootnode, self, cc.size(display.width, bgHeight - 55 - 68))
-    infoNode:setPosition(ccp(0, 25))
+    infoNode:setPosition(cc.p(0, 25))
     node:addChild(infoNode)
 
     self._rootnode["closeBtn"]:setVisible(true)
@@ -230,7 +230,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
 
     self._rootnode["bottomMenuNode"]:setVisible(false)
 
-    local pt = self._rootnode["scrollView"]:convertToWorldSpace(ccp(0, 0))
+    local pt = self._rootnode["scrollView"]:convertToWorldSpace(cc.p(0, 0))
     local layer =
         require("utility.TouchMaskLayer").new(
         {
@@ -372,7 +372,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
             local sz = cc.size(self._rootnode["contentView"]:getContentSize().width, self._rootnode["contentView"]:getContentSize().height + height - 40)
 
             self._rootnode["descView"]:setContentSize(sz)
-            self._rootnode["contentView"]:setPosition(ccp(sz.width / 2, sz.height))
+            self._rootnode["contentView"]:setPosition(cc.p(sz.width / 2, sz.height))
             self._rootnode["scrollView"]:updateInset()
             self._rootnode["scrollView"]:setContentOffset(CCPointMake(0, -sz.height + self._rootnode["scrollView"]:getViewSize().height), false)
         end

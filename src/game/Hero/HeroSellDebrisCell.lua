@@ -60,7 +60,7 @@ function HeroSellDebrisCell:create(param)
         size = 32
 
     })
-    debrisName:setAnchorPoint(ccp(0, 0.5))
+    debrisName:setAnchorPoint(cc.p(0, 0.5))
 
     self.bg:addChild(debrisName)
 
@@ -96,7 +96,7 @@ function HeroSellDebrisCell:create(param)
         color = FONT_COLOR.ORANGE
         })
     jinduTotal:setPosition(jinduNum:getPositionX()+jinduNum:getContentSize().width*1.1,jinduLable:getPositionY())
-    jinduTotal:setAnchorPoint(ccp(0,0.5))
+    jinduTotal:setAnchorPoint(cc.p(0,0.5))
     jinduNode:addChild(jinduTotal)
 
 

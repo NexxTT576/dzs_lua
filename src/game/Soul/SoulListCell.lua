@@ -36,7 +36,7 @@ function SoulListCell:ctor(cellIndex, data)
             size = 32
         }
     )
-    soulName:setAnchorPoint(ccp(0, 0.5))
+    soulName:setAnchorPoint(cc.p(0, 0.5))
 
     self:addChild(soulName)
 
@@ -104,7 +104,7 @@ function SoulListCell:ctor(cellIndex, data)
             color = FONT_COLOR.LIGHT_ORANGE
         }
     ) --display.newSprite("#herolist_shangzhen.png", x, y)
-    jiqi:setAnchorPoint(ccp(0, 0.5))
+    jiqi:setAnchorPoint(cc.p(0, 0.5))
     jiqi:setPosition(jinduTotal:getPositionX() + jinduTotal:getContentSize().width * 1, jinduTotal:getPositionY())
     jinduNode:addChild(jiqi)
 

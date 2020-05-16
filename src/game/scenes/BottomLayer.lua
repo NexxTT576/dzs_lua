@@ -104,7 +104,7 @@ function BottomLayer:initBottomFrame(...)
     end
 
     for k, v in pairs(G_BOTTOM_BTN) do
-        if (game.app.currentState == v and game.app.currentState > 2) then
+        if (GameStateManager.currentState == v and GameStateManager.currentState > 2) then
             items[k]:selected()
             break
         end
@@ -211,7 +211,7 @@ function BottomLayer:onTouchBtn(tag)
         nextState = GAME_STATE.STATE_SHOP
     end
     for k, v in pairs(G_BOTTOM_BTN) do
-        if (game.app.currentState == v and game.app.currentState > 2) then
+        if (GameStateManager.currentState == v and GameStateManager.currentState > 2) then
             self.allBtns[k]:selected()
             break
         end
