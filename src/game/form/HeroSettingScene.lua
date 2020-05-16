@@ -1,4 +1,4 @@
--- require("utility.BottomBtnEvent")
+require("utility.BottomBtnEvent")
 local data_jiban_jiban = require("data.data_jiban_jiban")
 local data_shentong_shentong = require("data.data_shentong_shentong")
 local data_talent_talent = require("data.data_talent_talent")
