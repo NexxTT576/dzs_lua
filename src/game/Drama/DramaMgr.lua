@@ -200,6 +200,9 @@ function DramaMgr.request(data)
                 end
                 local msg = {}
                 msg.showNote = true
+                if game.player.m_gamenote == nil then
+                    msg.showNote = false
+                end
                 GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU, msg)
             end
         end

@@ -104,9 +104,8 @@ function GameNote:ctor()
     local bg = display.newLayer(cc.c4b(0, 0, 0, 100))
     bg:setScale(display.height / bg:getContentSize().height)
     self:addChild(bg)
-    bg:setTouchEnabled(true)
-
     local bglistener = cc.EventListenerTouchOneByOne:create()
+    bglistener:setSwallowTouches(true)
     bglistener:registerScriptHandler(
         function(event)
             return true

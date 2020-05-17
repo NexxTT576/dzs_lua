@@ -129,7 +129,7 @@ function TutoLayer:ctor(param)
         end,
         cc.Handler.EVENT_TOUCH_BEGAN
     )
-    listener:setSwallowTouches(true)
+
     local eventDispatcher = pLayer:getEventDispatcher()
     eventDispatcher:addEventListenerWithSceneGraphPriority(listener, pLayer)
     local bTouch = false

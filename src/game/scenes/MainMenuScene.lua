@@ -1093,7 +1093,7 @@ function MainMenuScene:initPlayerBoard(...)
 
     --@RefType luaIde#cc.Label
     local text = cc.Label:createWithTTF(ttfConfig, game.player.m_name, cc.TEXT_ALIGNMENT_LEFT)
-    text:setPosition(5, self.playerInfoNode[CCB_PLAYER_INFO.mm_name]:getContentSize().height * 0.78)
+    text:setPosition(60, self.playerInfoNode[CCB_PLAYER_INFO.mm_name]:getContentSize().height * 0.78)
     text:setTextColor(FONT_COLOR.PLAYER_NAME)
     text:enableOutline(cc.c3b(0, 0, 0))
     self.playerInfoNode[CCB_PLAYER_INFO.mm_name]:addChild(text)
