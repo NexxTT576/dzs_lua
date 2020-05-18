@@ -95,7 +95,7 @@ end
 function addNodeEventListener(node, eventType, cb)
     if eventType == cc.Handler.EVENT_TOUCH_BEGAN or eventType == cc.Handler.EVENT_TOUCH_MOVED or eventType == cc.Handler.EVENT_TOUCH_CANCELLED or eventType == cc.Handler.EVENT_TOUCH_ENDED then
         --@RefType luaIde#cc.EventListenerTouchOneByOne
-        local listener = cc.EventListenerTouchOneByOne:create()
+        local listener = node["__eventListener"] == nil and cc.EventListenerTouchOneByOne:create() or node["__eventListener"]
         listener:setSwallowTouches(true)
         listener:registerScriptHandler(
             function(e)
