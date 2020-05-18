@@ -791,7 +791,7 @@ function ResMgr.refreshIcon(param)
     local isGray = param.isGray
     local cleanTable = {}
 
-    display.addSpriteFramesWithFile("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
+    display.loadSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
 
     local path = ""
     local _data = {}
@@ -823,8 +823,6 @@ function ResMgr.refreshIcon(param)
     local tempBg
 
     tempBg = display.newSprite(string.format("#icon_frame_bg_%d.png", itemStar or 1))
-
-    itemBg:setDisplayFrame(tempBg:getDisplayFrame())
 
     if isGray == true then
         local fileter = display.newGraySprite(string.format("#icon_frame_bg_%d.png", itemStar or 1), {0.4, 0.4, 0.4, 0.1})

@@ -713,25 +713,23 @@ function MainMenuScene:bottomBtns_2(posY)
         if moreFuncNode:isVisible() then
             moreFuncBtn:unselected()
             moreFuncNode:setVisible(false)
-            moreFuncTouchNode:setTouchEnabled(false)
+            setTouchEnabled(moreFuncTouchNode, false)
         else
             moreFuncNode:setVisible(true)
-            moreFuncTouchNode:setTouchEnabled(true)
+            setTouchEnabled(moreFuncTouchNode, true)
             moreFuncBtn:selected()
         end
     end
 
-    local listener = cc.EventListenerTouchOneByOne:create()
-    listener:registerScriptHandler(
+    addNodeEventListener(
+        moreFuncTouchNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
             local posX = event:getLocation().x
             local posY = event:getLocation().y
             return true
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
+        end
     )
-    local eventDispatcher = moreFuncTouchNode:getEventDispatcher()
-    eventDispatcher:addEventListenerWithSceneGraphPriority(listener, moreFuncTouchNode)
     -- moreFuncTouchNode:addNodeEventListener(
     --     cc.NODE_TOUCH_CAPTURE_EVENT,
     --     function(event)
@@ -1114,7 +1112,7 @@ function MainMenuScene:onExit()
         game.urgencyBroadcast:setIsShow(false)
     end
 
-    CSDKShell.HideToolbar()
+    -- CSDKShell.HideToolbar()
 
     UnRegNotice(self, NoticeKey.MainMenuScene_Update)
 
@@ -1139,8 +1137,8 @@ function MainMenuScene:onExit()
 
     UnRegNotice(self, NoticeKey.CHECK_GUILD_APPLY_NUM)
 
-    self.scheduler.unscheduleGlobal(self.schedulerUpdateTimeLabel)
-    self.scheduler.unscheduleGlobal(self.schedulerUnread)
+    -- self.scheduler.unscheduleGlobal(self.schedulerUpdateTimeLabel)
+    -- self.scheduler.unscheduleGlobal(self.schedulerUnread)
 
     TutoMgr.removeBtn("zhujiemian_xiake_btn")
     TutoMgr.removeBtn("zhujiemian_tiaozhan_btn")
@@ -1148,14 +1146,14 @@ function MainMenuScene:onExit()
     TutoMgr.removeBtn("zhujiemian_lianhualu")
     TutoMgr.removeBtn("zhujiemian_jingmai")
 
-    display.removeSpriteFramesWithFile("ui/ui_main_menu.plist", "ui/ui_main_menu.pvr.ccz")
-    display.removeSpriteFramesWithFile("ui/ui_mm_day.plist", "ui/ui_mm_day.pvr.ccz")
-    display.removeSpriteFramesWithFile("ui/ui_mm_night.plist", "ui/ui_mm_night.pvr.ccz")
-    display.removeSpriteFramesWithFile("ui/ui_toplayer.plist", "ui/ui_toplayer.pvr.ccz")
-    display.removeSpriteFramesWithFile("ui/ui_bottom2.plist", "ui/ui_bottom2.pvr.ccz")
-    display.removeSpriteFramesWithFile("ui/ui_gamenote.plist", "ui/ui_gamenote.png")
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
-    CCNotificationCenter:sharedNotificationCenter():unregisterScriptObserver(self, "APP_ENTER_FOREGROUND_EVENT_IN_GAME")
+    display.removeSpriteFrames("ui/ui_main_menu.plist", "ui/ui_main_menu.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_mm_day.plist", "ui/ui_mm_day.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_mm_night.plist", "ui/ui_mm_night.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_toplayer.plist", "ui/ui_toplayer.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_bottom2.plist", "ui/ui_bottom2.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_gamenote.plist", "ui/ui_gamenote.png")
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
+    -- CCNotificationCenter:sharedNotificationCenter():unregisterScriptObserver(self, "APP_ENTER_FOREGROUND_EVENT_IN_GAME")
 end
 
 function MainMenuScene:UpdateQuickAccess(...)

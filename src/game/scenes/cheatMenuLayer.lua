@@ -170,7 +170,7 @@ function cheatMenuLayer:ctor(...)
         local btLabel = cc.Label:create()
         btLabel:setString(param.text)
         btLabel:setTextColor(param.color)
-        btLabel:setWidth(param.size)
+        btLabel:setSystemFontSize(param.size)
 
         --@RefType luaIde#cc.MenuItemLabel
         local menuLabelbtn = cc.MenuItemLabel:create(btLabel)

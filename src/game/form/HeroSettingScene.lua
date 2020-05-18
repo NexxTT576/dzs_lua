@@ -32,28 +32,20 @@ end
 function HeroIcon:create(param)
     local _viewSize = param.viewSize
     local _itemData = param.itemData
-
+    --@RefType luaIde#cc.Sprite
     self._heroIcon = display.newSprite("#zhenrong_equip_hero_bg.png")
     self:addChild(self._heroIcon)
     self._heroIcon:setPosition(self._heroIcon:getContentSize().width / 2, _viewSize.height / 2)
-
+    --@RefType luaIde#cc.Sprite
     self._actIcon = display.newSprite("#zhenrong_lock_bg.png")
     self:addChild(self._actIcon)
     self._actIcon:setPosition(self._actIcon:getContentSize().width / 2, _viewSize.height / 2)
-
-    local label =
-        ui.newTTFLabel(
-        {
-            text = "",
-            size = 18,
-            font = FONTS_NAME.font_fzcy,
-            color = cc.c3b(155, 155, 155)
-        }
-    )
+    --@RefType luaIde#cc.Label
+    local label = cc.Label:createWithTTF("", FONTS_NAME.font_fzcy, 18, cc.c3b(155, 155, 155))
     label:setPosition(self._actIcon:getContentSize().width / 2, self._actIcon:getContentSize().height * 0.3)
     self._actIcon:addChild(label)
     label:setTag(1)
-
+    --@RefType luaIde#cc.Sprite
     local addSprite = display.newSprite("#zhenrong_add.png")
     addSprite:setPosition(self._actIcon:getContentSize().width / 2, self._actIcon:getContentSize().height / 2)
     self._actIcon:addChild(addSprite)
@@ -98,11 +90,11 @@ function HeroIcon:refresh(param)
         self._actIcon:getChildByTag(2):setVisible(false)
 
         if _itemData > 0 then
-            self._actIcon:setDisplayFrame(display.newSpriteFrame("zhenrong_lock_bg.png"))
+            self._actIcon:setSpriteFrame(display.newSpriteFrame("zhenrong_lock_bg.png"))
             self._actIcon:getChildByTag(1):setVisible(true)
             self._actIcon:getChildByTag(1):setString(string.format("%d级开放", _itemData))
         elseif _itemData == 0 then
-            self._actIcon:setDisplayFrame(display.newSpriteFrame("zhenrong_equip_hero_bg.png"))
+            self._actIcon:setSpriteFrame(display.newSpriteFrame("zhenrong_equip_hero_bg.png"))
             self._actIcon:getChildByTag(2):setVisible(true)
             self._actIcon:getChildByTag(2):setPosition(self._actIcon:getContentSize().width / 2, self._actIcon:getContentSize().height / 2)
         else
@@ -189,9 +181,9 @@ function HeroSettingScene:ctor(showType)
 
     local function refreshBtnText()
         if self._showType == SHOWTYPE.SPIRIT then
-            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newScale9Sprite("#zhenrong_btn_equip.png"), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_equip.png", {scale9 = true}), CCControlStateNormal)
         else
-            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newScale9Sprite("#zhenrong_btn_zhenqi.png"), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_zhenqi.png", {scale9 = true}), CCControlStateNormal)
         end
     end
 
@@ -360,7 +352,9 @@ function HeroSettingScene:ctor(showType)
 
     --  切换视图
     switchView()
-    addbackevent(self)
+    -- addbackevent(self)
+
+    self:enableNodeEvents()
 end
 
 --设置阵法界面
@@ -429,20 +423,11 @@ end
 function HeroSettingScene:request()
     local reqs = {}
 
-    --请求装备
-    table.insert(
-        reqs,
-        RequestInfo.new(
-            {
-                modulename = "equip",
-                funcname = "list",
-                param = {},
-                oklistener = function(data)
-                    -- dump(data)
-                    game.player:setEquipments(data["1"])
-                end
-            }
-        )
+    GameRequest.equip.list(
+        {},
+        function(data)
+            game.player:setEquipments(data)
+        end
     )
     --
     --    --请求精元
@@ -458,50 +443,25 @@ function HeroSettingScene:request()
     --    }))
 
     --请求英雄
-    table.insert(
-        reqs,
-        RequestInfo.new(
-            {
-                modulename = "hero",
-                funcname = "list",
-                param = {},
-                oklistener = function(data)
-                    --            dump(data["1"])
-                    game.player:setHero(data["1"])
-                end
-            }
-        )
-    )
-
-    --请求内外功
-    table.insert(
-        reqs,
-        RequestInfo.new(
-            {
-                modulename = "skill",
-                funcname = "list",
-                param = {},
-                oklistener = function(data)
-                    --            dump(data["1"])
-                    game.player:setSkills(data["1"])
-                end
-            }
-        )
-    )
-
-    RequestHelperV2.request2(
-        reqs,
-        function()
-            --
-            require("game.Spirit.SpiritCtrl").request()
-            --        self:update()
+    GameRequest.hero.list(
+        {},
+        function(data)
+            game.player:setHero(data)
         end
     )
 
-    dump(game.player.m_formation["3"])
-    self._cardList = game.player.m_formation["1"]
-    self._equip = game.player.m_formation["2"]
-    self._spirit = game.player.m_formation["3"]
+    --请求内外功
+    GameRequest.skill.list(
+        {},
+        function(data)
+            game.player:setSkills(data)
+        end
+    )
+
+    dump(game.player.m_formation[3])
+    self._cardList = game.player.m_formation[1]
+    self._equip = game.player.m_formation[2]
+    self._spirit = game.player.m_formation[3]
 
     self:update()
 end
@@ -515,7 +475,7 @@ function HeroSettingScene:onAddHero()
     end
 
     --图像
-    self._rootnode["heroImg"]:setDisplayFrame(display.newSpriteFrame("zhenrong_hero.png"))
+    self._rootnode["heroImg"]:setSpriteFrame(display.newSpriteFrame("zhenrong_hero.png"))
 
     if self._rootnode["heroImg"]:getChildByTag(100) == nil then
         local heroNode = display.newSprite("#zhenrong_hero.png")
@@ -617,10 +577,11 @@ function HeroSettingScene:setBtnEnable(b)
     end
     for i = 1, 6 do
         local key = "equipBtn_" .. tostring(i)
-        self._rootnode[key]:setTouchEnabled(b)
+
+        self._rootnode[key]["_setTouchEnabled"] = b
     end
 
-    self._rootnode["touchNode"]:setTouchEnabled(b)
+    self._rootnode["touchNode"]["_setTouchEnabled"] = b
 end
 
 local ST_COLOR = {
@@ -756,7 +717,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
         self._rootnode["nameLabel"]:setString(hero.name)
         self._rootnode["nameLabel"]:setColor(NAME_COLOR[hero.star])
         self._rootnode["jobSprite"]:setVisible(true)
-        self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
+        self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
 
         if hero.cls > 0 then
             self._rootnode["clsLabel"]:setVisible(true)
@@ -783,10 +744,10 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
 
         --图像
         local heroImg = card["arr_body"][hero.cls + 1]
-        local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-        self._rootnode["heroImg"]:setDisplayFrame(display.newSprite(heroPath):getDisplayFrame())
+        local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+        self._rootnode["heroImg"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
-        if (display.widthInPixels / display.heightInPixels) > 0.67 then
+        if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.67 then
             self._rootnode["heroImg"]:setScale(0.85)
             self._rootnode["hero_name_bg"]:setPosition(self._rootnode["hero_name_bg"]:getPositionX(), self.namebgY + self._rootnode["hero_name_bg"]:getContentSize().height / 2)
 
@@ -1095,8 +1056,11 @@ function HeroSettingScene:onPartnerView()
 end
 
 function HeroSettingScene:initTouchNode()
+    --@RefType luaIde#cc.Node
     local touchNode = self._rootnode["touchNode"]
-    touchNode:setTouchEnabled(true)
+    --@RefType luaIde#cc.EventListenerTouchOneByOne
+    local touchNodeLisetern = cc.EventListenerTouchOneByOne:create()
+    touchNodeLisetern:setSwallowTouches(true)
 
     local currentNode
     local targPosX, targPosY = self._rootnode["heroImg"]:getPosition()
@@ -1123,8 +1087,10 @@ function HeroSettingScene:initTouchNode()
     local offsetX = 0
     local bTouch
     local function onTouchBegan(event)
+        --@RefType luaIde#cc.Touch
+        local event1 = event
         local sz = touchNode:getContentSize()
-        if (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
+        if cc.rectContainsPoint(cc.rect(0, 0, sz.width, sz.height), touchNode:convertToNodeSpace(event1:getLocation())) then
             currentNode = self._rootnode["heroImg"]
             offsetX = event.x
             bTouch = true
@@ -1195,48 +1161,28 @@ function HeroSettingScene:initTouchNode()
                     self:initHeadList()
                 end
             )
-        --            local layer = require("game.Hero.HeroInfoLayer").new({
-        --                info = self._cardList[self._index],
-        --                index = self._index,
-        --                refreshHero = function(data)
-        --                    if data.shenIDAry then
-        --
-        --                        for k, v in ipairs(data.shenIDAry) do
-        --                            self._cardList[self._index].shenIDAry[k] = v
-        --                            self._cardList[self._index].shenLvAry[k] = data.shenLvAry[k]
-        --                        end
-        --                    end
-        --
-        --                    for k, v in ipairs(data["base"]) do
-        --                        self._cardList[self._index].base[k] = v
-        --                    end
-        --                    self._cardList[self._index].level = data.level or data.lv or self._cardList[self._index].level
-        --                    self._cardList[self._index].cls = data.cls
-        --
-        --                    self:refreshHero(self._index)
-        --                end,
-        --                changeHero = function(data)
-        --                    self:resetFormData(data)
-        --                    self:initHeadList()
-        --                end
-        --            }, 1)
-        --
-        --            self:addChild(layer, 100)
         end
     end
 
-    touchNode:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
+    touchNodeLisetern:registerScriptHandler(
         function(event)
-            if event.name == "began" then
-                return onTouchBegan(event)
-            elseif event.name == "moved" then
-                onTouchMove(event)
-            elseif event.name == "ended" then
-                onTouchEnded(event)
-            end
-        end
+            onTouchBegan(event)
+        end,
+        cc.Handler.EVENT_TOUCH_BEGAN
     )
+    touchNodeLisetern:registerScriptHandler(
+        function(event)
+            onTouchMove(event)
+        end,
+        cc.Handler.EVENT_TOUCH_MOVED
+    )
+    touchNodeLisetern:registerScriptHandler(
+        function(event)
+            onTouchEnded(event)
+        end,
+        cc.Handler.EVENT_TOUCH_ENDED
+    )
+    touchNode:getEventDispatcher():addEventListenerWithSceneGraphPriority(touchNodeLisetern, touchNode)
 end
 
 function HeroSettingScene:setHeroScrollDisabled(b)
@@ -1337,7 +1283,9 @@ function HeroSettingScene:initSpirit()
     end
 
     for i = 1, 8 do
-        self._rootnode["spiritBtn_" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onClick)
+        --@RefType luaIde#cc.MenuItemImage
+        local spiritBtn = self._rootnode["spiritBtn_" .. tostring(i)]
+        spiritBtn:registerScriptTapHandler(onClick)
     end
 end
 
@@ -1471,7 +1419,7 @@ function HeroSettingScene:initEquip()
 
         if bChangeScene then
             if tag < 5 then
-                self._rootnode["equipBtn_" .. tostring(tag)]:setTouchEnabled(false)
+                self._rootnode["equipBtn_" .. tostring(tag)]:getEventDispatcher():setEnabled(false)
                 push_scene(
                     require("game.form.EquipChooseScene").new(
                         {
@@ -1487,7 +1435,7 @@ function HeroSettingScene:initEquip()
                     )
                 )
             else
-                self._rootnode["equipBtn_" .. tostring(tag)]:setTouchEnabled(false)
+                self._rootnode["equipBtn_" .. tostring(tag)]:getEventDispatcher():setEnabled(false)
                 push_scene(
                     require("game.form.SkillChooseScene").new(
                         {
@@ -1508,16 +1456,21 @@ function HeroSettingScene:initEquip()
 
     for i = 1, 6 do
         local key = "equipBtn_" .. tostring(i)
-        self._rootnode[key]:setTouchEnabled(true)
-        self._rootnode[key]:addNodeEventListener(
-            cc.NODE_TOUCH_EVENT,
-            function(event)
-                if event.name == "began" then
-                    PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    onClick(i)
-                end
-            end
+        --@RefType luaIde#cc.Sprite
+        local _rootNode = self._rootnode[key]
+
+        --@RefType luaIde#cc.EventListenerTouchOneByOne
+        local listener = cc.EventListenerTouchOneByOne:create()
+        listener:setSwallowTouches(true)
+        listener:registerScriptHandler(
+            function(e)
+                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                onClick(i)
+            end,
+            cc.Handler.EVENT_TOUCH_BEGAN
         )
+
+        _rootNode:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, _rootNode)
     end
 end
 

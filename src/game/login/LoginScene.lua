@@ -61,36 +61,35 @@ function LoginScene:init()
     if (display.sizeInPixels.width / display.sizeInPixels.height) == 0.75 then
         heroAnim:setScale(0.8)
     end
-    -- self._rootnode["enterGameBtn"]:addNodeEventListener()
-    --@RefType luaIde#cc.EventListenerTouchOneByOne
-    local listener = cc.EventListenerTouchOneByOne:create()
-    listener:registerScriptHandler(
-        function()
-            return true
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
-    )
-    listener:registerScriptHandler(
-        function()
-            require("network.RequestHelper")
-            RequestHelper.game.login(
-                {
-                    acc = "bai__4115648358",
-                    callback = function(data)
-                        if data == nil then
-                            --@TODO 2020-05-13 16:25:27 新用户
-                        else
-                            DramaMgr.request(data)
-                        end
-                    end
-                }
-            )
-        end,
-        cc.Handler.EVENT_TOUCH_ENDED
-    )
 
-    local eventDispatcher = self._rootnode["enterGameBtn"]:getEventDispatcher()
-    eventDispatcher:addEventListenerWithSceneGraphPriority(listener, self._rootnode["enterGameBtn"])
+    --@RefType luaIde#cc.MenuItemImage
+    local enterGameBtn = self._rootnode["enterGameBtn"]
+    -- enterGameBtn:registerScriptTapHandler(
+    --     function()
+    --         require("network.RequestHelper")
+    --         RequestHelper.game.login(
+    --             {
+    --                 acc = "bai__4115648358",
+    --                 callback = function(data)
+    --                     if data == nil then
+    --                         --@TODO 2020-05-13 16:25:27 新用户
+    --                     else
+    --                         DramaMgr.request(data)
+    --                     end
+    --                 end
+    --             }
+    --         )
+    --     end
+    -- )
+    setTouchEnabled(enterGameBtn, true)
+    addNodeEventListener(
+        enterGameBtn,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
+            dump(enterGameBtn)
+            print("fasdfasg")
+        end
+    )
 end
 
 function LoginScene:onExit()

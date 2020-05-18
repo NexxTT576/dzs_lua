@@ -10,6 +10,8 @@ function GameAudio.init()
     end
 
     GameAudio.soundOn = cc.UserDefault:getInstance():getBoolForKey(GAME_SETTING.ENABLE_MUSIC)
+    --@TODO 2020-05-18 10:42:52 背景音乐关闭
+    GameAudio.soundOn = false
     GameAudio.sfxOn = cc.UserDefault:getInstance():getBoolForKey(GAME_SETTING.ENABLE_SFX)
     GameAudio.curMusicName = ""
     GameAudio.curMusicIsLoop = false

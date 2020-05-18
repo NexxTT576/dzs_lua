@@ -28,6 +28,7 @@ function ws.init(cb)
             local data = json.decode(dataStr)
             local _rid = data["_rid"]
             if ws.handers[_rid] ~= nil then
+                dump(ws.handers[_rid].reqData)
                 if ws.handers[_rid].cb ~= nil then
                     ws.handers[_rid].cb(data.body)
                     ws.handers[_rid] = nil
@@ -68,6 +69,7 @@ function ws.SendRequest(tableData, callback, errorcb)
     msg.body = json.encode(tableData)
     local str = json.encode(msg)
     ws.handers[ws._rid] = {
+        reqData = msg,
         cb = callback,
         errcb = errorcb
     }

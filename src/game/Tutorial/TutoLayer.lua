@@ -111,10 +111,9 @@ function TutoLayer:ctor(param)
     clippingNode:addChild(pLayer)
     pLayer:setTouchEnabled(true)
 
-    local listener = cc.EventListenerTouchOneByOne:create()
-    listener:setSwallowTouches(true)
-    listener:registerScriptHandler(
-        --@event: luaIde#cc.Touch
+    addNodeEventListener(
+        pLayer,
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
             -- 如果在镂空的按钮位置，则让它可点击下面的按钮
             --@RefType luaIde#cc.Rect
@@ -126,12 +125,8 @@ function TutoLayer:ctor(param)
                 return false
             end
             return true
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
+        end
     )
-
-    local eventDispatcher = pLayer:getEventDispatcher()
-    eventDispatcher:addEventListenerWithSceneGraphPriority(listener, pLayer)
     local bTouch = false
 
     local function getAppearAct(times)
@@ -172,7 +167,7 @@ function TutoLayer:ctor(param)
         --从下向上指
         arrowPos = cc.p(btnPos.x, btnPos.y - btnSize.height / 2 - arrowHeight)
         movePos = cc.p(btnPos.x, btnPos.y - btnSize.height / 2 - 20 - arrowHeight)
-        arrow:setFlipY(true)
+        arrow:setFlippedY(true)
     elseif arrowDir == 3 then
         --从左向右
         arrowPos = cc.p(btnPos.x - btnSize.width / 2 - arrowHeight, btnPos.y)

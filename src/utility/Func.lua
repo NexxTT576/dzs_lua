@@ -4,6 +4,31 @@
     author:tulilu
     time:2020-05-13 18:33:06
 ]]
+function c_func(f, ...)
+    local args1 = {...}
+
+    return function()
+        return f(unpack(args1))
+    end
+end
+
+function safe_call(f, message)
+    if type(f) == "function" then
+        local err, ret =
+            xpcall(
+            f,
+            function()
+                __G__TRACKBACK__(message or "error:")
+            end
+        )
+        if err then
+            return ret
+        end
+    else
+        show_tip_label("请确定f是个函数")
+    end
+end
+
 -- 系统时间
 function GetSystemTime(...)
     local curTime = os.date("%H:%M", os.time())
@@ -32,4 +57,54 @@ function UnRegNotice(target, key)
     --@RefType luaIde#cc.EventDispatcher
     local eventDispatcher = target:getEventDispatcher()
     eventDispatcher:removeCustomEventListeners(key)
+end
+
+function show_tip_label(str, delay)
+    print(str)
+    local tipLabel = require("utility.TipLabel").new(str, delay)
+    display.getRunningScene():addChild(tipLabel, 3000000)
+end
+
+function setTouchEnabled(node, b)
+    if node == nil and type(node) ~= "table" then
+        print("setTouchEnabled", "参数错误")
+    else
+        node["__touchEnabled"] = b
+        if node["__eventListener"] == nil then
+        end
+    end
+end
+
+function setTouchSwallowEnabled(node, b)
+    if node == nil and type(node) ~= "table" then
+        print("setTouchSwallowEnabled", "参数错误")
+    else
+        node["__swallowEnabled"] = b
+    end
+end
+
+--[[
+    @desc: 
+    author:tulilu
+    time:2020-05-18 20:16:13
+    --@node: 节点
+	--@eventType: 
+	--@cb: 
+    @return:
+]]
+function addNodeEventListener(node, eventType, cb)
+    if eventType == cc.Handler.EVENT_TOUCH_BEGAN or eventType == cc.Handler.EVENT_TOUCH_MOVED or eventType == cc.Handler.EVENT_TOUCH_CANCELLED or eventType == cc.Handler.EVENT_TOUCH_ENDED then
+        --@RefType luaIde#cc.EventListenerTouchOneByOne
+        local listener = cc.EventListenerTouchOneByOne:create()
+        listener:setSwallowTouches(true)
+        listener:registerScriptHandler(
+            function(e)
+                if cb then
+                    return cb(e)
+                end
+            end,
+            eventType
+        )
+        node:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, node)
+    end
 end
