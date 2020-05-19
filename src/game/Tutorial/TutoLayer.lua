@@ -109,8 +109,8 @@ function TutoLayer:ctor(param)
     --@RefType luaIde#cc.LayerColor
     local pLayer = display.newLayer(lColor)
     clippingNode:addChild(pLayer)
-    pLayer:setTouchEnabled(true)
-
+    setTouchEnabled(pLayer, true)
+    setTouchSwallowEnabled(pLayer, true)
     addNodeEventListener(
         pLayer,
         cc.Handler.EVENT_TOUCH_BEGAN,

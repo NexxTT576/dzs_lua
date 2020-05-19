@@ -115,11 +115,23 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
             --@RefType luaIde#cc.EventListenerTouchOneByOne
             local listener = cc.EventListenerTouchOneByOne:create()
             listener:registerScriptHandler(
-                function(e)
-                    if eventListenerHanders[eventType] then
-                        return eventListenerHanders[eventType](e)
+                function(touch, event)
+                    --@RefType luaIde#cc.Touch
+                    local t = touch
+                    --@RefType luaIde#cc.Event
+                    local e = event
+                    --@RefType luaIde#cc.Node
+                    local target = e:getCurrentTarget()
+                    local locationInNode = target:convertToNodeSpace(t:getLocation())
+                    local s = target:getContentSize()
+                    local targetPos = target:getPositionX()
+                    local rect = cc.rect(0, 0, s.width, s.height)
+                    if cc.rectContainsPoint(rect, locationInNode) then
+                        if eventListenerHanders[eventType] then
+                            return eventListenerHanders[eventType](t, e)
+                        end
                     end
-                    return true
+                    return false
                 end,
                 eventType
             )
