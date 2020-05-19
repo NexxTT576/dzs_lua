@@ -257,7 +257,7 @@ end
 function DailyLoginLayer:onExit()
     TutoMgr.removeBtn("qiandao_page_lingqu_btn")
     TutoMgr.removeBtn("qiandao_page_close_btn")
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 function DailyLoginLayer:ctor(data)

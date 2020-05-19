@@ -49,7 +49,7 @@ end
 
 function BattleResult:onEnter()
     -- body
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 function BattleResult:initWin(rewards)
@@ -549,7 +549,7 @@ function BattleResult:onExit(...)
     display.removeSpriteFramesWithFile("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
     display.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     collectgarbage("collect")
 end

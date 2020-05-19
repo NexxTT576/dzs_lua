@@ -307,7 +307,7 @@ function KaifuRewardLayer:ctor(data)
 end
 
 function KaifuRewardLayer:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return KaifuRewardLayer

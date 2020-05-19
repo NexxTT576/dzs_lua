@@ -214,7 +214,7 @@ function BattleScene:ctor(levelID, gradeID, star, needPower, isPassed)
 end
 
 function BattleScene:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     -- display.removeUnusedSpriteFrames()
     -- print("BattleScene:onExit")
     self:removeAllChildren()

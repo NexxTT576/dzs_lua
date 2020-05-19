@@ -727,7 +727,7 @@ function SubMap:onExit()
     display.removeSpriteFrameByImageName("ui/jpg_bg/bigmap/" .. data_world_world[self.subMapInfo.world].background .. ".jpg")
     display.removeSpriteFrameByImageName("ui/ui_bigmap_cloud.png")
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     collectgarbage("collect")
 end

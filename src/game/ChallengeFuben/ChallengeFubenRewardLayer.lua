@@ -176,7 +176,7 @@ function ChallengeFubenRewardLayer:onInformation(itemData)
 end
 
 function ChallengeFubenRewardLayer:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return ChallengeFubenRewardLayer

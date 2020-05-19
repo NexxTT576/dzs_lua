@@ -500,7 +500,7 @@ end
 
 function SpiritScene2:onExit()
     self._bExit = true
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     self:unregNotice()
 end
 

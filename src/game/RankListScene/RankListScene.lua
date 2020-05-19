@@ -246,7 +246,7 @@ function RankListScene:onEnter()
 end
 
 function RankListScene:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     self:unregNotice()
 end
 

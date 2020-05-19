@@ -500,7 +500,7 @@ function ShenmiLayer:onExit()
     end
     game.runningScene:removeChildByTag(1234)
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return ShenmiLayer

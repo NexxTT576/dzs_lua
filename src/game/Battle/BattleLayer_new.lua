@@ -1186,7 +1186,7 @@ function BattleLayer:onExit()
     ResMgr.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.removeSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     CCArmatureDataManager:purge()
     self:removeAllChildrenWithCleanup(true)

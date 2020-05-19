@@ -1367,9 +1367,9 @@ end
 
 function ResMgr.showTextureCache(...)
     if (GAME_DEBUG == true and device.platform == "ios") then
-        printf("=========[CCTextureCache:sharedTextureCache()]==========")
+        printf("=========[cc.Director:getInstance():getTextureCache()]==========")
 
-        local sharedTextureCache = CCTextureCache:sharedTextureCache()
+        local sharedTextureCache = cc.Director:getInstance():getTextureCache()
 
         local function showMemoryUsage()
             printInfo(string.format("LUA VM MEMORY USED: %0.2f KB", collectgarbage("count")))

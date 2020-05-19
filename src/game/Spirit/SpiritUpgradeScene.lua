@@ -569,7 +569,7 @@ end
 function SpiritUpgradeScene:onExit()
     self:unregNotice()
     UnRegNotice(self, NoticeKey.SpiritUpgradeScene_UpdateExpBar)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return SpiritUpgradeScene

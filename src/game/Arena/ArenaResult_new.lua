@@ -412,7 +412,7 @@ function ArenaResult:ctor(param)
 end
 
 function ArenaResult:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     display.removeSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
 end
 

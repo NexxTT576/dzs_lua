@@ -1058,9 +1058,7 @@ end
 function HeroSettingScene:initTouchNode()
     --@RefType luaIde#cc.Node
     local touchNode = self._rootnode["touchNode"]
-    --@RefType luaIde#cc.EventListenerTouchOneByOne
-    local touchNodeLisetern = cc.EventListenerTouchOneByOne:create()
-    touchNodeLisetern:setSwallowTouches(true)
+    setTouchEnabled(touchNode, true)
 
     local currentNode
     local targPosX, targPosY = self._rootnode["heroImg"]:getPosition()
@@ -1164,25 +1162,9 @@ function HeroSettingScene:initTouchNode()
         end
     end
 
-    touchNodeLisetern:registerScriptHandler(
-        function(event)
-            onTouchBegan(event)
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
-    )
-    touchNodeLisetern:registerScriptHandler(
-        function(event)
-            onTouchMove(event)
-        end,
-        cc.Handler.EVENT_TOUCH_MOVED
-    )
-    touchNodeLisetern:registerScriptHandler(
-        function(event)
-            onTouchEnded(event)
-        end,
-        cc.Handler.EVENT_TOUCH_ENDED
-    )
-    touchNode:getEventDispatcher():addEventListenerWithSceneGraphPriority(touchNodeLisetern, touchNode)
+    addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_BEGAN, onTouchBegan)
+    addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_MOVED, onTouchMove)
+    addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_ENDED, onTouchEnded)
 end
 
 function HeroSettingScene:setHeroScrollDisabled(b)
@@ -1456,21 +1438,15 @@ function HeroSettingScene:initEquip()
 
     for i = 1, 6 do
         local key = "equipBtn_" .. tostring(i)
-        --@RefType luaIde#cc.Sprite
-        local _rootNode = self._rootnode[key]
-
-        --@RefType luaIde#cc.EventListenerTouchOneByOne
-        local listener = cc.EventListenerTouchOneByOne:create()
-        listener:setSwallowTouches(true)
-        listener:registerScriptHandler(
-            function(e)
+        setTouchEnabled(self._rootnode[key], true)
+        addNodeEventListener(
+            self._rootnode[key],
+            cc.Handler.EVENT_TOUCH_BEGAN,
+            function()
                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                 onClick(i)
-            end,
-            cc.Handler.EVENT_TOUCH_BEGAN
+            end
         )
-
-        _rootNode:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, _rootNode)
     end
 end
 
@@ -1611,7 +1587,7 @@ function HeroSettingScene:onExit()
     self:unLockNotice()
 
     --
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 function HeroSettingScene:onEnterTransitionFinish()

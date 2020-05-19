@@ -1053,18 +1053,17 @@ function MainMenuScene:initPlayerBoard(...)
     --@RefType luaIde#cc.Sprite
     local playerHead = self.playerInfoNode["head_icon"]
     playerHead:setSpriteFrame(display.newSpriteFrame(headImgName))
-    --@RefType luaIde#cc.EventListenerTouchOneByOne
-    local listener1 = cc.EventListenerTouchOneByOne:create()
-    listener1:registerScriptHandler(
-        function(event)
+    addNodeEventListener(
+        playerHead,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local cb = function(...)
-                listener1:setEnabled(true)
+                setTouchEnabled(playerHead, true)
             end
             self:showPlayerInfo(cb)
-            listener1:setEnabled(false)
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
+            setTouchEnabled(playerHead, false)
+        end
     )
 
     -- level

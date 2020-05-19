@@ -498,7 +498,7 @@ function DuobaoResult:onExit()
     -- TutoMgr.removeBtn("duobao_shengli_baoxiang")
     -- TutoMgr.removeBtn("duobao_shengli_confirm")
     display.removeSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     ResMgr.ReleaseUIArmature("zhandoushengli")
     ResMgr.ReleaseUIArmature("zhandoushengli_zi")

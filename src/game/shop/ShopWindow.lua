@@ -757,7 +757,7 @@ function ShopWindow:onExit()
 
     self._bExit = true
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return ShopWindow

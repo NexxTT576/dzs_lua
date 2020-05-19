@@ -304,7 +304,7 @@ end
 
 function OnlineRewardLayer:onExit()
     self:unscheduleUpdate()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return OnlineRewardLayer

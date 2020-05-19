@@ -254,7 +254,7 @@ function HuaShanRewardShow:ctor()
 end
 
 function HuaShanRewardShow:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return HuaShanRewardShow

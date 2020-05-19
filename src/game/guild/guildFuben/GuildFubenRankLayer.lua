@@ -240,7 +240,7 @@ function GuildFubenRankLayer:checkZhenrong(index)
 end
 
 function GuildFubenRankLayer:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return GuildFubenRankLayer

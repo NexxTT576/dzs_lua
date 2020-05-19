@@ -341,7 +341,7 @@ function RewardCenterLayer:ctor(data)
 end
 
 function RewardCenterLayer:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return RewardCenterLayer

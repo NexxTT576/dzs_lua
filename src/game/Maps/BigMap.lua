@@ -547,7 +547,7 @@ function BigMap:onExit()
         ResMgr.ReleaseUIArmature(name_sankai)
     end
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     collectgarbage("collect")
 end

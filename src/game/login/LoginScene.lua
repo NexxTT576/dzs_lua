@@ -64,30 +64,21 @@ function LoginScene:init()
 
     --@RefType luaIde#cc.MenuItemImage
     local enterGameBtn = self._rootnode["enterGameBtn"]
-    -- enterGameBtn:registerScriptTapHandler(
-    --     function()
-    --         require("network.RequestHelper")
-    --         RequestHelper.game.login(
-    --             {
-    --                 acc = "bai__4115648358",
-    --                 callback = function(data)
-    --                     if data == nil then
-    --                         --@TODO 2020-05-13 16:25:27 新用户
-    --                     else
-    --                         DramaMgr.request(data)
-    --                     end
-    --                 end
-    --             }
-    --         )
-    --     end
-    -- )
-    setTouchEnabled(enterGameBtn, true)
-    addNodeEventListener(
-        enterGameBtn,
-        cc.Handler.EVENT_TOUCH_BEGAN,
+    enterGameBtn:registerScriptTapHandler(
         function()
-            dump(enterGameBtn)
-            print("fasdfasg")
+            require("network.RequestHelper")
+            RequestHelper.game.login(
+                {
+                    acc = "bai__4115648358",
+                    callback = function(data)
+                        if data == nil then
+                            --@TODO 2020-05-13 16:25:27 新用户
+                        else
+                            DramaMgr.request(data)
+                        end
+                    end
+                }
+            )
         end
     )
 end

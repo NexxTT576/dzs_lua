@@ -754,7 +754,7 @@ function GuildZuofangLayer:onExit()
         self._scheduler.unscheduleGlobal(self._checkSchedule)
     end
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return GuildZuofangLayer

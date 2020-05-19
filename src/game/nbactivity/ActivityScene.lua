@@ -502,7 +502,7 @@ function ActivityScene:onExit()
             self._contentNode:getChildByTag(111):clear()
         end
     end
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     self:unregNotice()
 end
 

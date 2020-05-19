@@ -411,7 +411,7 @@ function ArenaResult:ctor(param)
 end
 
 function ArenaResult:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     ResMgr.ReleaseUIArmature("baoxiangdakaiguangxiao_xunhuan")
     ResMgr.ReleaseUIArmature("zhandoushengli")

@@ -104,16 +104,8 @@ function GameNote:ctor()
     local bg = display.newLayer(cc.c4b(0, 0, 0, 100))
     bg:setScale(display.height / bg:getContentSize().height)
     self:addChild(bg)
-    local bglistener = cc.EventListenerTouchOneByOne:create()
-    bglistener:setSwallowTouches(true)
-    bglistener:registerScriptHandler(
-        function(event)
-            return true
-        end,
-        cc.Handler.EVENT_TOUCH_BEGAN
-    )
-    local eventDispatcher = self:getEventDispatcher()
-    eventDispatcher:addEventListenerWithSceneGraphPriority(bglistener, bg)
+
+    setTouchEnabled(bg, true)
 
     local proxy = CCBProxy:create()
     -- local ccbReader = proxy:createCCBReader()
@@ -178,7 +170,7 @@ function GameNote:ctor()
 end
 
 function GameNote:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return GameNote

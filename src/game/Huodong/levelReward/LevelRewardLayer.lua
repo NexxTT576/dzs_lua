@@ -379,7 +379,7 @@ function LevelRewardLayer:ctor(data)
 end
 
 function LevelRewardLayer:onExit(...)
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return LevelRewardLayer

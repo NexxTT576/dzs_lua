@@ -69,9 +69,12 @@ function setTouchEnabled(node, b)
     if node == nil and type(node) ~= "table" then
         print("setTouchEnabled", "参数错误")
     else
-        node["__touchEnabled"] = b
         if node["__eventListener"] == nil then
+            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil, false)
         end
+        --@RefType luaIde#cc.EventListenerTouchOneByOne
+        local eventListener = node["__eventListener"]
+        eventListener:setEnabled(b)
     end
 end
 
@@ -79,7 +82,12 @@ function setTouchSwallowEnabled(node, b)
     if node == nil and type(node) ~= "table" then
         print("setTouchSwallowEnabled", "参数错误")
     else
-        node["__swallowEnabled"] = b
+        if node["__eventListener"] == nil then
+            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil, false)
+        end
+        --@RefType luaIde#cc.EventListenerTouchOneByOne
+        local eventListener = node["__eventListener"]
+        eventListener:setSwallowTouches(b)
     end
 end
 
@@ -87,24 +95,54 @@ end
     @desc: 
     author:tulilu
     time:2020-05-18 20:16:13
-    --@node: 节点
+    --@node: luaIde#cc.Node
 	--@eventType: 
 	--@cb: 
     @return:
 ]]
-function addNodeEventListener(node, eventType, cb)
+function addNodeEventListener(node, eventType, cb, isRefresh)
     if eventType == cc.Handler.EVENT_TOUCH_BEGAN or eventType == cc.Handler.EVENT_TOUCH_MOVED or eventType == cc.Handler.EVENT_TOUCH_CANCELLED or eventType == cc.Handler.EVENT_TOUCH_ENDED then
-        --@RefType luaIde#cc.EventListenerTouchOneByOne
-        local listener = node["__eventListener"] == nil and cc.EventListenerTouchOneByOne:create() or node["__eventListener"]
-        listener:setSwallowTouches(true)
-        listener:registerScriptHandler(
-            function(e)
-                if cb then
-                    return cb(e)
-                end
-            end,
-            eventType
-        )
-        node:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, node)
+        local eventListenerHanders = node["__eventListenerHanders"]
+        if eventListenerHanders == nil then
+            eventListenerHanders = {}
+            node["__eventListenerHanders"] = eventListenerHanders
+        end
+        if isRefresh ~= false then
+            eventListenerHanders[eventType] = cb
+        end
+
+        if node["__eventListener"] == nil then
+            --@RefType luaIde#cc.EventListenerTouchOneByOne
+            local listener = cc.EventListenerTouchOneByOne:create()
+            listener:registerScriptHandler(
+                function(e)
+                    if eventListenerHanders[eventType] then
+                        return eventListenerHanders[eventType](e)
+                    end
+                    return true
+                end,
+                eventType
+            )
+            node:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, node)
+            node["__eventListener"] = listener
+        end
+    end
+end
+
+local sharedDirector = cc.Director:getInstance()
+local sceneLevel = 1
+
+function push_scene(scene)
+    assert(scene, "Scene is nil")
+    sceneLevel = sceneLevel + 1
+    print("push scene")
+    sharedDirector:pushScene(scene)
+end
+
+function pop_scene()
+    print("pop scene: " .. tostring(display.getRunningScene().__cname))
+    if sceneLevel > 1 then
+        sceneLevel = sceneLevel - 1
+        sharedDirector:popScene()
     end
 end

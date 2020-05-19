@@ -368,7 +368,7 @@ function ChallengeFubenLayer:createFbListView(fbDataList)
 end
 
 function ChallengeFubenLayer:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return ChallengeFubenLayer

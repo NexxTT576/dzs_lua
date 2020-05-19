@@ -283,7 +283,7 @@ function HuaShanSettingScene:groupHero()
 
         table.insert(heroGroup[VIEW_TYPE.ALL], v)
         local path = "hero/icon/" .. hero["arr_icon"][v.cls + 1] .. ".png"
-        CCTextureCache:sharedTextureCache():addImage(path)
+        cc.Director:getInstance():getTextureCache():addImage(path)
     end
 
     --  5个一组
@@ -509,7 +509,7 @@ function HuaShanSettingScene:initChooseListView()
 end
 
 function HuaShanSettingScene:onExit()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return HuaShanSettingScene

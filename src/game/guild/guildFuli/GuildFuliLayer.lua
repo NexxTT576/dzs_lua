@@ -410,7 +410,7 @@ function GuildFuliLayer:onExit()
         self._scheduler.unscheduleGlobal(self._checkSchedule)
     end
 
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return GuildFuliLayer

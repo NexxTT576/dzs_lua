@@ -661,7 +661,7 @@ end
 function SubMapInfoLayer:onExit()
     ResMgr.isInSubInfo = false
     self:unscheduleUpdate()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return SubMapInfoLayer

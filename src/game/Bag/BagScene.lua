@@ -992,7 +992,7 @@ function BagScene:onExit()
     self:unregNotice()
 
     self._bExit = true
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 return BagScene

@@ -535,7 +535,7 @@ function ChatLayer:onExit()
     end
 
     self:unscheduleUpdate()
-    CCTextureCache:sharedTextureCache():removeUnusedTextures()
+    cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 end
 
 function ChatLayer:initFriendData()
