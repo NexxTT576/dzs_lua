@@ -200,3 +200,26 @@ function newTTFLabelWithShadow(param)
     lb:setPosition(param.x, param.y)
     return lb
 end
+
+function newBMFontLabel(param)
+    if param.text == nil then
+        param.text = ""
+    end
+    if param.x == nil then
+        param.x = 0
+    end
+    if param.y == nil then
+        param.y = 0
+    end
+    if param.align == nil then
+        param.align = cc.TEXT_ALIGNMENT_CENTER
+    end
+    --@RefType luaIde#cc.Label
+    local lb = cc.Label:createWithBMFont(param.font, param.text)
+    if param.size then
+        lb:setBMFontSize(param.size)
+    end
+    lb:setPosition(param.x, param.y)
+    lb:setAlignment(param.align)
+    return lb
+end

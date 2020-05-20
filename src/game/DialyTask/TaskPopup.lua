@@ -215,7 +215,7 @@ function TaskPopup:setUpView()
 
     --title标签
     self._titleDisLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "成长之路",
             size = self._titleDisFontSize,
@@ -264,8 +264,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--align(display.LEFT_CENTER))
-     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+     --align(display.LEFT_CENTER))
 
     onButtonSelectChanged(
         function(event)

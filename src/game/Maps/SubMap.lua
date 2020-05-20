@@ -201,7 +201,7 @@ function SubMap:initLevelInfo(subMap)
         --star
         local star = subMap[tostring(subMapData.id)]
         local starLabel =
-            ui.newBMFontLabel(
+            newBMFontLabel(
             {
                 text = star .. "/" .. data_field_field[subMapData.id].star,
                 font = FONTS_NAME.font_property,

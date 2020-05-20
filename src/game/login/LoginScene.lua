@@ -71,8 +71,10 @@ function LoginScene:init()
                 {
                     acc = "test__100000",
                     callback = function(data)
-                        if data == nil then
+                        if data["3"] == 1 then
                             --@TODO 2020-05-13 16:25:27 新用户
+                            DramaMgr.isSkipDrama = false
+                            DramaMgr.createChoseLayer(data)
                         else
                             DramaMgr.request(data)
                         end

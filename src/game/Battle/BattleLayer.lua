@@ -96,6 +96,7 @@ local SUB_HP = 1
 local HEAL_HP = 2
 local NO_HP = 3
 
+--@SuperType ShadeLayer
 local BattleLayer =
     class(
     "BattleLayer",
@@ -152,7 +153,7 @@ function BattleLayer:ctor(param)
     ResMgr.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.addSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")
 
-    CCUserDefault:sharedUserDefault():setBoolForKey("isBattle", true)
+    CCUserDefault:getInstance():setBoolForKey("isBattle", true)
     game.runningScene = self
 
     self.upDamage = 0 --劫富济贫用来更新上面的受伤害总值的
@@ -161,7 +162,8 @@ function BattleLayer:ctor(param)
     self.maxCountTTF = "/30"
     self.musicIndex = 1
     self.musicName = "pve01"
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
+
     self.isInitTimeScale = false
     self.isPassed = param.isPassed
 
@@ -394,20 +396,20 @@ function BattleLayer:init(param)
     --战斗回合数
     self.battleCount = 0
     local roundName =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "回合：",
             font = FONTS_NAME.font_battle_round,
-            align = ui.TEXT_ALIGN_LEFT
+            align =  cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
     self.battleCountTTF =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = self.battleCount .. self.maxCountTTF,
             font = FONTS_NAME.font_battle_round,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.countNode = display.newNode()
@@ -1281,7 +1283,7 @@ function BattleLayer:onExit()
             }
         )
     end
-    CCUserDefault:sharedUserDefault():setBoolForKey("isBattle", false)
+    CCUserDefault:getInstance():setBoolForKey("isBattle", false)
 
     ResMgr.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.removeSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")
@@ -1889,7 +1891,7 @@ function BattleLayer:changeProps(curData, card, talEndFunc)
             if propValue > 0 then
                 isAdd = true
                 tempPropNum =
-                    ui.newBMFontLabel(
+                    newBMFontLabel(
                     {
                         text = "+" .. propValue,
                         font = "fonts/font_green.fnt"
@@ -1898,7 +1900,7 @@ function BattleLayer:changeProps(curData, card, talEndFunc)
             else
                 isAdd = false
                 tempPropNum =
-                    ui.newBMFontLabel(
+                    newBMFontLabel(
                     {
                         text = "-" .. propValue,
                         font = "fonts/font_red.fnt"
@@ -2718,7 +2720,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
 
             display.getRunningScene():addChild(totalDamage, EFFECT_ZORDER)
             local numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "-" .. totalNum,
                     font = "fonts/font_red.fnt",
@@ -3395,7 +3397,7 @@ function BattleLayer:createNum(param)
     elseif dType == HIT_TYPE_CRITICAL then
         -- upDamageNum(numValue)
         numTTF =
-            ui.newBMFontLabel(
+            newBMFontLabel(
             {
                 text = "-" .. numValue,
                 font = "fonts/font_baoji.fnt"
@@ -3408,7 +3410,7 @@ function BattleLayer:createNum(param)
         if numType == SUB_HP then
             -- upDamageNum(numValue)
             numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "-" .. numValue,
                     font = "fonts/font_red.fnt"
@@ -3416,7 +3418,7 @@ function BattleLayer:createNum(param)
             )
         elseif numType == HEAL_HP then
             numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "+" .. numValue,
                     font = "fonts/font_green.fnt"

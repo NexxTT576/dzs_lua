@@ -12,8 +12,9 @@ local DramaLayer =
     end
 )
 function DramaLayer:ctor(id, endFunc)
-    self:setNodeEventEnabled(true)
-    display.addSpriteFramesWithFile("ui/ui_tutorial.plist", "ui/ui_tutorial.png")
+    self:enableNodeEvents()
+
+    display.loadSpriteFrames("ui/ui_tutorial.plist", "ui/ui_tutorial.png")
     self:initPos()
     local dramaData = data_drama_drama[id]
     local dramaType = dramaData.drama_type
@@ -28,7 +29,7 @@ function DramaLayer:ctor(id, endFunc)
     self.isTouch = false
 
     if dramaSkip == 1 then
-        self:setTouchEnabled(true)
+        setTouchEnabled(self, true)
         self:setTouchFunc(
             function()
                 self.isTouch = true
@@ -100,7 +101,7 @@ function DramaLayer:ctor(id, endFunc)
                 {
                     text = chatStr,
                     color = cc.c3b(54, 4, 5),
-                     --FONT_COLOR.DARK_RED,
+                    --FONT_COLOR.DARK_RED,
                     align = ui.TEXT_ALIGN_LEFT,
                     valign = ui.TEXT_VALIGN_TOP,
                     size = 32,

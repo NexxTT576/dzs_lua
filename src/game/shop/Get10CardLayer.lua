@@ -43,7 +43,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
     -- left times
     --    local leftTimesLabel = subNode["tag_left_times"]
     local textLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "",
             font = FONTS_NAME.font_zhaojiang,

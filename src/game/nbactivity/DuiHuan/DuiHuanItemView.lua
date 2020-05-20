@@ -42,7 +42,7 @@ function DuiHuanItemView:refresh(param)
     mainFrameBng:addChild(titleBng)
 
     local nameLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = data.tagName,
             font = "fonts/font_title.fnt",

@@ -114,7 +114,7 @@ function HeroSellDebrisBoard:init(data)
     end
 
     local sellFont =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "出 售",
             font = "fonts/font_buttons.fnt"
@@ -181,7 +181,7 @@ function HeroSellDebrisBoard:init(data)
             require("utility.TableViewExt").new(
             {
                 size = cc.size(boardBg:getContentSize().width, boardBg:getContentSize().height * 0.84),
-                 -- numBg:getContentSize().height - 20),
+                -- numBg:getContentSize().height - 20),
                 direction = kCCScrollViewDirectionVertical,
                 createFunc = createFunc,
                 refreshFunc = refreshFunc,
@@ -190,7 +190,7 @@ function HeroSellDebrisBoard:init(data)
             }
         )
         itemList:setPosition(-boardBg:getContentSize().width * 0.49, -boardBg:getContentSize().height * 0.37)
-         -- numBg:getContentSize().height)
+        -- numBg:getContentSize().height)
         scrollLayerNode:addChild(itemList)
     end
 
@@ -211,7 +211,7 @@ function HeroSellDebrisBoard:init(data)
     end
 
     local sellByStarFont =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "按星级出售",
             font = "fonts/font_buttons.fnt"

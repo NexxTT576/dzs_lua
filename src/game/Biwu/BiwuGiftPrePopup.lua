@@ -138,7 +138,7 @@ function BiwuGiftRrePopup:setUpView()
     closeBtn:addTo(self._mianPopup):setAnchorPoint(cc.p(0.5, 0.5))
     --title标签
     self._titleDisLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "奖励预览",
             size = self._titleDisFontSize,

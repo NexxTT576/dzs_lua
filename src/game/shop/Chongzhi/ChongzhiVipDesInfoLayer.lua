@@ -62,7 +62,7 @@ local Item =
         node:addChild(vipIcon)
 
         local vipLbl =
-            ui.newBMFontLabel(
+            newBMFontLabel(
             {
                 text = tostring(itemData.vip),
                 font = "fonts/font_vip.fnt"

@@ -41,7 +41,7 @@ function ResMgr.addSpriteFramesWithFile(plistFilename, image)
         ResMgr.spriteFrameCntTable[plistFilename] = 0
     end
     ResMgr.spriteFrameCntTable[plistFilename] = ResMgr.spriteFrameCntTable[plistFilename] + 1
-    display.addSpriteFramesWithFile(plistFilename, image)
+    display.loadSpriteFrames(plistFilename, image)
 end
 
 function ResMgr.removeSpriteFramesWithFile(plistFilename, image)
@@ -499,7 +499,7 @@ function ResMgr.getVipIconTTF()
     vipIcon:setAnchorPoint(cc.p(0, 0.5))
 
     local lvTTF =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "VIP" .. vipLv,
             font = "fonts/font_vip.fnt",

@@ -189,7 +189,7 @@ function FormEquipQHLayer:ctor(param)
                                 local value = _baseInfo.arr_addition[k] * level
 
                                 local stateTTF =
-                                    ui.newBMFontLabel(
+                                    newBMFontLabel(
                                     {
                                         text = nature.nature .. "+" .. tostring(value),
                                         font = "fonts/font_equip_enhance.fnt"

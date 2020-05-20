@@ -56,7 +56,7 @@ function DuiHuanGiftItemView:setUpView()
     self._containner:addChild(titleBng)
 
     local nameLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = self._data.tagName,
             font = "fonts/font_title.fnt",

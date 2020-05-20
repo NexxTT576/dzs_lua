@@ -367,7 +367,7 @@ function LimitHeroLayer:updateRightDesc()
     local times = LimitHeroModel.restLuckNum()
 
     local textLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "",
             font = FONTS_NAME.font_zhaojiang

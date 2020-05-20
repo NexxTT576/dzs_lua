@@ -44,7 +44,7 @@ function YabiaoDetailView:setUpView(param)
     )
     --title标签
     local titleText =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "信息",
             size = 22,

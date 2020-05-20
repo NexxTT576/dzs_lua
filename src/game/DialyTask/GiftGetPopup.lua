@@ -137,7 +137,7 @@ function GiftGetPopup:setUpView()
     closeBtn:addTo(self._mianPopup):setAnchorPoint(cc.p(0.5, 0.5))
     --title标签
     self._titleDisLabel =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "奖励领取",
             size = self._titleDisFontSize,

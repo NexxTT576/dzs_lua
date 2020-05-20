@@ -349,7 +349,7 @@ function EquipQiangHuaLayer:createFloatNum(param)
     local stateNum = param.stateNum
 
     local stateTTF =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = stateStr .. "+" .. stateNum,
             font = "fonts/font_equip_enhance.fnt"

@@ -48,7 +48,7 @@ function XianShiItemView:refreshItem(param)
     self._rootnode["price"]:addChild(priceLabel)
 
     local vipFont =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "2",
             font = "fonts/font_vip.fnt",

@@ -3,6 +3,7 @@ local data_drama_scene_drama_scene = require("data.data_drama_scene_drama_scene"
 local RESULT_ZORDER = 3000
 local LEVELUP_ZORDER = 3001
 
+--@SuperType luaIde#cc.Scene
 local DramaScene =
     class(
     "DramaScene",
@@ -16,8 +17,7 @@ end
 
 function DramaScene:ctor(msg)
     game.runningScene = self
-
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     --根据dramaSceneId 读取对应表的数据
     local dramaSceneId = msg.dramaSceneId

@@ -264,7 +264,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             --star
             local star = self._subMap[tostring(subMapData.id)]
             local starLabel =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = star .. "/" .. data_field_field[subMapData.id].star,
                     font = FONTS_NAME.font_property,

@@ -108,7 +108,7 @@ function SoulListCell:ctor(cellIndex, data)
     jiqi:setPosition(jinduTotal:getPositionX() + jinduTotal:getContentSize().width * 1, jinduTotal:getPositionY())
     jinduNode:addChild(jiqi)
 
-    -- local chaKanTTF = ui.newBMFontLabel({
+    -- local chaKanTTF = newBMFontLabel({
     --     text = "查看掉落",
     --     font = "fonts/font_buttons.fnt",
     --     })

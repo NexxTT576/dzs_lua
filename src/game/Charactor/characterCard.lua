@@ -1,3 +1,4 @@
+--@SuperType luaIde#cc.Node
 local characterCard =
     class(
     "characterCard",
@@ -444,7 +445,8 @@ function characterCard:ctor(param)
 
     self.actFrameFunc = nil
     self.actEndFunc = nil
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
+
     self.formationIndex = param.formationIndex
     self.maxLife = param.maxLife or 1 --血值最少为1，防止除0错误
     self.curLife = self.maxLife --初始化当前血量与总血量一致
@@ -482,7 +484,7 @@ function characterCard:ctor(param)
 
     local anger = param.anger or 0
     if isExit == true then
-        self:setTouchEnabled(true)
+        setTouchEnabled(self, true)
 
         self.curAct = "stop"
 
@@ -742,7 +744,7 @@ function characterCard:ctor(param)
         self.cardBg:addBone(self.extraAnger, "tongyong")
 
         self.angerLabel =
-            ui.newBMFontLabel(
+            newBMFontLabel(
             {
                 text = "X0",
                 font = "fonts/font_fb_lv_title.fnt"

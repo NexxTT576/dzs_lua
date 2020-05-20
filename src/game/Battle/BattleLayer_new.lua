@@ -372,7 +372,7 @@ function BattleLayer:init(param)
     --战斗回合数
     self.battleCount = 0
     local roundName =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = "回合：",
             font = FONTS_NAME.font_battle_round,
@@ -381,7 +381,7 @@ function BattleLayer:init(param)
     )
 
     self.battleCountTTF =
-        ui.newBMFontLabel(
+        newBMFontLabel(
         {
             text = self.battleCount .. self.maxCountTTF,
             font = FONTS_NAME.font_battle_round,
@@ -1810,7 +1810,7 @@ function BattleLayer:changeProps(curData, talEndFunc)
         if propValue > 0 then
             isAdd = true
             tempPropNum =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "+" .. propValue,
                     font = "fonts/font_green.fnt"
@@ -1819,7 +1819,7 @@ function BattleLayer:changeProps(curData, talEndFunc)
         else
             isAdd = false
             tempPropNum =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "-" .. propValue,
                     font = "fonts/font_red.fnt"
@@ -2654,7 +2654,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
 
             display.getRunningScene():addChild(totalDamage, EFFECT_ZORDER)
             local numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "-" .. totalNum,
                     font = "fonts/font_red.fnt",
@@ -3311,7 +3311,7 @@ function BattleLayer:createNum(param)
     elseif dType == HIT_TYPE_CRITICAL then
         -- upDamageNum(numValue)
         numTTF =
-            ui.newBMFontLabel(
+            newBMFontLabel(
             {
                 text = "-" .. numValue,
                 font = "fonts/font_baoji.fnt"
@@ -3324,7 +3324,7 @@ function BattleLayer:createNum(param)
         if numType == SUB_HP then
             -- upDamageNum(numValue)
             numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "-" .. numValue,
                     font = "fonts/font_red.fnt"
@@ -3332,7 +3332,7 @@ function BattleLayer:createNum(param)
             )
         elseif numType == HEAL_HP then
             numTTF =
-                ui.newBMFontLabel(
+                newBMFontLabel(
                 {
                     text = "+" .. numValue,
                     font = "fonts/font_green.fnt"
