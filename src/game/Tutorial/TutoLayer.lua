@@ -240,6 +240,7 @@ function TutoLayer:ctor(param)
                     }
                 )
                 self:getApp():changeState(GAME_STATE.STATE_MAIN_MENU)
+                --self:removeSelf()
             end
         )
         self:addChild(cc.Menu:create(self.playBtn))

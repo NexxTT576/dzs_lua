@@ -1015,7 +1015,7 @@ function HeroSettingScene:initHeadList()
             touchFunc = function(cell)
                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                 local idx = cell:getIdx() + 1
-                self._rootnode["touchNode"]:setTouchEnabled(true)
+                setTouchEnabled(self._rootnode["touchNode"], true)
 
                 if type(self._headData[idx]) == "table" then
                     self._index = idx

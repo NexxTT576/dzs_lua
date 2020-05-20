@@ -57,7 +57,7 @@ function TableViewExt:ctor(param)
     local tableView = CCTableView:create(_viewSize)
     tableView:setDirection(_direction)
     self:addChild(tableView)
-
+    tableView:setDelegate()
     self.getContentSize = function()
         return _viewSize
     end
@@ -108,12 +108,12 @@ function TableViewExt:ctor(param)
         return _cellNum
     end
 
-    tableView:registerScriptHandler(scrollViewDidScroll, CCTableView.kTableViewScroll)
-    tableView:registerScriptHandler(scrollViewDidZoom, CCTableView.kTableViewZoom)
-    tableView:registerScriptHandler(tableCellTouched, CCTableView.kTableCellTouched)
-    tableView:registerScriptHandler(cellSizeForTable, CCTableView.kTableCellSizeForIndex)
-    tableView:registerScriptHandler(tableCellAtIndex, CCTableView.kTableCellSizeAtIndex)
-    tableView:registerScriptHandler(numberOfCellsInTableView, CCTableView.kNumberOfCellsInTableView)
+    tableView:registerScriptHandler(scrollViewDidScroll, cc.SCROLLVIEW_SCRIPT_SCROLL)
+    tableView:registerScriptHandler(scrollViewDidZoom, cc.SCROLLVIEW_SCRIPT_ZOOM)
+    tableView:registerScriptHandler(tableCellTouched, cc.TABLECELL_TOUCHED)
+    tableView:registerScriptHandler(cellSizeForTable, cc.TABLECELL_SIZE_FOR_INDEX)
+    tableView:registerScriptHandler(tableCellAtIndex, cc.TABLECELL_SIZE_AT_INDEX)
+    tableView:registerScriptHandler(numberOfCellsInTableView, cc.NUMBER_OF_CELLS_IN_TABLEVIEW)
     tableView:reloadData()
     --    tableView:setTouchSwallowEnabled(true)
 
