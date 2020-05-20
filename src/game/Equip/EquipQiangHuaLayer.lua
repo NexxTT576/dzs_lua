@@ -356,16 +356,16 @@ function EquipQiangHuaLayer:createFloatNum(param)
         }
     )
     stateTTF:setVisible(false)
-    local delay = CCDelayTime:create(delay * 0.8)
+    local delay = cc.DelayTime:create(delay * 0.8)
     local setVis =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             stateTTF:setVisible(true)
         end
     )
     local moveUp = CCMoveBy:create(1, cc.p(0, 30))
-    local fadeOut = CCFadeOut:create(1)
-    local spawn = CCSpawn:createWithTwoActions(moveUp, fadeOut)
+    local fadeOut = cc.FadeOut:create(1)
+    local spawn = cc.Spawn:create(moveUp, fadeOut)
     local rev = CCRemoveSelf:create(true)
     local seq = transition.sequence({delay, setVis, spawn, rev})
     stateTTF:runAction(seq)
@@ -390,15 +390,15 @@ function EquipQiangHuaLayer:createTips(tip)
     end
 
     local small =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             ttfNode:setScale(0.1)
             ttfNode:setVisible(true)
         end
     )
-    local bigger = CCScaleTo:create(0.3, 1)
-    local delay = CCDelayTime:create(1.5)
-    local smaller = CCScaleTo:create(0.2, 0.2)
+    local bigger = cc.ScaleTo:create(0.3, 1)
+    local delay = cc.DelayTime:create(1.5)
+    local smaller = cc.ScaleTo:create(0.2, 0.2)
     local rev = CCRemoveSelf:create(true)
     local seq = transition.sequence({small, bigger, delay, smaller, rev})
     ttfNode:runAction(seq)
@@ -430,15 +430,15 @@ function EquipQiangHuaLayer:createSuccessTTF(num)
     ttfNode:setVisible(false)
 
     local small =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             ttfNode:setScale(0.1)
             ttfNode:setVisible(true)
         end
     )
-    local bigger = CCScaleTo:create(0.3, 1)
-    local delay = CCDelayTime:create(1.5)
-    local smaller = CCScaleTo:create(0.2, 0.2)
+    local bigger = cc.ScaleTo:create(0.3, 1)
+    local delay = cc.DelayTime:create(1.5)
+    local smaller = cc.ScaleTo:create(0.2, 0.2)
     local rev = CCRemoveSelf:create(true)
     local seq = transition.sequence({small, bigger, delay, smaller, rev})
     ttfNode:runAction(seq)
@@ -483,19 +483,19 @@ function EquipQiangHuaLayer:shake(direction)
         -- delayTime = 0.1
         end
 
-        local delayAct = CCDelayTime:create(delayTime)
+        local delayAct = cc.DelayTime:create(delayTime)
 
         local offSetWidth = display.width * rate
         local offSetcHeight = display.height * rate
 
         local moveAct1 =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self.boardBg:setPosition(cc.p(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
             end
         )
         local moveAct2 =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self.boardBg:setPosition(cc.p(cPosX, cPosY))
             end

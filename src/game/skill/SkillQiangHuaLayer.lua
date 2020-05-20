@@ -172,7 +172,7 @@ function SkillQiangHuaLayer:runAnim()
         local func
         if i == len then
             func =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     local effect =
                         ResMgr.createArma(

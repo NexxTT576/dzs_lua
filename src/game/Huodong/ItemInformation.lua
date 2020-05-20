@@ -38,7 +38,7 @@ function ItemInformation:ctor(param)
                 sender:runAction(
                     transition.sequence(
                         {
-                            CCCallFunc:create(
+                            cc.CallFunc:create(
                                 function()
                                     if endFunc ~= nil then
                                         endFunc()

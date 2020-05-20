@@ -195,8 +195,8 @@ end
 function YabiaoItemView:createFadeAction(func)
     return transition.sequence(
         {
-            CCFadeOut:create(2.0),
-            CCCallFunc:create(
+            cc.FadeOut:create(2.0),
+            cc.CallFunc:create(
                 function()
                     if func then
                         func()

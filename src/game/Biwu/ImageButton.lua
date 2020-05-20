@@ -11,7 +11,7 @@ function ImageButton:addTouchListener(node, callBack)
         function(event)
             local scale = node:getScale()
             node:setScale(1)
-            local boundBox = node:boundingBox()
+            local boundBox = node:getBoundingBox()
             node:setScale(scale)
             local box = cc.rect(0, 0, boundBox.size.width, boundBox.size.height)
             if event.name == "began" then

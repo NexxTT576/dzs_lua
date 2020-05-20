@@ -362,7 +362,7 @@ function LevelRewardLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 --layer:removeSelf()
                                 self:removeFromParent(true)

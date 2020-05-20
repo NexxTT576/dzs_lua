@@ -139,7 +139,7 @@ function PosHero:showTmpSelf(info)
     sprite:runAction(
         transition.sequence(
             {
-                CCFadeOut:create(0.8),
+                cc.FadeOut:create(0.8),
                 CCRemoveSelf:create()
             }
         )
@@ -159,7 +159,7 @@ function PosHero:playAnim(info, tagetPos, callback)
             {
                 CCMoveBy:create(1, tagetPos),
                 CCRemoveSelf:create(),
-                CCCallFunc:create(
+                cc.CallFunc:create(
                     function()
                         if callback then
                             callback()

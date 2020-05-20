@@ -33,8 +33,8 @@ function UseDialog:ctor()
                 bg:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 0),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 0),
+                            cc.CallFunc:create(
                                 function()
                                     self:removeFromParent(true)
                                 end
@@ -107,13 +107,13 @@ function UseDialog:ctor()
         countLabel:runAction(
             transition.sequence(
                 {
-                    CCScaleTo:create(0.2, 1.5),
-                    CCCallFunc:create(
+                    cc.ScaleTo:create(0.2, 1.5),
+                    cc.CallFunc:create(
                         function()
                             countLabel:setString(tostring(count))
                         end
                     ),
-                    CCScaleTo:create(0.1, 1)
+                    cc.ScaleTo:create(0.1, 1)
                 }
             )
         )

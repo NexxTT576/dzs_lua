@@ -42,7 +42,7 @@ local Item =
                     color = cc.c3b(255, 255, 255),
                     size = 22,
                     align = ui.TEXT_ALIGN_LEFT,
-                    valign = ui.TEXT_VALIGN_TOP,
+                    valign = cc.VERTICAL_TEXT_ALIGNMENT_TOP,
                     dimensions = cc.size(bossLblNode:getContentSize().width, 0)
                 }
             )

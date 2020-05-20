@@ -31,8 +31,8 @@ function TipLabel:ctor(text, delayTime)
         transition.sequence(
         {
             CCMoveBy:create(0.5, cc.p(0, display.height / 6)),
-            CCDelayTime:create(delayTime),
-            CCFadeOut:create(2.0),
+            cc.DelayTime:create(delayTime),
+            cc.FadeOut:create(2.0),
             CCRemoveSelf:create(true)
         }
     )

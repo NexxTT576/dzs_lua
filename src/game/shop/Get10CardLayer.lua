@@ -28,7 +28,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:removeSelf()
                             end

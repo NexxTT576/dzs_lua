@@ -310,9 +310,9 @@ function GuildQLBossScene:ctor(param)
             transition.sequence(
                 {
                     CCMoveBy:create(MOVE_TIME, CCPoint(0, MOVE_DISY)),
-                    CCDelayTime:create(DELAY_TIME),
+                    cc.DelayTime:create(DELAY_TIME),
                     CCMoveBy:create(MOVE_TIME, CCPoint(0, -MOVE_DISY)),
-                    CCDelayTime:create(DELAY_TIME)
+                    cc.DelayTime:create(DELAY_TIME)
                 }
             )
         )
@@ -624,12 +624,12 @@ function GuildQLBossScene:refreshOtherPlayerState(index, data, isSelf)
         hurtNode:runAction(
             transition.sequence(
                 {
-                    CCDelayTime:create(index * 1.0),
+                    cc.DelayTime:create(index * 1.0),
                     CCShow:create(),
-                    CCScaleTo:create(0.1, 1.2 * NUM_SCALE),
-                    CCScaleTo:create(0.1, NUM_SCALE),
-                    CCDelayTime:create(1.0),
-                    CCScaleTo:create(0.1, 0.8, 0.2),
+                    cc.ScaleTo:create(0.1, 1.2 * NUM_SCALE),
+                    cc.ScaleTo:create(0.1, NUM_SCALE),
+                    cc.DelayTime:create(1.0),
+                    cc.ScaleTo:create(0.1, 0.8, 0.2),
                     CCRemoveSelf:create(true)
                 }
             )

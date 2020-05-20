@@ -833,7 +833,7 @@ end
 
 function BattleLayer:initSkipDramaBtn()
     if self.skipDramaBtn == nil then
-        local btnSprite = display.newScale9Sprite("#jump_drama_btn.png")
+        local btnSprite = display.newSprite("#jump_drama_btn.png", {scale9 = true})
         self.skipDramaBtn = CCControlButton:create("", FONTS_NAME.font_fzcy, 30)
         self.skipDramaBtn:setBackgroundSpriteForState(btnSprite, CCControlStateNormal)
         self.skipDramaBtn:setPreferredSize(cc.size(144, 50))
@@ -979,8 +979,8 @@ function BattleLayer:cardArise()
             self:runAction(
                 transition.sequence(
                     {
-                        CCDelayTime:create(waitTime),
-                        CCCallFunc:create(
+                        cc.DelayTime:create(waitTime),
+                        cc.CallFunc:create(
                             function()
                                 self:playDrama(activeTime, dramaEndFunc)
                             end
@@ -1010,26 +1010,26 @@ function BattleLayer:cardArise()
                     curCard:runAction(
                         transition.sequence(
                             {
-                                CCCallFunc:create(
+                                cc.CallFunc:create(
                                     function()
                                         curCard:setVisible(true)
                                     end
                                 ),
-                                CCCallFunc:create(
+                                cc.CallFunc:create(
                                     function()
                                         curCard:playAct("born")
                                     end
                                 ),
-                                CCDelayTime:create(0.2),
-                                CCCallFunc:create(
+                                cc.DelayTime:create(0.2),
+                                cc.CallFunc:create(
                                     function()
                                         local path = "sound/battlesfx/" .. "fight_down" .. ".mp3"
                                         GameAudio.playSound(path, false)
                                         self:shake(1)
                                     end
                                 ),
-                                CCDelayTime:create(waitTime),
-                                CCCallFunc:create(
+                                cc.DelayTime:create(waitTime),
+                                cc.CallFunc:create(
                                     function()
                                         local function ariseEnd()
                                             return ariseMachine(num + 1)
@@ -1065,16 +1065,16 @@ function BattleLayer:cardArise()
                 v:runAction(
                     transition.sequence(
                         {
-                            CCDelayTime:create(0.1),
-                            CCCallFunc:create(
+                            cc.DelayTime:create(0.1),
+                            cc.CallFunc:create(
                                 function()
                                     v:setScale(0.1)
                                     v:setVisible(true)
                                 end
                             ),
-                            CCScaleTo:create(0.2, 1),
-                            CCDelayTime:create(waitTime),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 1),
+                            cc.DelayTime:create(waitTime),
+                            cc.CallFunc:create(
                                 function()
                                     if isRunWalkFunc == false then
                                         isRunWalkFunc = true
@@ -1181,7 +1181,7 @@ function BattleLayer:cardWalk()
             transition.sequence(
                 {
                     CCMoveBy:create(moveTime, cc.p(0, -moveDistance)),
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             for k, v in pairs(self.friendCard) do
                                 v:playAct("stop")
@@ -1193,8 +1193,8 @@ function BattleLayer:cardWalk()
                             end
                         end
                     ),
-                    CCDelayTime:create(delayTime),
-                    CCCallFunc:create(
+                    cc.DelayTime:create(delayTime),
+                    cc.CallFunc:create(
                         function()
                             dramaAftWalk()
                         end
@@ -1211,13 +1211,13 @@ function BattleLayer:cardWalk()
                 transition.sequence(
                     {
                         CCMoveBy:create(moveTime, cc.p(0, -moveDistance)),
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 v:playAct("stop")
                             end
                         ),
-                        CCDelayTime:create(delayTime),
-                        CCCallFunc:create(
+                        cc.DelayTime:create(delayTime),
+                        cc.CallFunc:create(
                             function()
                                 if isRunBattleFunc == false then
                                     isRunBattleFunc = true
@@ -1247,16 +1247,16 @@ function BattleLayer:cardWalk()
             v:runAction(
                 transition.sequence(
                     {
-                        CCDelayTime:create(0.1),
-                        CCCallFunc:create(
+                        cc.DelayTime:create(0.1),
+                        cc.CallFunc:create(
                             function()
                                 v:setScale(0.1)
                                 v:setVisible(true)
                             end
                         ),
-                        CCScaleTo:create(0.2, 1),
-                        CCDelayTime:create(0.5),
-                        CCCallFunc:create(
+                        cc.ScaleTo:create(0.2, 1),
+                        cc.DelayTime:create(0.5),
+                        cc.CallFunc:create(
                             function()
                                 if isRunBattleFunc == false then
                                     isRunBattleFunc = true
@@ -1465,17 +1465,17 @@ function BattleLayer:initBuff()
     local runFuncNode = display.newNode()
     self.shakeNode:addChild(runFuncNode)
 
-    local befDelay = CCDelayTime:create(showTime)
+    local befDelay = cc.DelayTime:create(showTime)
     local befFunc =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             delyEff()
         end
     )
 
-    local delayTime = CCDelayTime:create(showTime)
+    local delayTime = cc.DelayTime:create(showTime)
     local func =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             if restLife == 0 then
                 local card = self:getCardBySideId(buffSide, buffPos)
@@ -1489,7 +1489,7 @@ function BattleLayer:initBuff()
         end
     )
     local removeNodeFunc =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             runFuncNode:removeSelf()
         end
@@ -1734,18 +1734,18 @@ function BattleLayer:playRage(atkData, fontScale, specialData)
             display.getRunningScene():addChild(nameSprite, EFFECT_ZORDER + 100)
 
             local bigStart =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     nameSprite:setScale(4)
                     nameSprite:setVisible(true)
                 end
             )
-            local small = CCScaleTo:create(0.1, curScale)
-            local delay = CCDelayTime:create(0.8)
-            local fadeOut = CCFadeOut:create(0.2)
-            local fadeSpawn = CCSpawn:createWithTwoActions(fadeOut, CCMoveBy:create(0.2, cc.p(-600, 0)))
+            local small = cc.ScaleTo:create(0.1, curScale)
+            local delay = cc.DelayTime:create(0.8)
+            local fadeOut = cc.FadeOut:create(0.2)
+            local fadeSpawn = cc.Spawn:create(fadeOut, CCMoveBy:create(0.2, cc.p(-600, 0)))
             local rev =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     nameSprite:removeSelf()
                 end
@@ -1826,17 +1826,17 @@ function BattleLayer:createTalName(card, talId, endFunc)
     -- ResMgr.delayFunc(0.6,effFunc)
 
     local scaleFunc =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             tal_bg:setScaleY(0.1)
         end
     )
-    local nodeScale = CCScaleTo:create(0.2, 1)
+    local nodeScale = cc.ScaleTo:create(0.2, 1)
     -- local nodeMoveBy = CCMoveBy:create(0.3, cc.p(0,100))
-    local nodeDelay = CCDelayTime:create(1.3)
-    local scaleSmaller = CCScaleTo:create(0.2, 0.1)
+    local nodeDelay = cc.DelayTime:create(1.3)
+    local scaleSmaller = cc.ScaleTo:create(0.2, 0.1)
     local nodeRev =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             tal_bg:removeSelf()
         end
@@ -1941,15 +1941,15 @@ function BattleLayer:changeProps(curData, card, talEndFunc)
         end
 
         local scaleFunc =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 fontNode:setScaleY(0.1)
             end
         )
-        local nodeScale = CCScaleTo:create(0.1, 1)
+        local nodeScale = cc.ScaleTo:create(0.1, 1)
         local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 100))
         local nodeRev =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 if propType == 21 then
                     card:addLife(propValue)
@@ -1987,15 +1987,15 @@ function BattleLayer:createNatureFont(add, natureId, card)
             local propSprite = display.newSprite("#" .. prop_pic .. add_str .. ".png")
 
             local scaleFunc =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     propSprite:setScaleY(0.1)
                 end
             )
-            local nodeScale = CCScaleTo:create(0.1, 1)
+            local nodeScale = cc.ScaleTo:create(0.1, 1)
             local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, add_symbo * 50))
             local nodeRev =
-                CCCallFunc:create(
+                cc.CallFunc:create(
                 function()
                     propSprite:removeSelf()
                 end
@@ -2024,15 +2024,15 @@ end
 function BattleLayer:playMianYi(card)
     local mianSprite = display.newSprite("#mianyi.png")
     local scaleFunc =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             mianSprite:setScaleY(0.1)
         end
     )
-    local nodeScale = CCScaleTo:create(0.1, 1)
+    local nodeScale = cc.ScaleTo:create(0.1, 1)
     local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 50))
     local nodeRev =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             mianSprite:removeSelf()
         end
@@ -2136,15 +2136,15 @@ function BattleLayer:setCardAnger(card, orAnger, targetAnger)
         end
 
         local scaleFunc =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 propFont:setScaleY(0.1)
             end
         )
-        local nodeScale = CCScaleTo:create(0.1, 1)
+        local nodeScale = cc.ScaleTo:create(0.1, 1)
         local nodeMoveBy = CCMoveBy:create(0.8, cc.p(0, 50 * propSymbo))
         local nodeRev =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 propFont:removeSelf()
             end
@@ -2434,7 +2434,7 @@ function BattleLayer:skillEff(funcId, atkData, endFunc)
                 if j ~= 1 then
                     local angle = self:getAngleByPos(cc.p(effArma:getPosition()), targetPos)
                     local rotate =
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                         function()
                             effArma:setRotation(angle)
                             if parEff ~= nil then
@@ -2483,15 +2483,15 @@ function BattleLayer:runDelayFuncs(funcDelay, funcs, atkData, endFunc)
         local runFuncNode = display.newNode()
         self.shakeNode:addChild(runFuncNode)
 
-        local delayTime = CCDelayTime:create(funcDelay[i] / 1000)
+        local delayTime = cc.DelayTime:create(funcDelay[i] / 1000)
         local func =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self:runFunc(funcs[i], atkData, endFunc)
             end
         )
         local removeNodeFunc =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 runFuncNode:removeSelf()
             end
@@ -2754,13 +2754,13 @@ function BattleLayer:skillEnd(atkData, endFunc)
             local angel = 0
             local backRota = CCRotateTo:create(backTime, -angel)
             local backMove = CCMoveTo:create(backTime, enPos)
-            local backSpawn = CCSpawn:createWithTwoActions(backRota, backMove)
+            local backSpawn = cc.Spawn:create(backRota, backMove)
 
             card:runAction(
                 transition.sequence(
                     {
                         backSpawn,
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 -- card:playAct("stop")
                                 card:setLocalZOrder(NORMAL_CARD_ZORDER)
@@ -2781,8 +2781,8 @@ function BattleLayer:skillEnd(atkData, endFunc)
     runNode:runAction(
         transition.sequence(
             {
-                CCDelayTime:create(backTime),
-                CCCallFunc:create(
+                cc.DelayTime:create(backTime),
+                cc.CallFunc:create(
                     function()
                         endFunc()
                     end
@@ -3342,10 +3342,10 @@ function BattleLayer:fade(time, delayTime)
     -- time =2
     self.maskLayer:setContentSize(CCSize(display.width * 2, display.height * 2))
     local fadeTo = CCFadeTo:create(time, 250)
-    local delayFade = CCDelayTime:create(delayTime)
+    local delayFade = cc.DelayTime:create(delayTime)
     local fadeOut = CCFadeTo:create(time / 2, 0)
     local fadeUnvisible =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             self.maskLayer:setVisible(false)
         end
@@ -3403,8 +3403,8 @@ function BattleLayer:createNum(param)
                 font = "fonts/font_baoji.fnt"
             }
         )
-        local baojiBigger = CCScaleTo:create(0.1, 1.5)
-        local baojiSmaller = CCScaleTo:create(0.1, 1)
+        local baojiBigger = cc.ScaleTo:create(0.1, 1.5)
+        local baojiSmaller = cc.ScaleTo:create(0.1, 1)
         numTTF:runAction(transition.sequence({baojiBigger, baojiSmaller}))
     else
         if numType == SUB_HP then
@@ -3445,23 +3445,23 @@ function BattleLayer:createNum(param)
 
         numNode:setPosition(pos.x + ranPosX, pos.y + ranPosY)
         local setSmall =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 numTTF:setScale(0.5 * NUM_SCALE)
             end
         )
 
-        local beBigger = CCScaleTo:create(0.1, 1.5 * NUM_SCALE)
+        local beBigger = cc.ScaleTo:create(0.1, 1.5 * NUM_SCALE)
 
         if dType == HIT_TYPE_CRITICAL then
-            beBigger = CCScaleTo:create(0.05, 1.8 * NUM_SCALE)
+            beBigger = cc.ScaleTo:create(0.05, 1.8 * NUM_SCALE)
             DELAY_TIME = NORMAL_HEAL_CRITICAL_TIME
             if numType == SUB_HP then
                 self:shake(1)
             end
         end
-        local delay = CCDelayTime:create(0.3)
-        local beSmaller = CCScaleTo:create(0.1, 0.8, 0.2)
+        local delay = cc.DelayTime:create(0.3)
+        local beSmaller = cc.ScaleTo:create(0.1, 0.8, 0.2)
 
         local reSelf = CCRemoveSelf:create(true)
         numNode:runAction(transition.sequence({beBigger, delay, beSmaller, reSelf}))
@@ -3502,8 +3502,8 @@ function BattleLayer:createFont(param)
             fontTTF = display.newSprite("#battle_baoji.png")
             fontTTF:setAnchorPoint(cc.p(0.5, 0))
             fontTTF:setScale(0.1)
-            local numDelay = CCDelayTime:create(0.2)
-            local numScale = CCScaleTo:create(0.1, 0.8)
+            local numDelay = cc.DelayTime:create(0.2)
+            local numScale = cc.ScaleTo:create(0.1, 0.8)
             fontTTF:runAction(transition.sequence({numDelay, numScale}))
             heightOffset = fontTTF:getContentSize().height * 0.7
         elseif dType == HIT_TYPE_BLOCK then -- 格挡
@@ -3517,15 +3517,15 @@ function BattleLayer:createFont(param)
             fontNode:addChild(fontTTF)
         end
 
-        local beBigger = CCScaleTo:create(0.1, 1.5)
+        local beBigger = cc.ScaleTo:create(0.1, 1.5)
 
         if dType == HIT_TYPE_CRITICAL then
-            beBigger = CCScaleTo:create(0.05, 1.8)
+            beBigger = cc.ScaleTo:create(0.05, 1.8)
             DELAY_TIME = NORMAL_DAMAGE_CRITICAL_TIME + TIME
         -- self:shake(1)
         end
-        local delay = CCDelayTime:create(DELAY_TIME)
-        local beSmaller = CCScaleTo:create(0.1, 0.8, 0.2)
+        local delay = cc.DelayTime:create(DELAY_TIME)
+        local beSmaller = cc.ScaleTo:create(0.1, 0.8, 0.2)
 
         local reSelf = CCRemoveSelf:create(true)
         fontNode:runAction(transition.sequence({beBigger, delay, beSmaller, reSelf}))
@@ -3601,29 +3601,29 @@ function BattleLayer:cardCasinoArise(param)
 
         --从后面移动到展开
         local fromBack = CCMoveTo:create(0.1, midPos)
-        local delay = CCDelayTime:create(0.5)
+        local delay = cc.DelayTime:create(0.5)
         local moveTo = CCMoveTo:create(zhankaiTime, curCardPos)
         local rotato = CCRotateTo:create(zhankaiTime, curCardAngel)
-        local spawn = CCSpawn:createWithTwoActions(moveTo, rotato)
+        local spawn = cc.Spawn:create(moveTo, rotato)
 
         --
-        local toRightDelay = CCDelayTime:create(seqTime)
+        local toRightDelay = cc.DelayTime:create(seqTime)
         seqTime = seqTime + seqOffset
         local flyPos = self:getPosBySideAndID(v:getSideID(), v:getPosID())
         flyPos.y = flyPos.y + 30
         local moveToRight = CCMoveTo:create(toRightTime, flyPos)
         local rotoRight = CCRotateTo:create(toRightTime, 0)
-        local rightSpawn = CCSpawn:createWithTwoActions(moveToRight, rotoRight)
-        local scaleToBig = CCScaleTo:create(toRightTime, 1.4)
-        local rightToFinal = CCSpawn:createWithTwoActions(rightSpawn, scaleToBig)
-        local rightDelay = CCDelayTime:create(0.5)
+        local rightSpawn = cc.Spawn:create(moveToRight, rotoRight)
+        local scaleToBig = cc.ScaleTo:create(toRightTime, 1.4)
+        local rightToFinal = cc.Spawn:create(rightSpawn, scaleToBig)
+        local rightDelay = cc.DelayTime:create(0.5)
 
-        local scaleToRight = CCScaleTo:create(0.2, 1)
+        local scaleToRight = cc.ScaleTo:create(0.2, 1)
         local curPos = self:getPosBySideAndID(v:getSideID(), v:getPosID())
         local moveFinalPos = CCMoveTo:create(0.2, curPos)
-        local toFinalSpawn = CCSpawn:createWithTwoActions(scaleToRight, moveFinalPos)
+        local toFinalSpawn = cc.Spawn:create(scaleToRight, moveFinalPos)
         local shakeFunc =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self:shake(1)
                 finalCount = finalCount + 1

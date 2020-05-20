@@ -265,7 +265,7 @@ function OnlineRewardLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:removeFromParent(true)
                             end
@@ -285,7 +285,7 @@ function OnlineRewardLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:onReward()
                             end

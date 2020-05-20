@@ -156,8 +156,8 @@ function UrgencyBroadcast:setIsShow(isShow)
         self:runAction(
             transition.sequence(
                 {
-                    CCFadeOut:create(0.3),
-                    CCCallFunc:create(
+                    cc.FadeOut:create(0.3),
+                    cc.CallFunc:create(
                         function()
                             self:removeFromParent(true)
                         end

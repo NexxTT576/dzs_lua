@@ -18,10 +18,10 @@ local function btn_effect(sender, callback)
     sender:runAction(
         transition.sequence(
             {
-                CCScaleTo:create(0.08, 0.8),
-                CCScaleTo:create(0.1, 1.01),
-                CCScaleTo:create(0.01, 1),
-                CCCallFunc:create(
+                cc.ScaleTo:create(0.08, 0.8),
+                cc.ScaleTo:create(0.1, 1.01),
+                cc.ScaleTo:create(0.01, 1),
+                cc.CallFunc:create(
                     function()
                         if callback then
                             callback()

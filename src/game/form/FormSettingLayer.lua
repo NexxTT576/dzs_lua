@@ -134,13 +134,13 @@ function FormSettingLayer:ctor(param)
         param.image:runAction(
             transition.sequence(
                 {
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             param.cardnode:setTouchEnabled(false)
                         end
                     ),
                     CCMoveTo:create(0.1, cc.p(_x, _y)),
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             param.cardnode:setTouchEnabled(true)
                         end

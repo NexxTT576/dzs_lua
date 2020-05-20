@@ -295,7 +295,7 @@ function EquipListCellVTwo:runEnterAnim()
                     self:setPosition(CCPoint((self:getContentSize().width / 2 + display.width / 2), self:getPositionY()))
                 end
             ),
-            CCDelayTime:create(delayTime),
+            cc.DelayTime:create(delayTime),
             CCMoveBy:create(0.3, CCPoint(-(self:getContentSize().width / 2 + display.width / 2), 0))
         }
     )

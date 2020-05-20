@@ -50,8 +50,8 @@ function SpiritGetTip:ctor(info)
     local action =
         transition.sequence(
         {
-            CCDelayTime:create(2),
-            CCFadeOut:create(0.5),
+            cc.DelayTime:create(2),
+            cc.FadeOut:create(0.5),
             CCRemoveSelf:create(true)
         }
     )

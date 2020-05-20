@@ -74,7 +74,6 @@ function NoteItem:create(param)
             color = FONT_COLOR.NOTE_TEXT,
             size = 22,
             align = ui.TEXT_ALIGN_LEFT,
-            -- valign = ui.TEXT_VALIGN_BOTTOM,
             dimensions = param.viewSize
         }
     )

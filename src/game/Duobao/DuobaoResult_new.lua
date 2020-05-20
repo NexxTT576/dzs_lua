@@ -229,7 +229,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
                 node:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(time, 1.0, 1.0)
+                            cc.ScaleTo:create(time, 1.0, 1.0)
                         }
                     )
                 )
@@ -241,7 +241,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
             baoxing:runAction(
                 transition.sequence(
                     {
-                        CCScaleTo:create(time, 0.01, 1.0),
+                        cc.ScaleTo:create(time, 0.01, 1.0),
                         CCCallFuncN:create(resetFrame)
                     }
                 )
@@ -362,7 +362,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
         baoxing:runAction(
             transition.sequence(
                 {
-                    CCScaleTo:create(time, 0.01, 1.0),
+                    cc.ScaleTo:create(time, 0.01, 1.0),
                     CCCallFuncN:create(
                         function(node)
                             node:setDisplayFrame(display.newSprite("#db_card_front_image.png"):getDisplayFrame())
@@ -370,14 +370,14 @@ function DuobaoResult:createTreasure(lostDebris, data)
                             node:runAction(
                                 transition.sequence(
                                     {
-                                        CCScaleTo:create(time, 1.0, 1.0),
+                                        cc.ScaleTo:create(time, 1.0, 1.0),
                                         CCCallFuncN:create(
                                             function(node)
                                                 createOpenEffect(node)
                                             end
                                         ),
-                                        CCDelayTime:create(time),
-                                        CCCallFunc:create(openAllBaoxiang)
+                                        cc.DelayTime:create(time),
+                                        cc.CallFunc:create(openAllBaoxiang)
                                     }
                                 )
                             )
@@ -393,9 +393,9 @@ function DuobaoResult:createTreasure(lostDebris, data)
             CCRepeatForever:create(
                 transition.sequence(
                     {
-                        CCScaleTo:create(0.15, 0.8),
-                        CCScaleTo:create(0.15, 1.0),
-                        CCDelayTime:create(0.5)
+                        cc.ScaleTo:create(0.15, 0.8),
+                        cc.ScaleTo:create(0.15, 1.0),
+                        cc.DelayTime:create(0.5)
                     }
                 )
             )
@@ -408,7 +408,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
         baoxiang:runAction(
             transition.sequence(
                 {
-                    CCDelayTime:create((i - 1) * 0.3),
+                    cc.DelayTime:create((i - 1) * 0.3),
                     CCCallFuncN:create(scaleFunc)
                 }
             )

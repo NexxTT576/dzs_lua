@@ -40,13 +40,13 @@ function ZhaojiangResultNormal:createStar()
         star:runAction(
             transition.sequence(
                 {
-                    CCDelayTime:create((i - 1) * 0.2),
+                    cc.DelayTime:create((i - 1) * 0.2),
                     CCCallFuncN:create(
                         function(node)
                             node:setVisible(true)
                         end
                     ),
-                    CCScaleTo:create(0.2, 1.3)
+                    cc.ScaleTo:create(0.2, 1.3)
                 }
             )
         )
@@ -66,7 +66,7 @@ function ZhaojiangResultNormal:heroAppear(heroID)
     icon:setDisplayFrame(frame)
     icon:runAction(
         transition.sequence {
-            CCScaleTo:create(0.2, 1.0)
+            cc.ScaleTo:create(0.2, 1.0)
         }
     )
 

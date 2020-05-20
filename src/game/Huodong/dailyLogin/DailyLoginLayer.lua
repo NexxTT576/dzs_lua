@@ -281,7 +281,7 @@ function DailyLoginLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 --layer:removeSelf()
                                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)

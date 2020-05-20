@@ -81,7 +81,7 @@ local Item =
                 color = content_color,
                 size = checkint(itemData.cfont),
                 align = ui.TEXT_ALIGN_LEFT,
-                valign = ui.TEXT_VALIGN_TOP,
+                valign = cc.VERTICAL_TEXT_ALIGNMENT_TOP,
                 dimensions = viewSize
             }
         )
@@ -127,10 +127,10 @@ function GameNote:ctor()
             sender:runAction(
                 transition.sequence(
                     {
-                        CCScaleTo:create(0.08, 0.8),
-                        CCScaleTo:create(0.1, 1.2),
-                        CCScaleTo:create(0.02, 1),
-                        CCCallFunc:create(
+                        cc.ScaleTo:create(0.08, 0.8),
+                        cc.ScaleTo:create(0.1, 1.2),
+                        cc.ScaleTo:create(0.02, 1),
+                        cc.CallFunc:create(
                             function()
                                 self:removeSelf()
                             end

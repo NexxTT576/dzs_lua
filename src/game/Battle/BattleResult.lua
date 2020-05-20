@@ -230,7 +230,7 @@ function BattleResult:initWin(rewards)
             transition.sequence(
             {
                 CCProgressTo:create(TIME_TO * (1 - befPercent) / ((1 - befPercent) + percent), 100),
-                CCCallFunc:create(
+                cc.CallFunc:create(
                     function()
                         self.addBar:setPercentage(0)
                     end

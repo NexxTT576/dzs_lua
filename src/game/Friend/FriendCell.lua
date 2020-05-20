@@ -195,7 +195,7 @@ end
 function FriendCell:startBubbleAnim()
     self.bubble:stopAllActions()
     self.bubble:setOpacity(0)
-    local toOut = CCFadeOut:create(FriendModel.REQ_INTERVAL / 4)
+    local toOut = cc.FadeOut:create(FriendModel.REQ_INTERVAL / 4)
     local toIn = CCFadeIn:create(FriendModel.REQ_INTERVAL / 4)
 
     local everAct = CCRepeatForever:create(transition.sequence({toOut, toIn}))

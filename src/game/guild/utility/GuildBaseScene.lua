@@ -229,13 +229,13 @@ function GuildBaseScene:regNotice()
                 goldLbl:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 2),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 2),
+                            cc.CallFunc:create(
                                 function()
                                     goldLbl:setString(tostring(game.player:getGold()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )
@@ -252,13 +252,13 @@ function GuildBaseScene:regNotice()
                 silverLbl:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 1.1),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 1.1),
+                            cc.CallFunc:create(
                                 function()
                                     silverLbl:setString(tostring(game.player:getSilver()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )
@@ -275,13 +275,13 @@ function GuildBaseScene:regNotice()
                 tiliLbl:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 1.1),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 1.1),
+                            cc.CallFunc:create(
                                 function()
                                     tiliLbl:setString(tostring(game.player:getStrength()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )
@@ -298,13 +298,13 @@ function GuildBaseScene:regNotice()
                 nailiLbl:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 1.1),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 1.1),
+                            cc.CallFunc:create(
                                 function()
                                     nailiLbl:setString(tostring(game.player:getNaili()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )

@@ -184,6 +184,9 @@ function newTTFLabelWithShadow(param)
     if param.align == nil then
         param.align = cc.TEXT_ALIGNMENT_CENTER
     end
+    if param.valign == nil then
+        param.valign = cc.VERTICAL_TEXT_ALIGNMENT_CENTER
+    end
     if param.shadowColor == nil then
         param.shadowColor = cc.c3b(0, 0, 0)
     end
@@ -196,8 +199,12 @@ function newTTFLabelWithShadow(param)
     --@RefType luaIde#cc.Label
     local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
     lb:setAlignment(param.align)
+    lb:setVerticalAlignment(param.valign)
     lb:enableShadow(param.shadowColor)
     lb:setPosition(param.x, param.y)
+    if param.dimensions ~= nil then
+        lb:setDimensions(param.dimensions)
+    end
     return lb
 end
 
@@ -214,6 +221,9 @@ function newBMFontLabel(param)
     if param.align == nil then
         param.align = cc.TEXT_ALIGNMENT_CENTER
     end
+    if param.valign == nil then
+        param.valign = cc.VERTICAL_TEXT_ALIGNMENT_CENTER
+    end
     --@RefType luaIde#cc.Label
     local lb = cc.Label:createWithBMFont(param.font, param.text)
     if param.size then
@@ -221,6 +231,10 @@ function newBMFontLabel(param)
     end
     lb:setPosition(param.x, param.y)
     lb:setAlignment(param.align)
+    lb:setVerticalAlignment(param.valign)
+    if param.dimensions ~= nil then
+        lb:setDimensions(param.dimensions)
+    end
     return lb
 end
 
@@ -249,6 +263,9 @@ function newTTFLabelWithOutline(param)
     if param.align == nil then
         param.align = cc.TEXT_ALIGNMENT_CENTER
     end
+    if param.valign == nil then
+        param.valign = cc.VERTICAL_TEXT_ALIGNMENT_CENTER
+    end
     if param.outlineColor == nil then
         param.outlineColor = cc.c3b(0, 0, 0)
     end
@@ -261,7 +278,47 @@ function newTTFLabelWithOutline(param)
     --@RefType luaIde#cc.Label
     local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
     lb:setAlignment(param.align)
+    lb:setVerticalAlignment(param.valign)
     lb:enableOutline(param.outlineColor)
     lb:setPosition(param.x, param.y)
+    if param.dimensions ~= nil then
+        lb:setDimensions(param.dimensions)
+    end
+    return lb
+end
+
+function newTTFLabel(param)
+    if param.text == nil then
+        param.text = ""
+    end
+    if param.color == nil then
+        param.color = cc.c3b(255, 255, 255)
+    end
+    if param.size == nil then
+        param.size = 25
+    end
+    if param.align == nil then
+        param.align = cc.TEXT_ALIGNMENT_CENTER
+    end
+    if param.valign == nil then
+        param.valign = cc.VERTICAL_TEXT_ALIGNMENT_CENTER
+    end
+    if param.outlineColor == nil then
+        param.outlineColor = cc.c3b(0, 0, 0)
+    end
+    if param.x == nil then
+        param.x = 0
+    end
+    if param.y == nil then
+        param.y = 0
+    end
+    --@RefType luaIde#cc.Label
+    local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
+    lb:setAlignment(param.align)
+    lb:setVerticalAlignment(param.valign)
+    lb:setPosition(param.x, param.y)
+    if param.dimensions ~= nil then
+        lb:setDimensions(param.dimensions.width, param.dimensions.height)
+    end
     return lb
 end

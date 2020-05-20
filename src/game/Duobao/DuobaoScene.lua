@@ -364,8 +364,8 @@ function DuobaoScene:createDuobaoItem(showType, index)
             transition.sequence(
                 {
                     CCMoveTo:create(0.1, cc.p(targPosX, targPosY)),
-                    CCDelayTime:create(0.15),
-                    CCCallFunc:create(
+                    cc.DelayTime:create(0.15),
+                    cc.CallFunc:create(
                         function()
                             bMoved = false
                         end
@@ -386,8 +386,8 @@ function DuobaoScene:createDuobaoItem(showType, index)
             transition.sequence(
                 {
                     CCMoveTo:create(0.1, cc.p(targPosX, targPosY)),
-                    CCDelayTime:create(0.15),
-                    CCCallFunc:create(
+                    cc.DelayTime:create(0.15),
+                    cc.CallFunc:create(
                         function()
                             bMoved = false
                         end

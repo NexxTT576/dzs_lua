@@ -84,7 +84,7 @@ function DramaLayer:ctor(id, endFunc)
             speakerName = game.player.m_name
         end
 
-        self.chatBox = display.newScale9Sprite("#chat_box.png", 0, 0, CCSize(display.width, 208))
+        self.chatBox = display.newSprite("#chat_box.png", 0, 0, {scale9 = true, size = cc.size(display.width, 208)})
         self:addChild(self.chatBox, 100)
         self.chatBox:setPosition(display.width / 2, display.height * 0.3)
         -- setNodeSize(self.chatBox, display.width)
@@ -97,13 +97,13 @@ function DramaLayer:ctor(id, endFunc)
 
         if chatStr ~= nil then
             local dramaTTF =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = chatStr,
                     color = cc.c3b(54, 4, 5),
                     --FONT_COLOR.DARK_RED,
-                    align = ui.TEXT_ALIGN_LEFT,
-                    valign = ui.TEXT_VALIGN_TOP,
+                    align = cc.TEXT_ALIGNMENT_LEFT,
+                    valign = cc.VERTICAL_TEXT_ALIGNMENT_TOP,
                     size = 32,
                     font = FONTS_NAME.font_fzcy,
                     dimensions = dim
@@ -120,14 +120,14 @@ function DramaLayer:ctor(id, endFunc)
 
         if speakerName ~= nil then
             local charName =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = speakerName,
                     size = 32,
                     color = cc.c3b(254, 205, 102),
                     outlineColor = cc.c3b(255, 204, 106),
                     font = FONTS_NAME.font_haibao,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             charName:setPosition(nameBg:getContentSize().width / 2, nameBg:getContentSize().height * 0.4)
@@ -175,7 +175,7 @@ function DramaLayer:addHeroImage(large, pos, over, offsetX, offsetY, scale, opac
             heroImage:setOpacity(opacity)
         end
         heroImage:setScale(scale / 1000)
-        heroImage:setFlipX(isFlip)
+        heroImage:setFlippedX(isFlip)
         heroImage:setPosition(self.imageX[pos] + imageOffsetX, imageOffsetY + self.chatBox:getPositionY() + self.chatBox:getContentSize().height / 2 + 40)
         heroImage:setAnchorPoint(cc.p(0.5, 0.33))
         self:addChild(heroImage, 90)

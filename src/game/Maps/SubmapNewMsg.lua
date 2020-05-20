@@ -43,9 +43,9 @@ function SubmapNewMsg:ctor(title, levelName)
 
     self:runAction(
         transition.sequence {
-            CCDelayTime:create(1.5),
-            CCFadeOut:create(1.0),
-            CCCallFunc:create(
+            cc.DelayTime:create(1.5),
+            cc.FadeOut:create(1.0),
+            cc.CallFunc:create(
                 function()
                     self:removeFromParent(true)
                 end

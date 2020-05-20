@@ -151,7 +151,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     -- node:runAction(transition.sequence({
 
     --                         CCMoveTo:create(0.05,cc.p(display.width/2, display.cy)),
-    --                         CCCallFunc:create(function()
+    --                         cc.CallFunc:create(function()
     -- TutoMgr.active()
     -- ResMgr.removeMaskLayer()
     -- end)}))

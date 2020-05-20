@@ -871,8 +871,8 @@ function HeroList:ctor(tag)
         function(eventName, sender)
             self._rootnode["sellStarBtn"]:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-            local small = CCScaleTo:create(0.1, 0.8)
-            local bigger = CCScaleTo:create(0.1, 1)
+            local small = cc.ScaleTo:create(0.1, 0.8)
+            local bigger = cc.ScaleTo:create(0.1, 1)
             self._rootnode["sellStarBtn"]:runAction(transition.sequence({small, bigger}))
 
             local heroQuickSel =

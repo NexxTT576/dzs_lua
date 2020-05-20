@@ -41,8 +41,8 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCScaleTo:create(0.08, 0.8),
-                        CCCallFunc:create(
+                        cc.ScaleTo:create(0.08, 0.8),
+                        cc.CallFunc:create(
                             function()
                                 if (cb ~= nil) then
                                     cb()
@@ -51,8 +51,8 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
                                 layer:removeSelf()
                             end
                         ),
-                        CCScaleTo:create(0.1, 1.2),
-                        CCScaleTo:create(0.02, 1)
+                        cc.ScaleTo:create(0.1, 1.2),
+                        cc.ScaleTo:create(0.02, 1)
                     }
                 )
             )

@@ -641,13 +641,13 @@ function HeroSettingScene:refreshProp(hero)
             for k, v in ipairs(anim) do
                 table.insert(
                     act,
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             show_tip_label(v)
                         end
                     )
                 )
-                table.insert(act, CCDelayTime:create(1))
+                table.insert(act, cc.DelayTime:create(1))
             end
             self:runAction(transition.sequence(act))
         end

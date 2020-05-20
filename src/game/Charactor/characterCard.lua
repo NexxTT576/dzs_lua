@@ -218,21 +218,21 @@ function characterCard:playShow(specialData)
     local orY = self.baseNode:getPositionY()
 
     local bgMoveTo = CCMoveTo:create(biggerTime, cPos)
-    local bgDelay = CCDelayTime:create(stayTime)
+    local bgDelay = cc.DelayTime:create(stayTime)
     local bgBackTo = CCMoveTo:create(smallTime, cc.p(orX, orY))
     local ccF =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
         end
     )
     self.baseNode:runAction(transition.sequence({bgMoveTo, bgDelay, bgBackTo, ccF}))
 
-    local bigerAndMove = CCScaleTo:create(biggerTime, 2)
+    local bigerAndMove = cc.ScaleTo:create(biggerTime, 2)
     local beBiger = CCEaseIn:create(bigerAndMove, 0.5)
-    local bigDelay = CCDelayTime:create(stayTime)
-    local beSmaller = CCScaleTo:create(smallTime, 1)
+    local bigDelay = cc.DelayTime:create(stayTime)
+    local beSmaller = cc.ScaleTo:create(smallTime, 1)
     local stop =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
         end
     )
@@ -240,7 +240,7 @@ function characterCard:playShow(specialData)
     self.heroImage:runAction(transition.sequence({beBiger, bigDelay, beSmaller}))
 
     local setRight =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             self.befCloud:setVisible(true)
             self.befCloud:setScale(0.13)
@@ -249,16 +249,16 @@ function characterCard:playShow(specialData)
             --(cPos.x + 20,cPos.y)
         end
     )
-    local befFadeIn = CCFadeTo:create(biggerTime, 255)
-    local befScale = CCScaleTo:create(biggerTime, 2)
-    local befBiggerSpawn = CCSpawn:createWithTwoActions(befFadeIn, befScale)
-    local befmoveToLeft = CCMoveBy:create(stayTime, cc.p(-40, 0))
+    local befFadeIn = cc.FadeTo:create(biggerTime, 255)
+    local befScale = cc.ScaleTo:create(biggerTime, 2)
+    local befBiggerSpawn = cc.Spawn:create(befFadeIn, befScale)
+    local befmoveToLeft = cc.MoveBy:create(stayTime, cc.p(-40, 0))
     --small
-    local befFadeOut = CCFadeTo:create(smallTime, 0)
-    local befSmaller = CCScaleTo:create(smallTime, 0.2)
-    local befSmallSpawn = CCSpawn:createWithTwoActions(befFadeOut, befSmaller)
+    local befFadeOut = cc.FadeTo:create(smallTime, 0)
+    local befSmaller = cc.ScaleTo:create(smallTime, 0.2)
+    local befSmallSpawn = cc.Spawn:create(befFadeOut, befSmaller)
     local befrev =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             self.befCloud:setVisible(false)
             self.cardNameTTF:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
@@ -270,7 +270,7 @@ function characterCard:playShow(specialData)
     ------------------
 
     local setRight =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             self.aftCloud:setVisible(true)
             self.aftCloud:setScale(0.13)
@@ -280,16 +280,16 @@ function characterCard:playShow(specialData)
         end
     )
     local aftFadeIn = CCFadeTo:create(biggerTime, 255)
-    local aftScale = CCScaleTo:create(biggerTime, 2)
-    local aftBiggerSpawn = CCSpawn:createWithTwoActions(aftFadeIn, aftScale)
+    local aftScale = cc.ScaleTo:create(biggerTime, 2)
+    local aftBiggerSpawn = cc.Spawn:create(aftFadeIn, aftScale)
     local aftmoveToLeft = CCMoveBy:create(stayTime, cc.p(40, 0))
     --small
     local aftFadeOut = CCFadeTo:create(smallTime, 0)
-    local aftSmaller = CCScaleTo:create(smallTime, 0.2)
-    local aftSmallSpawn = CCSpawn:createWithTwoActions(aftFadeOut, aftSmaller)
+    local aftSmaller = cc.ScaleTo:create(smallTime, 0.2)
+    local aftSmallSpawn = cc.Spawn:create(aftFadeOut, aftSmaller)
 
     local aftrev =
-        CCCallFunc:create(
+        cc.CallFunc:create(
         function()
             self.aftCloud:setVisible(false)
         end
@@ -329,7 +329,7 @@ function characterCard:playShow(specialData)
 
         local sprite = display.newSprite(path)
         local st =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 sprite:setPosition(startX, yRan)
             end
@@ -342,9 +342,9 @@ function characterCard:playShow(specialData)
     end
 
     for i = 1, 30 do
-        local delay = CCDelayTime:create((i / 100) * (biggerTime + stayTime + smallTime))
+        local delay = cc.DelayTime:create((i / 100) * (biggerTime + stayTime + smallTime))
         local func =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 if i % 3 == 0 then
                     createParticle(0)
@@ -404,7 +404,7 @@ function characterCard:setFullLife()
     self:setLife(self.maxLife)
 end
 
-function characterCard:boundingBox()
+function characterCard:getBoundingBox()
 end
 
 function characterCard:subLife(damageLife)
@@ -588,7 +588,7 @@ function characterCard:ctor(param)
         end
 
         -- local function onTouchEvent(event, x, y)
-        local boundBox = self.cardBg:boundingBox()
+        local boundBox = self.cardBg:getBoundingBox()
         local bgBone = self.cardBg:getBone("tongyong")
         local function onTouchEvent(event, x, y)
             local name = event.name
@@ -598,7 +598,7 @@ function characterCard:ctor(param)
 
             if name == "began" then
                 if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(cc.p(x, y))) then
-                    self:runAction(CCScaleTo:create(0.1, 1.1))
+                    self:runAction(cc.ScaleTo:create(0.1, 1.1))
                     self:setLocalZOrder(self:getZOrder() + 1)
                     return true
                 else
@@ -608,17 +608,17 @@ function characterCard:ctor(param)
             elseif name == "moved" then
                 self:setPosition(self:getParent():convertToNodeSpace(cc.p(x, y)))
             elseif name == "ended" then
-                self:runAction(CCScaleTo:create(0.1, 1))
+                self:runAction(cc.ScaleTo:create(0.1, 1))
                 self:setLocalZOrder(self:getZOrder() - 1)
                 touchEndListener(self)
             end
         end
 
         if isTouchAble == true then
-            self:setTouchEnabled(true)
+            setTouchEnabled(self, true)
             self:addNodeEventListener(cc.NODE_TOUCH_EVENT, onTouchEvent)
         else
-            self:setTouchEnabled(false)
+            setTouchEnabled(self, false)
         end
 
         ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardHeros/" .. cardImage .. ".ExportJson")
@@ -715,8 +715,8 @@ function characterCard:ctor(param)
 
         for starNum = 1, 4 do
             local star = display.newSprite("#battle_nuqi_red.png", x, y)
-            local bigger = CCScaleTo:create(1, 1.2)
-            local smaller = CCScaleTo:create(1, 1)
+            local bigger = cc.ScaleTo:create(1, 1.2)
+            local smaller = cc.ScaleTo:create(1, 1)
             local seq = transition.sequence({bigger, smaller})
             local rep = CCRepeatForever:create(seq)
             -- star:runAction(rep)
@@ -791,23 +791,23 @@ function characterCard:playWalk(downSound)
     local function bgWalk(node)
         node:stopAllActions()
 
-        local beBiger = CCScaleTo:create(0.16, 1.05)
-        -- local walkUpSound = CCCallFunc:create(function()
+        local beBiger = cc.ScaleTo:create(0.16, 1.05)
+        -- local walkUpSound = cc.CallFunc:create(function()
         -- 	if upSound ~= nil then
         -- 		upSound()
         -- 	end
 
         -- 	end)
-        local smaller = CCScaleTo:create(0.15, 0.9)
+        local smaller = cc.ScaleTo:create(0.15, 0.9)
         local walkDownSound =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 if downSound ~= nil then
                     downSound()
                 end
             end
         )
-        local beNormal = CCScaleTo:create(0.13, 1)
+        local beNormal = cc.ScaleTo:create(0.13, 1)
 
         local seq = transition.sequence({beBiger, smaller, walkDownSound, beNormal})
         local forever = CCRepeatForever:create(seq)

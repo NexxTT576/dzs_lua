@@ -55,13 +55,13 @@ function ZhaojiangResultTen:createCard()
         card:runAction(
             transition.sequence(
                 {
-                    CCDelayTime:create((i - 1) * time),
+                    cc.DelayTime:create((i - 1) * time),
                     CCCallFuncN:create(
                         function(node)
                             node:setVisible(true)
                         end
                     ),
-                    CCScaleTo:create(time, 0.8)
+                    cc.ScaleTo:create(time, 0.8)
                 }
             )
         )
@@ -70,8 +70,8 @@ function ZhaojiangResultTen:createCard()
     self:runAction(
         transition.sequence(
             {
-                CCDelayTime:create(#self._heroList * time),
-                CCCallFunc:create(
+                cc.DelayTime:create(#self._heroList * time),
+                cc.CallFunc:create(
                     function()
                         self:refreshCardInfo()
                     end
@@ -111,7 +111,7 @@ function ZhaojiangResultTen:refreshCardInfo()
         icon:setPosition(node:getContentSize().width / 2, node:getContentSize().height * 0.55 - 1)
         node:addChild(icon)
 
-        node:runAction(CCScaleTo:create(time, toScale, toScale))
+        node:runAction(cc.ScaleTo:create(time, toScale, toScale))
 
         self._rootnode[starKey]:setVisible(true)
 
@@ -150,7 +150,7 @@ function ZhaojiangResultTen:refreshCardInfo()
             iconItem:runAction(
                 transition.sequence(
                     {
-                        CCDelayTime:create(delayTime),
+                        cc.DelayTime:create(delayTime),
                         CCCallFuncN:create(
                             function(node)
                                 local effect =
@@ -166,9 +166,9 @@ function ZhaojiangResultTen:refreshCardInfo()
                                 node:addChild(effect)
                             end
                         ),
-                        CCScaleTo:create(time / 2, 1.1),
-                        CCScaleTo:create(time / 2, 0.8),
-                        CCScaleTo:create(time, 0.01, 0.8),
+                        cc.ScaleTo:create(time / 2, 1.1),
+                        cc.ScaleTo:create(time / 2, 0.8),
+                        cc.ScaleTo:create(time, 0.01, 0.8),
                         CCCallFuncN:create(resetFrame)
                     }
                 )
@@ -179,8 +179,8 @@ function ZhaojiangResultTen:refreshCardInfo()
             iconItem:runAction(
                 transition.sequence(
                     {
-                        CCDelayTime:create(delayTime),
-                        CCScaleTo:create(time, 0.01, 0.8),
+                        cc.DelayTime:create(delayTime),
+                        cc.ScaleTo:create(time, 0.01, 0.8),
                         CCCallFuncN:create(resetFrame)
                     }
                 )

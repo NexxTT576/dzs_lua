@@ -577,7 +577,7 @@ function MainMenuScene:createNormalNoticeEff(effNode, isShow)
                     -- CCCallFuncN:create(function(node) node:setVisible(true) end),
                     CCRotateBy:create(4, 360 * 0.4)
                     -- CCCallFuncN:create(function(node) node:setVisible(false) end),
-                    -- CCDelayTime:create(delayTime)
+                    -- cc.DelayTime:create(delayTime)
                 }
             )
         )
@@ -611,10 +611,10 @@ function MainMenuScene:createParticalEff(effNode, isShow)
             rotateSeq,
             rotateSeq,
             rotateSeq,
-            CCDelayTime:create(3)
+            cc.DelayTime:create(3)
         }
 
-        local spawn = CCSpawn:createWithTwoActions(seq, CCCallFuncN:create(addParticel))
+        local spawn = cc.Spawn:create(seq, CCCallFuncN:create(addParticel))
 
         effNode:runAction(CCRepeatForever:create(spawn))
     end
@@ -649,13 +649,13 @@ function MainMenuScene:refreshLabel()
         self._goldLabel:runAction(
             transition.sequence(
                 {
-                    CCScaleTo:create(0.2, 1.5),
-                    CCCallFunc:create(
+                    cc.ScaleTo:create(0.2, 1.5),
+                    cc.CallFunc:create(
                         function()
                             self._goldLabel:setString(tostring(game.player:getGold()))
                         end
                     ),
-                    CCScaleTo:create(0.2, 1)
+                    cc.ScaleTo:create(0.2, 1)
                 }
             )
         )
@@ -665,13 +665,13 @@ function MainMenuScene:refreshLabel()
         self._silverLabel:runAction(
             transition.sequence(
                 {
-                    CCScaleTo:create(0.2, 1.5),
-                    CCCallFunc:create(
+                    cc.ScaleTo:create(0.2, 1.5),
+                    cc.CallFunc:create(
                         function()
                             self._silverLabel:setString(tostring(game.player:getSilver()))
                         end
                     ),
-                    CCScaleTo:create(0.2, 1)
+                    cc.ScaleTo:create(0.2, 1)
                 }
             )
         )

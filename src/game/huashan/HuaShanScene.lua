@@ -391,7 +391,7 @@ function HuaShanScene:runNextAnim()
             transition.sequence(
                 {
                     CCMoveBy:create(1, cc.p(0, -offset)),
-                    CCCallFunc:create(callFunc)
+                    cc.CallFunc:create(callFunc)
                 }
             )
         )
@@ -400,7 +400,7 @@ function HuaShanScene:runNextAnim()
             transition.sequence(
                 {
                     CCMoveBy:create(1, cc.p(0, -(HUASHAN_HIGHT - self:getCenterHeightWithSubTop()))),
-                    CCCallFunc:create(callFunc)
+                    cc.CallFunc:create(callFunc)
                 }
             )
         )

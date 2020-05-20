@@ -157,7 +157,7 @@ function FormEquipQHLayer:ctor(param)
         sprite:runAction(
             transition.sequence(
                 {
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             local tisheng = display.newSprite("#equip_tisheng.png")
                             tisheng:setPosition(display.cx, display.cy - 30)
@@ -168,9 +168,9 @@ function FormEquipQHLayer:ctor(param)
                             tisheng:runAction(
                                 transition.sequence(
                                     {
-                                        CCScaleTo:create(0.1, 1.2),
-                                        CCDelayTime:create(0.7),
-                                        CCSpawn:createWithTwoActions(CCScaleTo:create(0.5, 0), CCFadeOut:create(0.5)),
+                                        cc.ScaleTo:create(0.1, 1.2),
+                                        cc.DelayTime:create(0.7),
+                                        cc.Spawn:create(cc.ScaleTo:create(0.5, 0), cc.FadeOut:create(0.5)),
                                         CCRemoveSelf:create(true)
                                     }
                                 )
@@ -178,11 +178,11 @@ function FormEquipQHLayer:ctor(param)
                             self:addChild(tisheng, 101)
                         end
                     ),
-                    CCScaleTo:create(0.1, 1.5),
-                    CCDelayTime:create(0.7),
-                    CCSpawn:createWithTwoActions(CCScaleTo:create(0.5, 0), CCFadeOut:create(0.5)),
+                    cc.ScaleTo:create(0.1, 1.5),
+                    cc.DelayTime:create(0.7),
+                    cc.Spawn:create(cc.ScaleTo:create(0.5, 0), cc.FadeOut:create(0.5)),
                     CCRemoveSelf:create(true),
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             for k, v in ipairs(_baseInfo.arr_nature) do
                                 local nature = data_item_nature[v]
@@ -201,9 +201,9 @@ function FormEquipQHLayer:ctor(param)
                                 stateTTF:runAction(
                                     transition.sequence(
                                         {
-                                            CCDelayTime:create(k - 1),
+                                            cc.DelayTime:create(k - 1),
                                             CCShow:create(),
-                                            CCSpawn:createWithTwoActions(CCMoveBy:create(1.5, cc.p(0, 40)), CCFadeOut:create(1.5)),
+                                            cc.Spawn:create(CCMoveBy:create(1.5, cc.p(0, 40)), cc.FadeOut:create(1.5)),
                                             CCRemoveSelf:create(true)
                                         }
                                     )
@@ -357,19 +357,19 @@ function FormEquipQHLayer:shake(direction)
         -- delayTime = 0.1
         end
 
-        local delayAct = CCDelayTime:create(delayTime)
+        local delayAct = cc.DelayTime:create(delayTime)
 
         local offSetWidth = display.width * rate
         local offSetcHeight = display.height * rate
 
         local moveAct1 =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self.cardBg:setPosition(cc.p(cPosX + offSetWidth * xDirection, cPosY + offSetcHeight * yDirection))
             end
         )
         local moveAct2 =
-            CCCallFunc:create(
+            cc.CallFunc:create(
             function()
                 self.cardBg:setPosition(cc.p(cPosX, cPosY))
             end

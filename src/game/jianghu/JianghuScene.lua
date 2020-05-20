@@ -54,7 +54,7 @@ function JianghuScene:ctor()
                 transition.sequence(
                     {
                         CCMoveBy:create(0.2, cc.p(tmpW, 0)),
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 if bShow then
                                     self._rootnode["popBtn"]:setNormalSpriteFrame(display.newSpriteFrame("jianghulu_sq_2.png"))
@@ -501,26 +501,26 @@ function JianghuScene:showTip(msg)
     for k, v in ipairs(msg) do
         table.insert(
             act,
-            CCCallFunc:create(
+            cc.CallFunc:create(
                 function()
                     show_tip_label(v, 1)
                 end
             )
         )
-        table.insert(act, CCDelayTime:create(1))
+        table.insert(act, cc.DelayTime:create(1))
     end
 
     if msg.propValue then
         for k, v in pairs(msg.propValue) do
             table.insert(
                 act,
-                CCCallFunc:create(
+                cc.CallFunc:create(
                     function()
                         show_tip_label(string.format("%s +%d", data_item_nature[k].nature, v), 1)
                     end
                 )
             )
-            table.insert(act, CCDelayTime:create(1))
+            table.insert(act, cc.DelayTime:create(1))
         end
     end
 

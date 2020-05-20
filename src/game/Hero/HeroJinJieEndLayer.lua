@@ -76,8 +76,8 @@ function HeroJinJieEndLayer:ctor(param)
     self.cardBg:runAction(
         transition.sequence(
             {
-                CCScaleTo:create(0.3, 0.6),
-                CCCallFunc:create(
+                cc.ScaleTo:create(0.3, 0.6),
+                cc.CallFunc:create(
                     function()
                         local bgEffect = ResMgr.createArma({resType = ResMgr.UI_EFFECT, armaName = "xiakejinjie_xunhuan", frameFunc = createEndLayer, isRetain = true})
                         bgEffect:setPosition(display.width / 2, display.height * 0.8)
@@ -108,7 +108,7 @@ function HeroJinJieEndLayer:ctor(param)
     self.fontNode:addChild(fontArma)
 
     fontArma:setScale(2.0)
-    fontArma:runAction(CCScaleTo:create(0.3, 1))
+    fontArma:runAction(cc.ScaleTo:create(0.3, 1))
 
     --     进阶时开启神通的判定规则：
     -- 1.从card表找侠客对应的神通组（talent列），一般3个；

@@ -74,7 +74,7 @@ function DuobaoDebrisInfo:ctor(param)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 if (self.closeListener ~= nil) then
                                     self.closeListener()

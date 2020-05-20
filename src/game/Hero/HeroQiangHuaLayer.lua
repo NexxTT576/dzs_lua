@@ -190,7 +190,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
             CCRepeatForever:create(
                 transition.sequence(
                     {
-                        CCFadeOut:create(fadeTime),
+                        cc.FadeOut:create(fadeTime),
                         CCFadeIn:create(fadeTime)
                     }
                 )
@@ -268,8 +268,8 @@ function HeroQiangHuaLayer:shineFont(shineObj, endFunc)
             transition.sequence(
                 {
                     CCFadeIn:create(fadeTime),
-                    CCFadeOut:create(fadeTime),
-                    CCCallFunc:create(
+                    cc.FadeOut:create(fadeTime),
+                    cc.CallFunc:create(
                         function()
                             if endFunc ~= nil then
                                 endFunc()
@@ -305,8 +305,8 @@ function HeroQiangHuaLayer:shineLvl(curLv, nextLv)
                 transition.sequence(
                     {
                         CCFadeIn:create(fadeTime),
-                        CCFadeOut:create(fadeTime),
-                        CCCallFunc:create(
+                        cc.FadeOut:create(fadeTime),
+                        cc.CallFunc:create(
                             function()
                                 self.orNumFadeIn()
                             end
@@ -321,8 +321,8 @@ function HeroQiangHuaLayer:shineLvl(curLv, nextLv)
                 transition.sequence(
                     {
                         CCFadeIn:create(fadeTime),
-                        CCFadeOut:create(fadeTime),
-                        CCCallFunc:create(
+                        cc.FadeOut:create(fadeTime),
+                        cc.CallFunc:create(
                             function()
                                 self.lvNumFadeIn()
                             end

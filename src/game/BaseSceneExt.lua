@@ -131,13 +131,13 @@ function BaseSceneExt:regNotice()
                 goldLabel:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 2),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 2),
+                            cc.CallFunc:create(
                                 function()
                                     goldLabel:setString(tostring(game.player:getGold()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )
@@ -154,13 +154,13 @@ function BaseSceneExt:regNotice()
                 silverLabel:runAction(
                     transition.sequence(
                         {
-                            CCScaleTo:create(0.2, 1.1),
-                            CCCallFunc:create(
+                            cc.ScaleTo:create(0.2, 1.1),
+                            cc.CallFunc:create(
                                 function()
                                     silverLabel:setString(tostring(game.player:getSilver()))
                                 end
                             ),
-                            CCScaleTo:create(0.1, 1)
+                            cc.ScaleTo:create(0.1, 1)
                         }
                     )
                 )

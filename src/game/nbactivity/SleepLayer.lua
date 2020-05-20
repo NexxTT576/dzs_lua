@@ -23,10 +23,10 @@ function SleepLayer:ctor(param)
         rootnode["girlSprite"]:runAction(
             transition.sequence(
                 {
-                    CCDelayTime:create(2),
+                    cc.DelayTime:create(2),
                     CCShow:create(),
                     CCFadeIn:create(0.8)
-                    --            CCCallFunc:create(function()
+                    --            cc.CallFunc:create(function()
                     --                rootnode["restBtn"]:setVisible(true)
                     --            end)
                 }
@@ -39,9 +39,9 @@ function SleepLayer:ctor(param)
         rootnode["girlSprite"]:runAction(
             transition.sequence(
                 {
-                    CCFadeOut:create(0.5),
+                    cc.FadeOut:create(0.5),
                     CCHide:create(),
-                    CCCallFunc:create(
+                    cc.CallFunc:create(
                         function()
                             local schedule = require("framework.scheduler")
                             schedule.performWithDelayGlobal(

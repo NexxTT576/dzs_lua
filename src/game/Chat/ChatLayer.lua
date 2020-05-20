@@ -342,7 +342,7 @@ function ChatLayer:updateChatData(data)
             chatItem:runAction(
                 transition.sequence(
                     {
-                        CCDelayTime:create(i * 0.5),
+                        cc.DelayTime:create(i * 0.5),
                         CCCallFuncN:create(
                             function(node)
                                 self:removeChild(node, false)
@@ -350,7 +350,7 @@ function ChatLayer:updateChatData(data)
                                 self:addToScrollView(node, node:getIsLeft())
                             end
                         ),
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:resetScrollView()
                             end

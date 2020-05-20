@@ -254,7 +254,7 @@ function SpiritScene2:ctor(param)
 
                     table.insert(
                         act,
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 if tag > 5 then
                                     v:setLocalZOrder(5 - tag % 5)
@@ -265,25 +265,25 @@ function SpiritScene2:ctor(param)
                         )
                     )
                     local moveTo = CCMoveTo:create(delayTime / offset, getPositionByTag(tag))
-                    local scaleTo = CCScaleTo:create(delayTime / offset, getScaleByTag(tag))
-                    table.insert(act, CCSpawn:createWithTwoActions(moveTo, scaleTo))
+                    local scaleTo = cc.ScaleTo:create(delayTime / offset, getScaleByTag(tag))
+                    table.insert(act, cc.Spawn:create(moveTo, scaleTo))
 
                     if tag == 5 then
                         table.insert(
                             act,
-                            CCCallFunc:create(
+                            cc.CallFunc:create(
                                 function()
                                     self._rootnode["spiritName"]:setDisplayFrame(display.newSpriteFrame(string.format("spirit_icon_label_%d.png", k)))
                                 end
                             )
                         )
                     end
-                    --                    table.insert(act, CCDelayTime:create(0.2 / offset))
+                    --                    table.insert(act, cc.DelayTime:create(0.2 / offset))
                 end
                 if k == #persons then
                     table.insert(
                         act,
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self._rootnode["startOneBtn"]:setEnabled(true)
                                 self._rootnode["superStartBtn"]:setEnabled(true)

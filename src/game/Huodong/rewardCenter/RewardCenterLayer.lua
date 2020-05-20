@@ -304,7 +304,7 @@ function RewardCenterLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:removeFromParent(true)
                             end
@@ -325,7 +325,7 @@ function RewardCenterLayer:ctor(data)
             sender:runAction(
                 transition.sequence(
                     {
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 self:collectAllReward()
                             end

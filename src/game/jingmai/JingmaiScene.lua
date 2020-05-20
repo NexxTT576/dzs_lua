@@ -256,14 +256,14 @@ function JingmaiScene:runAnim(pos1, pos2)
 
     table.insert(
         anim,
-        CCCallFunc:create(
+        cc.CallFunc:create(
             function()
                 local proxy = CCBProxy:create()
                 local node = CCBReaderLoad("jingmai/jingmai_upgrade_anim.ccbi", proxy, {})
                 node:runAction(
                     transition.sequence(
                         {
-                            CCDelayTime:create(0.5),
+                            cc.DelayTime:create(0.5),
                             CCRemoveSelf:create()
                         }
                     )
@@ -273,8 +273,8 @@ function JingmaiScene:runAnim(pos1, pos2)
             end
         )
     )
-    table.insert(anim, CCFadeOut:create(0))
-    table.insert(anim, CCDelayTime:create(0.1))
+    table.insert(anim, cc.FadeOut:create(0))
+    table.insert(anim, cc.DelayTime:create(0.1))
     table.insert(anim, CCRemoveSelf:create())
 
     local sprite = display.newSprite("#jingmai_anim_1.png")

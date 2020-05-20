@@ -204,7 +204,7 @@ function TutoLayer:ctor(param)
             local arrowRep = cc.RepeatForever:create(cc.Sequence:create(cc.MoveTo:create(0.6, movePos), cc.MoveTo:create(0.4, arrowPos)))
             self.arrowNode:runAction(arrowRep)
             local fadeAct = cc.FadeTo:create(appTime, 255)
-            -- local arrowSpawn = CCSpawn:createWithTwoActions(arrowRep,fadeAct)
+            -- local arrowSpawn = cc.Spawn:create(arrowRep,fadeAct)
             arrow:runAction(fadeAct)
         end,
         self.arrowNode
