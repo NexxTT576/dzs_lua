@@ -130,7 +130,7 @@ function OpenLayer:ctor(param)
     -- dump(checkIcon)
 
     local icon = self._rootnode["open_icon"]
-    icon:setDisplayFrame(display.newSprite(checkIcon[2]):getSpriteFrame())
+    icon:setSpriteFrame(display.newSprite(checkIcon[2]):getSpriteFrame())
 
     if checkIcon[1] == 10 then
         icon:setScaleX(0.6)
@@ -139,7 +139,7 @@ function OpenLayer:ctor(param)
         topSp:setPosition(icon:getContentSize().width / 2, icon:getContentSize().height / 2)
         icon:addChild(topSp)
     else
-        icon:setDisplayFrame(display.newSprite(checkIcon[2]):getSpriteFrame())
+        icon:setSpriteFrame(display.newSprite(checkIcon[2]):getSpriteFrame())
     end
 end
 

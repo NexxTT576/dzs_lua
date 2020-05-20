@@ -179,7 +179,7 @@ function HuaShanScene:showRewardMsg(itemData)
             confirmFunc = function()
                 self._rootnode[string.format("box%d", self._floor)]:removeAllChildren()
 
-                self._rootnode[string.format("box%d", self._floor)]:setDisplayFrame(display.newSpriteFrame(string.format("huashan_box_%d_1.png", data_lunjian_lunjian[self._floor].chest)))
+                self._rootnode[string.format("box%d", self._floor)]:setSpriteFrame(display.newSpriteFrame(string.format("huashan_box_%d_1.png", data_lunjian_lunjian[self._floor].chest)))
                 if self._floor < 15 then
                     self:createArrow(self._floor, 1)
                 end
@@ -261,7 +261,7 @@ function HuaShanScene:getReward()
             if v == self._floor then
                 bGet = true
             end
-            self._rootnode[string.format("box%d", v)]:setDisplayFrame(display.newSpriteFrame(string.format("huashan_box_%d_1.png", data_lunjian_lunjian[k].chest)))
+            self._rootnode[string.format("box%d", v)]:setSpriteFrame(display.newSpriteFrame(string.format("huashan_box_%d_1.png", data_lunjian_lunjian[k].chest)))
             self._rootnode[string.format("box%d", v)]:setVisible(true)
         end
     end
@@ -302,7 +302,7 @@ function HuaShanScene:refresh(data)
     self._awards = data.rtnObj.awards
 
     for i = 1, 15 do
-        self._rootnode[string.format("box%d", i)]:setDisplayFrame(display.newSpriteFrame(string.format("huashan_box_%d_3.png", data_lunjian_lunjian[i].chest)))
+        self._rootnode[string.format("box%d", i)]:setSpriteFrame(display.newSpriteFrame(string.format("huashan_box_%d_3.png", data_lunjian_lunjian[i].chest)))
     end
     --
     table.sort(
@@ -337,7 +337,7 @@ function HuaShanScene:refresh(data)
     self:refreshHero()
     PostNotice(NoticeKey.CommonUpdate_Label_Gold)
     if self._resetTimes == 0 then
-        self._rootnode["resetTitleLabel"]:setDisplayFrame(display.newSpriteFrame("huashan_reset_vip_num.png"))
+        self._rootnode["resetTitleLabel"]:setSpriteFrame(display.newSpriteFrame("huashan_reset_vip_num.png"))
         self._rootnode["freeNumLabel"]:setString(self._goldResetTimes)
     end
     self:nextFloor()
@@ -367,7 +367,7 @@ function HuaShanScene:showOpenEffect()
     box:addChild(effect)
     effect:setTag(100)
 
-    self._rootnode[string.format("box%d", self._floor)]:setDisplayFrame(display.newSpriteFrame(string.format("huashan_box_%d_2.png", data_lunjian_lunjian[self._floor].chest)))
+    self._rootnode[string.format("box%d", self._floor)]:setSpriteFrame(display.newSpriteFrame(string.format("huashan_box_%d_2.png", data_lunjian_lunjian[self._floor].chest)))
 end
 
 function HuaShanScene:runNextAnim()

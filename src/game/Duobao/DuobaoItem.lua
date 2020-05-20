@@ -31,7 +31,7 @@ function DuobaoItem:updateItem()
 
     local resType = ResMgr.getResType(itemData.type)
 
-    self._iconImg:setDisplayFrame(ResMgr.getLargeFrame(resType, itemData.id))
+    self._iconImg:setSpriteFrame(ResMgr.getLargeFrame(resType, itemData.id))
 
     local posX = self._rootnode["tag_dipan"]:getContentSize().width / 2 + itemData.posX
     local posY = self._rootnode["tag_dipan"]:getContentSize().height / 2 + itemData.posY

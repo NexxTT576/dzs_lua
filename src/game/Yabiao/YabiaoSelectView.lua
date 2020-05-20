@@ -212,7 +212,7 @@ end
 
 --重置刷新按钮
 function YabiaoSelectView:refreshBtns()
-    self._shuaxinBtn:setDisplayFrame(display.newSprite("#yuanbaoshuaxin.png"):getSpriteFrame())
+    self._shuaxinBtn:setSpriteFrame(display.newSprite("#yuanbaoshuaxin.png"):getSpriteFrame())
     self._shuaxinPrice =
         ui.newTTFLabelWithShadow(
         {
@@ -230,22 +230,22 @@ end
 
 function YabiaoSelectView:forbidenBtns()
     if self._shuaxinCishu ~= 0 then
-        self._shuaxinBtn:setDisplayFrame(display.newSprite("#yuanbaoshuaxin_p.png"):getSpriteFrame())
+        self._shuaxinBtn:setSpriteFrame(display.newSprite("#yuanbaoshuaxin_p.png"):getSpriteFrame())
     else
-        self._shuaxinBtn:setDisplayFrame(display.newSprite("#mianfeishuanxin_p.png"):getSpriteFrame())
+        self._shuaxinBtn:setSpriteFrame(display.newSprite("#mianfeishuanxin_p.png"):getSpriteFrame())
     end
-    self._yabiaoBtn:setDisplayFrame(display.newSprite("#kaishiyunbiao_p.png"):getSpriteFrame())
+    self._yabiaoBtn:setSpriteFrame(display.newSprite("#kaishiyunbiao_p.png"):getSpriteFrame())
     self._yabiaoBtn:setTouchEnabled(false)
     self._shuaxinBtn:setTouchEnabled(false)
 end
 
 function YabiaoSelectView:activityBtns()
     if self._shuaxinCishu ~= 0 then
-        self._shuaxinBtn:setDisplayFrame(display.newSprite("#yuanbaoshuaxin.png"):getSpriteFrame())
+        self._shuaxinBtn:setSpriteFrame(display.newSprite("#yuanbaoshuaxin.png"):getSpriteFrame())
     else
-        self._shuaxinBtn:setDisplayFrame(display.newSprite("#mianfeishuanxin.png"):getSpriteFrame())
+        self._shuaxinBtn:setSpriteFrame(display.newSprite("#mianfeishuanxin.png"):getSpriteFrame())
     end
-    self._yabiaoBtn:setDisplayFrame(display.newSprite("#kaishiyunbiao.png"):getSpriteFrame())
+    self._yabiaoBtn:setSpriteFrame(display.newSprite("#kaishiyunbiao.png"):getSpriteFrame())
     self._yabiaoBtn:setTouchEnabled(true)
     self._shuaxinBtn:setTouchEnabled(true)
 end

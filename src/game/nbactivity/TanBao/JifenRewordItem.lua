@@ -31,7 +31,7 @@ function JifenRewordItem:refreshItem(param)
     dump(itemdata)
     --真气动画
     if itemData.type == 6 then
-        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
+        self._rootnode["reward_icon"]:setSpriteFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
         self._rootnode["reward_icon"]:removeAllChildren(true)
         self._rootnode["reward_icon"]:addChild(
             require("game.Spirit.SpiritIcon").new(

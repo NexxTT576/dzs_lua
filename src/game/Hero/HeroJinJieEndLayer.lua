@@ -41,7 +41,7 @@ function HeroJinJieEndLayer:ctor(param)
     self.curCls = Cls
     -- local NameStr = ResMgr.getCardData(ResID)["name"]
     local starNum = nextData["star"]
-    -- self._rootnode["image"]:setDisplayFrame(ResMgr.getHeroFrame(ResID, Cls))
+    -- self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(ResID, Cls))
 
     self.effectNode = display.newNode()
     self:addChild(self.effectNode)
@@ -69,7 +69,7 @@ function HeroJinJieEndLayer:ctor(param)
     local cardHeight = self.cardBg:getContentSize().height
     self.heroImage:setPosition(cardWidth / 2, cardHeight * 0.7)
     self.cardBg:addChild(self.heroImage)
-    self.heroImage:setDisplayFrame(ResMgr.getHeroFrame(ResID, Cls))
+    self.heroImage:setSpriteFrame(ResMgr.getHeroFrame(ResID, Cls))
 
     --卡牌动作动画
     self.cardBg:setScale(1.9)

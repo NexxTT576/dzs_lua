@@ -98,7 +98,7 @@ function HeroChoseCell:create(param)
 end
 
 function HeroChoseCell:changeStarNum(num)
-    self.starNum:setDisplayFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
+    self.starNum:setSpriteFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
 end
 
 function HeroChoseCell:beTouched()
@@ -167,7 +167,7 @@ function HeroChoseCell:refresh(idx)
 
     -- -- local cellSprite = display.newSprite(cellIconPath)
 
-    -- -- self.headIcon:setDisplayFrame(cellSprite:getSpriteFrame())
+    -- -- self.headIcon:setSpriteFrame(cellSprite:getSpriteFrame())
     ResMgr.refreshIcon({itemBg = self.headIcon, id = resId, resType = ResMgr.HERO, cls = cls})
 
     --是什么职业

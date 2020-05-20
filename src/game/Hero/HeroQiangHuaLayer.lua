@@ -227,7 +227,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
     end
 
     local starNum = self.updateQiangHuaData["1"]["star"]
-    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
+    self._rootnode["qh_card_bg"]:setSpriteFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
     --    dump(starNum)
     for i = 1, 5 do
         self._rootnode["star" .. i]:setVisible(i <= starNum)
@@ -236,7 +236,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
     local resId = self.updateQiangHuaData["1"]["resId"]
     local cls = self.updateQiangHuaData["1"]["cls"]
 
-    self._rootnode["image"]:setDisplayFrame(ResMgr.getHeroFrame(resId, cls))
+    self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(resId, cls))
     local heroStaticData = ResMgr.getCardData(resId)
     local job = heroStaticData["job"]
     ResMgr.refreshJobIcon(self._rootnode["qianghua_job_icon"], job)
@@ -247,7 +247,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         if i > choseNum then
             --设置为+号
             local cellSprite = display.newSprite("#zhenrong_add.png")
-            self._rootnode["iconSprite" .. i]:setDisplayFrame(cellSprite:getSpriteFrame())
+            self._rootnode["iconSprite" .. i]:setSpriteFrame(cellSprite:getSpriteFrame())
             self._rootnode["iconSprite" .. i]:removeAllChildren()
         else
             --设置为
@@ -416,8 +416,8 @@ function HeroQiangHuaLayer:updateXiaHun(param)
         self._rootnode["star" .. i]:setVisible(i <= starNum)
     end
 
-    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
-    self._rootnode["image"]:setDisplayFrame(ResMgr.getHeroFrame(resId, cls))
+    self._rootnode["qh_card_bg"]:setSpriteFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
+    self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(resId, cls))
 end
 
 function HeroQiangHuaLayer:updateListData(data)

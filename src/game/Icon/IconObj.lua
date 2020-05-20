@@ -110,9 +110,9 @@ function IconObj:refresh(param)
             local cls = param.cls or 0
             local path = "hero/icon/" .. card["arr_icon"][cls + 1] .. ".png"
             local star = card["star"][cls + 1]
-            self._rootnode["bgSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", star)))
-            self._rootnode["iconSprite"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
-            self._rootnode["boardSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_board_%d.png", star)))
+            self._rootnode["bgSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", star)))
+            self._rootnode["iconSprite"]:setSpriteFrame(display.newSprite(path):getSpriteFrame())
+            self._rootnode["boardSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("icon_frame_board_%d.png", star)))
             local name = card.name
             if id == 1 or id == 2 then
                 name = game.player:getPlayerName()
@@ -120,7 +120,7 @@ function IconObj:refresh(param)
 
             self.nameLabel:setString(name)
             self.nameLabel:setColor(NAME_COLOR[star])
-            self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_%s.png", card.job)))
+            self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("icon_frame_%s.png", card.job)))
 
             self.levelLabel:setString(tostring(param.level or 20))
             self.levelLabel:setPosition(-self.levelLabel:getContentSize().width / 2 + 5, 0)

@@ -82,7 +82,7 @@ function ShopItem:refresh(param)
 
     local data_item_item = require("data.data_item_item")
     if data_item_item[_itemData.itemId].type == 6 then
-        self._rootnode["tag_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
+        self._rootnode["tag_icon"]:setSpriteFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
         self._rootnode["tag_icon"]:removeAllChildren(true)
         self._rootnode["tag_icon"]:addChild(
             require("game.Spirit.SpiritIcon").new(

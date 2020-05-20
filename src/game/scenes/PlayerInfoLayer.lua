@@ -63,7 +63,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     local playerHead = self._rootNode["tag_player_icon"]
 
     headImgName = game.player:getPlayerIconName()
-    playerHead:setDisplayFrame(display.newSpriteFrame(headImgName))
+    playerHead:setSpriteFrame(display.newSpriteFrame(headImgName))
 
     self._rootNode["tag_lv"]:setString(game.player.m_level)
     self._rootNode["tag_vip"]:setString(game.player.m_vip)

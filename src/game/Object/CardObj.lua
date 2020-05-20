@@ -29,7 +29,7 @@ function CardObj:ctor(param)
         return _lv
     end
 
-    self:setDisplayFrame(display.newSpriteFrame(string.format("zhenxing_card_%d.png", tostring(ResMgr.getCardData(_id)["star"][_cls + 1]))))
+    self:setSpriteFrame(display.newSpriteFrame(string.format("zhenxing_card_%d.png", tostring(ResMgr.getCardData(_id)["star"][_cls + 1]))))
     for i = 1, 5 do
         if i <= _star then
             self._rootnode[string.format("star%d", i)]:setVisible(true)

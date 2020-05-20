@@ -101,7 +101,7 @@ function Item:refreshLabel(itemData)
     end
 
     self._rootnode["lvLabel"]:setString(string.format("LV.%d", itemData.data.level))
-    self._rootnode["qualitySprite"]:setDisplayFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", itemData.baseData.quality)))
+    self._rootnode["qualitySprite"]:setSpriteFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", itemData.baseData.quality)))
     self.pjLabel:setString(tostring(itemData.baseData.equip_level))
 
     if itemData["data"]["cid"] > 0 then

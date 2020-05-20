@@ -138,7 +138,7 @@ function WorldBossNormalScene:ctor(data)
     self._rootnode["battleBtn"]:setVisible(false)
 
     self._bossSprite = display.newSprite()
-    self._bossSprite:setDisplayFrame(ResMgr.getHeroFrame(4901, 0))
+    self._bossSprite:setSpriteFrame(ResMgr.getHeroFrame(4901, 0))
     self._bossSprite:setScale(1.3)
     local bossIconNode = self._rootnode["boss_icon_node"]
     self._bossSprite:setPosition(bossIconNode:getContentSize().width / 2, self._bossSprite:getContentSize().height / 2)

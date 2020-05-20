@@ -80,22 +80,22 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     local curStar = self._subMapInfo["1"][tostring(levelData.id)].star
     if curStar < levelData.star then
         if levelData.star == 1 then
-            rootnode["star_1"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+            rootnode["star_1"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
         elseif levelData.star == 2 then
-            rootnode["star_1"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+            rootnode["star_1"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
             if curStar == 0 then
-                rootnode["star_2"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_2"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
             end
         else
             if curStar == 0 then
-                rootnode["star_1"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-                rootnode["star_2"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-                rootnode["star_3"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_1"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_2"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_3"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
             elseif curStar == 1 then
-                rootnode["star_1"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-                rootnode["star_3"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_1"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_3"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
             elseif curStar == 2 then
-                rootnode["star_3"]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+                rootnode["star_3"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
             end
         end
     end

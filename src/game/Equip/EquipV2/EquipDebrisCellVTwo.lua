@@ -69,7 +69,7 @@ function EquipDebrisCellVTwo:refresh(id)
 end
 
 function EquipDebrisCellVTwo:setStars(num)
-    self._rootnode["starNumSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
+    self._rootnode["starNumSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
 end
 
 function EquipDebrisCellVTwo:create(param)

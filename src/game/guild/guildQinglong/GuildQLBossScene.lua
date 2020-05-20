@@ -297,7 +297,7 @@ function GuildQLBossScene:ctor(param)
     self._guwuLimit = data_bossguwu_bossguwu[1].limit -- 鼓舞上限
 
     self._bossSprite = display.newSprite()
-    self._bossSprite:setDisplayFrame(ResMgr.getHeroFrame(4902, 0))
+    self._bossSprite:setSpriteFrame(ResMgr.getHeroFrame(4902, 0))
     local bossIconNode = self._rootnode["boss_icon_node"]
     -- self._bossSprite:setPosition(bossIconNode:getContentSize().width/2,
     --     self._bossSprite:getContentSize().height/2)

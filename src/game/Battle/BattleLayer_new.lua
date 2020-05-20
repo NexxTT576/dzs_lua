@@ -1189,7 +1189,7 @@ function BattleLayer:onExit()
     cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
     ccs.ArmatureDataManager:getInstance()
-    ccs.ArmatureDataManager:destoryInstance()
+    ccs.ArmatureDataManager:destroyInstance()
     self:removeAllChildren(true)
 end
 
@@ -3124,7 +3124,7 @@ function BattleLayer:initTimeScale(...)
                     ResMgr.battleTimeScale = 1
                 end
                 local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
-                self.speedBtn:setDisplayFrame(spdFrame:getSpriteFrame())
+                self.speedBtn:setSpriteFrame(spdFrame:getSpriteFrame())
                 ResMgr.setTimeScale(ResMgr.battleTimeScale)
 
                 return true
@@ -3132,7 +3132,7 @@ function BattleLayer:initTimeScale(...)
         end
     )
     local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
-    self.speedBtn:setDisplayFrame(spdFrame:getSpriteFrame())
+    self.speedBtn:setSpriteFrame(spdFrame:getSpriteFrame())
     ResMgr.setTimeScale(self.timeScale)
 
     -- self.speedBtn:setPosition(200,200)

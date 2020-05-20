@@ -162,11 +162,11 @@ function DuobaoItemInfoLayer:ctor(param)
         self._rootnode[string.format("star%d", i)]:setVisible(true)
     end
 
-    self._rootnode["cardImageBg"]:setDisplayFrame(display.newSpriteFrame(string.format("item_card_bg_%d.png", _baseInfo.quality)))
+    self._rootnode["cardImageBg"]:setSpriteFrame(display.newSpriteFrame(string.format("item_card_bg_%d.png", _baseInfo.quality)))
 
     --  大图标
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
+    self._rootnode["skillImage"]:setSpriteFrame(display.newSprite(path):getSpriteFrame())
 
     local function refresh()
         self._rootnode["curLvLabel"]:setString(_level)

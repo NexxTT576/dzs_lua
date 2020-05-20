@@ -61,8 +61,8 @@ function Item:refresh(param)
         self._rootnode["item_1"]:setVisible(true)
         self._rootnode["item_2"]:setVisible(false)
 
-        self._rootnode["iconBg"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", _itemData.quality)))
-        self._rootnode["iconBoard"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_board_%d.png", _itemData.quality)))
+        self._rootnode["iconBg"]:setSpriteFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", _itemData.quality)))
+        self._rootnode["iconBoard"]:setSpriteFrame(display.newSpriteFrame(string.format("icon_frame_board_%d.png", _itemData.quality)))
     else
         self._rootnode["nameLabel_2"]:setString(_itemData.name)
         self._rootnode["targetLabel_2"]:setString(_itemData.condition)

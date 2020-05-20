@@ -581,8 +581,8 @@ function HeroInfoLayer:ctor(param, infoType)
         self._rootnode["maxLevalLabel"]:setString(tostring(self._detailInfo.levelLimit or "缺少主角等级"))
         self._rootnode["cardName"]:setString(_baseInfo.name)
 
-        self._rootnode["tag_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. self._detailInfo.star .. ".png"):getSpriteFrame())
-        self._rootnode["jobImage"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", _baseInfo.job)))
+        self._rootnode["tag_card_bg"]:setSpriteFrame(display.newSprite("#card_ui_bg_" .. self._detailInfo.star .. ".png"):getSpriteFrame())
+        self._rootnode["jobImage"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", _baseInfo.job)))
 
         for i = 1, self._detailInfo.star do
             self._rootnode["star" .. i]:setVisible(true)
@@ -601,7 +601,7 @@ function HeroInfoLayer:ctor(param, infoType)
         --      图标
         local heroImg = ResMgr.getCardData(self._detailInfo.resId)["arr_body"][self._detailInfo.cls + 1]
         local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-        self._rootnode["heroImage"]:setDisplayFrame(display.newSprite(heroPath):getSpriteFrame())
+        self._rootnode["heroImage"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
         local height = 0
 

@@ -273,7 +273,7 @@ function SpiritScene2:ctor(param)
                             act,
                             cc.CallFunc:create(
                                 function()
-                                    self._rootnode["spiritName"]:setDisplayFrame(display.newSpriteFrame(string.format("spirit_icon_label_%d.png", k)))
+                                    self._rootnode["spiritName"]:setSpriteFrame(display.newSpriteFrame(string.format("spirit_icon_label_%d.png", k)))
                                 end
                             )
                         )

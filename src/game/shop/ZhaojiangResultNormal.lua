@@ -30,7 +30,7 @@ function ZhaojiangResultNormal:createStar()
     for i = 1, self._star do
         local star = self._rootnode[key .. i]
         star:setScale(3.5)
-        star:setDisplayFrame(display.newSprite("#star.png"):getSpriteFrame())
+        star:setSpriteFrame(display.newSprite("#star.png"):getSpriteFrame())
         star:setVisible(false)
     end
 
@@ -63,7 +63,7 @@ function ZhaojiangResultNormal:heroAppear(heroID)
     local icon = self._rootnode["icon_tag"]
     icon:setScale(0.5)
     local frame = ResMgr.getLargeFrame(ResMgr.HERO, heroID)
-    icon:setDisplayFrame(frame)
+    icon:setSpriteFrame(frame)
     icon:runAction(
         transition.sequence {
             cc.ScaleTo:create(0.2, 1.0)

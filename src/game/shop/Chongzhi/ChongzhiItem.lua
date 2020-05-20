@@ -59,7 +59,7 @@ end
 
 function ChongzhiItem:refreshItem(data, i)
     self._rootnode["tag_" .. i]:setVisible(true)
-    self._rootnode["icon_" .. i]:setDisplayFrame(display.newSprite(data.iconImgName):getSpriteFrame())
+    self._rootnode["icon_" .. i]:setSpriteFrame(display.newSprite(data.iconImgName):getSpriteFrame())
 
     self._rootnode["price_lbl_" .. i]:setString("￥" .. data.price)
     self._rootnode["gold_lbl_" .. i]:setString(tostring(data.basegold))

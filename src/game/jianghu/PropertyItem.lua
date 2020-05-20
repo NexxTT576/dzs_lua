@@ -47,7 +47,7 @@ function PropertyItem:create(param)
     self:addChild(self._bg)
     --
     --    self._rootnode["needHeartLabel"]:setString(tostring(_idx))
-    --    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx%2)))
+    --    self._bg:setSpriteFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx%2)))
 
     self:refresh(param)
 
@@ -59,7 +59,7 @@ function PropertyItem:refresh(param)
     local _idx = param.idx
     local _itemData = param.itemData
     local _heroLv = param.heroLv
-    self._bg:setDisplayFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx % 2)))
+    self._bg:setSpriteFrame(display.newSpriteFrame(string.format("jianghulu_prop_%d.png", _idx % 2)))
     self._rootnode["needHeartLabel"]:setString(tostring(_idx))
 
     local nature = data_item_nature[_itemData.id]
@@ -74,12 +74,12 @@ function PropertyItem:refresh(param)
 
     if _idx > _heroLv then
         self._rootnode["valueLabel"]:setColor(cc.c3b(59, 29, 1))
-        self._rootnode["iconSprite"]:setDisplayFrame(display.newSpriteFrame("jianghulu_love_1.png"))
+        self._rootnode["iconSprite"]:setSpriteFrame(display.newSpriteFrame("jianghulu_love_1.png"))
         self._rootnode["needHeartLabel"]:setColor(cc.c3b(59, 29, 1))
         self._rootnode["nameLabel"]:setColor(cc.c3b(59, 29, 1))
     else
         self._rootnode["valueLabel"]:setColor(cc.c3b(147, 45, 40))
-        self._rootnode["iconSprite"]:setDisplayFrame(display.newSpriteFrame("jianghulu_love.png"))
+        self._rootnode["iconSprite"]:setSpriteFrame(display.newSpriteFrame("jianghulu_love.png"))
         self._rootnode["needHeartLabel"]:setColor(cc.c3b(147, 45, 40))
         self._rootnode["nameLabel"]:setColor(cc.c3b(76, 39, 0))
     end

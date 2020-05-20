@@ -443,7 +443,7 @@ function BiwuHeroLayer:refreshHeroByPos(pos, data)
 
     local data_card_card = require("data.data_card_card")
     local iconPath = data_card_card[data.leadId]["arr_body"][data.cls + 1]
-    icon:setDisplayFrame(display.newSprite("hero/large/" .. iconPath .. ".png"):getSpriteFrame())
+    icon:setSpriteFrame(display.newSprite("hero/large/" .. iconPath .. ".png"):getSpriteFrame())
     self["fightFuc" .. pos] = function()
         BiwuController.sendFightData(BiwuConst.BIWU, data.roleId, TabIndex.BIWU)
     end
@@ -451,16 +451,16 @@ end
 
 function BiwuHeroLayer:countDownLogic(...)
     if self.dataCenter.colltime == 0 then
-        self.refreshBtn:setDisplayFrame(display.newSprite(ReFreshBtnRes.normal):getSpriteFrame())
+        self.refreshBtn:setSpriteFrame(display.newSprite(ReFreshBtnRes.normal):getSpriteFrame())
     else
-        self.refreshBtn:setDisplayFrame(display.newSprite(ReFreshBtnRes.pressed):getSpriteFrame())
+        self.refreshBtn:setSpriteFrame(display.newSprite(ReFreshBtnRes.pressed):getSpriteFrame())
     end
 
     local countDown = function()
         if game.player._biwuCollTime ~= 0 then
             self.countDownLabel:setString(format_time(game.player._biwuCollTime))
         else
-            self.refreshBtn:setDisplayFrame(display.newSprite(ReFreshBtnRes.normal):getSpriteFrame())
+            self.refreshBtn:setSpriteFrame(display.newSprite(ReFreshBtnRes.normal):getSpriteFrame())
             self._scheduler.unscheduleGlobal(self._schedule)
             self.countDownLabel:setString(format_time(game.player._biwuCollTime))
         end

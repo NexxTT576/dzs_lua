@@ -97,9 +97,9 @@ end
 
 function SkillItem:touch(bChoose)
     if bChoose then
-        self._rootnode["itemSelectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_selected.png"))
+        self._rootnode["itemSelectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_selected.png"))
     else
-        self._rootnode["itemSelectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_unselected.png"))
+        self._rootnode["itemSelectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_unselected.png"))
     end
 end
 
@@ -167,7 +167,7 @@ function SkillItem:refresh(param)
     else
         self._rootnode["useView"]:setVisible(true)
         self._rootnode["saleView"]:setVisible(false)
-        self._rootnode["qualitySprite"]:setDisplayFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", _itemData.star)))
+        self._rootnode["qualitySprite"]:setSpriteFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", _itemData.star)))
         if _itemData["cid"] > 0 then
             local card = ResMgr.getCardData(_itemData["cid"])
 
@@ -182,9 +182,9 @@ function SkillItem:refresh(param)
     end
     ----
     if data_item_item[_itemData.resId].pos == 5 or data_item_item[_itemData.resId].pos == 101 then
-        self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_ng.png"))
+        self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_ng.png"))
     else
-        self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_wg.png"))
+        self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_wg.png"))
     end
     ResMgr.refreshIcon(
         {

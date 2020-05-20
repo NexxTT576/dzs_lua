@@ -97,7 +97,7 @@ function HeroJinJie:init(data)
     -- table.insert(leftBase,1,leftLv)
 
     --<<--- 左边板子上的内容
-    self._rootnode["image"]:setDisplayFrame(ResMgr.getHeroFrame(leftResID, leftCls))
+    self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(leftResID, leftCls))
 
     ResMgr.refreshCardBg(
         {
@@ -187,7 +187,7 @@ function HeroJinJie:init(data)
         local rightLv = rightData["lv"]
         local rightBase = rightData["base"]
 
-        self._rootnode["rightimage"]:setDisplayFrame(ResMgr.getHeroFrame(rightResID, rightCls))
+        self._rootnode["rightimage"]:setSpriteFrame(ResMgr.getHeroFrame(rightResID, rightCls))
         --星级
         local starNum = rightStarsNum or 0
         for i = 1, 5 do

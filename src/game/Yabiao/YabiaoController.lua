@@ -120,7 +120,7 @@ function YabiaoController:_hasComplete(data)
         require("game.Yabiao.YabiaoCompletePopup").new(
             {
                 confirmFunc = function()
-                    self.instance.yabiaoBtn:setDisplayFrame(display.newSprite("#yabiao_btn.png"):getSpriteFrame())
+                    self.instance.yabiaoBtn:setSpriteFrame(display.newSprite("#yabiao_btn.png"):getSpriteFrame())
                     self.selfState = 1
                     if self._hero then
                         for k, v in pairs(self._hero) do
@@ -213,9 +213,9 @@ end
 
 function YabiaoController:initExtraData()
     if self.selfState == 1 then
-        self.instance.yabiaoBtn:setDisplayFrame(display.newSprite("#yabiao_btn.png"):getSpriteFrame())
+        self.instance.yabiaoBtn:setSpriteFrame(display.newSprite("#yabiao_btn.png"):getSpriteFrame())
     else
-        self.instance.yabiaoBtn:setDisplayFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
+        self.instance.yabiaoBtn:setSpriteFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
         if self.selfState == 3 then
             self:_hasComplete()
         end
@@ -288,7 +288,7 @@ end
 function YabiaoController:refreshCountDown(time)
     game.player._yaBiaoCollTime = time
     --倒计时
-    self.instance.shuaxinBtn:setDisplayFrame(display.newSprite("#count_down_btn.png"):getSpriteFrame())
+    self.instance.shuaxinBtn:setSpriteFrame(display.newSprite("#count_down_btn.png"):getSpriteFrame())
     local countDownLabel =
         ui.newTTFLabel(
         {
@@ -306,7 +306,7 @@ function YabiaoController:refreshCountDown(time)
         countDownLabel:setString(format_time(game.player._yaBiaoCollTime))
         if game.player._yaBiaoCollTime == 0 then
             self._schedulerCountDown.unscheduleGlobal(self._schedules)
-            self.instance.shuaxinBtn:setDisplayFrame(display.newSprite("#shuaxin_btn.png"):getSpriteFrame())
+            self.instance.shuaxinBtn:setSpriteFrame(display.newSprite("#shuaxin_btn.png"):getSpriteFrame())
             self.instance.shuaxinBtn:removeAllChildren()
         end
     end
@@ -335,7 +335,7 @@ function YabiaoController:initMyCards()
     local instance = require("game.Yabiao.YabiaoItemView").new(temp)
     self.mainMap:addChild(instance)
     table.insert(self._hero, instance)
-    self.instance.yabiaoBtn:setDisplayFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
+    self.instance.yabiaoBtn:setSpriteFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
 
     --矫正位置
     --self.mainMap:setPositionY(0 - instance:getY())
@@ -396,7 +396,7 @@ function YabiaoController:_startRunCar()
     local instance = require("game.Yabiao.YabiaoItemView").new(temp)
     self.mainMap:addChild(instance)
     table.insert(self._hero, instance)
-    self.instance.yabiaoBtn:setDisplayFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
+    self.instance.yabiaoBtn:setSpriteFrame(display.newSprite("#yabiao_jiasu_btn.png"):getSpriteFrame())
 end
 
 ---

@@ -643,7 +643,7 @@ function ResMgr.refreshMoneyIcon(param)
     end
 
     if tempBg ~= nil then
-        itemBg:setDisplayFrame(tempBg:getSpriteFrame())
+        itemBg:setSpriteFrame(tempBg:getSpriteFrame())
     end
 end
 
@@ -855,7 +855,7 @@ function ResMgr.refreshIcon(param)
             tempItem = display.newSprite(path)
         end
 
-        item:setDisplayFrame(tempItem:getSpriteFrame())
+        item:setSpriteFrame(tempItem:getSpriteFrame())
     end
 
     local itemFrame = itemBg:getChildByTag(FRAME_TAG)
@@ -875,7 +875,7 @@ function ResMgr.refreshIcon(param)
     else
         local tempFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
         if tempFrame ~= nil then
-            itemFrame:setDisplayFrame(tempFrame:getSpriteFrame())
+            itemFrame:setSpriteFrame(tempFrame:getSpriteFrame())
         end
     end
 
@@ -1006,13 +1006,13 @@ function ResMgr.refreshCardBg(param) --根据参数更换卡牌的背景图片
 
     if resType == ResMgr.HERO_BG_BATTLE then
         display.addSpriteFramesWithFile("ui_common/card_bg.plist", "ui_common/card_bg.png")
-        sprite:setDisplayFrame(display.newSpriteFrame("kapai_" .. star .. ".png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("kapai_" .. star .. ".png"))
     elseif resType == ResMgr.HERO_BG_UI then
         display.addSpriteFramesWithFile("ui/card_ui_bg.plist", "ui/card_ui_bg.png")
-        sprite:setDisplayFrame(display.newSpriteFrame("card_ui_bg_" .. star .. ".png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("card_ui_bg_" .. star .. ".png"))
     elseif resType == ResMgr.ITEM_BG_UI then
         display.addSpriteFramesWithFile("ui/ui_item_card_bg.plist", "ui/ui_item_card_bg.png")
-        sprite:setDisplayFrame(display.newSpriteFrame("item_card_bg_" .. star .. ".png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("item_card_bg_" .. star .. ".png"))
     else
         print("没这种resType啊")
     end
@@ -1287,13 +1287,13 @@ end
 function ResMgr.refreshJobIcon(sprite, job)
     if job == 1 then
         --dps 图标是刀剑
-        sprite:setDisplayFrame(display.newSpriteFrame("hero_warrior_icon.png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("hero_warrior_icon.png"))
     elseif job == 2 then
         --肉盾 图标是盾牌
-        sprite:setDisplayFrame(display.newSpriteFrame("hero_tank_icon.png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("hero_tank_icon.png"))
     elseif job == 3 then
         --控制 图标是八卦
-        sprite:setDisplayFrame(display.newSpriteFrame("hero_magic_icon.png"))
+        sprite:setSpriteFrame(display.newSpriteFrame("hero_magic_icon.png"))
     else
         print("不存在此类job")
     end

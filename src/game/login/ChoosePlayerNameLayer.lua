@@ -46,7 +46,7 @@ function ChoosePlayerNameLayer:ctor(listener)
     -- 默认为女主角
     -- self._sexType = PLAYERTYPE.GIRL
     -- self._lastSexType = self._sexType
-    -- self._rootnode["playerIcon"]:setDisplayFrame(ResMgr.getHeroFrame(self._sexType, 0))
+    -- self._rootnode["playerIcon"]:setSpriteFrame(ResMgr.getHeroFrame(self._sexType, 0))
     self:changeSex(PLAYERTYPE.GIRL)
 
     self._rootnode["boyBtn"]:registerControlEventHandler(
@@ -77,7 +77,7 @@ function ChoosePlayerNameLayer:changeSex(type)
     self._sexType = type
     if self._sexType ~= self._lastSexType then
         self._lastSexType = self._sexType
-        self._rootnode["playerIcon"]:setDisplayFrame(ResMgr.getHeroFrame(self._sexType, 0))
+        self._rootnode["playerIcon"]:setSpriteFrame(ResMgr.getHeroFrame(self._sexType, 0))
 
         -- 特效
         local effNode = self._rootnode["effect_node"]
@@ -115,7 +115,7 @@ function ChoosePlayerNameLayer:createNameLayer()
     node:setPosition(display.cx, display.cy)
     self:addChild(node, 2)
 
-    rootnode["playerIcon"]:setDisplayFrame(ResMgr.getHeroFrame(self._sexType, 0))
+    rootnode["playerIcon"]:setSpriteFrame(ResMgr.getHeroFrame(self._sexType, 0))
 
     rootnode["returnBtn"]:registerControlEventHandler(
         function()

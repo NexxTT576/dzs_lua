@@ -72,8 +72,8 @@ function EquipXiLianScene:ctor(param)
 
     self._rootnode["lvLabel"]:setString("LV." .. tostring(_info.level))
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["imageSprite"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
-    self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getSpriteFrame())
+    self._rootnode["imageSprite"]:setSpriteFrame(display.newSprite(path):getSpriteFrame())
+    self._rootnode["card_left"]:setSpriteFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getSpriteFrame())
 
     for i = 1, _info.star do
         self._rootnode[string.format("star%d", i)]:setVisible(true)
@@ -113,7 +113,7 @@ function EquipXiLianScene:ctor(param)
                         self._rootnode[string.format("maxNum%d", x)]:setString(string.format("+%d", v.noequip))
                         self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(73, 144, 72))
                         self._rootnode[string.format("arrow_%d", x)]:setVisible(true)
-                        self._rootnode[string.format("arrow_%d", x)]:setDisplayFrame(display.newSpriteFrame("equip_up_arrow.png"))
+                        self._rootnode[string.format("arrow_%d", x)]:setSpriteFrame(display.newSpriteFrame("equip_up_arrow.png"))
                     else
                         self._rootnode[string.format("maxNum%d", x)]:setString(string.format("%d", v.noequip))
                         if v.noequip == 0 then
@@ -121,7 +121,7 @@ function EquipXiLianScene:ctor(param)
                             self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(73, 144, 72))
                         else
                             self._rootnode[string.format("arrow_%d", x)]:setVisible(true)
-                            self._rootnode[string.format("arrow_%d", x)]:setDisplayFrame(display.newSpriteFrame("equip_down_arrow.png"))
+                            self._rootnode[string.format("arrow_%d", x)]:setSpriteFrame(display.newSpriteFrame("equip_down_arrow.png"))
                             self._rootnode[string.format("maxNum%d", x)]:setColor(cc.c3b(255, 0, 0))
                         end
                     end
@@ -163,7 +163,7 @@ function EquipXiLianScene:ctor(param)
         local idx = 1
         for i, j in ipairs(v.arr_silver) do
             if j > 0 then
-                self._rootnode[string.format("costIcon_%d_%d", k, idx)]:setDisplayFrame(display.newSpriteFrame(ICON_MAPS[i]))
+                self._rootnode[string.format("costIcon_%d_%d", k, idx)]:setSpriteFrame(display.newSpriteFrame(ICON_MAPS[i]))
                 self._rootnode[string.format("cost_%d_%d", k, idx)]:setString(tostring(j))
                 idx = idx + 1
             else

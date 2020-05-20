@@ -295,13 +295,13 @@ function JingmaiScene:onFullLevel()
     for i = 1, 8 do
         if i < 8 then
             local key1 = string.format("line_%d_%d", self._index, i)
-            self._rootnode[key1]:setDisplayFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
+            self._rootnode[key1]:setSpriteFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
         end
 
         local key2 = string.format("board_%d_%d", self._index, i)
         self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", #data_jingmai_jingmai[1].arr_value))
-        self._rootnode[key2]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
-        self._rootnode[key2]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_3.png"))
+        self._rootnode[key2]:setSpriteFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
+        self._rootnode[key2]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_3.png"))
     end
 
     self._animNode:removeFromParent(false)
@@ -392,8 +392,8 @@ function JingmaiScene:refresh()
         local key = string.format("board_%d_%d", self._index, i)
 
         if i < _order or (_level > 1 and _order == 1) then
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
-            self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_2.png"))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
+            self._rootnode[key]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_2.png"))
 
             if _level > 1 and _order == 1 then
                 self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level - 1))
@@ -408,25 +408,25 @@ function JingmaiScene:refresh()
                 printf("3")
             end
         elseif i == _order then
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))
-            self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_1.png"))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))
+            self._rootnode[key]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_1.png"))
             self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level - 1))
 
             self._animNode:setPosition(self._rootnode[key]:getContentSize().width / 2, self._rootnode[key]:getContentSize().height / 2)
             self._animNode:removeFromParent(false)
             self._rootnode[key]:addChild(self._animNode)
         else
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))
-            self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_0.png"))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame("jingmai_icon_board_2.png"))
+            self._rootnode[key]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_0.png"))
             self._rootnode[string.format("lvLabel_%d_%d", self._index, i)]:setString(string.format("Lv%d", _level - 1))
         end
 
         if _level > 1 then
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame("jingmai_icon_board_1.png"))
             if _level == 10 and i < _order then
-                self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_3.png"))
+                self._rootnode[key]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_3.png"))
             else
-                self._rootnode[key]:getChildByTag(1):setDisplayFrame(display.newSpriteFrame("jingmai_xuedao_2.png"))
+                self._rootnode[key]:getChildByTag(1):setSpriteFrame(display.newSpriteFrame("jingmai_xuedao_2.png"))
             end
         end
     end
@@ -435,13 +435,13 @@ function JingmaiScene:refresh()
     for i = 1, 7 do
         local key = string.format("line_%d_%d", self._index, i)
         if i < _order - 1 then
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
         else
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame("jingmai_line_hui.png"))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame("jingmai_line_hui.png"))
         end
 
         if _level > 1 then
-            self._rootnode[key]:setDisplayFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
+            self._rootnode[key]:setSpriteFrame(display.newSpriteFrame(string.format("jingmai_line_%d.png", self._index)))
         end
     end
 

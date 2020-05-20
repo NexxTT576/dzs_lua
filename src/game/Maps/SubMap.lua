@@ -95,7 +95,7 @@ function SubMap:ctor(param)
     listViewNode:addChild(self._listViewNode)
 
     local LvIcon = self._rootnode["level_icon"]
-    LvIcon:setDisplayFrame(display.newSprite("lvl/" .. self.subMapInfo.icon .. ".png"):getSpriteFrame())
+    LvIcon:setSpriteFrame(display.newSprite("lvl/" .. self.subMapInfo.icon .. ".png"):getSpriteFrame())
     self._rootnode["level_name_lbl"]:setString(data_field_field[subMapID].name)
     self._rootnode["level_name_lbl"]:setPositionX(LvIcon:getContentSize().width * LvIcon:getScaleX() + 10)
 
@@ -302,9 +302,9 @@ function SubMap:checkLevelReward(subMapID)
             local boxIcon = self._rootnode["box_icon_" .. i]
             local state = _boxState[i]
             if state == 1 then
-                boxIcon:setDisplayFrame(display.newSprite("#submap_box_close_" .. i .. ".png"):getSpriteFrame())
+                boxIcon:setSpriteFrame(display.newSprite("#submap_box_close_" .. i .. ".png"):getSpriteFrame())
             elseif state == 2 then
-                boxIcon:setDisplayFrame(display.newSprite("#submap_box_open_" .. i .. ".png"):getSpriteFrame())
+                boxIcon:setSpriteFrame(display.newSprite("#submap_box_open_" .. i .. ".png"):getSpriteFrame())
                 local effect =
                     ResMgr.createArma(
                     {
@@ -318,7 +318,7 @@ function SubMap:checkLevelReward(subMapID)
                 effect:setPosition(boxIcon:getContentSize().width / 2, boxIcon:getContentSize().height / 2)
                 boxIcon:addChild(effect, 1, EFFECT_TAG)
             elseif state == 3 then
-                boxIcon:setDisplayFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
+                boxIcon:setSpriteFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
             else
                 CCMessageBox(state, "服务器端返回的关卡奖励，状态有问题！")
             end
@@ -349,7 +349,7 @@ function SubMap:checkLevelReward(subMapID)
                                         state = _boxState[i],
                                         updateListener = function(hard)
                                             self._subMapInfo["2"].box[hard] = 3
-                                            boxIcon:setDisplayFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
+                                            boxIcon:setSpriteFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
                                             boxIcon:removeChildByTag(EFFECT_TAG, true)
                                         end,
                                         closeListener = function()

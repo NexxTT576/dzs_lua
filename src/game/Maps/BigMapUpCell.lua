@@ -64,7 +64,7 @@ function BigMapUpCell:refresh(param)
     local _bLock = param.bLock
     self._curUnLock = param.curUnLock or false -- 是否刚解锁
 
-    self._iconBg:setDisplayFrame(display.newSpriteFrame(_itemData.icon .. ".png"))
+    self._iconBg:setSpriteFrame(display.newSpriteFrame(_itemData.icon .. ".png"))
     self._mapName:setString(_itemData.name)
 
     if _choose then

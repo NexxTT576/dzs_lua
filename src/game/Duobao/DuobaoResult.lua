@@ -219,7 +219,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
 
         local function openTreasure(index)
             local function resetFrame(node)
-                node:setDisplayFrame(display.newSprite("#db_card_front_image.png"):getSpriteFrame())
+                node:setSpriteFrame(display.newSprite("#db_card_front_image.png"):getSpriteFrame())
                 node:runAction(
                     transition.sequence(
                         {
@@ -359,7 +359,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
                     cc.ScaleTo:create(time, 0.01, 1.0),
                     CCCallFuncN:create(
                         function(node)
-                            node:setDisplayFrame(display.newSprite("#db_card_front_image.png"):getSpriteFrame())
+                            node:setSpriteFrame(display.newSprite("#db_card_front_image.png"):getSpriteFrame())
                             checkShuxingIcon(index)
                             node:runAction(
                                 transition.sequence(

@@ -41,7 +41,7 @@ function HuodongItem:refresh(param)
         local spriteName = "ui/ui_huodong/" .. param.itemData.icon .. ".jpg"
 
         local sprite = display.newSprite(spriteName)
-        self._rootnode["tag_huodong_item"]:setDisplayFrame(sprite:getSpriteFrame())
+        self._rootnode["tag_huodong_item"]:setSpriteFrame(sprite:getSpriteFrame())
     end
 end
 

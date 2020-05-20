@@ -45,7 +45,7 @@ end
 function ActivityItem:refresh(itemData, selected)
     if (itemData ~= nil) then
         self._id = itemData.huodong
-        self._heroIcon:setDisplayFrame(display.newSprite("#" .. itemData.icon .. ".png"):getSpriteFrame())
+        self._heroIcon:setSpriteFrame(display.newSprite("#" .. itemData.icon .. ".png"):getSpriteFrame())
     end
 
     local selected = selected or false

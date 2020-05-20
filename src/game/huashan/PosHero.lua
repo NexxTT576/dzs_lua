@@ -58,7 +58,7 @@ function PosHero:ctor(param)
         local path = ResMgr.getMidImage(hero["arr_image"][randomHero.cls + 1], ResMgr.HERO)
         local sprite = display.newSprite(path)
         if sprite then
-            self._rootnode["imageSprite"]:setDisplayFrame(sprite:getSpriteFrame())
+            self._rootnode["imageSprite"]:setSpriteFrame(sprite:getSpriteFrame())
         else
             CCMesssageBox("缺少：" .. hero["arr_image"][1], "error")
         end
@@ -98,7 +98,7 @@ function PosHero:ctor(param)
 end
 
 function PosHero:failFlag()
-    self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("huashan_board_0.png"))
+    self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("huashan_board_0.png"))
 end
 
 function PosHero:showSelfHero(info)
@@ -118,14 +118,14 @@ function PosHero:showSelfHero(info)
     self.floorName:setColor(NAME_COLOR[info.star or 4])
     self._rootnode["floorLabel"]:addChild(self.floorName)
 
-    self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("huashan_name_bg.png"))
+    self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("huashan_name_bg.png"))
 
     dump(info)
     local hero = safe_call(c_func(ResMgr.getCardData, info.cardId)) or data_card_card[game.player.m_gender]
     dump(info)
     local path = ResMgr.getMidImage(hero["arr_image"][info.cls + 1], ResMgr.HERO)
     local sprite = display.newSprite(path)
-    self._rootnode["imageSprite"]:setDisplayFrame(sprite:getSpriteFrame())
+    self._rootnode["imageSprite"]:setSpriteFrame(sprite:getSpriteFrame())
 end
 
 function PosHero:showTmpSelf(info)

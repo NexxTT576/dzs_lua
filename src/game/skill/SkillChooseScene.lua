@@ -67,11 +67,11 @@ function Item:refreshLabel(itemData)
 end
 
 function Item:selected()
-    self._rootnode["selectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_selected.png"))
+    self._rootnode["selectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_selected.png"))
 end
 
 function Item:unselected()
-    self._rootnode["selectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_unselected.png"))
+    self._rootnode["selectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_unselected.png"))
 end
 
 function Item:touch()
@@ -102,9 +102,9 @@ function Item:refresh(param)
 
     self:refreshLabel(_itemData)
     if _itemData.baseData.pos == 5 or _itemData.baseData.pos == 101 then
-        self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_ng.png"))
+        self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_ng.png"))
     else
-        self._rootnode["flagSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_wg.png"))
+        self._rootnode["flagSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_wg.png"))
     end
 end
 

@@ -221,13 +221,13 @@ function EquipListCellVTwo:refresh(id, viewType, isSel)
 
     local equipTabStr = equipStaticData["pos"]
     if equipTabStr == WEAPON_TYPE then
-        self.tabSprite:setDisplayFrame(display.newSpriteFrame("equip_weapon_tab.png"))
+        self.tabSprite:setSpriteFrame(display.newSpriteFrame("equip_weapon_tab.png"))
     elseif equipTabStr == HELMENT_TYPE then
-        self.tabSprite:setDisplayFrame(display.newSpriteFrame("equip_helment_tab.png"))
+        self.tabSprite:setSpriteFrame(display.newSpriteFrame("equip_helment_tab.png"))
     elseif equipTabStr == ARMOUR_TYPE then
-        self.tabSprite:setDisplayFrame(display.newSpriteFrame("equip_armour_tab.png"))
+        self.tabSprite:setSpriteFrame(display.newSpriteFrame("equip_armour_tab.png"))
     elseif equipTabStr == EAR_TYPE then
-        self.tabSprite:setDisplayFrame(display.newSpriteFrame("equip_ear_tab.png"))
+        self.tabSprite:setSpriteFrame(display.newSpriteFrame("equip_ear_tab.png"))
     end
 
     local baseState = self.baseData
@@ -282,7 +282,7 @@ function EquipListCellVTwo:refresh(id, viewType, isSel)
 end
 
 function EquipListCellVTwo:changeStarNum(num)
-    self.starNum:setDisplayFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
+    self.starNum:setSpriteFrame(display.newSpriteFrame(string.format("item_board_num_%d.png", num)))
 end
 
 function EquipListCellVTwo:runEnterAnim()

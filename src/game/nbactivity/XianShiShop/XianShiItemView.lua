@@ -114,7 +114,7 @@ function XianShiItemView:refreshItem(param)
         self._rootnode[nameKey]:removeAllChildren()
         self._rootnode[nameKey]:addChild(nameLbl)
     else
-        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
+        self._rootnode["reward_icon"]:setSpriteFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
         self._rootnode["reward_icon"]:removeAllChildren(true)
         self._rootnode["reward_icon"]:addChild(
             require("game.Spirit.SpiritIcon").new(

@@ -72,9 +72,9 @@ end
 
 function BagItem:touch(bChoose)
     if bChoose then
-        self._rootnode["itemSelectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_selected.png"))
+        self._rootnode["itemSelectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_selected.png"))
     else
-        self._rootnode["itemSelectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_unselected.png"))
+        self._rootnode["itemSelectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_unselected.png"))
     end
 end
 

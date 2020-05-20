@@ -246,9 +246,9 @@ function BattleResult:initWin(rewards)
 
     if (rewards.gradeID ~= nil) then
         if (rewards.gradeID == 2) then
-            rootnode["tag_star_title"]:setDisplayFrame(display.newSpriteFrame("bw_normal.png"))
+            rootnode["tag_star_title"]:setSpriteFrame(display.newSpriteFrame("bw_normal.png"))
         elseif (rewards.gradeID == 3) then
-            rootnode["tag_star_title"]:setDisplayFrame(display.newSpriteFrame("bw_hard.png"))
+            rootnode["tag_star_title"]:setSpriteFrame(display.newSpriteFrame("bw_hard.png"))
         end
 
         for i = 3, rewards.maxStar + 1, -1 do
@@ -457,9 +457,9 @@ function BattleResult:initLost(rewards)
 
     if (rewards.gradeID ~= nil) then
         if (rewards.gradeID == 2) then
-            rootnode["tag_star_title"]:setDisplayFrame(display.newSpriteFrame("bw_normal.png"))
+            rootnode["tag_star_title"]:setSpriteFrame(display.newSpriteFrame("bw_normal.png"))
         elseif (rewards.gradeID == 3) then
-            rootnode["tag_star_title"]:setDisplayFrame(display.newSpriteFrame("bw_hard.png"))
+            rootnode["tag_star_title"]:setSpriteFrame(display.newSpriteFrame("bw_hard.png"))
         end
 
         for i = 3, rewards.maxStar + 1, -1 do

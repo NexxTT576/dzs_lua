@@ -111,9 +111,9 @@ function SubMapScrollCell:refresh(param)
         self._rootnode["star_3"]:setVisible(false)
     end
 
-    self._rootnode["star_" .. tostring(3)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-    self._rootnode["star_" .. tostring(2)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-    self._rootnode["star_" .. tostring(1)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+    self._rootnode["star_" .. tostring(3)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+    self._rootnode["star_" .. tostring(2)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+    self._rootnode["star_" .. tostring(1)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
 
     self._rootnode["headIcon"]:removeChildByTag(100)
     local headIcon = ResMgr.getLevelBossIcon(_itemData.baseInfo.icon, _itemData.baseInfo.type)
@@ -125,12 +125,12 @@ function SubMapScrollCell:refresh(param)
             if i > 3 then
                 break
             end
-            self._rootnode["star_" .. tostring(i)]:setDisplayFrame(display.newSpriteFrame("submap_star_light.png"))
+            self._rootnode["star_" .. tostring(i)]:setSpriteFrame(display.newSpriteFrame("submap_star_light.png"))
         end
     else
-        -- self._rootnode["star_" .. tostring(3)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-        -- self._rootnode["star_" .. tostring(2)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
-        -- self._rootnode["star_" .. tostring(1)]:setDisplayFrame(display.newSpriteFrame("submap_star_dark.png"))
+        -- self._rootnode["star_" .. tostring(3)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+        -- self._rootnode["star_" .. tostring(2)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
+        -- self._rootnode["star_" .. tostring(1)]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
     end
 end
 

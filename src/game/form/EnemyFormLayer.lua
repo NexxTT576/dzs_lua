@@ -300,11 +300,11 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
 
         local card = ResMgr.getCardData(hero.resId)
         self._rootnode["jobSprite"]:setVisible(true)
-        self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
+        self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
         --图像
         local heroImg = ResMgr.getCardData(hero.resId)["arr_body"][hero.cls + 1]
         local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-        self._rootnode["heroImg"]:setDisplayFrame(display.newSprite(heroPath):getSpriteFrame())
+        self._rootnode["heroImg"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
         --等级
         self._rootnode["currentLevelLabel"]:setString(tostring(hero["level"]))
         self._rootnode["maxLevelLabel"]:setString(tostring(hero["levelLimit"]))
@@ -353,7 +353,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                     local talent = data_talent_talent[tid]
                     if talent then
                         --                        self._rootnode["stIconSprite_" .. tostring(k)]:setVisible(true)
-                        --                        self._rootnode["stIconSprite_" .. tostring(k)]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_st_%d.png", stData.type)))
+                        --                        self._rootnode["stIconSprite_" .. tostring(k)]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_st_%d.png", stData.type)))
 
                         self._rootnode["stNameLabel_" .. tostring(k)]:setString(talent.name)
                         self._rootnode["leadLabel_" .. tostring(k)]:setString(tostring(hero.shenLvAry[k]))

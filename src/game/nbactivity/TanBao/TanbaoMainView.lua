@@ -232,9 +232,9 @@ function TanbaoMainView:setUpView(param)
         timeValue:setString(self._time)
         jinfenValue:setString(self._jifen)
         if self._freeTime ~= 0 then
-            self.btnOne:setDisplayFrame(display.newSprite("#mianfei.png"):getSpriteFrame())
+            self.btnOne:setSpriteFrame(display.newSprite("#mianfei.png"):getSpriteFrame())
         else
-            self.btnOne:setDisplayFrame(display.newSprite("#tanbaoyici.png"):getSpriteFrame())
+            self.btnOne:setSpriteFrame(display.newSprite("#tanbaoyici.png"):getSpriteFrame())
         end
         if self._freeTime ~= 0 then
             preLabelOne:setVisible(false)
@@ -247,7 +247,7 @@ function TanbaoMainView:setUpView(param)
     end
 
     if self._freeTime ~= 0 then
-        self.btnOne:setDisplayFrame(display.newSprite("#mianfei.png"):getSpriteFrame())
+        self.btnOne:setSpriteFrame(display.newSprite("#mianfei.png"):getSpriteFrame())
     end
 
     addTouchListener(
@@ -728,11 +728,11 @@ function TanbaoMainView:refreshGoldBox()
             v:removeChildByTag(100, true)
         end
         if self._jifenLevel[k].state == 0 then --完成已领奖
-            v:setDisplayFrame(display.newSprite(goldRes[3][k]):getSpriteFrame())
+            v:setSpriteFrame(display.newSprite(goldRes[3][k]):getSpriteFrame())
         elseif self._jifenLevel[k].state == -1 then --没完成
-            v:setDisplayFrame(display.newSprite(goldRes[1][k]):getSpriteFrame())
+            v:setSpriteFrame(display.newSprite(goldRes[1][k]):getSpriteFrame())
         elseif self._jifenLevel[k].state == 1 then -- 完成未领奖
-            v:setDisplayFrame(display.newSprite(goldRes[2][k]):getSpriteFrame())
+            v:setSpriteFrame(display.newSprite(goldRes[2][k]):getSpriteFrame())
             if not v:getChildByTag(100) then
                 local xunhuanEffect =
                     ResMgr.createArma(

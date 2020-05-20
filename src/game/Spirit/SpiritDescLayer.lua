@@ -51,7 +51,7 @@ function Item:refresh(param)
     local _itemData = param.itemData
     local _bSelect = param.selected
 
-    self._rootnode["tag_name"]:setDisplayFrame(display.newSpriteFrame(param.nameSprite))
+    self._rootnode["tag_name"]:setSpriteFrame(display.newSpriteFrame(param.nameSprite))
 
     if _bSelect then
         self._rootnode["highlightBoard"]:setVisible(true)
@@ -103,7 +103,7 @@ function SpiritDescLayer:ctor(closeListener)
             )
             selectId = cell:getIdx() + 1
             cell:selected()
-            rootnode["iconImageSprite"]:setDisplayFrame(display.newSpriteFrame("spirit_p_" .. selectId .. ".png"))
+            rootnode["iconImageSprite"]:setSpriteFrame(display.newSpriteFrame("spirit_p_" .. selectId .. ".png"))
         end
 
         refreshItem()

@@ -38,7 +38,7 @@ function ArenaRankCell:refresh(id)
         markIconName = "#arena_mark_" .. id .. ".png"
 
         self._rootnode["mark_icon"]:setVisible(true)
-        self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markIconName):getSpriteFrame())
+        self._rootnode["mark_icon"]:setSpriteFrame(display.newSprite(markIconName):getSpriteFrame())
     else
         self._rootnode["mark_icon"]:setVisible(false)
         playerBgName = "#arena_name_bg_4.png"
@@ -48,7 +48,7 @@ function ArenaRankCell:refresh(id)
         markIconName = "#arena_mark_1.png"
     end
 
-    self._rootnode["lv_bg"]:setDisplayFrame(display.newSprite(lvBgName):getSpriteFrame())
+    self._rootnode["lv_bg"]:setSpriteFrame(display.newSprite(lvBgName):getSpriteFrame())
 
     self._rootnode["bg_node"]:removeAllChildren()
     local bg = display.newScale9Sprite(bgName, 0, 0, self._rootnode["bg_node"]:getContentSize())

@@ -70,11 +70,11 @@ function SplitItem:refreshLabel(param)
 end
 
 function SplitItem:selected()
-    self._rootnode["selectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_selected.png"))
+    self._rootnode["selectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_selected.png"))
 end
 
 function SplitItem:unselected()
-    self._rootnode["selectedSprite"]:setDisplayFrame(display.newSpriteFrame("item_board_unselected.png"))
+    self._rootnode["selectedSprite"]:setSpriteFrame(display.newSpriteFrame("item_board_unselected.png"))
 end
 
 function SplitItem:touch()
@@ -129,7 +129,7 @@ function SplitItem:refresh(param)
 
         self.hjLabel:setString(string.format("资质:%d", card.arr_zizhi[_itemData.cls + 1]))
         self.hjLabel:setPositionX(10 + self.hjLabel:getContentSize().width / 2)
-        self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
+        self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
         self._rootnode["lvLabel"]:setPosition(cc.p(74, 17))
     elseif param.itemType == LIAN_HUA_TYEP.EQUIP then
         self._rootnode["lvLabel"]:setPosition(cc.p(64, 17))

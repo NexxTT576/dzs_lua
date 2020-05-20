@@ -139,7 +139,7 @@ function SkillRefineScene:ctor(param)
         CCControlEventTouchDown
     )
 
-    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self._info.star .. ".png"):getSpriteFrame())
+    self._rootnode["card_bg"]:setSpriteFrame(display.newSprite("#item_card_bg_" .. self._info.star .. ".png"):getSpriteFrame())
 
     self:refresh()
 end
@@ -150,7 +150,7 @@ function SkillRefineScene:refresh()
     self._rootnode["itemNameLabel"]:setString(baseInfo.name)
 
     local path = ResMgr.getLargeImage(baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
+    self._rootnode["skillImage"]:setSpriteFrame(display.newSprite(path):getSpriteFrame())
 
     --  星级
     for i = 1, baseInfo.quality do

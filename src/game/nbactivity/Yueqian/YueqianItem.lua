@@ -64,7 +64,7 @@ function YueqianItem:refreshItem(itemData)
         local vipIcon = self._rootnode["vip_icon_" .. i]
         if v.vip ~= nil and v.vip > 0 then
             vipIcon:setVisible(true)
-            vipIcon:setDisplayFrame(display.newSprite("#yueqian_vip_" .. tostring(v.vip) .. ".png"):getSpriteFrame())
+            vipIcon:setSpriteFrame(display.newSprite("#yueqian_vip_" .. tostring(v.vip) .. ".png"):getSpriteFrame())
         else
             vipIcon:setVisible(false)
         end

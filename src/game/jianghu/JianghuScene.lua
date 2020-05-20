@@ -429,7 +429,7 @@ function JianghuScene:refresh()
     local card = ResMgr.getCardData(info.resId)
     local heroImg = card["arr_body"][1]
     local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-    self._rootnode["imageSprite"]:setDisplayFrame(display.newSprite(heroPath):getSpriteFrame())
+    self._rootnode["imageSprite"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
     self._rootnode["heroNameLabel"]:setString(card.name)
     self._rootnode["propTitleLabel"]:setString(string.format("%s属性加成", card.name))

@@ -133,7 +133,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
     initBg(bigmapName)
     local function refreshBg(bgName)
         if bgImage then
-            bgImage:setDisplayFrame(display.newSprite("ui/jpg_bg/bigmap/" .. bgName .. ".jpg"):getSpriteFrame())
+            bgImage:setSpriteFrame(display.newSprite("ui/jpg_bg/bigmap/" .. bgName .. ".jpg"):getSpriteFrame())
         end
     end
 

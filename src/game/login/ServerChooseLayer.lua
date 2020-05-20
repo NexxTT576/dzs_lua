@@ -32,7 +32,7 @@ function ServerNameItem:ctor(param)
     if _info then
         for k, v in ipairs(_info) do
             self._rootnode["nameNode_" .. tostring(k)]:setVisible(true)
-            self._rootnode["serverStat_" .. tostring(k)]:setDisplayFrame(display.newSpriteFrame(string.format("login_state_%d.png", v.status)))
+            self._rootnode["serverStat_" .. tostring(k)]:setSpriteFrame(display.newSpriteFrame(string.format("login_state_%d.png", v.status)))
             self._rootnode["serverNameLabel_" .. tostring(k)]:setString(v.name)
         end
     end

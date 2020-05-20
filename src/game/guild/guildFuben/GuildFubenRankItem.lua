@@ -96,7 +96,7 @@ function GuildFubenRankItem:updateItem(itemData)
     playerBg:setAnchorPoint(0, 0)
     self._rootnode["name_bg"]:addChild(playerBg)
 
-    self._rootnode["lv_bg"]:setDisplayFrame(display.newSprite(lvBgName):getSpriteFrame())
+    self._rootnode["lv_bg"]:setSpriteFrame(display.newSprite(lvBgName):getSpriteFrame())
 
     self._rootnode["lv_lbl"]:setString("LV." .. tostring(itemData.roleLevel))
     self._rootnode["name_lbl"]:setString(itemData.name)
@@ -125,7 +125,7 @@ function GuildFubenRankItem:updateItem(itemData)
         self._rootnode["mark_icon"]:setVisible(false)
     else
         local markIcon = "#sh_mark_" .. itemData.rank .. ".png"
-        self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markIcon):getSpriteFrame())
+        self._rootnode["mark_icon"]:setSpriteFrame(display.newSprite(markIcon):getSpriteFrame())
         self._rootnode["rank_icon"]:setVisible(false)
         self._rootnode["mark_icon"]:setVisible(true)
     end
