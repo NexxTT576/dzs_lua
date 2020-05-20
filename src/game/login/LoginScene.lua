@@ -69,7 +69,7 @@ function LoginScene:init()
             require("network.RequestHelper")
             RequestHelper.game.login(
                 {
-                    acc = "bai__4115648358",
+                    acc = "test__100000",
                     callback = function(data)
                         if data == nil then
                             --@TODO 2020-05-13 16:25:27 新用户
