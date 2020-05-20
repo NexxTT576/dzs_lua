@@ -22,7 +22,7 @@ function JinJieCell:create(param)
     -- self.itemIcon:setAnchorPoint(cc.p(0,0))
 
     self.hasNum =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "/99",
             size = 20,
@@ -34,7 +34,7 @@ function JinJieCell:create(param)
     self:addChild(self.hasNum, 10)
 
     self.need =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "88",
             size = 20,

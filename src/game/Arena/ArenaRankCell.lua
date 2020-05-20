@@ -127,7 +127,7 @@ function ArenaRankCell:create(param)
     node:setPosition(_viewSize.width / 2, 0)
     self:addChild(node)
 
-    -- self.rankName = ui.newTTFLabelWithOutline({
+    -- self.rankName = newTTFLabelWithOutline({
     --     text = "排名:",
     --     size = 26,
     --     color = cc.c3b(205,3,3),

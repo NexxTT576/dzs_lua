@@ -361,7 +361,7 @@ function EnemyFormScene:refreshHero(index)
                 self._rootnode[equipNodeName]:addChild(s, 100, 100)
 
                 local label =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = data_item_item[v.resId].name,
                         size = 22,

@@ -40,7 +40,7 @@ local Item =
         local titleLabel
         if itemData.teffect == 1 then
             titleLabel =
-                ui.newTTFLabelWithOutline(
+                newTTFLabelWithOutline(
                 {
                     text = itemData.title,
                     font = FONTS_NAME.font_haibao,
@@ -52,7 +52,7 @@ local Item =
             )
         else
             titleLabel =
-                ui.newTTFLabelWithOutline(
+                newTTFLabelWithOutline(
                 {
                     text = itemData.title,
                     font = FONTS_NAME.font_haibao,

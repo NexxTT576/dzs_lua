@@ -438,7 +438,7 @@ function GuildQLBossScene:ctor(param)
 
     local silverTime = self._rootnode["silver_time"]
     self._silverTimeLbl =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = tostring(format_time(0)),
             size = 25,

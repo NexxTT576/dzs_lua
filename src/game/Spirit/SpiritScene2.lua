@@ -130,10 +130,10 @@ function SpiritScene2:ctor(param)
         for i = 1, 2 do
             if tag == i then
                 self._rootnode["tab" .. tostring(i)]:selected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(2)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(2)
             else
                 self._rootnode["tab" .. tostring(i)]:unselected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(1)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(1)
             end
         end
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_yeqian))
@@ -257,9 +257,9 @@ function SpiritScene2:ctor(param)
                         CCCallFunc:create(
                             function()
                                 if tag > 5 then
-                                    v:setZOrder(5 - tag % 5)
+                                    v:setLocalZOrder(5 - tag % 5)
                                 else
-                                    v:setZOrder(tag)
+                                    v:setLocalZOrder(tag)
                                 end
                             end
                         )
@@ -313,7 +313,7 @@ function SpiritScene2:initListView2()
     end
 
     self._rootnode["touchNode"]:setTouchEnabled(true)
-    self._rootnode["touchNode"]:setZOrder(1)
+    self._rootnode["touchNode"]:setLocalZOrder(1)
     local posX = 0
     local posY = 0
     self._rootnode["touchNode"]:addNodeEventListener(
@@ -415,8 +415,8 @@ function SpiritScene2:refreshArrow()
 end
 
 function SpiritScene2:resetArrow()
-    self._rootnode["upArrow"]:setZOrder(3)
-    self._rootnode["downArrow"]:setZOrder(3)
+    self._rootnode["upArrow"]:setLocalZOrder(3)
+    self._rootnode["downArrow"]:setLocalZOrder(3)
 
     local minOffsetY = self._spiritListView:minContainerOffset().y
     if minOffsetY < 0 then

@@ -116,7 +116,7 @@ function BattleResult:initWin(rewards)
     if (rewards.levelName ~= nil) then
         -- rootnode["tag_level_name"]:setString(rewards.levelName)
         local titleLabel =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = rewards.levelName,
                 font = FONTS_NAME.font_haibao,
@@ -325,7 +325,7 @@ function BattleResult:initWin(rewards)
         item:addChild(itemName)
 
         local itemNum =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = v.n,
                 size = 22,
@@ -440,7 +440,7 @@ function BattleResult:initLost(rewards)
     if (rewards.levelName ~= nil) then
         -- rootnode["tag_level_name"]:setString(rewards.levelName)
         local titleLabel =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = rewards.levelName,
                 font = FONTS_NAME.font_haibao,

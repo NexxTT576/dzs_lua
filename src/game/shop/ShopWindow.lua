@@ -74,10 +74,10 @@ function ShopWindow:ctor(bGoShowList)
         for i = 1, 3 do
             if tag == i then
                 self._rootnode["tab" .. tostring(i)]:selected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(1)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(1)
             else
                 self._rootnode["tab" .. tostring(i)]:unselected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(0)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(0)
             end
         end
     end

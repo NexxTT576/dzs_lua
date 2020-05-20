@@ -167,7 +167,7 @@ local ItemBottom =
                 -- 数量
                 local numKey = "reward_num_" .. num .. "_" .. tostring(tmpIndex)
                 local numLbl =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = tostring(v.n),
                         size = 22,

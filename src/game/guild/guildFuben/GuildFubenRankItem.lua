@@ -59,7 +59,7 @@ end
 function GuildFubenRankItem:createTTF(text, color, node, size)
     node:removeAllChildren()
     local lbl =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = text,
             size = size or 20,

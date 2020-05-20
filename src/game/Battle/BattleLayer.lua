@@ -400,7 +400,7 @@ function BattleLayer:init(param)
         {
             text = "回合：",
             font = FONTS_NAME.font_battle_round,
-            align =  cc.TEXT_ALIGNMENT_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -1351,7 +1351,7 @@ function BattleLayer:stateMachine()
         -- 	--当前释放的主卡牌
         local actCard = self:getCardByData(atkData)
         if actCard ~= nil then
-            actCard:setZOrder(ACTIVE_CARD_ZORDER)
+            actCard:setLocalZOrder(ACTIVE_CARD_ZORDER)
         end
 
         self:changeBattleCount(atkData["n"])
@@ -1571,14 +1571,14 @@ end
 
 function BattleLayer:cardPlayTal(curData, index, actTable)
     local card = self:getCardByData(curData)
-    card:setZOrder(ACTIVE_CARD_ZORDER)
+    card:setLocalZOrder(ACTIVE_CARD_ZORDER)
     local talId = curData.sid
 
     return self:createTalName(
         card,
         talId,
         function()
-            -- card:setZOrder(NORMAL_CARD_ZORDER)
+            -- card:setLocalZOrder(NORMAL_CARD_ZORDER)
             return self:atkDataMachine(index + 1, actTable)
         end
     )
@@ -1856,7 +1856,7 @@ function BattleLayer:changeProps(curData, card, talEndFunc)
     local propEndLife = curData["l"]
 
     local card = self:getCardBySideId(propSide, propPos)
-    card:setZOrder(ACTIVE_CARD_ZORDER)
+    card:setLocalZOrder(ACTIVE_CARD_ZORDER)
 
     local fontNode = display.newNode()
     local propFont = nil
@@ -2574,7 +2574,7 @@ function BattleLayer:skillCardMove(funcId, atkData, endFunc)
             local trPos = tr[i]["p"]
             local card = self:getCardBySideId(trSide, trPos)
 
-            card:setZOrder(HELP_CARD_ZORDER)
+            card:setLocalZOrder(HELP_CARD_ZORDER)
             local targetPos = self:getPosBySideAndID(tr[i]["ms"], tr[i]["mp"])
             -- local orpp = self:getPosBySideAndID(trSide,trP)
             if ms ~= 0 then
@@ -2680,7 +2680,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
             --遍历受伤对象，如果死亡，则播死亡动画，如果没死，就播stop动画
             local beAtkCard = self:getCardByData(targetResults[i])
 
-            beAtkCard:setZOrder(NORMAL_CARD_ZORDER)
+            beAtkCard:setLocalZOrder(NORMAL_CARD_ZORDER)
 
             local lifeRest = targetResults[i]["l"]
 
@@ -2734,7 +2734,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
 
             numBone:changeDisplayWithIndex(0, true)
 
-            numBone:setZOrder(100)
+            numBone:setLocalZOrder(100)
 
             totalDamage:addBone(numBone, "gunbai")
 
@@ -2763,7 +2763,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
                         CCCallFunc:create(
                             function()
                                 -- card:playAct("stop")
-                                card:setZOrder(NORMAL_CARD_ZORDER)
+                                card:setLocalZOrder(NORMAL_CARD_ZORDER)
                             end
                         )
                     }

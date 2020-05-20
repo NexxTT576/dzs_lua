@@ -43,7 +43,7 @@ function ShopItem:create(param)
     )
 
     self.itemName =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,

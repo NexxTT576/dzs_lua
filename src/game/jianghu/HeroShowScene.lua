@@ -73,10 +73,10 @@ function HeroShowScene:ctor(param)
         for i = 1, 3 do
             if tag == i then
                 self._rootnode["tab" .. tostring(i)]:selected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(4)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(4)
             else
                 self._rootnode["tab" .. tostring(i)]:unselected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(3 - i)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(3 - i)
             end
         end
         self._viewType = tag

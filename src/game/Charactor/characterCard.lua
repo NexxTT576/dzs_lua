@@ -96,7 +96,7 @@ function characterCard:addBuff(buffName)
             self.buffBones[buffName]:setIgnoreMovementBoneData(true)
             self.buffBones[buffName]:addDisplay(buffEff, 0)
             self.buffBones[buffName]:changeDisplayWithIndex(0, true)
-            self.buffBones[buffName]:setZOrder(10000)
+            self.buffBones[buffName]:setLocalZOrder(10000)
             self.cardBg:addBone(self.buffBones[buffName], "tongyong")
         else
             --已存在，显示出来
@@ -173,7 +173,7 @@ function characterCard:playTinyShow(name)
         self.tinyRageBone:setIgnoreMovementBoneData(true)
         self.tinyRageBone:addDisplay(self.tinyAngerBg, 0)
         self.tinyRageBone:changeDisplayWithIndex(0, true)
-        self.tinyRageBone:setZOrder(900)
+        self.tinyRageBone:setLocalZOrder(900)
         self.tinyAngerBg:setScale(1.4)
         self.cardBg:addBone(self.tinyRageBone, "tongyong")
     else
@@ -187,15 +187,15 @@ function characterCard:addAnim(parent, parentBoneName, child, childBoneName)
     childBone:setIgnoreMovementBoneData(true)
     childBone:addDisplay(child, 0)
     childBone:changeDisplayWithIndex(0, true)
-    childBone:setZOrder(900)
+    childBone:setLocalZOrder(900)
     parent:addBone(childBone, parentBoneName)
 end
 
 function characterCard:playShow(specialData)
     -- self.heroImage
     self.heroImage:stopAllActions()
-    self.cardNameTTF:setZOrder(HERO_IMAGE_ZORDER - 10)
-    self.nameBone:setZOrder(HERO_IMAGE_ZORDER - 10)
+    self.cardNameTTF:setLocalZOrder(HERO_IMAGE_ZORDER - 10)
+    self.nameBone:setLocalZOrder(HERO_IMAGE_ZORDER - 10)
     local biggerTime = 0.2
     local stayTime = 0.8
     local smallTime = 0.1
@@ -261,8 +261,8 @@ function characterCard:playShow(specialData)
         CCCallFunc:create(
         function()
             self.befCloud:setVisible(false)
-            self.cardNameTTF:setZOrder(HERO_IMAGE_ZORDER + 10)
-            self.nameBone:setZOrder(HERO_IMAGE_ZORDER + 10)
+            self.cardNameTTF:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
+            self.nameBone:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
         end
     )
     self.befCloud:runAction(transition.sequence({setRight, befBiggerSpawn, befmoveToLeft, befSmallSpawn, befrev}))
@@ -361,9 +361,9 @@ function characterCard:playShow(specialData)
 end
 
 function characterCard:onExit()
-    CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
-    CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/cardHeros/" .. self.cardImageFile .. ".ExportJson")
-    -- CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/cardBg/anim_card_kadi_st04.ExportJson")
+    ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
+    ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardHeros/" .. self.cardImageFile .. ".ExportJson")
+    -- ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardBg/anim_card_kadi_st04.ExportJson")
     ResMgr.removeSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")
     ResMgr.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.removeSpriteFramesWithFile("ui/ui_jobIcon.plist", "ui/ui_jobIcon.png")
@@ -504,8 +504,8 @@ function characterCard:ctor(param)
             end
         end
 
-        CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
-        CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
+        ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
+        ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("ccs/cardBg/" .. self.armaName .. ".ExportJson")
 
         self.stars = {}
         self.angerBones = {}
@@ -543,14 +543,14 @@ function characterCard:ctor(param)
         local nameColor = NAME_COLOR[self.star]
 
         self.cardNameTTF =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = self.cardName,
                 size = 20,
                 color = nameColor,
                 outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         -- self.jobIcon = display.newSprite()
@@ -559,20 +559,20 @@ function characterCard:ctor(param)
         -- self.jobIcon:setScale(0.55)
         -- self.cardNameTTF:addChild(jobIcon)
         -- self:addAnim(self.cardBg,"tongyong",self.jobIcon,"job_icon")
-        -- self.jobIcon:setZOrder(HERO_IMAGE_ZORDER + 10)
+        -- self.jobIcon:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
         -- self.baseNode:addChild(self.cardNameTTF,HERO_IMAGE_ZORDER +1 )
         -- self.cardNameTTF:setPosition(self.cardWidth/2,self.cardHeight)
         local nameX = -self.cardNameTTF:getContentSize().width / 2 --+jobIcon:getContentSize().width/2
         local nameY = self.cardHeight * 0.6
         -- jobIcon:setPosition(-jobIcon:getContentSize().width/2,0)
         self.cardNameTTF:setPosition(nameX, nameY)
-        self.cardNameTTF:setZOrder(HERO_IMAGE_ZORDER + 10)
+        self.cardNameTTF:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
         self.nameBone = CCBone:create("nameBone")
         self.nameBone:setIgnoreMovementBoneData(true)
         self.nameBone:addDisplay(self.cardNameTTF, 0)
         self.nameBone:changeDisplayWithIndex(0, false)
 
-        self.nameBone:setZOrder(HERO_IMAGE_ZORDER + 10)
+        self.nameBone:setLocalZOrder(HERO_IMAGE_ZORDER + 10)
 
         -- local lifeBarX = self.cardBg:getContentSize().width
         -- local lifeBarY = self.cardBg:getContentSize().height
@@ -599,7 +599,7 @@ function characterCard:ctor(param)
             if name == "began" then
                 if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(cc.p(x, y))) then
                     self:runAction(CCScaleTo:create(0.1, 1.1))
-                    self:setZOrder(self:getZOrder() + 1)
+                    self:setLocalZOrder(self:getZOrder() + 1)
                     return true
                 else
                     -- printf("Hello")
@@ -609,7 +609,7 @@ function characterCard:ctor(param)
                 self:setPosition(self:getParent():convertToNodeSpace(cc.p(x, y)))
             elseif name == "ended" then
                 self:runAction(CCScaleTo:create(0.1, 1))
-                self:setZOrder(self:getZOrder() - 1)
+                self:setLocalZOrder(self:getZOrder() - 1)
                 touchEndListener(self)
             end
         end
@@ -621,8 +621,8 @@ function characterCard:ctor(param)
             self:setTouchEnabled(false)
         end
 
-        CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/cardHeros/" .. cardImage .. ".ExportJson")
-        CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/cardHeros/" .. cardImage .. ".ExportJson")
+        ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/cardHeros/" .. cardImage .. ".ExportJson")
+        ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("ccs/cardHeros/" .. cardImage .. ".ExportJson")
 
         self.heroImage = CCArmature:create(cardImage)
         self.heroImage:getAnimation():play(self.curAct)
@@ -651,7 +651,7 @@ function characterCard:ctor(param)
         self.lifeBarBgBone:changeDisplayWithIndex(0, false)
         self.lifeBarBg:setVisible(self.isShowHpAndAnger)
 
-        self.lifeBarBgBone:setZOrder(ANGER_ZORDER)
+        self.lifeBarBgBone:setLocalZOrder(ANGER_ZORDER)
 
         local lifeBarX = self.cardBg:getContentSize().width * -0.34
         local lifeBarY = self.cardBg:getContentSize().height * -0.45
@@ -667,7 +667,7 @@ function characterCard:ctor(param)
         -- 	bgEffBone:setIgnoreMovementBoneData(true)
         -- 	bgEffBone:addDisplay(bgEffSprite, 0)
         -- 	bgEffBone:changeDisplayWithIndex(0,true)
-        -- 	bgEffBone:setZOrder(-100)
+        -- 	bgEffBone:setLocalZOrder(-100)
 
         -- 	local bgEffX = cardData.bg_eff_x/1000 --self.cardBg:getContentSize().width * -0.34
         -- 	local bgEffY = cardData.bg_eff_y/1000--self.cardBg:getContentSize().height * -0.45
@@ -681,7 +681,7 @@ function characterCard:ctor(param)
         buffBone:setIgnoreMovementBoneData(true)
         buffBone:addDisplay(self.buffNode, 0)
         buffBone:changeDisplayWithIndex(0, true)
-        buffBone:setZOrder(10000)
+        buffBone:setLocalZOrder(10000)
         self.cardBg:addBone(buffBone, "tongyong")
 
         --血条绿条
@@ -700,7 +700,7 @@ function characterCard:ctor(param)
         self.lifeBarBone:addDisplay(self.lifeBar, 0)
         self.lifeBarBone:changeDisplayWithIndex(0, false)
         self.lifeBarBone:setIgnoreMovementBoneData(true)
-        self.lifeBarBone:setZOrder(ANGER_ZORDER)
+        self.lifeBarBone:setLocalZOrder(ANGER_ZORDER)
 
         local lifeBarX = self.cardBg:getContentSize().width * -0.34
         local lifeBarY = self.cardBg:getContentSize().height * -0.45
@@ -724,7 +724,7 @@ function characterCard:ctor(param)
             self.angerBones[starNum]:setIgnoreMovementBoneData(true)
             self.angerBones[starNum]:addDisplay(star, 0)
             self.angerBones[starNum]:changeDisplayWithIndex(0, false)
-            self.angerBones[starNum]:setZOrder(ANGER_ZORDER)
+            self.angerBones[starNum]:setLocalZOrder(ANGER_ZORDER)
             -- self.angerBones[starNum]:runAction(rep)
             star:setPosition(cc.p(starOraX, starOraY))
             starOraX = starOraX + offsetStarX
@@ -738,7 +738,7 @@ function characterCard:ctor(param)
         self.extraAnger:setIgnoreMovementBoneData(true)
         self.extraAnger:addDisplay(star, 0)
         self.extraAnger:changeDisplayWithIndex(0, false)
-        self.extraAnger:setZOrder(ANGER_ZORDER)
+        self.extraAnger:setLocalZOrder(ANGER_ZORDER)
         star:setPosition(cc.p(starOraX, starOraY))
         starOraX = starOraX + offsetStarX
         self.cardBg:addBone(self.extraAnger, "tongyong")
@@ -759,7 +759,7 @@ function characterCard:ctor(param)
         self.labelBone:setIgnoreMovementBoneData(true)
         self.labelBone:addDisplay(self.angerLabel, 0)
         self.labelBone:changeDisplayWithIndex(0, false)
-        self.labelBone:setZOrder(ANGER_ZORDER)
+        self.labelBone:setLocalZOrder(ANGER_ZORDER)
         self.cardBg:addBone(self.labelBone, "tongyong")
         --------
         self.rageNum = 0

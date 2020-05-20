@@ -29,7 +29,7 @@ function TanbaoMainView:setUpView(param)
     self:addChild(maskBng)
 
     local timeLabeldis =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "活动时间:" .. self._timeStr,
             size = 23,
@@ -55,7 +55,7 @@ function TanbaoMainView:setUpView(param)
     self._countDownTime = math.floor(self._countDownTime / 1000)
     local nowTimeStr = self:timeFormat(self._countDownTime)
     local timeLabelCountDown =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = nowTimeStr,
             size = 23,
@@ -91,7 +91,7 @@ function TanbaoMainView:setUpView(param)
 
     --当前积分
     local jinfenTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "当前积分:",
             size = 20,
@@ -105,7 +105,7 @@ function TanbaoMainView:setUpView(param)
     jinfenTitle:setPosition(cc.p(jinfenBng:getContentSize().width * 0.2, jinfenBng:getContentSize().height * 0.75))
 
     local jinfenValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._jifen,
             size = 20,
@@ -122,7 +122,7 @@ function TanbaoMainView:setUpView(param)
 
     --剩余次数
     local timeTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "剩余次数:",
             size = 20,
@@ -135,7 +135,7 @@ function TanbaoMainView:setUpView(param)
     timeTitle:setAnchorPoint(cc.p(0.5, 0.5))
     timeTitle:setPosition(cc.p(jinfenBng:getContentSize().width * 0.2, jinfenBng:getContentSize().height * 0.25))
     local timeValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._time,
             size = 20,
@@ -161,7 +161,7 @@ function TanbaoMainView:setUpView(param)
     roteInnerBng:addChild(self.btnTen)
 
     local freeTimeLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "今日免费次数:" .. self._freeTime,
             size = 20,
@@ -180,7 +180,7 @@ function TanbaoMainView:setUpView(param)
     goldIconOne:setPositionX(-10)
     nodeGoldOne:addChild(goldIconOne)
     local preLabelOne =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._priceOne,
             size = 20,
@@ -200,7 +200,7 @@ function TanbaoMainView:setUpView(param)
     goldIconTwo:setPositionX(-10)
     nodeGoldTwo:addChild(goldIconTwo)
     local preLabelTen =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._priceTen,
             size = 20,
@@ -408,7 +408,7 @@ function TanbaoMainView:createLabel01(param)
 
     local bng = display.newScale9Sprite("#jifenbng_2.png", 0, 0, cc.size(param.size.width * 0.8, 35))
     local Label1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = titleDisConst[self._type],
             size = 20,
@@ -424,7 +424,7 @@ function TanbaoMainView:createLabel01(param)
     moneyIcon:setPosition(cc.p(bng:getContentSize().width * 0.17, bng:getContentSize().height * 0.5))
 
     local Label2 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._priceOne,
             size = 20,
@@ -437,7 +437,7 @@ function TanbaoMainView:createLabel01(param)
     Label2:setPosition(cc.p(bng:getContentSize().width * 0.2, bng:getContentSize().height * 0.5))
 
     local Label3 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "可获得",
             size = 20,
@@ -450,7 +450,7 @@ function TanbaoMainView:createLabel01(param)
     Label3:setPosition(cc.p(bng:getContentSize().width * 0.26, bng:getContentSize().height * 0.5))
 
     local Label4 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "1",
             size = 20,
@@ -463,7 +463,7 @@ function TanbaoMainView:createLabel01(param)
     Label4:setPosition(cc.p(bng:getContentSize().width * 0.38, bng:getContentSize().height * 0.5))
 
     local Label5 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "次探宝机会,每日上限",
             size = 20,
@@ -476,7 +476,7 @@ function TanbaoMainView:createLabel01(param)
     Label5:setPosition(cc.p(bng:getContentSize().width * 0.4, bng:getContentSize().height * 0.5))
 
     local Label6 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._maxTime,
             size = 20,
@@ -489,7 +489,7 @@ function TanbaoMainView:createLabel01(param)
     Label6:setPosition(cc.p(bng:getContentSize().width * 0.79, bng:getContentSize().height * 0.5))
 
     local Label7 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "次",
             size = 20,
@@ -528,7 +528,7 @@ function TanbaoMainView:createLabel02(param)
     local titleDisConst = {"今日累计充值:", "今日累计消耗:", ""}
     local bng = display.newScale9Sprite("#jifenbng_2.png", 0, 0, cc.size(param.size.width * 0.8, 35))
     local Label1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = titleDisConst[self._type],
             size = 20,
@@ -546,7 +546,7 @@ function TanbaoMainView:createLabel02(param)
 
     local posX = moneyIcon:getPositionX()
     local Label2 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._dayAdd,
             size = 20,
@@ -560,7 +560,7 @@ function TanbaoMainView:createLabel02(param)
 
     local posX = Label2:getPositionX()
     local Label3 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "(",
             size = 20,
@@ -574,7 +574,7 @@ function TanbaoMainView:createLabel02(param)
 
     local posX = Label3:getPositionX()
     local Label5 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._addTime .. "/",
             size = 20,
@@ -588,7 +588,7 @@ function TanbaoMainView:createLabel02(param)
 
     local posX = Label5:getPositionX()
     local Label6 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._maxTime .. ")",
             size = 20,
@@ -631,7 +631,7 @@ function TanbaoMainView:createProgress(param)
     goldOne:setPosition(progress:getContentSize().width * 0.0 + 10, progress:getContentSize().height * 0.5)
 
     local disLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._jifenLevel[1].value .. "积分",
             size = 20,
@@ -648,7 +648,7 @@ function TanbaoMainView:createProgress(param)
     goldTwo:setPosition(progress:getContentSize().width * 0.5 + 10, progress:getContentSize().height * 0.5)
 
     local disLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._jifenLevel[2].value .. "积分",
             size = 20,
@@ -665,7 +665,7 @@ function TanbaoMainView:createProgress(param)
     goldThree:setPosition(progress:getContentSize().width * 1 + 10, progress:getContentSize().height * 0.5)
 
     local disLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self._jifenLevel[3].value .. "积分",
             size = 20,
@@ -873,7 +873,7 @@ function TanbaoMainView:createItemView(pos, node, data)
     end
 
     local nameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = require("data.data_item_item")[data.id].name,
             size = 20,

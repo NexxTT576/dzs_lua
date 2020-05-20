@@ -204,7 +204,7 @@ function DuiHuanMainView:setUpExtraView(param)
 
     --活动描述
     local disLabel1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "活动时间:",
             size = 23,
@@ -235,7 +235,7 @@ function DuiHuanMainView:setUpExtraView(param)
     endTime = endTime .. endTimeStr[3] .. "日"
 
     local disLabelValue1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = startTime .. "--" .. endTime,
             size = 23,
@@ -250,7 +250,7 @@ function DuiHuanMainView:setUpExtraView(param)
 
     --活动描述
     local disLabel2 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "活动剩余时间:",
             size = 23,
@@ -265,7 +265,7 @@ function DuiHuanMainView:setUpExtraView(param)
 
     local timeAll = math.floor((self._end - self._now) / 1000)
     local disLabelValue2 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self:timeFormat(timeAll),
             size = 23,

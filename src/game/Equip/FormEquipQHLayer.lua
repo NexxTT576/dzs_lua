@@ -291,7 +291,7 @@ end
 
 function FormEquipQHLayer:qiangHuaAnim(finishFunc)
     local EFFECT_ZORDER = 100000
-    CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
+    ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
     local chuiziAnim = CCArmature:create("chuizi")
     chuiziAnim:setAnchorPoint(cc.p(0, 0.5))
 
@@ -326,7 +326,7 @@ function FormEquipQHLayer:qiangHuaAnim(finishFunc)
             if movementType == ccs.MovementEventType.COMPLETE then
                 chuiziAnim:getAnimation():playWithIndex(0)
                 chuiziAnim:removeSelf()
-                CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
+                ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
             end
         end
     )

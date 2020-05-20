@@ -68,7 +68,7 @@ function RewardInfoCell:refreshItem(itemData)
     -- 数量
     self._rootnode["num_lbl"]:setString("数量：" .. tostring(self._num))
 
-    -- local numLbl = ui.newTTFLabelWithOutline({
+    -- local numLbl = newTTFLabelWithOutline({
     --        text = tostring(itemData.num),
     --        size = 22,
     --        color = cc.c3b(0,255,0),

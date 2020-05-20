@@ -186,7 +186,7 @@ function SkillQiangHuaLayer:runAnim()
                     )
                     effect:setPosition(self._rootnode["card_bg"]:getContentSize().width / 2, self._rootnode["card_bg"]:getContentSize().height / 2)
                     self._rootnode["card_bg"]:addChild(effect)
-                    effect:setZOrder(0)
+                    effect:setLocalZOrder(0)
 
                     effect =
                         ResMgr.createArma(
@@ -354,7 +354,7 @@ function SkillQiangHuaLayer:initBaseInfo()
     self._rootnode["leftName"]:setString(baseData["name"])
 
     --中间的图像
-    self._rootnode["image"]:setZOrder(10)
+    self._rootnode["image"]:setLocalZOrder(10)
     self._rootnode["image"]:setDisplayFrame(display.newSprite(pathName):getDisplayFrame())
 
     local heroName =

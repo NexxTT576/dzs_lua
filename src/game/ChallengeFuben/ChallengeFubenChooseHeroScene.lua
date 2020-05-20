@@ -254,10 +254,10 @@ function ChallengeFubenChooseHeroScene:ctor(param)
         for i = 1, 4 do
             if tag == i then
                 self._rootnode["tab" .. tostring(i)]:selected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(5)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(5)
             else
                 self._rootnode["tab" .. tostring(i)]:unselected()
-                self._rootnode["tab" .. tostring(i)]:setZOrder(tag)
+                self._rootnode["tab" .. tostring(i)]:setLocalZOrder(tag)
             end
         end
         self._viewType = tag

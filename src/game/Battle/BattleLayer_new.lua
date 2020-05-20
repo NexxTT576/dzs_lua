@@ -1238,7 +1238,7 @@ function BattleLayer:stateMachine()
                 --当前释放的主卡牌
                 local actCard = self:getCardByData(atkData)
                 if actCard ~= nil then
-                    actCard:setZOrder(ACTIVE_CARD_ZORDER)
+                    actCard:setLocalZOrder(ACTIVE_CARD_ZORDER)
                 end
 
                 local actType = atkData["t"]
@@ -1517,7 +1517,7 @@ end
 
 function BattleLayer:cardPlayTal(curData, playTalEndFunc)
     local card = self:getCardByData(curData)
-    card:setZOrder(ACTIVE_CARD_ZORDER)
+    card:setLocalZOrder(ACTIVE_CARD_ZORDER)
 
     local talId = curData.talentId
 
@@ -1781,7 +1781,7 @@ function BattleLayer:changeProps(curData, talEndFunc)
     local isCanShow = curData["show"]
 
     local card = self:getCardBySideId(propSide, propPos)
-    card:setZOrder(ACTIVE_CARD_ZORDER)
+    card:setLocalZOrder(ACTIVE_CARD_ZORDER)
 
     local fontNode = display.newNode()
     local propFont = nil
@@ -2526,7 +2526,7 @@ function BattleLayer:skillCardMove(funcId, atkData, endFunc)
             local trPos = tr[i]["p"]
             local card = self:getCardBySideId(trSide, trPos)
 
-            card:setZOrder(HELP_CARD_ZORDER)
+            card:setLocalZOrder(HELP_CARD_ZORDER)
             local targetPos = self:getPosBySideAndID(tr[i]["ms"], tr[i]["mp"])
             -- local orpp = self:getPosBySideAndID(trSide,trP)
             if ms ~= 0 then
@@ -2620,7 +2620,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
         for i = 1, #targetResults do
             --遍历受伤对象，如果死亡，则播死亡动画，如果没死，就播stop动画
             local beAtkCard = self:getCardByData(targetResults[i])
-            beAtkCard:setZOrder(NORMAL_CARD_ZORDER)
+            beAtkCard:setLocalZOrder(NORMAL_CARD_ZORDER)
 
             local lifeRest = targetResults[i]["l"]
 
@@ -2666,7 +2666,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
 
             numBone:addDisplay(numTTF, 0)
             numBone:changeDisplayWithIndex(0, true)
-            numBone:setZOrder(100)
+            numBone:setLocalZOrder(100)
 
             totalDamage:addBone(numBone, "gunbai")
             totalDamage:setScale(1.4)
@@ -2692,7 +2692,7 @@ function BattleLayer:skillEnd(atkData, endFunc)
                         CCCallFunc:create(
                             function()
                                 -- card:playAct("stop")
-                                card:setZOrder(NORMAL_CARD_ZORDER)
+                                card:setLocalZOrder(NORMAL_CARD_ZORDER)
                             end
                         )
                     }

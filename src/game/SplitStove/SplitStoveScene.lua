@@ -30,7 +30,7 @@ function Item:create(param)
     self:addChild(self.sprite)
 
     self.nameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -42,7 +42,7 @@ function Item:create(param)
     self:addChild(self.nameLabel)
 
     self.numLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -789,8 +789,8 @@ function SplitStoveScene:onRefineView()
     self._rootnode["tab1"]:selected()
     self._rootnode["tab2"]:unselected()
 
-    self._rootnode["tab1"]:setZOrder(1)
-    self._rootnode["tab2"]:setZOrder(0)
+    self._rootnode["tab1"]:setLocalZOrder(1)
+    self._rootnode["tab2"]:setLocalZOrder(0)
 
     self._rootnode["rebornNode"]:setVisible(false)
     self._rootnode["refineNode"]:setVisible(true)
@@ -802,8 +802,8 @@ function SplitStoveScene:onRebornView()
     self._rootnode["tab1"]:unselected()
     self._rootnode["tab2"]:selected()
 
-    self._rootnode["tab1"]:setZOrder(0)
-    self._rootnode["tab2"]:setZOrder(1)
+    self._rootnode["tab1"]:setLocalZOrder(0)
+    self._rootnode["tab2"]:setLocalZOrder(1)
 
     self._rootnode["rebornNode"]:setVisible(true)
     self._rootnode["refineNode"]:setVisible(false)

@@ -36,11 +36,11 @@ function BagScene:onTab(tag)
             self._rootnode["tab" .. i]:selected()
             self._curView = VIEW_TYPE.BAG_ITEM
 
-            self._rootnode["tab" .. i]:setZOrder(1)
+            self._rootnode["tab" .. i]:setLocalZOrder(1)
         else
             self._rootnode["tab" .. i]:unselected()
             self._curView = VIEW_TYPE.BAG_SKILL
-            self._rootnode["tab" .. i]:setZOrder(0)
+            self._rootnode["tab" .. i]:setLocalZOrder(0)
         end
     end
     self._curView = tag
@@ -88,12 +88,12 @@ function BagScene:ctor(tag)
 
     if self._curView == VIEW_TYPE.BAG_ITEM then
         self._rootnode["tab1"]:selected()
-        self._rootnode["tab1"]:setZOrder(1)
-        self._rootnode["tab2"]:setZOrder(0)
+        self._rootnode["tab1"]:setLocalZOrder(1)
+        self._rootnode["tab2"]:setLocalZOrder(0)
     else
         self._rootnode["tab2"]:selected()
-        self._rootnode["tab2"]:setZOrder(1)
-        self._rootnode["tab1"]:setZOrder(0)
+        self._rootnode["tab2"]:setLocalZOrder(1)
+        self._rootnode["tab1"]:setLocalZOrder(0)
     end
 
     self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)

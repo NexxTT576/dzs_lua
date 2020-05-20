@@ -92,7 +92,7 @@ end
 function GuildListItem:createTTF(text, color, node, size)
     node:removeAllChildren()
     local lbl =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = text,
             size = size or NORMAL_FONT_SIZE,

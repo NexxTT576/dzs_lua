@@ -91,7 +91,7 @@ function HuaShanFormLayer:ctor(param)
     self._rootnode["zdlLabel"]:setString(tostring(_info.combat))
     ResMgr.oppName = _info.name
     local heroNameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = _info.name,
             font = FONTS_NAME.font_fzcy,

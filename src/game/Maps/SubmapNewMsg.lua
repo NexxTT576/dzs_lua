@@ -27,7 +27,7 @@ function SubmapNewMsg:ctor(title, levelName)
 
     -- 关卡名称
     local titleLbl =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = levelName,
             size = 40,

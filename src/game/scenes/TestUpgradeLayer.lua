@@ -55,8 +55,8 @@ function TestUpgradeLayer:ctor()
     rootnode["testAnim"]:registerControlEventHandler(
         function()
             local path = "testanim/yanlong/yanlong.ExportJson"
-            CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo(path)
-            CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo(path)
+            ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo(path)
+            ccs.ArmatureDataManager:getInstance():addArmatureFileInfo(path)
             local tempArma = CCArmature:create("yanlong")
             tempArma:getAnimation():setFrameEventCallFunc(
                 function(bone, evt, originFrameIndex, currentFrameIndex) --setMovementEventCallFunc(function(armatureBack,movementType,movementID)

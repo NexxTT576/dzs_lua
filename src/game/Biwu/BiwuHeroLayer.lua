@@ -287,7 +287,7 @@ function BiwuHeroLayer:createHeros(pos, index)
     local dizuoBng = display.newNode()
 
     local disLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             size = 24,

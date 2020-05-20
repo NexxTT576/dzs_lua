@@ -173,7 +173,7 @@ function HeroChoseCell:refresh(idx)
     --是什么职业
     local job = ResMgr.getCardData(resId)["job"]
     ResMgr.refreshJobIcon(self._rootnode["job_icon"], job)
-    self._rootnode["job_icon"]:setZOrder(100)
+    self._rootnode["job_icon"]:setLocalZOrder(100)
     -- -- self.headIcon:setPosition(self.headIcon:getContentSize().width/2,self.headIcon:getContentSize().height/2)
 end
 

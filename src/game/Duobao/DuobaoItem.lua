@@ -93,7 +93,7 @@ function DuobaoItem:updateItem()
 
         -- self._rootnode[numKey .. i]:setString(tostring(v.num))
         local numLbl =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = tostring(v.num),
                 size = 22,

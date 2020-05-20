@@ -62,7 +62,7 @@ function SpiritIcon:ctor(param)
         sprite:addChild(lvBoard, 2)
 
         local lvLabel =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = tostring(_lv),
                 font = FONTS_NAME.font_fzcy,
@@ -102,7 +102,7 @@ function SpiritIcon:ctor(param)
     end
 
     local nameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = name,
             font = FONTS_NAME.font_fzcy,

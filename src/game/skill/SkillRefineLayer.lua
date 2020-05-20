@@ -60,7 +60,7 @@ function Item:create(param)
     self:addChild(node, 0)
 
     self.needNum =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "/0",
             size = 20,
@@ -72,7 +72,7 @@ function Item:create(param)
     self._rootnode["numLabel"]:addChild(self.needNum, 10)
 
     self.hasNum =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "0",
             size = 20,

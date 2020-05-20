@@ -30,7 +30,7 @@ function XianShiMainView:ctor(param)
     self._rootnode["listview"]:setContentSize(cc.size(display.width * 0.95, param.viewSize.height - titleSize.height - 50))
 
     local timetitleLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "活动有效期:",
             size = 20,
@@ -41,7 +41,7 @@ function XianShiMainView:ctor(param)
         }
     )
     local timeLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "201012125455154541545154545415",
             size = 20,

@@ -17,7 +17,7 @@ function XianShiItemView:refreshItem(param)
     local confirmFunc = param.confirmFunc
 
     local titleName =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = data_xianshishangdian_xianshishangdian[itemData.id].name,
             size = 20,
@@ -32,7 +32,7 @@ function XianShiItemView:refreshItem(param)
     self._rootnode["titlename"]:addChild(titleName)
 
     local priceLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "200",
             size = 20,

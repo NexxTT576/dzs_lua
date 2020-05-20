@@ -46,7 +46,7 @@ function UseCountBox:ctor(param)
     end
 
     local itemNameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = string.format("%s", param.name),
             font = FONTS_NAME.font_haibao,

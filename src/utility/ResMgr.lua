@@ -445,7 +445,7 @@ function ResMgr.createOutlineMsgTTF(param)
     local size = param.size or 22
 
     local shaTTF =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = text,
             size = size,
@@ -885,7 +885,7 @@ function ResMgr.refreshIcon(param)
     -- 数量
     if iconNum > 1 or (iconNum == 1 and isShowIconNum == true) then
         local numLbl =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = tostring(iconNum),
                 size = numLblSize,

@@ -264,16 +264,16 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
-     --align(display.LEFT_CENTER))
+    ):--align(display.LEFT_CENTER))
+     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
 
     onButtonSelectChanged(
         function(event)
             self:reloadData(event.selected)
             for i = 1, self.group:getButtonsCount() do
-                self.group:getButtonAtIndex(i):setZOrder(self.group:getButtonsCount() - i)
+                self.group:getButtonAtIndex(i):setLocalZOrder(self.group:getButtonsCount() - i)
             end
-            self.group:getButtonAtIndex(event.selected):setZOrder(10)
+            self.group:getButtonAtIndex(event.selected):setLocalZOrder(10)
         end
     ):setButtonsLayoutMargin(0, -30, 0, 0):addTo(self._mianPopup)
     self.group:setPosition(20, self._innerContainerSize.height + self._innerContainerBorderOffset - 10)

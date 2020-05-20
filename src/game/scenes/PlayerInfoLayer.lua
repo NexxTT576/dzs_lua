@@ -96,7 +96,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                 local playerID = "(ID:" .. game.player:getPlayerID() .. ")"
                 -- self._rootNode["player_name"]:setString(game.player.m_name)
                 local text =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = game.player.m_name,
                         x = 0,

@@ -83,7 +83,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
     self._rootnode["label_xiahun"]:setString(xiahun)
 
     self.guanKaName =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = name,
             size = 30,

@@ -66,7 +66,7 @@ function BiwuMainScene:ctor(param)
 
     PostNotice(NoticeKey.UNLOCK_BOTTOM)
     self:setBottomBtnEnabled(true)
-    self._rootnode["bottomNode"]:setZOrder(Zorder + 100)
+    self._rootnode["bottomNode"]:setLocalZOrder(Zorder + 100)
     self._rootnode["bottomNode"]:setTouchEnabled(true)
     ResMgr.removeBefLayer()
 
@@ -93,9 +93,9 @@ function BiwuMainScene:initTopRadios(index)
     ):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.duihuan):align(display.LEFT_CENTER)):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.tianbang):align(display.LEFT_CENTER)):onButtonSelectChanged(
         function(event)
             for i = 1, group:getButtonsCount() do
-                group:getButtonAtIndex(i):setZOrder(group:getButtonsCount() + i)
+                group:getButtonAtIndex(i):setLocalZOrder(group:getButtonsCount() + i)
             end
-            group:getButtonAtIndex(event.selected):setZOrder(10)
+            group:getButtonAtIndex(event.selected):setLocalZOrder(10)
             self:changePage(event.selected)
         end
     ):setButtonsLayoutMargin(0, -25, 0, 0):addTo(self, Zorder + 1000)

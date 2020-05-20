@@ -489,7 +489,7 @@ function HeroInfoLayer:ctor(param, infoType)
     infoNode:setPosition(cc.p(0, 85))
     bgNode:addChild(infoNode)
 
-    self._rootnode["bottomMenuNode"]:setZOrder(1)
+    self._rootnode["bottomMenuNode"]:setLocalZOrder(1)
     local heroNameLabel =
         ui.newTTFLabelWithShadow(
         {

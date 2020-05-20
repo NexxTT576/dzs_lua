@@ -43,7 +43,7 @@ end
 function UrgencyBroadcast:setNextBroadcast()
     if self._broadLbl == nil then
         self._broadLbl =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = self._curBroadLblStr,
                 size = 26,

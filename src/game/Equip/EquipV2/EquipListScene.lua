@@ -240,7 +240,7 @@ function EquipListScene:init(data)
     --
 
     local numTag = self._rootnode["numTag"]
-    numTag:setZOrder(20)
+    numTag:setLocalZOrder(20)
 
     if self._bInit ~= true then
         self._rootnode["sellBtn"]:registerControlEventHandler(
@@ -577,8 +577,8 @@ function EquipListScene:init(data)
                 self:SendReq()
             end
 
-            self._rootnode["left"]:setZOrder(10)
-            self._rootnode["right"]:setZOrder(9)
+            self._rootnode["left"]:setLocalZOrder(10)
+            self._rootnode["right"]:setLocalZOrder(9)
             sellBtn:setVisible(true)
             extendBtn:setVisible(true)
             self._rootnode["numTag"]:setVisible(true)
@@ -726,8 +726,8 @@ function EquipListScene:init(data)
             self.scrollLayerNode:addChild(self.equipSellTable)
             self.equipSellTable:setVisible(false)
         elseif TAB_TAG.SOUL == tag then
-            self._rootnode["left"]:setZOrder(9)
-            self._rootnode["right"]:setZOrder(10)
+            self._rootnode["left"]:setLocalZOrder(9)
+            self._rootnode["right"]:setLocalZOrder(10)
             self._rootnode["numTag"]:setVisible(false)
             sellBtn:setVisible(false)
             extendBtn:setVisible(false)

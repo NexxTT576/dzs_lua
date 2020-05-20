@@ -361,7 +361,7 @@ function SpiritUpgradeScene:ctor(index)
     -- 精元列表
     local function initListView()
         self._rootnode["touchNode"]:setTouchEnabled(true)
-        self._rootnode["touchNode"]:setZOrder(1)
+        self._rootnode["touchNode"]:setLocalZOrder(1)
         local posX = 0
         local posY = 0
         self._rootnode["touchNode"]:addNodeEventListener(
@@ -423,8 +423,8 @@ function SpiritUpgradeScene:ctor(index)
 
         local maxOffsetY = self._spiritListView:maxContainerOffset().y
         local minOffsetY = self._spiritListView:minContainerOffset().y
-        self._rootnode["upArrow"]:setZOrder(2)
-        self._rootnode["downArrow"]:setZOrder(2)
+        self._rootnode["upArrow"]:setLocalZOrder(2)
+        self._rootnode["downArrow"]:setLocalZOrder(2)
         if maxOffsetY ~= minOffsetY then
             self._rootnode["upArrow"]:setVisible(false)
             self._rootnode["downArrow"]:setVisible(true)

@@ -40,7 +40,7 @@ function BiwuByTimesCountBox:ctor(param, successCallBack)
     rootnode["haveLabel"]:setVisible(false)
 
     local itemNameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_haibao,

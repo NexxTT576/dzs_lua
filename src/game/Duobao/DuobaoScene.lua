@@ -692,10 +692,10 @@ function DuobaoScene:selectedTab(tag)
     for i = 1, 2 do
         if tag == i then
             self._rootnode["tab" .. tostring(i)]:selected()
-            self._rootnode["btn" .. tostring(i)]:setZOrder(10)
+            self._rootnode["btn" .. tostring(i)]:setLocalZOrder(10)
         else
             self._rootnode["tab" .. tostring(i)]:unselected()
-            self._rootnode["btn" .. tostring(i)]:setZOrder(0)
+            self._rootnode["btn" .. tostring(i)]:setLocalZOrder(0)
         end
     end
 end

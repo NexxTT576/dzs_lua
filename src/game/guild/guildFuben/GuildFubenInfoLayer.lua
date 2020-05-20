@@ -128,7 +128,7 @@ function GuildFubenInfoLayer:ctor(param)
 
     -- 副本名称
     local titleLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = fbItem.bossname,
             font = FONTS_NAME.font_fzcy,

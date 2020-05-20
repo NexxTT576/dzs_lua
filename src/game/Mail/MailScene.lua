@@ -108,10 +108,10 @@ function MailScene:ctor()
             if i ~= 2 then
                 if tag == i then
                     self._rootnode["tab" .. tostring(i)]:selected()
-                    self._rootnode["btn" .. tostring(i)]:setZOrder(10)
+                    self._rootnode["btn" .. tostring(i)]:setLocalZOrder(10)
                 else
                     self._rootnode["tab" .. tostring(i)]:unselected()
-                    self._rootnode["btn" .. tostring(i)]:setZOrder(10 - i)
+                    self._rootnode["btn" .. tostring(i)]:setLocalZOrder(10 - i)
                 end
             end
         end
@@ -139,7 +139,7 @@ function MailScene:ctor()
 
     if (game.player:getMailBattle() > 0) then
         self._rootnode["mail_battle_notice"]:setVisible(true)
-        self._rootnode["mail_battle_notice"]:setZOrder(11)
+        self._rootnode["mail_battle_notice"]:setLocalZOrder(11)
     else
         self._rootnode["mail_battle_notice"]:setVisible(false)
         game.player:resetMailBattle()
@@ -147,7 +147,7 @@ function MailScene:ctor()
 
     if (game.player:getMailSystem() > 0) then
         self._rootnode["mail_system_notice"]:setVisible(true)
-        self._rootnode["mail_system_notice"]:setZOrder(11)
+        self._rootnode["mail_system_notice"]:setLocalZOrder(11)
     else
         self._rootnode["mail_system_notice"]:setVisible(false)
         game.player:resetMailSystem()

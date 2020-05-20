@@ -457,7 +457,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                 end
 
                 local label =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = data_item_item[v.resId].name,
                         size = 22,
@@ -470,7 +470,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
                 s:addChild(label)
 
                 label =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = string.format("%d", v.level),
                         size = 22,
@@ -725,7 +725,7 @@ function EnemyFormLayer:update()
     end
 
     local nameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = tostring(self._enemyInfo.name) .. teamName,
             size = 26,

@@ -87,9 +87,9 @@ function FormSettingLayer:ctor(param)
     local function reorderCard(card)
         for k, v in ipairs(getDataOpen(14).level) do
             local key = string.format("card_%d", k)
-            rootnode[key]:setZOrder(0)
+            rootnode[key]:setLocalZOrder(0)
         end
-        card:setZOrder(10)
+        card:setLocalZOrder(10)
     end
 
     local _x, _y

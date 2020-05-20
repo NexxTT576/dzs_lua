@@ -60,7 +60,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     rootnode["haveLabel"]:setString(tostring(string.format("共拥有 %d 个", param.havenum)))
 
     local itemNameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_haibao,

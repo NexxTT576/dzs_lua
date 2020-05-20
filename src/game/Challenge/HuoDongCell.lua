@@ -75,7 +75,7 @@ function HuoDongCell:refresh(aid)
         local actTimes = self.fubenTimes[tostring(actId)].surplusCnt
 
         local numLbl =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = "今日剩余次数：" .. tostring(actTimes),
                 size = 22,
@@ -138,7 +138,7 @@ function HuoDongCell:refresh(aid)
     local desc
     if huodongData.index ~= nil then
         desc =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = tostring(huodongData.index),
                 size = 26,

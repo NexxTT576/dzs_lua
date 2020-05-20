@@ -284,7 +284,7 @@ function SubMap:checkLevelReward(subMapID)
             -- 星星数量
             local boxStarNumLbl = self._rootnode["box_starNum_" .. i]
             local curNumLbl =
-                ui.newTTFLabelWithOutline(
+                newTTFLabelWithOutline(
                 {
                     text = tostring(self._allLevelReward[i].star),
                     size = 22,
@@ -377,7 +377,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
                 if string.len(data["0"]) == 0 then
                     -- 总星星数量
                     local tNumLbl =
-                        ui.newTTFLabelWithOutline(
+                        newTTFLabelWithOutline(
                         {
                             text = "/" .. tostring(calSubmapStar(id)),
                             size = 22,
@@ -395,7 +395,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
 
                     -- 当前星星数量
                     local curNumLbl =
-                        ui.newTTFLabelWithOutline(
+                        newTTFLabelWithOutline(
                         {
                             text = tostring(data["2"].stars),
                             size = 22,

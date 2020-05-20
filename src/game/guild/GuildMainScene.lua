@@ -160,7 +160,7 @@ function GuildMainScene:initBuildLevel()
 
     local function createTTF(text, node)
         local lbl =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = "LV." .. text,
                 size = BUILD_LEVEL_FONT_SIZE,

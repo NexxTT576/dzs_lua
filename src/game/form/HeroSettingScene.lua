@@ -891,7 +891,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                 end
 
                 local label =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = data_item_item[v.resId].name,
                         size = 22,
@@ -910,7 +910,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                     obj = self:getEquipByID(v.objId) or {}
                 end
                 label =
-                    ui.newTTFLabelWithOutline(
+                    newTTFLabelWithOutline(
                     {
                         text = string.format("%d", v.level or obj.level),
                         size = 22,

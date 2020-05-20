@@ -89,7 +89,7 @@ function WaBaoMainView:setUpView(param)
     --self._countDownTime = math.floor(self._countDownTime / 1000)
     --local nowTimeStr = self:timeFormat(self._countDownTime)
     self._timeLabelCountDown =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "00:00:00",
             size = 23,
@@ -125,7 +125,7 @@ function WaBaoMainView:setUpView(param)
 
     --挖宝价格标签
     self._onePriceLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "220",
             size = 20,
@@ -169,7 +169,7 @@ function WaBaoMainView:setUpView(param)
     end
 
     self._freeTimeLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "免费一次",
             size = 20,
@@ -183,7 +183,7 @@ function WaBaoMainView:setUpView(param)
     oneBtn:addChild(self._freeTimeLabel)
 
     self._refAllPriceLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "220",
             size = 20,
@@ -202,7 +202,7 @@ function WaBaoMainView:setUpView(param)
 
     --活动描述
     local disLabel1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "活动时间:",
             size = 23,
@@ -216,7 +216,7 @@ function WaBaoMainView:setUpView(param)
     self:addChild(disLabel1)
 
     self._actLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "2012-10-10 20:23:20至2012-10-10 20:23:20",
             size = 23,
@@ -230,7 +230,7 @@ function WaBaoMainView:setUpView(param)
     self:addChild(self._actLabel)
 
     local Label1 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "今日剩余元宝探宝次数",
             size = 20,
@@ -243,7 +243,7 @@ function WaBaoMainView:setUpView(param)
     Label1:setPosition(cc.p(param.size.width * 0.2, 270))
 
     self._timeLeftLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = 200,
             size = 20,
@@ -256,7 +256,7 @@ function WaBaoMainView:setUpView(param)
     self._timeLeftLabel:setPosition(cc.p(Label1:getPositionX() + Label1:getContentSize().width + 10, 270))
 
     local Label3 =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "次",
             size = 20,
@@ -306,7 +306,7 @@ function WaBaoMainView:setUpView(param)
     self._bottomBng:addChild(refreshBtn)
 
     self._refreshPrice =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "20",
             size = 20,
@@ -437,7 +437,7 @@ function WaBaoMainView:createItemView(index, node, dataTemp)
         nameColor = ResMgr.getItemNameColor(tonumber(data.id))
     end
     local nameLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = require("data.data_item_item")[data.id].name,
             size = 20,

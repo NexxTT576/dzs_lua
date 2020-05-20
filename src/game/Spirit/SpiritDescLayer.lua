@@ -249,7 +249,7 @@ function SpiritDescLayer:ctor(closeListener)
         rootnode["spiritListView"]:addChild(self._scrollView)
 
         self.selectedSpiritNameLabel =
-            ui.newTTFLabelWithOutline(
+            newTTFLabelWithOutline(
             {
                 text = _data[1].name,
                 font = FONTS_NAME.font_haibao,

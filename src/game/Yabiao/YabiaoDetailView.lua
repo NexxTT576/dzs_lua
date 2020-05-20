@@ -158,7 +158,7 @@ function YabiaoDetailView:setUpView(param)
     }
 
     local yasongTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "押送:",
             size = 22,
@@ -169,7 +169,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local yasongValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = cardName[self.data.quality],
             size = 22,
@@ -180,7 +180,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local yinbiTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = data_item_item[self.data.getCoin[1].id].name,
             size = 22,
@@ -191,7 +191,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local yinbiValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self.data.getCoin[1].num,
             size = 22,
@@ -202,7 +202,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local shengwangTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = data_item_item[self.data.getCoin[2].id].name,
             size = 22,
@@ -213,7 +213,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local shengwangValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self.data.getCoin[2].num,
             size = 22,
@@ -224,7 +224,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local qiangduoTitle =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "被抢夺次数:",
             size = 22,
@@ -235,7 +235,7 @@ function YabiaoDetailView:setUpView(param)
         }
     )
     local qiangduoValue =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = self.data.beRobTimes,
             size = 22,

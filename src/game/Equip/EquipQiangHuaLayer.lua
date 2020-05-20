@@ -191,7 +191,7 @@ end
 
 function EquipQiangHuaLayer:qiangHuaAnim()
     local EFFECT_ZORDER = 100000
-    CCArmatureDataManager:sharedArmatureDataManager():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
+    ccs.ArmatureDataManager:getInstance():addArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
     local chuiziAnim = CCArmature:create("chuizi")
     chuiziAnim:setAnchorPoint(cc.p(0, 0.5))
 
@@ -227,7 +227,7 @@ function EquipQiangHuaLayer:qiangHuaAnim()
                     chuiziAnim:getAnimation():playWithIndex(0)
                 else
                     chuiziAnim:removeSelf()
-                    CCArmatureDataManager:sharedArmatureDataManager():removeArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
+                    ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ccs/effect/chuizi/chuizi.ExportJson")
                     self:setUpSilver(self.curSilver)
                 end
             end

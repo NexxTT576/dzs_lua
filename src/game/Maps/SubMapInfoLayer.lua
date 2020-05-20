@@ -101,7 +101,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     end
 
     local titleLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = levelData.name,
             font = FONTS_NAME.font_haibao,

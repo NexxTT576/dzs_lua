@@ -40,7 +40,7 @@ function NoteItem:create(param)
     dump(self._rootnode["item_bg"]:getContentSize().height)
 
     self.titleLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = param.itemData.title,
             font = FONTS_NAME.font_haibao,
@@ -55,7 +55,7 @@ function NoteItem:create(param)
     self._rootnode["item_title_bg"]:addChild(self.titleLabel)
 
     local text = ""
-     --"[活动时间]\n\n8月08日00:00-8月11日23:59\n\n[活动范围]\n\nxxx服:1-75区\n\n[活动内容]\n\n这里是活动的内容1这里是活动的内容2这里是活动的内容3这里是活动的内容4这里是活动的内容5这里是活动的内容6这里是活动的内容7这里是活动的内容8这里是活动的内容9这里是活动的内容10这里是活动的内容11这里是活动的内容12"
+    --"[活动时间]\n\n8月08日00:00-8月11日23:59\n\n[活动范围]\n\nxxx服:1-75区\n\n[活动内容]\n\n这里是活动的内容1这里是活动的内容2这里是活动的内容3这里是活动的内容4这里是活动的内容5这里是活动的内容6这里是活动的内容7这里是活动的内容8这里是活动的内容9这里是活动的内容10这里是活动的内容11这里是活动的内容12"
     -- local text_1 = "[活动时间]\n\n"
     -- local text_2 = "\n\n8月08日00:00-8月11日23:59\n\n"
     -- local text_3 = "\n\n[活动范围]"
@@ -67,7 +67,7 @@ function NoteItem:create(param)
         ui.newTTFLabel(
         {
             text = text,
-             --param.itemData.content,
+            --param.itemData.content,
             font = FONTS_NAME.font_fzcy,
             x = self._rootnode["item_bg"]:getContentSize().width * 0.12,
             y = self._rootnode["item_bg"]:getContentSize().height * 0.6,

@@ -19,7 +19,7 @@ function BigMapUpCell:ctor()
     self:addChild(self._iconBg)
 
     self._mapName =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,

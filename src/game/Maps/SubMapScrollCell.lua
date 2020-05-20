@@ -62,7 +62,7 @@ function SubMapScrollCell:create(param)
     self._sz = self._rootnode["itemBg"]:getContentSize()
 
     self.titleLabel =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "",
             font = FONTS_NAME.font_haibao,

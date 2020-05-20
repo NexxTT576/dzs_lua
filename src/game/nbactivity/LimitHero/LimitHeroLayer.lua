@@ -162,8 +162,8 @@ function LimitHeroLayer:init()
         end
     )
 
-    self._rootnode["left_arrow"]:setZOrder(1000)
-    self._rootnode["right_arrow"]:setZOrder(1000)
+    self._rootnode["left_arrow"]:setLocalZOrder(1000)
+    self._rootnode["right_arrow"]:setLocalZOrder(1000)
 
     ResMgr.setControlBtnEvent(
         self._rootnode["desc_btn"],

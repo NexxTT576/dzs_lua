@@ -95,7 +95,7 @@ function YueqianMsgbox:ctor(param)
 
     -- 数量
     local numLbl =
-        ui.newTTFLabelWithOutline(
+        newTTFLabelWithOutline(
         {
             text = "数量：" .. tostring(itemData.num),
             size = 22,

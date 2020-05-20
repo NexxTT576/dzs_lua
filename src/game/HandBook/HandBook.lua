@@ -45,12 +45,12 @@ function HandBook:init()
             for i = 1, 3 do
                 if i == tag then
                     self._rootnode["tab" .. i]:selected()
-                    self._rootnode["tag_node_" .. i]:setZOrder(10)
+                    self._rootnode["tag_node_" .. i]:setLocalZOrder(10)
                     self._rootnode["btns_" .. i]:setVisible(true)
                     self.mainNode[i]:setVisible(true)
                 else
                     self._rootnode["tab" .. i]:unselected()
-                    self._rootnode["tag_node_" .. i]:setZOrder(0)
+                    self._rootnode["tag_node_" .. i]:setLocalZOrder(0)
                     self._rootnode["btns_" .. i]:setVisible(false)
                     self.mainNode[i]:setVisible(false)
                 end

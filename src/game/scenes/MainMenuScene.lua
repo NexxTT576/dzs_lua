@@ -1071,7 +1071,7 @@ function MainMenuScene:initPlayerBoard(...)
 
     -- name
     -- local text =
-    --     ui.newTTFLabelWithOutline(
+    --     newTTFLabelWithOutline(
     --     {
     --         text = game.player.m_name,
     --         x = 5,

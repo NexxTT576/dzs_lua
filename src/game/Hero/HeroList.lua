@@ -181,7 +181,7 @@ function HeroList:init(data)
 
     -- self.baseNode = display.newNode()
 
-    numTag:setZOrder(20)
+    numTag:setLocalZOrder(20)
 
     self._rootnode["sellBtn"]:registerControlEventHandler(
         function(eventName, sender)
@@ -451,8 +451,8 @@ function HeroList:init(data)
                 self:SendReq()
             end
 
-            self._rootnode["left"]:setZOrder(10)
-            self._rootnode["right"]:setZOrder(9)
+            self._rootnode["left"]:setLocalZOrder(10)
+            self._rootnode["right"]:setLocalZOrder(9)
             sellBtn:setVisible(true)
             self.extendBtn:setVisible(true)
             self._rootnode["numTag"]:setVisible(true)
@@ -678,8 +678,8 @@ function HeroList:init(data)
 
             self:setCurNum(#HeroModel.totalTable)
         elseif TAB_TAG.SOUL == tag then
-            self._rootnode["left"]:setZOrder(9)
-            self._rootnode["right"]:setZOrder(100)
+            self._rootnode["left"]:setLocalZOrder(9)
+            self._rootnode["right"]:setLocalZOrder(100)
             self._rootnode["numTag"]:setVisible(false)
             sellBtn:setVisible(false)
             self.extendBtn:setVisible(false)

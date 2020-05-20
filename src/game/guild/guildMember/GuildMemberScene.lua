@@ -198,16 +198,16 @@ function GuildMemberScene:selectedTab(tag)
     for i = 1, 2 do
         if tag == i then
             self._rootnode["tab" .. tostring(i)]:selected()
-            self._rootnode["btn" .. tostring(i)]:setZOrder(10)
+            self._rootnode["btn" .. tostring(i)]:setLocalZOrder(10)
         else
             self._rootnode["tab" .. tostring(i)]:unselected()
-            self._rootnode["btn" .. tostring(i)]:setZOrder(0)
+            self._rootnode["btn" .. tostring(i)]:setLocalZOrder(0)
         end
     end
 end
 
 function GuildMemberScene:createTab()
-    self._rootnode["guild_apply_notice"]:setZOrder(99)
+    self._rootnode["guild_apply_notice"]:setLocalZOrder(99)
 
     local function onTabBtn(tag)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_yeqian))
