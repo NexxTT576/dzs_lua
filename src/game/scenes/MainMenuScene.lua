@@ -15,6 +15,7 @@ local MainMenuScene =
 
 function MainMenuScene:ctor(showNote)
     self.showNote = showNote
+    ResMgr.setTimeScale(1)
     ccs.ArmatureDataManager:getInstance()
     ccs.ArmatureDataManager:destroyInstance()
     self:enableNodeEvents()
@@ -1174,7 +1175,7 @@ function MainMenuScene:UpdateQuickAccess(...)
         end
     end
 
-    self._rootnode["quickAccessNode"]:removeAllChildrenWithCleanup(true)
+    self._rootnode["quickAccessNode"]:removeAllChildren(true)
     local menus = {}
     for k, v in pairs(game.player.m_quickAccessState) do
         local canShow = true

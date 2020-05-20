@@ -50,7 +50,7 @@ function ZhaojiangResultTen:createCard()
         local card = self._rootnode[key]
         card:setVisible(false)
         card:setScale(1.3)
-        card:setDisplayFrame(display.newSprite("#card_back.png"):getDisplayFrame())
+        card:setDisplayFrame(display.newSprite("#card_back.png"):getSpriteFrame())
 
         card:runAction(
             transition.sequence(
@@ -106,7 +106,7 @@ function ZhaojiangResultTen:refreshCardInfo()
 
         local icon = display.newSprite(heroPath)
         icon:setScale(2.5)
-        --        icon:setDisplayFrame(ResMgr.getMidImage(heroInfo.name, ResMgr.HERO):getDisplayFrame())
+        --        icon:setDisplayFrame(ResMgr.getMidImage(heroInfo.name, ResMgr.HERO):getSpriteFrame())
         --        icon:setScale(0.7)
         icon:setPosition(node:getContentSize().width / 2, node:getContentSize().height * 0.55 - 1)
         node:addChild(icon)

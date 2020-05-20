@@ -31,7 +31,10 @@ ResMgr.TIME_SCALE_BASE_FACTOR = (data_atk_number_time_time[1]["game_scale"] / 10
 ResMgr.battleTimeScale = 1
 
 function ResMgr.setTimeScale(scale)
-    cc.Director:getScheduler():setTimeScale(scale * ResMgr.TIME_SCALE_BASE_FACTOR)
+    --@RefType luaIde#cc.Scheduler
+    local schedule = cc.Director:getInstance():getScheduler()
+
+    schedule:setTimeScale(scale * ResMgr.TIME_SCALE_BASE_FACTOR)
 end
 
 ResMgr.spriteFrameCntTable = {}
@@ -50,7 +53,7 @@ function ResMgr.removeSpriteFramesWithFile(plistFilename, image)
     end
 
     if ResMgr.spriteFrameCntTable[plistFilename] ~= nil and ResMgr.spriteFrameCntTable[plistFilename] == 0 then
-        display.removeSpriteFramesWithFile(plistFilename, image)
+        display.removeSpriteFrames(plistFilename, image)
     end
 end
 
@@ -640,7 +643,7 @@ function ResMgr.refreshMoneyIcon(param)
     end
 
     if tempBg ~= nil then
-        itemBg:setDisplayFrame(tempBg:getDisplayFrame())
+        itemBg:setDisplayFrame(tempBg:getSpriteFrame())
     end
 end
 
@@ -852,7 +855,7 @@ function ResMgr.refreshIcon(param)
             tempItem = display.newSprite(path)
         end
 
-        item:setDisplayFrame(tempItem:getDisplayFrame())
+        item:setDisplayFrame(tempItem:getSpriteFrame())
     end
 
     local itemFrame = itemBg:getChildByTag(FRAME_TAG)
@@ -872,7 +875,7 @@ function ResMgr.refreshIcon(param)
     else
         local tempFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
         if tempFrame ~= nil then
-            itemFrame:setDisplayFrame(tempFrame:getDisplayFrame())
+            itemFrame:setDisplayFrame(tempFrame:getSpriteFrame())
         end
     end
 
@@ -976,8 +979,9 @@ function ResMgr.getHeroFrame(resId, cls)
     local cardData = ResMgr.getCardData(resId)
     local pngName = cardData["arr_body"][cls + 1]
     local pngPath = ResMgr.getLargeImage(pngName, ResMgr.HERO)
+    --@RefType luaIde#cc.Sprite
     local tempSprite = display.newSprite(pngPath)
-    return tempSprite:getDisplayFrame()
+    return tempSprite:getSpriteFrame()
 end
 
 function ResMgr.getLargeFrame(resType, resId, cls)
@@ -986,10 +990,10 @@ function ResMgr.getLargeFrame(resType, resId, cls)
         return ResMgr.getHeroFrame(resId, cls or 0)
     elseif (resType == ResMgr.EQUIP) then
         local bigIcon = "equip/large/" .. data_item_item[resId]["icon"] .. ".png"
-        return display.newSprite(bigIcon):getDisplayFrame()
+        return display.newSprite(bigIcon):getSpriteFrame()
     elseif (resType == ResMgr.ITEM) then
         local bigIcon = "equip/large/" .. data_item_item[resId]["icon"] .. ".png"
-        return display.newSprite(bigIcon):getDisplayFrame()
+        return display.newSprite(bigIcon):getSpriteFrame()
     end
 end
 

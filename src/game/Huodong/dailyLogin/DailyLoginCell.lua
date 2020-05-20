@@ -76,7 +76,7 @@ function DailyLoginCell:updateItem(itemData)
 
         -- 图标
         local rewardIcon = self._rootnode["reward_icon_" .. tostring(i)]
-        rewardIcon:removeAllChildrenWithCleanup(true)
+        rewardIcon:removeAllChildren(true)
         ResMgr.refreshIcon(
             {
                 id = v.id,

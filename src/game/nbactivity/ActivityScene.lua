@@ -162,7 +162,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     if showType == nbActivityShowType.KeZhan then
         self._showType = showType
 
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
         local sleepLayer =
             require("game.nbactivity.SleepLayer").new(
             {
@@ -174,7 +174,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
         self._contentNode:addChild(sleepLayer, 1)
     elseif showType == nbActivityShowType.xianshiDuiHuan then
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
         local sleepLayer =
             require("game.nbactivity.DuiHuan.DuiHuanMainView").new(
             {
@@ -189,7 +189,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
             show_tip_label(prompt)
         else
             self._showType = showType
-            self._contentNode:removeAllChildrenWithCleanup(true)
+            self._contentNode:removeAllChildren(true)
             local sleepLayer =
                 require("game.nbactivity.TanBao.TanbaoMainView").new(
                 {
@@ -201,7 +201,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
         end
     elseif showType == nbActivityShowType.migongWaBao then
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
         local sleepLayer =
             require("game.nbactivity.WaBao.WaBaoMainView").new(
             {
@@ -217,7 +217,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
             show_tip_label(prompt)
         else
             self._showType = showType
-            self._contentNode:removeAllChildrenWithCleanup(true)
+            self._contentNode:removeAllChildren(true)
 
             local shenmiLayer =
                 require("game.nbactivity.ShenmiShop.ShenmiLayer").new(
@@ -232,7 +232,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.CaiQuan then
         --猜拳
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local caiQuanLayer =
             require("game.nbactivity.CaiQuan.CaiQuanLayer").new(
@@ -246,7 +246,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.xianshiShop then
         --限时商店
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local caiQuanLayer =
             require("game.nbactivity.XianShiShop.XianShiMainView").new(
@@ -264,7 +264,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
             show_tip_label(prompt)
         else
             self._showType = showType
-            self._contentNode:removeAllChildrenWithCleanup(true)
+            self._contentNode:removeAllChildren(true)
 
             local caiQuanLayer =
                 require("game.nbactivity.LimitHero.LimitHeroLayer").new(
@@ -279,7 +279,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.MonthCard then
         -- 月卡
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local monthCardLayer =
             require("game.nbactivity.MonthCard.MonthCardLayer").new(
@@ -292,7 +292,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.VipFuli then
         -- vip福利
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local vipFuliLayer =
             require("game.nbactivity.VipFuli.VipFuliLayer").new(
@@ -305,7 +305,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.VipShouchong then
         -- 首充礼包
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local vipFuliLayer =
             require("game.nbactivity.ShouchongLibao.ShouchongLibaoLayer").new(
@@ -319,7 +319,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
         -- 累积登录
         self._showType = showType
         local function addLeijiLoginLayer()
-            self._contentNode:removeAllChildrenWithCleanup(true)
+            self._contentNode:removeAllChildren(true)
             local leijiLoginLayer =
                 require("game.nbactivity.LeijiLogin.LeijiLoginLayer").new(
                 {
@@ -352,7 +352,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.Yueqian then
         -- 月签
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local yueqianLayer =
             require("game.nbactivity.Yueqian.YueqianLayer").new(
@@ -365,7 +365,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
     elseif showType == nbActivityShowType.DengjiTouzi then
         -- 等级投资
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
 
         local touziLayer =
             require("game.nbactivity.DengjiTouzi.DengjiTouziLayer").new(
@@ -377,7 +377,7 @@ function ActivityScene:updateLayer(showType, cellIndex)
         self._contentNode:addChild(touziLayer, 1)
     elseif showType == nbActivityShowType.DialyActivity then
         self._showType = showType
-        self._contentNode:removeAllChildrenWithCleanup(true)
+        self._contentNode:removeAllChildren(true)
         local bng = display.newSprite("bg/duobao_bg.jpg")
         bng:setScale(display.height / bng:getContentSize().height)
         bng:setAnchorPoint(cc.p(0, 0))

@@ -190,9 +190,9 @@ function SkillRefineLayer:refresh()
     local baseInfo = data_item_item[self._info.resId]
     self._rootnode["cardName"]:setString(baseInfo.name)
     self._rootnode["itemNameLabel"]:setString(baseInfo.name)
-    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. baseInfo.quality .. ".png"):getDisplayFrame())
+    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. baseInfo.quality .. ".png"):getSpriteFrame())
     local path = ResMgr.getLargeImage(baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
 
     --  星级
     for i = 1, baseInfo.quality do

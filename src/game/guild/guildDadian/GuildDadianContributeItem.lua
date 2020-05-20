@@ -111,9 +111,9 @@ function GuildDadianContributeItem:refreshItem(itemData)
     self._id = itemData.id
 
     local iconName = "#guild_dd_coin_icon_" .. tostring(self._id) .. ".png"
-    self._rootnode["coin_icon"]:setDisplayFrame(display.newSprite(iconName):getDisplayFrame())
+    self._rootnode["coin_icon"]:setDisplayFrame(display.newSprite(iconName):getSpriteFrame())
     local titleName = "#guild_dd_title_icon_" .. tostring(self._id) .. ".png"
-    self._rootnode["title_icon"]:setDisplayFrame(display.newSprite(titleName):getDisplayFrame())
+    self._rootnode["title_icon"]:setDisplayFrame(display.newSprite(titleName):getSpriteFrame())
 
     -- 帮派资金
     local addLbl = self:createTTF(tostring(itemData.addmoney), yColor, self._rootnode["msg_lbl_2_2"])

@@ -104,7 +104,7 @@ function SpiritScene2:ctor(param)
     local function onTabBtn(tag)
         if TAB_TAG.INFO == tag then
             self._rootnode["infoView"]:setVisible(true)
-            self._rootnode["listView"]:removeAllChildrenWithCleanup(true)
+            self._rootnode["listView"]:removeAllChildren(true)
             if self._refresh then
                 --                self:refresh()
                 self._ctrl.refresh()

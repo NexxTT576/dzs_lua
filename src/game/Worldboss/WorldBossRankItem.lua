@@ -86,8 +86,8 @@ function WorldBossRankItem:updateItem(itemData)
     playerBg:setAnchorPoint(0, 0)
     self._rootnode["name_bg"]:addChild(playerBg)
 
-    self._rootnode["lv_bg"]:setDisplayFrame(display.newSprite(lvBgName):getDisplayFrame())
-    self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markIcon):getDisplayFrame())
+    self._rootnode["lv_bg"]:setDisplayFrame(display.newSprite(lvBgName):getSpriteFrame())
+    self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markIcon):getSpriteFrame())
 
     self._rootnode["lv_lbl"]:setString("LV." .. tostring(itemData.lv))
     self._rootnode["name_lbl"]:setString(itemData.name)

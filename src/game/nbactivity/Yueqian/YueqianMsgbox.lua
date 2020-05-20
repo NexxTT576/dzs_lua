@@ -46,7 +46,7 @@ function YueqianMsgbox:ctor(param)
 
     -- 图标
     local rewardIcon = rootnode["itemIcon"]
-    rewardIcon:removeAllChildrenWithCleanup(true)
+    rewardIcon:removeAllChildren(true)
     ResMgr.refreshIcon(
         {
             id = itemData.id,

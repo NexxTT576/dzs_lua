@@ -25,7 +25,7 @@ function MonthCardRewardItem:refreshItem(param)
 
     -- 图标
     local rewardIcon = self._rootnode["reward_icon"]
-    rewardIcon:removeAllChildrenWithCleanup(true)
+    rewardIcon:removeAllChildren(true)
     ResMgr.refreshIcon(
         {
             id = itemData.id,

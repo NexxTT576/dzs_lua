@@ -111,7 +111,7 @@ function IconObj:refresh(param)
             local path = "hero/icon/" .. card["arr_icon"][cls + 1] .. ".png"
             local star = card["star"][cls + 1]
             self._rootnode["bgSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_bg_%d.png", star)))
-            self._rootnode["iconSprite"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+            self._rootnode["iconSprite"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
             self._rootnode["boardSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("icon_frame_board_%d.png", star)))
             local name = card.name
             if id == 1 or id == 2 then

@@ -227,7 +227,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
     end
 
     local starNum = self.updateQiangHuaData["1"]["star"]
-    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getDisplayFrame())
+    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
     --    dump(starNum)
     for i = 1, 5 do
         self._rootnode["star" .. i]:setVisible(i <= starNum)
@@ -247,7 +247,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         if i > choseNum then
             --设置为+号
             local cellSprite = display.newSprite("#zhenrong_add.png")
-            self._rootnode["iconSprite" .. i]:setDisplayFrame(cellSprite:getDisplayFrame())
+            self._rootnode["iconSprite" .. i]:setDisplayFrame(cellSprite:getSpriteFrame())
             self._rootnode["iconSprite" .. i]:removeAllChildren()
         else
             --设置为
@@ -416,7 +416,7 @@ function HeroQiangHuaLayer:updateXiaHun(param)
         self._rootnode["star" .. i]:setVisible(i <= starNum)
     end
 
-    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getDisplayFrame())
+    self._rootnode["qh_card_bg"]:setDisplayFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
     self._rootnode["image"]:setDisplayFrame(ResMgr.getHeroFrame(resId, cls))
 end
 

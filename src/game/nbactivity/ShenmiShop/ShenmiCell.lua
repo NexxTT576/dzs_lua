@@ -89,7 +89,7 @@ function ShenmiCell:updateItem(itemData)
 
     -- 图标
     local rewardIcon = self._rootnode["itemIcon"]
-    rewardIcon:removeAllChildrenWithCleanup(true)
+    rewardIcon:removeAllChildren(true)
     ResMgr.refreshIcon(
         {
             id = self._itemData.id,

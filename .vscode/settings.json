@@ -13,9 +13,9 @@
         "**/proj.android": true
     },
     "editor.snippetSuggestions": "bottom",
-    // "[lua]": {
-    //     "editor.formatOnSave": true
-    // },
+    "[lua]": {
+        "editor.formatOnSave": true
+    },
     "luaide.scriptRoots": [
         "${workspaceRoot}/src"
     ],

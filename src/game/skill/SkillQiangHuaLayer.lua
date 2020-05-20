@@ -216,7 +216,7 @@ end
 
 function SkillQiangHuaLayer:clearIcon()
     for i = 1, 5 do
-        self._rootnode["iconSprite" .. tostring(i)]:removeAllChildrenWithCleanup(true)
+        self._rootnode["iconSprite" .. tostring(i)]:removeAllChildren(true)
     end
 end
 
@@ -349,13 +349,13 @@ function SkillQiangHuaLayer:initBaseInfo()
     local pngName = baseData["bicon"]
     local pathName = ResMgr.getLargeImage(pngName, ResMgr.EQUIP)
 
-    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self._info.star .. ".png"):getDisplayFrame())
+    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self._info.star .. ".png"):getSpriteFrame())
     --名字
     self._rootnode["leftName"]:setString(baseData["name"])
 
     --中间的图像
     self._rootnode["image"]:setLocalZOrder(10)
-    self._rootnode["image"]:setDisplayFrame(display.newSprite(pathName):getDisplayFrame())
+    self._rootnode["image"]:setDisplayFrame(display.newSprite(pathName):getSpriteFrame())
 
     local heroName =
         ui.newTTFLabelWithShadow(

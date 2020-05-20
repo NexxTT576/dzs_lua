@@ -130,7 +130,7 @@ function SpiritItem:refresh(param)
     local _idx = param.idx
 
     self:refreshLabel(_itemData)
-    self._rootnode["iconSprite"]:removeAllChildrenWithCleanup(true)
+    self._rootnode["iconSprite"]:removeAllChildren(true)
     self._rootnode["iconSprite"]:addChild(
         require("game.Spirit.SpiritIcon").new(
             {

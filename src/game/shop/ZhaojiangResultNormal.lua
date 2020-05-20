@@ -30,7 +30,7 @@ function ZhaojiangResultNormal:createStar()
     for i = 1, self._star do
         local star = self._rootnode[key .. i]
         star:setScale(3.5)
-        star:setDisplayFrame(display.newSprite("#star.png"):getDisplayFrame())
+        star:setDisplayFrame(display.newSprite("#star.png"):getSpriteFrame())
         star:setVisible(false)
     end
 

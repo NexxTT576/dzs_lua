@@ -109,7 +109,7 @@ function CaiQuanLayer:onMainView(data)
             local cellData = self.caiQuanModel.itemList[i]
             -- print("cellData")
             dump(cellData)
-            self._rootnode["item_icon_" .. i]:removeAllChildrenWithCleanup(true)
+            self._rootnode["item_icon_" .. i]:removeAllChildren(true)
             ResMgr.refreshItemWithTagNumName(
                 {
                     itemType = cellData.t,

@@ -64,8 +64,8 @@ function WorldBossExtraRewardItem:refreshItem(cellData)
         topBgName = "#sh_name_bg_3.png"
     end
 
-    self._rootnode["title_bg_icon"]:setDisplayFrame(display.newSprite(titleBgName):getDisplayFrame())
-    self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markName):getDisplayFrame())
+    self._rootnode["title_bg_icon"]:setDisplayFrame(display.newSprite(titleBgName):getSpriteFrame())
+    self._rootnode["mark_icon"]:setDisplayFrame(display.newSprite(markName):getSpriteFrame())
 
     self._rootnode["bg_node"]:removeAllChildren()
     local bg = display.newScale9Sprite(bgName, 0, 0, self._rootnode["bg_node"]:getContentSize())

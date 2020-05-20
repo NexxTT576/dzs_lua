@@ -64,7 +64,7 @@ function YueqianItem:refreshItem(itemData)
         local vipIcon = self._rootnode["vip_icon_" .. i]
         if v.vip ~= nil and v.vip > 0 then
             vipIcon:setVisible(true)
-            vipIcon:setDisplayFrame(display.newSprite("#yueqian_vip_" .. tostring(v.vip) .. ".png"):getDisplayFrame())
+            vipIcon:setDisplayFrame(display.newSprite("#yueqian_vip_" .. tostring(v.vip) .. ".png"):getSpriteFrame())
         else
             vipIcon:setVisible(false)
         end
@@ -81,10 +81,10 @@ function YueqianItem:refreshItem(itemData)
         local effectNode = self._rootnode["effect_node_" .. i]
         if hasGet == true then
             self._rootnode["hasGet_node_" .. i]:setVisible(true)
-            effectNode:removeAllChildrenWithCleanup(true)
+            effectNode:removeAllChildren(true)
         else
             self._rootnode["hasGet_node_" .. i]:setVisible(false)
-            effectNode:removeAllChildrenWithCleanup(true)
+            effectNode:removeAllChildren(true)
             if v.day <= self._curDay then
                 local effTextWin =
                     ResMgr.createArma(
@@ -100,7 +100,7 @@ function YueqianItem:refreshItem(itemData)
 
         -- 图标
         local rewardIcon = self._rootnode["reward_icon_" .. i]
-        rewardIcon:removeAllChildrenWithCleanup(true)
+        rewardIcon:removeAllChildren(true)
         ResMgr.refreshIcon(
             {
                 id = v.id,

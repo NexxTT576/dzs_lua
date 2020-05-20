@@ -1290,9 +1290,10 @@ function BattleLayer:onExit()
 
     cc.Director:getInstance():getTextureCache():removeUnusedTextures()
     ResMgr.ReleaseUIArmature("kapaichuxian")
-    CCArmatureDataManager:purge()
+    ccs.ArmatureDataManager:getInstance()
+    ccs.ArmatureDataManager:destoryInstance()
 
-    self:removeAllChildrenWithCleanup(true)
+    self:removeAllChildren(true)
 
     collectgarbage("collect")
 end
@@ -3205,7 +3206,7 @@ function BattleLayer:initTimeScale(...)
                     ResMgr.battleTimeScale = 1
                 end
                 local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
-                self.speedBtn:setDisplayFrame(spdFrame:getDisplayFrame())
+                self.speedBtn:setDisplayFrame(spdFrame:getSpriteFrame())
                 ResMgr.setTimeScale(ResMgr.battleTimeScale)
 
                 return true
@@ -3213,7 +3214,7 @@ function BattleLayer:initTimeScale(...)
         end
     )
     local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
-    self.speedBtn:setDisplayFrame(spdFrame:getDisplayFrame())
+    self.speedBtn:setDisplayFrame(spdFrame:getSpriteFrame())
     ResMgr.setTimeScale(self.timeScale)
 
     -- self.speedBtn:setPosition(200,200)

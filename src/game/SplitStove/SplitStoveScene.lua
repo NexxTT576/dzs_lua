@@ -662,9 +662,9 @@ function SplitStoveScene:clearIcon()
 
     for i = 0, 4 do
         self._rootnode["icon" .. tostring(i) .. "Sprite"]:setVisible(true)
-        self._rootnode["iconPos_" .. tostring(i)]:removeAllChildrenWithCleanup(true)
+        self._rootnode["iconPos_" .. tostring(i)]:removeAllChildren(true)
     end
-    self._rootnode["splitItemsBg"]:removeAllChildrenWithCleanup(true)
+    self._rootnode["splitItemsBg"]:removeAllChildren(true)
 end
 
 function SplitStoveScene:updateResult(data)

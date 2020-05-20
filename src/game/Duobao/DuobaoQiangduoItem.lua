@@ -41,7 +41,7 @@ function DuobaoQiangduoItem:updateItem(itemData)
     local easyType = self._itemData.easyType
 
     display.addSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
-    self._rootnode["probability_icon"]:setDisplayFrame(display.newSprite("#db_probability_" .. easyType .. ".png"):getDisplayFrame())
+    self._rootnode["probability_icon"]:setDisplayFrame(display.newSprite("#db_probability_" .. easyType .. ".png"):getSpriteFrame())
 
     local cardData = self._itemData.card
     if #cardData <= 0 then

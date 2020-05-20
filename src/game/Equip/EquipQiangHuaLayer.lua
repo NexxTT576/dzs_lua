@@ -77,7 +77,7 @@ function EquipQiangHuaLayer:ctor(param)
 
     self.boardBg = self._rootnode["board_bg"]
     self._rootnode["item_image"]:setDisplayFrame(ResMgr.getLargeFrame(ResMgr.EQUIP, itemId, 0))
-    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self.star .. ".png"):getDisplayFrame())
+    self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self.star .. ".png"):getSpriteFrame())
     for i = 1, 5 do
         if i > self.star then
             self._rootnode["star" .. i]:setVisible(false)

@@ -97,7 +97,7 @@ function BaseEquipInfoLayer:ctor(param)
 
     --  大图标
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
 
     self._rootnode["changeBtn"]:setVisible(false)
     self._rootnode["takeOffBtn"]:setVisible(false)
@@ -117,7 +117,7 @@ function BaseEquipInfoLayer:ctor(param)
     )
 
     local function refresh()
-        self._rootnode["tag_card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _baseInfo.quality .. ".png"):getDisplayFrame())
+        self._rootnode["tag_card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _baseInfo.quality .. ".png"):getSpriteFrame())
 
         --  基本属性
         local arr_nature = _baseInfo.arr_nature

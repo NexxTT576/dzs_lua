@@ -226,10 +226,10 @@ function ActivityItemView:setUpView()
 
     getBtn:setVisible(self._data.state ~= 3)
     if self._data.state == 1 then
-        getBtn:setDisplayFrame(display.newSprite(btnGetRes.disabled):getDisplayFrame())
+        getBtn:setDisplayFrame(display.newSprite(btnGetRes.disabled):getSpriteFrame())
         getBtn:setTouchEnabled(false)
     elseif self._data.state == 2 then
-        getBtn:setDisplayFrame(display.newSprite(btnGetRes.normal):getDisplayFrame())
+        getBtn:setDisplayFrame(display.newSprite(btnGetRes.normal):getSpriteFrame())
         getBtn:setTouchEnabled(true)
     end
 

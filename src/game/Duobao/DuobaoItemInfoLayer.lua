@@ -166,7 +166,7 @@ function DuobaoItemInfoLayer:ctor(param)
 
     --  大图标
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
 
     local function refresh()
         self._rootnode["curLvLabel"]:setString(_level)

@@ -91,7 +91,7 @@ function NoteItem:refresh(param)
     -- local spriteName = "ui/ui_huodong/" .. param.itemData.icon .. ".png"
 
     -- local sprite = display.newSprite(spriteName)
-    -- self._rootnode["item_bg"]:setDisplayFrame(sprite:getDisplayFrame())
+    -- self._rootnode["item_bg"]:setDisplayFrame(sprite:getSpriteFrame())
     end
 end
 

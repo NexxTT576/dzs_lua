@@ -288,7 +288,7 @@ function BaseHeroInfoLayer:ctor(param, infoType)
         --      图标
         local heroImg = _baseInfo.arr_body[1]
         local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-        self._rootnode["heroImage"]:setDisplayFrame(display.newSprite(heroPath):getDisplayFrame())
+        self._rootnode["heroImage"]:setDisplayFrame(display.newSprite(heroPath):getSpriteFrame())
 
         local height = 0
         --

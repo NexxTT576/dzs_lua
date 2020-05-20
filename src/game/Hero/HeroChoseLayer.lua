@@ -36,7 +36,7 @@ function HeroChoseLayer:ctor(param)
     topNode:setPosition(self.topNode["itemBg"]:getContentSize().width * 0.5, display.height)
 
     local titleSp = display.newSprite("#hero_chose_title.png")
-    self.topNode["title"]:setDisplayFrame(titleSp:getDisplayFrame())
+    self.topNode["title"]:setDisplayFrame(titleSp:getSpriteFrame())
 
     local topBtn = self.topNode["backBtn"]
     topBtn:registerControlEventHandler(

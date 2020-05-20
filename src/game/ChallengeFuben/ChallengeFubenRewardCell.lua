@@ -20,7 +20,7 @@ end
 -- 更新奖励图标、名称、数量
 function ChallengeFubenRewardCell:updateItem(itemData)
     -- dump(itemData, "奖励数据", 8)
-    self._rootnode["title_icon"]:setDisplayFrame(display.newSprite("#cfb_reward_title_" .. itemData.iconName .. ".png"):getDisplayFrame())
+    self._rootnode["title_icon"]:setDisplayFrame(display.newSprite("#cfb_reward_title_" .. itemData.iconName .. ".png"):getSpriteFrame())
 
     for i, v in ipairs(itemData.cellDatas) do
         local reward = self._rootnode["reward_" .. tostring(i)]
@@ -28,7 +28,7 @@ function ChallengeFubenRewardCell:updateItem(itemData)
 
         -- 图标
         local rewardIcon = self._rootnode["reward_icon_" .. tostring(i)]
-        rewardIcon:removeAllChildrenWithCleanup(true)
+        rewardIcon:removeAllChildren(true)
         ResMgr.refreshIcon(
             {
                 id = v.id,

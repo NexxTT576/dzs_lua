@@ -272,7 +272,7 @@ function EnemyFormScene:refreshHero(index)
         --图像
         local heroImg = ResMgr.getCardData(hero.resId)["arr_body"][hero.cls + 1]
         local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
-        self._rootnode["heroImg"]:setDisplayFrame(display.newSprite(heroPath):getDisplayFrame())
+        self._rootnode["heroImg"]:setDisplayFrame(display.newSprite(heroPath):getSpriteFrame())
         --等级
         self._rootnode["currentLevelLabel"]:setString(tostring(hero["level"]))
         self._rootnode["maxLevelLabel"]:setString(tostring(hero["levelLimit"]))

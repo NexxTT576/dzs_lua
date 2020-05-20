@@ -65,7 +65,7 @@ function FormEquipQHLayer:ctor(param)
 
     --  大图标
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["bigImageSpirit"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+    self._rootnode["bigImageSpirit"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
 
     local nameLabel =
         ui.newTTFLabelWithShadow(
@@ -83,7 +83,7 @@ function FormEquipQHLayer:ctor(param)
     local function refresh(tmpLv)
         local _level = tmpLv or _info.level
 
-        self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getDisplayFrame())
+        self._rootnode["card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getSpriteFrame())
 
         self._rootnode["bigLvLabel"]:setString(tostring(_level))
         self._rootnode["maxLvLabel"]:setString(string.format("/%d", game.player:getLevel() * 2))

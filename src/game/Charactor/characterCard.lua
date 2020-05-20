@@ -368,7 +368,7 @@ function characterCard:onExit()
     ResMgr.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.removeSpriteFramesWithFile("ui/ui_jobIcon.plist", "ui/ui_jobIcon.png")
 
-    self:removeAllChildrenWithCleanup(true)
+    self:removeAllChildren(true)
 
     -- collectgarbage("collect")
 end

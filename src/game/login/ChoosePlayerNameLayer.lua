@@ -20,7 +20,7 @@ local ChoosePlayerNameLayer =
     class(
     "ChoosePlayerNameLayer",
     function(...)
-        display.addSpriteFramesWithFile("ui/ui_choose_player.plist", "ui/ui_choose_player.png")
+        display.loadSpriteFrames("ui/ui_choose_player.plist", "ui/ui_choose_player.png")
         return require("utility.ShadeLayer").new()
     end
 )

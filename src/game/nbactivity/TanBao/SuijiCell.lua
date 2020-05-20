@@ -20,7 +20,7 @@ function SuijiCell:refreshItem(param)
 
     -- 图标
     local rewardIcon = self._rootnode["reward_icon"]
-    rewardIcon:removeAllChildrenWithCleanup(true)
+    rewardIcon:removeAllChildren(true)
 
     -- 属性图标
     local canhunIcon = self._rootnode["reward_canhun"]
@@ -30,8 +30,8 @@ function SuijiCell:refreshItem(param)
 
     --真气动画
     if itemData.type == 6 then
-        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getDisplayFrame())
-        self._rootnode["reward_icon"]:removeAllChildrenWithCleanup(true)
+        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
+        self._rootnode["reward_icon"]:removeAllChildren(true)
         self._rootnode["reward_icon"]:addChild(
             require("game.Spirit.SpiritIcon").new(
                 {

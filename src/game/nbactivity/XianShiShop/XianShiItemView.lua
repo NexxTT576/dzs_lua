@@ -66,7 +66,7 @@ function XianShiItemView:refreshItem(param)
         id = param.itemData.itemid
     }
     local rewardIcon = self._rootnode["reward_icon"]
-    rewardIcon:removeAllChildrenWithCleanup(true)
+    rewardIcon:removeAllChildren(true)
     if itemData.type ~= 6 then
         ResMgr.refreshIcon(
             {
@@ -114,8 +114,8 @@ function XianShiItemView:refreshItem(param)
         self._rootnode[nameKey]:removeAllChildren()
         self._rootnode[nameKey]:addChild(nameLbl)
     else
-        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getDisplayFrame())
-        self._rootnode["reward_icon"]:removeAllChildrenWithCleanup(true)
+        self._rootnode["reward_icon"]:setDisplayFrame(display.newSprite("ui/ui_empty.png"):getSpriteFrame())
+        self._rootnode["reward_icon"]:removeAllChildren(true)
         self._rootnode["reward_icon"]:addChild(
             require("game.Spirit.SpiritIcon").new(
                 {

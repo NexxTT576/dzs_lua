@@ -72,8 +72,8 @@ function EquipXiLianScene:ctor(param)
 
     self._rootnode["lvLabel"]:setString("LV." .. tostring(_info.level))
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["imageSprite"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
-    self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getDisplayFrame())
+    self._rootnode["imageSprite"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
+    self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getSpriteFrame())
 
     for i = 1, _info.star do
         self._rootnode[string.format("star%d", i)]:setVisible(true)

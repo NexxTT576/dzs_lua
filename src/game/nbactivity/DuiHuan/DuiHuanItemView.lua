@@ -156,13 +156,13 @@ function DuiHuanItemView:refresh(param)
     )
 
     if data.exchNum == 0 then
-        duihuanBtn:setDisplayFrame(display.newSprite("#duihuan_p.png"):getDisplayFrame())
-        shuaxinBtn:setDisplayFrame(display.newSprite("#shuaxin_p.png"):getDisplayFrame())
+        duihuanBtn:setDisplayFrame(display.newSprite("#duihuan_p.png"):getSpriteFrame())
+        shuaxinBtn:setDisplayFrame(display.newSprite("#shuaxin_p.png"):getSpriteFrame())
         duihuanBtn:setTouchEnabled(false)
         shuaxinBtn:setTouchEnabled(false)
     else
-        duihuanBtn:setDisplayFrame(display.newSprite("#duihuan_n.png"):getDisplayFrame())
-        shuaxinBtn:setDisplayFrame(display.newSprite("#shuaxin_n.png"):getDisplayFrame())
+        duihuanBtn:setDisplayFrame(display.newSprite("#duihuan_n.png"):getSpriteFrame())
+        shuaxinBtn:setDisplayFrame(display.newSprite("#shuaxin_n.png"):getSpriteFrame())
         duihuanBtn:setTouchEnabled(true)
         shuaxinBtn:setTouchEnabled(true)
     end

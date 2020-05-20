@@ -126,7 +126,7 @@ function EquipXiLianLayer:ctor(param)
 
     local itemImage = self._rootnode["image"]
     itemImage:setDisplayFrame(ResMgr.getLargeFrame(ResMgr.ITEM, self.serveID))
-    self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self.star .. ".png"):getDisplayFrame())
+    self._rootnode["card_left"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. self.star .. ".png"):getSpriteFrame())
 
     for i = 1, 5 do
         if i > self.star then

@@ -56,7 +56,7 @@ function SpiritShowItem:refresh(param)
     local _itemData = param.itemData
 
     for i = 1, 5 do
-        self._rootnode[string.format("headIcon_%d", i)]:removeAllChildrenWithCleanup(true)
+        self._rootnode[string.format("headIcon_%d", i)]:removeAllChildren(true)
         if _itemData[i] then
             local name = string.format("headIcon_%d", i)
             local icon =

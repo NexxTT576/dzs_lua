@@ -58,7 +58,7 @@ function PosHero:ctor(param)
         local path = ResMgr.getMidImage(hero["arr_image"][randomHero.cls + 1], ResMgr.HERO)
         local sprite = display.newSprite(path)
         if sprite then
-            self._rootnode["imageSprite"]:setDisplayFrame(sprite:getDisplayFrame())
+            self._rootnode["imageSprite"]:setDisplayFrame(sprite:getSpriteFrame())
         else
             CCMesssageBox("缺少：" .. hero["arr_image"][1], "error")
         end
@@ -125,7 +125,7 @@ function PosHero:showSelfHero(info)
     dump(info)
     local path = ResMgr.getMidImage(hero["arr_image"][info.cls + 1], ResMgr.HERO)
     local sprite = display.newSprite(path)
-    self._rootnode["imageSprite"]:setDisplayFrame(sprite:getDisplayFrame())
+    self._rootnode["imageSprite"]:setDisplayFrame(sprite:getSpriteFrame())
 end
 
 function PosHero:showTmpSelf(info)

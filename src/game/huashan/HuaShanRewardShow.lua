@@ -46,7 +46,7 @@ function Item:updateItem(itemData)
         reward:setVisible(true)
 
         local rewardIcon = self._rootnode["reward_icon_" .. tostring(i)]
-        rewardIcon:removeAllChildrenWithCleanup(true)
+        rewardIcon:removeAllChildren(true)
 
         local num = itemData.num[i]
         if v == 2 then

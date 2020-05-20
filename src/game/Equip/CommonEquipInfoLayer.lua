@@ -94,7 +94,7 @@ function CommonEquipInfoLayer:ctor(param, infoType)
 
     --  大图标
     local path = ResMgr.getLargeImage(_baseInfo.bicon, ResMgr.EQUIP)
-    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getDisplayFrame())
+    self._rootnode["skillImage"]:setDisplayFrame(display.newSprite(path):getSpriteFrame())
 
     --是否是从阵容进来的？如果不是阵容进来的，则隐藏“更换”和“卸下”按钮
     if infoType == 2 then
@@ -160,7 +160,7 @@ function CommonEquipInfoLayer:ctor(param, infoType)
     end
 
     local function refresh()
-        self._rootnode["tag_card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getDisplayFrame())
+        self._rootnode["tag_card_bg"]:setDisplayFrame(display.newSprite("#item_card_bg_" .. _info.star .. ".png"):getSpriteFrame())
         --  基本属性
         local index = 1
 

@@ -100,7 +100,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
 
     local bossIconPath = "hero/icon/" .. bossIcon .. ".png"
     local bossSprite = display.newSprite(bossIconPath)
-    self._rootnode["boss_icon"]:setDisplayFrame(bossSprite:getDisplayFrame())
+    self._rootnode["boss_icon"]:setDisplayFrame(bossSprite:getSpriteFrame())
 
     for i = 1, 15 do
         if i > #itemIcons then

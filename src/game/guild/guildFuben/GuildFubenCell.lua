@@ -119,11 +119,11 @@ function GuildFubenCell:setBoxState(state)
     local rewardBox = self._rootnode["reward_box"]
 
     if state == FUBEN_REWARD_STATE.notOpen then
-        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_1.png"):getDisplayFrame())
+        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_1.png"):getSpriteFrame())
     elseif state == FUBEN_REWARD_STATE.canGet then
-        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_2.png"):getDisplayFrame())
+        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_2.png"):getSpriteFrame())
     elseif state == FUBEN_REWARD_STATE.hasGet then
-        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_3.png"):getDisplayFrame())
+        rewardBox:setDisplayFrame(display.newSprite("#guild_fuben_box_3.png"):getSpriteFrame())
     end
 end
 

@@ -167,7 +167,7 @@ function HeroChoseCell:refresh(idx)
 
     -- -- local cellSprite = display.newSprite(cellIconPath)
 
-    -- -- self.headIcon:setDisplayFrame(cellSprite:getDisplayFrame())
+    -- -- self.headIcon:setDisplayFrame(cellSprite:getSpriteFrame())
     ResMgr.refreshIcon({itemBg = self.headIcon, id = resId, resType = ResMgr.HERO, cls = cls})
 
     --是什么职业
