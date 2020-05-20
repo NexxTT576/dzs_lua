@@ -422,7 +422,8 @@ end
 
 function ShopWindow:resetBtn(btn)
     btn:setEnabled(false)
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             btn:setEnabled(true)
         end,

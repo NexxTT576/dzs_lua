@@ -392,7 +392,8 @@ function SpiritScene2:initListView2()
 end
 
 function SpiritScene2:refreshArrow()
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             local posY = self._spiritListView:getContentOffset().y
             local maxOffsetY = self._spiritListView:maxContainerOffset().y

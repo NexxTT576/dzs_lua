@@ -73,7 +73,7 @@ function HuaShanSettingScene:ctor(param)
 
     local function loadForm()
         self._formHero = {}
-        local str = CCUserDefault:sharedUserDefault():getStringForKey(HUASHAN_FORM_INFO, "")
+        local str = cc.UserDefault:getInstance():getStringForKey(HUASHAN_FORM_INFO, "")
         for id, pos in string.gmatch(str, "%[(%d+),(%d+)%]") do
             local k, hero = getHeroById(checknumber(id))
             if hero then
@@ -186,8 +186,8 @@ function HuaShanSettingScene:ctor(param)
 
     local function fight()
         local str = getfmtstr()
-        CCUserDefault:sharedUserDefault():setStringForKey(HUASHAN_FORM_INFO, str)
-        CCUserDefault:sharedUserDefault():flush()
+        cc.UserDefault:getInstance():setStringForKey(HUASHAN_FORM_INFO, str)
+        cc.UserDefault:getInstance():flush()
 
         RequestHelper.huashan.fight(
             {

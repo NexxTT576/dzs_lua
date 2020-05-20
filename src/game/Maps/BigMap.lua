@@ -302,9 +302,9 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                     self.bg:addChild(xunhuanEffect, maxZorder - i + 1)
                 end
             elseif (star == 0 and submapID == self._curLevel["subMap"]) then
-                local hasPlayed = CCUserDefault:sharedUserDefault():getBoolForKey("big" .. submapID, false)
+                local hasPlayed = cc.UserDefault:getInstance():getBoolForKey("big" .. submapID, false)
                 if (hasPlayed == false) then
-                    CCUserDefault:sharedUserDefault():setBoolForKey("big" .. submapID, true)
+                    cc.UserDefault:getInstance():setBoolForKey("big" .. submapID, true)
                     local armaName = data_field_field[subMapData.id].cloud_die_anim
                     if (ResMgr.isHighEndDevice() == false) then
                         armaName = "yun1_sankai"

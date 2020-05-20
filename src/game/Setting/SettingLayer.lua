@@ -56,7 +56,7 @@ function SettingLayer:ctor()
     )
 
     -- 判断背景音乐
-    local enable = CCUserDefault:sharedUserDefault():getBoolForKey(GAME_SETTING.ENABLE_MUSIC)
+    local enable = cc.UserDefault:getInstance():getBoolForKey(GAME_SETTING.ENABLE_MUSIC)
     if enable then
         rootnode["music_bg_close_btn"]:setVisible(false)
         rootnode["music_bg_open_btn"]:setVisible(true)
@@ -89,7 +89,7 @@ function SettingLayer:ctor()
     )
 
     -- 判断游戏音效
-    local sfxEnable = CCUserDefault:sharedUserDefault():getBoolForKey(GAME_SETTING.ENABLE_SFX)
+    local sfxEnable = cc.UserDefault:getInstance():getBoolForKey(GAME_SETTING.ENABLE_SFX)
     if sfxEnable then
         rootnode["music_sfx_close_btn"]:setVisible(false)
         rootnode["music_sfx_open_btn"]:setVisible(true)

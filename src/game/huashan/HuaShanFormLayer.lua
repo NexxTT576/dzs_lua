@@ -67,7 +67,8 @@ function HuaShanFormLayer:ctor(param)
 
             if _floor == 0 or _floor == -1 or (_index == _floor + 1) then
                 self._rootnode["enterBtn"]:setEnabled(false)
-                self:performWithDelay(
+                performWithDelay(
+                    self,
                     function()
                         self._rootnode["enterBtn"]:setEnabled(true)
                         push_scene(

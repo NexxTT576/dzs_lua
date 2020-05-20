@@ -100,7 +100,8 @@ end
 
 function ChoosePlayerNameLayer:setBtnDisabled()
     self.m_hascreated = true
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             self.m_hascreated = false
         end,
@@ -256,11 +257,11 @@ function ChoosePlayerNameLayer:chooseEnd()
         local playname = self._editBox:getText()
         local isCnChar = isCnChar(playname)
         local length = string.utf8len(playname)
-        local GameDevice = require("sdk.GameDevice")
-        if (GameDevice.isContainsEmoji(playname) == true) then
-            show_tip_label("含有非法字符，请重新输入")
-            return
-        end
+        -- local GameDevice = require("sdk.GameDevice")
+        -- if (GameDevice.isContainsEmoji(playname) == true) then
+        --     show_tip_label("含有非法字符，请重新输入")
+        --     return
+        -- end
 
         local maxLen = 6
         if (isCnChar ~= true) then
@@ -277,15 +278,15 @@ function ChoosePlayerNameLayer:chooseEnd()
             elseif length < 2 or length > maxLen then
                 show_tip_label("昵称长度须为2~9个字符")
             else
-                CCUserDefault:sharedUserDefault():setStringForKey("accid", os.time())
-                CCUserDefault:sharedUserDefault():flush()
+                cc.UserDefault:getInstance():setStringForKey("accid", os.time())
+                cc.UserDefault:getInstance():flush()
                 local function enterGame(info)
                     dump(info)
                     -- gameworks 创建角色
-                    SDKGameWorks.CreateRole(info.account, "1", "1")
+                    -- SDKGameWorks.CreateRole(info.account, "1", "1")
 
-                    CCUserDefault:sharedUserDefault():setStringForKey("playerName", playname)
-                    CCUserDefault:sharedUserDefault():flush()
+                    cc.UserDefault:getInstance():setStringForKey("playerName", playname)
+                    cc.UserDefault:getInstance():flush()
 
                     if self._listener then
                         self._listener()
@@ -297,9 +298,9 @@ function ChoosePlayerNameLayer:chooseEnd()
                 RequestHelper.game.register(
                     {
                         rid = self._sexType,
-                        sessionId = game.player.m_sessionID,
+                        -- sessionId = game.player.m_sessionID,
                         acc = game.player.m_uid,
-                        platformID = game.player.m_platformID,
+                        -- platformID = game.player.m_platformID,
                         name = playname,
                         callback = function(data)
                             dump(data)

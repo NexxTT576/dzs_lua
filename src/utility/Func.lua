@@ -35,6 +35,45 @@ function GetSystemTime(...)
     return curTime
 end
 
+-- 字符串中是否含有中文
+function isCnChar(str)
+    local len = string.len(str)
+    local left = len
+    local cnt = 0
+
+    for i = 1, len do
+        local curByte = string.byte(str, i)
+        -- '￥' = 239
+        if (curByte > 127) then
+            dump(curByte)
+            return true
+        end
+    end
+
+    return false
+end
+
+-- 字符串是否含有非法字符
+function hasIllegalChar(str)
+    local illegalStr = ""
+     --"`-=[]\\;',./～！@#￥%…&×（）—『』|：“”《》？·【】、；’‘，。~!$^*()_+{}:\"<>?"
+
+    local len = string.len(illegalStr)
+    local curByte = nil
+    for i = 1, len do
+        curByte = string.sub(str, i)
+        printf(curByte)
+        contain = string.find(str, curByte)
+        printf(contain)
+        if (contain ~= nil) then
+            printf("hasIllegalChar")
+            return true
+        end
+    end
+
+    return false
+end
+
 function PostNotice(key, msg)
     local n = cc.Director:getInstance():getEventDispatcher()
     if msg == nil then

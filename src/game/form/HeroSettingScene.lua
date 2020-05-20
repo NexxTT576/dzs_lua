@@ -306,7 +306,8 @@ function HeroSettingScene:ctor(showType)
 
     self._rootnode["changeHeroBtn"]:registerControlEventHandler(
         function()
-            self:performWithDelay(
+            performWithDelay(
+                self,
                 function()
                     push_scene(
                         require("game.form.HeroChooseScene").new(

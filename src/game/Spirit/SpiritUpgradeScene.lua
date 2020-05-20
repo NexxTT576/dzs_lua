@@ -294,7 +294,8 @@ function SpiritUpgradeScene:ctor(index)
 
     --  更新上下箭头
     local function updateArrow()
-        self:performWithDelay(
+        performWithDelay(
+            self,
             function()
                 local posY = self._spiritListView:getContentOffset().y
                 local maxOffsetY = self._spiritListView:maxContainerOffset().y
@@ -558,7 +559,8 @@ function SpiritUpgradeScene:onEnter()
     self:regNotice()
     PostNotice(NoticeKey.UNLOCK_BOTTOM)
 
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             self.initListView()
         end,

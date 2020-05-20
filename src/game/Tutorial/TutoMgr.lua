@@ -116,11 +116,11 @@ function TutoMgr.getPlotNum()
 end
 
 function TutoMgr.recordLocalNum(num)
-    CCUserDefault:sharedUserDefault():setIntegerForKey("TUTO_NUM", num)
+    cc.UserDefault:getInstance():setIntegerForKey("TUTO_NUM", num)
 end
 
 function TutoMgr.getLocalNum()
-    return CCUserDefault:sharedUserDefault():getIntegerForKey("TUTO_NUM", 0)
+    return cc.UserDefault:getInstance():getIntegerForKey("TUTO_NUM", 0)
 end
 
 function TutoMgr.getBtn(key)

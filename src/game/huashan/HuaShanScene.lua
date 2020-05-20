@@ -73,7 +73,7 @@ function HuaShanScene:ctor()
         }
     )
 
-    local floor = CCUserDefault:sharedUserDefault():getIntegerForKey(HUASHAN_FLOOR, 0)
+    local floor = cc.UserDefault:getInstance():getIntegerForKey(HUASHAN_FLOOR, 0)
     if floor > 0 then
         local pos = self._rootnode[string.format("posNode_%d", floor - 1)]:convertToWorldSpace(cc.p(0, 0))
         local offset = pos.y - self:getBottomHeight() - 140
@@ -265,8 +265,8 @@ function HuaShanScene:getReward()
             self._rootnode[string.format("box%d", v)]:setVisible(true)
         end
     end
-    if bGet == false and CCUserDefault:sharedUserDefault():getIntegerForKey("HUASHAN_FLOOR", -1) ~= self._floor then
-        CCUserDefault:sharedUserDefault():setIntegerForKey("HUASHAN_FLOOR", self._floor)
+    if bGet == false and cc.UserDefault:getInstance():getIntegerForKey("HUASHAN_FLOOR", -1) ~= self._floor then
+        cc.UserDefault:getInstance():setIntegerForKey("HUASHAN_FLOOR", self._floor)
         self:showSelfHero(self._floor - 1, true)
         self:createArrow(self._floor)
     else
@@ -325,7 +325,7 @@ function HuaShanScene:refresh(data)
         end
     end
     --
-    CCUserDefault:sharedUserDefault():setIntegerForKey(HUASHAN_FLOOR, self._floor)
+    cc.UserDefault:getInstance():setIntegerForKey(HUASHAN_FLOOR, self._floor)
     self._rootnode["freeNumLabel"]:setString(self._resetTimes)
     if self._floor >= 0 then
         self._rootnode["curFloorLabel"]:setString(string.format("当前第%d层", self._floor))
@@ -344,7 +344,7 @@ function HuaShanScene:refresh(data)
     if self._floor <= 0 then
         self._posHeros[0]:setVisible(true)
     elseif self._floor == 1 and self._awards[1] == nil then
-        if CCUserDefault:sharedUserDefault():getIntegerForKey("HUASHAN_FLOOR", -1) ~= self._floor then
+        if cc.UserDefault:getInstance():getIntegerForKey("HUASHAN_FLOOR", -1) ~= self._floor then
             self._posHeros[0]:setVisible(true)
         end
     end
@@ -588,8 +588,8 @@ function HuaShanScene:onReset()
                     RequestHelper.huashan.reset(
                         {
                             callback = function(data)
-                                CCUserDefault:sharedUserDefault():setStringForKey(HUASHAN_FORM_INFO, "")
-                                CCUserDefault:sharedUserDefault():flush()
+                                cc.UserDefault:getInstance():setStringForKey(HUASHAN_FORM_INFO, "")
+                                cc.UserDefault:getInstance():flush()
                                 self._rootnode[string.format("box%d", self._floor)]:removeAllChildren()
                                 self:refresh(data)
                             end
@@ -617,8 +617,8 @@ function HuaShanScene:onReset()
                                         if self._rootnode[string.format("posNode_%d", self._floor + 1)] then
                                             self._rootnode[string.format("posNode_%d", self._floor + 1)]:removeChildByTag(100)
                                         end
-                                        CCUserDefault:sharedUserDefault():setStringForKey(HUASHAN_FORM_INFO, "")
-                                        CCUserDefault:sharedUserDefault():flush()
+                                        cc.UserDefault:getInstance():setStringForKey(HUASHAN_FORM_INFO, "")
+                                        cc.UserDefault:getInstance():flush()
                                         self._rootnode[string.format("box%d", self._floor)]:removeAllChildren()
                                         self:refresh(data)
                                     end

@@ -154,7 +154,7 @@ function BattleLayer:ctor(param)
     ResMgr.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.addSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")
 
-    CCUserDefault:sharedUserDefault():setBoolForKey("isBattle", true)
+    cc.UserDefault:getInstance():setBoolForKey("isBattle", true)
     game.runningScene = self
 
     self.upDamage = 0 --劫富济贫用来更新上面的受伤害总值的
@@ -1181,7 +1181,7 @@ function BattleLayer:onExit()
             }
         )
     end
-    CCUserDefault:sharedUserDefault():setBoolForKey("isBattle", false)
+    cc.UserDefault:getInstance():setBoolForKey("isBattle", false)
 
     ResMgr.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
     ResMgr.removeSpriteFramesWithFile("ui/card_yun.plist", "ui/card_yun.png")

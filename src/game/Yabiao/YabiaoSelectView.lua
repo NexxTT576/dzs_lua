@@ -399,7 +399,8 @@ function YabiaoSelectView:randomCard(target, isPlayAnimation)
     local taget = target
     local countDownFuc
     countDownFuc = function()
-        self:performWithDelay(
+        performWithDelay(
+            self,
             function()
                 if step >= speed * 19 + speed * taget then
                     self:activityBtns()

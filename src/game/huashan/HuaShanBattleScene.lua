@@ -35,7 +35,7 @@ function HuaShanBattleScene:ctor(param)
 
     local _resultFunc = function(data)
 
-        self:performWithDelay(function()
+        performWithDelay(self,function()
             display.replaceScene(require("game.huashan.HuaShanScene").new())
         end, 1)
     end

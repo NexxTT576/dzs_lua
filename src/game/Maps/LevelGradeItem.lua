@@ -169,7 +169,8 @@ end
 
 function LevelGradeItem:setBtnDisabled()
     self:setBtnEnabled(false)
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             self:setBtnEnabled(true)
         end,

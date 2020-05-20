@@ -65,9 +65,9 @@ function GenNamelayer:ctor(...)
             img = "#com_btn_red.png",
             listener = function(...)
                 if (self.playerName:getString() ~= "") then
-                    CCUserDefault:sharedUserDefault():setStringForKey("playerName", self.playerName:getString())
-                    CCUserDefault:sharedUserDefault():setStringForKey("accid", os.time())
-                    CCUserDefault:sharedUserDefault():flush()
+                    cc.UserDefault:getInstance():setStringForKey("playerName", self.playerName:getString())
+                    cc.UserDefault:getInstance():setStringForKey("accid", os.time())
+                    cc.UserDefault:getInstance():flush()
 
                     local scene = require("app.scenes.LoginScene").new()
                     display.replaceScene(scene)

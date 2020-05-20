@@ -71,7 +71,8 @@ function PosHero:ctor(param)
                         self._rootnode["touchNode"]:setTouchEnabled(false)
                         _listener(_index)
 
-                        self:performWithDelay(
+                        performWithDelay(
+                            self,
                             function()
                                 self._rootnode["touchNode"]:setTouchEnabled(true)
                             end,

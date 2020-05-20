@@ -99,7 +99,8 @@ local HEROTYPE = {
 }
 
 function HeroShowLayer:ctor()
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             self:setOpacity(170)
             self:init()

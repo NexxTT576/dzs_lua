@@ -631,7 +631,8 @@ function HeroQiangHuaLayer:ctor(param)
                 --添加侠客
                 ResMgr.showErr(200021)
             end
-            self:performWithDelay(
+            performWithDelay(
+                self,
                 function()
                     self._rootnode["qianghuaBtn"]:setEnabled(true)
                 end,

@@ -1048,8 +1048,8 @@ RequestHelper.game = {
     -- 注册
     register = function(param)
         dump(param)
-        local deviceinfo = CSDKShell.GetDeviceInfo()
-        dump(deviceinfo)
+        -- local deviceinfo = CSDKShell.GetDeviceInfo()
+        -- dump(deviceinfo)
         local _callback = param.callback
         local msg = {
             a = "reg",
@@ -1058,7 +1058,7 @@ RequestHelper.game = {
             uac = param.acc,
             name = param.name,
             rid = param.rid,
-            deviceinfo = deviceinfo,
+            -- deviceinfo = deviceinfo,
             loginName = game.player.m_loginName,
             platformID = param.platformID
         }

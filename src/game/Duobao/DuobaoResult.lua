@@ -81,7 +81,8 @@ end
 
 function DuobaoResult:setBtnDisabled(isSnatchAgain)
     self:setBtnEnabled(false, isSnatchAgain)
-    self:performWithDelay(
+    performWithDelay(
+        self,
         function()
             self:setBtnEnabled(true, isSnatchAgain)
         end,
@@ -158,7 +159,7 @@ function DuobaoResult:initWin(data)
     --        push_scene(require("game.form.EnemyFormScene").new(1, self._enemyAcc))
     --
     --        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-    --        self:performWithDelay(function()
+    --        performWithDelay(self,function()
     --            self._rootnode["zhenrongBtn"]:setEnabled(true)
     --            snatchAgainBtn:setEnabled(true)
     --        end, 1)

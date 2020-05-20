@@ -288,7 +288,8 @@ function SpiritDescLayer:ctor(closeListener)
                 end
             end
 
-            self:performWithDelay(
+            performWithDelay(
+                self,
                 function()
                     local posY = self._scrollView:getContentOffset().y
                     local maxOffsetY = self._scrollView:maxContainerOffset().y

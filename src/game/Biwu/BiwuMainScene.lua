@@ -54,7 +54,8 @@ function BiwuMainScene:ctor(param)
     self:initSize()
     if param and param.tabindex then
         self:initTopRadios(param.tabindex)
-        self:performWithDelay(
+        performWithDelay(
+            self,
             function()
                 show_tip_label("本次挑战获得积分:" .. param.extraMsg)
             end,
