@@ -1,11 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-24
--- Time: 下午5:17
--- To change this template use File | Settings | File Templates.
---
-
 local Item =
     class(
     "Item",
@@ -32,7 +24,7 @@ function Item:create(param)
     self:addChild(node)
 
     self.heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
@@ -42,14 +34,14 @@ function Item:create(param)
     self._rootnode["itemNameLabel"]:addChild(self.heroName)
 
     self.pzLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
             size = 20,
             x = 0,
             y = self._rootnode["hjSprite"]:getContentSize().height / 2,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["hjSprite"]:addChild(self.pzLabel)
@@ -112,7 +104,7 @@ function Item:refresh(param)
 
     self.pzLabel:setString(string.format("资质:%d", _itemData.baseData.arr_zizhi[_itemData.data.cls + 1]))
     self.pzLabel:setPositionX(10 + self.pzLabel:getContentSize().width / 2)
-    self._rootnode["jobSprite"]:setDisplayFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", _itemData.baseData.job)))
+    self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", _itemData.baseData.job)))
     --    if _itemData.baseData.hero and _itemData.baseData.hero > 0 then
     --        self._rootnode["hjSprite"]:setVisible(true)
     --    else

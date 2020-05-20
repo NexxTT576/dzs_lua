@@ -7,6 +7,7 @@
 require("utility.Func")
 require("network.GameRequest")
 game = {
+    --@RefType Player
     player = require("game.Player").new(),
     --@RefType MyApp
     app = nil,

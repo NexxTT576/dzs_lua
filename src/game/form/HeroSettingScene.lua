@@ -426,7 +426,7 @@ function HeroSettingScene:request()
     GameRequest.equip.list(
         {},
         function(data)
-            game.player:setEquipments(data)
+            game.player:setEquipments(data["itemAry"])
         end
     )
     --
@@ -446,7 +446,7 @@ function HeroSettingScene:request()
     GameRequest.hero.list(
         {},
         function(data)
-            game.player:setHero(data)
+            game.player:setHero(data["itemAry"])
         end
     )
 
@@ -454,7 +454,7 @@ function HeroSettingScene:request()
     GameRequest.skill.list(
         {},
         function(data)
-            game.player:setSkills(data)
+            game.player:setSkills(data["itemAry"])
         end
     )
 
@@ -489,38 +489,37 @@ function HeroSettingScene:onAddHero()
         heroNode:setTag(100)
         TutoMgr.addBtn("zhenrong_anniu_yinying", heroNode)
         TutoMgr.active()
-        heroNode:setTouchEnabled(true)
-        heroNode:addNodeEventListener(
-            cc.NODE_TOUCH_EVENT,
+        setTouchEnabled(heroNode, true)
+        addNodeEventListener(
+            heroNode,
+            cc.Handler.EVENT_TOUCH_BEGAN,
             function(event)
-                if event.name == "began" then
-                    heroNode:setTouchEnabled(false)
+                setTouchEnabled(heroNode, false)
 
-                    PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    push_scene(
-                        require("game.form.HeroChooseScene").new(
-                            {
-                                callback = function(data)
-                                    self._onAddHero = false
-                                    if self._formSettingView then
-                                        self._formSettingView:removeSelf()
-                                        self._formSettingView = nil
-                                    end
-
-                                    if #self._cardList < #data["1"] then
-                                        self._index = #data["1"]
-                                    end
-
-                                    self:resetFormData(data)
-                                    self:initHeadList()
-                                end,
-                                closelistener = function()
-                                    self:onAddHero()
+                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                push_scene(
+                    require("game.form.HeroChooseScene").new(
+                        {
+                            callback = function(data)
+                                self._onAddHero = false
+                                if self._formSettingView then
+                                    self._formSettingView:removeSelf()
+                                    self._formSettingView = nil
                                 end
-                            }
-                        )
+
+                                if #self._cardList < #data["1"] then
+                                    self._index = #data["1"]
+                                end
+
+                                self:resetFormData(data)
+                                self:initHeadList()
+                            end,
+                            closelistener = function()
+                                self:onAddHero()
+                            end
+                        }
                     )
-                end
+                )
             end
         )
     end

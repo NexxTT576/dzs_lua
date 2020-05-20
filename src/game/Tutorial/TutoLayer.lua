@@ -239,7 +239,7 @@ function TutoLayer:ctor(param)
                         setNum = 999999
                     }
                 )
-                self:getApp():changeState(GAME_STATE.STATE_MAIN_MENU)
+                GameStateManager:changeState(GAME_STATE.STATE_MAIN_MENU)
                 --self:removeSelf()
             end
         )

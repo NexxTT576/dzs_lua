@@ -161,7 +161,9 @@ setmetatableindex_ = function(t, index)
             mt.__index = index
             setmetatable(t, mt)
         elseif mt.__index ~= index then
-            setmetatableindex_(mt, index)
+            setmetatable(index, mt)
+            setmetatable(t, {__index = index})
+        -- setmetatableindex_(mt, index)
         end
     end
 end
