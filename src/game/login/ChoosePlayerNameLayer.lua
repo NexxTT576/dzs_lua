@@ -146,30 +146,26 @@ function ChoosePlayerNameLayer:createNameLayer()
     local nameNode = rootnode["name_tag"]
     local cntSize = nameNode:getContentSize()
 
-    self._editBox =
-        ui.newEditBox(
-        {
-            image = "#nameBg.png",
-            size = cc.size(cntSize.width * 0.98, cntSize.height * 0.98),
-            x = cntSize.width / 2,
-            y = cntSize.height / 2,
-            listener = function(event, editbox) --监听事件
-                if event == "began" then --点击editBox时触发（触发顺序1）
-                    dump("began")
-                elseif event == "ended" then --输入结束时触发 （触发顺序3）
-                    dump("ended")
-                elseif event == "return" then --输入结束时触发（触发顺序4）
-                    dump("return")
-                elseif event == "changed" then --输入结束时触发（触发顺序2）
-                    dump("changed")
-                    self._isSystemName = false
-                else
-                    -- printf("EditBox event %s", tostring(event))
-                end
+    --@RefType luaIde#ccui.EditBox
+    self._editBox = ccui.EditBox:create(cc.size(cntSize.width * 0.98, cntSize.height * 0.98), display.newSprite("#nameBg.png", {scale9 = true}))
+    self._editBox:setPosition(cntSize.width / 2, cntSize.height / 2)
+    self._editBox:registerScriptEditBoxHandler(
+        function()
+            if event == "began" then --点击editBox时触发（触发顺序1）
+                dump("began")
+            elseif event == "ended" then --输入结束时触发 （触发顺序3）
+                dump("ended")
+            elseif event == "return" then --输入结束时触发（触发顺序4）
+                dump("return")
+            elseif event == "changed" then --输入结束时触发（触发顺序2）
+                dump("changed")
+                self._isSystemName = false
+            else
+                -- printf("EditBox event %s", tostring(event))
             end
-        }
+        end
     )
-
+    self._editBox:setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER)
     self._editBox:setFont(FONTS_NAME.font_fzcy, 32)
     self._editBox:setMaxLength(21)
     self._editBox:setPlaceholderFont(FONTS_NAME.font_fzcy, 32)
