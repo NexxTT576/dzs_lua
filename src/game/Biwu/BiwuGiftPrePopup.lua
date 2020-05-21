@@ -156,7 +156,7 @@ end
 --创建tableView
 function BiwuGiftRrePopup:setUpTableView()
     local titleDis =
-        ui.newTTFLabel({text = "每周六晚23点发奖励，不要错过哟~", color = cc.c3b(92, 38, 1), size = 22, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
+        newTTFLabel({text = "每周六晚23点发奖励，不要错过哟~", color = cc.c3b(92, 38, 1), size = 22, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
         self._innerContainerSize.width / 2,
         self._innerContainerSize.height - 30
     ):addTo(self._innerContainer)

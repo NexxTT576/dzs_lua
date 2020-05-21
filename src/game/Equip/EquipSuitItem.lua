@@ -64,7 +64,7 @@ function EquipSuitItem:ctor(param)
         local natureNameStr = ResMgr.getNatureName(natureTable[i])
 
         local natureTTF =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = natureNameStr,
                 font = FONTS_NAME.font_fzcy,
@@ -76,7 +76,7 @@ function EquipSuitItem:ctor(param)
         node:addChild(natureTTF)
 
         local natureNumTTF =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = "+" .. valTable[i],
                 font = FONTS_NAME.font_fzcy,

@@ -78,7 +78,7 @@ function HeroSellCell:create(param)
 
     -- weapon name
     self.itemName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = self.headIcon:getContentSize().width * 0.4,
             y = self:getContentSize().height * 0.85,
@@ -100,7 +100,7 @@ function HeroSellCell:create(param)
 
     -- weapon lv
     self.weaponLv =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = self.lvIcon:getPositionX() + self.lvIcon:getContentSize().width * 0.4,
             y = self.lvIcon:getPositionY(),
@@ -119,7 +119,7 @@ function HeroSellCell:create(param)
     self.bg:addChild(equipInfoBg)
 
     self.costSilver =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "银币:",
             -- color = FONT_COLOR.DARK_RED,
@@ -133,7 +133,7 @@ function HeroSellCell:create(param)
     self.bg:addChild(self.costSilver)
 
     self.costNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = sellSilver,
             -- color = FONT_COLOR.DARK_RED,

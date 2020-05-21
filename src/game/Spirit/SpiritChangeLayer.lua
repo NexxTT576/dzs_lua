@@ -33,7 +33,7 @@ function SpiritChangeLayer:ctor(data)
         rootnode[l]:setString(data_item_nature[v.idx].nature .. "：")
         rootnode[l]:setVisible(true)
         local valueLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = tostring(v.val),
                 size = 28,

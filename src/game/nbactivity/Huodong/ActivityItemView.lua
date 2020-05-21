@@ -58,7 +58,7 @@ function ActivityItemView:setUpView()
     --15积分文字
     local marginLeft = 20
     local dislabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.title,
             size = 20,
@@ -76,7 +76,7 @@ function ActivityItemView:setUpView()
     local endTimeStr = os.date("%Y-%m-%d,%H:%M:%S", math.ceil(tonumber(self._data.endTime) / 1000))
 
     local activitylabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "活动时间" .. startTimeStr .. "至" .. endTimeStr,
             size = 20,
@@ -105,7 +105,7 @@ function ActivityItemView:setUpView()
         local y = rolelabel:getPositionY() - activitylabel:getContentSize().height * i - marginTop * i
         --规则
         local label =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = i .. ":在活动期间。。。。",
                 size = 18,
@@ -131,7 +131,7 @@ function ActivityItemView:setUpView()
     itemsViewBngs:setAnchorPoint(cc.p(0, 0))
 
     local rolelabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "奖励",
             size = 18,

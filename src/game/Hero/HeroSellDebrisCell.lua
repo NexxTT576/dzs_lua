@@ -50,7 +50,7 @@ function HeroSellDebrisCell:create(param)
     self.bg:addChild(headIcon)
 
     local debrisName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getContentSize().width * 0.5,
             y = self:getContentSize().height * 0.8,
@@ -74,7 +74,7 @@ function HeroSellDebrisCell:create(param)
     jinduNode:addChild(jinduBg)
 
     local jinduLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "数量:",
             size = 24
@@ -84,7 +84,7 @@ function HeroSellDebrisCell:create(param)
     jinduNode:addChild(jinduLable)
 
     local jinduNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self.curNum,
             size = 22,
@@ -95,7 +95,7 @@ function HeroSellDebrisCell:create(param)
     jinduNode:addChild(jinduNum)
 
     local jinduTotal =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. self.limitNum,
             size = 22,

@@ -53,7 +53,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --荣誉值
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "荣誉：",
             font = FONTS_NAME.font_fzcy,
@@ -68,7 +68,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --荣誉值
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.price,
             font = FONTS_NAME.font_fzcy,
@@ -83,7 +83,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --需要人物等级
     local levelDisIcon =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "需要人物等级：",
             font = FONTS_NAME.font_fzcy,
@@ -98,7 +98,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --需要任务等级
     local levelDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.level,
             font = FONTS_NAME.font_fzcy,
@@ -143,7 +143,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --内容标题
     local contentTitleDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
@@ -162,7 +162,7 @@ function BiwuDuihuanItem:refresh(param)
     }
     --剩余兑换次数
     local timeLiftDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = string.format("（" .. tips[self._data.type1] .. "可兑换%d次" .. "）", self._data.num1),
             font = FONTS_NAME.font_fzcy,
@@ -209,7 +209,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --角色名字
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
@@ -224,7 +224,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --总共可兑换次数
     local fightDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = string.format("（" .. tips[self._data.type1] .. "可兑换%d次" .. "）", self._data.num1),
             font = FONTS_NAME.font_fzcy,
@@ -244,7 +244,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --等级限制
     local levelDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "LV:" .. self._data.level,
             font = FONTS_NAME.font_fzcy,

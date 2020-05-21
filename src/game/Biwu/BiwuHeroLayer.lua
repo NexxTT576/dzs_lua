@@ -266,7 +266,7 @@ function BiwuHeroLayer:creatDislabel(titleicon, count, fontType)
     disBng:addChild(disIcon)
 
     local countLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = count,
             color = FONT_COLOR.YELLOW,

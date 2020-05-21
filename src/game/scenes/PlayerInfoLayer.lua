@@ -111,7 +111,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                 self._rootNode["player_name"]:addChild(text)
 
                 local playerIDLabel =
-                    ui.newTTFLabel(
+                    newTTFLabel(
                     {
                         text = playerID,
                         x = text:getContentSize().width + 5,

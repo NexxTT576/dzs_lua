@@ -1,12 +1,7 @@
---[[
- --
- -- add by vicky
- -- 2014.08.14
- --
- --]]
 local data_shengji_shengji = require("data.data_shengji_shengji")
 local data_level_level = require("data.data_level_level")
 
+--@SuperType ShadeLayer
 local ShengjiLayer =
     class(
     "ShengjiLayer",
@@ -30,8 +25,7 @@ end
 function ShengjiLayer:ctor(param)
     self._rootnode = {}
     local proxy = CCBProxy:create()
-    self:setNodeEventEnabled(true)
-
+    self:enableNodeEvents()
     -- ResMgr.createBefTutoMask(self)
 
     local node = CCBReaderLoad("shengji/shengji_layer.ccbi", proxy, self._rootnode)

@@ -74,7 +74,7 @@ local Item =
         local txt = string.gsub(itemData.content, "\r\n", "\n")
 
         local contentLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = txt,
                 font = FONTS_NAME.font_fzcy,

@@ -86,7 +86,7 @@ function RoadItemView:setUpView()
     --进度
     local text = tonumber(self._data.totalStep) >= 10000 and math.floor((tonumber(self._data.totalStep) / 10000)) .. "万" or tonumber(self._data.totalStep)
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. text,
             font = FONTS_NAME.font_fzcy,
@@ -102,7 +102,7 @@ function RoadItemView:setUpView()
     local preWidth = self._progresslabel:getContentSize().width
     local text = tonumber(self._data.missionDetail) >= 10000 and math.floor((tonumber(self._data.missionDetail) / 10000)) .. "万" or tonumber(self._data.missionDetail)
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = text,
             font = FONTS_NAME.font_fzcy,
@@ -125,7 +125,7 @@ function RoadItemView:setUpView()
     local marginRight = 130
     --进度
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "进度：",
             font = FONTS_NAME.font_fzcy,
@@ -285,7 +285,7 @@ function RoadItemView:createMoney(index, v)
     local offset = 10
     local iconSize = icon:getContentSize()
     local countLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = v.num,
             size = 20,
@@ -313,7 +313,7 @@ function RoadItemView:createMoney(index, v)
         end
 
         namelabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = v.name,
                 size = 20,

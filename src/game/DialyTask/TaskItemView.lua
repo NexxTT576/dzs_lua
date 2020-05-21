@@ -70,7 +70,7 @@ function TaskItemView:setUpView()
 
     --进度
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. self._data.totalStep,
             font = FONTS_NAME.font_fzcy,
@@ -86,7 +86,7 @@ function TaskItemView:setUpView()
     local preWidth = self._progresslabel:getContentSize().width
     self._data.missionDetail = tonumber(self._data.missionDetail) >= tonumber(self._data.totalStep) and tonumber(self._data.totalStep) or tonumber(self._data.missionDetail)
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.missionDetail,
             font = FONTS_NAME.font_fzcy,
@@ -103,7 +103,7 @@ function TaskItemView:setUpView()
     local marginRight = 60
     --进度
     self._progresslabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "进度：",
             font = FONTS_NAME.font_fzcy,
@@ -154,7 +154,7 @@ function TaskItemView:setUpView()
     self._disLabel:setVisible(self._data.missionCategory == 1)
     local size = self._disLabel:getContentSize()
     self._disLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._data.jifen,
             size = 20,
@@ -281,7 +281,7 @@ function TaskItemView:createMoney(type, count)
     local offset = 10
     local iconSize = icon:getContentSize()
     local countLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = count,
             size = 20,

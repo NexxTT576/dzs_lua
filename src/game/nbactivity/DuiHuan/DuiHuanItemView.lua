@@ -54,7 +54,7 @@ function DuiHuanItemView:refresh(param)
 
     --描述
     local disLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "可兑换次数:",
             font = FONTS_NAME.font_fzcy,
@@ -71,7 +71,7 @@ function DuiHuanItemView:refresh(param)
 
     --描述value
     local disValueLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "(" .. (data.totalNum - data.exchNum) .. "/" .. data.totalNum .. ")",
             font = FONTS_NAME.font_fzcy,

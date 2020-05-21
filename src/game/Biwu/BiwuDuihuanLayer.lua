@@ -28,7 +28,7 @@ function BiwuDuihuanLayer:setUpView(param)
 
     --声望值
     self.nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self.rongyu,
             font = FONTS_NAME.font_fzcy,

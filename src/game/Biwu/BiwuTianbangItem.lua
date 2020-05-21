@@ -74,7 +74,7 @@ function BiwuTianbangItem:refresh(param)
 
     --角色名字
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = data.name,
             font = FONTS_NAME.font_fzcy,
@@ -89,7 +89,7 @@ function BiwuTianbangItem:refresh(param)
 
     --帮派名称
     local fightDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "【" .. data.faction .. "】",
             font = FONTS_NAME.font_fzcy,
@@ -122,7 +122,7 @@ function BiwuTianbangItem:refresh(param)
 
     --等级
     local levelDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "LV:" .. data.level,
             font = FONTS_NAME.font_fzcy,
@@ -147,7 +147,7 @@ function BiwuTianbangItem:refresh(param)
     end
 
     --排名
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = "排名：" .. data.rank,
             font = FONTS_NAME.font_fzcy,
@@ -193,7 +193,7 @@ function BiwuTianbangItem:refresh(param)
     --战力title
     display.newSprite("#friend_zhandouli.png"):pos(self.viewSize.width * 0.1, self.viewSize.height * 0.15):addTo(self.bng)
     --战力数值
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = data.attack,
             font = FONTS_NAME.font_fzcy,
@@ -203,7 +203,7 @@ function BiwuTianbangItem:refresh(param)
         }
     ):pos(self.viewSize.width * 0.22, self.viewSize.height * 0.15):addTo(self.bng)
     --积分title
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = "积分:",
             font = FONTS_NAME.font_fzcy,
@@ -213,7 +213,7 @@ function BiwuTianbangItem:refresh(param)
         }
     ):pos(self.viewSize.width * 0.5, self.viewSize.height * 0.15):addTo(self.bng)
     --积分数值
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = data.score,
             font = FONTS_NAME.font_fzcy,

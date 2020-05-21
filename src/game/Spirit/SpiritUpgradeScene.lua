@@ -173,7 +173,7 @@ function SpiritUpgradeScene:ctor(index)
             self._rootnode[l]:setVisible(true)
             self._rootnode[l]:removeChildByTag(100)
             local valueLabel =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = tostring(v.val),
                     size = 22,

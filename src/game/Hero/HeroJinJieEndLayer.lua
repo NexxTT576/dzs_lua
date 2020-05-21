@@ -185,7 +185,7 @@ function HeroJinJieEndLayer:ctor(param)
         TutoMgr.addBtn("jinjie_end_layer_shentong_name", tal_bg)
     end
     local shentongLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = string.format("获得%d个神通点", ResMgr.getCardData(ResID).arr_point[self.curCls]),
             font = FONTS_NAME.font_fzcy,
@@ -209,7 +209,7 @@ function HeroJinJieEndLayer:ctor(param)
     --        jihuoshentongName = string.sub(jihuoshentongName,1,string.len(jihuoshentongName)-1)
     --    end
 
-    --    local unLockTalTTF = ui.newTTFLabel({
+    --    local unLockTalTTF = newTTFLabel({
     --        text = jihuoshentongName,
     --        font = FONTS_NAME.font_haibao,
     --        color = FONT_COLOR.ORANGE,
@@ -229,7 +229,7 @@ function HeroJinJieEndLayer:ctor(param)
     local stateOffY = 0.05 * display.height
     for i = 1, #cardStateNames do
         local stateName =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = cardStateNames[i],
                 font = FONTS_NAME.font_haibao,
@@ -251,7 +251,7 @@ function HeroJinJieEndLayer:ctor(param)
         end
 
         local befNumLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = befNum,
                 font = FONTS_NAME.font_fzcy,
@@ -268,7 +268,7 @@ function HeroJinJieEndLayer:ctor(param)
         self:addChild(fuhaoAr)
 
         local aftNumLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = aftNum,
                 font = FONTS_NAME.font_fzcy,

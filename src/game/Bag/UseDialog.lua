@@ -60,7 +60,7 @@ function UseDialog:ctor()
     bg:addChild(okBtn)
 
     local availNumLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "当前可使用48个",
             color = FONT_COLOR.LIGHT_ORANGE,
@@ -73,7 +73,7 @@ function UseDialog:ctor()
     bg:addChild(availNumLabel)
 
     local useNumLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "输入使用大还丹的数量",
             color = FONT_COLOR.LIGHT_ORANGE,
@@ -90,7 +90,7 @@ function UseDialog:ctor()
     bg:addChild(countBg)
 
     local countLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "0",
             color = FONT_COLOR.DARK_RED,

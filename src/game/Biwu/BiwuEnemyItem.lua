@@ -45,7 +45,7 @@ function BiwuEnemyItem:refresh(param)
 
     --角色名字
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self.data.name,
             font = FONTS_NAME.font_fzcy,
@@ -61,7 +61,7 @@ function BiwuEnemyItem:refresh(param)
     --战力title
     display.newSprite("#friend_zhandouli.png"):pos(titleBng:getContentSize().width * 0.8, titleBng:getContentSize().height * 0.5):addTo(titleBng)
     --战力数值
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = self.data.attack,
             font = FONTS_NAME.font_fzcy,
@@ -78,7 +78,7 @@ function BiwuEnemyItem:refresh(param)
 
     --等级
     local levelDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "LV:" .. self.data.level,
             font = FONTS_NAME.font_fzcy,

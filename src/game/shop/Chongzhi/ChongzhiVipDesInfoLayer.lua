@@ -35,7 +35,7 @@ local Item =
 
         for i, v in ipairs(itemData.limit) do
             local lbl =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = "❀" .. v,
                     font = FONTS_NAME.font_fzcy,

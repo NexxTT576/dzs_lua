@@ -58,8 +58,7 @@ function GiftGetItemView:setUpView()
 
     --15积分文字
     local marginLeft = 20
-    local dislabel =
-        ui.newTTFLabel({text = self._data.jifen .. "积分可领取", size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
+    local dislabel = newTTFLabel({text = self._data.jifen .. "积分可领取", size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     dislabel:setAnchorPoint(cc.p(0, 0.5))
 
     --按钮

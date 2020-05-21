@@ -81,7 +81,7 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
             end
 
             local valueLabel =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = tostring(str),
                     size = 28,
@@ -99,7 +99,7 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
         rootnode[l]:setString("增加经验：")
         rootnode[l]:setVisible(true)
         local valueLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = tostring(data_item_item[data.resId].price),
                 size = 28,

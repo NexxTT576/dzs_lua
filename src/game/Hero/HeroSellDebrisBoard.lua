@@ -73,7 +73,7 @@ function HeroSellDebrisBoard:init(data)
     choiceDetailNode:addChild(choiceDetailBg)
 
     local zongjiLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "总计出售:",
             size = 18,
@@ -84,7 +84,7 @@ function HeroSellDebrisBoard:init(data)
     choiceDetailNode:addChild(zongjiLable)
 
     local yinbiLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "银币",
             size = 18
@@ -94,7 +94,7 @@ function HeroSellDebrisBoard:init(data)
     choiceDetailNode:addChild(yinbiLable)
 
     local priceNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 0,
             size = 18,

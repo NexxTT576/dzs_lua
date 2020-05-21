@@ -36,7 +36,7 @@ function ChoseStarLvlLayer:ctor(param)
         boardBg:addChild(barBg)
 
         local starsNum =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = index,
                 size = 32

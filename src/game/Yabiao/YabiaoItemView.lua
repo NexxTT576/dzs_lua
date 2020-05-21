@@ -64,7 +64,7 @@ function YabiaoItemView:setUpView(param)
     end
 
     local nameLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = name,
             font = FONTS_NAME.font_fzcy,
@@ -74,7 +74,7 @@ function YabiaoItemView:setUpView(param)
         }
     )
     local levelLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "Lv:" .. level,
             font = FONTS_NAME.font_fzcy,
@@ -84,7 +84,7 @@ function YabiaoItemView:setUpView(param)
         }
     )
     local timeLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = format_time(self._time),
             font = FONTS_NAME.font_fzcy,
@@ -94,7 +94,7 @@ function YabiaoItemView:setUpView(param)
         }
     )
     local timeTitle =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "到达时间",
             font = FONTS_NAME.font_fzcy,

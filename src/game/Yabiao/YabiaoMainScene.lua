@@ -96,7 +96,7 @@ function YabiaoMainScene:setUpMapView()
 
     --按钮上边的文字
     self.countDownLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "",
             size = 25,

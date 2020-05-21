@@ -34,7 +34,7 @@ function GenNamelayer:ctor(...)
     bg:addChild(inputBg)
 
     self.playerName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "",
             x = inputBg:getContentSize().width / 2,

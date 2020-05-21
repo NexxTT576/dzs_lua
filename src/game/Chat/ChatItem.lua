@@ -51,7 +51,7 @@ function ChatItem:ctor(param)
         color = cc.c3b(1, 170, 48)
     end
 
-    -- local nameLbl = ui.newTTFLabel({
+    -- local nameLbl = newTTFLabel({
     --         text = name,
     --         size = 22,
     --         color = color,

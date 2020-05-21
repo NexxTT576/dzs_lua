@@ -8,7 +8,7 @@ local LimitRankCell =
 
 function LimitRankCell:create(idx, width)
     self.rankName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "1.侠客",
             size = 18,
@@ -21,7 +21,7 @@ function LimitRankCell:create(idx, width)
     self:addChild(self.rankName)
 
     self.rankNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "4545",
             size = 18,

@@ -247,7 +247,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             end
 
             local nameLabel =
-                ui.newTTFLabel(
+                newTTFLabel(
                 {
                     text = subMapData.name,
                     font = FONTS_NAME.font_fzcy,

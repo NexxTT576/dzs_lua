@@ -140,7 +140,7 @@ function YabiaoSelectView:setUpView(param)
     end
 
     local yabiaoTime =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "今天可押镖次数:",
             size = 20,
@@ -150,7 +150,7 @@ function YabiaoSelectView:setUpView(param)
         }
     )
     local jiebiaoTime =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "今天可劫镖次数:",
             size = 20,
@@ -160,7 +160,7 @@ function YabiaoSelectView:setUpView(param)
         }
     )
     local yabiaoTimeValue =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._yabiaoCishu,
             size = 20,
@@ -170,7 +170,7 @@ function YabiaoSelectView:setUpView(param)
         }
     )
     local jiebiaoTimeValue =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._jiebiaoCishu,
             size = 20,

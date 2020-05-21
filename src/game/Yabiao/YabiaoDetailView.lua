@@ -92,7 +92,7 @@ function YabiaoDetailView:setUpView(param)
 
     --角色名字
     local nameDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self.data.name,
             font = FONTS_NAME.font_fzcy,
@@ -111,7 +111,7 @@ function YabiaoDetailView:setUpView(param)
     titleBng:addChild(fightBng)
 
     --战力数值
-    ui.newTTFLabel(
+    newTTFLabel(
         {
             text = self.data.attack,
             font = FONTS_NAME.font_fzcy,
@@ -128,7 +128,7 @@ function YabiaoDetailView:setUpView(param)
 
     --等级
     local levelDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "LV:" .. self.data.lv,
             font = FONTS_NAME.font_fzcy,

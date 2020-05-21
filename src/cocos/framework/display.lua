@@ -51,10 +51,7 @@ local function checkResolution(r)
     r.width = checknumber(r.width)
     r.height = checknumber(r.height)
     r.autoscale = string.upper(r.autoscale)
-    assert(
-        r.width > 0 and r.height > 0,
-        string.format("display - invalid design resolution size %d, %d", r.width, r.height)
-    )
+    assert(r.width > 0 and r.height > 0, string.format("display - invalid design resolution size %d, %d", r.width, r.height))
 end
 
 local function setDesignResolution(r, framesize)
@@ -112,20 +109,8 @@ local function setConstants()
     display.top_center = cc.p(display.cx, display.top)
     display.top_bottom = cc.p(display.cx, display.bottom)
 
-    printInfo(
-        string.format(
-            "# display.sizeInPixels         = {width = %0.2f, height = %0.2f}",
-            display.sizeInPixels.width,
-            display.sizeInPixels.height
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.size                 = {width = %0.2f, height = %0.2f}",
-            display.size.width,
-            display.size.height
-        )
-    )
+    printInfo(string.format("# display.sizeInPixels         = {width = %0.2f, height = %0.2f}", display.sizeInPixels.width, display.sizeInPixels.height))
+    printInfo(string.format("# display.size                 = {width = %0.2f, height = %0.2f}", display.size.width, display.size.height))
     printInfo(string.format("# display.contentScaleFactor   = %0.2f", display.contentScaleFactor))
     printInfo(string.format("# display.width                = %0.2f", display.width))
     printInfo(string.format("# display.height               = %0.2f", display.height))
@@ -139,61 +124,15 @@ local function setConstants()
     printInfo(string.format("# display.c_right              = %0.2f", display.c_right))
     printInfo(string.format("# display.c_top                = %0.2f", display.c_top))
     printInfo(string.format("# display.c_bottom             = %0.2f", display.c_bottom))
-    printInfo(
-        string.format("# display.center               = {x = %0.2f, y = %0.2f}", display.center.x, display.center.y)
-    )
-    printInfo(
-        string.format("# display.left_top             = {x = %0.2f, y = %0.2f}", display.left_top.x, display.left_top.y)
-    )
-    printInfo(
-        string.format(
-            "# display.left_bottom          = {x = %0.2f, y = %0.2f}",
-            display.left_bottom.x,
-            display.left_bottom.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.left_center          = {x = %0.2f, y = %0.2f}",
-            display.left_center.x,
-            display.left_center.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.right_top            = {x = %0.2f, y = %0.2f}",
-            display.right_top.x,
-            display.right_top.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.right_bottom         = {x = %0.2f, y = %0.2f}",
-            display.right_bottom.x,
-            display.right_bottom.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.right_center         = {x = %0.2f, y = %0.2f}",
-            display.right_center.x,
-            display.right_center.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.top_center           = {x = %0.2f, y = %0.2f}",
-            display.top_center.x,
-            display.top_center.y
-        )
-    )
-    printInfo(
-        string.format(
-            "# display.top_bottom           = {x = %0.2f, y = %0.2f}",
-            display.top_bottom.x,
-            display.top_bottom.y
-        )
-    )
+    printInfo(string.format("# display.center               = {x = %0.2f, y = %0.2f}", display.center.x, display.center.y))
+    printInfo(string.format("# display.left_top             = {x = %0.2f, y = %0.2f}", display.left_top.x, display.left_top.y))
+    printInfo(string.format("# display.left_bottom          = {x = %0.2f, y = %0.2f}", display.left_bottom.x, display.left_bottom.y))
+    printInfo(string.format("# display.left_center          = {x = %0.2f, y = %0.2f}", display.left_center.x, display.left_center.y))
+    printInfo(string.format("# display.right_top            = {x = %0.2f, y = %0.2f}", display.right_top.x, display.right_top.y))
+    printInfo(string.format("# display.right_bottom         = {x = %0.2f, y = %0.2f}", display.right_bottom.x, display.right_bottom.y))
+    printInfo(string.format("# display.right_center         = {x = %0.2f, y = %0.2f}", display.right_center.x, display.right_center.y))
+    printInfo(string.format("# display.top_center           = {x = %0.2f, y = %0.2f}", display.top_center.x, display.top_center.y))
+    printInfo(string.format("# display.top_bottom           = {x = %0.2f, y = %0.2f}", display.top_bottom.x, display.top_bottom.y))
     printInfo("#")
 end
 
@@ -213,9 +152,7 @@ function display.setAutoScale(configs)
 
     setDesignResolution(configs, framesize)
 
-    printInfo(
-        string.format("# design resolution size       = {width = %0.2f, height = %0.2f}", configs.width, configs.height)
-    )
+    printInfo(string.format("# design resolution size       = {width = %0.2f, height = %0.2f}", configs.width, configs.height))
     printInfo(string.format("# design resolution autoscale  = %s", configs.autoscale))
     setConstants()
 end
@@ -602,6 +539,27 @@ end
 function display.removeUnusedSpriteFrames()
     spriteFrameCache:removeUnusedSpriteFrames()
     textureCache:removeUnusedTextures()
+end
+
+display.PROGRESS_TIMER_BAR = cc.PROGRESS_TIMER_TYPE_BAR
+display.PROGRESS_TIMER_RADIAL = cc.PROGRESS_TIMER_TYPE_RADIAL
+
+--[[
+    @desc: 
+    author:tulilu
+    time:2020-05-21 20:17:26
+    --@image:
+	--@progresssType: 
+    @return: luaIde#cc.ProgressTimer
+]]
+function display.newProgressTimer(image, progresssType)
+    if type(image) == "string" then
+        image = display.newSprite(image)
+    end
+
+    local progress = cc.ProgressTimer:create(image)
+    progress:setType(progresssType)
+    return progress
 end
 
 return display

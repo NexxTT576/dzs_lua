@@ -186,7 +186,7 @@ function EquipXiLianLayer:ctor(param)
                 lowerBg:addChild(icon)
 
                 local coinNum =
-                    ui.newTTFLabel(
+                    newTTFLabel(
                     {
                         text = costArr[j],
                         color = FONT_COLOR.BLOOD_RED

@@ -18,7 +18,7 @@ function CardLayer:ctor(heroInfo)
 
     dump(rootnode)
 
-    --    local label = ui.newTTFLabel({
+    --    local label = newTTFLabel({
     --        text = heroInfo.name,
     --        size = 30,
     --        x = node:getContentSize().width / 2,

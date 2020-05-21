@@ -322,7 +322,7 @@ function GiftGetPopup:createTitleTask()
     local countDisLeftOffset = 5
     local iconSize = self._goldIcon:getContentSize()
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "当前积分",
             font = FONTS_NAME.font_fzcy,
@@ -339,7 +339,7 @@ function GiftGetPopup:createTitleTask()
     local posX = countDis:getPositionX()
     local offset = countDis:getContentSize().width + 10
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = jifen,
             font = FONTS_NAME.font_fzcy,
@@ -355,7 +355,7 @@ function GiftGetPopup:createTitleTask()
     local posX = countDis:getPositionX()
     local offset = countDis:getContentSize().width + 10
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. TaskModel:getInstance():getMaxJIfen(),
             font = FONTS_NAME.font_fzcy,
@@ -381,10 +381,10 @@ function GiftGetPopup:createTitleTask()
     --进度条上边的数字显示
     local margin = 10
     local progressBngSize = progress:getContentSize()
-    local beginLabel = ui.newTTFLabel({text = "0", size = 20, align = cc.TEXT_ALIGNMENT_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
+    local beginLabel = newTTFLabel({text = "0", size = 20, align = cc.TEXT_ALIGNMENT_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
     beginLabel:setAnchorPoint(cc.p(0, 0.5))
     local endLabel =
-        ui.newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, align = cc.TEXT_ALIGNMENT_LEFT}):pos(progressBngSize.width - margin, progressBngSize.height / 2):addTo(progress)
+        newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, align = cc.TEXT_ALIGNMENT_LEFT}):pos(progressBngSize.width - margin, progressBngSize.height / 2):addTo(progress)
     endLabel:setAnchorPoint(cc.p(1, 0.5))
     beginLabel:setVisible(false)
 end

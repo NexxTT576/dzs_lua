@@ -13,7 +13,7 @@ local MainScene =
 )
 
 function MainScene:ctor()
-    ui.newTTFLabel({text = "zhengshiyu", size = 64, align = cc.TEXT_ALIGNMENT_CENTER}):pos(display.cx, display.cy):addTo(self)
+    newTTFLabel({text = "zhengshiyu", size = 64, align = cc.TEXT_ALIGNMENT_CENTER}):pos(display.cx, display.cy):addTo(self)
     cc.ui.UIPushButton.new(buttonRes):onButtonClicked(
         function()
             --app:enterScene("PlayScene", nil, "Random", 1.0)

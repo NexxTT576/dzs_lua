@@ -25,7 +25,7 @@ function SellSoulCell:ctor(cellIndex, data)
 
     -- hero name
     local soulName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getContentSize().width * 1.2,
             y = self:getContentSize().height * 0.8,
@@ -41,7 +41,7 @@ function SellSoulCell:ctor(cellIndex, data)
 
     -- hero lv
     local heroLv =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getPositionX() - headIcon:getContentSize().width * 0.4,
             y = headIcon:getPositionY() - headIcon:getContentSize().height / 2,
@@ -64,7 +64,7 @@ function SellSoulCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduBg)
 
     local jinduLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "数量:",
             size = 24
@@ -74,7 +74,7 @@ function SellSoulCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduLable)
 
     local jinduNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 18,
             size = 22,
@@ -85,7 +85,7 @@ function SellSoulCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduNum)
 
     local jinduTotal =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. 30,
             size = 22,

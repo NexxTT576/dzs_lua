@@ -58,7 +58,7 @@ function CollectLayer:ctor(itemId, itemType)
     self.iconName:setColor(NAME_COLOR[self.starNum])
 
     local colMsg =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "集齐" .. data_item_item[itemId].overlay .. "个碎片可合成" .. trName,
             size = 24,

@@ -47,6 +47,7 @@ function BattleResult:onEnter()
 end
 
 function BattleResult:initWin(rewards)
+    dump(rewards)
     local proxy = CCBProxy:create()
     -- local ccbReader = proxy:createCCBReader()
     local rootnode = rootnode or {}
@@ -77,8 +78,8 @@ function BattleResult:initWin(rewards)
     rewardNode:addChild(rewardBg)
 
     local bg = rootnode["tag_bg"]
-    if (display.widthInPixels / display.heightInPixels) > 0.66 then
-        bg:setPreferredSize(cc.size(bg:getContentSize().width, display.heightInPixels * 0.65))
+    if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.66 then
+        bg:setPreferredSize(cc.size(bg:getContentSize().width, display.sizeInPixels.height * 0.65))
     end
 
     if (ResMgr.isHighEndDevice() == true) then
@@ -148,9 +149,9 @@ function BattleResult:initWin(rewards)
         _x = rootnode[tag]:getContentSize().width * 1.5
         _y = rootnode[tag]:getContentSize().height * 0.4
         local coinTextLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
-                text = v.n,
+                text = v.num,
                 x = rootnode[tag]:getContentSize().width / 2 + 30, -- _x,
                 y = _y,
                 font = FONTS_NAME.font_fzcy,
@@ -160,7 +161,7 @@ function BattleResult:initWin(rewards)
             }
         )
         self.coinTable[#self.coinTable + 1] = coinTextLabel
-        self.coinNum[#self.coinNum + 1] = v.n
+        self.coinNum[#self.coinNum + 1] = v.num
         if (tag ~= "") then
             rootnode[tag]:addChild(coinTextLabel)
         else
@@ -194,7 +195,6 @@ function BattleResult:initWin(rewards)
         self.scheduler.unscheduleGlobal(self.timeHandle)
     end
     self.timeHandle = self.scheduler.scheduleGlobal(update, interval, false)
-    schedule()
 
     -- 经验条
     local percent = game.player.m_exp / game.player.m_maxExp
@@ -267,7 +267,7 @@ function BattleResult:initWin(rewards)
     local data_item_item = require("data.data_item_item")
     for k, v in pairs(rewards.rewardItem) do
         local itemType = 1
-        itemType = ResMgr.getResType(v.t)
+        itemType = ResMgr.getResType(v["type"])
         if itemType == ResMgr.EQUIP then
             _data = data_item_item[v.id]
         elseif itemType == ResMgr.HERO then
@@ -322,7 +322,7 @@ function BattleResult:initWin(rewards)
         local itemNum =
             newTTFLabelWithOutline(
             {
-                text = v.n,
+                text = v.num,
                 size = 22,
                 color = cc.c3b(0, 255, 0),
                 outlineColor = display.COLOR_BLACK,
@@ -361,7 +361,7 @@ function BattleResult:initWin(rewards)
     -- shareBtn:setPosition(20, shareBtn:getContentSize().height*0.35)
     -- bg:addChild(shareBtn)
 
-    -- local shareText = ui.newTTFLabel({
+    -- local shareText = newTTFLabel({
     --     text = "返回",
     --     x = shareBtn:getContentSize().width*1.1/2,
     --     y = shareBtn:getContentSize().height/2,
@@ -383,7 +383,7 @@ function BattleResult:initWin(rewards)
     -- okBtn:setPosition(bg:getContentSize().width-okBtn:getContentSize().width*1.15, okBtn:getContentSize().height*0.35)
     -- bg:addChild(okBtn)
 
-    -- local okText = ui.newTTFLabel({
+    -- local okText = newTTFLabel({
     --     text = "确定",
     --     x = okBtn:getContentSize().width/2,
     --     y = okBtn:getContentSize().height/2,

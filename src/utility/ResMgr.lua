@@ -200,6 +200,7 @@ function ResMgr.getCardData(index)
 end
 
 function ResMgr.getIconSprite(param)
+    dump(param)
     local id = param.id
     local resType = param.resType
     local cls = param.cls or 0
@@ -426,7 +427,7 @@ function ResMgr.createNomarlMsgTTF(param)
     local size = param.size or 22
 
     local normalLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = text,
             color = color,

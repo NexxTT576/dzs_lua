@@ -25,7 +25,7 @@ function SoulListCell:ctor(cellIndex, data)
 
     -- hero name
     local soulName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getContentSize().width * 0.1,
             y = self:getContentSize().height * 0.8,
@@ -42,7 +42,7 @@ function SoulListCell:ctor(cellIndex, data)
 
     -- hero lv
     local heroLv =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getPositionX() - headIcon:getContentSize().width * 0.4,
             y = headIcon:getPositionY() - headIcon:getContentSize().height / 2,
@@ -65,7 +65,7 @@ function SoulListCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduBg)
 
     local jinduLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "数量:",
             size = 24
@@ -75,7 +75,7 @@ function SoulListCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduLable)
 
     local jinduNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 18,
             size = 22,
@@ -86,7 +86,7 @@ function SoulListCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduNum)
 
     local jinduTotal =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. 30,
             size = 22,
@@ -97,7 +97,7 @@ function SoulListCell:ctor(cellIndex, data)
     jinduNode:addChild(jinduTotal)
 
     local jiqi =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "未集齐",
             font = "Baoli",
@@ -115,7 +115,7 @@ function SoulListCell:ctor(cellIndex, data)
     -- choseTTF:setScale(0.6)
 
     local chaKanTTF =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "查看掉落",
             size = 26

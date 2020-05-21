@@ -64,7 +64,7 @@ function NoteItem:create(param)
     -- self.textLabel = getRichText(string.format(htmlText, text_1, text_2,text_3,text_4), self._rootnode["item_bg"]:getContentSize().width * 0.76)
     -- self.textLabel:setPosition(self._rootnode["item_bg"]:getContentSize().width*0.12, self._rootnode["item_bg"]:getContentSize().height*0.5)
     self.textLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = text,
             --param.itemData.content,

@@ -185,7 +185,7 @@ function SubMap:initLevelInfo(subMap)
         buildBtn:addChild(nameBg, maxZorder)
 
         local nameLabel =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = subMapData.name,
                 font = FONTS_NAME.font_fzcy,

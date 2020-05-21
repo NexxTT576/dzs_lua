@@ -82,7 +82,7 @@ function HeroQiangHuaCell:create(param)
 
     -- weapon name
     self.itemName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = self.headIcon:getContentSize().width * 0.4,
             y = self:getContentSize().height * 0.85,
@@ -104,7 +104,7 @@ function HeroQiangHuaCell:create(param)
 
     -- weapon lv
     self.weaponLv =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = self.lvIcon:getPositionX() + self.lvIcon:getContentSize().width * 0.4,
             y = self.lvIcon:getPositionY(),
@@ -123,7 +123,7 @@ function HeroQiangHuaCell:create(param)
     self.bg:addChild(equipInfoBg)
 
     self.costSilver =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "Exp:",
             -- color = FONT_COLOR.DARK_RED,
@@ -137,7 +137,7 @@ function HeroQiangHuaCell:create(param)
     self.bg:addChild(self.costSilver)
 
     self.costNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = sellExp,
             -- color = FONT_COLOR.DARK_RED,

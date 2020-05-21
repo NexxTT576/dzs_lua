@@ -265,8 +265,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--align(display.LEFT_CENTER))
-     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+     --align(display.LEFT_CENTER))
 
     onButtonSelectChanged(
         function(event)
@@ -483,7 +483,7 @@ function TaskPopup:createTitleTask()
     local countDisLeftOffset = 10
     local iconSize = self._goldIcon:getContentSize()
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "当前积分",
             font = FONTS_NAME.font_fzcy,
@@ -499,7 +499,7 @@ function TaskPopup:createTitleTask()
     local posX = countDis:getPositionX()
     local offset = countDis:getContentSize().width + 10
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = self._dataSelf.rtnObj.dailyMission.jifen,
             font = FONTS_NAME.font_fzcy,
@@ -515,7 +515,7 @@ function TaskPopup:createTitleTask()
     local posX = countDis:getPositionX()
     local offset = countDis:getContentSize().width + 15
     local countDis =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "/" .. TaskModel:getInstance():getMaxJIfen(),
             font = FONTS_NAME.font_fzcy,
@@ -542,11 +542,11 @@ function TaskPopup:createTitleTask()
     --进度条上边的数字显示
     local margin = 10
     local progressBngSize = progress:getContentSize()
-    local beginLabel = ui.newTTFLabel({text = "0", size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
+    local beginLabel = newTTFLabel({text = "0", size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
     beginLabel:setAnchorPoint(cc.p(0, 0.5))
     beginLabel:setVisible(false)
     local endLabel =
-        ui.newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
+        newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
         progressBngSize.width - margin,
         progressBngSize.height / 2
     ):addTo(progress)

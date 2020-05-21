@@ -290,7 +290,7 @@ function YabiaoController:refreshCountDown(time)
     --倒计时
     self.instance.shuaxinBtn:setSpriteFrame(display.newSprite("#count_down_btn.png"):getSpriteFrame())
     local countDownLabel =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = format_time(time),
             size = 25,

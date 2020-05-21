@@ -46,7 +46,7 @@ function HeroIcon:create(param)
     self._actIcon:setPosition(self._actIcon:getContentSize().width / 2, _viewSize.height / 2)
 
     local label =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "",
             size = 20
@@ -321,7 +321,7 @@ function EnemyFormScene:refreshHero(index)
                 s:addChild(lvBg)
 
                 local label =
-                    ui.newTTFLabel(
+                    newTTFLabel(
                     {
                         text = data_item_item[v.resId].name,
                         size = 22,
@@ -333,7 +333,7 @@ function EnemyFormScene:refreshHero(index)
                 s:addChild(label)
 
                 label =
-                    ui.newTTFLabel(
+                    newTTFLabel(
                     {
                         text = string.format("%d", v.level),
                         size = 22,
@@ -374,7 +374,7 @@ function EnemyFormScene:refreshHero(index)
                 s:addChild(label)
 
                 label =
-                    ui.newTTFLabel(
+                    newTTFLabel(
                     {
                         text = string.format("%d", v.level),
                         size = 22,

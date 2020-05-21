@@ -25,7 +25,7 @@ function CollectCell:ctor(param)
     self:addChild(levelBg)
 
     local lvlName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = param.name,
             size = 22,
@@ -37,7 +37,7 @@ function CollectCell:ctor(param)
     self:addChild(lvlName)
 
     local locaName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "据点 :" .. param.fieldName,
             size = 18,

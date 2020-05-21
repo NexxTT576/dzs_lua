@@ -49,7 +49,7 @@ function CardObj:ctor(param)
         self:addChild(sprite)
     else
         local label =
-            ui.newTTFLabel(
+            newTTFLabel(
             {
                 text = ResMgr.getMidImage(heroImg, ResMgr.HERO),
                 size = 18,

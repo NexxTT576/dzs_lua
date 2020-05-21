@@ -20,7 +20,7 @@ function BiwuTianbangLayer:setUpView(param)
     local text1 = "排名前十的玩家会进入天榜。"
     local text2 = "排名前20的玩家可直接对天榜内的玩家进行挑战，成功可得大量积分。"
     local txt1 =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = text1,
             font = FONTS_NAME.font_fzcy,
@@ -30,7 +30,7 @@ function BiwuTianbangLayer:setUpView(param)
         }
     ):pos(titleBng:getContentSize().width * 0.02, titleBng:getContentSize().height * 0.5):addTo(titleBng)
     local txt2 =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = text2,
             font = FONTS_NAME.font_fzcy,

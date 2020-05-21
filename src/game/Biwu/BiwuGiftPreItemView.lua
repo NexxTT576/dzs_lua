@@ -70,7 +70,7 @@ function BiwuGiftPreItemView:setUpView()
     end
 
     local dislabel =
-        ui.newTTFLabel({text = "第" .. text .. "名" .. textExt, size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
+        newTTFLabel({text = "第" .. text .. "名" .. textExt, size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     dislabel:setAnchorPoint(cc.p(0, 0.5))
 
     --道具框

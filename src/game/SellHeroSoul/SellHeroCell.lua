@@ -25,7 +25,7 @@ function SellHeroCell:ctor(data)
 
     -- hero name
     local heroName =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getContentSize().width * 1,
             y = self:getContentSize().height / 2,
@@ -41,7 +41,7 @@ function SellHeroCell:ctor(data)
 
     -- hero lv
     local heroLv =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             x = headIcon:getPositionX() - headIcon:getContentSize().width * 0.4,
             y = headIcon:getPositionY() - headIcon:getContentSize().height / 2,
@@ -60,7 +60,7 @@ function SellHeroCell:ctor(data)
     self:addChild(priceBg)
 
     local priceTTF =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "银币",
             size = 26,
@@ -73,7 +73,7 @@ function SellHeroCell:ctor(data)
     self:addChild(priceTTF)
 
     local priceNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 99999,
             size = 26,

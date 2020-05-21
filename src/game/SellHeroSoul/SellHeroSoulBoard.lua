@@ -39,7 +39,7 @@ function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     choiceDetailNode:addChild(choiceDetailBg)
 
     local choiceDetailLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "已选择侠客:",
             size = 18,
@@ -51,7 +51,7 @@ function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     choiceDetailNode:addChild(choiceDetailLable)
 
     local choiceDetailNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 0,
             size = 18,
@@ -63,7 +63,7 @@ function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     choiceDetailNode:addChild(choiceDetailNum)
 
     local zongjiLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "总计出售:",
             size = 18,
@@ -74,7 +74,7 @@ function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     choiceDetailNode:addChild(zongjiLable)
 
     local yinbiLable =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = "银币",
             size = 18
@@ -84,7 +84,7 @@ function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     choiceDetailNode:addChild(yinbiLable)
 
     local priceNum =
-        ui.newTTFLabel(
+        newTTFLabel(
         {
             text = 0,
             size = 18,
