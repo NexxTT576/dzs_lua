@@ -5,7 +5,7 @@ local SubMapScrollCell =
     class(
     "SubMapScrollCell",
     function()
-        display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+        display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
         return CCTableViewCell:new()
     end
 )

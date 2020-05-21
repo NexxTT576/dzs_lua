@@ -23,7 +23,7 @@
 -- 日期：14-10-16
 --
 
-display.addSpriteFramesWithFile("ui_icon_frame.plist", "ui_icon_frame.png")
+display.loadSpriteFrames("ui_icon_frame.plist", "ui_icon_frame.png")
 local IconObj =
     class(
     "IconObj",

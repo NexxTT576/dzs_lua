@@ -132,7 +132,7 @@ function SpiritUpgradeScene:ctor(index)
     local _listdata = _spiritCtrl.get("spiritList")
 
     _spiritCtrl.groupUpgradeSpirit(_item, _spiritList)
-    display.addSpriteFramesWithFile("ui/ui_spirit_list.plist", "ui/ui_spirit_list.png")
+    display.loadSpriteFrames("ui/ui_spirit_list.plist", "ui/ui_spirit_list.png")
 
     BAR_RECT = self._rootnode["tmpExpBar"]:getTextureRect()
     --  根据屏幕缩放部分

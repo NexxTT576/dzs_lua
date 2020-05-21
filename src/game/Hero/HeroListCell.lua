@@ -1,7 +1,7 @@
 local COMMON_VIEW = 1
 local SALE_VIEW = 2
 
-display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
 local HeroListCell =
     class(
     "HeroListCell",
@@ -30,7 +30,7 @@ function HeroListCell:create(param)
 
     self.choseTable = param.choseTable
 
-    -- display.addSpriteFramesWithFile("icon/icon_hero.plist", "icon/icon_hero.png")
+    -- display.loadSpriteFrames("icon/icon_hero.plist", "icon/icon_hero.png")
 
     local proxy = CCBProxy:create()
     self._rootnode = {}

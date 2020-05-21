@@ -179,7 +179,7 @@ end
 
 function BattleScene:ctor(levelID, gradeID, star, needPower, isPassed)
     game.runningScene = self
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 
     self.levelID = levelID
     self.gradeID = gradeID

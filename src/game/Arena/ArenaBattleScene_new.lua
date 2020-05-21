@@ -63,7 +63,7 @@ function ArenaBattleScene:checkIsLevelup(data)
 end
 
 function ArenaBattleScene:ctor(msg)
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 
     --设置游戏
     self.timeScale = 1

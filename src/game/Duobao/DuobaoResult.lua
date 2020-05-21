@@ -175,7 +175,7 @@ function DuobaoResult:createTreasure(lostDebris, data)
     local rtnAry = data["3"]
     dump(rtnAry)
 
-    display.addSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
+    display.loadSpriteFrames("ui/ui_duobao.plist", "ui/ui_duobao.png")
 
     local function createOpenEffect(baoxiang)
         -- 宝箱循环特效

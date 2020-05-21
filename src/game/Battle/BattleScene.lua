@@ -182,14 +182,14 @@ function BattleScene:checkIsLevelup(param)
 end
 
 function BattleScene:releaseUI()
-    display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.removeSpriteFramesWithFile("bigmap/bigmap.plist", "bigmap/bigmap.png")
-    display.removeSpriteFramesWithFile("ui/rank_list.plist", "ui/rank_list.png")
-    display.removeSpriteFramesWithFile("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
+    display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.removeSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
+    display.removeSpriteFrames("ui/rank_list.plist", "ui/rank_list.png")
+    display.removeSpriteFrames("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
 
-    display.removeSpriteFrameByImageName("ui/ui_bigmap_cloud.png")
-    display.removeSpriteFrameByImageName("ui/rank_list.png")
-    display.removeSpriteFrameByImageName("ui/ui_bottom_layer.pvr.ccz")
+    display.removeSpriteFrame("ui/ui_bigmap_cloud.png")
+    display.removeSpriteFrame("ui/rank_list.png")
+    display.removeSpriteFrame("ui/ui_bottom_layer.pvr.ccz")
 end
 
 function BattleScene:ctor(levelID, gradeID, star, needPower, isPassed)
@@ -200,7 +200,7 @@ function BattleScene:ctor(levelID, gradeID, star, needPower, isPassed)
     collectgarbage("collect")
 
     game.runningScene = self
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 
     self.levelID = levelID
     self.gradeID = gradeID

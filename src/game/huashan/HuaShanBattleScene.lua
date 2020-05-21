@@ -23,29 +23,39 @@
 -- 日期：14-10-31
 --
 
-local HuaShanBattleScene = class("HuaShanBattleScene",function ()
-    return display.newScene("HuaShanBattleScene")
-end)
+local HuaShanBattleScene =
+    class(
+    "HuaShanBattleScene",
+    function()
+        return display.newScene("HuaShanBattleScene")
+    end
+)
 
 function HuaShanBattleScene:ctor(param)
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 
     game.runningScene = self
     local _data = param.data
 
     local _resultFunc = function(data)
-
-        performWithDelay(self,function()
-            display.replaceScene(require("game.huashan.HuaShanScene").new())
-        end, 1)
+        performWithDelay(
+            self,
+            function()
+                display.replaceScene(require("game.huashan.HuaShanScene").new())
+            end,
+            1
+        )
     end
 
-    local battleLayer = require("game.Battle.BattleLayer").new({
-        fubenType = LUNJIAN,
-        fubenId = 3,
-        battleData = _data,
-        resultFunc = _resultFunc,
-    })
+    local battleLayer =
+        require("game.Battle.BattleLayer").new(
+        {
+            fubenType = LUNJIAN,
+            fubenId = 3,
+            battleData = _data,
+            resultFunc = _resultFunc
+        }
+    )
     self:addChild(battleLayer)
 end
 
@@ -54,5 +64,3 @@ function HuaShanBattleScene:onEnter()
 end
 
 return HuaShanBattleScene
-
-

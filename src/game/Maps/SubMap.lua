@@ -48,9 +48,9 @@ local function calSubmapStar(id)
 end
 
 function SubMap:ctor(param)
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.addSpriteFramesWithFile("bigmap/bigmap.plist", "bigmap/bigmap.png")
-    -- display.addSpriteFramesWithFile("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
+    -- display.loadSpriteFrames("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
 
     self.battleId = param.battleId
 

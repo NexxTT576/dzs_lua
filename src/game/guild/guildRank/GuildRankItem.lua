@@ -27,7 +27,7 @@ function GuildRankItem:getContentSize()
 end
 
 function GuildRankItem:ctor()
-    display.addSpriteFramesWithFile("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
+    display.loadSpriteFrames("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
 end
 
 function GuildRankItem:create(param)

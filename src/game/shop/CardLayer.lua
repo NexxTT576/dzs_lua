@@ -7,7 +7,7 @@ local CardLayer =
 )
 
 function CardLayer:ctor(heroInfo)
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
     local proxy = CCBProxy:create()
     local rootnode = {}

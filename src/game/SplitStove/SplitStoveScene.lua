@@ -104,7 +104,7 @@ local VIEW_TYPE = {
 function SplitStoveScene:ctor()
     ResMgr.removeBefLayer()
     game.runningScene = self
-    display.addSpriteFramesWithFile("icon/icon_equip.plist", "icon/icon_equip.png")
+    display.loadSpriteFrames("icon/icon_equip.plist", "icon/icon_equip.png")
 
     if game.player:getAppOpenData().lianhuashenmi == APPOPEN_STATE.close then
         self._rootnode["secretShopBtn"]:setVisible(false)

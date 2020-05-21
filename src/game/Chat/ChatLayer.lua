@@ -16,7 +16,7 @@ local ChatLayer =
     class(
     "ChatLayer",
     function()
-        display.addSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
+        display.loadSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
         return require("utility.ShadeLayer").new()
     end
 )

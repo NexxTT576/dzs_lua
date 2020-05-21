@@ -22,7 +22,7 @@ local GuildListScene =
     class(
     "GuildListScene",
     function(isFromMainMenuScene)
-        display.addSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
+        display.loadSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
 
         if isFromMainMenuScene == true then
             return require("game.BaseScene").new(

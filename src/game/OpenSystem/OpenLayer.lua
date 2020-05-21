@@ -118,13 +118,13 @@ function OpenLayer:ctor(param)
     -- dump(systemId)
     local checkIcon = OPENCHECK_ICON_NAME[systemId]
     if checkIcon[1] == 1 then
-        display.addSpriteFramesWithFile("ui/ui_toplayer.plist", "ui/ui_toplayer.pvr.ccz")
+        display.loadSpriteFrames("ui/ui_toplayer.plist", "ui/ui_toplayer.pvr.ccz")
     elseif checkIcon[1] == 2 then
-        display.addSpriteFramesWithFile("ui/ui_bottom2.plist", "ui/ui_bottom2.pvr.ccz")
+        display.loadSpriteFrames("ui/ui_bottom2.plist", "ui/ui_bottom2.pvr.ccz")
     elseif checkIcon[1] == 3 then
-        display.addSpriteFramesWithFile("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
+        display.loadSpriteFrames("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
     elseif checkIcon[1] == 4 then
-        display.addSpriteFramesWithFile("ui/ui_nbhuodong_icons.plist", "ui/ui_nbhuodong_icons.png")
+        display.loadSpriteFrames("ui/ui_nbhuodong_icons.plist", "ui/ui_nbhuodong_icons.png")
     end
 
     -- dump(checkIcon)

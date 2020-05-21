@@ -43,21 +43,21 @@ function SubMapBuyMsgBox:previewInit()
     local goldNum = ResMgr.createShadowMsgTTF({text = SubMapModel.getCost() .. "元宝", color = cc.c3b(255, 210, 0)}) --10元宝
     rowOneTable[#rowOneTable + 1] = goldNum
     local buyOne = ResMgr.createNomarlMsgTTF({text = "或消耗"})
-     --购买一次
+    --购买一次
     rowOneTable[#rowOneTable + 1] = buyOne
     local fubenName = ResMgr.createShadowMsgTTF({text = "1个", color = cc.c3b(58, 209, 73)})
-     ----某副本
+    ----某副本
     rowOneTable[#rowOneTable + 1] = fubenName
 
     local itemIcon = display.newSprite("#icon_qianggongling.png")
     rowOneTable[#rowOneTable + 1] = itemIcon
 
     local curNumTTF = ResMgr.createShadowMsgTTF({text = "(当前拥有", color = cc.c3b(58, 209, 73)})
-     ----某副本
+    ----某副本
     rowOneTable[#rowOneTable + 1] = curNumTTF
 
     local curNum = ResMgr.createShadowMsgTTF({text = SubMapModel.getQiangGongNum() .. "个)", color = cc.c3b(58, 209, 73)})
-     ----某副本
+    ----某副本
     rowOneTable[#rowOneTable + 1] = curNum
 
     --第二行
@@ -100,7 +100,7 @@ function SubMapBuyMsgBox:onClose()
 end
 
 function SubMapBuyMsgBox:ctor(param)
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
 
     self.removeListener = param.removeListener
     -- self.aid = param.aid

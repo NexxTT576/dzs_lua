@@ -7,7 +7,7 @@ local UseDialog =
 )
 
 function UseDialog:ctor()
-    display.addSpriteFramesWithFile("ui/ui_pop_window.plist", "ui/ui_pop_window.png")
+    display.loadSpriteFrames("ui/ui_pop_window.plist", "ui/ui_pop_window.png")
     --
     local _width = CONFIG_SCREEN_WIDTH * 0.8
     local _height = CONFIG_SCREEN_HEIGHT * 0.38

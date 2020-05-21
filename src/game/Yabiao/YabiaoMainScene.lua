@@ -129,9 +129,9 @@ function YabiaoMainScene:setUpBottomView()
 end
 
 function YabiaoMainScene:loadRes()
-    display.addSpriteFramesWithFile("ui/ui_yabiao_common.plist", "ui/ui_yabiao_common.png")
-    display.addSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
-    display.addSpriteFramesWithFile("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
+    display.loadSpriteFrames("ui/ui_yabiao_common.plist", "ui/ui_yabiao_common.png")
+    display.loadSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.loadSpriteFrames("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
 end
 
 function YabiaoMainScene:releaseRes()

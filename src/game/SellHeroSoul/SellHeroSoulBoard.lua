@@ -16,10 +16,10 @@ local SellHeroSoulBoard =
 function SellHeroSoulBoard:ctor(setBgVisible, typeIndex)
     self:setNodeEventEnabled(true)
 
-    display.addSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+    display.loadSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
 
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
     -- bg
     local boardBg = require("utility.BaseBoard").new()

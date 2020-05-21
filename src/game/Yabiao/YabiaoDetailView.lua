@@ -362,11 +362,11 @@ function YabiaoDetailView:createHeroView(index, node)
 end
 
 function YabiaoDetailView:loadRes()
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
-    display.addSpriteFramesWithFile("ui/ui_arena.plist", "ui/ui_arena.png")
-    display.addSpriteFramesWithFile("ui/ui_xiakelu.plist", "ui/ui_xiakelu.png")
-    display.addSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_arena.plist", "ui/ui_arena.png")
+    display.loadSpriteFrames("ui/ui_xiakelu.plist", "ui/ui_xiakelu.png")
+    display.loadSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
 end
 
 function YabiaoDetailView:releaseRes()

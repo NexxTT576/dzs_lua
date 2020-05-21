@@ -14,8 +14,8 @@ local EquipListCellVTwo =
     class(
     "EquipListCellVTwo",
     function(param)
-        --    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-        --    display.addSpriteFramesWithFile("ui/ui_equipV2.plist", "ui/ui_equipV2.png")
+        --    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+        --    display.loadSpriteFrames("ui/ui_equipV2.plist", "ui/ui_equipV2.png")
         return CCTableViewCell:new()
     end
 )

@@ -24,7 +24,7 @@ end
 
 function JingYingFuBenInfoBox:ctor(index, removeFunc)
     self.removeFunc = removeFunc
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
 
     self.index = index
     self:setNodeEventEnabled(true)

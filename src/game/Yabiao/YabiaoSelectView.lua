@@ -439,8 +439,8 @@ function YabiaoSelectView:createMask()
 end
 
 function YabiaoSelectView:loadRes()
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
 end
 
 function YabiaoSelectView:releaseRes()

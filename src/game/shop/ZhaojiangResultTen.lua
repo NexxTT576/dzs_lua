@@ -218,7 +218,7 @@ function ZhaojiangResultTen:ctor(param)
 
     self._rootnode = {}
     local proxy = CCBProxy:create()
-    display.addSpriteFramesWithFile("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
+    display.loadSpriteFrames("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
 
     local node = CCBReaderLoad("shop/zhaojiang_ten.ccbi", proxy, self._rootnode)
     node:setPosition(display.width / 2, display.height / 2)

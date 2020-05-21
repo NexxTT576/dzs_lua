@@ -428,13 +428,13 @@ function DuiHuanMainView:exchange(func, id)
 end
 
 function DuiHuanMainView:load()
-    display.addSpriteFramesWithFile("ui/ui_nbactivity_duihuan.plist", "ui/ui_nbactivity_duihuan.png")
-    display.addSpriteFramesWithFile("ui/ui_month_card.plist", "ui/ui_month_card.png")
-    display.addSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-    display.addSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
-    display.addSpriteFramesWithFile("ui/ui_reward.plist", "ui/ui_reward.png")
-    display.addSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.loadSpriteFrames("ui/ui_nbactivity_duihuan.plist", "ui/ui_nbactivity_duihuan.png")
+    display.loadSpriteFrames("ui/ui_month_card.plist", "ui/ui_month_card.png")
+    display.loadSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.loadSpriteFrames("ui/ui_duobao.plist", "ui/ui_duobao.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_reward.plist", "ui/ui_reward.png")
+    display.loadSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
 end
 
 function DuiHuanMainView:release()

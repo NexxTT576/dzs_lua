@@ -23,7 +23,7 @@ function FriendApplyBox:ctor(param)
     baseNode:setPosition(display.cx, display.cy)
     baseNode:addChild(rootnode, 1)
 
-    display.addSpriteFramesWithFile("ui/ui_friend.plist", "ui/ui_friend.png")
+    display.loadSpriteFrames("ui/ui_friend.plist", "ui/ui_friend.png")
 
     local function closeFunc()
         if cancelFunc ~= nil then

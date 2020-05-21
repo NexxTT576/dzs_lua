@@ -745,8 +745,8 @@ function HeroList:ctor(tag)
     end
 
     self:setNodeEventEnabled(true)
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.addSpriteFramesWithFile("ui/ui_main_menu.plist", "ui/ui_main_menu.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_main_menu.plist", "ui/ui_main_menu.png")
     self.viewType = COMMON_VIEW
 
     --初始化下边框

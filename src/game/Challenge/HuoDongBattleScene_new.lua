@@ -204,7 +204,7 @@ function HuoDongBattleScene:updateRound(num)
 end
 
 function HuoDongBattleScene:ctor(msg)
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
     game.runningScene = self
     self.activeId = 1
     self.fubenid = msg

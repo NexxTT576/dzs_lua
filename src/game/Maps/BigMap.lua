@@ -39,9 +39,9 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
     local TILES_W_NUM = 20
     local TILES_H_NUM = 30
 
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.addSpriteFramesWithFile("bigmap/bigmap.plist", "bigmap/bigmap.png")
-    -- display.addSpriteFramesWithFile("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
+    -- display.loadSpriteFrames("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
 
     self.top = require("game.scenes.TopLayer").new()
     self:addChild(self.top, 100)

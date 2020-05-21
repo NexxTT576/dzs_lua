@@ -67,7 +67,7 @@ end
 function BiwuBattleScene:ctor(msg)
     self._tabIndex = msg.tabindex
     self._extraMsg = msg.data["10"]
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
     --设置游戏
     self.timeScale = 1
     self.timeScale = ResMgr.battleTimeScale

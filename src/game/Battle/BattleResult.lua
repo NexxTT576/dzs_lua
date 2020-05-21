@@ -24,8 +24,8 @@ function BattleResult:ctor(data)
     self.curLv = data.curLv
     self.befLv = data.befLv
 
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
 
     local winType = data.win or 2
     if winType == 1 then
@@ -74,7 +74,7 @@ function BattleResult:initWin(rewards)
     node:setPosition(display.width / 2, display.height * 0.58)
     self:addChild(node)
 
-    display.addSpriteFramesWithFile("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
+    display.loadSpriteFrames("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
 
     local rewardNode = rootnode["reward_node"]
     local rewardBg = display.newScale9Sprite("#bw_bottom_bg.png", 0, 0, boxSz)

@@ -8,9 +8,9 @@ local ChoseStarLvlLayer =
 
 function ChoseStarLvlLayer:ctor(param)
     local selStarsListener = param.selStarsListener
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
     local boardWidth = display.width * 0.7
     local boardHeight = display.height * 0.68
     local boardBg =

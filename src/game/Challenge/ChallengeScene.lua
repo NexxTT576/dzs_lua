@@ -343,7 +343,7 @@ end
 
 function ChallengeScene:ctor(viewType)
     local viewType = viewType or JINGYING_VIEW
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
     game.runningScene = self
 
     -- TODO
@@ -429,8 +429,8 @@ end
 
 function ChallengeScene:onEnter()
     game.runningScene = self
-    display.addSpriteFramesWithFile("ui/ui_challenge.plist", "ui/ui_challenge.png")
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_challenge.plist", "ui/ui_challenge.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
     self:regNotice()
 
     -- 是否开启新系统

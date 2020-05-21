@@ -298,7 +298,7 @@ function HeroInfoScene:ctor(param, infoType)
 
     local _index = param.index
     --    ui_zhenrong
-    display.addSpriteFramesWithFile("ui_zhenrong.plist", "ui_zhenrong.png")
+    display.loadSpriteFrames("ui_zhenrong.plist", "ui_zhenrong.png")
     local pt = self._rootnode["scrollView"]:convertToWorldSpace(cc.p(0, 0))
     local layer =
         require("utility.TouchMaskLayer").new(

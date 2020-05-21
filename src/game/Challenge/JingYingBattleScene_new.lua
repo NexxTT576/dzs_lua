@@ -86,7 +86,7 @@ function JingYingBattleScene:checkIsLevelup(data)
 end
 
 function JingYingBattleScene:ctor(msg)
-    display.addSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.loadSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
     game.runningScene = self
 
     self.fubenid = msg

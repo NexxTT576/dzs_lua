@@ -813,12 +813,12 @@ function TanbaoMainView:close()
 end
 
 function TanbaoMainView:load()
-    display.addSpriteFramesWithFile("ui/ui_tanbao.plist", "ui/ui_tanbao.png")
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.addSpriteFramesWithFile("ui/taskcommon.plist", "ui/taskcommon.png")
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
-    display.addSpriteFramesWithFile("ui/ui_month_card.plist", "ui/ui_month_card.png")
+    display.loadSpriteFrames("ui/ui_tanbao.plist", "ui/ui_tanbao.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("ui/taskcommon.plist", "ui/taskcommon.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_month_card.plist", "ui/ui_month_card.png")
 end
 
 function TanbaoMainView:release()

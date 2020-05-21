@@ -3,6 +3,7 @@ frameworks/runtime-src/proj.win32/Debug.win32/
 frameworks/runtime-src/proj.win32/Release.win32/
 simulator/win32
 publish/
+./UserDefault.xml
 **/*.obj
 **/*.log
 **/*.tlog

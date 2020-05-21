@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky 
- -- 2014.08.30
- --
- --]]
 local data_playername_first_name = require("data.data_playername_first_name")
 local data_playername_male = require("data.data_playername_male")
 local data_playername_female = require("data.data_playername_female")
@@ -289,7 +283,7 @@ function ChoosePlayerNameLayer:chooseEnd()
                     cc.UserDefault:getInstance():flush()
 
                     if self._listener then
-                        self._listener()
+                        self._listener(info)
                     end
                     self:removeSelf()
                 end
@@ -308,7 +302,7 @@ function ChoosePlayerNameLayer:chooseEnd()
                                 -- device.showAlert("DATA ERROR", data["0"])
                                 show_tip_label(data_error_error[100001].prompt)
                             else
-                                enterGame(data["1"])
+                                enterGame(data)
                             end
                         end
                     }

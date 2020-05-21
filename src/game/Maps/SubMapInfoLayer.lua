@@ -29,7 +29,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     dump(self.refreshSubInfo)
 
     PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
 
     self._subMapInfo = _subMapInfo
 

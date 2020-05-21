@@ -2,13 +2,13 @@ local SellSoulCell =
     class(
     "SellSoulCell",
     function(data)
-        -- display.addSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+        -- display.loadSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
         return display.newSprite("#herolist_board.png")
     end
 )
 
 function SellSoulCell:ctor(cellIndex, data)
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
     local bgWidth = self:getContentSize().width
     local bgHeight = self:getContentSize().height
 

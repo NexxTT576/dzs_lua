@@ -8,7 +8,7 @@ local DuobaoIconCell =
     class(
     "DuobaoIconCell",
     function()
-        display.addSpriteFramesWithFile("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
+        display.loadSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
         return CCTableViewCell:new()
     end
 )

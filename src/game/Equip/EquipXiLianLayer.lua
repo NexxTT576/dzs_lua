@@ -10,10 +10,10 @@ local EquipXiLianLayer =
     class(
     "EquipXiLianLayer",
     function(param)
-        display.addSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-        display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+        display.loadSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+        display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
-        display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+        display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
         return require("utility.ShadeLayer").new()
     end
 )

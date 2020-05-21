@@ -24,7 +24,7 @@ function HeroChoseLayer:ctor(param)
     --过滤一下，将能够选择的功夫放到列表里
     self.choseAbleData = param.sellAbleData
 
-    --    display.addSpriteFramesWithFile("ui/ui_sprite_list.plist", "ui/ui_sprite_list.png")
+    --    display.loadSpriteFrames("ui/ui_sprite_list.plist", "ui/ui_sprite_list.png")
     --中间的背景
     -- PostNotice(NoticeKey.MAINSCENE_HIDE_BOTTOM_LAYER)
 

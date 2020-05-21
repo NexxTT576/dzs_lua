@@ -16,7 +16,7 @@ local ZhaojiangResultNormal =
 
 -- 星星动画
 function ZhaojiangResultNormal:createStar()
-    display.addSpriteFramesWithFile("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
+    display.loadSpriteFrames("ui/ui_zhaojiangResult.plist", "ui/ui_zhaojiangResult.png")
 
     for i = 1, 5 do
         if self._star == i then

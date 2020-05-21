@@ -10,7 +10,7 @@ local RankListScene =
     class(
     "RankListScene",
     function()
-        display.addSpriteFramesWithFile("ui/rank_list.plist", "ui/rank_list.png")
+        display.loadSpriteFrames("ui/rank_list.plist", "ui/rank_list.png")
 
         return require("game.BaseSceneExt").new(
             {

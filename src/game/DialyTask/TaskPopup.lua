@@ -165,16 +165,16 @@ function TaskPopup:update()
 end
 
 function TaskPopup:setUpView()
-    display.addSpriteFramesWithFile("ui/taskcommon.plist", "ui/taskcommon.png")
-    display.addSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
-    display.addSpriteFramesWithFile("ui/ui_reward.plist", "ui/ui_reward.png")
-    display.addSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-    display.addSpriteFramesWithFile("ui/ui_spirit.plist", "ui/ui_spirit.png")
-    display.addSpriteFramesWithFile("ui/ui_challenge.plist", "ui/ui_challenge.png")
-    display.addSpriteFramesWithFile("ui/ui_toplayer.plist", "ui/ui_toplayer.png")
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
-    display.addSpriteFramesWithFile("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
+    display.loadSpriteFrames("ui/taskcommon.plist", "ui/taskcommon.png")
+    display.loadSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.loadSpriteFrames("ui/ui_reward.plist", "ui/ui_reward.png")
+    display.loadSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.loadSpriteFrames("ui/ui_spirit.plist", "ui/ui_spirit.png")
+    display.loadSpriteFrames("ui/ui_challenge.plist", "ui/ui_challenge.png")
+    display.loadSpriteFrames("ui/ui_toplayer.plist", "ui/ui_toplayer.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
 
     local winSize = CCDirector:sharedDirector():getWinSize()
     local mask = CCLayerColor:create()
@@ -264,8 +264,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--align(display.LEFT_CENTER))
-     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+     --align(display.LEFT_CENTER))
 
     onButtonSelectChanged(
         function(event)

@@ -144,8 +144,8 @@ function DramaMgr.dramaEndLogin()
     local isNewUser = 1
     local nameBg =
         require("game.login.ChoosePlayerNameLayer").new(
-        function()
-            DramaMgr.request(isNewUser)
+        function(data)
+            DramaMgr.request(data)
         end
     )
     game.runningScene:addChild(nameBg, 1000)

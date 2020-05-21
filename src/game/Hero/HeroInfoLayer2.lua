@@ -515,7 +515,7 @@ function HeroInfoLayer:ctor(param, infoType)
     self._rootnode["itemNameLabel"]:addChild(clsLabel)
 
     local _index = param.index
-    display.addSpriteFramesWithFile("ui_zhenrong.plist", "ui_zhenrong.png")
+    display.loadSpriteFrames("ui_zhenrong.plist", "ui_zhenrong.png")
     local pt = self._rootnode["scrollView"]:convertToWorldSpace(cc.p(0, 0))
     --
     --    self._rootnode["scrollView"]:setContentOffset(cc.p(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)

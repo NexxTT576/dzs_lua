@@ -144,7 +144,7 @@ function SpiritItem:refresh(param)
 end
 --
 function SpiritListLayer:ctor(param)
-    display.addSpriteFramesWithFile("ui/ui_spirit_list.plist", "ui/ui_spirit_list.png")
+    display.loadSpriteFrames("ui/ui_spirit_list.plist", "ui/ui_spirit_list.png")
     local _sz = param.sz
     local _items = param.items
 

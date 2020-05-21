@@ -2,7 +2,7 @@ local CollectCell =
     class(
     "CollectCell",
     function(param)
-        display.addSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+        display.loadSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
         -- local boardSize = param.boardSize
         return display.newSprite("#herolist_board_mini.png")
     end

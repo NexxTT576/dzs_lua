@@ -438,7 +438,7 @@ function HeroQiangHuaLayer:updateListData(data)
 end
 
 function HeroQiangHuaLayer:ctor(param)
-    display.addSpriteFramesWithFile("ui/ui_herolist_v2.plist", "ui/ui_herolist_v2.png")
+    display.loadSpriteFrames("ui/ui_herolist_v2.plist", "ui/ui_herolist_v2.png")
     self.isQiangHuaAlready = false
 
     self.removeListener = param.removeListener

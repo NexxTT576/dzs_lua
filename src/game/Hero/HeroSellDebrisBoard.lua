@@ -273,10 +273,10 @@ function HeroSellDebrisBoard:ctor(setBgVisible, typeIndex)
     --用typeIndex来判断当前是出售装备还是出售碎片
     self.typeIndex = typeIndex
 
-    display.addSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+    display.loadSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
 
-    display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     self:SendReq()
 end
 

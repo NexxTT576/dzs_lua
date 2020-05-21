@@ -17,7 +17,7 @@ local SpiritIcon =
 function SpiritIcon:ctor(param)
     --    id, name, quality, lv, exp, listener
     --    dump(param)
-    display.addSpriteFramesWithFile("ui/ui_spirit.plist", "ui/ui_spirit.png")
+    display.loadSpriteFrames("ui/ui_spirit.plist", "ui/ui_spirit.png")
 
     local _id = param.id
     local _resId = param.resId

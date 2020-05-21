@@ -5,9 +5,9 @@ local EquipQiangHuaLayer =
     class(
     "EquipQiangHuaLayer",
     function(data)
-        display.addSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-        display.addSpriteFramesWithFile("ui/ui_equip.plist", "ui/ui_equip.png")
-        display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+        display.loadSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+        display.loadSpriteFrames("ui/ui_equip.plist", "ui/ui_equip.png")
+        display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
         return require("utility.ShadeLayer").new()
     end

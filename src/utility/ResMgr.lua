@@ -205,7 +205,7 @@ function ResMgr.getIconSprite(param)
     local cls = param.cls or 0
     local star = param.star
     local hasCorner = param.hasCorner or false
-    display.addSpriteFramesWithFile("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
+    display.loadSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
 
     local path = ""
     local _data = {}
@@ -625,7 +625,7 @@ function ResMgr.isEnoughSilver(num)
 end
 
 function ResMgr.refreshMoneyIcon(param)
-    display.addSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
 
     local itemBg = param.itemBg
     local moneyType = param.moneyType
@@ -648,7 +648,7 @@ function ResMgr.refreshMoneyIcon(param)
 end
 
 function ResMgr.refreshItemWithTagNumName(param)
-    display.addSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
     local itemType = param.itemType
     local itemId = param.id
     local itemCls = param.cls
@@ -1005,13 +1005,13 @@ function ResMgr.refreshCardBg(param) --根据参数更换卡牌的背景图片
     local scaleY = sprite:getScaleY()
 
     if resType == ResMgr.HERO_BG_BATTLE then
-        display.addSpriteFramesWithFile("ui_common/card_bg.plist", "ui_common/card_bg.png")
+        display.loadSpriteFrames("ui_common/card_bg.plist", "ui_common/card_bg.png")
         sprite:setSpriteFrame(display.newSpriteFrame("kapai_" .. star .. ".png"))
     elseif resType == ResMgr.HERO_BG_UI then
-        display.addSpriteFramesWithFile("ui/card_ui_bg.plist", "ui/card_ui_bg.png")
+        display.loadSpriteFrames("ui/card_ui_bg.plist", "ui/card_ui_bg.png")
         sprite:setSpriteFrame(display.newSpriteFrame("card_ui_bg_" .. star .. ".png"))
     elseif resType == ResMgr.ITEM_BG_UI then
-        display.addSpriteFramesWithFile("ui/ui_item_card_bg.plist", "ui/ui_item_card_bg.png")
+        display.loadSpriteFrames("ui/ui_item_card_bg.plist", "ui/ui_item_card_bg.png")
         sprite:setSpriteFrame(display.newSpriteFrame("item_card_bg_" .. star .. ".png"))
     else
         print("没这种resType啊")

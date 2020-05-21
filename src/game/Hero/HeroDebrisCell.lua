@@ -4,9 +4,9 @@ local HeroDebrisCell =
     class(
     "HeroDebrisCell",
     function()
-        -- display.addSpriteFramesWithFile("ui/ui_equip.plist", "ui/ui_equip.png")
-        display.addSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-        display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+        -- display.loadSpriteFrames("ui/ui_equip.plist", "ui/ui_equip.png")
+        display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+        display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
         return CCTableViewCell:new()
     end

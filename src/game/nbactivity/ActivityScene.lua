@@ -18,7 +18,7 @@ local ActivityScene =
     class(
     "ActivityScene",
     function()
-        display.addSpriteFramesWithFile("ui/ui_nbhuodong_icons.plist", "ui/ui_nbhuodong_icons.png")
+        display.loadSpriteFrames("ui/ui_nbhuodong_icons.plist", "ui/ui_nbhuodong_icons.png")
 
         return require("game.BaseSceneExt").new(
             {

@@ -13,8 +13,8 @@ local GenNamelayer =
     class(
     "GenName",
     function(...)
-        display.addSpriteFramesWithFile("ui/ui_login.plist", "ui/ui_login.png")
-        display.addSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+        display.loadSpriteFrames("ui/ui_login.plist", "ui/ui_login.png")
+        display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
         return display.newLayer()
     end
 )

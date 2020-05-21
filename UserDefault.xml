@@ -3,6 +3,7 @@
     <saved>true</saved>
     <enable_sfx>true</enable_sfx>
     <enable_music>true</enable_music>
-    <isBattle>false</isBattle>
-    <accid>1589978721</accid>
+    <isBattle>true</isBattle>
+    <accid>1590043145</accid>
+    <playerName>祖浩宇</playerName>
 </userDefaultRoot>

@@ -1157,7 +1157,7 @@ function MainMenuScene:onExit()
 end
 
 function MainMenuScene:UpdateQuickAccess(...)
-    display.addSpriteFramesWithFile("2015_03_03.plist", "2015_03_03.png")
+    display.loadSpriteFrames("2015_03_03.plist", "2015_03_03.png")
 
     local function onBtn(tag)
         if tag == QuickAccess.SLEEP then
