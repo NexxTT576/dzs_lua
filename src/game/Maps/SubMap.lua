@@ -83,7 +83,7 @@ function SubMap:ctor(param)
     local listSize = cc.size(listViewNode:getContentSize().width * 0.95, listHeigt)
     self._listViewSize = cc.size(listSize.width, listSize.height * 0.97)
 
-    local listBg = display.newScale9Sprite("#submap_bg.png", 0, 0, listSize)
+    local listBg = display.newSprite("#submap_bg.png", 0, 0, {scale9 = true, size = listSize})
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(listViewNode:getContentSize().width / 2, 0)
     listViewNode:addChild(listBg)

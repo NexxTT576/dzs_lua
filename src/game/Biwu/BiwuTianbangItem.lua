@@ -55,14 +55,19 @@ function BiwuTianbangItem:refresh(param)
 
     --外边大的背景框
     self:setContentSize(self.viewSize)
-    self.bng = display.newScale9Sprite(data.rank <= 3 and levelRes[data.rank].frame or defaut.frame, 0, 0, cc.size(self.viewSize.width, self.viewSize.height))
+    self.bng = display.newSprite(data.rank <= 3 and levelRes[data.rank].frame or defaut.frame, 0, 0, {scale9 = true, size = cc.size(self.viewSize.width, self.viewSize.height)})
     self.bng:setAnchorPoint(cc.p(0, 0))
     self:addChild(self.bng)
 
     --标题背景
 
     self.titleBng =
-        display.newScale9Sprite(data.rank <= 3 and levelRes[data.rank].titleBng or defaut.titleBng, 0, 0, cc.size(self.viewSize.width - padding.left - padding.right, self.viewSize.height * 0.15))
+        display.newSprite(
+        data.rank <= 3 and levelRes[data.rank].titleBng or defaut.titleBng,
+        0,
+        0,
+        {scale9 = true, size = cc.size(self.viewSize.width - padding.left - padding.right, self.viewSize.height * 0.15)}
+    )
     self.titleBng:setAnchorPoint(cc.p(0, 0))
     self.titleBng:setPosition(cc.p(self.viewSize.width * 0.02, self.viewSize.height * 0.75))
     self.bng:addChild(self.titleBng)
@@ -131,7 +136,8 @@ function BiwuTianbangItem:refresh(param)
     self.arrowBng:addChild(levelDis)
 
     --头像大背景
-    self.heroBng = display.newScale9Sprite(data.rank <= 3 and levelRes[data.rank].contentBng or defaut.contentBng, 0, 0, cc.size(self.viewSize.width * 0.7, self.viewSize.height * 0.55))
+    self.heroBng =
+        display.newSprite(data.rank <= 3 and levelRes[data.rank].contentBng or defaut.contentBng, 0, 0, {scale9 = true, size = cc.size(self.viewSize.width * 0.7, self.viewSize.height * 0.55)})
     self.heroBng:setAnchorPoint(cc.p(0, 0))
     self.heroBng:setPosition(cc.p(self.viewSize.width * 0.01, self.viewSize.height * 0.2))
     self.bng:addChild(self.heroBng)

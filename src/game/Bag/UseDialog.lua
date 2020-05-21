@@ -11,7 +11,7 @@ function UseDialog:ctor()
     --
     local _width = CONFIG_SCREEN_WIDTH * 0.8
     local _height = CONFIG_SCREEN_HEIGHT * 0.38
-    local bg = display.newScale9Sprite("#popwin_bg.png")
+    local bg = display.newSprite("#popwin_bg.png", {scale9 = true})
     bg:setPreferredSize(cc.size(_width, _height))
     bg:setPosition(display.width / 2, display.height / 2)
     self:addChild(bg, TOP_LAYER_TAG, TOP_LAYER_TAG)
@@ -20,7 +20,7 @@ function UseDialog:ctor()
     titleSprite:setPosition(_width / 2, _height - titleSprite:getContentSize().height * 1.5)
     bg:addChild(titleSprite)
 
-    local lineSprite = display.newScale9Sprite("#bag_line.png")
+    local lineSprite = display.newSprite("#bag_line.png", {scale9 = true})
     lineSprite:setPreferredSize(cc.size(_width * 0.8, 1.5))
     lineSprite:setPosition(_width / 2, _height - titleSprite:getContentSize().height * 2)
     bg:addChild(lineSprite)

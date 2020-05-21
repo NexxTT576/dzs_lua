@@ -15,12 +15,13 @@ function YabiaoSpeedUpCommitPopup:setUpView(param)
     self._disStr = param.disStr
     self:createMask()
     --背景
-    local mainBng = display.newScale9Sprite("#win_base_bg2.png", 0, 0, cc.size(display.width * 0.8, display.width * 0.5)):pos(display.cx, display.cy):addTo(self)
+    local mainBng = display.newSprite("#win_base_bg2.png", 0, 0, {scale9 = true, size = cc.size(display.width * 0.8, display.width * 0.5)}):pos(display.cx, display.cy):addTo(self)
     local mainBngSize = mainBng:getContentSize()
     local innnerBng =
-        display.newScale9Sprite("#win_base_inner_bg_light.png", 0, 0, cc.size(mainBngSize.width * 0.96, mainBngSize.width * 0.48)):pos(mainBngSize.width / 2, mainBngSize.height / 2 - 25):addTo(
-        mainBng
-    )
+        display.newSprite("#win_base_inner_bg_light.png", 0, 0, {scale9 = true, size = cc.size(mainBngSize.width * 0.96, mainBngSize.width * 0.48)}):pos(
+        mainBngSize.width / 2,
+        mainBngSize.height / 2 - 25
+    ):addTo(mainBng)
     local btnCloseRes = {
         normal = "#win_base_close.png",
         pressed = "#win_base_close.png",

@@ -46,7 +46,7 @@ function LeijiLoginLayer:ctor(param)
     self._rootnode["msg_node"]:setPositionY(titleIcon:getPositionY() - titleIcon:getContentSize().height + 5)
 
     local listBgHeight = viewSize.height - titleIcon:getContentSize().height - msgNode:getContentSize().height + 15
-    local listBg = display.newScale9Sprite("#month_item_bg_bg.png", 0, 0, CCSize(viewSize.width, listBgHeight))
+    local listBg = display.newSprite("#month_item_bg_bg.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width, listBgHeight)})
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(display.width / 2, 0)
     node:addChild(listBg)

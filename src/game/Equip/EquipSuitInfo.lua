@@ -41,7 +41,7 @@ function EquipSuitInfo:ctor(param)
     local proxy = CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBReaderLoad("equip/suit_info.ccbi", proxy, self._rootnode, self, CCSize(640, self.height))
+    local node = CCBReaderLoad("equip/suit_info.ccbi", proxy, self._rootnode, self, cc.size(640, self.height))
     node:setAnchorPoint(cc.p(0.5, 1))
 
     self:addChild(node)

@@ -1,14 +1,8 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-06-03 17:40:45
- -- @version 
- --
- --]]
 require("game.GameConst")
 
-local scheduler = require("framework.scheduler")
+local scheduler = require("utility.scheduler")
 
+--@RefType ShadeLayer
 local BattleResult =
     class(
     "BattleResult",
@@ -59,7 +53,7 @@ function BattleResult:initWin(rewards)
     local nodeSz = cc.size(640, 850)
     local boxSz = cc.size(450, 154)
 
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     -- rewards.rewardItem[3] = rewards.rewardItem[2]
     -- rewards.rewardItem[4] = rewards.rewardItem[2]
@@ -70,21 +64,21 @@ function BattleResult:initWin(rewards)
     end
 
     local node = CCBReaderLoad("ccbi/battle/battle_win.ccbi", proxy, rootnode, self, nodeSz)
-    node:ignoreAnchorPointForPosition(false)
+    node:setIgnoreAnchorPointForPosition(false)
     node:setPosition(display.width / 2, display.height * 0.58)
     self:addChild(node)
 
     display.loadSpriteFrames("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
 
     local rewardNode = rootnode["reward_node"]
-    local rewardBg = display.newScale9Sprite("#bw_bottom_bg.png", 0, 0, boxSz)
+    local rewardBg = display.newSprite("#bw_bottom_bg.png", 0, 0, {scale9 = true, size = boxSz})
     rewardBg:setAnchorPoint(cc.p(0.5, 1.0))
     rewardBg:setPosition(rewardBg:getContentSize().width / 2, 0)
     rewardNode:addChild(rewardBg)
 
     local bg = rootnode["tag_bg"]
     if (display.widthInPixels / display.heightInPixels) > 0.66 then
-        bg:setPreferredSize(CCSize(bg:getContentSize().width, display.heightInPixels * 0.65))
+        bg:setPreferredSize(cc.size(bg:getContentSize().width, display.heightInPixels * 0.65))
     end
 
     if (ResMgr.isHighEndDevice() == true) then
@@ -195,11 +189,12 @@ function BattleResult:initWin(rewards)
         end
     end
 
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     if self.timeHandle ~= nil then
         self.scheduler.unscheduleGlobal(self.timeHandle)
     end
     self.timeHandle = self.scheduler.scheduleGlobal(update, interval, false)
+    schedule()
 
     -- 经验条
     local percent = game.player.m_exp / game.player.m_maxExp

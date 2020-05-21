@@ -86,7 +86,7 @@ function ChallengeScene:updateJingYingList()
             createFunc = createFunc,
             refreshFunc = refreshFunc,
             cellNum = totalNum,
-            cellSize = CCSize(display.width * 0.9, 200),
+            cellSize = cc.size(display.width * 0.9, 200),
             --require("game.Arena.ArenaCell").new():getContentSize(),
             touchFunc = function(cell)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

@@ -120,7 +120,7 @@ function YueqianLayer:ctor(param)
     local titleIcon = self._rootnode["title_icon"]
     local bottomNode = self._rootnode["bottom_node"]
     local listBgHeight = viewSize.height - titleIcon:getContentSize().height - bottomNode:getContentSize().height
-    local listBg = display.newScale9Sprite("#month_item_bg_bg.png", 0, 0, CCSize(viewSize.width, listBgHeight))
+    local listBg = display.newSprite("#month_item_bg_bg.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width, listBgHeight)})
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(display.width / 2, 0)
     self._rootnode["listViewNode"]:addChild(listBg)

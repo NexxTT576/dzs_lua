@@ -37,7 +37,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     self:setTouchEnabled(true)
 
     local colorbg = display.newLayer(cc.c4b(0, 0, 0, 150))
-    colorbg:setContentSize(CCSize(display.width, display.height))
+    colorbg:setContentSize(cc.size(display.width, display.height))
     colorbg:setPosition(0, 0)
     self:addChild(colorbg)
 
@@ -64,7 +64,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     local win_height = originHeight + levelBoardOffHeight + rewardOffHeight + 15
     dump(win_height)
     local rootnode = {}
-    local node = CCBReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode, self, CCSize(display.width, win_height))
+    local node = CCBReaderLoad("fuben/sub_map_info.ccbi", proxy, rootnode, self, cc.size(display.width, win_height))
     node:setPosition(display.width * 0.5, display.cy)
     self:addChild(node)
 
@@ -213,7 +213,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
 
     --下面三个难度设置
     -- 难度半透明背景
-    local levelModeBg = display.newScale9Sprite("#levelinfo_boss_bg2.png", 0, 0, CCSize(bgSize.width, 10 + (levelBoard:getContentSize().height + 5) * levelData.star))
+    local levelModeBg = display.newSprite("#levelinfo_boss_bg2.png", 0, 0, {scale9 = true, size = cc.size(bgSize.width, 10 + (levelBoard:getContentSize().height + 5) * levelData.star)})
     levelModeBg:setPosition(bossBoardBg:getPositionX(), bossBoardBg:getPositionY() - (bossBoardBg:getContentSize().height / 2) - 5)
     levelModeBg:setAnchorPoint(0.5, 1)
     bossBoardBg:addChild(levelModeBg)
@@ -299,7 +299,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     --最下面 有几率获得的底板
     if (levelData.arr_dropid ~= nil) then
         local data_item_item = require("data.data_item_item")
-        local chanceToLootBoard = display.newScale9Sprite("#levelinfo_boss_bg2.png", 0, 0, CCSize(levelModeBg:getContentSize().width, iconSize * 1))
+        local chanceToLootBoard = display.newSprite("#levelinfo_boss_bg2.png", 0, 0, {scale9 = true, size = cc.size(levelModeBg:getContentSize().width, iconSize * 1)})
         chanceToLootBoard:setPosition(levelModeBg:getContentSize().width / 2, -chanceToLootBoard:getContentSize().height / 2 - 15)
         levelModeBg:addChild(chanceToLootBoard)
 

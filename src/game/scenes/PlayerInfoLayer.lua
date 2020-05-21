@@ -10,7 +10,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     self.playerInfoNode = mainMenuNode
     self:setNodeEventEnabled(true)
 
-    self.schedulePlayerInfo = require("framework.scheduler")
+    self.schedulePlayerInfo = require("utility.scheduler")
 
     local proxy = CCBProxy:create()
     local ccbReader = proxy:createCCBReader()

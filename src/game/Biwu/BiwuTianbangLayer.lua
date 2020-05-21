@@ -12,7 +12,7 @@ function BiwuTianbangLayer:setUpView(param)
     --测试数据
     --顶部区域
     local titleBng = display.newSprite("#arena_msg_bg.png")
-    local titleBng = display.newScale9Sprite("#arena_msg_bg.png", 0, 0, cc.size(param.size.width, param.size.height * 0.1)):pos(param.size.width / 2 - 30, param.size.height * 0.92)
+    local titleBng = display.newSprite("#arena_msg_bg.png", 0, 0, {scale9 = true, size = cc.size(param.size.width, param.size.height * 0.1)}):pos(param.size.width / 2 - 30, param.size.height * 0.92)
     titleBng:setAnchorPoint(cc.p(0.5, 1))
     titleBng:setPosition(cc.p(param.size.width * 0.5, param.size.height * 0.98))
     self:addChild(titleBng)

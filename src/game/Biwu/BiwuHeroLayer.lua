@@ -33,7 +33,7 @@ function BiwuHeroLayer:ctor(param)
 
     --服务器获取数据
     self:_getData()
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
 end
 
 function BiwuHeroLayer:setUpLabelView()

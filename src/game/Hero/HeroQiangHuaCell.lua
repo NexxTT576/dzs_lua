@@ -117,9 +117,9 @@ function HeroQiangHuaCell:create(param)
     )
     self.bg:addChild(self.weaponLv)
 
-    local equipInfoBg = display.newScale9Sprite("#equip_info_bg.png")
+    local equipInfoBg = display.newSprite("#equip_info_bg.png", {scale9 = true})
     equipInfoBg:setPosition(bgWidth * 0.65, bgHeight * 0.3)
-    equipInfoBg:setContentSize(CCSize(210, 60))
+    equipInfoBg:setContentSize(cc.size(210, 60))
     self.bg:addChild(equipInfoBg)
 
     self.costSilver =

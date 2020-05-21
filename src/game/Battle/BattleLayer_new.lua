@@ -240,7 +240,7 @@ function BattleLayer:init(param)
     self.nodes = {}
     for i = 1, #self.nodeNames do
         local curNode = display.newNode()
-        curNode:setContentSize(CCSize(display.width, display.height))
+        curNode:setContentSize(cc.size(display.width, display.height))
         self.nodes[self.nodeNames[i]] = curNode
         if i == 1 then
             self:addChild(curNode)
@@ -251,7 +251,7 @@ function BattleLayer:init(param)
 
     self.shakeNode = display.newNode()
 
-    self.shakeNode:setContentSize(CCSize(display.width, display.height))
+    self.shakeNode:setContentSize(cc.size(display.width, display.height))
     if #self.nodeNames > 0 then
         self.nodes[self.nodeNames[#self.nodeNames]]:addChild(self.shakeNode)
     else
@@ -413,7 +413,7 @@ function BattleLayer:init(param)
 
     self.maskLayer = display.newLayer(cc.c4b(0, 0, 0, 0))
     self.maskLayer:setVisible(false)
-    self.maskLayer:setContentSize(CCSize(display.width * 2, display.height * 2))
+    self.maskLayer:setContentSize(cc.size(display.width * 2, display.height * 2))
     self.shakeNode:addChild(self.maskLayer, ANGER_ZORDER)
 
     self.battleEffTable = {}
@@ -741,7 +741,7 @@ end
 
 function BattleLayer:initSkipDramaBtn()
     if self.skipDramaBtn == nil then
-        local btnSprite = display.newScale9Sprite("#jump_drama_btn.png")
+        local btnSprite = display.newSprite("#jump_drama_btn.png", {scale9 = true})
         self.skipDramaBtn = CCControlButton:create("", FONTS_NAME.font_fzcy, 30)
         self.skipDramaBtn:setBackgroundSpriteForState(btnSprite, CCControlStateNormal)
         self.skipDramaBtn:setPreferredSize(cc.size(144, 50))
@@ -3255,7 +3255,7 @@ end
 function BattleLayer:fade(time, delayTime)
     self.maskLayer:setVisible(true)
     -- time =2
-    self.maskLayer:setContentSize(CCSize(display.width * 2, display.height * 2))
+    self.maskLayer:setContentSize(cc.size(display.width * 2, display.height * 2))
     local fadeTo = CCFadeTo:create(time, 250)
     local delayFade = cc.DelayTime:create(delayTime)
     local fadeOut = CCFadeTo:create(time / 2, 0)

@@ -137,7 +137,7 @@ function ChallengeFubenLayer:ctor(param)
     -- 底部listView框
     local sizeH = node:getContentSize().height - self._rootnode["top_node"]:getContentSize().height - self._rootnode["bottom_node"]:getPositionY()
     local sizeW = self._rootnode["tag_zhenrong"]:getContentSize().width
-    local bottomBg = display.newScale9Sprite("#levelinfo_boss_bg2.png", 0, 0, cc.size(sizeW, sizeH))
+    local bottomBg = display.newSprite("#levelinfo_boss_bg2.png", 0, 0, {scale9 = true, size = cc.size(sizeW, sizeH)})
     bottomBg:setAnchorPoint(0.5, 0)
     bottomBg:setPosition(node:getContentSize().width / 2, 0)
     self._rootnode["bottom_node"]:addChild(bottomBg)

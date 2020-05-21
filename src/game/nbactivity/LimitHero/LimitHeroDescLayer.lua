@@ -24,8 +24,8 @@ function LimitHeroDescLayer:ctor()
 
     rootnode["titleLabel"]:setString("活动说明")
     rootnode["descLabel"]:setString(data_message_message[17].text)
-    local preferSize = CCSize(rootnode["content_node"]:getContentSize().width, rootnode["content_node"]:getContentSize().height)
-    -- rootnode["content_node"]:setContentSize(CCSize(preferSize.width,preferSize.height*1.5))
+    local preferSize = cc.size(rootnode["content_node"]:getContentSize().width, rootnode["content_node"]:getContentSize().height)
+    -- rootnode["content_node"]:setContentSize(cc.size(preferSize.width,preferSize.height*1.5))
 
     rootnode["tag_bg"]:setContentSize(preferSize)
 

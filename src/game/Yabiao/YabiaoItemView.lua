@@ -130,7 +130,7 @@ function YabiaoItemView:setUpView(param)
         self:setPosition(self:getX(), self:getY() + self:getSpeed() / speedSeed)
         self:setY(self:getY() + self:getSpeed() / speedSeed)
     end
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
     self._schedule = self._scheduler.scheduleGlobal(countDown, 1 / speedSeed, false)
 
     local countDownTimer = function()
@@ -142,7 +142,7 @@ function YabiaoItemView:setUpView(param)
             self:completeTask()
         end
     end
-    self._schedulerTimer = require("framework.scheduler")
+    self._schedulerTimer = require("utility.scheduler")
     self._scheduleTimer = self._schedulerTimer.scheduleGlobal(countDownTimer, 1, false)
 
     addTouchListener(

@@ -20,7 +20,7 @@ function CommonEquipInfoLayer:initSuit()
     self._rootnode["taozhuang_node"]:addChild(self.suitInfo)
 
     local maxOff = 470 + self.suitInfo:getHeight()
-    self.scrollBg:setContentSize(CCSize(display.width, maxOff))
+    self.scrollBg:setContentSize(cc.size(display.width, maxOff))
     self.scrollBg:setContentOffset(cc.p(0, -150), false)
     self.contentContainer:setPosition(display.width / 2, maxOff)
 end
@@ -39,9 +39,9 @@ function CommonEquipInfoLayer:ctor(param, infoType)
     local boardSize = nil
 
     if _baseInfo.Suit == nil then
-        boardSize = CCSize(640, 620)
+        boardSize = cc.size(640, 620)
     else
-        boardSize = CCSize(display.width, 850)
+        boardSize = cc.size(display.width, 850)
     end
 
     self._proxy = CCBProxy:create()
@@ -63,12 +63,12 @@ function CommonEquipInfoLayer:ctor(param, infoType)
 
     self.scrollBg:setContainer(self.contentNode)
     self.scrollBg:setPosition(0, 80)
-    self.scrollBg:setViewSize(CCSize(display.width, boardSize.height - 150))
+    self.scrollBg:setViewSize(cc.size(display.width, boardSize.height - 150))
     local maxOff = 800
-    self.scrollBg:setContentSize(CCSize(display.width, maxOff))
+    self.scrollBg:setContentSize(cc.size(display.width, maxOff))
     self.scrollBg:setDirection(kCCScrollViewDirectionVertical)
     self.scrollBg:setContentOffset(cc.p(0, -maxOff / 2 + 55), false)
-    self.scrollBg:ignoreAnchorPointForPosition(true)
+    self.scrollBg:setIgnoreAnchorPointForPosition(true)
     self.scrollBg:updateInset()
     self.contentContainer:setPosition(display.width / 2, maxOff)
     self._rootnode["titleLabel"]:setString("装备信息")

@@ -135,7 +135,7 @@ function OpenLayer:ctor(param)
     if checkIcon[1] == 10 then
         icon:setScaleX(0.6)
         icon:setScaleY(0.6)
-        local topSp = display.newScale9Sprite("ui/ui_huodong/ui_huodong_cover.png", 0, 0, CCSize(icon:getContentSize().width * 1.05, icon:getContentSize().height * 1.1))
+        local topSp = display.newSprite("ui/ui_huodong/ui_huodong_cover.png", 0, 0, {scale9 = true, size = cc.size(icon:getContentSize().width * 1.05, icon:getContentSize().height * 1.1)})
         topSp:setPosition(icon:getContentSize().width / 2, icon:getContentSize().height / 2)
         icon:addChild(topSp)
     else

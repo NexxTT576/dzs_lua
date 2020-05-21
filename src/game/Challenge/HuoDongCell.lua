@@ -51,10 +51,10 @@ function HuoDongCell:refresh(aid)
 
     if (self.isAllowPlay) then
         item = display.newSprite(imagePath)
-        itemCover = display.newScale9Sprite(imageCoverName, 0, 0, CCSize(item:getContentSize().width + 20, item:getContentSize().height + 20))
+        itemCover = display.newSprite(imageCoverName, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     else
         item = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
-        itemCover = display.newScale9Sprite(imageCoverNameGray, 0, 0, CCSize(item:getContentSize().width + 20, item:getContentSize().height + 20))
+        itemCover = display.newSprite(imageCoverNameGray, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     end
     item:setPosition(self._rootnode["bg_node"]:getContentSize().width / 2, self._rootnode["bg_node"]:getContentSize().height / 2)
     itemCover:setPosition(self._rootnode["bg_node"]:getContentSize().width / 2, self._rootnode["bg_node"]:getContentSize().height / 2)

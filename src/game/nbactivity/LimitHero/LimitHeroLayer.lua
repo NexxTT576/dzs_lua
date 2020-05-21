@@ -102,7 +102,7 @@ function LimitHeroLayer:init()
 
     self.touchLayer = display.newLayer(cc.c4b(100, 50, 50, 0))
     self.touchLayer:setPosition(cc.p(0, LIST_HEIGHT))
-    self.touchLayer:setContentSize(CCSize(display.width, self.viewSize.height - LIST_HEIGHT))
+    self.touchLayer:setContentSize(cc.size(display.width, self.viewSize.height - LIST_HEIGHT))
     self.touchLayer:setTouchEnabled(true)
     self.touchLayer:setTouchSwallowEnabled(false)
 
@@ -566,7 +566,7 @@ function LimitHeroLayer:initActTimeSchedule()
     end
     actUpdate()
     -- self.actTimeLabel:schedule(actUpdate,1)
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
 
     if self.timeData ~= nil then
         self.scheduler.unscheduleGlobal(self.timeData)

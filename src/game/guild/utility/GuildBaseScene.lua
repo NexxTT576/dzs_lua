@@ -112,7 +112,7 @@ function GuildBaseScene:ctor(param)
 
     --  背景
     if _bgImagePath then
-        local bg = display.newScale9Sprite(_bgImagePath)
+        local bg = display.newSprite(_bgImagePath, {scale9 = true})
         if _scaleMode == 0 then
             bg:setAnchorPoint(0.5, 0)
             if _imageFromBottom then
@@ -142,7 +142,7 @@ function GuildBaseScene:ctor(param)
             hw:setAnchorPoint(cc.p(0.5, 1))
             bg:addChild(hw)
 
-            local bg2 = display.newScale9Sprite("ui_common/common_bg2.png")
+            local bg2 = display.newSprite("ui_common/common_bg2.png", {scale9 = true})
             bg2:setContentSize(cc.size(display.width + 40, bg:getContentSize().height + 12))
             bg2:setPosition(display.width / 2, bg:getContentSize().height / 2)
             bg:addChild(bg2)

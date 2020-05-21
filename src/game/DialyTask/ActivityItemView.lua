@@ -36,7 +36,7 @@ end
 
 function ActivityItemView:setUpView()
     self._containner =
-        display.newScale9Sprite("#reward_item_bg.png", 0, 0, cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)):pos(
+        display.newSprite("#reward_item_bg.png", 0, 0, {scale9 = true, size = cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)}):pos(
         self._frameSize.width / 2,
         self._frameSize.height / 2
     )
@@ -47,7 +47,7 @@ function ActivityItemView:setUpView()
     --15积分可领取背景
     local titleBngHeight = 45
     local titleBng =
-        display.newScale9Sprite("#heroinfo_cost_st_bg.png", 0, 0, cc.size(containnerSize.width - self._padding.left - self._padding.right, titleBngHeight)):pos(
+        display.newSprite("#heroinfo_cost_st_bg.png", 0, 0, {scale9 = true, size = cc.size(containnerSize.width - self._padding.left - self._padding.right, titleBngHeight)}):pos(
         self._padding.left,
         containnerSize.height - self._padding.top
     ):addTo(self._containner)
@@ -125,9 +125,10 @@ function ActivityItemView:setUpView()
     local height = 180
 
     local itemsViewBngs =
-        display.newScale9Sprite("#heroinfo_title_bg.png", 0, 0, cc.size(containnerSize.width - self._padding.left - self._padding.right, height)):pos(self._padding.left, self._padding.down):addTo(
-        self._containner
-    )
+        display.newSprite("#heroinfo_title_bg.png", 0, 0, {scale9 = true, size = cc.size(containnerSize.width - self._padding.left - self._padding.right, height)}):pos(
+        self._padding.left,
+        self._padding.down
+    ):addTo(self._containner)
     itemsViewBngs:setAnchorPoint(cc.p(0, 0))
 
     local rolelabel =

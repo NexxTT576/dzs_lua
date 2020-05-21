@@ -58,13 +58,14 @@ function GiftGetOkPopup:setUpView()
     self:addChild(mask)
 
     self._mianPopup =
-        display.newScale9Sprite("#win_base_bg2.png", 0, 0, cc.size(display.width - self._mainFrameWidthOffset, (display.width - self._mainFrameWidthOffset) / 2 + 90)):pos(display.cx, display.cy):addTo(
-        self
-    )
+        display.newSprite("#win_base_bg2.png", 0, 0, {scale9 = true, size = cc.size(display.width - self._mainFrameWidthOffset, (display.width - self._mainFrameWidthOffset) / 2 + 90)}):pos(
+        display.cx,
+        display.cy
+    ):addTo(self)
     self._mainPopupSize = self._mianPopup:getContentSize()
     self._innerContainerHeight = self._mainPopupSize.height - 80
     self._innerContainer =
-        display.newScale9Sprite("#win_base_inner_bg_light.png", 0, 0, cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)):pos(
+        display.newSprite("#win_base_inner_bg_light.png", 0, 0, {scale9 = true, size = cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)}):pos(
         self._mainPopupSize.width / 2,
         self._innerContainerBorderOffset
     ):addTo(self._mianPopup)
@@ -113,7 +114,7 @@ function GiftGetOkPopup:setUpView()
     local marginDown = 20
     local itemsViewHeight = self._innerContainerHeight - 140
     local itemViewBng =
-        display.newScale9Sprite("#heroinfo_title_bg.png", 0, 0, cc.size(self._innerContainerSize.width - marginLeft - marginRight, itemsViewHeight)):pos(
+        display.newSprite("#heroinfo_title_bg.png", 0, 0, {scale9 = true, size = cc.size(self._innerContainerSize.width - marginLeft - marginRight, itemsViewHeight)}):pos(
         self._innerContainerSize.width / 2,
         disLabel:getPositionY() - disLabel:getContentSize().height - marginTop
     ):addTo(self._innerContainer)

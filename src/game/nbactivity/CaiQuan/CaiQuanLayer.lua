@@ -86,7 +86,7 @@ function CaiQuanLayer:timeSchedule(param)
             timeLabel:setString(timeStr)
         end
     end
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     if self.timeData ~= nil then
         self.scheduler.unscheduleGlobal(self.timeData)
     end

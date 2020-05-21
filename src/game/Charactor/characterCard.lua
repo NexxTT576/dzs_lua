@@ -685,7 +685,6 @@ function characterCard:ctor(param)
         self.cardBg:addBone(buffBone, "tongyong")
 
         --血条绿条
-        -- self.lifeBar = display.newScale9Sprite("#battle_bar_green.png")
         local Bar = display.newSprite("#battle_bar_green.png")
         self.lifeBar = CCProgressTimer:create(Bar)
         self.lifeBar:setBarChangeRate(cc.p(1, 0))

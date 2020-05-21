@@ -97,7 +97,7 @@ function DengjiTouziLayer:ctor(param)
     self._rootnode["needGold_lbl"]:setString(tostring(self._needGold))
 
     local listBgHeight = viewSize.height - self._rootnode["title_icon"]:getContentSize().height + 10
-    local listBg = display.newScale9Sprite("#month_item_bg_bg.png", 0, 0, CCSize(viewSize.width, listBgHeight))
+    local listBg = display.newSprite("#month_item_bg_bg.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width, listBgHeight)})
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(display.width / 2, 0)
     node:addChild(listBg)

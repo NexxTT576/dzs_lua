@@ -36,12 +36,13 @@ function YabiaoDetailView:setUpView(param)
 
     self:createMask()
     --背景
-    local mainBng = display.newScale9Sprite("#win_base_bg2.png", 0, 0, cc.size(display.width * 0.9, display.width * 0.9 * 0.8)):pos(display.cx, display.cy):addTo(self)
+    local mainBng = display.newSprite("#win_base_bg2.png", 0, 0, {scale9 = true, size = cc.size(display.width * 0.9, display.width * 0.9 * 0.8)}):pos(display.cx, display.cy):addTo(self)
     local mainBngSize = mainBng:getContentSize()
     local bng =
-        display.newScale9Sprite("#win_base_inner_bg_light.png", 0, 0, cc.size(mainBngSize.width * 0.95, mainBngSize.height * 0.83)):pos(mainBngSize.width / 2, mainBngSize.height / 2 - 25):addTo(
-        mainBng
-    )
+        display.newSprite("#win_base_inner_bg_light.png", 0, 0, {scale9 = true, size = cc.size(mainBngSize.width * 0.95, mainBngSize.height * 0.83)}):pos(
+        mainBngSize.width / 2,
+        mainBngSize.height / 2 - 25
+    ):addTo(mainBng)
     --title标签
     local titleText =
         newBMFontLabel(
@@ -77,14 +78,14 @@ function YabiaoDetailView:setUpView(param)
     closeBtn:addTo(mainBng):setAnchorPoint(cc.p(0.5, 0.5))
     local viewSize = bng:getContentSize()
 
-    local innerBng = display.newScale9Sprite("#heroinfo_prop_bg2.png", 0, 0, cc.size(viewSize.width * 0.95, viewSize.height * 0.5))
+    local innerBng = display.newSprite("#heroinfo_prop_bg2.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width * 0.95, viewSize.height * 0.5)})
     innerBng:setAnchorPoint(cc.p(0.5, 0.5))
     innerBng:setPosition(cc.p(viewSize.width * 0.5, viewSize.height * 0.70))
     bng:addChild(innerBng)
 
     --标题背景
 
-    local titleBng = display.newScale9Sprite("#arena_name_bg_4.png", 0, 0, cc.size(viewSize.width - padding.left - padding.right, viewSize.height * 0.09))
+    local titleBng = display.newSprite("#arena_name_bg_4.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width - padding.left - padding.right, viewSize.height * 0.09)})
     titleBng:setAnchorPoint(cc.p(0.5, 0.5))
     titleBng:setPosition(cc.p(viewSize.width * 0.5, viewSize.height * 0.87))
     bng:addChild(titleBng)
@@ -141,7 +142,7 @@ function YabiaoDetailView:setUpView(param)
     arrowBng:addChild(levelDis)
 
     --头像大背景
-    local heroBng = display.newScale9Sprite("#arena_itemInner_bg_1.png", 0, 0, cc.size(viewSize.width * 0.9, viewSize.height * 0.35))
+    local heroBng = display.newSprite("#arena_itemInner_bg_1.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width * 0.9, viewSize.height * 0.35)})
     heroBng:setAnchorPoint(cc.p(0.5, 0.5))
     heroBng:setPosition(cc.p(viewSize.width * 0.5, viewSize.height * 0.65))
     bng:addChild(heroBng)

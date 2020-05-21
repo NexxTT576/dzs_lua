@@ -107,11 +107,12 @@ function WaBaoGiftPopup:setUpView()
     mask:setTouchEnabled(true)
     self:addChild(mask)
 
-    self._mianPopup = display.newScale9Sprite(commonRes.mainFrameRes, 0, 0, cc.size(display.width - self._mainFrameWidthOffset, display.height - 100)):pos(display.cx, display.cy):addTo(self)
+    self._mianPopup =
+        display.newSprite(commonRes.mainFrameRes, 0, 0, {scale9 = true, size = cc.size(display.width - self._mainFrameWidthOffset, display.height - 100)}):pos(display.cx, display.cy):addTo(self)
     self._mainPopupSize = self._mianPopup:getContentSize()
     self._innerContainerHeight = self._mainPopupSize.height - 80
     self._innerContainer =
-        display.newScale9Sprite(commonRes.mainInnerRes, 0, 0, cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)):pos(
+        display.newSprite(commonRes.mainInnerRes, 0, 0, {scale9 = true, size = cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)}):pos(
         self._mainPopupSize.width / 2,
         self._innerContainerBorderOffset
     ):addTo(self._mianPopup)
@@ -155,7 +156,7 @@ end
 --创建tableView
 function WaBaoGiftPopup:setUpTableView()
     self._tableContainer =
-        display.newScale9Sprite(commonRes.tableViewBngRes, 0, 0, cc.size(self._innerContainerSize.width - self._tableContainerBorderOffset * 2, self._innerContainerSize.height + 70)):pos(
+        display.newSprite(commonRes.tableViewBngRes, 0, 0, {scale9 = true, size = cc.size(self._innerContainerSize.width - self._tableContainerBorderOffset * 2, self._innerContainerSize.height + 70)}):pos(
         self._tableContainerBorderOffset,
         self._tableContainerBorderOffset
     ):addTo(self._innerContainer)

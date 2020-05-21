@@ -726,7 +726,7 @@ function GuildQLBossScene:onEnter()
         end
     end
 
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
 
     -- 若玩家进入战斗界面，则倒计时依然走
     if not self._bChallenge then

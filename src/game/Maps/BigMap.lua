@@ -58,8 +58,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
         local scrollViewBg = CCScrollView:create()
         self.bgScroll = scrollViewBg
         if scrollViewBg ~= nil then
-            -- local bg = display.newScale9Sprite("ui/jpg_bg/bigmap/" .. bgName .. ".jpg")
-            local bg = display.newScale9Sprite("ui/alphaBg.png")
+            local bg = display.newSprite("ui/alphaBg.png", {scale9 = true})
 
             bgImage = display.newSprite("ui/jpg_bg/bigmap/" .. bgName .. ".jpg")
             self.bgName = bgName
@@ -91,14 +90,14 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             -- bg:setInsetTop(5)
             -- bg:setInsetBottom(5)
             -- bg:setCapInsets(CCRect(5,5,5,5))
-            bg:setPreferredSize(CCSize(display.width, BG_HEIGHT))
-            scrollViewBg:setViewSize(CCSize(display.width, display.height - 259))
+            bg:setPreferredSize(cc.size(display.width, BG_HEIGHT))
+            scrollViewBg:setViewSize(cc.size(display.width, display.height - 259))
 
             scrollViewBg:setPosition(cc.p(0, self.top:getBottomContentSize().height))
             scrollViewBg:ignoreAnchorPointForPosition(true)
 
             scrollViewBg:setContainer(bg)
-            scrollViewBg:setContentSize(CCSize(display.width, BG_HEIGHT))
+            scrollViewBg:setContentSize(cc.size(display.width, BG_HEIGHT))
             scrollViewBg:updateInset()
 
             scrollViewBg:setDirection(kCCScrollViewDirectionVertical)

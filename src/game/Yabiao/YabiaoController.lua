@@ -59,7 +59,7 @@ function YabiaoController:init(param)
     local repairFuc = function()
         self:_repaireLogic()
     end
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
     self._schedule = self._scheduler.scheduleGlobal(repairFuc, 1, false)
 end
 
@@ -310,7 +310,7 @@ function YabiaoController:refreshCountDown(time)
             self.instance.shuaxinBtn:removeAllChildren()
         end
     end
-    self._schedulerCountDown = require("framework.scheduler")
+    self._schedulerCountDown = require("utility.scheduler")
     self._schedules = self._schedulerCountDown.scheduleGlobal(countDown, 1, false)
 end
 

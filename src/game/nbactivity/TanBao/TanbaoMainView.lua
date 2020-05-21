@@ -322,8 +322,8 @@ function TanbaoMainView:setUpView(param)
     centerNode:addChild(self._roteArrow, 2)
 
     self:setUpArrowPos()
-    self._scheduler = require("framework.scheduler")
-    self._schedulerTime = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
+    self._schedulerTime = require("utility.scheduler")
 
     self.countDown = function()
         self.timer = self.timer + 1
@@ -406,7 +406,7 @@ end
 function TanbaoMainView:createLabel01(param)
     local titleDisConst = {"每充值", "每消费", "免费次数用尽后，可使用元宝购买。累积最大购买次数为 " .. self._maxTime}
 
-    local bng = display.newScale9Sprite("#jifenbng_2.png", 0, 0, cc.size(param.size.width * 0.8, 35))
+    local bng = display.newSprite("#jifenbng_2.png", 0, 0, {scale9 = true, size = cc.size(param.size.width * 0.8, 35)})
     local Label1 =
         newTTFLabelWithOutline(
         {
@@ -526,7 +526,7 @@ end
 
 function TanbaoMainView:createLabel02(param)
     local titleDisConst = {"今日累计充值:", "今日累计消耗:", ""}
-    local bng = display.newScale9Sprite("#jifenbng_2.png", 0, 0, cc.size(param.size.width * 0.8, 35))
+    local bng = display.newSprite("#jifenbng_2.png", 0, 0, {scale9 = true, size = cc.size(param.size.width * 0.8, 35)})
     local Label1 =
         newTTFLabelWithOutline(
         {
@@ -798,7 +798,7 @@ end
 
 function TanbaoMainView:ctor(param)
     self:load()
-    local bng = display.newScale9Sprite("#month_bg.png", 0, 0, param.size)
+    local bng = display.newSprite("#month_bg.png", 0, 0, {scale9 = true, size = param.size})
     bng:setAnchorPoint(cc.p(0, 0))
     self:addChild(bng)
     local func = function()

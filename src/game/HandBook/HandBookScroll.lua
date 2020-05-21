@@ -43,12 +43,12 @@ function HandBookScroll:ctor(param)
         self.cellTable[i]:setPosition(curX, curY)
     end
 
-    scrollViewBg:setViewSize(CCSize(size.width, size.height - 50))
-    scrollViewBg:ignoreAnchorPointForPosition(true)
+    scrollViewBg:setViewSize(cc.size(size.width, size.height - 50))
+    scrollViewBg:setIgnoreAnchorPointForPosition(true)
 
     scrollViewBg:setContainer(scrollNode)
-    scrollNode:setContentSize(CCSize(size.width, scrollHeight))
-    scrollViewBg:setContentSize(CCSize(size.width, scrollHeight))
+    scrollNode:setContentSize(cc.size(size.width, scrollHeight))
+    scrollViewBg:setContentSize(cc.size(size.width, scrollHeight))
     scrollViewBg:updateInset()
     local min = scrollViewBg:minContainerOffset()
 

@@ -76,7 +76,7 @@ function GuildMainScene:ctor(buildType)
     local scrollView = self._rootnode["tag_scrollView"]
     local msgNodeH = self._rootnode["bottom_msg_node"]:getContentSize().height - self._rootnode["top_msg_node"]:getContentSize().height
     -- local viewSizeH = centerH - msgNodeH
-    -- scrollView:setViewSize(CCSize(display.width, viewSizeH))
+    -- scrollView:setViewSize(cc.size(display.width, viewSizeH))
     scrollView:setBounceable(false)
     local scrollNodeH = self._rootnode["tag_scroll_bg"]:getContentSize().height
     if centerH >= scrollNodeH then
@@ -145,7 +145,7 @@ function GuildMainScene:ctor(buildType)
     self:initBuildLevel()
     self:initBuildBtnFunc()
 
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
 
     if buildType ~= nil then
         self:toBuild(buildType)

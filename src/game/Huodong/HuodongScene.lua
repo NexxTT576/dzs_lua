@@ -100,14 +100,14 @@ function HuodongScene:onEnter()
     self.itemList =
         require("utility.TableViewExt").new(
         {
-            size = CCSize(display.width, display.height - self.topSize.height - self.bottomSize.height),
+            size = cc.size(display.width, display.height - self.topSize.height - self.bottomSize.height),
             direction = kCCScrollViewDirectionVertical,
             createFunc = function(idx)
                 local item = require("game.Huodong.HuodongItem").new()
                 idx = idx + 1
                 return item:create(
                     {
-                        viewSize = CCSize(display.width, 160),
+                        viewSize = cc.size(display.width, 160),
                         itemData = curOpenHuoDong[idx],
                         idx = idx
                     }
@@ -123,7 +123,7 @@ function HuodongScene:onEnter()
                 )
             end,
             cellNum = #curOpenHuoDong,
-            cellSize = CCSize(display.width, 180),
+            cellSize = cc.size(display.width, 180),
             touchFunc = function(cell)
                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                 local index = cell:getIdx() + 1

@@ -185,11 +185,12 @@ function TaskPopup:setUpView()
     mask:setTouchEnabled(true)
     self:addChild(mask)
 
-    self._mianPopup = display.newScale9Sprite(commonRes.mainFrameRes, 0, 0, cc.size(display.width - self._mainFrameWidthOffset, display.height - 100)):pos(display.cx, display.cy):addTo(self)
+    self._mianPopup =
+        display.newSprite(commonRes.mainFrameRes, 0, 0, {scale9 = true, size = cc.size(display.width - self._mainFrameWidthOffset, display.height - 100)}):pos(display.cx, display.cy):addTo(self)
     self._mainPopupSize = self._mianPopup:getContentSize()
     self._innerContainerHeight = self._mainPopupSize.height - 140
     self._innerContainer =
-        display.newScale9Sprite(commonRes.mainInnerRes, 0, 0, cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)):pos(
+        display.newSprite(commonRes.mainInnerRes, 0, 0, {scale9 = true, size = cc.size(self._mainPopupSize.width - self._innerContainerBorderOffset * 2, self._innerContainerHeight)}):pos(
         self._mainPopupSize.width / 2,
         self._innerContainerBorderOffset
     ):addTo(self._mianPopup, 1)
@@ -264,8 +265,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
-     --align(display.LEFT_CENTER))
+    ):--align(display.LEFT_CENTER))
+     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
 
     onButtonSelectChanged(
         function(event)
@@ -287,11 +288,14 @@ end
 --创建tableView
 function TaskPopup:setUpTableView()
     self._tableContainer =
-        display.newScale9Sprite(
+        display.newSprite(
         commonRes.tableViewBngRes,
         0,
         0,
-        cc.size(self._innerContainerSize.width - self._tableContainerBorderOffset * 2, self._innerContainerSize.height - self._tableContainerBorderOffset * 2)
+        {
+            scale9 = true,
+            size = cc.size(self._innerContainerSize.width - self._tableContainerBorderOffset * 2, self._innerContainerSize.height - self._tableContainerBorderOffset * 2)
+        }
     ):pos(self._tableContainerBorderOffset, self._tableContainerBorderOffset):addTo(self._innerContainer)
     self._tableContainer:setAnchorPoint(cc.p(0, 0))
     self._tableContainerSize = self._tableContainer:getContentSize()

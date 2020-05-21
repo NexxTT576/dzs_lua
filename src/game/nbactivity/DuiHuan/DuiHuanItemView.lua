@@ -30,7 +30,7 @@ function DuiHuanItemView:refresh(param)
     local data = param.data
     local type = #data.exchExp.exchItem
     --背景框
-    local mainFrameBng = display.newScale9Sprite("#month_item_bg.png", 0, 0, cc.size(param.viewSize.width * 0.96, param.viewSize.height * 0.93))
+    local mainFrameBng = display.newSprite("#month_item_bg.png", 0, 0, {scale9 = true, size = cc.size(param.viewSize.width * 0.96, param.viewSize.height * 0.93)})
     mainFrameBng:setAnchorPoint(cc.p(0.5, 0.5))
     mainFrameBng:setPosition(cc.p(param.viewSize.width / 2, param.viewSize.height / 2 - 10))
     self:addChild(mainFrameBng)
@@ -168,7 +168,7 @@ function DuiHuanItemView:refresh(param)
     end
 
     --背景框
-    local innerFrame = display.newScale9Sprite("#month_item_innerBg.png", 0, 0, cc.size(mainFrameBng:getContentSize().width * 0.9, mainFrameBng:getContentSize().height * 0.6))
+    local innerFrame = display.newSprite("#month_item_innerBg.png", 0, 0, {scale = true, size = cc.size(mainFrameBng:getContentSize().width * 0.9, mainFrameBng:getContentSize().height * 0.6)})
     innerFrame:setAnchorPoint(cc.p(0.5, 0))
     innerFrame:setPosition(cc.p(mainFrameBng:getContentSize().width * 0.5, 90))
     mainFrameBng:addChild(innerFrame)

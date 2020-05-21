@@ -68,12 +68,12 @@ function WorldBossExtraRewardItem:refreshItem(cellData)
     self._rootnode["mark_icon"]:setSpriteFrame(display.newSprite(markName):getSpriteFrame())
 
     self._rootnode["bg_node"]:removeAllChildren()
-    local bg = display.newScale9Sprite(bgName, 0, 0, self._rootnode["bg_node"]:getContentSize())
+    local bg = display.newSprite(bgName, 0, 0, {scale9 = true, size = self._rootnode["bg_node"]:getContentSize()})
     bg:setAnchorPoint(0, 0)
     self._rootnode["bg_node"]:addChild(bg)
 
     self._rootnode["top_bg_node"]:removeAllChildren()
-    local topBg = display.newScale9Sprite(topBgName, 0, 0, self._rootnode["top_bg_node"]:getContentSize())
+    local topBg = display.newSprite(topBgName, 0, 0, {scale9 = true, size = self._rootnode["top_bg_node"]:getContentSize()})
     topBg:setAnchorPoint(0, 0)
     self._rootnode["top_bg_node"]:addChild(topBg)
 

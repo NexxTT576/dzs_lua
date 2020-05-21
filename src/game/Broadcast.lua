@@ -265,7 +265,8 @@ function Broadcast:initTimeSchedule()
         end
     end
 
-    schedule(self, updateLblPos, 0.01)
+    self.scheduler = require("utility.scheduler")
+    self._schedule = self.scheduler.scheduleGlobal(updateLblPos, 0.01, false)
 
     -- 从服务器端获取的广播，判断时间间隔大于0s的，需要倒计时
     local function checkBroadcast()

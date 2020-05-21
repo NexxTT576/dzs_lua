@@ -425,7 +425,7 @@ end
 
 -- 初始化
 function GuildZuofangLayer:initTimeSchedule()
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
 
     local function updateTime()
         if self._curWorkData ~= nil and self._curWorkData.surplusTime ~= nil and self._curWorkData.surplusTime > 0 then

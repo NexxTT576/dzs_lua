@@ -83,12 +83,22 @@ function HeroChoseLayer:ctor(param)
     )
 
     self.behBg =
-        display.newScale9Sprite("jpg_bg/list_bg.png", x, y, cc.size(display.width, display.height - self.topNode["itemBg"]:getContentSize().height - self.bottomNode["itemBg"]:getContentSize().height))
+        display.newSprite(
+        "jpg_bg/list_bg.png",
+        x,
+        y,
+        {scale9 = true, size = cc.size(display.width, display.height - self.topNode["itemBg"]:getContentSize().height - self.bottomNode["itemBg"]:getContentSize().height)}
+    )
     self.behBg:setPosition(display.width / 2, self.bottomNode["itemBg"]:getContentSize().height)
     self:addChild(self.behBg)
 
     self.bg =
-        display.newScale9Sprite("jpg_bg/list_bg.png", x, y, cc.size(display.width, display.height - self.topNode["itemBg"]:getContentSize().height - self.bottomNode["itemBg"]:getContentSize().height))
+        display.newSprite(
+        "jpg_bg/list_bg.png",
+        x,
+        y,
+        {scale9 = true, size = cc.size(display.width, display.height - self.topNode["itemBg"]:getContentSize().height - self.bottomNode["itemBg"]:getContentSize().height)}
+    )
     self.bg:setPosition(display.width / 2, self.bottomNode["itemBg"]:getContentSize().height + self.bg:getContentSize().height / 2)
     self:addChild(self.bg)
     self:addChild(topNode)

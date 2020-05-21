@@ -224,7 +224,7 @@ function ChongzhiLayer:initAllNodePos()
     -- 背景
     self._rootnode["listView_node"]:removeAllChildren()
 
-    self._shopItemBg = display.newScale9Sprite("#cz_item_innerBg.png", 0, 0, shopBgViewSize)
+    self._shopItemBg = display.newSprite("#cz_item_innerBg.png", 0, 0, {scale9 = true, size = shopBgViewSize})
     self._shopItemBg:setAnchorPoint(0.5, 0)
     self._shopItemBg:setPosition(self._rootnode["listView_node"]:getContentSize().width / 2, 0)
     self._rootnode["listView_node"]:addChild(self._shopItemBg)

@@ -246,10 +246,10 @@ end
 
 function ChatLayer:initFriendChat()
     local mid_height = display.height - self._rootnode["up_node"]:getContentSize().height - self._rootnode["down_node"]:getContentSize().height
-    self._rootnode["mid_node"]:setContentSize(CCSize(display.width * 0.9, mid_height))
-    self._rootnode["mid_bg"]:setContentSize(CCSize(display.width * 0.9, mid_height * 0.97))
-    self._rootnode["scrollView"]:setContentSize(CCSize(display.width * 0.9, mid_height * 0.94))
-    self._rootnode["scrollView"]:setViewSize(CCSize(display.width * 0.9, mid_height * 0.94))
+    self._rootnode["mid_node"]:setContentSize(cc.size(display.width * 0.9, mid_height))
+    self._rootnode["mid_bg"]:setContentSize(cc.size(display.width * 0.9, mid_height * 0.97))
+    self._rootnode["scrollView"]:setContentSize(cc.size(display.width * 0.9, mid_height * 0.94))
+    self._rootnode["scrollView"]:setViewSize(cc.size(display.width * 0.9, mid_height * 0.94))
 
     self:initFriendData()
     self:initFriendContent()

@@ -329,7 +329,7 @@ function GuildShopScene:ctor(param)
     local function createScrollBg()
         local disW = display.width * 0.1
         local listBgHeight = self._rootnode["node_bg"]:getContentSize().height - self._rootnode["top_node"]:getContentSize().height
-        local listBg = display.newScale9Sprite("#month_item_bg_bg.png", 0, 0, CCSize(display.width + disW, listBgHeight))
+        local listBg = display.newSprite("#month_item_bg_bg.png", 0, 0, {scale9 = true, size = cc.size(display.width + disW, listBgHeight)})
         listBg:setAnchorPoint(0.5, 0)
         listBg:setPosition(display.width / 2, 0)
         self._rootnode["tag_listview_node"]:addChild(listBg)
@@ -405,7 +405,7 @@ function GuildShopScene:initTimeSchedule()
         end
     end
 
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
     self._checkSchedule = self._scheduler.scheduleGlobal(updateTime, 1, false)
 end
 

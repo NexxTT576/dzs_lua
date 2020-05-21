@@ -36,7 +36,7 @@ function UrgencyBroadcast:ctor()
     self._clippingNode:setInverted(false)
     node:addChild(self._clippingNode)
 
-    -- self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
     self:initTimeSchedule()
 end
 
@@ -87,7 +87,7 @@ function UrgencyBroadcast:initTimeSchedule()
         end
     end
 
-    schedule(self, updateLblPos, 0.01)
+    self._schedule = self._scheduler.scheduleGlobal(updateLblPos, 0.01, false)
 
     -- 从服务器端获取的广播，判断时间间隔大于0s的，需要倒计时
     local function checkBroadcast()
@@ -109,7 +109,7 @@ function UrgencyBroadcast:initTimeSchedule()
             end
         end
     end
-    schedule(self, checkBroadcast, 1)
+    self._checkSchedule = self._scheduler.scheduleGlobal(checkBroadcast, 1, false)
 end
 
 function UrgencyBroadcast:addToUrgencyBroadcast(data)

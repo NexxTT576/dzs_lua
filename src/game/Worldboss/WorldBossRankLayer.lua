@@ -139,7 +139,7 @@ function WorldBossRankLayer:ctor()
     -- 	end
     -- end
 
-    -- self.scheduler = require("framework.scheduler")
+    -- self.scheduler = require("utility.scheduler")
     --   self._schedule = self.scheduler.scheduleGlobal(updateTime, REFRESH_TIME, false )
 end
 

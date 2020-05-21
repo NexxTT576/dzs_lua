@@ -45,11 +45,11 @@ function JingYingCell:refresh(id, isAllLvlDone)
     if (passed) then
         item = display.newSprite(imagePath)
         -- itemCover = display.newSprite(imageCoverName)
-        itemCover = display.newScale9Sprite(imageCoverName, 0, 0, CCSize(item:getContentSize().width + 20, item:getContentSize().height + 20))
+        itemCover = display.newSprite(imageCoverName, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     else
         item = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
         -- itemCover = display.newGraySprite(imageCoverName, {0.4, 0.4, 0.3, 0.1})
-        itemCover = display.newScale9Sprite(imageCoverNameGray, 0, 0, CCSize(item:getContentSize().width + 20, item:getContentSize().height + 20))
+        itemCover = display.newSprite(imageCoverNameGray, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
         -- itemCover:setColor(cc.c3b(100,100,100))
         self.isAllowPlay = false
     end

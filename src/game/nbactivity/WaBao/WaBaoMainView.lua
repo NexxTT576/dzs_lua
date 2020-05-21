@@ -271,7 +271,7 @@ function WaBaoMainView:setUpView(param)
     self:addChild(self._timeLeftLabel)
     self:addChild(Label3)
 
-    self._bottomBng = display.newScale9Sprite("#buttom_bng.png", 0, 0, cc.size(param.size.width - 40, 180))
+    self._bottomBng = display.newSprite("#buttom_bng.png", 0, 0, {scale9 = true, size = cc.size(param.size.width - 40, 180)})
     self._bottomBng:setAnchorPoint(cc.p(0.5, 0))
     self._bottomBng:setPosition(cc.p(param.size.width / 2, 20))
     self:addChild(self._bottomBng)
@@ -731,7 +731,7 @@ function WaBaoMainView:refresh()
     self._countDownTime = self._nowTime
     --倒计时
     if not self._schedulerTime then
-        self._schedulerTime = require("framework.scheduler")
+        self._schedulerTime = require("utility.scheduler")
         local countDown = function()
             --剩余时间
             self._countDownTime = self._countDownTime - 1

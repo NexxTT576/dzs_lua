@@ -290,7 +290,7 @@ function DuiHuanMainView:setUpExtraView(param)
             disLabelValue2:setString(self:timeFormat(timeAll))
         end
     end
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
     self._schedule = self._scheduler.scheduleGlobal(countDown, 1, false)
 
     --兑换预览
@@ -316,7 +316,7 @@ function DuiHuanMainView:setUpExtraView(param)
     )
 
     --背景框
-    self.mainFrameBng = display.newScale9Sprite("#month_item_bg_bg.png", 0, 0, cc.size(param.size.width, param.size.height - titleBng:getContentSize().height + 30))
+    self.mainFrameBng = display.newSprite("#month_item_bg_bg.png", 0, 0, {scale9 = true, size = cc.size(param.size.width, param.size.height - titleBng:getContentSize().height + 30)})
     self.mainFrameBng:setAnchorPoint(cc.p(0.5, 0))
     self.mainFrameBng:setPosition(param.size.width * 0.5, 10)
     self:addChild(self.mainFrameBng)
@@ -346,7 +346,7 @@ end
 
 function DuiHuanMainView:ctor(param)
     self:load()
-    local bng = display.newScale9Sprite("#month_bg.png", 0, 0, param.size)
+    local bng = display.newSprite("#month_bg.png", 0, 0, {scale9 = true, size = param.size})
     bng:setAnchorPoint(cc.p(0, 0))
     self:addChild(bng)
 

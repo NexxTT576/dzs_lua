@@ -146,7 +146,7 @@ function HandBookCell:ctor(param)
     end
     iconHeight = iconHeight
 
-    self._rootnode["cell_bg"]:setContentSize(CCSize(self._rootnode["cell_bg"]:getContentSize().width, iconCount * iconHeight + self._rootnode["star_bg"]:getContentSize().height + 20))
+    self._rootnode["cell_bg"]:setContentSize(cc.size(self._rootnode["cell_bg"]:getContentSize().width, iconCount * iconHeight + self._rootnode["star_bg"]:getContentSize().height + 20))
 
     local totalNum = #arrId
     local totalTTF =

@@ -105,7 +105,7 @@ function ShenmiLayer:ctor(param)
     local listSize = cc.size(viewSize.width * 0.71, listHeigt * 0.96)
     self._listViewSize = cc.size(listSize.width * 0.98, listSize.height * 0.96)
 
-    local listBg = display.newScale9Sprite("#sm_list_bg.png", 0, 0, listSize)
+    local listBg = display.newSprite("#sm_list_bg.png", 0, 0, {scale9 = true, size = listSize})
     listBg:setAnchorPoint(1.0, 0)
     listBg:setPosition(self._rootnode["listView_node"]:getContentSize().width, 0)
     self._rootnode["listView_node"]:addChild(listBg)
@@ -469,7 +469,7 @@ function ShenmiLayer:onEnter()
         end
     end
 
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     self._schedule = self.scheduler.scheduleGlobal(updateTime, 1, false)
 
     local touchMaskLayer =

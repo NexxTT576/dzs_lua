@@ -39,7 +39,7 @@ function ArenaCell:timeSchedule(param)
             timeLabel:setString(format_time(self.restTime))
         end
     end
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     if self.timeData ~= nil then
         self.scheduler.unscheduleGlobal(self.timeData)
     end
@@ -142,12 +142,12 @@ function ArenaCell:refresh(id, restTime, timeType)
     end
 
     self._rootnode["bg_node"]:removeAllChildren()
-    local bg = display.newScale9Sprite(bgname, 0, 0, self._rootnode["bg_node"]:getContentSize())
+    local bg = display.newSprite(bgname, 0, 0, {scale9 = true, size = self._rootnode["bg_node"]:getContentSize()})
     bg:setAnchorPoint(0, 0)
     self._rootnode["bg_node"]:addChild(bg)
 
     self._rootnode["name_bg"]:removeAllChildren()
-    local playerBg = display.newScale9Sprite(playerBgName, 0, 0, self._rootnode["name_bg"]:getContentSize())
+    local playerBg = display.newSprite(playerBgName, 0, 0, {scale9 = true, size = self._rootnode["name_bg"]:getContentSize()})
     playerBg:setAnchorPoint(0, 0)
     self._rootnode["name_bg"]:addChild(playerBg)
 

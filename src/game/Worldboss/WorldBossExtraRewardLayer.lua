@@ -104,7 +104,7 @@ function WorldBossExtraRewardLayer:createRewardList()
     local boardHeight = self._rootnode["listView"]:getContentSize().height - listViewDisH
     local listViewSize = cc.size(boardWidth, boardHeight)
 
-    local listBg = display.newScale9Sprite("#sh_rank_bg.png", 0, 0, cc.size(boardWidth * 0.9, boardHeight + 20))
+    local listBg = display.newSprite("#sh_rank_bg.png", 0, 0, {scale9 = true, size = cc.size(boardWidth * 0.9, boardHeight + 20)})
     listBg:setAnchorPoint(0.5, 0)
     listBg:setPosition(boardWidth / 2, -10)
     self._rootnode["listView"]:addChild(listBg)

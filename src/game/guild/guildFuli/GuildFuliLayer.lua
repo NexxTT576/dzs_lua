@@ -266,7 +266,7 @@ function GuildFuliLayer:addToTimeList(param)
 end
 
 function GuildFuliLayer:initTimeSchedule()
-    self._scheduler = require("framework.scheduler")
+    self._scheduler = require("utility.scheduler")
 
     local function updateTime()
         for i, v in ipairs(self._timeListData) do

@@ -93,7 +93,7 @@ function DramaLayer:ctor(id, endFunc)
         self:addHeroImage(fur_large, fur_posId, fur_over, fur_offsetX, fur_offsetY, fur_scale, fur_opacity, FUR_IMAGE)
 
         --内容
-        local dim = CCSize(display.width - 30, self.chatBox:getContentSize().height - 30)
+        local dim = cc.size(display.width - 30, self.chatBox:getContentSize().height - 30)
 
         if chatStr ~= nil then
             local dramaTTF =

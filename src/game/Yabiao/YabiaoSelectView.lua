@@ -27,13 +27,14 @@ end
 function YabiaoSelectView:setUpView(param)
     self:createMask()
     --背景
-    local mainBng = display.newScale9Sprite("#win_base_bg2.png", 0, 0, cc.size(display.width, display.width * 1.1)):pos(display.cx, display.cy):addTo(self)
+    local mainBng = display.newSprite("#win_base_bg2.png", 0, 0, {scale9 = true, size = cc.size(display.width, display.width * 1.1)}):pos(display.cx, display.cy):addTo(self)
 
     local mainBngSize = mainBng:getContentSize()
     local innnerBng =
-        display.newScale9Sprite("#win_base_inner_bg_light.png", 0, 0, cc.size(mainBngSize.width * 0.95, mainBngSize.width * 1.1 * 0.87)):pos(mainBngSize.width / 2, mainBngSize.height / 2 - 25):addTo(
-        mainBng
-    )
+        display.newSprite("#win_base_inner_bg_light.png", 0, 0, {scale9 = true, size = cc.size(mainBngSize.width * 0.95, mainBngSize.width * 1.1 * 0.87)}):pos(
+        mainBngSize.width / 2,
+        mainBngSize.height / 2 - 25
+    ):addTo(mainBng)
     --title标签
     local titleText =
         newBMFontLabel(
@@ -188,7 +189,7 @@ function YabiaoSelectView:setUpView(param)
     innnerBng:addChild(jiebiaoTimeValue)
 
     local contentBng =
-        display.newScale9Sprite("#guild_cbg_itemInnerBg_1.png", 0, 0, cc.size(innnerBng:getContentSize().width - 30, innnerBng:getContentSize().height * 0.27)):pos(
+        display.newSprite("#guild_cbg_itemInnerBg_1.png", 0, 0, {scale9 = true, size = cc.size(innnerBng:getContentSize().width - 30, innnerBng:getContentSize().height * 0.27)}):pos(
         innnerBng:getContentSize().width / 2,
         15
     ):addTo(innnerBng)
@@ -257,7 +258,7 @@ function YabiaoSelectView:createCardNode(types)
     local cardSp = display.newSprite("#card_car_0" .. types .. ".png")
     node:addChild(cardSp)
 
-    local disBng = display.newScale9Sprite("#guild_cbg_innerBg_light.png", 0, 0, cc.size(cardSp:getContentSize().width, cardSp:getContentSize().height * 0.3))
+    local disBng = display.newSprite("#guild_cbg_innerBg_light.png", 0, 0, {scale9 = true, size = cc.size(cardSp:getContentSize().width, cardSp:getContentSize().height * 0.3)})
     disBng:setAnchorPoint(cc.p(0.5, 1))
     disBng:setPosition(cc.p(0, -10 - cardSp:getContentSize().height / 2))
     node:addChild(disBng)

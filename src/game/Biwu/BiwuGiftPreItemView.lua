@@ -35,7 +35,7 @@ end
 
 function BiwuGiftPreItemView:setUpView()
     self._containner =
-        display.newScale9Sprite("#reward_item_bg.png", 0, 0, cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)):pos(
+        display.newSprite("#reward_item_bg.png", 0, 0, {scale9 = true, size = cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)}):pos(
         self._frameSize.width / 2,
         self._frameSize.height / 2
     )
@@ -46,7 +46,7 @@ function BiwuGiftPreItemView:setUpView()
     --15积分可领取背景
     local titleBngHeight = 40
     local titleBng =
-        display.newScale9Sprite("#heroinfo_cost_st_bg.png", 0, 0, cc.size(containnerSize.width - self._padding.left - self._padding.right, titleBngHeight)):pos(
+        display.newSprite("#heroinfo_cost_st_bg.png", 0, 0, {scale9 = true, size = cc.size(containnerSize.width - self._padding.left - self._padding.right, titleBngHeight)}):pos(
         self._padding.left,
         containnerSize.height - self._padding.top
     ):addTo(self._containner)
@@ -78,11 +78,14 @@ function BiwuGiftPreItemView:setUpView()
     local offset = 10
     local marginRight = 120
     local itemsViewBngs =
-        display.newScale9Sprite(
+        display.newSprite(
         "#heroinfo_title_bg.png",
         0,
         0,
-        cc.size(containnerSize.width - self._padding.left - self._padding.right, containnerSize.height - self._padding.top - self._padding.down - titleBngHeight - marginTop)
+        {
+            scale9 = true,
+            size = cc.size(containnerSize.width - self._padding.left - self._padding.right, containnerSize.height - self._padding.top - self._padding.down - titleBngHeight - marginTop)
+        }
     ):pos(self._padding.left, self._padding.down):addTo(self._containner)
     itemsViewBngs:setAnchorPoint(cc.p(0, 0))
 

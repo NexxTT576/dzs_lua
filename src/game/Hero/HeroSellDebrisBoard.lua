@@ -37,7 +37,7 @@ function HeroSellDebrisBoard:SendReq(...)
         else
         end
     end
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     self.schedulerUpdateData = self.scheduler.scheduleGlobal(update, 0.06, false)
 end
 

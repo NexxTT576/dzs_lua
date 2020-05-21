@@ -72,7 +72,7 @@ function ChallengeFubenCell:refreshItem(itemData)
         iconBg = display.newGraySprite(titlIconName, {0.4, 0.4, 0.4, 0.1})
     end
 
-    local itemBg = display.newScale9Sprite(itemBgName, 0, 0, bgNode:getContentSize())
+    local itemBg = display.newSprite(itemBgName, 0, 0, {scale9 = true, size = bgNode:getContentSize()})
     itemBg:setPosition(bgNode:getContentSize().width / 2, bgNode:getContentSize().height / 2)
     bgNode:removeAllChildren()
     bgNode:addChild(itemBg)

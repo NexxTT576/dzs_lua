@@ -148,7 +148,7 @@ function SpiritListLayer:ctor(param)
     local _sz = param.sz
     local _items = param.items
 
-    local bg = display.newScale9Sprite("ui_common/common_bg.png")
+    local bg = display.newSprite("ui_common/common_bg.png", {scale9 = true})
     bg:setContentSize(cc.size(_sz.width, _sz.height))
     bg:setPosition(_sz.width / 2, _sz.height / 2)
     self:addChild(bg)
@@ -158,7 +158,7 @@ function SpiritListLayer:ctor(param)
     hw:setAnchorPoint(cc.p(0.5, 1))
     self:addChild(hw)
 
-    local bg2 = display.newScale9Sprite("ui_common/common_bg2.png")
+    local bg2 = display.newSprite("ui_common/common_bg2.png", {scale9 = true})
     bg2:setContentSize(cc.size(_sz.width + 40, _sz.height + 12))
     bg2:setPosition(_sz.width / 2, _sz.height / 2)
     self:addChild(bg2)

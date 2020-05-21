@@ -77,12 +77,12 @@ function WorldBossRankItem:updateItem(itemData)
     end
 
     self._rootnode["bg_node"]:removeAllChildren()
-    local bg = display.newScale9Sprite(bgName, 0, 0, self._rootnode["bg_node"]:getContentSize())
+    local bg = display.newSprite(bgName, 0, 0, {scale9 = true, size = self._rootnode["bg_node"]:getContentSize()})
     bg:setAnchorPoint(0, 0)
     self._rootnode["bg_node"]:addChild(bg)
 
     self._rootnode["name_bg"]:removeAllChildren()
-    local playerBg = display.newScale9Sprite(playerBgName, 0, 0, self._rootnode["name_bg"]:getContentSize())
+    local playerBg = display.newSprite(playerBgName, 0, 0, {scale9 = true, size = self._rootnode["name_bg"]:getContentSize()})
     playerBg:setAnchorPoint(0, 0)
     self._rootnode["name_bg"]:addChild(playerBg)
 

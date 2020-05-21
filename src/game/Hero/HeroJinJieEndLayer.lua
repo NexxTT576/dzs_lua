@@ -31,7 +31,7 @@ function HeroJinJieEndLayer:ctor(param)
 
     self:setNodeEventEnabled(true)
 
-    self:setContentSize(CCSize(display.width, display.height))
+    self:setContentSize(cc.size(display.width, display.height))
 
     local befData = self.data["2"]
     local nextData = self.data["3"]

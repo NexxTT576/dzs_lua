@@ -343,7 +343,7 @@ function ArenaScene:timeSchedule(param)
             PostNotice(NoticeKey.ArenaRestTime, CCFloat:create(self.restTime))
         end
     end
-    -- self.scheduler = require("framework.scheduler")
+    -- self.scheduler = require("utility.scheduler")
     -- if self.timeData ~= nil then
     --     self.scheduler.unscheduleGlobal(self.timeData)
     -- end

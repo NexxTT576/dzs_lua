@@ -35,13 +35,13 @@ function BiwuDuihuanItem:refresh(param)
 
     --外边大的背景框
     self:setContentSize(param.viewSize)
-    local bng = display.newScale9Sprite("#arena_itemBg_4.png", 0, 0, cc.size(viewSize.width, viewSize.height))
+    local bng = display.newSprite("#arena_itemBg_4.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width, viewSize.height)})
     bng:setAnchorPoint(cc.p(0, 0))
     self:addChild(bng)
 
     --内容背景框
     self:setContentSize(param.viewSize)
-    local contentBng = display.newScale9Sprite("#arena_item_inner_bg.png", 0, 0, cc.size(viewSize.width * 0.7, viewSize.height * 0.65))
+    local contentBng = display.newSprite("#arena_item_inner_bg.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width * 0.7, viewSize.height * 0.65)})
     contentBng:setAnchorPoint(cc.p(0, 1))
     contentBng:setPosition(cc.p(viewSize.width * 0.02, viewSize.height * 0.92))
     bng:addChild(contentBng)
@@ -177,7 +177,7 @@ function BiwuDuihuanItem:refresh(param)
     contentBng:addChild(timeLiftDis)
 
     --分割线
-    local diviver = display.newScale9Sprite("#fenge.png", 0, 0, cc.size(contentBng:getContentSize().width * 0.5, contentBng:getContentSize().height * 0.03))
+    local diviver = display.newSprite("#fenge.png", 0, 0, {scale9 = true, size = cc.size(contentBng:getContentSize().width * 0.5, contentBng:getContentSize().height * 0.03)})
     diviver:setPosition(cc.p(contentBng:getContentSize().width * 0.25, contentBng:getContentSize().height * 0.7))
     diviver:setAnchorPoint(cc.p(0, 0))
     contentBng:addChild(diviver)
@@ -201,7 +201,7 @@ function BiwuDuihuanItem:refresh(param)
 
     --标题背景
 
-    local titleBng = display.newScale9Sprite("#arena_name_bg_4.png", 0, 0, cc.size(viewSize.width - padding.left - padding.right, viewSize.height * 0.18))
+    local titleBng = display.newSprite("#arena_name_bg_4.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width - padding.left - padding.right, viewSize.height * 0.18)})
     titleBng:setAnchorPoint(cc.p(0, 0))
     titleBng:setPosition(cc.p(viewSize.width * 0.02, viewSize.height * 0.7))
     bng:addChild(titleBng)
@@ -258,7 +258,7 @@ function BiwuDuihuanItem:refresh(param)
     arrowBng:addChild(levelDis)
 
     --头像大背景
-    local heroBng = display.newScale9Sprite("#arena_itemInner_bg_1.png", 0, 0, cc.size(viewSize.width * 0.7, viewSize.height * 0.65))
+    local heroBng = display.newSprite("#arena_itemInner_bg_1.png", 0, 0, {scale9 = true, size = cc.size(viewSize.width * 0.7, viewSize.height * 0.65)})
     heroBng:setVisible(false)
     heroBng:setAnchorPoint(cc.p(0, 0))
     heroBng:setPosition(cc.p(viewSize.width * 0.01, viewSize.height * 0.05))

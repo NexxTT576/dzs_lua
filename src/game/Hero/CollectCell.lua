@@ -15,7 +15,7 @@ function CollectCell:ctor(param)
     local bgWidth = self:getContentSize().width
     local bgHeight = self:getContentSize().height
 
-    local goTTF = display.newScale9Sprite("#herolist_go.png", bgWidth * 0.7, bgHeight * 0.5, size)
+    local goTTF = display.newSprite("#herolist_go.png", bgWidth * 0.7, bgHeight * 0.5, {scale9 = true, size = size})
     self:addChild(goTTF)
 
     local levelBg = display.newSprite("#submap_text_bg.png", bgWidth * 0.02, bgHeight * 0.6)

@@ -16,7 +16,7 @@ function ChoseStarLvlLayer:ctor(param)
     local boardBg =
         require("utility.BasePopUpLayer").new(
         {
-            boardSize = CCSize(boardWidth, boardHeight)
+            boardSize = cc.size(boardWidth, boardHeight)
         }
     )
     self:addChild(boardBg)

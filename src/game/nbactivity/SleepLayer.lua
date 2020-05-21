@@ -43,7 +43,7 @@ function SleepLayer:ctor(param)
                     CCHide:create(),
                     cc.CallFunc:create(
                         function()
-                            local schedule = require("framework.scheduler")
+                            local schedule = require("utility.scheduler")
                             schedule.performWithDelayGlobal(
                                 function()
                                     local particle = CCParticleSystemQuad:create("ccs/particle/p_kezhan_xiuxi_1.plist")

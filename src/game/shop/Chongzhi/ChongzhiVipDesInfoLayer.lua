@@ -75,7 +75,7 @@ local Item =
         bossLblNode:setPosition(viewSize.width / 2, vipIcon:getPositionY() - vipIcon:getContentSize().height - 10)
         node:setContentSize(node:getContentSize().width, height)
 
-        local bgSprite = display.newScale9Sprite("#win_base_inner_bg_dark.png", 0, 0, cc.size(node:getContentSize().width, height))
+        local bgSprite = display.newSprite("#win_base_inner_bg_dark.png", 0, 0, {scale9 = true, size = cc.size(node:getContentSize().width, height)})
         bgSprite:setAnchorPoint(0.5, 0.5)
         bgSprite:setPosition(node:getContentSize().width / 2, node:getContentSize().height / 2)
         node:addChild(bgSprite, -1)

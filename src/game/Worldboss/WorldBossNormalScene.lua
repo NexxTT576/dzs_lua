@@ -175,7 +175,7 @@ function WorldBossNormalScene:onEnter()
         end
     end
 
-    self.scheduler = require("framework.scheduler")
+    self.scheduler = require("utility.scheduler")
     self._schedule = self.scheduler.scheduleGlobal(updateTime, 1, false)
 end
 

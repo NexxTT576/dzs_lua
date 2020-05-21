@@ -20,7 +20,7 @@ local GenNamelayer =
 )
 
 function GenNamelayer:ctor(...)
-    local bg = display.newScale9Sprite("#login_bg.png", 0, 0, CCSize(display.width * 0.9, display.height * 0.35))
+    local bg = display.newSprite("#login_bg.png", 0, 0, {scale9 = true, size = cc.size(display.width * 0.9, display.height * 0.35)})
     bg:setPosition(display.width / 2, display.height * 0.6)
     self:addChild(bg)
 
@@ -28,8 +28,8 @@ function GenNamelayer:ctor(...)
     title:setPosition(bg:getContentSize().width / 2, bg:getContentSize().height - title:getContentSize().height * 1.5)
     bg:addChild(title)
 
-    local inputBg = display.newScale9Sprite("#login_input_bg.png")
-    inputBg:setPreferredSize(CCSize(bg:getContentSize().width * 0.5, inputBg:getContentSize().height))
+    local inputBg = display.newSprite("#login_input_bg.png", {scale9 = true})
+    inputBg:setPreferredSize(cc.size(bg:getContentSize().width * 0.5, inputBg:getContentSize().height))
     inputBg:setPosition(bg:getContentSize().width / 2, bg:getContentSize().height / 2)
     bg:addChild(inputBg)
 

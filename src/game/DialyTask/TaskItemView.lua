@@ -32,7 +32,7 @@ end
 
 function TaskItemView:setUpView()
     self._containner =
-        display.newScale9Sprite("#reward_item_bg.png", 0, 0, cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)):pos(
+        display.newSprite("#reward_item_bg.png", 0, 0, {scale9 = true, size = cc.size(self._frameSize.width - self._leftToRightOffset * 2, self._frameSize.height - self._topToDownOffset * 2)}):pos(
         self._frameSize.width / 2,
         self._frameSize.height / 2
     )
@@ -49,7 +49,8 @@ function TaskItemView:setUpView()
     --标题背景
     local titleBngSize = cc.size(280, 40)
     local marginLeft = 15
-    local titleBng = display.newScale9Sprite("#panel_bng.png", 0, 0, titleBngSize):pos(iconPosX + iconSize.width + marginLeft, containnerSize.height - self._padding.top):addTo(self._containner)
+    local titleBng =
+        display.newSprite("#panel_bng.png", 0, 0, {scale9 = true, size = titleBngSize}):pos(iconPosX + iconSize.width + marginLeft, containnerSize.height - self._padding.top):addTo(self._containner)
     titleBng:setAnchorPoint(cc.p(0, 1))
     --标题
     local marginLeft = 10

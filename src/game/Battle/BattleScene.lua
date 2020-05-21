@@ -34,7 +34,7 @@ function BattleScene:sendReq(curWave)
 end
 
 function BattleScene:result(data)
-    self.battleData = data["2"][1]
+    self.battleData = data[2][1]
     local submapID = game.player.m_cur_normal_fuben_ID --获取当前副本ID
 
     local atkData = self.battleData.d[#self.battleData.d]
@@ -42,8 +42,8 @@ function BattleScene:result(data)
     -- dump(atkData)
     local win = atkData["win"]
 
-    self.rewardItem = data["3"]
-    self.rewardCoin = data["4"]
+    self.rewardItem = data[3]
+    self.rewardCoin = data[4]
 
     local beforeLevel
     local curlevel
@@ -51,8 +51,8 @@ function BattleScene:result(data)
 
     local function checkExp(data)
         beforeLevel = game.player.getLevel() -- 之前等级
-        curlevel = data["5"] or beforeLevel
-        curExp = data["6"] or 0
+        curlevel = data[5] or beforeLevel
+        curExp = data[6] or 0
 
         local data_level_level = require("data.data_level_level")
         -- 当前等级的最大exp,读表
