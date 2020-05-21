@@ -124,14 +124,14 @@ function HeroDebrisCell:create(param)
     )
     -- self.heroName = self._rootnode["heroName"]
     self.heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "啦啦啦",
             font = FONTS_NAME.font_fzcy,
             x = self._rootnode["jinduNode"]:getContentSize().width * 0.2, --+ self.headIcon:getContentSize().width,
             y = self:getContentSize().height * 0.57,
             size = 22,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["jinduNode"]:addChild(self.heroName)

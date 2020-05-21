@@ -42,12 +42,12 @@ function CollectLayer:ctor(itemId, itemType)
     ResMgr.refreshIcon({itemBg = headIcon, id = itemId, resType = colType})
 
     self.iconName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "啦啦啦",
             font = FONTS_NAME.font_haibao,
             size = 28,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["name"]:addChild(self.iconName)

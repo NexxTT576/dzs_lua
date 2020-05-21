@@ -169,14 +169,14 @@ function MonthCardLayer:initData(data)
 
     -- 月卡剩余3天
     local msgLbl1 =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "月卡剩余3天",
             size = 22,
             color = cc.c3b(60, 243, 35),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 
@@ -186,14 +186,14 @@ function MonthCardLayer:initData(data)
 
     -- 内可续购
     local msgLbl2 =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "内可续购",
             size = 22,
             color = cc.c3b(60, 243, 35),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 
@@ -203,14 +203,14 @@ function MonthCardLayer:initData(data)
 
     -- 剩余天数
     local leftLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "剩余天数：",
             size = 22,
             color = cc.c3b(60, 243, 35),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -220,14 +220,14 @@ function MonthCardLayer:initData(data)
 
     -- 天数num
     local dayLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = tostring(self._days),
             size = 22,
             color = cc.c3b(247, 31, 31),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 

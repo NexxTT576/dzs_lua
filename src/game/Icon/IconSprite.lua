@@ -57,7 +57,7 @@ function IconSprite:ctor(param)
                 font = FONTS_NAME.font_fzcy,
                 size = 20,
                 color = NAME_COLOR[data_item_item[_id].quality],
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         nameLabel:setPosition(sprite:getContentSize().width / 2, -nameLabel:getContentSize().height / 2)
@@ -70,7 +70,7 @@ function IconSprite:ctor(param)
                 font = FONTS_NAME.font_fzcy,
                 size = 20,
                 color = FONT_COLOR.GREEN,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         numLabel:setPosition(sprite:getContentSize().width - numLabel:getContentSize().width * 0.6, numLabel:getContentSize().height * 0.55)

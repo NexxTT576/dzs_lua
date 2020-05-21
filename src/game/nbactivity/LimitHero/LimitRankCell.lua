@@ -13,7 +13,7 @@ function LimitRankCell:create(idx, width)
             text = "1.侠客",
             size = 18,
             color = cc.c3b(64, 37, 7),
-            textAlign = ui.TEXT_ALIGN_LEFT
+            textAlign = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.rankName:setPosition(15, self.rankName:getContentSize().height / 2 + 5)
@@ -26,7 +26,7 @@ function LimitRankCell:create(idx, width)
             text = "4545",
             size = 18,
             color = cc.c3b(147, 5, 5),
-            textAlign = ui.TEXT_ALIGN_RIGHT
+            textAlign = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     self.rankNum:setAnchorPoint(cc.p(1, 0.8))

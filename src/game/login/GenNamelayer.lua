@@ -42,7 +42,7 @@ function GenNamelayer:ctor(...)
             size = 32,
             font = FONTS_NAME.font_haibao,
             color = display.COLOR_BLACK,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     inputBg:addChild(self.playerName)

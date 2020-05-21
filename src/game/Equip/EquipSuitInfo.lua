@@ -74,12 +74,12 @@ function EquipSuitInfo:ctor(param)
         iconBg:addChild(weaponIcon)
 
         self.weaponName =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = "",
                 size = 20,
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
 

@@ -40,7 +40,7 @@ function YabiaoSelectView:setUpView(param)
         {
             text = "信息",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = "res/fonts/font_title.fnt"
         }
     ):pos(mainBngSize.width * 0.5, mainBngSize.height * 0.97)
@@ -143,7 +143,7 @@ function YabiaoSelectView:setUpView(param)
         {
             text = "今天可押镖次数:",
             size = 20,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(92, 38, 1),
             font = FONTS_NAME.font_fzcy
         }
@@ -153,7 +153,7 @@ function YabiaoSelectView:setUpView(param)
         {
             text = "今天可劫镖次数:",
             size = 20,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(92, 38, 1),
             font = FONTS_NAME.font_fzcy
         }
@@ -163,7 +163,7 @@ function YabiaoSelectView:setUpView(param)
         {
             text = self._yabiaoCishu,
             size = 20,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(92, 38, 1),
             font = FONTS_NAME.font_fzcy
         }
@@ -173,7 +173,7 @@ function YabiaoSelectView:setUpView(param)
         {
             text = self._jiebiaoCishu,
             size = 20,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(92, 38, 1),
             font = FONTS_NAME.font_fzcy
         }
@@ -214,14 +214,14 @@ end
 function YabiaoSelectView:refreshBtns()
     self._shuaxinBtn:setSpriteFrame(display.newSprite("#yuanbaoshuaxin.png"):getSpriteFrame())
     self._shuaxinPrice =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = data_config_yabiao_config_yabiao[18].value,
             size = 18,
             color = cc.c3b(252, 28, 255),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._shuaxinPrice:setPosition(cc.p(self._shuaxinBtn:getContentSize().width * 0.7, self._shuaxinBtn:getContentSize().height * 0.5))
@@ -273,48 +273,48 @@ function YabiaoSelectView:createCardNode(types)
     local num02 = dataBase.fix[2] + dataBase.ratio[2] * game.player:getLevel()
 
     local yinbiTag =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = data_item_item[itemId1].name,
             size = size or 18,
             color = FONT_COLOR.WHITE,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     local yinbiValue =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = num01,
             size = size or 18,
             color = cc.c3b(0, 216, 255),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
     local shengwangTag =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = data_item_item[itemId2].name,
             size = size or 18,
             color = FONT_COLOR.WHITE,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     local shengwangValue =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = num02,
             size = size or 18,
             color = cc.c3b(252, 28, 255),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     yinbiTag:setPosition(cc.p(10, disBng:getContentSize().height * 0.62))
@@ -328,14 +328,14 @@ function YabiaoSelectView:createCardNode(types)
     zhaoHuanBtn:setVisible(types == 4)
 
     local zhaohuanPrice =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = data_config_yabiao_config_yabiao[19].value,
             size = size or 18,
             color = cc.c3b(252, 28, 255),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     zhaohuanPrice:setPosition(cc.p(zhaoHuanBtn:getContentSize().width * 0.7, zhaoHuanBtn:getContentSize().height * 0.5))

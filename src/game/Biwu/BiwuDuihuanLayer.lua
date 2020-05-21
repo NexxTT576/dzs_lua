@@ -32,7 +32,7 @@ function BiwuDuihuanLayer:setUpView(param)
         {
             text = self.rongyu,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 30,
             color = cc.c3b(238, 184, 104)
         }

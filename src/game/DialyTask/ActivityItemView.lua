@@ -64,7 +64,7 @@ function ActivityItemView:setUpView()
             text = self._data.title,
             size = 20,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     ):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     dislabel:setAnchorPoint(cc.p(0, 0.5))
@@ -83,7 +83,7 @@ function ActivityItemView:setUpView()
             size = 20,
             color = cc.c3b(6, 129, 18),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     ):pos(marginLeft, y):addTo(self._containner)
     activitylabel:setAnchorPoint(cc.p(0, 1))
@@ -112,7 +112,7 @@ function ActivityItemView:setUpView()
                 size = 18,
                 color = cc.c3b(6, 129, 18),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         ):pos(marginLeft, y):addTo(self._containner)
         label:setAnchorPoint(cc.p(0, 1))
@@ -137,7 +137,7 @@ function ActivityItemView:setUpView()
             size = 18,
             color = cc.c3b(6, 129, 18),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     ):pos(offset, itemsViewBngs:getContentSize().height - offset):addTo(itemsViewBngs)
     rolelabel:setAnchorPoint(cc.p(0, 1))
@@ -257,14 +257,14 @@ function ActivityItemView:createItem(index, itemsViewBngs, containnerSize)
         nameColor = ResMgr.getItemNameColor(self._giftData[i].id)
     end
 
-    ui.newTTFLabelWithShadow(
+    newTTFLabelWithShadow(
         {
             text = self._giftData[i].name,
             size = 20,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(iconSize.width / 2, -20):addTo(self._icon):setAnchorPoint(cc.p(0, 1))
 

@@ -195,13 +195,13 @@ function LimitHeroLayer:init()
     local actTimePeriod = "活动时间：" .. startTimeStr .. " 至 " .. endTimeStr
 
     local timePeriodTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = actTimePeriod,
             size = 26,
             color = cc.c3b(36, 255, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 
@@ -214,13 +214,13 @@ function LimitHeroLayer:init()
     self:initActTimeSchedule()
 
     local costGoldTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = LimitHeroModel.costGold(),
             size = 24,
             color = cc.c3b(255, 210, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     costGoldTTF:setPosition(self._rootnode["gold_icon"]:getContentSize().width, self._rootnode["gold_icon"]:getContentSize().height / 2)
@@ -236,12 +236,12 @@ function LimitHeroLayer:init()
     self._rootnode["luck_bg"]:addChild(self.luckBar)
 
     self.luckBarTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = LimitHeroModel.luckNum() .. "/" .. LimitHeroModel.maxLuckNum(),
             size = 26,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self.luckBarTTF:setPosition(self._rootnode["luck_bg"]:getContentSize().width / 2, self._rootnode["luck_bg"]:getContentSize().height / 2)
@@ -272,13 +272,13 @@ function LimitHeroLayer:init()
     self._rootnode["gold_btn"]:addChild(self.goldDrawEff)
 
     self.freeDrawLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "剩余时间",
             size = 22,
             color = cc.c3b(36, 255, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self.freeDrawLabel:setPosition(
@@ -328,37 +328,37 @@ function LimitHeroLayer:updateRightDesc()
     local curText, fontSize = LimitHeroModel.getModifiedPlayerRank()
 
     local rankNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = curText,
             size = fontSize,
             color = cc.c3b(36, 255, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     arrPos(rankNum, self._rootnode["rank"])
     self._rootnode["ttf_node"]:addChild(rankNum)
 
     local scoreNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = LimitHeroModel.playerScore(),
             size = 20,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     arrPos(scoreNum, self._rootnode["score"])
     self._rootnode["ttf_node"]:addChild(scoreNum)
 
     local yuanbaoNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = game.player.m_gold,
             size = 20,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     arrPos(yuanbaoNum, self._rootnode["yuanbao"])
@@ -412,13 +412,13 @@ function LimitHeroLayer:updateRightDesc()
                 end
 
                 local shadowTTF =
-                    ui.newTTFLabelWithShadow(
+                    newTTFLabelWithShadow(
                     {
                         text = content,
                         size = 20,
                         color = curColor,
                         font = FONTS_NAME.font_fzcy,
-                        align = ui.TEXT_ALIGN_LEFT
+                        align = cc.TEXT_ALIGNMENT_LEFT
                     }
                 )
 
@@ -429,13 +429,13 @@ function LimitHeroLayer:updateRightDesc()
                 local rewardData = LimitHeroModel.rewardList[i]
                 if i == 4 then
                     local heroNameTTF =
-                        ui.newTTFLabelWithShadow(
+                        newTTFLabelWithShadow(
                         {
                             text = rewardData[1] .. "资质五星侠客",
                             size = 20,
                             color = NAME_COLOR[5],
                             font = FONTS_NAME.font_fzcy,
-                            align = ui.TEXT_ALIGN_LEFT
+                            align = cc.TEXT_ALIGNMENT_LEFT
                         }
                     )
                     heroNameTTF:setPosition(curX, curY)
@@ -445,13 +445,13 @@ function LimitHeroLayer:updateRightDesc()
                     for k = 1, #rewardData do
                         local heroData = ResMgr.getCardData(rewardData[k])
                         local heroNameTTF =
-                            ui.newTTFLabelWithShadow(
+                            newTTFLabelWithShadow(
                             {
                                 text = heroData.name,
                                 size = 20,
                                 color = NAME_COLOR[heroData.star[1]],
                                 font = FONTS_NAME.font_fzcy,
-                                align = ui.TEXT_ALIGN_LEFT
+                                align = cc.TEXT_ALIGNMENT_LEFT
                             }
                         )
                         heroNameTTF:setPosition(curX, curY)
@@ -460,13 +460,13 @@ function LimitHeroLayer:updateRightDesc()
 
                         if k ~= #rewardData then
                             local heroNameSym =
-                                ui.newTTFLabelWithShadow(
+                                newTTFLabelWithShadow(
                                 {
                                     text = ",",
                                     size = 20,
                                     color = NAME_COLOR[heroData.star[1]],
                                     font = FONTS_NAME.font_fzcy,
-                                    align = ui.TEXT_ALIGN_LEFT
+                                    align = cc.TEXT_ALIGNMENT_LEFT
                                 }
                             )
                             heroNameSym:setPosition(curX, curY)
@@ -536,13 +536,13 @@ function LimitHeroLayer:initActTimeSchedule()
     self.actRestTime = LimitHeroModel.actRestTime()
 
     self.actTimeLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "剩余时间",
             size = 26,
             color = cc.c3b(36, 255, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self.actTimeLabel:setPosition(self._rootnode["rest_time_ttf"]:getPositionX(), self._rootnode["rest_time_ttf"]:getPositionY() - self._rootnode["rest_time_ttf"]:getContentSize().height)

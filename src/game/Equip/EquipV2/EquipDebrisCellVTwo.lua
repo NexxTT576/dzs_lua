@@ -118,7 +118,7 @@ function EquipDebrisCellVTwo:create(param)
     )
     -- self.heroName = self._rootnode["heroName"]
     self.heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,

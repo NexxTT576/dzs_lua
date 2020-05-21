@@ -67,7 +67,7 @@ function SpiritIcon:ctor(param)
                 text = tostring(_lv),
                 font = FONTS_NAME.font_fzcy,
                 size = 20,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         lvLabel:setPosition(lvBoard:getContentSize().width * 0.4, lvLabel:getContentSize().height * 0.86)
@@ -108,7 +108,7 @@ function SpiritIcon:ctor(param)
             font = FONTS_NAME.font_fzcy,
             size = 20,
             color = QUALITY_COLOR[_baseInfo.quality or 1],
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self:addChild(nameLabel)

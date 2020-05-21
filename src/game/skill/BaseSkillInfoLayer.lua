@@ -63,13 +63,13 @@ local Item =
             end
 
             local nameLabel =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = name,
                     font = FONTS_NAME.font_fzcy,
                     size = 20,
                     color = color,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             rootnode["heroName"]:addChild(nameLabel)
@@ -164,12 +164,12 @@ function BaseSkillInfoLayer:ctor(param)
     )
 
     local heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = _baseInfo.name,
             font = FONTS_NAME.font_haibao,
             size = 30,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = NAME_COLOR[_info.star]
         }
     )

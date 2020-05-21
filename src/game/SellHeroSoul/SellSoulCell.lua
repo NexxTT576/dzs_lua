@@ -29,7 +29,7 @@ function SellSoulCell:ctor(cellIndex, data)
         {
             x = headIcon:getContentSize().width * 1.2,
             y = self:getContentSize().height * 0.8,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             text = data.name,
             font = "Baoli",
             color = FONT_COLOR.PURPLE,
@@ -45,7 +45,7 @@ function SellSoulCell:ctor(cellIndex, data)
         {
             x = headIcon:getPositionX() - headIcon:getContentSize().width * 0.4,
             y = headIcon:getPositionY() - headIcon:getContentSize().height / 2,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             text = "Lv:" .. data.lv,
             font = "Baoli",
             color = cc.c3b(255, 255, 0),

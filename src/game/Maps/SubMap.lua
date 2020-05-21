@@ -193,7 +193,7 @@ function SubMap:initLevelInfo(subMap)
                 color = fontColor,
                 x = nameBg:getContentSize().width / 2,
                 y = nameBg:getContentSize().height / 2,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         nameBg:addChild(nameLabel)
@@ -209,7 +209,7 @@ function SubMap:initLevelInfo(subMap)
                 color = display.COLOR_WHITE,
                 x = nameBg:getContentSize().width / 2,
                 y = -nameBg:getContentSize().height * 0.8,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         nameBg:addChild(starLabel)
@@ -291,7 +291,7 @@ function SubMap:checkLevelReward(subMapID)
                     color = cc.c3b(255, 216, 0),
                     outlineColor = cc.c3b(43, 6, 0),
                     font = FONTS_NAME.font_haibao,
-                    align = ui.TEXT_ALIGN_LEFT
+                    align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
 
@@ -384,7 +384,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
                             color = cc.c3b(255, 216, 0),
                             outlineColor = cc.c3b(43, 6, 0),
                             font = FONTS_NAME.font_haibao,
-                            align = ui.TEXT_ALIGN_LEFT
+                            align = cc.TEXT_ALIGNMENT_LEFT
                         }
                     )
 
@@ -402,7 +402,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
                             color = cc.c3b(255, 216, 0),
                             outlineColor = cc.c3b(43, 6, 0),
                             font = FONTS_NAME.font_haibao,
-                            align = ui.TEXT_ALIGN_LEFT
+                            align = cc.TEXT_ALIGNMENT_LEFT
                         }
                     )
 

@@ -85,12 +85,12 @@ function PosHero:ctor(param)
     end
 
     self.floorName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
             size = 18,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             color = cc.c3b(254, 249, 0)
         }
     )
@@ -105,12 +105,12 @@ end
 function PosHero:showSelfHero(info)
     self.floorName:removeSelf()
     self.floorName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             color = cc.c3b(254, 255, 255)
         }
     )

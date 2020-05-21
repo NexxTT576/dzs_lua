@@ -20,7 +20,7 @@ function BattleScene:sendReq(curWave)
                 -- dump(data)
 
                 -- 副本副本 战斗胜利则扣除体力，战斗失败则不扣除体力
-                local atkDatas = data["2"][1].d
+                local atkDatas = data[2][1].d
                 local atkData = atkDatas[#atkDatas]
                 local win = atkData["win"]
                 if win ~= nil and win == 1 then

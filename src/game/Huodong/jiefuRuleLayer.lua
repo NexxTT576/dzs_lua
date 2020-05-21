@@ -43,28 +43,28 @@ function jiefuRuleLayer:ctor(data)
         local jiefuData = data_jiefujipin_jiefujipin[i]
         local bar = self._rootnode["bar" .. i]
         local curDamageNum =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = jiefuData.damage,
                 size = 30,
                 color = cc.c3b(234, 193, 135),
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_haibao,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         curDamageNum:setPosition(bar:getContentSize().width * 0.18, bar:getContentSize().height / 2)
         bar:addChild(curDamageNum)
 
         local curSilverNum =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = jiefuData.silver,
                 size = 30,
                 -- color = cc.c3b(231,230,228),
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_haibao,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         curSilverNum:setPosition(bar:getContentSize().width * 0.66, bar:getContentSize().height / 2)
@@ -78,25 +78,25 @@ function jiefuRuleLayer:ctor(data)
     --     num:setPosition(parent:getContentSize().width+num:getContentSize().width/2,parent:getContentSize().height/2)
     -- end
 
-    -- self.curDamageNum =ui.newTTFLabelWithShadow({
+    -- self.curDamageNum =newTTFLabelWithShadow({
     --     text = totalDamge,
     --     size = 26,
     --     color = cc.c3b(230,56,56),
     --     shadowColor = cc.c3b(0,0,0),
     --     font = FONTS_NAME.font_haibao,
-    --     align = ui.TEXT_ALIGN_LEFT
+    --     align = cc.TEXT_ALIGNMENT_LEFT
     --     })
     -- setNumPos(self._rootnode["total_num"],self.curDamageNum)
 
     -- self._rootnode["total_num"]:addChild(self.curDamageNum)
 
-    -- self.curSilverNum =ui.newTTFLabelWithShadow({
+    -- self.curSilverNum =newTTFLabelWithShadow({
     --     text = totalMoney,
     --     size = 26,
     --     -- color = cc.c3b(231,230,228),
     --     shadowColor = cc.c3b(0,0,0),
     --     font = FONTS_NAME.font_haibao,
-    --     align = ui.TEXT_ALIGN_LEFT
+    --     align = cc.TEXT_ALIGNMENT_LEFT
     --     })
     -- setNumPos(self._rootnode["silver_icon"],self.curSilverNum)
 

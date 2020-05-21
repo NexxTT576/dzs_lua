@@ -66,14 +66,14 @@ function HeroQiangHuaLayer:updateQiangHua(param)
 
     if self.costNumWithShadow == nil then
         self.costNumWithShadow =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = "0",
                 size = 22,
                 -- color = nameColor,
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         self.costNumWithShadow:setAnchorPoint(cc.p(0, 0.5))
@@ -85,14 +85,14 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         self._rootnode["cost_icon"]:addChild(self.costNumWithShadow)
 
         self.expNumWithShadow =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = "0",
                 size = 22,
                 color = cc.c3b(132, 234, 50),
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         self.expNumWithShadow:setAnchorPoint(cc.p(0, 0.5))

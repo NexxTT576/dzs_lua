@@ -58,7 +58,7 @@ function HeroListCell:create(param)
     --        color = cc.c3b(85,210,68),
     --        shadowColor = cc.c3b(0,0,0),
     --        font = FONTS_NAME.font_fzcy,
-    --        align = ui.TEXT_ALIGN_LEFT,
+    --        align = cc.TEXT_ALIGNMENT_LEFT,
     --        label = self.clsTTF
     -- 	})
 
@@ -89,7 +89,7 @@ function HeroListCell:create(param)
     )
 
     self.heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -97,21 +97,21 @@ function HeroListCell:create(param)
             --self._rootnode["nameBg"]:getContentSize().width/2 + self.headIcon:getContentSize().width+30,
             y = self._rootnode["nameBg"]:getContentSize().height * 0.5,
             size = 22,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.heroName:setPosition(self.heroName:getContentSize().width / 2, self._rootnode["nameBg"]:getContentSize().height * 0.5)
     self._rootnode["nameBg"]:addChild(self.heroName)
 
     self.heroCls =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "0",
             size = 20,
             color = cc.c3b(85, 210, 68),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -243,13 +243,13 @@ function HeroListCell:refresh(id, viewType, isSel)
             local zizhiValue = zizhiData[self.cls + 1]
             self._rootnode["zizhi"]:removeAllChildren()
             local heroZizhi =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = "资质:" .. zizhiValue,
                     font = FONTS_NAME.font_fzcy,
                     shadowColor = cc.c3b(0, 0, 0),
                     size = 20,
-                    align = ui.TEXT_ALIGN_LEFT
+                    align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
             heroZizhi:setPosition(10, self._rootnode["zizhi"]:getContentSize().height / 2)

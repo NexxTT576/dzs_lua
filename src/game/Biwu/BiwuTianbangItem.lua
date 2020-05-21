@@ -73,7 +73,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = data.name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(92, 38, 1)
         }
@@ -88,7 +88,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = "【" .. data.faction .. "】",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(147, 5, 5)
         }
@@ -121,7 +121,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = "LV:" .. data.level,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 255, 255)
         }
@@ -145,7 +145,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = "排名：" .. data.rank,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(4, 90, 106)
         }
@@ -191,7 +191,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = data.attack,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(216, 30, 0)
         }
@@ -201,7 +201,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = "积分:",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(147, 5, 5)
         }
@@ -211,7 +211,7 @@ function BiwuTianbangItem:refresh(param)
         {
             text = data.score,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(216, 30, 0)
         }

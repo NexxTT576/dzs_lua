@@ -86,7 +86,7 @@ function HeroQiangHuaCell:create(param)
         {
             x = self.headIcon:getContentSize().width * 0.4,
             y = self:getContentSize().height * 0.85,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             text = nameStr,
             font = FONTS_NAME.font_fzcy,
             color = FONT_COLOR.PURPLE,
@@ -108,8 +108,8 @@ function HeroQiangHuaCell:create(param)
         {
             x = self.lvIcon:getPositionX() + self.lvIcon:getContentSize().width * 0.4,
             y = self.lvIcon:getPositionY(),
-             -- self.headIcon:getContentSize().height/2,
-            align = ui.TEXT_ALIGN_LEFT,
+            -- self.headIcon:getContentSize().height/2,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             text = lvl,
             font = FONTS_NAME.font_fzcy,
             size = 26
@@ -129,7 +129,7 @@ function HeroQiangHuaCell:create(param)
             -- color = FONT_COLOR.DARK_RED,
             font = FONTS_NAME.font_fzcy,
             size = 22,
-            align = ui.TEXT_ALIGN_RIGHT
+            align = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     self.costSilver:setAnchorPoint(cc.p(0, 0.5))
@@ -143,7 +143,7 @@ function HeroQiangHuaCell:create(param)
             -- color = FONT_COLOR.DARK_RED,
             font = FONTS_NAME.font_fzcy,
             size = 22,
-            align = ui.TEXT_ALIGN_RIGHT
+            align = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     self.costNum:setAnchorPoint(cc.p(0, 0.5))

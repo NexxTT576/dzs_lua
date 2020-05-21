@@ -56,7 +56,7 @@ end
 -- 字符串是否含有非法字符
 function hasIllegalChar(str)
     local illegalStr = ""
-     --"`-=[]\\;',./～！@#￥%…&×（）—『』|：“”《》？·【】、；’‘，。~!$^*()_+{}:\"<>?"
+    --"`-=[]\\;',./～！@#￥%…&×（）—『』|：“”《》？·【】、；’‘，。~!$^*()_+{}:\"<>?"
 
     local len = string.len(illegalStr)
     local curByte = nil
@@ -207,7 +207,7 @@ end
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER}
+            align = cc.TEXT_ALIGNMENT_CENTER}
     @return:
 ]]
 function newTTFLabelWithShadow(param)
@@ -286,7 +286,7 @@ end
             color = nameColor,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER}
+            align = cc.TEXT_ALIGNMENT_CENTER}
     @return:
 ]]
 function newTTFLabelWithOutline(param)

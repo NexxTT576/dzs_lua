@@ -148,13 +148,13 @@ function characterCard:playTinyShow(name)
         )
 
         self.angerNameTTF =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = name,
                 size = 20,
                 font = FONTS_NAME.font_fzcy,
                 shadowColor = cc.c3b(0, 0, 0),
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
 

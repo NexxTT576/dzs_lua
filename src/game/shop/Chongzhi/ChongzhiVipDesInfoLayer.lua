@@ -41,7 +41,7 @@ local Item =
                     font = FONTS_NAME.font_fzcy,
                     color = cc.c3b(255, 255, 255),
                     size = 22,
-                    align = ui.TEXT_ALIGN_LEFT,
+                    align = cc.TEXT_ALIGNMENT_LEFT,
                     valign = cc.VERTICAL_TEXT_ALIGNMENT_TOP,
                     dimensions = cc.size(bossLblNode:getContentSize().width, 0)
                 }

@@ -55,14 +55,14 @@ function TaskItemView:setUpView()
     local marginLeft = 10
     local marginRight = 10
     self._titleLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
             size = 22,
             color = cc.c3b(255, 255, 255),
             shadowColor = cc.c3b(255, 255, 255),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     ):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     self._titleLabel:setAnchorPoint(cc.p(0, 0.5))
@@ -73,7 +73,7 @@ function TaskItemView:setUpView()
         {
             text = "/" .. self._data.totalStep,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -89,7 +89,7 @@ function TaskItemView:setUpView()
         {
             text = self._data.missionDetail,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 222, 0)
         }
@@ -106,7 +106,7 @@ function TaskItemView:setUpView()
         {
             text = "进度：",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -120,11 +120,11 @@ function TaskItemView:setUpView()
     local marginTop = 15
 
     self._disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._data.dis,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(170, 91, 28),
             shadowColor = cc.c3b(0, 0, 0)
@@ -139,11 +139,11 @@ function TaskItemView:setUpView()
     local marginLeft = 10
     local marginTop = 10
     self._disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "获得积分",
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(170, 91, 28),
             shadowColor = cc.c3b(0, 0, 0)
@@ -157,7 +157,7 @@ function TaskItemView:setUpView()
         {
             text = self._data.jifen,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(147, 5, 5)
         }
@@ -169,11 +169,11 @@ function TaskItemView:setUpView()
     local marginLeft = 10
     local marginTop = 10
     self._disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "奖励",
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(170, 91, 28),
             shadowColor = cc.c3b(0, 0, 0)
@@ -284,7 +284,7 @@ function TaskItemView:createMoney(type, count)
         {
             text = count,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(147, 5, 5)
         }

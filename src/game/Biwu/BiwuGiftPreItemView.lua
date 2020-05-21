@@ -69,7 +69,8 @@ function BiwuGiftPreItemView:setUpView()
         text = self._data.min
     end
 
-    local dislabel = ui.newTTFLabel({text = "第" .. text .. "名" .. textExt, size = 20, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
+    local dislabel =
+        ui.newTTFLabel({text = "第" .. text .. "名" .. textExt, size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     dislabel:setAnchorPoint(cc.p(0, 0.5))
 
     --道具框
@@ -124,14 +125,14 @@ function BiwuGiftPreItemView:createItem(index, itemsViewBngs, containnerSize)
         nameColor = ResMgr.getItemNameColor(self._data.giftData[index].id)
     end
 
-    ui.newTTFLabelWithShadow(
+    newTTFLabelWithShadow(
         {
             text = self._data.giftData[index].name,
             size = 20,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(iconSize.width / 2, -20):addTo(self._icon):setAnchorPoint(cc.p(0, 1))
 

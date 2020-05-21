@@ -100,7 +100,7 @@ function YabiaoMainScene:setUpMapView()
         {
             text = "",
             size = 25,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             font = FONTS_NAME.font_btns
         }

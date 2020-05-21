@@ -46,7 +46,7 @@ function BiwuByTimesCountBox:ctor(param, successCallBack)
             font = FONTS_NAME.font_haibao,
             size = 24,
             color = cc.c3b(255, 243, 0),
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     itemNameLabel:setString(string.format("%s", param.name))

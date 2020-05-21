@@ -89,36 +89,36 @@ function YabiaoSpeedUpCommitPopup:setUpView(param)
     )
 
     local label_01 =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "是否花费",
             size = 20,
             color = cc.c3b(92, 38, 1),
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
     local label_02 =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = param.cost,
             size = 20,
             color = cc.c3b(6, 129, 18),
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
     local icon = display.newSprite("#icon_gold.png")
     local label_03 =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._disStr,
             size = 20,
             color = cc.c3b(92, 38, 1),
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )

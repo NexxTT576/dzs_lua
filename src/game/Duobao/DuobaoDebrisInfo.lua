@@ -115,14 +115,14 @@ function DuobaoDebrisInfo:ctor(param)
 
     local nameColor = ResMgr.getItemNameColor(self._id)
     local nameLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._title,
             size = 24,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 

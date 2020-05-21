@@ -35,7 +35,7 @@ function Item:create(param)
             text = "",
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self.nameLabel:setPosition(self:getContentSize().width / 2, _viewSize.height * 0.13)
@@ -48,7 +48,7 @@ function Item:create(param)
             font = FONTS_NAME.font_fzcy,
             size = 20,
             color = FONT_COLOR.GREEN,
-            align = ui.TEXT_ALIGN_RIGHT
+            align = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     --    self.numLabel:setPosition(cc.p(self:getContentSize().width - self.numLabel:getContentSize().width - 10, self:getContentSize().height * 0.5))
@@ -521,7 +521,7 @@ function SplitStoveScene:refreshItem(selectedType, data)
                 --                local resid = self._list[self._selectedType][self._itemsData[self._viewType][self._selectedType][k]].resId
                 local resid = self._list[self._selectedType][k].resId
                 local iconName =
-                    ui.newTTFLabelWithShadow(
+                    newTTFLabelWithShadow(
                     {
                         text = "",
                         font = FONTS_NAME.font_fzcy,

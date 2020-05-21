@@ -45,13 +45,13 @@ local Item =
             end
 
             local nameLabel =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = name,
                     font = FONTS_NAME.font_fzcy,
                     size = 20,
                     color = color,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             rootnode["heroName"]:addChild(nameLabel)

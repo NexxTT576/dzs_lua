@@ -49,7 +49,7 @@ function BiwuEnemyItem:refresh(param)
         {
             text = self.data.name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(110, 0, 0)
         }
@@ -65,7 +65,7 @@ function BiwuEnemyItem:refresh(param)
         {
             text = self.data.attack,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(216, 30, 0)
         }
@@ -82,7 +82,7 @@ function BiwuEnemyItem:refresh(param)
         {
             text = "LV:" .. self.data.level,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 255, 255)
         }

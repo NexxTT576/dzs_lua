@@ -150,28 +150,28 @@ function HandBookCell:ctor(param)
 
     local totalNum = #arrId
     local totalTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "/" .. totalNum,
             size = 24,
             -- color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_RIGHT
+            align = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     self._rootnode["cell_bg"]:addChild(totalTTF)
     totalTTF:setPosition(self._rootnode["cell_bg"]:getContentSize().width - 20, self._rootnode["cell_bg"]:getContentSize().height - 25)
 
     local exTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = exNum,
             size = 24,
             color = cc.c3b(36, 255, 0),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_RIGHT
+            align = cc.TEXT_ALIGNMENT_RIGHT
         }
     )
     self._rootnode["cell_bg"]:addChild(exTTF)

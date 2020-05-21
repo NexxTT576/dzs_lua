@@ -35,7 +35,7 @@ function TanbaoMainView:setUpView(param)
             size = 23,
             color = cc.c3b(0, 254, 60),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -61,7 +61,7 @@ function TanbaoMainView:setUpView(param)
             size = 23,
             color = cc.c3b(0, 254, 60),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -97,7 +97,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -111,7 +111,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(36, 255, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -128,7 +128,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -141,7 +141,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(0, 240, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -167,7 +167,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -186,7 +186,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -206,7 +206,7 @@ function TanbaoMainView:setUpView(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -414,7 +414,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -430,7 +430,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -443,7 +443,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -456,7 +456,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(36, 255, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -469,7 +469,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -482,7 +482,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(0, 240, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -495,7 +495,7 @@ function TanbaoMainView:createLabel01(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -534,7 +534,7 @@ function TanbaoMainView:createLabel02(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -552,7 +552,7 @@ function TanbaoMainView:createLabel02(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -566,7 +566,7 @@ function TanbaoMainView:createLabel02(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -580,7 +580,7 @@ function TanbaoMainView:createLabel02(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -594,7 +594,7 @@ function TanbaoMainView:createLabel02(param)
             size = 20,
             color = cc.c3b(0, 240, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -637,7 +637,7 @@ function TanbaoMainView:createProgress(param)
             size = 20,
             color = cc.c3b(0, 240, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -654,7 +654,7 @@ function TanbaoMainView:createProgress(param)
             size = 20,
             color = cc.c3b(240, 0, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -671,7 +671,7 @@ function TanbaoMainView:createProgress(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -880,7 +880,7 @@ function TanbaoMainView:createItemView(pos, node, data)
             color = nameColor,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     nameLabel:setPosition(cc.p(icon:getContentSize().width / 2, -15))

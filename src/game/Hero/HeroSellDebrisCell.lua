@@ -54,7 +54,7 @@ function HeroSellDebrisCell:create(param)
         {
             x = headIcon:getContentSize().width * 0.5,
             y = self:getContentSize().height * 0.8,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             text = nameStr,
             font = "Baoli",
             color = FONT_COLOR.PURPLE,

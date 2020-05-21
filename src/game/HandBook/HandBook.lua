@@ -112,13 +112,13 @@ function HandBook:initSubNode(i, j)
     subNode:addChild(subBar)
 
     local numTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "完成度" .. exNum .. "/" .. maxNum,
             size = 16,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     numTTF:setPosition(self._rootnode["cur_bar_bg"]:getContentSize().width / 2, self._rootnode["cur_bar_bg"]:getContentSize().height / 2 - 2)
@@ -146,13 +146,13 @@ function HandBook:initMainBar(i)
     self._rootnode["bar_bg_" .. i]:addChild(numBar)
 
     local numTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = curNum .. "/" .. maxNum,
             size = 16,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["bar_bg_" .. i]:addChild(numTTF)

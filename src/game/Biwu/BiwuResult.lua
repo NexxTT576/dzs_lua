@@ -160,14 +160,14 @@ function BiwuResult:createTreasure(lostDebris, data)
             end
 
             local nameLbl =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = name,
                     size = 20,
                     color = nameColor,
                     shadowColor = cc.c3b(0, 0, 0),
                     font = FONTS_NAME.font_fzcy,
-                    align = ui.TEXT_ALIGN_LEFT
+                    align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
 

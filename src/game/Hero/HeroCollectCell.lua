@@ -33,27 +33,27 @@ function HeroCollectCell:refresh(id)
     self.submapName:setString(name)
     self.fubenName:removeAllChildren()
     local bigMapTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self.bigMapName,
             size = 24,
             color = cc.c3b(255, 139, 45),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.fubenName:addChild(bigMapTTF)
 
     local subMapTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = fieldName,
             size = 24,
             color = cc.c3b(255, 208, 44),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     subMapTTF:setPosition(bigMapTTF:getPositionX() + bigMapTTF:getContentSize().width + 20, bigMapTTF:getPositionY())

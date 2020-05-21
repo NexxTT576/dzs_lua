@@ -66,7 +66,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
             font = FONTS_NAME.font_haibao,
             size = 24,
             color = cc.c3b(255, 243, 0),
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
             -- x = rootnode["nameLabel"]:getContentSize().width/2,
             -- y = rootnode["nameLabel"]:getContentSize().height/2
         }

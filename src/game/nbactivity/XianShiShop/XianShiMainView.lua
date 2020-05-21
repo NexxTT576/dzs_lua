@@ -36,7 +36,7 @@ function XianShiMainView:ctor(param)
             size = 20,
             color = cc.c3b(255, 255, 255),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -47,7 +47,7 @@ function XianShiMainView:ctor(param)
             size = 20,
             color = cc.c3b(30, 255, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )

@@ -142,7 +142,7 @@ function BiwuGiftRrePopup:setUpView()
         {
             text = "奖励预览",
             size = self._titleDisFontSize,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = "fonts/font_title.fnt"
         }
     ):pos(self._mainPopupSize.width / 2, self._mainPopupSize.height - self._titleDisOffsetOfTop):addTo(self._mianPopup)
@@ -155,7 +155,7 @@ end
 --创建tableView
 function BiwuGiftRrePopup:setUpTableView()
     local titleDis =
-        ui.newTTFLabel({text = "每周六晚23点发奖励，不要错过哟~", color = cc.c3b(92, 38, 1), size = 22, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT}):pos(
+        ui.newTTFLabel({text = "每周六晚23点发奖励，不要错过哟~", color = cc.c3b(92, 38, 1), size = 22, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
         self._innerContainerSize.width / 2,
         self._innerContainerSize.height - 30
     ):addTo(self._innerContainer)

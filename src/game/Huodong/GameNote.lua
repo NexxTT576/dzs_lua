@@ -47,7 +47,7 @@ local Item =
                     color = title_color,
                     outlineColor = FONT_COLOR.NOTE_TITLE_OUTLINE,
                     size = checkint(itemData.tfont),
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
         else
@@ -58,7 +58,7 @@ local Item =
                     font = FONTS_NAME.font_haibao,
                     color = title_color,
                     size = checkint(itemData.tfont),
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
         end
@@ -80,7 +80,7 @@ local Item =
                 font = FONTS_NAME.font_fzcy,
                 color = content_color,
                 size = checkint(itemData.cfont),
-                align = ui.TEXT_ALIGN_LEFT,
+                align = cc.TEXT_ALIGNMENT_LEFT,
                 valign = cc.VERTICAL_TEXT_ALIGNMENT_TOP,
                 dimensions = viewSize
             }

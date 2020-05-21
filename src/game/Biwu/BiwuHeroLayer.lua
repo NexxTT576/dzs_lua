@@ -172,26 +172,26 @@ function BiwuHeroLayer:setUpLabelView()
 
     --底部倒计时label
     local titleLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "下次刷新",
             size = 22,
             color = FONT_COLOR.WHITE,
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
 
     --底部倒计时label
     self.countDownLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "00:00:00",
             size = 22,
             color = cc.c3b(0, 219, 52),
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -271,7 +271,7 @@ function BiwuHeroLayer:creatDislabel(titleicon, count, fontType)
             text = count,
             color = FONT_COLOR.YELLOW,
             size = self._titleDisFontSize,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             shadowColor = cc.c3b(0, 0, 0),
             font = fontType
         }
@@ -292,39 +292,39 @@ function BiwuHeroLayer:createHeros(pos, index)
             text = "",
             size = 24,
             color = FONT_COLOR.YELLOW,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )
     local levelLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             size = 22,
             color = FONT_COLOR.WHITE,
             shadowColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
     local nameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.YELLOW,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
         }
     )
     local fationLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy

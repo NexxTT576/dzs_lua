@@ -358,12 +358,12 @@ function SkillQiangHuaLayer:initBaseInfo()
     self._rootnode["image"]:setSpriteFrame(display.newSprite(pathName):getSpriteFrame())
 
     local heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = baseData["name"],
             font = FONTS_NAME.font_haibao,
             size = 30,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = NAME_COLOR[self._info.star]
         }
     )

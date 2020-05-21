@@ -81,7 +81,7 @@ function HuaShanScene:ctor()
     end
 
     local curFloorLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = string.format("当前第%d层", 0),
             font = FONTS_NAME.font_fzcy,

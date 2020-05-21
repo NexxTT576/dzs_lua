@@ -219,7 +219,7 @@ function TaskPopup:setUpView()
         {
             text = "成长之路",
             size = self._titleDisFontSize,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = "res/fonts/font_title.fnt"
         }
     ):pos(self._mainPopupSize.width / 2, self._mainPopupSize.height - self._titleDisOffsetOfTop):addTo(self._mianPopup)
@@ -485,7 +485,7 @@ function TaskPopup:createTitleTask()
             font = FONTS_NAME.font_fzcy,
             size = 22,
             color = cc.c3b(64, 37, 7),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     countDis:setAnchorPoint(cc.p(0, 1))
@@ -501,7 +501,7 @@ function TaskPopup:createTitleTask()
             font = FONTS_NAME.font_fzcy,
             size = 22,
             color = cc.c3b(147, 5, 5),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     countDis:setAnchorPoint(cc.p(0, 1))
@@ -517,7 +517,7 @@ function TaskPopup:createTitleTask()
             font = FONTS_NAME.font_fzcy,
             size = 22,
             color = cc.c3b(64, 37, 7),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     countDis:setAnchorPoint(cc.p(0, 1))
@@ -538,11 +538,11 @@ function TaskPopup:createTitleTask()
     --进度条上边的数字显示
     local margin = 10
     local progressBngSize = progress:getContentSize()
-    local beginLabel = ui.newTTFLabel({text = "0", size = 20, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
+    local beginLabel = ui.newTTFLabel({text = "0", size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(margin, progressBngSize.height / 2):addTo(progress)
     beginLabel:setAnchorPoint(cc.p(0, 0.5))
     beginLabel:setVisible(false)
     local endLabel =
-        ui.newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, font = FONTS_NAME.font_fzcy, align = ui.TEXT_ALIGN_LEFT}):pos(
+        ui.newTTFLabel({text = TaskModel:getInstance():getMaxJIfen(), size = 20, font = FONTS_NAME.font_fzcy, align = cc.TEXT_ALIGNMENT_LEFT}):pos(
         progressBngSize.width - margin,
         progressBngSize.height / 2
     ):addTo(progress)

@@ -44,7 +44,7 @@ function IconObj:ctor(param)
     self:setAnchorPoint(0.5, 0.5)
 
     self.levelLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -54,24 +54,24 @@ function IconObj:ctor(param)
     self._rootnode["lvLabel"]:addChild(self.levelLabel)
 
     self.nameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["heroNameLabel"]:addChild(self.nameLabel)
 
     self.clsLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
             size = 18,
             color = cc.c3b(0, 228, 62),
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["heroNameLabel"]:addChild(self.clsLabel)

@@ -56,7 +56,7 @@ function BagItem:create(param)
 
     self._itemData = param.itemData
     self.itemName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,

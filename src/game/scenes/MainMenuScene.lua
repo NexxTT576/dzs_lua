@@ -1081,7 +1081,7 @@ function MainMenuScene:initPlayerBoard(...)
     --         size = 20,
     --         color = FONT_COLOR.PLAYER_NAME,
     --         outlineColor = ccc3(0, 0, 0),
-    --         align = ui.TEXT_ALIGN_LEFT
+    --         align = cc.TEXT_ALIGNMENT_LEFT
     --     }
     -- )
     local ttfConfig = {}

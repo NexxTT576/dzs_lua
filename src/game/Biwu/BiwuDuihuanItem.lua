@@ -57,7 +57,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = "荣誉：",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(110, 0, 0)
         }
@@ -72,7 +72,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = self._data.price,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(216, 30, 0)
         }
@@ -87,7 +87,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = "需要人物等级：",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(99, 47, 8)
         }
@@ -102,7 +102,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = self._data.level,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(216, 30, 0)
         }
@@ -147,7 +147,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = nameColor
         }
@@ -166,7 +166,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = string.format("（" .. tips[self._data.type1] .. "可兑换%d次" .. "）", self._data.num1),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 18,
             color = cc.c3b(6, 129, 18)
         }
@@ -213,7 +213,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -228,7 +228,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = string.format("（" .. tips[self._data.type1] .. "可兑换%d次" .. "）", self._data.num1),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -248,7 +248,7 @@ function BiwuDuihuanItem:refresh(param)
         {
             text = "LV:" .. self._data.level,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }

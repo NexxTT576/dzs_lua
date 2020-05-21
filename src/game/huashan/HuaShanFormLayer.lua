@@ -99,7 +99,7 @@ function HuaShanFormLayer:ctor(param)
             size = 20,
             color = NAME_COLOR[_info.cards[1].star or 3],
             outlineColor = cc.c3b(255, 255, 255),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["playerNameLabel"]:addChild(heroNameLabel)
@@ -119,26 +119,26 @@ function HuaShanFormLayer:ctor(param)
             end
 
             local heroNameLabel =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = name,
                     font = FONTS_NAME.font_fzcy,
                     size = 18,
                     color = NAME_COLOR[_info.cards[i].star],
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             self._rootnode[string.format("heroNameLabel_%d", _info.cards[i].pos)]:addChild(heroNameLabel)
 
             if _info.cards[i].cls > 0 then
                 local clsLabel =
-                    ui.newTTFLabelWithShadow(
+                    newTTFLabelWithShadow(
                     {
                         text = "+" .. tostring(_info.cards[i].cls),
                         font = FONTS_NAME.font_fzcy,
                         size = 18,
                         color = cc.c3b(0, 228, 62),
-                        align = ui.TEXT_ALIGN_CENTER
+                        align = cc.TEXT_ALIGNMENT_CENTER
                     }
                 )
                 heroNameLabel:setPosition(-clsLabel:getContentSize().width / 2, 0)
@@ -160,12 +160,12 @@ function HuaShanFormLayer:ctor(param)
             self._rootnode[string.format("iconSprite_%d", _info.cards[i].pos)]:addChild(jobIcon)
 
             local levelLabel =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = tostring(_info.cards[i].level),
                     font = FONTS_NAME.font_fzcy,
                     size = 20,
-                    align = ui.TEXT_ALIGN_RIGHT
+                    align = cc.TEXT_ALIGNMENT_RIGHT
                 }
             )
             levelLabel:setPosition(self._rootnode[string.format("iconSprite_%d", _info.cards[i].pos)]:getContentSize().width - 4, 13)

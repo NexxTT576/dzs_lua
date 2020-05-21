@@ -47,7 +47,7 @@ function Item:create(param)
     )
 
     self.nameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
@@ -57,7 +57,7 @@ function Item:create(param)
     self._rootnode["itemNameLabel"]:addChild(self.nameLabel)
 
     self.pjLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,

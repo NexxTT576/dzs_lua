@@ -130,11 +130,11 @@ function BiwuMainScene:initTopRadios(index)
     self:addChild(backBtn, Zorder)
     --周末活动结束显示
     self.titleLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "比武时间：周一8:00到周六23:00",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.YELLOW,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy

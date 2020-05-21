@@ -485,7 +485,7 @@ function BattleLayer:battleCallBack(data)
     end
     self.totalData = data
 
-    self.battleData = data["2"][1]
+    self.battleData = data[2][1]
 
     -- dump(self.battleData)
 
@@ -513,28 +513,27 @@ function BattleLayer:initJumpBtn()
             self.jumpBtn:setAnchorPoint(cc.p(1, 0))
             self.jumpBtn:setPosition(display.width, 0)
             self.shakeNode:addChild(self.jumpBtn, 10000000)
-            self.jumpBtn:setTouchEnabled(true)
+            setTouchEnabled(self.jumpBtn, true)
 
-            self.jumpBtn:addNodeEventListener(
-                cc.NODE_TOUCH_EVENT,
+            addNodeEventListener(
+                self.jumpBtn,
+                cc.Handler.EVENT_TOUCH_BEGAN,
                 function(event)
                     if self.isAbleJump == true then
-                        if event.name == "began" then
-                            if self.isInbattle == true then
-                                self:skipBattle()
-                            else
-                                show_tip_label("未进入战斗，不可跳过")
-                            end
-
-                            if (GAME_DEBUG == true) then
-                                if (DEBUG_BATTLE_SKIP == true) then
-                                    self.isInbattle = true
-                                    self:skipBattle()
-                                end
-                            end
-
-                            return true
+                        if self.isInbattle == true then
+                            self:skipBattle()
+                        else
+                            show_tip_label("未进入战斗，不可跳过")
                         end
+
+                        if (GAME_DEBUG == true) then
+                            if (DEBUG_BATTLE_SKIP == true) then
+                                self.isInbattle = true
+                                self:skipBattle()
+                            end
+                        end
+
+                        return true
                     end
                 end
             )
@@ -674,7 +673,7 @@ function BattleLayer:playSkipBattle()
 end
 
 function BattleLayer:initBattle()
-    local initData = self.totalData["2"][1].d[1]
+    local initData = self.totalData[2][1].d[1]
 
     self.friendNum = 0
     self.enemyNum = 0
@@ -3188,28 +3187,27 @@ function BattleLayer:initTimeScale(...)
     self.speedBtn = display.newSprite("#battle_spd_1.png")
 
     self.shakeNode:addChild(self.speedBtn, 10000000)
-    self.speedBtn:setTouchEnabled(true)
+    setTouchEnabled(self.speedBtn, true)
 
-    self.speedBtn:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
+    addNodeEventListener(
+        self.speedBtn,
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
-            if event.name == "began" then
-                if (self.timeScale == 1 and game.player:canSetSpeed(2) == true) then
-                    self.timeScale = 2
-                    ResMgr.battleTimeScale = 2
-                elseif (self.timeScale == 2 and game.player:canSetSpeed(3) == true) then
-                    self.timeScale = 3
-                    ResMgr.battleTimeScale = 3
-                else
-                    self.timeScale = 1
-                    ResMgr.battleTimeScale = 1
-                end
-                local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
-                self.speedBtn:setSpriteFrame(spdFrame:getSpriteFrame())
-                ResMgr.setTimeScale(ResMgr.battleTimeScale)
-
-                return true
+            if (self.timeScale == 1 and game.player:canSetSpeed(2) == true) then
+                self.timeScale = 2
+                ResMgr.battleTimeScale = 2
+            elseif (self.timeScale == 2 and game.player:canSetSpeed(3) == true) then
+                self.timeScale = 3
+                ResMgr.battleTimeScale = 3
+            else
+                self.timeScale = 1
+                ResMgr.battleTimeScale = 1
             end
+            local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
+            self.speedBtn:setSpriteFrame(spdFrame:getSpriteFrame())
+            ResMgr.setTimeScale(ResMgr.battleTimeScale)
+
+            return true
         end
     )
     local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")

@@ -73,14 +73,14 @@ end
 function GuildMemberNormalItem:createTTF(text, color, node, size)
     node:removeAllChildren()
     local lbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = text,
             size = size or NORMAL_FONT_SIZE,
             color = color,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 

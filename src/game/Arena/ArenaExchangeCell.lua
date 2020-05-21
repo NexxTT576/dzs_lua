@@ -150,14 +150,14 @@ function ArenaExchangeCell:updateItem(itemData)
     end
 
     local nameLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._itemData.name,
             size = 24,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 

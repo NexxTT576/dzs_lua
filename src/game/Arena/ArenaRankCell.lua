@@ -133,7 +133,7 @@ function ArenaRankCell:create(param)
     --     color = cc.c3b(205,3,3),
     --     outlineColor = cc.c3b(255,255,255),
     --     font = FONTS_NAME.font_haibao,
-    --     align = ui.TEXT_ALIGN_LEFT
+    --     align = cc.TEXT_ALIGNMENT_LEFT
     -- })
     -- node:addChild(self.rankName)
 

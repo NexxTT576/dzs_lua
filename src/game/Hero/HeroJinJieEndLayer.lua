@@ -168,12 +168,12 @@ function HeroJinJieEndLayer:ctor(param)
         local offsetX = 26
         for k, v in ipairs(unlockSt) do
             local label =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = data_talent_talent[v.id].name,
                     font = FONTS_NAME.font_fzcy,
                     size = 30,
-                    align = ui.TEXT_ALIGN_LEFT
+                    align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
             label:setPosition(offsetX, tal_bg:getContentSize().height / 2 - 5)

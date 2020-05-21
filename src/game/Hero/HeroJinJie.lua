@@ -347,27 +347,27 @@ function HeroJinJie:ctor(param)
     -- self._rootnode["card_right"]:setScale(self._rootnode["card_right"]:getScale() * scale)
 
     self.leftHeroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "侠客",
             font = FONTS_NAME.font_fzcy,
             x = self._rootnode["left_info"]:getContentSize().width * 0.3,
             y = self._rootnode["left_info"]:getContentSize().height * 0.85,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["left_info"]:addChild(self.leftHeroName)
 
     self.leftHeroCls =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "+0",
             x = self.leftHeroName:getPositionX() + self.leftHeroName:getContentSize().width,
             y = self.leftHeroName:getPositionY(),
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             color = NAME_COLOR[2]
         }
     )
@@ -377,27 +377,27 @@ function HeroJinJie:ctor(param)
     self._rootnode["left_info"]:addChild(self.leftHeroCls)
 
     self.rightHeroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "侠客",
             font = FONTS_NAME.font_fzcy,
             x = self._rootnode["right_info"]:getContentSize().width * 0.3,
             y = self._rootnode["right_info"]:getContentSize().height * 0.85,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["right_info"]:addChild(self.rightHeroName)
 
     self.rightHeroCls =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "+0",
             x = self.rightHeroName:getPositionX() + self.rightHeroName:getContentSize().width,
             y = self.rightHeroName:getPositionY(),
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             color = NAME_COLOR[2]
         }
     )

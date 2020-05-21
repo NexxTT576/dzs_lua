@@ -47,7 +47,7 @@ function Item:create(param)
 
     for i = 1, 5 do
         local heroNameLabel =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = "",
                 font = FONTS_NAME.font_fzcy,
@@ -125,12 +125,12 @@ function HeroShowLayer:init()
     self:addChild(node)
 
     local tipLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = tip[self._viewType],
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(255, 161, 26),
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22
         }
     )

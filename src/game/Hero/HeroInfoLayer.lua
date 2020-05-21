@@ -490,11 +490,11 @@ function HeroInfoLayer:ctor(param, infoType)
 
     self._rootnode["bottomMenuNode"]:setLocalZOrder(1)
     local heroNameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             size = 28
         }
     )
@@ -502,7 +502,7 @@ function HeroInfoLayer:ctor(param, infoType)
     self._rootnode["itemNameLabel"]:addChild(heroNameLabel)
 
     local clsLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
@@ -563,7 +563,7 @@ function HeroInfoLayer:ctor(param, infoType)
         heroNameLabel:setColor(NAME_COLOR[self._detailInfo.star])
 
         if self._detailInfo.cls > 0 then
-            --            local clsLabel = ui.newTTFLabelWithShadow({
+            --            local clsLabel = newTTFLabelWithShadow({
             --                text = string.format("+%d", self._detailInfo.cls),
             --                font = FONTS_NAME.font_haibao,
             --                color = cc.c3b(46, 194, 49),

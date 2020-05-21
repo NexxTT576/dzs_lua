@@ -60,7 +60,7 @@ function DuiHuanGiftItemView:setUpView()
         {
             text = self._data.tagName,
             font = "fonts/font_title.fnt",
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     nameLabel:setPosition(cc.p(titleBng:getContentSize().width * 0.3, titleBng:getContentSize().height - 30))
@@ -154,14 +154,14 @@ function DuiHuanGiftItemView:createItem(index, itemsViewBngs, containnerSize, da
     end
 
     if tonumber(data[1]) ~= 6 then
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
             {
                 text = data_item_item[tonumber(data[2])].name,
                 size = 20,
                 color = nameColor,
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         ):pos(iconSize.width / 2, -15):addTo(self._icon):setAnchorPoint(cc.p(0, 1))
     end

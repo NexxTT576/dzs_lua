@@ -142,7 +142,7 @@ function WaBaoGiftPopup:setUpView()
         {
             text = "兑换预览",
             size = self._titleDisFontSize,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = "res/fonts/font_title.fnt"
         }
     ):pos(self._mainPopupSize.width / 2, self._mainPopupSize.height - self._titleDisOffsetOfTop):addTo(self._mianPopup)

@@ -23,7 +23,7 @@ function XianShiItemView:refreshItem(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -38,7 +38,7 @@ function XianShiItemView:refreshItem(param)
             size = 20,
             color = cc.c3b(255, 210, 0),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -52,7 +52,7 @@ function XianShiItemView:refreshItem(param)
         {
             text = "2",
             font = "fonts/font_vip.fnt",
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["viptag"]:removeAllChildren()
@@ -99,14 +99,14 @@ function XianShiItemView:refreshItem(param)
         end
 
         local nameLbl =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = require("data.data_item_item")[itemData.id].name,
                 size = 20,
                 color = nameColor,
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
 

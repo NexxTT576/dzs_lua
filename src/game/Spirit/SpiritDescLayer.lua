@@ -256,7 +256,7 @@ function SpiritDescLayer:ctor(closeListener)
                 size = 24,
                 x = rootnode["selectedSpiritNameBg"]:getContentSize().width / 2,
                 y = rootnode["selectedSpiritNameBg"]:getContentSize().height / 2,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         rootnode["selectedSpiritNameBg"]:addChild(self.selectedSpiritNameLabel)

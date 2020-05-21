@@ -123,7 +123,7 @@ function BattleResult:initWin(rewards)
                 size = 28,
                 color = FONT_COLOR.LEVEL_NAME,
                 -- outlineColor = cc.c3b(100,17,2),
-                align = ui.TEXT_ALIGN_CENTER,
+                align = cc.TEXT_ALIGNMENT_CENTER,
                 x = rootnode["tag_level_name"]:getContentSize().width / 2,
                 y = rootnode["tag_level_name"]:getContentSize().height / 2
             }
@@ -162,7 +162,7 @@ function BattleResult:initWin(rewards)
                 font = FONTS_NAME.font_fzcy,
                 size = 20,
                 color = cc.c3b(0, 0, 0),
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         self.coinTable[#self.coinTable + 1] = coinTextLabel
@@ -310,7 +310,7 @@ function BattleResult:initWin(rewards)
         end
 
         local itemName =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = _data.name,
                 x = item:getContentSize().width / 2,
@@ -319,7 +319,7 @@ function BattleResult:initWin(rewards)
                 color = nameColor,
                 shadowColor = display.COLOR_BLACK,
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         item:addChild(itemName)
@@ -332,7 +332,7 @@ function BattleResult:initWin(rewards)
                 color = cc.c3b(0, 255, 0),
                 outlineColor = display.COLOR_BLACK,
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         itemNum:setPosition(item:getContentSize().width - itemNum:getContentSize().width, item:getContentSize().height * 0.18)
@@ -372,7 +372,7 @@ function BattleResult:initWin(rewards)
     --     y = shareBtn:getContentSize().height/2,
     --     font = FONTS_NAME.font_haibao,
     --     size = 36,
-    --     align = ui.TEXT_ALIGN_CENTER
+    --     align = cc.TEXT_ALIGNMENT_CENTER
     --     })
     -- shareBtn:addChild(shareText,1)
 
@@ -394,7 +394,7 @@ function BattleResult:initWin(rewards)
     --     y = okBtn:getContentSize().height/2,
     --     font = FONTS_NAME.font_haibao,
     --     size = 36,
-    --     align = ui.TEXT_ALIGN_CENTER
+    --     align = cc.TEXT_ALIGNMENT_CENTER
     --     })
     -- okBtn:setFont(okText)
 
@@ -447,7 +447,7 @@ function BattleResult:initLost(rewards)
                 size = 28,
                 color = FONT_COLOR.LEVEL_NAME,
                 -- outlineColor = cc.c3b(100,17,2),
-                align = ui.TEXT_ALIGN_CENTER,
+                align = cc.TEXT_ALIGNMENT_CENTER,
                 x = rootnode["tag_level_name"]:getContentSize().width / 2,
                 y = rootnode["tag_level_name"]:getContentSize().height / 2
             }

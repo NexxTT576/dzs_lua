@@ -366,7 +366,7 @@ function EnemyFormScene:refreshHero(index)
                         text = data_item_item[v.resId].name,
                         size = 22,
                         font = FONTS_NAME.font_fzcy,
-                        align = ui.TEXT_ALIGN_CENTER,
+                        align = cc.TEXT_ALIGNMENT_CENTER,
                         color = NAME_COLOR[data_item_item[v.resId].quality]
                     }
                 )

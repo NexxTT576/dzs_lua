@@ -376,7 +376,7 @@ function BattleLayer:init(param)
         {
             text = "回合：",
             font = FONTS_NAME.font_battle_round,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -385,7 +385,7 @@ function BattleLayer:init(param)
         {
             text = self.battleCount .. self.maxCountTTF,
             font = FONTS_NAME.font_battle_round,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.countNode = display.newNode()

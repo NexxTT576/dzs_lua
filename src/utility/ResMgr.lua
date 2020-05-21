@@ -432,7 +432,7 @@ function ResMgr.createNomarlMsgTTF(param)
             color = color,
             size = size,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -455,7 +455,7 @@ function ResMgr.createOutlineMsgTTF(param)
             color = color,
             outlineColor = outlineColor,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -476,14 +476,14 @@ function ResMgr.createShadowMsgTTF(param)
     local size = param.size or 22
 
     local shaTTF =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = text,
             size = size,
             color = color,
             shadowColor = shadowColor,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -506,7 +506,7 @@ function ResMgr.getVipIconTTF()
         {
             text = "VIP" .. vipLv,
             font = "fonts/font_vip.fnt",
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -722,14 +722,14 @@ function ResMgr.refreshItemWithTagNumName(param)
     end
 
     local nameLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = nameStr,
             size = 20,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -895,7 +895,7 @@ function ResMgr.refreshIcon(param)
                 color = numLblColor,
                 outlineColor = numLblOutColor,
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
 

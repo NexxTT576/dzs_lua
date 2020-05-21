@@ -80,14 +80,14 @@ function GiftGetOkPopup:setUpView()
     --title标签
 
     self._titleDisLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "奖励领取",
             size = 22,
             color = cc.c3b(225, 225, 225),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(self._mainPopupSize.width / 2, self._mainPopupSize.height - self._titleDisOffsetOfTop - 10):addTo(self._mianPopup)
     self._titleDisLabel:setAnchorPoint(cc.p(0.5, 1))
@@ -95,14 +95,14 @@ function GiftGetOkPopup:setUpView()
     local marginTop = 30
 
     local disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = string.format("达到%d积分奖励领取", self._data.jifen),
             size = 22,
             color = cc.c3b(225, 225, 225),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(self._innerContainerSize.width / 2, self._innerContainerSize.height - marginTop):addTo(self._innerContainer)
     disLabel:setAnchorPoint(cc.p(0.5, 1))
@@ -168,14 +168,14 @@ function GiftGetOkPopup:createItem(index, itemsViewBngs, containnerSize)
         nameColor = ResMgr.getItemNameColor(self._giftData[index].id)
     end
 
-    ui.newTTFLabelWithShadow(
+    newTTFLabelWithShadow(
         {
             text = self._giftData[index].name,
             size = 20,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(iconSize.width / 2, -20):addTo(self._icon):setAnchorPoint(cc.p(0, 1))
 end

@@ -82,7 +82,7 @@ function HuoDongCell:refresh(aid)
                 color = color,
                 outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         numLbl:setPosition(-numLbl:getContentSize().width - 30, numLbl:getContentSize().height / 2)
@@ -145,7 +145,7 @@ function HuoDongCell:refresh(aid)
                 color = color,
                 outlineColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         desc:setPosition(item:getContentSize().width / 2 - desc:getContentSize().width / 2, item:getContentSize().height / 2)

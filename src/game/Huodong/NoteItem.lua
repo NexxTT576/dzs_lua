@@ -49,7 +49,7 @@ function NoteItem:create(param)
             color = FONT_COLOR.NOTE_TITLE,
             outlineColor = FONT_COLOR.NOTE_TITLE_OUTLINE,
             size = 30,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["item_title_bg"]:addChild(self.titleLabel)
@@ -73,7 +73,7 @@ function NoteItem:create(param)
             y = self._rootnode["item_bg"]:getContentSize().height * 0.6,
             color = FONT_COLOR.NOTE_TEXT,
             size = 22,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             dimensions = param.viewSize
         }
     )

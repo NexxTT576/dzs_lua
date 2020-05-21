@@ -48,7 +48,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = "信息",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = "res/fonts/font_title.fnt"
         }
     ):pos(mainBngSize.width * 0.5, mainBngSize.height * 0.97)
@@ -95,7 +95,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = self.data.name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(110, 0, 0)
         }
@@ -114,7 +114,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = self.data.attack,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 185, 49)
         }
@@ -131,7 +131,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = "LV:" .. self.data.lv,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 255, 255)
         }
@@ -162,7 +162,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = "押送:",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -173,7 +173,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = cardName[self.data.quality],
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(252, 28, 255),
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -184,7 +184,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = data_item_item[self.data.getCoin[1].id].name,
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -195,7 +195,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = self.data.getCoin[1].num,
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(0, 216, 219),
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -206,7 +206,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = data_item_item[self.data.getCoin[2].id].name,
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -217,7 +217,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = self.data.getCoin[2].num,
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(252, 28, 255),
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -228,7 +228,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = "被抢夺次数:",
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy
@@ -239,7 +239,7 @@ function YabiaoDetailView:setUpView(param)
         {
             text = self.data.beRobTimes,
             size = 22,
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             color = cc.c3b(252, 28, 255),
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy

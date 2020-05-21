@@ -70,14 +70,14 @@ function RoadItemView:setUpView()
     local marginLeft = 20
     local marginRight = 30
     self._titleLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._data.name,
             font = FONTS_NAME.font_fzcy,
             size = 22,
             color = cc.c3b(255, 255, 255),
             shadowColor = cc.c3b(255, 255, 255),
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     ):pos(marginLeft, titleBngSize.height / 2):addTo(titleBng)
     self._titleLabel:setAnchorPoint(cc.p(0, 0.5))
@@ -89,7 +89,7 @@ function RoadItemView:setUpView()
         {
             text = "/" .. text,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -105,7 +105,7 @@ function RoadItemView:setUpView()
         {
             text = text,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(255, 222, 0)
         }
@@ -128,7 +128,7 @@ function RoadItemView:setUpView()
         {
             text = "进度：",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(0, 219, 52)
         }
@@ -142,11 +142,11 @@ function RoadItemView:setUpView()
     local marginTop = 15
 
     self._disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = self._data.dis,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(170, 91, 28),
             shadowColor = cc.c3b(0, 0, 0)
@@ -160,11 +160,11 @@ function RoadItemView:setUpView()
     local marginLeft = 5
     local marginTop = 15
     self._disLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "奖励",
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(170, 91, 28),
             shadowColor = cc.c3b(0, 0, 0)
@@ -288,7 +288,7 @@ function RoadItemView:createMoney(index, v)
         {
             text = v.num,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             font = FONTS_NAME.font_fzcy,
             color = cc.c3b(147, 5, 5)
         }
@@ -318,7 +318,7 @@ function RoadItemView:createMoney(index, v)
                 size = 20,
                 color = nameColor,
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         ):addTo(node)
         namelabel:setAnchorPoint(cc.p(0, 0))

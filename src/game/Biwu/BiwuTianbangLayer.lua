@@ -24,7 +24,7 @@ function BiwuTianbangLayer:setUpView(param)
         {
             text = text1,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 20,
             color = cc.c3b(99, 47, 8)
         }
@@ -34,7 +34,7 @@ function BiwuTianbangLayer:setUpView(param)
         {
             text = text2,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 20,
             color = cc.c3b(99, 47, 8)
         }

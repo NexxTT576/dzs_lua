@@ -108,7 +108,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
             size = 30,
             color = FONT_COLOR.LEVEL_NAME,
             -- outlineColor = cc.c3b(100,17,2),
-            align = ui.TEXT_ALIGN_CENTER,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             x = rootnode["level_title"]:getContentSize().width / 2,
             y = rootnode["level_title"]:getContentSize().height / 2
         }
@@ -356,7 +356,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
             end
 
             itemName =
-                ui.newTTFLabelWithShadow(
+                newTTFLabelWithShadow(
                 {
                     text = itemData.name,
                     font = FONTS_NAME.font_fzcy,
@@ -365,7 +365,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
                     shadowColor = cc.c3b(0, 0, 0),
                     x = itemIcon:getContentSize().width / 2,
                     y = y,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
 

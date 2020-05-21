@@ -105,7 +105,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                         size = 28,
                         color = FONT_COLOR.PLAYER_NAME,
                         outlineColor = cc.c3b(0, 0, 0),
-                        align = ui.TEXT_ALIGN_LEFT
+                        align = cc.TEXT_ALIGNMENT_LEFT
                     }
                 )
                 self._rootNode["player_name"]:addChild(text)
@@ -119,7 +119,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                         font = FONTS_NAME.font_fzcy,
                         size = 24,
                         color = cc.c3b(100, 100, 100),
-                        align = ui.TEXT_ALIGN_LEFT
+                        align = cc.TEXT_ALIGNMENT_LEFT
                     }
                 )
                 text:addChild(playerIDLabel)

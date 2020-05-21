@@ -47,7 +47,7 @@ function FormSettingCard:ctor(param)
     rootnode["lvNum_node"]:setVisible(false)
 
     local nameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,

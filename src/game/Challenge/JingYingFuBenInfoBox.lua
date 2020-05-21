@@ -90,7 +90,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
             color = cc.c3b(255, 239, 166),
             outlineColor = cc.c3b(161, 53, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["fuben_title"]:setVisible(false)
@@ -133,14 +133,14 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
                 end
 
                 local nameLbl =
-                    ui.newTTFLabelWithShadow(
+                    newTTFLabelWithShadow(
                     {
                         text = itemData.name,
                         size = 20,
                         color = nameColor,
                         shadowColor = cc.c3b(0, 0, 0),
                         font = FONTS_NAME.font_fzcy,
-                        align = ui.TEXT_ALIGN_CENTER
+                        align = cc.TEXT_ALIGNMENT_CENTER
                     }
                 )
 

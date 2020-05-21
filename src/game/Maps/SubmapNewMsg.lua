@@ -34,7 +34,7 @@ function SubmapNewMsg:ctor(title, levelName)
             color = cc.c3b(101, 1, 1),
             outlineColor = cc.c3b(225, 225, 134),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 

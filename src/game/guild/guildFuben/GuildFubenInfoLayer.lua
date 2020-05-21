@@ -134,7 +134,7 @@ function GuildFubenInfoLayer:ctor(param)
             font = FONTS_NAME.font_fzcy,
             size = 30,
             color = FONT_COLOR.LEVEL_NAME,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
 

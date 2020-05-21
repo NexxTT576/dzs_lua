@@ -127,14 +127,14 @@ function WaBaoGiftItemView:createItem(index, itemsViewBngs, containnerSize, data
     end
 
     if tonumber(data.type) ~= 6 then
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
             {
                 text = data_item_item[tonumber(data.id)].name,
                 size = 20,
                 color = nameColor,
                 shadowColor = cc.c3b(0, 0, 0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         ):pos(iconSize.width / 2, -15):addTo(self._icon):setAnchorPoint(cc.p(0, 1))
     end

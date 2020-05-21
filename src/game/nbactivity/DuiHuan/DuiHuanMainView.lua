@@ -210,7 +210,7 @@ function DuiHuanMainView:setUpExtraView(param)
             size = 23,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -241,7 +241,7 @@ function DuiHuanMainView:setUpExtraView(param)
             size = 23,
             color = cc.c3b(0, 254, 60),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -256,7 +256,7 @@ function DuiHuanMainView:setUpExtraView(param)
             size = 23,
             color = FONT_COLOR.WHITE,
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )
@@ -271,7 +271,7 @@ function DuiHuanMainView:setUpExtraView(param)
             size = 23,
             color = cc.c3b(0, 254, 60),
             outlineColor = cc.c3b(0, 0, 0),
-            align = ui.TEXT_ALIGN_CENTE,
+            align = cc.TEXT_ALIGNMENT_CENTER,
             font = FONTS_NAME.font_fzcy
         }
     )

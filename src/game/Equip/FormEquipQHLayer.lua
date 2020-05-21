@@ -68,12 +68,12 @@ function FormEquipQHLayer:ctor(param)
     self._rootnode["bigImageSpirit"]:setSpriteFrame(display.newSprite(path):getSpriteFrame())
 
     local nameLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = _baseInfo.name,
             font = FONTS_NAME.font_haibao,
             size = 30,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     self._rootnode["itemNameLabel"]:addChild(nameLabel)

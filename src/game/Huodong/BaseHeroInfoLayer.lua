@@ -253,12 +253,12 @@ function BaseHeroInfoLayer:ctor(param, infoType)
         --        self._rootnode["itemNameLabel"]:setColor(NAME_COLOR[_baseInfo.star[1]])
 
         local heroNameLabel =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = _baseInfo.name,
                 font = FONTS_NAME.font_haibao,
                 color = NAME_COLOR[_baseInfo.star[1]],
-                align = ui.TEXT_ALIGN_CENTER,
+                align = cc.TEXT_ALIGNMENT_CENTER,
                 size = 28
             }
         )

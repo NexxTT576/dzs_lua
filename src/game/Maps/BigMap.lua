@@ -256,7 +256,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                     color = fontColor,
                     x = nameBg:getContentSize().width / 2,
                     y = nameBg:getContentSize().height / 2,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             nameBg:addChild(nameLabel)
@@ -272,7 +272,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                     color = display.COLOR_WHITE,
                     x = nameBg:getContentSize().width / 2,
                     y = -nameBg:getContentSize().height * 0.8,
-                    align = ui.TEXT_ALIGN_CENTER
+                    align = cc.TEXT_ALIGNMENT_CENTER
                 }
             )
             nameBg:addChild(starLabel)

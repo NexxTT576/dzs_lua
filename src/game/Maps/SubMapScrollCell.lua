@@ -69,7 +69,7 @@ function SubMapScrollCell:create(param)
             size = 26,
             color = FONT_COLOR.LEVEL_NAME,
             -- outlineColor = cc.c3b(100,17,2),
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
             -- x = self._rootnode["nameLabel"]:getContentSize().width/2,
             -- y = self._rootnode["nameLabel"]:getContentSize().height/2,
         }

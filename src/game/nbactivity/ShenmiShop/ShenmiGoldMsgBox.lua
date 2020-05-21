@@ -77,13 +77,13 @@ function ShenmiGoldMsgBox:ctor(param)
 
     rootnode["content_2"]:setPositionX(rootnode[nameKey]:getPositionX() + rootnode[nameKey]:getContentSize().width + 5)
 
-    -- local nameLbl = ui.newTTFLabelWithShadow({
+    -- local nameLbl = newTTFLabelWithShadow({
     --        text = itemData.name,
     --        size = 22,
     --        color = nameColor,
     --        shadowColor = cc.c3b(0,0,0),
     --        font = FONTS_NAME.font_fzcy,
-    --        align = ui.TEXT_ALIGN_LEFT
+    --        align = cc.TEXT_ALIGNMENT_LEFT
     --        })
 
     --    nameLbl:setPosition(-nameLbl:getContentSize().width/2, 0)

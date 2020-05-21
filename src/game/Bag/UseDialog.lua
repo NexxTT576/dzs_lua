@@ -67,7 +67,7 @@ function UseDialog:ctor()
             size = 22,
             x = _width / 2,
             y = _height * 0.68,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     bg:addChild(availNumLabel)
@@ -80,7 +80,7 @@ function UseDialog:ctor()
             size = 22,
             x = _width / 2,
             y = _height * 0.6,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     bg:addChild(useNumLabel)
@@ -97,7 +97,7 @@ function UseDialog:ctor()
             size = 22,
             x = countBg:getContentSize().width / 2,
             y = countBg:getContentSize().height / 2,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     )
     countBg:addChild(countLabel)

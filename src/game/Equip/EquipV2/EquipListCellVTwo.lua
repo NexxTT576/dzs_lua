@@ -70,7 +70,7 @@ function EquipListCellVTwo:create(param)
     self.tabSprite = self._rootnode["tabIcon"]
 
     self.EquipName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -261,14 +261,14 @@ function EquipListCellVTwo:refresh(id, viewType, isSel)
     self._rootnode["pin_ji"]:removeAllChildren()
     if pinjiValue ~= nil then
         local pinjiFont =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = pinjiValue,
                 font = FONTS_NAME.font_fzcy,
                 shadowColor = cc.c3b(0, 0, 0),
                 color = cc.c3b(0, 219, 52),
                 size = 20,
-                align = ui.TEXT_ALIGN_CENTER
+                align = cc.TEXT_ALIGNMENT_CENTER
             }
         )
         pinjiFont:setPosition(self._rootnode["pin_ji"]:getContentSize().width / 2, -15)

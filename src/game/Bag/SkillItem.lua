@@ -70,7 +70,7 @@ function SkillItem:create(param)
 
     local _itemData = param.itemData
     self.itemName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
@@ -81,7 +81,7 @@ function SkillItem:create(param)
     self._rootnode["itemNameLabel"]:addChild(self.itemName)
 
     self.pjLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,

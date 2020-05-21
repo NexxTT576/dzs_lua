@@ -261,13 +261,13 @@ function ZhaojiangResultNormal:createLimitHeroDetail()
 
     for i = 1, #self.scoreTable do
         local scoreTTF =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = self.scoreTable[i],
                 size = 20,
                 color = colorTable[i],
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
         self:arrPos(scoreTTF, self._rootnode["score" .. i])

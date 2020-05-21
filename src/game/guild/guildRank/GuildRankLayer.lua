@@ -48,28 +48,28 @@ function GuildRankLayer:initData(rtnObj)
 
     -- 帮派排名
     local myRankLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = tostring(myrankStr),
             size = NORMAL_FONT_SIZE,
             color = cc.c3b(78, 255, 0),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["my_rank_lbl"]:addChild(myRankLbl)
 
     -- 战力
     local powerLbl =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = tostring(mysumAttackStr),
             size = NORMAL_FONT_SIZE,
             color = cc.c3b(78, 255, 0),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["my_power_lbl"]:addChild(powerLbl)

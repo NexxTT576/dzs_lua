@@ -80,14 +80,14 @@ function HeroChoseCell:create(param)
     self.headIcon = self._rootnode["headIcon"]
 
     self.heroName =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_haibao,
             --        x = self._rootnode["tag_lv_bg"]:getContentSize().width/2 + self.headIcon:getContentSize().width + 20,
             --        y = self:getContentSize().height*0.62,
             size = 30,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self._rootnode["itemNameLabel"]:addChild(self.heroName)

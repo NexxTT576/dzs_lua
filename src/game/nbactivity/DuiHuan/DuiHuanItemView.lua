@@ -46,7 +46,7 @@ function DuiHuanItemView:refresh(param)
         {
             text = data.tagName,
             font = "fonts/font_title.fnt",
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     nameLabel:setPosition(cc.p(titleBng:getContentSize().width * 0.3, titleBng:getContentSize().height - 30))
@@ -58,7 +58,7 @@ function DuiHuanItemView:refresh(param)
         {
             text = "可兑换次数:",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(99, 47, 8)
         }
@@ -75,7 +75,7 @@ function DuiHuanItemView:refresh(param)
         {
             text = "(" .. (data.totalNum - data.exchNum) .. "/" .. data.totalNum .. ")",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 22,
             color = cc.c3b(6, 129, 18)
         }
@@ -93,14 +93,14 @@ function DuiHuanItemView:refresh(param)
 
     --兑换按钮
     local priceLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = data.refGold,
             size = 22,
             color = cc.c3b(255, 210, 0),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
 
@@ -288,14 +288,14 @@ function DuiHuanItemView:createItemView(index, node, data)
         	CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000)
     	end
     end)--]]
-    ui.newTTFLabelWithShadow(
+    newTTFLabelWithShadow(
         {
             text = data_item_item[data.id].name,
             size = 20,
             color = nameColor,
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_CENTER
+            align = cc.TEXT_ALIGNMENT_CENTER
         }
     ):pos(icon:getContentSize().width / 2, -15):addTo(icon):setAnchorPoint(cc.p(0, 1))
     local tag

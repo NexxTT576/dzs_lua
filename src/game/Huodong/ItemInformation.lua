@@ -62,14 +62,14 @@ function ItemInformation:ctor(param)
         local curName = param.name or data_item_item[id].name
 
         local nameLbl =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = curName,
                 size = 22,
                 color = nameColor,
                 -- shadowColor = cc.c3b(0,0,0),
                 font = FONTS_NAME.font_fzcy,
-                align = ui.TEXT_ALIGN_LEFT
+                align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
 

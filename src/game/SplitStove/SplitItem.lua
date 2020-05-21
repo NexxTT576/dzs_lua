@@ -31,7 +31,7 @@ function SplitItem:create(param)
 
     for i = 1, 2 do
         self[string.format("nameLabel_%d", i)] =
-            ui.newTTFLabelWithShadow(
+            newTTFLabelWithShadow(
             {
                 text = "",
                 font = FONTS_NAME.font_fzcy,
@@ -42,12 +42,12 @@ function SplitItem:create(param)
     end
 
     self.hjLabel =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "",
             font = FONTS_NAME.font_fzcy,
             size = 20,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.hjLabel:setPosition(5, self._rootnode["hjSprite"]:getContentSize().height / 2)

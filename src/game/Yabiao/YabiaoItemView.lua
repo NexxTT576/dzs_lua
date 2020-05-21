@@ -68,7 +68,7 @@ function YabiaoItemView:setUpView(param)
         {
             text = name,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 18,
             color = nameColor
         }
@@ -78,7 +78,7 @@ function YabiaoItemView:setUpView(param)
         {
             text = "Lv:" .. level,
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 18,
             color = cc.c3b(255, 222, 0)
         }
@@ -88,7 +88,7 @@ function YabiaoItemView:setUpView(param)
         {
             text = format_time(self._time),
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 18,
             color = cc.c3b(7, 239, 2)
         }
@@ -98,7 +98,7 @@ function YabiaoItemView:setUpView(param)
         {
             text = "到达时间",
             font = FONTS_NAME.font_fzcy,
-            align = ui.TEXT_ALIGN_LEFT,
+            align = cc.TEXT_ALIGNMENT_LEFT,
             size = 18,
             color = FONT_COLOR.WHITE
         }

@@ -139,14 +139,14 @@ function HuoDongBattleScene:initJiefuJiPin()
     self:addChild(node, RESULT_ZORDER - 1)
 
     self.curDamageNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "0",
             size = 21,
             color = cc.c3b(255, 240, 0),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.curDamageNum:setAnchorPoint(cc.p(0, 0.5))
@@ -155,14 +155,14 @@ function HuoDongBattleScene:initJiefuJiPin()
     self._numrootnode["cur_damage"]:addChild(self.curDamageNum)
 
     self.curSilverNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "0",
             size = 21,
             color = cc.c3b(231, 230, 228),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.curSilverNum:setAnchorPoint(cc.p(0, 0.5))
@@ -171,14 +171,14 @@ function HuoDongBattleScene:initJiefuJiPin()
     self._numrootnode["get_silver"]:addChild(self.curSilverNum)
 
     self.restRoundNum =
-        ui.newTTFLabelWithShadow(
+        newTTFLabelWithShadow(
         {
             text = "0/5",
             size = 21,
             color = cc.c3b(4, 246, 38),
             shadowColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
-            align = ui.TEXT_ALIGN_LEFT
+            align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
     self.restRoundNum:setAnchorPoint(cc.p(0, 0.5))
