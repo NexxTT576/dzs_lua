@@ -371,10 +371,10 @@ function YabiaoDetailView:loadRes()
 end
 
 function YabiaoDetailView:releaseRes()
-    display.removeSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.removeSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
-    display.removeSpriteFramesWithFile("ui/ui_arena.plist", "ui/ui_arena.png")
-    display.removeSpriteFramesWithFile("ui/ui_xiakelu.plist", "ui/ui_xiakelu.png")
+    display.removeSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.removeSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.removeSpriteFrames("ui/ui_arena.plist", "ui/ui_arena.png")
+    display.removeSpriteFrames("ui/ui_xiakelu.plist", "ui/ui_xiakelu.png")
 end
 
 ---

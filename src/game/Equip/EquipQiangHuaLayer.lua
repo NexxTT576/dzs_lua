@@ -451,7 +451,7 @@ function EquipQiangHuaLayer:onExit()
     end
     self.listTable:reloadData()
 
-    display.removeSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.removeSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
 end
 
 function EquipQiangHuaLayer:setUpSilver(num)

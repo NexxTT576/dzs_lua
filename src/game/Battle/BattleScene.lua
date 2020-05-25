@@ -97,16 +97,16 @@ function BattleScene:result(data)
                     callback = function(data)
                         -- dump(data)
                         local bgName = "bigmap_1"
-                        if data["0"] == "" then
+                        if data ~= nil then
                             local isOpenNewBigmap = false
-                            if game.player:getBattleData().cur_bigMapId ~= 0 and data["1"] > game.player:getBattleData().cur_bigMapId then
+                            if game.player:getBattleData().cur_bigMapId ~= 0 and data.battleWorldID > game.player:getBattleData().cur_bigMapId then
                                 isOpenNewBigmap = true
                             end
 
                             game.player:setBattleData(
                                 {
-                                    cur_bigMapId = data["1"],
-                                    new_subMapId = data["2"],
+                                    cur_bigMapId = data.battleWorldID,
+                                    new_subMapId = data.battleFieldID,
                                     isOpenNewBigmap = isOpenNewBigmap
                                 }
                             )
@@ -137,18 +137,18 @@ function BattleScene:result(data)
                             print("isisisisisisisisis " .. game.player.m_maxLevel)
                             dump(data)
 
-                            if data["3"] ~= game.player.m_maxLevel then
+                            if data.battleLvID ~= game.player.m_maxLevel then
                                 isRefresh = true
                             end
 
                             -- 打到的最大关卡
-                            game.player.m_maxLevel = data["3"]
+                            game.player.m_maxLevel = data.battleLvID
                             -- print("data[3].."..data[3])
 
                             -- initBg(bgName)
                             -- init()
                             -- initLevelChoose()
-                            GameStateManager:ChangeState(GAME_STATE.STATE_SUBMAP, {submapID = submapID, subMap = data["4"], isRefresh = isRefresh})
+                            GameStateManager:ChangeState(GAME_STATE.STATE_SUBMAP, {submapID = submapID, subMap = data.fieldStarAry, isRefresh = isRefresh})
                         else
                         end
                     end

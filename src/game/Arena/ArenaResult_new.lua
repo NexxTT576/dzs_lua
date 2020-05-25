@@ -413,7 +413,7 @@ end
 
 function ArenaResult:onExit(...)
     cc.Director:getInstance():getTextureCache():removeUnusedTextures()
-    display.removeSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
+    display.removeSpriteFrames("ui/ui_duobao.plist", "ui/ui_duobao.png")
 end
 
 return ArenaResult

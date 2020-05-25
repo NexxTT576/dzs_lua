@@ -530,20 +530,20 @@ function BattleResult:onExit(...)
         self.scheduler.unscheduleGlobal(self.timeHandle)
     end
     TutoMgr.removeBtn("zhandoushengli1_btn_quedinganniu1")
-    display.removeSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.removeSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
 
     ResMgr.ReleaseUIArmature("zhandoushengli")
     ResMgr.ReleaseUIArmature("zhandoushengli_zi")
 
-    display.removeSpriteFrameByImageName("ccs/ui_effect/zhandoushengli/zhandoushengli.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/zhandoushengli_zi/zhandoushengli_zi.png")
-    display.removeSpriteFrameByImageName("ccs/effect/nuqiji_zi/nuqiji_zi.png")
-    display.removeSpriteFrameByImageName("ccs/effect/dazhaoshifang/dazhaoshifa_bao.png")
+    display.removeImage("ccs/ui_effect/zhandoushengli/zhandoushengli.png")
+    display.removeImage("ccs/ui_effect/zhandoushengli_zi/zhandoushengli_zi.png")
+    display.removeImage("ccs/effect/nuqiji_zi/nuqiji_zi.png")
+    display.removeImage("ccs/effect/dazhaoshifang/dazhaoshifa_bao.png")
 
-    display.removeSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
-    display.removeSpriteFrameByImageName("ui_weijiao_yishou.png")
-    display.removeSpriteFramesWithFile("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
-    display.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.removeSpriteFrames("ui/ui_duobao.plist", "ui/ui_duobao.png")
+    display.removeImage("ui_weijiao_yishou.png")
+    display.removeSpriteFrames("ui/ui_battle_win.plist", "ui/ui_battle_win.png")
+    display.removeSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 
     cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 

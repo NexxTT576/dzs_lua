@@ -192,7 +192,7 @@ function HeroListCell:beTouched()
 end
 
 function HeroListCell:onExit()
-    -- display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+    -- display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
 end
 
 function HeroListCell:refresh(id, viewType, isSel)

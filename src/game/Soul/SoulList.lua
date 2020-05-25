@@ -150,8 +150,8 @@ end
 function SoulList:onExit()
     -- body
     self.fadeout()
-    display.removeSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
-    display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.removeSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
+    display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
 end
 
 return SoulList

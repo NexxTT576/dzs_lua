@@ -282,7 +282,7 @@ end
 
 function HeroSellDebrisBoard:onExit()
     -- body
-    -- display.removeSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+    -- display.removeSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
 end
 
 return HeroSellDebrisBoard

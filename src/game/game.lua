@@ -5,6 +5,7 @@
     time:2020-05-13 16:35:22
 ]]
 require("utility.Func")
+require("utility.BottomBtnEvent")
 require("network.GameRequest")
 game = {
     --@RefType Player

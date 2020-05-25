@@ -167,7 +167,7 @@ function ArenaResult:createTreasure(lostDebris, data)
                     color = nameColor,
                     shadowColor = cc.c3b(0, 0, 0),
                     font = FONTS_NAME.font_fzcy,
-                    align = cc.TEXT_ALIGNMENT_LEFT 
+                    align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
 
@@ -417,7 +417,7 @@ function ArenaResult:onExit(...)
     ResMgr.ReleaseUIArmature("zhandoushengli")
     ResMgr.ReleaseUIArmature("zhandoushengli_zi")
 
-    display.removeSpriteFramesWithFile("ui/ui_duobao.plist", "ui/ui_duobao.png")
+    display.removeSpriteFrames("ui/ui_duobao.plist", "ui/ui_duobao.png")
 end
 
 return ArenaResult

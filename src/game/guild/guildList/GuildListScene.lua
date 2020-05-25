@@ -368,7 +368,7 @@ end
 
 function GuildListScene:onExit()
     self:unregNotice()
-    display.removeSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.removeSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
 end
 
 return GuildListScene

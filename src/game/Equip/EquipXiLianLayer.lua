@@ -370,7 +370,7 @@ function EquipXiLianLayer:onExit()
     if self.removeListener ~= nil then
         self.removeListener()
     end
-    display.removeSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.removeSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
 end
 
 return EquipXiLianLayer

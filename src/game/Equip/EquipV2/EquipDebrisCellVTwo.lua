@@ -172,8 +172,8 @@ function EquipDebrisCellVTwo:beTouched()
 end
 
 function EquipDebrisCellVTwo:onExit()
-    -- display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    -- display.removeSpriteFramesWithFile("ui/ui_herolist.plist", "ui/ui_herolist.png")
+    -- display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    -- display.removeSpriteFrames("ui/ui_herolist.plist", "ui/ui_herolist.png")
 end
 
 function EquipDebrisCellVTwo:runEnterAnim()

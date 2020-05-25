@@ -48,12 +48,12 @@ function TaskPopup:setUpView()
 end
 
 function TaskPopup:closeSelf()
-    display.removeSpriteFramesWithFile("ui/taskcommon.plist", "ui/taskcommon.png")
-    display.removeSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
-    display.removeSpriteFramesWithFile("ui/ui_reward.plist", "ui/ui_reward.png")
-    display.removeSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-    display.removeSpriteFramesWithFile("ui/ui_spirit.plist", "ui/ui_spirit.png")
-    display.removeSpriteFramesWithFile("ui/ui_challenge.plist", "ui/ui_challenge.png")
+    display.removeSpriteFrames("ui/taskcommon.plist", "ui/taskcommon.png")
+    display.removeSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.removeSpriteFrames("ui/ui_reward.plist", "ui/ui_reward.png")
+    display.removeSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.removeSpriteFrames("ui/ui_spirit.plist", "ui/ui_spirit.png")
+    display.removeSpriteFrames("ui/ui_challenge.plist", "ui/ui_challenge.png")
     self:removeFromParent()
     self = nil
 end

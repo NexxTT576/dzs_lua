@@ -167,8 +167,8 @@ function BiwuBuyMsgBox:loadRes()
 end
 
 function BiwuBuyMsgBox:releaseRes()
-    display.removeSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.removeSpriteFramesWithFile("ui/ui_coin_icon.plist", "res/ui/ui_coin_icon.png")
+    display.removeSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.removeSpriteFrames("ui/ui_coin_icon.plist", "res/ui/ui_coin_icon.png")
 end
 
 function BiwuBuyMsgBox:close()

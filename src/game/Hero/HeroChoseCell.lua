@@ -182,7 +182,7 @@ function HeroChoseCell:getContentSize()
 end
 
 function HeroChoseCell:onExit()
-    -- display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
+    -- display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
 end
 
 function HeroChoseCell:runEnterAnim()

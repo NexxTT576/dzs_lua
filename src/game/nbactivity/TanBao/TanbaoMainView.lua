@@ -822,12 +822,12 @@ function TanbaoMainView:load()
 end
 
 function TanbaoMainView:release()
-    display.removeSpriteFramesWithFile("ui/ui_tanbao.plist", "ui/ui_tanbao.png")
-    display.removeSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
-    display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    display.removeSpriteFramesWithFile("ui/taskcommon.plist", "ui/taskcommon.png")
-    display.removeSpriteFramesWithFile("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
-    display.removeSpriteFramesWithFile("ui/ui_month_card.plist", "ui/ui_month_card.png")
+    display.removeSpriteFrames("ui/ui_tanbao.plist", "ui/ui_tanbao.png")
+    display.removeSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.removeSpriteFrames("ui/taskcommon.plist", "ui/taskcommon.png")
+    display.removeSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
+    display.removeSpriteFrames("ui/ui_month_card.plist", "ui/ui_month_card.png")
 end
 
 function TanbaoMainView:createItemView(pos, node, data)

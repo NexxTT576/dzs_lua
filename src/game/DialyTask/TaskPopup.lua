@@ -248,13 +248,13 @@ function TaskPopup:setUpView()
 end
 
 function TaskPopup:closeSelf()
-    display.removeSpriteFramesWithFile("ui/taskcommon.plist", "ui/taskcommon.png")
-    display.removeSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
-    display.removeSpriteFramesWithFile("ui/ui_reward.plist", "ui/ui_reward.png")
-    display.removeSpriteFramesWithFile("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
-    display.removeSpriteFramesWithFile("ui/ui_spirit.plist", "ui/ui_spirit.png")
-    display.removeSpriteFramesWithFile("ui/ui_challenge.plist", "ui/ui_challenge.png")
-    display.removeSpriteFramesWithFile("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
+    display.removeSpriteFrames("ui/taskcommon.plist", "ui/taskcommon.png")
+    display.removeSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.removeSpriteFrames("ui/ui_reward.plist", "ui/ui_reward.png")
+    display.removeSpriteFrames("ui/ui_heroinfo.plist", "ui/ui_heroinfo.png")
+    display.removeSpriteFrames("ui/ui_spirit.plist", "ui/ui_spirit.png")
+    display.removeSpriteFrames("ui/ui_challenge.plist", "ui/ui_challenge.png")
+    display.removeSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
 
     self:removeFromParent()
     self = nil
@@ -265,8 +265,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
-     --align(display.LEFT_CENTER))
+    ):--align(display.LEFT_CENTER))
+     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
 
     onButtonSelectChanged(
         function(event)

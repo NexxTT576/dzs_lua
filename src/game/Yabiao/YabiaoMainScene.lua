@@ -135,9 +135,9 @@ function YabiaoMainScene:loadRes()
 end
 
 function YabiaoMainScene:releaseRes()
-    display.removeSpriteFramesWithFile("ui/ui_yabiao_common.plist", "ui/ui_yabiao_common.png")
-    display.removeSpriteFramesWithFile("ui/ui_window_base.plist", "ui/ui_window_base.png")
-    display.removeSpriteFramesWithFile("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
+    display.removeSpriteFrames("ui/ui_yabiao_common.plist", "ui/ui_yabiao_common.png")
+    display.removeSpriteFrames("ui/ui_window_base.plist", "ui/ui_window_base.png")
+    display.removeSpriteFrames("ui/ui_guild_common_bg.plist", "ui/ui_guild_common_bg.png")
 end
 
 function YabiaoMainScene:close()

@@ -153,8 +153,8 @@ function YabiaoSpeedUpCommitPopup:loadRes()
 end
 
 function YabiaoSpeedUpCommitPopup:releaseRes()
-    display.removeSpriteFramesWithFile("ui/ui_common_button.plist", "ui/ui_common_button.png")
-    display.removeSpriteFramesWithFile("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.removeSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    display.removeSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
 end
 
 function YabiaoSpeedUpCommitPopup:close()

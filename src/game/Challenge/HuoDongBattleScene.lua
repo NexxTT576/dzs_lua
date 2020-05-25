@@ -300,7 +300,7 @@ end
 
 function HuoDongBattleScene:onExit(...)
     self:removeAllChildren()
-    display.removeSpriteFramesWithFile("ui/ui_battle.plist", "ui/ui_battle.png")
+    display.removeSpriteFrames("ui/ui_battle.plist", "ui/ui_battle.png")
 end
 
 return HuoDongBattleScene

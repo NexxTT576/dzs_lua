@@ -113,7 +113,7 @@ function FriendApplyBox:onConfirm()
 end
 
 function FriendApplyBox:onExit()
-    display.removeSpriteFramesWithFile("ui/ui_friend.plist", "ui/ui_friend.png")
+    display.removeSpriteFrames("ui/ui_friend.plist", "ui/ui_friend.png")
 end
 
 return FriendApplyBox

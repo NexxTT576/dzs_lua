@@ -172,7 +172,7 @@ function SubMap:initLevelInfo(subMap)
                 end
             }
         )
-        buildBtn:setTouchEnabled(false)
+        setTouchEnabled(buildBtn, false)
 
         local btnW = buildBtn:getContentSize().width
         local btnH = buildBtn:getContentSize().height
@@ -323,7 +323,7 @@ function SubMap:checkLevelReward(subMapID)
                 CCMessageBox(state, "服务器端返回的关卡奖励，状态有问题！")
             end
 
-            boxIcon:setTouchEnabled(true)
+            setTouchEnabled(boxIcon, true)
             boxIcon:removeAllNodeEventListeners()
             boxIcon:addNodeEventListener(
                 cc.NODE_TOUCH_EVENT,
@@ -335,7 +335,7 @@ function SubMap:checkLevelReward(subMapID)
 
                         if ResMgr.isInSubInfo ~= true and ResMgr.intoSubMap ~= true then
                             if TutoMgr.notLock() then
-                                boxIcon:setTouchEnabled(false)
+                                setTouchEnabled(boxIcon, false)
                                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                                 ResMgr.createBefTutoMask(self)
                                 local rewardLayer =
@@ -353,7 +353,7 @@ function SubMap:checkLevelReward(subMapID)
                                             boxIcon:removeChildByTag(EFFECT_TAG, true)
                                         end,
                                         closeListener = function()
-                                            boxIcon:setTouchEnabled(true)
+                                            setTouchEnabled(boxIcon, true)
                                         end
                                     }
                                 )
@@ -706,26 +706,26 @@ function SubMap:onExit()
     TutoMgr.removeBtn("submap_back_btn")
     TutoMgr.removeBtn("submap_baoxiang_box")
 
-    display.removeSpriteFramesWithFile("ui/ui_submap.plist", "ui/ui_submap.png")
-    -- display.removeSpriteFramesWithFile("bigmap/bigmap.plist", "bigmap/bigmap.png")
-    -- display.removeSpriteFramesWithFile("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
-    display.removeSpriteFramesWithFile("ui/ui_weijiao_yishou.plist", "ui/ui_weijiao_yishou.png")
-    display.removeSpriteFrameByImageName("fonts/font_title.png")
+    display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    -- display.removeSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
+    -- display.removeSpriteFrames("ui/ui_bigmap_cloud.plist", "ui/ui_bigmap_cloud.png")
+    display.removeSpriteFrames("ui/ui_weijiao_yishou.plist", "ui/ui_weijiao_yishou.png")
+    display.removeImage("fonts/font_title.png")
 
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun1_piaodong/yun_1.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun2_piaodong/yun_2.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun3_piaodong/yun_3.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun4_piaodong/yun_4.png")
+    display.removeImage("ccs/ui_effect/yun1_piaodong/yun_1.png")
+    display.removeImage("ccs/ui_effect/yun2_piaodong/yun_2.png")
+    display.removeImage("ccs/ui_effect/yun3_piaodong/yun_3.png")
+    display.removeImage("ccs/ui_effect/yun4_piaodong/yun_4.png")
 
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun1_sankai/yun_1.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun2_sankai/yun_2.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun3_sankai/yun_3.png")
-    display.removeSpriteFrameByImageName("ccs/ui_effect/yun4_sankai/yun_4.png")
+    display.removeImage("ccs/ui_effect/yun1_sankai/yun_1.png")
+    display.removeImage("ccs/ui_effect/yun2_sankai/yun_2.png")
+    display.removeImage("ccs/ui_effect/yun3_sankai/yun_3.png")
+    display.removeImage("ccs/ui_effect/yun4_sankai/yun_4.png")
 
     ResMgr.ReleaseUIArmature("fubenjiangli_shanguang")
 
-    display.removeSpriteFrameByImageName("ui/jpg_bg/bigmap/" .. data_world_world[self.subMapInfo.world].background .. ".jpg")
-    display.removeSpriteFrameByImageName("ui/ui_bigmap_cloud.png")
+    display.removeImage("ui/jpg_bg/bigmap/" .. data_world_world[self.subMapInfo.world].background .. ".jpg")
+    display.removeImage("ui/ui_bigmap_cloud.png")
 
     cc.Director:getInstance():getTextureCache():removeUnusedTextures()
 
