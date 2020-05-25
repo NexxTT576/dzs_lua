@@ -291,8 +291,7 @@ function Broadcast:initTimeSchedule()
             end
         end
     end
-
-    schedule(self, checkBroadcast, 1)
+    self.scheduler.scheduleGlobal(checkBroadcast, 1, false)
 end
 
 function Broadcast:getBroadItemById(id)
