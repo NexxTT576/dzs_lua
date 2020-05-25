@@ -17,7 +17,7 @@ end
 
 function ShengjiLayer:onExit()
     TutoMgr.removeBtn("juqingzhandoujieshu_btn_quedinganniu")
-    display.removeSpriteFramesWithFile("ui/ui_shengji.plist", "ui/ui_shengji.png")
+    display.removeSpriteFrames("ui/ui_shengji.plist", "ui/ui_shengji.png")
 
     ResMgr.ReleaseUIArmature("shengji")
 end
@@ -79,13 +79,13 @@ function ShengjiLayer:ctor(param)
 
     -- gameWorks 玩家升级
     -- grade, user, serverno, rolemark
-    SDKGameWorks.GameUpGrade(game.player.m_level, game.player.m_uid, "1", "1")
-    SDKTKData.setLevel({level = game.player.m_level})
-    CSDKShell.submitExtData(
-        {
-            isLevelUp = true
-        }
-    )
+    -- SDKGameWorks.GameUpGrade(game.player.m_level, game.player.m_uid, "1", "1")
+    -- SDKTKData.setLevel({level = game.player.m_level})
+    -- CSDKShell.submitExtData(
+    --     {
+    --         isLevelUp = true
+    --     }
+    -- )
 end
 
 -- 初始化所有的升级之后的结果

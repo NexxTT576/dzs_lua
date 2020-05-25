@@ -77,6 +77,7 @@ function BattleResult:initWin(rewards)
     rewardBg:setPosition(rewardBg:getContentSize().width / 2, 0)
     rewardNode:addChild(rewardBg)
 
+    --@RefType luaIde#ccui.Scale9Sprite
     local bg = rootnode["tag_bg"]
     if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.66 then
         bg:setPreferredSize(cc.size(bg:getContentSize().width, display.sizeInPixels.height * 0.65))
