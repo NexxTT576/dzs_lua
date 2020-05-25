@@ -69,7 +69,7 @@ function LoginScene:init()
             require("network.RequestHelper")
             RequestHelper.game.login(
                 {
-                    acc = "test__100062",
+                    acc = "test__100073",
                     callback = function(data)
                         if data["3"] == 1 then
                             --@TODO 2020-05-13 16:25:27 新用户

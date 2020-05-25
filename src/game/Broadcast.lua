@@ -291,7 +291,8 @@ function Broadcast:initTimeSchedule()
             end
         end
     end
-    self.scheduler.scheduleGlobal(checkBroadcast, 1, false)
+
+    self._checkSchedule = self.scheduler.scheduleGlobal(checkBroadcast, 1, false)
 end
 
 function Broadcast:getBroadItemById(id)
@@ -414,6 +415,13 @@ function Broadcast:onEnter()
 end
 
 function Broadcast:onExit()
+    if self._schedule ~= nil then
+        self.scheduler.unscheduleGlobal(self._schedule)
+    end
+
+    if self._checkSchedule ~= nil then
+        self.scheduler.unscheduleGlobal(self._checkSchedule)
+    end
 end
 
 return Broadcast
