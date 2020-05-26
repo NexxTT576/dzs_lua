@@ -385,18 +385,6 @@ void Scale9Sprite::updateCapInset()
 {
     if (_renderingType == RenderingType::SLICE)
     {
-		if (_insetLeft == 0) {
-			_insetLeft = _originalContentSize.width / 3.0;
-		}
-		if (_insetRight == 0) {
-			_insetRight = _originalContentSize.width / 3.0;
-		}
-		if (_insetTop == 0) {
-			_insetTop = _originalContentSize.width / 3.0;
-		}
-		if (_insetBottom == 0) {
-			_insetBottom = _originalContentSize.width / 3.0;
-		}
         Rect capInsets(_insetLeft,
                        _insetTop,
                        _originalContentSize.width - _insetRight - _insetLeft,
