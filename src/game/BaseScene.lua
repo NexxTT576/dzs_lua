@@ -149,21 +149,33 @@ function BaseScene:ctor(param)
     end
 
     --  是否替换下部的按钮
+    --@RefType luaIde#cc.Node
+    local bottomNode = self._rootnode["bottomNode"]
     if not _isHideBottom then
         if _bottomFile then
-            self._rootnode["bottomNode"]:removeSelf()
-
+            schedule(
+                bottomNode,
+                function()
+                    bottomNode:removeSelf()
+                end,
+                0.01
+            )
             local bottomNode = CCBReaderLoad(_bottomFile, proxy, self._rootnode)
             bottomNode:setPosition(display.cx, 0)
 
             self:addChild(bottomNode, 2)
         else
-            --      注册底部按钮事件
             printf("注册底部按钮事件")
             BottomBtnEvent.registerBottomEvent(self._rootnode)
         end
     else
-        self._rootnode["bottomNode"]:removeSelf()
+        schedule(
+            bottomNode,
+            function()
+                bottomNode:removeSelf()
+            end,
+            0.01
+        )
     end
 
     self._rootnode["zhandouliLabel"]:setString(tostring(game.player:getBattlePoint()))
