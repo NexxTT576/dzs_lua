@@ -87,15 +87,17 @@ function PostNotice(key, msg)
 end
 
 function RegNotice(target, cb, key)
-    --@RefType luaIde#cc.EventDispatcher
+    local listener1 = cc.EventListenerCustom:create(key, cb)
+    target["listener_" .. key] = listener1
     local eventDispatcher = target:getEventDispatcher()
-    eventDispatcher:addCustomEventListener(key, cb)
+    eventDispatcher:addEventListenerWithFixedPriority(listener1, 1)
 end
 
 function UnRegNotice(target, key)
     --@RefType luaIde#cc.EventDispatcher
     local eventDispatcher = target:getEventDispatcher()
-    eventDispatcher:removeCustomEventListeners(key)
+    eventDispatcher:removeEventListener(target["listener_" .. key])
+    target["listener_" .. key] = nil
 end
 
 function show_tip_label(str, delay)
