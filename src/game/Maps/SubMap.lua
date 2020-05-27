@@ -213,8 +213,8 @@ end
 
 -- 底部 关卡奖励相关
 function SubMap:checkLevelReward(subMapID)
-    local _curStars = self._subMapInfo["2"].stars
-    local _boxState = self._subMapInfo["2"].box
+    local _curStars = self._subMapInfo.infoVO.stars
+    local _boxState = self._subMapInfo.infoVO.box
 
     -- 初始化关卡相关奖励
     if self._allLevelReward == nil then
@@ -315,8 +315,9 @@ function SubMap:checkLevelReward(subMapID)
             end
 
             setTouchEnabled(boxIcon, true)
-            boxIcon:removeAllNodeEventListeners()
-            boxIcon:addNodeEventListener(
+            removeAllNodeEventListeners(boxIcon)
+            addNodeEventListener(
+                boxIcon,
                 cc.NODE_TOUCH_EVENT,
                 function(event)
                     dump(event)
@@ -336,10 +337,10 @@ function SubMap:checkLevelReward(subMapID)
                                         hard = self._allLevelReward[i].hard,
                                         needStar = self._allLevelReward[i].star,
                                         itemData = self._allLevelReward[i].itemData,
-                                        bagState = self._subMapInfo["3"],
+                                        bagState = self._subMapInfo.bagVO,
                                         state = _boxState[i],
                                         updateListener = function(hard)
-                                            self._subMapInfo["2"].box[hard] = 3
+                                            self._subMapInfo.infoVO.box[hard] = 3
                                             boxIcon:setSpriteFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
                                             boxIcon:removeChildByTag(EFFECT_TAG, true)
                                         end,
@@ -365,76 +366,72 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
     RequestHelper.getSubLevelList(
         {
             callback = function(data)
-                if string.len(data["0"]) == 0 then
-                    -- 总星星数量
-                    local tNumLbl =
-                        newTTFLabelWithOutline(
-                        {
-                            text = "/" .. tostring(calSubmapStar(id)),
-                            size = 22,
-                            color = cc.c3b(255, 216, 0),
-                            outlineColor = cc.c3b(43, 6, 0),
-                            font = FONTS_NAME.font_haibao,
-                            align = cc.TEXT_ALIGNMENT_LEFT
-                        }
-                    )
+                -- 总星星数量
+                local tNumLbl =
+                    newTTFLabelWithOutline(
+                    {
+                        text = "/" .. tostring(calSubmapStar(id)),
+                        size = 22,
+                        color = cc.c3b(255, 216, 0),
+                        outlineColor = cc.c3b(43, 6, 0),
+                        font = FONTS_NAME.font_haibao,
+                        align = cc.TEXT_ALIGNMENT_LEFT
+                    }
+                )
 
-                    tNumLbl:setPosition(-tNumLbl:getContentSize().width, 0)
-                    local allStarLabel = self._rootnode["allStarLabel"]
-                    allStarLabel:removeAllChildren()
-                    allStarLabel:addChild(tNumLbl)
+                tNumLbl:setPosition(-tNumLbl:getContentSize().width, 0)
+                local allStarLabel = self._rootnode["allStarLabel"]
+                allStarLabel:removeAllChildren()
+                allStarLabel:addChild(tNumLbl)
 
-                    -- 当前星星数量
-                    local curNumLbl =
-                        newTTFLabelWithOutline(
-                        {
-                            text = tostring(data["2"].stars),
-                            size = 22,
-                            color = cc.c3b(255, 216, 0),
-                            outlineColor = cc.c3b(43, 6, 0),
-                            font = FONTS_NAME.font_haibao,
-                            align = cc.TEXT_ALIGNMENT_LEFT
-                        }
-                    )
+                -- 当前星星数量
+                local curNumLbl =
+                    newTTFLabelWithOutline(
+                    {
+                        text = tostring(data.infoVO.stars),
+                        size = 22,
+                        color = cc.c3b(255, 216, 0),
+                        outlineColor = cc.c3b(43, 6, 0),
+                        font = FONTS_NAME.font_haibao,
+                        align = cc.TEXT_ALIGNMENT_LEFT
+                    }
+                )
 
-                    curNumLbl:setPosition(-curNumLbl:getContentSize().width, 0)
-                    local curStarLabel = self._rootnode["curStarLabel"]
-                    curStarLabel:removeAllChildren()
-                    curStarLabel:addChild(curNumLbl)
+                curNumLbl:setPosition(-curNumLbl:getContentSize().width, 0)
+                local curStarLabel = self._rootnode["curStarLabel"]
+                curStarLabel:removeAllChildren()
+                curStarLabel:addChild(curNumLbl)
 
-                    local allStarIcon = self._rootnode["allStar_icon"]
-                    self._rootnode["curStar_icon"]:setPositionX(allStarIcon:getPositionX() - allStarIcon:getContentSize().width - tNumLbl:getContentSize().width)
+                local allStarIcon = self._rootnode["allStar_icon"]
+                self._rootnode["curStar_icon"]:setPositionX(allStarIcon:getPositionX() - allStarIcon:getContentSize().width - tNumLbl:getContentSize().width)
 
-                    self._subMapInfo = data
-                    self:createMapNode()
-                    self:checkLevelReward(id)
+                self._subMapInfo = data
+                self:createMapNode()
+                self:checkLevelReward(id)
 
-                    if self.battleId ~= nil then
-                        self:removeChildByTag(102)
-                        if (self:getChildByTag(102) == nil) then
-                            self._infoLayer =
-                                require("game.Maps.SubMapInfoLayer").new(
-                                data_battle_battle[self.battleId],
-                                self._subMapInfo,
-                                function()
-                                    self:update()
-                                end,
-                                function()
-                                    self._infoLayer:removeSelf()
-                                    self:refreshRes()
-                                end
-                            )
-                            self:addChild(self._infoLayer, 102)
-                            self.refreshSubId = data_battle_battle[self.battleId]
-                            self.battleId = nil
-                        end
+                if self.battleId ~= nil then
+                    self:removeChildByTag(102)
+                    if (self:getChildByTag(102) == nil) then
+                        self._infoLayer =
+                            require("game.Maps.SubMapInfoLayer").new(
+                            data_battle_battle[self.battleId],
+                            self._subMapInfo,
+                            function()
+                                self:update()
+                            end,
+                            function()
+                                self._infoLayer:removeSelf()
+                                self:refreshRes()
+                            end
+                        )
+                        self:addChild(self._infoLayer, 102)
+                        self.refreshSubId = data_battle_battle[self.battleId]
+                        self.battleId = nil
                     end
+                end
 
-                    if refreshSubInfoFunc ~= nil then
-                        refreshSubInfoFunc()
-                    end
-                else
-                    CCMessageBox("网络错误，请重试！", "Tip")
+                if refreshSubInfoFunc ~= nil then
+                    refreshSubInfoFunc()
                 end
             end,
             id = id
@@ -483,7 +480,7 @@ function SubMap:createMapNode()
 
     local _data = {}
 
-    for k, v in pairs(self._subMapInfo["1"]) do
+    for k, v in pairs(self._subMapInfo.starInfoVOs) do
         if (tonumber(k) <= game.player.m_maxLevel) then
             table.insert(
                 _data,

@@ -58,7 +58,7 @@ function DramaMgr.runDramaBefSub(submapID, endFunc)
         RequestHelper.getDramaValue(
             {
                 callback = function(data)
-                    dramaValueData = data["1"]
+                    dramaValueData = data
                     local num = dramaValueData[2]
                     if num < submapID then
                         dramaValueData[2] = submapID

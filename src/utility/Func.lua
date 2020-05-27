@@ -204,6 +204,12 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
     end
 end
 
+function removeAllNodeEventListeners(node)
+    if node["__eventListenerHanders"] ~= nil then
+        node["__eventListenerHanders"] = {}
+    end
+end
+
 local sharedDirector = cc.Director:getInstance()
 local sceneLevel = 1
 

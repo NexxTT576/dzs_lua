@@ -96,7 +96,7 @@ function SubMapScrollCell:refresh(param)
 
     local totalLbl = self._rootnode["challenge_total_num_lbl"]
     local curNumLbl = self._rootnode["challenge_cur_num_lbl"]
-    curNumLbl:setString(tostring(_subMapInfo["1"][tostring(_itemData.baseInfo.id)].cnt))
+    curNumLbl:setString(tostring(_subMapInfo.starInfoVOs[tostring(_itemData.baseInfo.id)].cnt))
     totalLbl:setString("/" .. tostring(_itemData.baseInfo.number))
     totalLbl:setPositionX(curNumLbl:getPositionX() + curNumLbl:getContentSize().width)
 
