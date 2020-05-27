@@ -1,14 +1,8 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-08-21 21:33:26
- -- @version 
- --
- --]]
 local LIANZHAN_ZORDER = 31
 local LEVELUP_ZORDER = 33
 local MAX_ZORDER = 100
 
+--@SuperType luaIde#cc.Layer
 local SubMapInfoLayer =
     class(
     "SubMapInfoLayer",
@@ -33,15 +27,15 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
 
     self._subMapInfo = _subMapInfo
 
-    self:setNodeEventEnabled(true)
-    self:setTouchEnabled(true)
+    self:enableNodeEvents()
+    setTouchEnabled(self, true)
 
     local colorbg = display.newLayer(cc.c4b(0, 0, 0, 150))
     colorbg:setContentSize(cc.size(display.width, display.height))
     colorbg:setPosition(0, 0)
     self:addChild(colorbg)
 
-    self._bagObj = self._subMapInfo["3"]
+    self._bagObj = self._subMapInfo.bagVO
     self._isBagFull = false
     if #self._bagObj > 0 then
         self._isBagFull = true
@@ -77,7 +71,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
         rootnode[tag]:setVisible(true)
     end
 
-    local curStar = self._subMapInfo["1"][tostring(levelData.id)].star
+    local curStar = self._subMapInfo.starInfoVOs[tostring(levelData.id)].star
     if curStar < levelData.star then
         if levelData.star == 1 then
             rootnode["star_1"]:setSpriteFrame(display.newSpriteFrame("submap_star_dark.png"))
@@ -121,7 +115,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     rootnode["tag_tiaozhan_max"]:setString("/" .. levelData.number)
 
     -- 剩余次数
-    self._dayCnt = self._subMapInfo["1"][tostring(levelData.id)].cnt
+    self._dayCnt = self._subMapInfo.starInfoVOs[tostring(levelData.id)].cnt
     if self._dayCnt > levelData.number then
         ResMgr.debugBanner("服务器端返回的剩余次数: " .. self._dayCnt .. " 大于最大次数: " .. levelData.number)
         self._dayCnt = levelData.number
@@ -143,10 +137,10 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     self._hastouchLianzhan = false
 
     -- secWait:连战冷却时间秒数
-    self._secWait = self._subMapInfo["2"].secWait
+    self._secWait = self._subMapInfo.infoVO.secWait
 
     -- cdClrCnt:清除冷却时间消耗的元宝
-    self._clearGold = self._subMapInfo["2"].cdClrCnt
+    self._clearGold = self._subMapInfo.infoVO.cdClrCnt
 
     -- node:runAction(transition.sequence({
 
@@ -219,7 +213,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     bossBoardBg:addChild(levelModeBg)
 
     -- 关卡已经获得的星星数
-    self.passedStars = self._subMapInfo["1"][tostring(levelData.id)].star
+    self.passedStars = self._subMapInfo.starInfoVOs[tostring(levelData.id)].star
 
     self._levelItems = {}
 
@@ -227,7 +221,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
         require("game.Maps.LevelGradeItem").new(
         {
             grade = 1,
-            star = self._subMapInfo["1"][tostring(levelData.id)].star,
+            star = self._subMapInfo.starInfoVOs[tostring(levelData.id)].star,
             silver = levelData.num1[1],
             xiahun = levelData.num1[2],
             coinType = levelData.coin1,
@@ -251,7 +245,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
             require("game.Maps.LevelGradeItem").new(
             {
                 grade = 2,
-                star = self._subMapInfo["1"][tostring(levelData.id)].star,
+                star = self._subMapInfo.starInfoVOs[tostring(levelData.id)].star,
                 silver = levelData.num2[1],
                 xiahun = levelData.num2[2],
                 coinType = levelData.coin1,
@@ -276,7 +270,7 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
             require("game.Maps.LevelGradeItem").new(
             {
                 grade = 3,
-                star = self._subMapInfo["1"][tostring(levelData.id)].star,
+                star = self._subMapInfo.starInfoVOs[tostring(levelData.id)].star,
                 silver = levelData.num3[1],
                 xiahun = levelData.num3[2],
                 coinType = levelData.coin1,
@@ -392,11 +386,12 @@ function SubMapInfoLayer:ctor(levelData, _subMapInfo, removeListener, refreshSub
     self:addChild(levelBoard)
     levelBoard:removeSelf()
 
-    self:schedule(
+    schedule(
+        self,
         function()
             if self._secWait > 0 then
                 self._secWait = self._secWait - 1
-                self._subMapInfo["2"].secWait = self._secWait
+                self._subMapInfo.infoVO.secWait = self._secWait
             end
         end,
         1

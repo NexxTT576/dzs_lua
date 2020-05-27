@@ -1,12 +1,5 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 6/26/14
--- Time: 3:27 PM
--- To change this template use File | Settings | File Templates.
---
 local data_item_money = require("data.data_item_money")
-
+--@RefType luaIde#cc.Node
 local LevelGradeItem =
     class(
     "LevelGradeItem",
@@ -16,7 +9,7 @@ local LevelGradeItem =
 )
 
 function LevelGradeItem:ctor(param)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self._lianzhanCnt = param.lianzhanCnt
     self._secWait = param.secWait
