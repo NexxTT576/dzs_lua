@@ -46,6 +46,10 @@ function SubMapScrollCell:create(param)
     headIcon:setPosition(self._rootnode["headIcon"]:getContentSize().width / 2, self._rootnode["headIcon"]:getContentSize().height / 2)
     self._rootnode["headIcon"]:addChild(headIcon, 1, 100)
 
+    --@RefType luaIde#cc.ControlButton
+    local okBtn = self._rootnode["okBtn"]
+    okBtn:setPreferredSize(cc.size(147, 64))
+
     self._rootnode["okBtn"]:registerControlEventHandler(
         function()
             if _onBtn then

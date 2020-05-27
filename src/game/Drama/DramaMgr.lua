@@ -90,7 +90,7 @@ function DramaMgr.runDramaBefNpc(npcData, endFunc)
                 callback = function(data)
                     print("cb data")
                     dump(data)
-                    dramaValueData = data["1"]
+                    dramaValueData = data
                     local serNpcValue = dramaValueData[3] --服务器的剧情值
                     local curNpcValue = npcData.id --当前关卡的剧情值
 

@@ -234,13 +234,14 @@ function TutoLayer:ctor(param)
         self.playBtn = cc.MenuItemLabel:create(l)
         self.playBtn:registerScriptTapHandler(
             function()
-                TutoMgr.setServerNum(
-                    {
-                        setNum = 999999
-                    }
-                )
-                GameStateManager:changeState(GAME_STATE.STATE_MAIN_MENU)
-                --self:removeSelf()
+                --@TODO 2020-05-27 20:47:11 这个只是测试用按钮 走哪个逻辑 看情况影响不大
+                -- TutoMgr.setServerNum(
+                --     {
+                --         setNum = 999999
+                --     }
+                -- )
+                -- GameStateManager:changeState(GAME_STATE.STATE_MAIN_MENU)
+                self:removeSelf()
             end
         )
         self:addChild(cc.Menu:create(self.playBtn))
