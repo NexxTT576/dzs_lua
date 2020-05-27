@@ -69,8 +69,8 @@ function BottomBtnEvent.registerBottomEvent(btnMaps)
                             callback = function(data)
                                 -- dump(data)
                                 game.player.bigmapData = data
-                                msg.bigMapID = game.player.bigmapData["1"]
-                                msg.subMapID = game.player.bigmapData["2"]
+                                msg.bigMapID = game.player.bigmapData.battleWorldID
+                                msg.subMapID = game.player.bigmapData.battleFieldID
                                 GameStateManager:ChangeState(nextState, msg)
                             end
                         }

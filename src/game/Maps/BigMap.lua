@@ -94,7 +94,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             scrollViewBg:setViewSize(cc.size(display.width, display.height - 259))
 
             scrollViewBg:setPosition(cc.p(0, self.top:getBottomContentSize().height))
-            scrollViewBg:ignoreAnchorPointForPosition(true)
+            scrollViewBg:setIgnoreAnchorPointForPosition(true)
 
             scrollViewBg:setContainer(bg)
             scrollViewBg:setContentSize(cc.size(display.width, BG_HEIGHT))
@@ -441,36 +441,36 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
         --判断是否
         local curSubID = game.player:getCurSubMapID()
         self.isUnlockNewLvl = false
-        if curSubID ~= data["2"] then
+        if curSubID ~= data.battleFieldID then
             self.isUnlockNewLvl = true
         end
 
-        if data["0"] == "" then
+        if data ~= nil then
             self._curLevel = {
-                bigMap = data["1"], --大地图
-                subMap = data["2"], --小地图
-                level = data["3"] --小关卡
+                bigMap = data.battleWorldID, --大地图
+                subMap = data.battleFieldID, --小地图
+                level = data.battleLvID --小关卡
             }
-            self._subMap = data["4"]
+            self._subMap = data.fieldStarAry
 
             game.player:setBattleData(
                 {
-                    cur_bigMapId = data["1"],
-                    cur_subMapId = data["2"],
-                    new_subMapId = data["2"]
+                    cur_bigMapId = data.battleWorldID,
+                    cur_subMapId = data.battleFieldID,
+                    new_subMapId = data.battleFieldID
                 }
             )
 
             -- 大地图背景
             -- 默认为最大关卡地图，否则根据选择显示
-            local mapId = bigMapID or data["1"]
+            local mapId = bigMapID or data.battleWorldID
             bgName = data_world_world[mapId].background
 
             -- 世界地图背景音乐
             local soundName = ResMgr.getSound(data_world_world[mapId].bgm)
             GameAudio.playMusic(soundName, true)
 
-            game.player.m_maxLevel = data["3"]
+            game.player.m_maxLevel = data.battleLvID
 
             -- 判断是否开启新关卡
             local battleData = game.player:getBattleData()

@@ -1,10 +1,4 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-05-19 14:26:17
- -- @version 
- --
- --]]
+--@SuperType luaIde#cc.Node
 local TopLayer =
     class(
     "TopLayer",
@@ -14,7 +8,7 @@ local TopLayer =
 )
 
 function TopLayer:ctor(isOther)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     local proxy = CCBProxy:create()
     self._rootnode = {}
@@ -55,7 +49,8 @@ function TopLayer:ctor(isOther)
 
     if self._rootnode["nowTimeLabel"] then
         self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
-        self._rootnode["nowTimeLabel"]:schedule(
+        schedule(
+            self._rootnode["nowTimeLabel"],
             function()
                 self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
             end,

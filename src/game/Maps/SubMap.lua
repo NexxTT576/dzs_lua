@@ -1,12 +1,3 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-05-13 13:54:41
- -- @version 
- --
- --]]
--- local SubMapList = import(".SubMapList")
-
 local data_battle_battle = require("data.data_battle_battle")
 local data_item_item = require("data.data_item_item")
 local data_field_field = require("data.data_field_field")

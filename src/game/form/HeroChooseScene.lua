@@ -185,48 +185,44 @@ function HeroChooseScene:ctor(param)
         RequestHelper.formation.set(
             {
                 pos = getPos(),
-                id = _data[cellIdx + 1].data._id,
+                id = _data[cellIdx + 1].data.id,
                 callback = function(data)
                     -- dump(data)
                     PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                    else
-                        local heroPos = 0
-                        for k, v in ipairs(data["1"]) do
-                            if v.objId == _data[cellIdx + 1].data._id then
-                                heroPos = v.pos
-                            end
+                    local heroPos = 0
+                    for k, v in ipairs(data[1]) do
+                        if v.objId == _data[cellIdx + 1].data._id then
+                            heroPos = v.pos
                         end
-
-                        --                  改变装备状态
-                        for _, v in ipairs(game.player:getEquipments()) do
-                            if v.pos == _index then
-                                v.cid = _data[cellIdx + 1].data.resId
-                            end
-                        end
-
-                        for _, v in ipairs(game.player:getSpirit()) do
-                            if v.pos == _index then
-                                v.cid = _data[cellIdx + 1].data.resId
-                            end
-                        end
-
-                        --                  改变英雄状态
-                        local curHero = getHeroByPos(heroPos)
-                        if curHero then
-                            curHero.pos = 0
-                            curHero.cid = 0
-                        end
-
-                        _data[cellIdx + 1].data.pos = heroPos
-
-                        if _callback then
-                            _callback(data)
-                        end
-
-                        pop_scene()
                     end
+
+                    --                  改变装备状态
+                    for _, v in ipairs(game.player:getEquipments()) do
+                        if v.pos == _index then
+                            v.cid = _data[cellIdx + 1].data.resId
+                        end
+                    end
+
+                    for _, v in ipairs(game.player:getSpirit()) do
+                        if v.pos == _index then
+                            v.cid = _data[cellIdx + 1].data.resId
+                        end
+                    end
+
+                    --                  改变英雄状态
+                    local curHero = getHeroByPos(heroPos)
+                    if curHero then
+                        curHero.pos = 0
+                        curHero.cid = 0
+                    end
+
+                    _data[cellIdx + 1].data.pos = heroPos
+
+                    if _callback then
+                        _callback(data)
+                    end
+
+                    pop_scene()
                 end
             }
         )

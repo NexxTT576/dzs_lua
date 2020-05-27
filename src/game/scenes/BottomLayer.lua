@@ -69,6 +69,7 @@ function BottomLayer:initBottomFrame(...)
                 self:onTouchBtn(baseBottomItems[k])
             end
         )
+        items[k] = btn
         local menu = cc.Menu:create()
         menu:addChild(btn)
         menu:setPosition(0, 0)
@@ -230,8 +231,8 @@ function BottomLayer:onTouchBtn(tag)
                 callback = function(data)
                     dump(data)
                     game.player.bigmapData = data
-                    msg.bigMapID = game.player.bigmapData["1"]
-                    msg.subMapID = game.player.bigmapData["2"]
+                    msg.bigMapID = game.player.bigmapData.battleWorldID
+                    msg.subMapID = game.player.bigmapData.battleFieldID
                     GameStateManager:ChangeState(nextState, msg)
                 end
             }

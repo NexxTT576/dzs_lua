@@ -245,8 +245,8 @@ function TaskItemView:setUpView()
                     )
                 elseif self._data["goto"] == GAME_STATE.STATE_FUBEN then
                     local msg = {}
-                    msg.bigMapID = game.player.bigmapData["1"]
-                    msg.subMapID = game.player.bigmapData["2"]
+                    msg.bigMapID = game.player.bigmapData.battleWorldID
+                    msg.subMapID = game.player.bigmapData.battleFieldID
                     GameStateManager:ChangeState(self._data["goto"], msg)
                 else
                     GameStateManager:ChangeState(self._data["goto"])

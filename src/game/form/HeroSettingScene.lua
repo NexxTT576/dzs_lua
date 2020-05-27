@@ -508,8 +508,8 @@ function HeroSettingScene:onAddHero()
                                     self._formSettingView = nil
                                 end
 
-                                if #self._cardList < #data["1"] then
-                                    self._index = #data["1"]
+                                if #self._cardList < #data[1] then
+                                    self._index = #data[1]
                                 end
 
                                 self:resetFormData(data)
@@ -1191,9 +1191,9 @@ function HeroSettingScene:resetFormData(data)
     -- dump(data)
     if (data ~= nil) then
         game.player.m_formation = data
-        self._cardList = data["1"]
-        self._equip = data["2"]
-        self._spirit = data["3"]
+        self._cardList = data[1]
+        self._equip = data[2]
+        self._spirit = data[3]
 
         self._bInit = true
     end

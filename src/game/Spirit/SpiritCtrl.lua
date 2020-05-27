@@ -26,7 +26,6 @@ local data_config_config = require("data.data_config_config")
 local data_item_item = require("data.data_item_item")
 local data_collect_collect = require("data.data_collect_collect")
 require("data.data_error_error")
-local RequestInfo = require("network.RequestInfo")
 
 SpiritCtrl = {}
 
@@ -36,50 +35,37 @@ local _spiritInfo = {
         max = 0
     },
     level = 1,
-    item  = 0,
+    item = 0,
     spiritList = {},
-    showList   = {}
+    showList = {}
 }
 
 local _bRequest = true
 
-
 local function _requestState(callback)
     local reqs = {}
     if _bRequest then
-        table.insert(reqs, RequestInfo.new({
-            modulename = "spirit",
-            funcname   = "list",
-            param      = {},
-            oklistener = function(data)
---                dump(data)
-                SpiritCtrl.set("size", {num = data["2"], max = data["3"] })
+        local bFinish = 0
+        GameRequest.spirit.list(
+            {},
+            function()
+                SpiritCtrl.set("size", {num = data["2"], max = data["3"]})
                 game.player:setSpirit(data["1"])
                 SpiritCtrl.insert(data["1"])
+                bFinish = bFinish + 1
             end
-        }))
-
-        table.insert(reqs, RequestInfo.new({
-            modulename = "spirit",
-            funcname   = "start",
-            param      = {},
-            oklistener = function(data)
+        )
+        GameRequest.spirit.start(
+            {},
+            function()
                 SpiritCtrl.set("level", data["2"])
                 SpiritCtrl.set("item", data["4"])
 
                 game.player:setSilver(data["3"])
                 game.player:setGold(data["5"])
-            end,
-            errlistener = function(data)
-                show_tip_label(data)
+                bFinish = bFinish + 1
             end
-        }))
-        RequestHelperV2.request2(reqs, function()
-            _bRequest = false
-            if callback then
-                callback()
-            end
-        end)
+        )
     else
         if callback then
             callback()
@@ -127,11 +113,13 @@ end
 
 function SpiritCtrl.insert(data)
     for k, v in ipairs(data) do
-        table.insert(_spiritInfo.spiritList, {
-            baseData = data_item_item[v.resId],
-            data = v
-        })
-
+        table.insert(
+            _spiritInfo.spiritList,
+            {
+                baseData = data_item_item[v.resId],
+                data = v
+            }
+        )
     end
 
     SpiritCtrl.groupSpirit(data)
@@ -168,7 +156,7 @@ function SpiritCtrl.groupUpgradeSpirit(item, t)
 
     local i = 1
     for k, v in ipairs(_spiritInfo.spiritList) do
-        if item.baseData.pos == 51 or (item.data._id ~= v.data._id and v.data.pos  == 0 and item.baseData.quality >= v.data.quality) then
+        if item.baseData.pos == 51 or (item.data._id ~= v.data._id and v.data.pos == 0 and item.baseData.quality >= v.data.quality) then
             if i % 5 == 1 then
                 table.insert(t, {})
             end
@@ -194,7 +182,7 @@ function SpiritCtrl.removeSpiritByID(id)
     elseif type(id) == "number" then
         _removeSpiritByID(id)
     end
---    SpiritCtrl.groupSpirit()
+    --    SpiritCtrl.groupSpirit()
     SpiritCtrl.refresh()
 end
 
@@ -207,7 +195,6 @@ function SpiritCtrl.groupSpirit(data)
         end
         for k, v in ipairs(data) do
             if v.pos == 0 then
-
                 if i % 5 == 1 then
                     table.insert(_spiritInfo.showList, {})
                 end
@@ -241,7 +228,7 @@ end
 function SpiritCtrl.onStart(tag, callback)
     if tag == 1 or tag == 3 then
         if tag == 1 then
-            if  _spiritInfo.size.num >= _spiritInfo.size.max then
+            if _spiritInfo.size.num >= _spiritInfo.size.max then
                 show_tip_label("真气数量已经达到最大上限")
                 return
             end
@@ -251,7 +238,7 @@ function SpiritCtrl.onStart(tag, callback)
                 return
             end
         else
-            if  _spiritInfo.size.num + 10 > _spiritInfo.size.max then
+            if _spiritInfo.size.num + 10 > _spiritInfo.size.max then
                 show_tip_label(data_error_error[2300011].prompt)
                 return
             end
@@ -261,48 +248,54 @@ function SpiritCtrl.onStart(tag, callback)
                 return
             end
         end
-        RequestHelper.spirit.start({
-            callback = function(data)
-                SpiritCtrl.insert(data["1"])
-                SpiritCtrl.set("level", data["2"])
-                SpiritCtrl.set("item", data["4"])
+        RequestHelper.spirit.start(
+            {
+                callback = function(data)
+                    SpiritCtrl.insert(data["1"])
+                    SpiritCtrl.set("level", data["2"])
+                    SpiritCtrl.set("item", data["4"])
 
-                game.player:setSilver(data["3"])
-                game.player:setGold(data["5"])
-                callback(data["1"])
-            end,
-            t = tag
-        })
+                    game.player:setSilver(data["3"])
+                    game.player:setGold(data["5"])
+                    callback(data["1"])
+                end,
+                t = tag
+            }
+        )
     elseif tag == 2 then
-        RequestHelper.spirit.nbstart({
-            callback = function(data)
-                SpiritCtrl.set("level", data["1"])
-                SpiritCtrl.set("item", data["3"])
-                game.player:setGold(data["2"])
-                callback()
-            end
-        })
+        RequestHelper.spirit.nbstart(
+            {
+                callback = function(data)
+                    SpiritCtrl.set("level", data["1"])
+                    SpiritCtrl.set("item", data["3"])
+                    game.player:setGold(data["2"])
+                    callback()
+                end
+            }
+        )
     end
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 end
 
 function SpiritCtrl.upgrade(id, ids, callback)
-    RequestHelper.spirit.upgrade({
-        callback = function(data)
-            SpiritCtrl.removeSpiritByID(ids)
-            callback(data)
-        end,
-        id = id,
-        ids = ids
-    })
+    RequestHelper.spirit.upgrade(
+        {
+            callback = function(data)
+                SpiritCtrl.removeSpiritByID(ids)
+                callback(data)
+            end,
+            id = id,
+            ids = ids
+        }
+    )
 end
 
 function SpiritCtrl.pushUpgradeScene(index)
-
-    _requestState(function()
-        push_scene(require("game.Spirit.SpiritUpgradeScene").new(index))
-    end)
-
+    _requestState(
+        function()
+            push_scene(require("game.Spirit.SpiritUpgradeScene").new(index))
+        end
+    )
 end
 
 function SpiritCtrl.set(name, param)
@@ -332,16 +325,18 @@ function SpiritCtrl.request(callback)
 end
 
 function SpiritCtrl.enterSpiritScene(msg)
-    _requestState(function()
-        local _scene = require("game.Spirit.SpiritScene2").new({
-            tag = msg,
-            ctrl = SpiritCtrl
-        })
-        display.replaceScene(_scene)
-    end)
+    _requestState(
+        function()
+            local _scene =
+                require("game.Spirit.SpiritScene2").new(
+                {
+                    tag = msg,
+                    ctrl = SpiritCtrl
+                }
+            )
+            display.replaceScene(_scene)
+        end
+    )
 end
 
-
-
 return SpiritCtrl
-
