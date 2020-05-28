@@ -86,9 +86,9 @@ function TableViewExt:ctor(param)
         -- printf("cell size x = %f, y = %f", _cellSize.width, _cellSize.height)
         if _cellSizeFunc then
             _cellSize = _cellSizeFunc(view, idx)
-            return _cellSize.height, _cellSize.width
+            return _cellSize.width, _cellSize.height
         end
-        return _cellSize.height, _cellSize.width
+        return _cellSize.width, _cellSize.height
     end
 
     local function tableCellAtIndex(view, idx)
