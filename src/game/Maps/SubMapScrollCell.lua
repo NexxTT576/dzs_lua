@@ -93,7 +93,7 @@ function SubMapScrollCell:refresh(param)
     local _itemData = param.itemData
     -- self._rootnode["nameLabel"]:setString(_itemData.baseInfo.name)
     self.titleLabel:setString(_itemData.baseInfo.name)
-    self.titleLabel:setPosition(self.titleLabel:getContentSize().width / 2, self._rootnode["nameLabel"]:getContentSize().height / 2)
+    self.titleLabel:setPosition(0, self._rootnode["nameLabel"]:getContentSize().height / 2)
 
     -- dump(_subMapInfo["1"][tostring(_itemData.baseInfo.id)].cnt)
     -- dump(_itemData.baseInfo.number)

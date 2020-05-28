@@ -605,7 +605,6 @@ function SubMap:createMapNode()
     -- self._rootnode["frameBg"]:addChild(self._scrollItemList)
     self._listViewNode:removeAllChildren(true)
     self._listViewNode:addChild(self._scrollItemList)
-
     --新手引导
     local cell
 

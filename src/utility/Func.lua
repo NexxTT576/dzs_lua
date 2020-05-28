@@ -266,7 +266,8 @@ function newTTFLabelWithShadow(param)
         param.y = 0
     end
     --@RefType luaIde#cc.Label
-    local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
+    local lb = cc.Label:createWithTTF(param.text, param.font, param.size)
+    lb:setTextColor(param.color)
     lb:setAlignment(param.align)
     lb:setVerticalAlignment(param.valign)
     lb:enableShadow(param.shadowColor)
@@ -345,10 +346,11 @@ function newTTFLabelWithOutline(param)
         param.y = 0
     end
     --@RefType luaIde#cc.Label
-    local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
+    local lb = cc.Label:createWithTTF(param.text, param.font, param.size)
+    lb:setTextColor(param.color)
     lb:setAlignment(param.align)
     lb:setVerticalAlignment(param.valign)
-    lb:enableOutline(param.outlineColor)
+    lb:enableOutline(param.outlineColor, 1)
     lb:setPosition(param.x, param.y)
     if param.dimensions ~= nil then
         lb:setDimensions(param.dimensions)
@@ -382,7 +384,8 @@ function newTTFLabel(param)
         param.y = 0
     end
     --@RefType luaIde#cc.Label
-    local lb = cc.Label:createWithTTF(param.text, param.font, param.size, param.color)
+    local lb = cc.Label:createWithTTF(param.text, param.font, param.size)
+    lb:setTextColor(param.color)
     lb:setAlignment(param.align)
     lb:setVerticalAlignment(param.valign)
     lb:setPosition(param.x, param.y)

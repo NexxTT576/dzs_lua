@@ -57,7 +57,7 @@ function TableViewExt:ctor(param)
     local tableView = cc.TableView:create(_viewSize)
     tableView:setDirection(_direction)
     self:addChild(tableView)
-    tableView:setDelegate()
+    -- tableView:setDelegate()
     self.getContentSize = function()
         return _viewSize
     end
