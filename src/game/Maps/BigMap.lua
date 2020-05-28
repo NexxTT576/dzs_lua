@@ -295,8 +295,9 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                             isRetain = true
                         }
                     )
-                    local x = subMapData.x_axis * TILE_WIDTH - xunhuanEffect:getContentSize().width / 2 + data_field_field[subMapData.id].cloud_x
-                    local y = subMapData.y_axis * TILE_HEIGHT - xunhuanEffect:getContentSize().height * 0.6 + data_field_field[subMapData.id].cloud_y
+                    dump(xunhuanEffect:getContentSize())
+                    local x = subMapData.x_axis * TILE_WIDTH + data_field_field[subMapData.id].cloud_x
+                    local y = subMapData.y_axis * TILE_HEIGHT + data_field_field[subMapData.id].cloud_y
                     xunhuanEffect:setPosition(x, y)
                     self.bg:addChild(xunhuanEffect, maxZorder - i + 1)
                 end
