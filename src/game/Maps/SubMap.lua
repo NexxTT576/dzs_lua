@@ -541,7 +541,7 @@ function SubMap:createMapNode()
         require("utility.TableViewExt").new(
         {
             size = self._listViewSize,
-            direction = kCCScrollViewDirectionVertical,
+            direction = cc.SCROLLVIEW_DIRECTION_VERTICAL,
             createFunc = function(idx)
                 local item = require("game.Maps.SubMapScrollCell").new()
                 idx = idx + 1

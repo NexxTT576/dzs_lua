@@ -54,7 +54,7 @@ function TableViewExt:ctor(param)
     assert(_refreshFunc, "refreshFunc is nil")
     assert(_cellSize, "cellSize is nil")
 
-    local tableView = CCTableView:create(_viewSize)
+    local tableView = cc.TableView:create(_viewSize)
     tableView:setDirection(_direction)
     self:addChild(tableView)
     tableView:setDelegate()
@@ -62,8 +62,8 @@ function TableViewExt:ctor(param)
         return _viewSize
     end
 
-    if _direction == kCCScrollViewDirectionVertical then
-        tableView:setVerticalFillOrder(kCCTableViewFillTopDown)
+    if _direction == cc.SCROLLVIEW_DIRECTION_VERTICAL then
+        tableView:setVerticalFillOrder(cc.TABLEVIEW_FILL_TOPDOWN)
     end
 
     local function scrollViewDidScroll(view)
