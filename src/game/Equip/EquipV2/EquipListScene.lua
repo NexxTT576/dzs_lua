@@ -812,6 +812,7 @@ function EquipListScene:ctor(tag)
     self.bExit = false
     self.equipTable = nil
     self:SendReq()
+    self:enableNodeEvents()
 end
 
 function EquipListScene:onEnter()
