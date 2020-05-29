@@ -64,26 +64,35 @@ function HeroListCell:create(param)
 
     -- self.heroName:setPosition(self.heroName:getContentSize().width/2,self._rootnode["nameBg"]:getContentSize().height*0.5)
 
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     local bTouch = false
     local offsetX = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            if event.name == "began" then
-                bTouch = true
-                offsetX = event.x
-                return true
-            elseif event.name == "moved" then
-                if event.x - offsetX > 5 or event.x - offsetX < -5 then
-                    bTouch = false
-                end
-            elseif event.name == "ended" then
-                if bTouch then
-                    -- ResMgr.createMaskLayer()
-                    PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    param.onHeadIcon(self.index)
-                end
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function(t)
+            bTouch = true
+            offsetX = t:getLocation().x
+            return true
+        end
+    )
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_MOVED,
+        function(t)
+            if event.x - offsetX > 5 or event.x - offsetX < -5 then
+                bTouch = false
+            end
+        end
+    )
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_ENDED,
+        function(t)
+            if bTouch then
+                -- ResMgr.createMaskLayer()
+                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                param.onHeadIcon(self.index)
             end
         end
     )
@@ -159,15 +168,13 @@ function HeroListCell:create(param)
         removeSellItem(self.objId, self.index)
     end
 
-    self.selBtn:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self.selBtn:registerScriptTapHandler(
         function()
             selFunc()
         end
     )
 
-    self.unseleBtn:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self.unseleBtn:registerScriptTapHandler(
         function()
             unSelFunc()
         end

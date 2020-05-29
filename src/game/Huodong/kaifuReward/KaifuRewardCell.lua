@@ -41,12 +41,12 @@ function KaifuRewardCell:checkEnabled()
     end
 
     if self._day > self._curDay then
-        -- rewardBtn:setTitleForState(CCString:create("领取"), CCControlStateDisabled)
+        -- rewardBtn:setTitleForState(CCString:create("领取"), cc.CONTROL_STATE_DISABLED)
         rewardBtn:setEnabled(false)
     else
         if (rewarded == 1) then
             -- rewardBtn:setEnabled(false)
-            -- rewardBtn:setTitleForState(CCString:create("已领取"), CCControlStateDisabled)
+            -- rewardBtn:setTitleForState(CCString:create("已领取"), cc.CONTROL_STATE_DISABLED)
             rewardBtn:setVisible(false)
             self._rootnode["tag_has_get"]:setVisible(true)
         else
@@ -197,7 +197,7 @@ function KaifuRewardCell:getReward(hasRewardDays)
     self._hasRewardDays = hasRewardDays
     local rewardBtn = self._rootnode["rewardBtn"]
     -- rewardBtn:setEnabled(false)
-    -- rewardBtn:setTitleForState(CCString:create("已领取"), CCControlStateDisabled)
+    -- rewardBtn:setTitleForState(CCString:create("已领取"), cc.CONTROL_STATE_DISABLED)
     rewardBtn:setVisible(false)
     self._rootnode["tag_has_get"]:setVisible(true)
 end

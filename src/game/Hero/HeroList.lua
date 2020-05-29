@@ -1,10 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-7
--- Time: 下午4:55
--- To change this template use File | Settings | File Templates.
---
+--@SuperType BaseScene
 local HeroList =
     class(
     "HeroList",
@@ -31,7 +25,7 @@ function HeroList:SendReq()
     RequestHelper.getHeroList(
         {
             callback = function(data)
-                self._cost = {data["4"], data["5"]}
+                self._cost = {data.cost, data.size}
                 self:init(data)
                 if (offset ~= nil) then
                 -- self.heroTable:setContentOffset(offset)
@@ -164,13 +158,13 @@ end
 function HeroList:init(data)
     self.sellTable = {}
 
-    HeroModel.setHeroTable(data["1"])
+    HeroModel.setHeroTable(data.itemAry)
 
     self.sellList = HeroModel.getSellAbleTable() -- {}
 
     -- self.heroDebrisList = nil
 
-    local maxHeroNum = data["3"]
+    local maxHeroNum = data.denominator
     self:setMaxNum(maxHeroNum)
     local sellBtn = self._rootnode["sellBtn"]
 
@@ -711,7 +705,7 @@ function HeroList:init(data)
     --初始化选项卡
     local function initTab()
         for i = 1, 2 do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
         self._rootnode["tab1"]:selected()
     end
@@ -744,7 +738,7 @@ function HeroList:ctor(tag)
         self._currentTab = tag
     end
 
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
     display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     display.loadSpriteFrames("ui/ui_main_menu.plist", "ui/ui_main_menu.png")
     self.viewType = COMMON_VIEW

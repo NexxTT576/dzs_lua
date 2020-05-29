@@ -173,8 +173,7 @@ end
 function FriendScene:initSearch()
     FriendModel.searchType = FRIEND_SERACH.BY_ID
     for i = 1, 2 do
-        self._rootnode["search_" .. tostring(i)]:addNodeEventListener(
-            cc.MENU_ITEM_CLICKED_EVENT,
+        self._rootnode["search_" .. tostring(i)]:registerScriptTapHandler(
             function()
                 if FriendModel.searchType ~= i - 1 then
                     FriendModel.searchType = i - 1

@@ -39,8 +39,7 @@ function JianghuScene:ctor()
     ResMgr.removeBefLayer()
     --    dump(self._rootnode)
     local bShow = false
-    self._rootnode["popBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["popBtn"]:registerScriptTapHandler(
         function(tag)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local tmpW = self._rootnode["propNode"]:getContentSize().width * 0.8

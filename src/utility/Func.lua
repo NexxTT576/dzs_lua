@@ -394,3 +394,9 @@ function newTTFLabel(param)
     end
     return lb
 end
+
+function resetctrbtnimage(btn, image)
+    btn:setBackgroundSpriteForState(display.newSprite(image, {scale9 = true}), cc.CONTROL_STATE_NORMAL)
+    btn:setBackgroundSpriteForState(display.newSprite(image, {scale9 = true}), cc.CONTROL_STATE_HIGH_LIGHTED)
+    btn:setBackgroundSpriteForState(display.newSprite(image, {scale9 = true}), cc.CONTROL_STATE_DISABLED)
+end

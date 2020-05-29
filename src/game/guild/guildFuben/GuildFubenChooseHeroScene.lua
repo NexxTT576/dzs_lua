@@ -212,7 +212,7 @@ function GuildFubenChooseHeroScene:ctor(param)
     --初始化选项卡
     local function initTab()
         for i = 1, 4 do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
     end
 

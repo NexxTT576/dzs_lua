@@ -60,8 +60,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
         textLabel:setString("             下次招募必得")
     end
 
-    subNode["tag_zhaojiang_1"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    subNode["tag_zhaojiang_1"]:registerScriptTapHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if listener then

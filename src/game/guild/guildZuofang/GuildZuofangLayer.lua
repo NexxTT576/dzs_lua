@@ -568,7 +568,7 @@ function GuildZuofangLayer:initBuildListView(buildList, curWorkData)
     --初始化选项卡
     local function initTab()
         for i = 1, #data_union_gongfang_union_gongfang do
-            self._rootnode["choose_btn_" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["choose_btn_" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
         if curWorkData.hasOpen == true then
             self:selectedTab(curWorkData.id)

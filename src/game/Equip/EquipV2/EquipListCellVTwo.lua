@@ -114,8 +114,7 @@ function EquipListCellVTwo:create(param)
         end
     )
 
-    self._rootnode["selIcon"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["selIcon"]:registerScriptTapHandler(
         function(tag)
             -- GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self._rootnode["selIcon"]:setVisible(false)
@@ -126,8 +125,7 @@ function EquipListCellVTwo:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["unSelIcon"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["unSelIcon"]:registerScriptTapHandler(
         function(tag)
             self._rootnode["unSelIcon"]:setVisible(false)
             self._rootnode["selIcon"]:setVisible(true)

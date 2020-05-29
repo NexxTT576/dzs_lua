@@ -532,8 +532,8 @@ function HeroQiangHuaLayer:ctor(param)
         self._curView = tag
     end
     self._rootnode["tab1"]:selected()
-    self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab2"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+    self._rootnode["tab1"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab2"]:registerScriptTapHandler(onTabBtn)
 
     -- self:updateQiangHua()
 
@@ -544,8 +544,7 @@ function HeroQiangHuaLayer:ctor(param)
     --点击任何一个槽，都会弹出同一个列表，玩家可以通过列表 选择要吃掉的侠客，更改侠客table
     for i = 1, 5 do
         local iconBtn = self._rootnode["btn" .. i]
-        iconBtn:addNodeEventListener(
-            cc.MENU_ITEM_CLICKED_EVENT,
+        iconBtn:registerScriptTapHandler(
             function(tag)
                 -- if self.level < game.player.m_level then --如果卡牌级别不高于
 

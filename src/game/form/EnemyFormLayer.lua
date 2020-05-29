@@ -713,7 +713,7 @@ function EnemyFormLayer:initSpirit()
     end
 
     for i = 1, 8 do
-        self._rootnode["spiritBtn_" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onClick)
+        self._rootnode["spiritBtn_" .. tostring(i)]:registerScriptTapHandler(onClick)
     end
 end
 

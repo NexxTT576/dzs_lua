@@ -89,7 +89,8 @@ function LevelGradeItem:ctor(param)
                 resetctrbtnimage(self._fight10Btn, "#levelinfo_btn_zhantimes.png")
             end
 
-            self:schedule(
+            schedule(
+                self,
                 function()
                     if self._secWait > 0 then
                         self._secWait = self._secWait - 1

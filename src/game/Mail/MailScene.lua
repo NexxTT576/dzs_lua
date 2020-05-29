@@ -129,7 +129,7 @@ function MailScene:ctor()
     local function initTab()
         for i = 1, 3 do
             if i ~= 2 then
-                self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+                self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
             end
         end
     end

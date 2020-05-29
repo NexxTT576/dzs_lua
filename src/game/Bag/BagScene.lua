@@ -96,12 +96,11 @@ function BagScene:ctor(tag)
         self._rootnode["tab1"]:setLocalZOrder(0)
     end
 
-    self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab2"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+    self._rootnode["tab1"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab2"]:registerScriptTapHandler(onTabBtn)
 
     --  扩展按钮
-    self._rootnode["extendBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["extendBtn"]:registerScriptTapHandler(
         function()
             if self._cost[self._curView][1] ~= -1 then
                 self._rootnode["extendBtn"]:setEnabled(false)
@@ -140,8 +139,7 @@ function BagScene:ctor(tag)
     )
 
     --  卖出按钮
-    self._rootnode["sellBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["sellBtn"]:registerScriptTapHandler(
         function()
             self:onSaleView()
             self._rootnode["saleView"]:setVisible(true)

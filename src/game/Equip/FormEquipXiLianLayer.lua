@@ -155,7 +155,7 @@ function EquipXiLianScene:ctor(param)
     end
 
     for i = 1, 3 do
-        self._rootnode[string.format("tab%d", i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onXiLianType)
+        self._rootnode[string.format("tab%d", i)]:registerScriptTapHandler(onXiLianType)
     end
 
     --    data_baptize_baptize[self.type]["arr_silver"]

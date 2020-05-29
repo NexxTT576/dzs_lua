@@ -114,10 +114,10 @@ function ItemChooseScene:ctor(param)
 
     self._rootnode["tab" .. tostring(_splitType)]:selected()
     self._rootnode["tab" .. tostring(_splitType)]:setLocalZOrder(1)
-    self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab2"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab3"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab4"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+    self._rootnode["tab1"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab2"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab3"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab4"]:registerScriptTapHandler(onTabBtn)
 
     local _sz = self._rootnode["listView"]:getContentSize()
     local function close(sel)
@@ -146,7 +146,7 @@ function ItemChooseScene:ctor(param)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 
-    self._rootnode["returnBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, close)
+    self._rootnode["returnBtn"]:registerScriptTapHandler(close)
     self._rootnode["okBtn"]:registerControlEventHandler(onConfirmBtn, CCControlEventTouchDown)
 
     self._rootnode["returnBtn"]:registerControlEventHandler(

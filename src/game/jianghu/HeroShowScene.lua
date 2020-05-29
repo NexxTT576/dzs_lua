@@ -88,7 +88,7 @@ function HeroShowScene:ctor(param)
     --初始化选项卡
     local function initTab()
         for i = 1, 3 do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
     end
 
@@ -101,8 +101,7 @@ function HeroShowScene:refresh()
     self._rootnode["touchNode"]:setTouchEnabled(true)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    self._rootnode["touchNode"]:registerScriptTapHandler(
         function(event)
             --        dump(event)
             posX = event.x

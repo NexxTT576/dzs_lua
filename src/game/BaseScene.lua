@@ -1,3 +1,4 @@
+--@SuperType luaIde#cc.Scene
 local BaseScene =
     class(
     "BaseScene",

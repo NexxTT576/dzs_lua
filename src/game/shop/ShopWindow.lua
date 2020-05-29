@@ -85,11 +85,10 @@ function ShopWindow:ctor(bGoShowList)
     --初始化选项卡
     local function initTab()
         for i = 1, 3 do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
 
-        self._rootnode["payBtn"]:addNodeEventListener(
-            cc.MENU_ITEM_CLICKED_EVENT,
+        self._rootnode["payBtn"]:registerScriptTapHandler(
             function(tag)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
                 printf("buy something!")
@@ -351,8 +350,7 @@ function ShopWindow:onPubView()
             )
         end
 
-        self._rootnode["commonHeroBtn"]:addNodeEventListener(
-            cc.MENU_ITEM_CLICKED_EVENT,
+        self._rootnode["commonHeroBtn"]:registerScriptTapHandler(
             function()
                 self:resetBtn(self._rootnode["commonHeroBtn"])
                 if self._zhaomulingNum > 0 then
@@ -364,8 +362,7 @@ function ShopWindow:onPubView()
             end
         )
 
-        self._rootnode["nbHeroBtn"]:addNodeEventListener(
-            cc.MENU_ITEM_CLICKED_EVENT,
+        self._rootnode["nbHeroBtn"]:registerScriptTapHandler(
             function(tag, sender)
                 self:resetBtn(self._rootnode["nbHeroBtn"])
                 if self._bDelayTime > 0 and game.player:getGold() < 80 then
@@ -415,7 +412,7 @@ function ShopWindow:onPubView()
             self:addChild(layer, 5)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end
-        self._rootnode["superNBHeroBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, showSubMenu)
+        self._rootnode["superNBHeroBtn"]:registerScriptTapHandler(showSubMenu)
         self._isPubInit = true
     end
 end

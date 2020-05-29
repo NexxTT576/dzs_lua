@@ -153,7 +153,7 @@ function EquipXiLianLayer:ctor(param)
     end
 
     for i = 1, 3 do
-        self._rootnode["tab" .. i]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, touchTab)
+        self._rootnode["tab" .. i]:registerScriptTapHandler(touchTab)
     end
 
     touchTab(1)

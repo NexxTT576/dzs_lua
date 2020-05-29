@@ -142,7 +142,7 @@ function SpiritScene2:ctor(param)
     --初始化选项卡
     local function initTab()
         for i = 1, 2 do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
         if self._currentTab == TAB_TAG.INFO then
             self._rootnode["tab1"]:selected()

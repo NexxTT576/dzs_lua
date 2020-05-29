@@ -365,7 +365,7 @@ function GuildFubenScene:createTab(showType, fbList)
     --初始化选项卡
     local function initTab()
         for i = 1, MAX_TYPE do
-            self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+            self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onTabBtn)
         end
         selectedTab(showType)
         self:setShowType(showType, fbList)

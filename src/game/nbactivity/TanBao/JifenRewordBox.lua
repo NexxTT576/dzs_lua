@@ -21,7 +21,7 @@ function JifenRewordBox:initButton()
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
-    self._rootnode["okBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, confirmFun)
+    self._rootnode["okBtn"]:registerScriptTapHandler(confirmFun)
 
     if self._jifen < self._num then
         self._rootnode["okBtn"]:setTouchEnabled(false)

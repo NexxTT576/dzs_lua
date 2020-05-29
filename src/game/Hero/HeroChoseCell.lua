@@ -50,8 +50,7 @@ function HeroChoseCell:create(param)
     -- self.expNum = self._rootnode["expNum"]
     -- self.expNum:setString(0)
 
-    self._rootnode["selIcon"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["selIcon"]:registerScriptTapHandler(
         function(tag)
             self._rootnode["selIcon"]:setVisible(false)
             self._rootnode["unSelIcon"]:setVisible(true)
@@ -63,8 +62,7 @@ function HeroChoseCell:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["unSelIcon"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    self._rootnode["unSelIcon"]:registerScriptTapHandler(
         function(tag)
             if self.choseFunc({op = 1, cellIndex = self.cellIndex}) then
                 self._rootnode["unSelIcon"]:setVisible(false)

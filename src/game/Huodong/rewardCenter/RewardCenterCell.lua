@@ -134,7 +134,7 @@ end
 function RewardCenterCell:getReward()
     local rewardBtn = self._rootnode["rewardBtn"]
     -- rewardBtn:setEnabled(false)
-    -- rewardBtn:setTitleForState(CCString:create("已领取"), CCControlStateDisabled)
+    -- rewardBtn:setTitleForState(CCString:create("已领取"), cc.CONTROL_STATE_DISABLED)
     rewardBtn:setVisible(false)
     self._rootnode["tag_has_get"]:setVisible(true)
 end

@@ -49,16 +49,16 @@ function DailyLoginCell:checkEnabled(index)
     if (index ~= curDay_index) then
         rewardBtn:setEnabled(false)
         if (index < curDay_index) then
-            -- rewardBtn:setTitleForState(CCString:create("已签到"), CCControlStateDisabled)
+            -- rewardBtn:setTitleForState(CCString:create("已签到"), cc.CONTROL_STATE_DISABLED)
             rewardBtn:setVisible(false)
             self._rootnode["tag_has_get"]:setVisible(true)
         else
-            -- rewardBtn:setTitleForState(CCString:create("签到"), CCControlStateDisabled)
+            -- rewardBtn:setTitleForState(CCString:create("签到"), cc.CONTROL_STATE_DISABLED)
         end
     else
         if (self.isSign) then
             -- rewardBtn:setEnabled(false)
-            -- rewardBtn:setTitleForState(CCString:create("已签到"), CCControlStateDisabled)
+            -- rewardBtn:setTitleForState(CCString:create("已签到"), cc.CONTROL_STATE_DISABLED)
             rewardBtn:setVisible(false)
             self._rootnode["tag_has_get"]:setVisible(true)
         else
@@ -227,7 +227,7 @@ function DailyLoginCell:getReward(isSign)
     self.isSign = isSign
     local rewardBtn = self._rootnode["rewardBtn"]
     -- rewardBtn:setEnabled(false)
-    -- rewardBtn:setTitleForState(CCString:create("已签到"), CCControlStateDisabled)
+    -- rewardBtn:setTitleForState(CCString:create("已签到"), cc.CONTROL_STATE_DISABLED)
     rewardBtn:setVisible(false)
     self._rootnode["tag_has_get"]:setVisible(true)
 end

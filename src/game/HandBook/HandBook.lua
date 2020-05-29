@@ -70,7 +70,7 @@ function HandBook:init()
     --初始化各个子选项卡
 
     for i = 1, 3 do
-        self._rootnode["tab" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onMainTabBtn)
+        self._rootnode["tab" .. tostring(i)]:registerScriptTapHandler(onMainTabBtn)
         self.subNode[i] = {}
         self.mainNode[i] = display.newNode()
         self._rootnode["cur_bar_bg"]:addChild(self.mainNode[i])
@@ -80,8 +80,7 @@ function HandBook:init()
             if self._rootnode["tab_" .. i .. "_" .. j] ~= nil then
                 self.subNode[i][j] = display.newNode()
 
-                self._rootnode["tab_" .. i .. "_" .. j]:addNodeEventListener(
-                    cc.MENU_ITEM_CLICKED_EVENT,
+                self._rootnode["tab_" .. i .. "_" .. j]:registerScriptTapHandler(
                     function()
                         self:onSubBtn(i, j)
                     end

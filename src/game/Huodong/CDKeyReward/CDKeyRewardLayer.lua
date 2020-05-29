@@ -95,8 +95,7 @@ function CDKeyRewardLayer:ctor(param)
 
     rootnode["closeBtn"]:registerControlEventHandler(closeFun, CCControlEventTouchUpInside)
 
-    rootnode["confirmBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    rootnode["confirmBtn"]:registerScriptTapHandler(
         function()
             if endFunc ~= nil then
                 endFunc()
@@ -106,8 +105,7 @@ function CDKeyRewardLayer:ctor(param)
     )
 
     -- 兑换
-    rootnode["exchangeBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    rootnode["exchangeBtn"]:registerScriptTapHandler(
         function()
             if self._editBox:getText() == "" then
                 show_tip_label(data_error_error[1303].prompt)

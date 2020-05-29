@@ -412,8 +412,8 @@ function SplitStoveScene:ctor()
 
     --    self._rootnode["btn0"]:addNodeEventListener(cc.NODE_TOUCH_EVENT, onAddBtn)
     self._rootnode["rebornBtn"]:registerControlEventHandler(onReborn, CCControlEventTouchDown)
-    self._rootnode["tab1"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
-    self._rootnode["tab2"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onTabBtn)
+    self._rootnode["tab1"]:registerScriptTapHandler(onTabBtn)
+    self._rootnode["tab2"]:registerScriptTapHandler(onTabBtn)
     self._rootnode["descBtn"]:registerControlEventHandler(onDescBtn, CCControlEventTouchDown)
     self._rootnode["secretShopBtn"]:registerControlEventHandler(handler(self, SplitStoveScene.onSecretShopBtn), CCControlEventTouchDown)
 

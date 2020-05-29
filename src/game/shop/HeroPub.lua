@@ -36,14 +36,13 @@ function HeroPub:ctor(...)
         )
     end
 
-    rootnode["commonHeroBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, getOneHero)
+    rootnode["commonHeroBtn"]:registerScriptTapHandler(getOneHero)
 
-    rootnode["nbHeroBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, getOneHero)
+    rootnode["nbHeroBtn"]:registerScriptTapHandler(getOneHero)
 
-    rootnode["superNBHeroBtn"]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, getOneHero)
+    rootnode["superNBHeroBtn"]:registerScriptTapHandler(getOneHero)
 
-    rootnode["payBtn"]:addNodeEventListener(
-        cc.MENU_ITEM_CLICKED_EVENT,
+    rootnode["payBtn"]:registerScriptTapHandler(
         function(tag)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end

@@ -100,7 +100,7 @@ function SpiritQuickSelectedLayer:ctor(callback)
     )
 
     for i = 1, 4 do
-        self._rootnode["chooseStarBtn_" .. tostring(i)]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onSelectedStar)
+        self._rootnode["chooseStarBtn_" .. tostring(i)]:registerScriptTapHandler(onSelectedStar)
     end
 end
 

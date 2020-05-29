@@ -104,7 +104,7 @@ function SkillQiangHuaLayer:ctor(param)
 
     --点击任何一个槽，都会弹出同一个列表，玩家可以通过列表 选择要吃掉的武学，更改武学table
     for i = 1, 5 do
-        self._rootnode["btn" .. i]:addNodeEventListener(cc.MENU_ITEM_CLICKED_EVENT, onChooseLayer)
+        self._rootnode["btn" .. i]:registerScriptTapHandler(onChooseLayer)
     end
 
     self._rootnode["backBtn"]:registerControlEventHandler(
