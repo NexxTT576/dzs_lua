@@ -35,7 +35,7 @@ function SellFrame:ctor(param)
         self._downNode["sellIcon"]:setSpriteFrame(icon:getSpriteFrame())
     end
 
-    self._downNode["sellBtn"]:addHandleOfControlEvent(
+    self._downNode["sellBtn"]:registerControlEventHandler(
         function(eventName, sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             sellFunc()

@@ -239,7 +239,7 @@ function HeroListCell:refresh(id, viewType, isSel)
         end
         --人物级别
         self.lvl = self.cellData["level"]
-        ResMgr.showAlert(self.lvl, "level is null,objId:" .. self.objId)
+        ResMgr.showAlert(self.lvl, "level is null,objId:" .. tostring(self.objId))
         if (self.lvl ~= nil) then
             self.lv:setString("LV." .. self.lvl)
         end
@@ -249,6 +249,7 @@ function HeroListCell:refresh(id, viewType, isSel)
         if zizhiData ~= nil then
             local zizhiValue = zizhiData[self.cls + 1]
             self._rootnode["zizhi"]:removeAllChildren()
+            --@RefType luaIde#cc.Label
             local heroZizhi =
                 newTTFLabelWithShadow(
                 {
@@ -259,6 +260,7 @@ function HeroListCell:refresh(id, viewType, isSel)
                     align = cc.TEXT_ALIGNMENT_LEFT
                 }
             )
+            heroZizhi:setAnchorPoint(cc.p(0, 0.5))
             heroZizhi:setPosition(10, self._rootnode["zizhi"]:getContentSize().height / 2)
             self._rootnode["zizhi"]:addChild(heroZizhi)
         end

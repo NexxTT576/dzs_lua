@@ -1,3 +1,4 @@
+--@SuperType luaIde#cc.Layer
 local PlayerInfoLayer =
     class(
     "PlayerInfoLayer",
@@ -8,7 +9,7 @@ local PlayerInfoLayer =
 
 function PlayerInfoLayer:ctor(mainMenuNode, cb)
     self.playerInfoNode = mainMenuNode
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self.schedulePlayerInfo = require("utility.scheduler")
 
@@ -21,7 +22,8 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
     layer:setPosition(display.width / 2, display.height * 0.53)
     self:addChild(layer)
 
-    layer:setTouchEnabled(true)
+    setTouchEnabled(layer, true)
+    setTouchSwallowEnabled(layer, true)
 
     local closeBtn = self._rootNode["tag_close"]
     closeBtn:registerControlEventHandler(
@@ -78,11 +80,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
             callback = function(data)
                 dump(data)
 
-                if #data["0"] > 0 then
-                    show_tip_label(data["0"])
-                    return
-                end
-                local info = data["1"]
+                local info = data
 
                 self._rootNode["text_shangzhen"]:setString(info.fmtCnt[1] .. "/" .. info.fmtCnt[2])
                 self._rootNode["text_gold"]:setString(info.gold)
@@ -109,7 +107,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                     }
                 )
                 self._rootNode["player_name"]:addChild(text)
-
+                --@RefType luaIde#cc.Label
                 local playerIDLabel =
                     newTTFLabel(
                     {
@@ -122,6 +120,7 @@ function PlayerInfoLayer:ReqPlayerInfo(...)
                         align = cc.TEXT_ALIGNMENT_LEFT
                     }
                 )
+                playerIDLabel:setAnchorPoint(cc.p(0, 0))
                 text:addChild(playerIDLabel)
 
                 -- 更新主界面玩家信息

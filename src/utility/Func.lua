@@ -172,7 +172,7 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
                             return eventListenerHanders[eventType](t, e)
                         end
                     end
-                    return false
+                    return true
                 end,
                 eventType
             )
