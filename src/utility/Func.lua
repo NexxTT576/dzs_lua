@@ -403,7 +403,7 @@ end
 
 function newEditBox(param)
     --@RefType luaIde#ccui.EditBox
-    local edit = ccui.EditBox:create(param.size, param.image)
+    local edit = ccui.EditBox:create(param.size, display.newSprite(param.image, {scale9 = true}))
     if param.x ~= nil then
         edit:setPositionX(param.x)
     end

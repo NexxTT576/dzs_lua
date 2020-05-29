@@ -371,7 +371,7 @@ function HeroList:init(data)
 
         for i = 1, #self.sellTable do
             for j = 1, #self.commonList do
-                if self.sellTable[i] == self.commonList[j]["_id"] then
+                if self.sellTable[i] == self.commonList[j]["id"] then
                     table.remove(self.commonList, j)
                     break
                 end
