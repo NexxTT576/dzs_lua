@@ -303,7 +303,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
         self._rootnode["jobSprite"]:setSpriteFrame(display.newSpriteFrame(string.format("zhenrong_job_%d.png", card.job)))
         --图像
         local heroImg = ResMgr.getCardData(hero.resId)["arr_body"][hero.cls + 1]
-        local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+        local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
         self._rootnode["heroImg"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
         --等级
         self._rootnode["currentLevelLabel"]:setString(tostring(hero["level"]))
@@ -434,7 +434,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
             for k, v in ipairs(self._equip[index]) do
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local path = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)

@@ -36,12 +36,8 @@ function EquipListScene:SendReq()
     RequestHelper.getEquipList(
         {
             callback = function(data)
-                if #data["0"] > 0 then
-                    show_tip_label(#data["0"])
-                else
-                    self._cost = {data["4"], data["5"]}
-                    self:init(data)
-                end
+                self._cost = {data.cost, data.size}
+                self:init(data)
             end
         }
     )
@@ -162,8 +158,8 @@ end
 function EquipListScene:init(data)
     self.sellTable = {}
 
-    local list = data["1"]
-    self.nameList = data["6"]
+    local list = data.itemAry
+    self.nameList = data.cardNameAry
     -- dump(list)
     self.commonList = list or {}
 
@@ -184,7 +180,7 @@ function EquipListScene:init(data)
             end
         end
     end
-    local maxEquipNum = data["3"]
+    local maxEquipNum = data.denominator
     self:setMaxNum(maxEquipNum)
     local sellBtn = self._rootnode["sellBtn"]
     local extendBtn = self._rootnode["expandBtn"]
@@ -331,12 +327,8 @@ function EquipListScene:init(data)
         RequestHelper.getEquipDebrisList(
             {
                 callback = function(listData)
-                    if #listData["0"] > 0 then
-                        show_tip_label(listData["0"])
-                        return
-                    end
                     self.scrollLayerNode:removeAllChildren()
-                    local debrisList = listData["1"]
+                    local debrisList = listData.itemAry
                     -- dump("fdfdd")
 
                     local function createCollectLayer(levelInfo)

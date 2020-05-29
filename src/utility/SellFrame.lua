@@ -16,7 +16,7 @@ function SellFrame:ctor(param)
     self._downNode = {}
 
     local downNode = CCBReaderLoad("public/bottom_sell_frame", downProxy, self._downNode)
-    -- downNode:setContentSize(CCSizeMake(display.width, display.height))
+    -- downNode:setContentSize(cc.size(display.width, display.height))
     downNode:setPosition(display.cx, 0)
     self:addChild(downNode, 1)
 

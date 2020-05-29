@@ -57,7 +57,7 @@ function TableViewExt:ctor(param)
     local tableView = cc.TableView:create(_viewSize)
     tableView:setDirection(_direction)
     self:addChild(tableView)
-    -- tableView:setDelegate()
+    tableView:setDelegate()
     self.getContentSize = function()
         return _viewSize
     end
@@ -115,6 +115,7 @@ function TableViewExt:ctor(param)
     tableView:registerScriptHandler(tableCellAtIndex, cc.TABLECELL_SIZE_AT_INDEX)
     tableView:registerScriptHandler(numberOfCellsInTableView, cc.NUMBER_OF_CELLS_IN_TABLEVIEW)
     tableView:reloadData()
+
     --    tableView:setTouchSwallowEnabled(true)
 
     self.setTouchSwallowEnabled = function(_, b)

@@ -10,7 +10,7 @@ function BaseSceneExt:ctor(param)
     local _contentFile = param.contentFile
     local _bottomFile = param.bottomFile
     local _topFile = param.topFile
-    local _adjustSize = param.adjustSize or CCSizeMake(0, 0)
+    local _adjustSize = param.adjustSize or cc.size(0, 0)
 
     game.runningScene = self
 
@@ -56,7 +56,7 @@ function BaseSceneExt:ctor(param)
     local contentNode
     if _contentFile then
         printf("content node")
-        contentNode = CCBuilderReaderLoad(_contentFile, self._proxy, self._rootnode, self, CCSizeMake(display.width + _adjustSize.width, display.height - _topL - _bottomL + _adjustSize.height))
+        contentNode = CCBuilderReaderLoad(_contentFile, self._proxy, self._rootnode, self, cc.size(display.width + _adjustSize.width, display.height - _topL - _bottomL + _adjustSize.height))
         self:addChild(contentNode, 1)
         contentNode:setPosition(display.width / 2, _bottomL)
     end

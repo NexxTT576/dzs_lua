@@ -52,7 +52,7 @@ function LimitHeroCell:refresh(idx)
     local cardData = ResMgr.getCardData(heroResId)
 
     local heroImg = cardData["arr_body"][1]
-    local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+    local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
     self.heroSprite:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
     self.heroSprite:setPosition(self.viewSize.width / 2, 0)
     --self.viewSize.height/2)

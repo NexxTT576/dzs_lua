@@ -1,28 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-10-10
---
-
 local data_item_nature = require("data.data_item_nature")
 local data_talent_talent = require("data.data_talent_talent")
 local data_jiban_jiban = require("data.data_jiban_jiban")
@@ -38,6 +13,7 @@ local ST_COLOR = {
     cc.c3b(218, 129, 29)
 }
 
+--@SuperType ShadeLayer
 local HeroInfoLayer =
     class(
     "HeroInfoLayer",
@@ -470,8 +446,7 @@ end
 --3:shop
 function HeroInfoLayer:ctor(param, infoType)
     dump(param)
-
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self.removeListener = param.removeListener
 
@@ -520,12 +495,12 @@ function HeroInfoLayer:ctor(param, infoType)
     --
     --    self._rootnode["scrollView"]:setContentOffset(cc.p(0, -self._rootnode["contentView"]:getContentSize().height + self._rootnode["scrollView"]:getViewSize().height), false)
 
-    local _info = param.info["1"]
+    local _info = param.info[1]
     local _changeHeroListener = param.changeHero
     local _refreshHeroListener = param.refreshHero
     local _baseInfo = ResMgr.getCardData(_info.resId)
-    self._objId = _info["_id"]
-    _info.objId = _info["_id"]
+    self._objId = _info["id"]
+    _info.objId = _info["id"]
 
     if _info.resId == 1 or _info.resId == 2 then
         self._rootnode["changeBtn"]:setVisible(false)
@@ -600,7 +575,7 @@ function HeroInfoLayer:ctor(param, infoType)
 
         --      图标
         local heroImg = ResMgr.getCardData(self._detailInfo.resId)["arr_body"][self._detailInfo.cls + 1]
-        local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+        local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
         self._rootnode["heroImage"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
         local height = 0
@@ -956,8 +931,8 @@ function HeroInfoLayer:ctor(param, infoType)
 end
 
 function HeroInfoLayer:refreshHeroInfo(data)
-    self._detailInfo = data["1"]
-    self._detailInfo.levelLimit = data["2"]
+    self._detailInfo = data[1]
+    self._detailInfo.levelLimit = data[2]
 
     self:refresh()
     local addBtn

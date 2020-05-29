@@ -271,7 +271,7 @@ function EnemyFormScene:refreshHero(index)
         self._rootnode["nameLabel"]:setColor(NAME_COLOR[hero.star])
         --图像
         local heroImg = ResMgr.getCardData(hero.resId)["arr_body"][hero.cls + 1]
-        local heroPath = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+        local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
         self._rootnode["heroImg"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
         --等级
         self._rootnode["currentLevelLabel"]:setString(tostring(hero["level"]))
@@ -354,7 +354,7 @@ function EnemyFormScene:refreshHero(index)
             for k, v in ipairs(self._equip[index]) do
                 local equipNodeName = "equipBtn_" .. tostring(v.subpos)
 
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(data_item_item[v.resId].icon, ResMgr.EQUIP))
+                local path = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getIconImage(data_item_item[v.resId].icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)

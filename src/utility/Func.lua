@@ -412,3 +412,13 @@ function newEditBox(param)
     end
     return edit
 end
+
+function resetbtn(btn, parentNode, zorder)
+    local closepos = btn:convertToWorldSpace(cc.p(btn:getContentSize().width / 2, btn:getContentSize().height / 2))
+    btn:retain()
+    btn:removeFromParent(false)
+    btn:setPosition(parentNode:convertToNodeSpace(closepos))
+    parentNode:addChild(btn, zorder)
+    btn:release()
+    btn:setTouchEnabled(true)
+end

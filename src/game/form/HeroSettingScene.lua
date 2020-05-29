@@ -105,7 +105,7 @@ function HeroIcon:refresh(param)
     end
 end
 
-local MOVE_OFFSET = display.width / 3
+local MOVE_OFFSET = display.width / 4
 local HeroSettingScene =
     class(
     "HeroSettingScene",
@@ -869,7 +869,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
 
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local path = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
@@ -1100,7 +1100,6 @@ function HeroSettingScene:initTouchNode()
     local function onTouchMove(event)
         if self._bHeroScrollDisabled ~= true then
             local posX, posY = currentNode:getPosition()
-            print(event:getLocation().x)
             currentNode:setPosition(posX + event:getLocation().x - event:getPreviousLocation().x, posY)
         end
 
@@ -1111,6 +1110,7 @@ function HeroSettingScene:initTouchNode()
 
     local function onTouchEnded(event)
         if self._bHeroScrollDisabled ~= true then
+            print(event:getLocation().x, offsetX)
             offsetX = event:getLocation().x - offsetX
             if offsetX >= MOVE_OFFSET then
                 if self._index > 1 then
@@ -1164,7 +1164,7 @@ function HeroSettingScene:initTouchNode()
     end
 
     addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_BEGAN, onTouchBegan)
-    addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_MOVED, onTouchMove)
+    -- addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_MOVED, onTouchMove)
     addNodeEventListener(touchNode, cc.Handler.EVENT_TOUCH_ENDED, onTouchEnded)
 end
 
