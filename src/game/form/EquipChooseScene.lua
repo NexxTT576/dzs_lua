@@ -1,11 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-15
--- Time: 下午5:50
--- To change this template use File | Settings | File Templates.
---
-
 local data_item_nature = require("data.data_item_nature")
 local data_item_item = require("data.data_item_item")
 
@@ -130,6 +122,7 @@ function Item:refresh(param)
     self:refreshLabel(_itemData)
 end
 
+--@SuperType BaseScene
 local EquipChooseScene =
     class(
     "EquipChooseScene",
@@ -190,6 +183,7 @@ function EquipChooseScene:ctor(param)
     end
     EquipModel.sortChoseList(_data)
 
+    --@RefType TableViewExt
     self._scrollItemList =
         require("utility.TableViewExt").new(
         {
@@ -245,6 +239,7 @@ function EquipChooseScene:ctor(param)
     )
     self._scrollItemList:setPosition(0, 0)
     self._rootnode["listView"]:addChild(self._scrollItemList)
+    self:enableNodeEvents()
 end
 
 function EquipChooseScene:onEnter()

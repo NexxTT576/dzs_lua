@@ -271,6 +271,7 @@ function HeroChooseScene:ctor(param)
     end
 
     TutoMgr.active()
+    self:enableNodeEvents()
 end
 
 function HeroChooseScene:onEnter()

@@ -434,7 +434,7 @@ function EnemyFormLayer:refreshHero(index, bScrollHead)
             for k, v in ipairs(self._equip[index]) do
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
-                local path = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local path = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)

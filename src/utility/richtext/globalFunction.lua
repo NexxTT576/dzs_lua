@@ -12,7 +12,7 @@ local function __(text)
 end
 
 --- 判断当前是否存在多语言文件
---if cc.FileUtils:getInstance()():isFileExist(LANG) then
+--if cc.FileUtils:getInstance():isFileExist(LANG) then
 --    __ = assert(require("framework.cc.utils.Gettext").gettextFromFile(LANG))
 --end
 

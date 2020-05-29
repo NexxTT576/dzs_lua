@@ -597,7 +597,7 @@ function HeroInfoLayer:ctor(param, infoType)
 
         --      图标
         local heroImg = ResMgr.getCardData(self._detailInfo.resId)["arr_body"][self._detailInfo.cls + 1]
-        local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+        local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
         self._rootnode["heroImage"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
         local height = 0

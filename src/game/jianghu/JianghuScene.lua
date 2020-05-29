@@ -427,7 +427,7 @@ function JianghuScene:refresh()
 
     local card = ResMgr.getCardData(info.resId)
     local heroImg = card["arr_body"][1]
-    local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
+    local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getLargeImage(heroImg, ResMgr.HERO))
     self._rootnode["imageSprite"]:setSpriteFrame(display.newSprite(heroPath):getSpriteFrame())
 
     self._rootnode["heroNameLabel"]:setString(card.name)

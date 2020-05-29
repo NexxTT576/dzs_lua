@@ -40,7 +40,7 @@ function CardObj:ctor(param)
 
     local card = ResMgr.getCardData(_id)
     local heroImg = card["arr_image"][_cls + 1]
-    local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getMidImage(heroImg, ResMgr.HERO))
+    local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getMidImage(heroImg, ResMgr.HERO))
 
     if io.exists(heroPath) then
         --        sprite:setScale(self:getContentSize().height / sprite:getContentSize().height + 0.02)

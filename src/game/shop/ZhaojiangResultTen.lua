@@ -102,7 +102,7 @@ function ZhaojiangResultTen:refreshCardInfo()
         node:setScale(toScale)
 
         local heroImg = heroInfo["arr_image"][1]
-        local heroPath = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getMidImage(heroImg, ResMgr.HERO))
+        local heroPath = cc.FileUtils:getInstance():fullPathForFilename(ResMgr.getMidImage(heroImg, ResMgr.HERO))
 
         local icon = display.newSprite(heroPath)
         icon:setScale(2.5)

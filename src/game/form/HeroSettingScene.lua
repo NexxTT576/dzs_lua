@@ -869,7 +869,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
 
-                local path = cc.FileUtils:getInstance()():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
@@ -1402,7 +1402,7 @@ function HeroSettingScene:initEquip()
 
         if bChangeScene then
             if tag < 5 then
-                self._rootnode["equipBtn_" .. tostring(tag)]:getEventDispatcher():setEnabled(false)
+                setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], false)
                 push_scene(
                     require("game.form.EquipChooseScene").new(
                         {
@@ -1418,7 +1418,7 @@ function HeroSettingScene:initEquip()
                     )
                 )
             else
-                self._rootnode["equipBtn_" .. tostring(tag)]:getEventDispatcher():setEnabled(false)
+                setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], false)
                 push_scene(
                     require("game.form.SkillChooseScene").new(
                         {
