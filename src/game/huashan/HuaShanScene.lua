@@ -102,12 +102,12 @@ function HuaShanScene:ctor()
             elseif "moved" == event.name then
                 local posX, posY = self._rootnode["imageBg"]:getPosition()
 
-                if posY + event.y - event.prevY > 0 then
+                if posY + event.y - event:getPreviousLocation().y > 0 then
                     self._rootnode["imageBg"]:setPosition(posX, 0)
-                elseif posY + event.y - event.prevY < self._maxPosY then
+                elseif posY + event.y - event:getPreviousLocation().y < self._maxPosY then
                     self._rootnode["imageBg"]:setPosition(posX, self._maxPosY)
                 else
-                    self._rootnode["imageBg"]:setPosition(posX, posY + event.y - event.prevY)
+                    self._rootnode["imageBg"]:setPosition(posX, posY + event.y - event:getPreviousLocation().y)
                 end
             end
         end,

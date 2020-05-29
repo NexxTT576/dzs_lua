@@ -1090,7 +1090,7 @@ function HeroSettingScene:initTouchNode()
         local sz = touchNode:getContentSize()
         if cc.rectContainsPoint(cc.rect(0, 0, sz.width, sz.height), touchNode:convertToNodeSpace(event1:getLocation())) then
             currentNode = self._rootnode["heroImg"]
-            offsetX = event.x
+            offsetX = event:getLocation().x
             bTouch = true
             return true
         end
@@ -1100,17 +1100,18 @@ function HeroSettingScene:initTouchNode()
     local function onTouchMove(event)
         if self._bHeroScrollDisabled ~= true then
             local posX, posY = currentNode:getPosition()
-            currentNode:setPosition(posX + event.x - event.prevX, posY)
+            print(event:getLocation().x)
+            currentNode:setPosition(posX + event:getLocation().x - event:getPreviousLocation().x, posY)
         end
 
-        if math.abs(event.x - event.prevX) > 8 then
+        if math.abs(event:getLocation().x - event:getPreviousLocation().x) > 8 then
             bTouch = false
         end
     end
 
     local function onTouchEnded(event)
         if self._bHeroScrollDisabled ~= true then
-            offsetX = event.x - offsetX
+            offsetX = event:getLocation().x - offsetX
             if offsetX >= MOVE_OFFSET then
                 if self._index > 1 then
                     self._index = self._index - 1

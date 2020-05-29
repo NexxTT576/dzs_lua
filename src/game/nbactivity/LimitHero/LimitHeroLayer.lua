@@ -138,8 +138,8 @@ function LimitHeroLayer:init()
                 end
             elseif event.name == "moved" then
                 -- dump(event)
-                if math.abs(event.x - event.prevX) > 5 then
-                    local touchOffx = event.x - event.prevX
+                if math.abs(event.x - event:getPreviousLocation().x) > 5 then
+                    local touchOffx = event.x - event:getPreviousLocation().x
                     local curOff = self.heroTableList:getContentOffset()
                     curOff.x = curOff.x + touchOffx
                     self.heroTableList:setContentOffset(curOff, false)

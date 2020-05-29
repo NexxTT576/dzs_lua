@@ -263,7 +263,7 @@ function SpiritDescLayer:ctor(closeListener)
 
         local bTouch
         local function onTouchMove(event)
-            if math.abs(event.y - event.prevY) > 5 or math.abs(event.x - event.prevX) > 5 then
+            if math.abs(event.y - event:getPreviousLocation().y) > 5 or math.abs(event.x - event:getPreviousLocation().x) > 5 then
                 bTouch = false
             end
         end

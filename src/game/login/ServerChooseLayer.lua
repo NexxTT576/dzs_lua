@@ -94,7 +94,7 @@ function ServerChooseLayer:ctor(serverList, callback)
 
     local bTouch
     local function onTouchMove(event)
-        if math.abs(event.y - event.prevY) > 5 then
+        if math.abs(event.y - event:getPreviousLocation().y) > 5 then
             bTouch = false
         end
     end

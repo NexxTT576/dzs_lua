@@ -589,7 +589,7 @@ function EnemyFormLayer:initTouchNode()
 
     local function onTouchMove(event)
         local posX, posY = currentNode:getPosition()
-        currentNode:setPosition(posX + event.x - event.prevX, posY)
+        currentNode:setPosition(posX + event.x - event:getPreviousLocation().x, posY)
     end
 
     local function onTouchEnded(event)

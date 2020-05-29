@@ -103,7 +103,7 @@ function HandBookCell:ctor(param)
 
                             return true
                         elseif event.name == "moved" then
-                            if math.abs(event.y - event.prevY) > 5 then
+                            if math.abs(event.y - event:getPreviousLocation().y) > 5 then
                                 isMoved = true
                             end
                         elseif event.name == "ended" then

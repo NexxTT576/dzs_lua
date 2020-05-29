@@ -105,7 +105,7 @@ function FormSettingLayer:ctor(param)
 
     local function touchMove(param)
         local posX, posY = param.image:getPosition()
-        param.image:setPosition(posX + param.event.x - param.event.prevX, posY + param.event.y - param.event.prevY)
+        param.image:setPosition(posX + param.event.x - param.event:getPreviousLocation().x, posY + param.event.y - param.event:getPreviousLocation().y)
     end
 
     local function touchEnd(param)

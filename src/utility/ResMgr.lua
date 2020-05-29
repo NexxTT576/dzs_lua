@@ -350,7 +350,7 @@ function ResMgr.setNodeEvent(param)
                     -- curNode:setTouchEnabled(false)
                     return true
                 elseif event.name == "moved" then
-                    if math.abs(event.y - event.prevY) > 10 or math.abs(event.x - event.prevX) > 10 then
+                    if math.abs(event.y - event:getPreviousLocation().y) > 10 or math.abs(event.x - event:getPreviousLocation().x) > 10 then
                         isMoved = true
                     end
                 elseif event.name == "ended" then

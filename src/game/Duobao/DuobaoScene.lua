@@ -423,10 +423,10 @@ function DuobaoScene:createDuobaoItem(showType, index)
     local function onTouchMove(event)
         if self._bScrollEnabled ~= false then
             local posX, posY = self._currentItemNode:getPosition()
-            self._currentItemNode:setPosition(posX + event.x - event.prevX, posY)
+            self._currentItemNode:setPosition(posX + event.x - event:getPreviousLocation().x, posY)
         end
 
-        if math.abs(event.x - event.prevX) > 8 then
+        if math.abs(event.x - event:getPreviousLocation().x) > 8 then
             bTouch = false
         end
     end
