@@ -60,7 +60,7 @@ function GuildCreateMsgBox:ctor()
     local cntSize = editBoxNode:getContentSize()
 
     self._editBox =
-        ui.newEditBox(
+        newEditBox(
         {
             image = "#win_base_inner_bg_black.png",
             size = cc.size(cntSize.width, cntSize.height),

@@ -220,7 +220,7 @@ end
 function FriendScene:initEditBox()
     local boxSize = self._rootnode["ed_box"]:getContentSize()
     self._editBox =
-        ui.newEditBox(
+        newEditBox(
         {
             image = "#text_frame.png",
             size = boxSize,

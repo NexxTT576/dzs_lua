@@ -400,3 +400,15 @@ function resetctrbtnimage(btn, image)
     btn:setBackgroundSpriteForState(display.newSprite(image, {scale9 = true}), cc.CONTROL_STATE_HIGH_LIGHTED)
     btn:setBackgroundSpriteForState(display.newSprite(image, {scale9 = true}), cc.CONTROL_STATE_DISABLED)
 end
+
+function newEditBox(param)
+    --@RefType luaIde#ccui.EditBox
+    local edit = ccui.EditBox:create(param.size, param.image)
+    if param.x ~= nil then
+        edit:setPositionX(param.x)
+    end
+    if param.y ~= nil then
+        edit:setPositionX(param.y)
+    end
+    return edit
+end

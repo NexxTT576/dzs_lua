@@ -186,7 +186,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
     local cntSize = chatNode:getContentSize()
 
     self._editBox =
-        ui.newEditBox(
+        newEditBox(
         {
             image = "#win_base_inner_bg_black.png",
             size = cc.size(cntSize.width * 0.9, cntSize.height * 0.9),

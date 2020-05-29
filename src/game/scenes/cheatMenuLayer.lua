@@ -1,10 +1,4 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-11-03 21:04:18
- -- @version 
- --
- --]]
+--@SuperType luaIde#cc.Layer
 local cheatMenuLayer =
     class(
     "cheatMenuLayer",
@@ -16,7 +10,7 @@ local cheatMenuLayer =
 function cheatMenuLayer:ctor(...)
     local function onAddItem(tag)
         local editBox =
-            ui.newEditBox(
+            newEditBox(
             {
                 image = "#mm_energy_bg.png",
                 size = cc.size(250, 50),

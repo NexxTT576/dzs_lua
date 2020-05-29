@@ -62,7 +62,7 @@ function FriendApplyBox:initEditBox()
     local boxSize = self._rootnode["inner_board"]:getContentSize()
 
     self._editBox =
-        ui.newEditBox(
+        newEditBox(
         {
             image = "#text_frame.png",
             size = boxSize

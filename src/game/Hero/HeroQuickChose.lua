@@ -76,9 +76,9 @@ function HeroQuickChose:ctor(callback, removeListener)
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(button, event)
             btn_effect(
-                sender,
+                button,
                 function()
                     self:removeFunc()
                     self:removeSelf()
@@ -89,15 +89,15 @@ function HeroQuickChose:ctor(callback, removeListener)
     )
 
     self._rootnode["chooseAllBtn"]:registerControlEventHandler(
-        function(eventName, sender)
-            btn_effect(sender, onSelecteAllBtn)
+        function(button, event)
+            btn_effect(button, onSelecteAllBtn)
         end,
         CCControlEventTouchDown
     )
 
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
-            btn_effect(sender, onConfirmBtn)
+        function(button, event)
+            btn_effect(button, onConfirmBtn)
         end,
         CCControlEventTouchDown
     )

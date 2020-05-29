@@ -216,7 +216,7 @@ function HeroListCell:refresh(id, viewType, isSel)
     -- dump(self.list)
     self.index = id + 1
     self.cellData = curList[id + 1]
-    self.objId = self.cellData["_id"]
+    self.objId = self.cellData["id"]
 
     if self.cellData["lock"] ~= 1 then
         self._rootnode["lock_icon"]:setVisible(false)

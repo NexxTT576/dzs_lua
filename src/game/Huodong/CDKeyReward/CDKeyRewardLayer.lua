@@ -120,7 +120,7 @@ function CDKeyRewardLayer:ctor(param)
     local cntSize = boxNode:getContentSize()
 
     self._editBox =
-        ui.newEditBox(
+        newEditBox(
         {
             image = "#s_cdkey_input_bg.png",
             size = cc.size(cntSize.width * 0.98, cntSize.height * 0.98),

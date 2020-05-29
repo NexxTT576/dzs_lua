@@ -412,11 +412,11 @@ function HeroList:init(data)
                     callback = function(data)
                         clearSellData()
 
-                        show_tip_label("出售成功,获得" .. data["1"][1] .. "银币")
+                        show_tip_label("出售成功,获得" .. data[1][1] .. "银币")
 
                         --                    dump(data)
-                        game.player.m_silver = data["1"][2]
-                        self._rootnode["silverLabel"]:setString(data["1"][2])
+                        game.player.m_silver = data[1][2]
+                        self._rootnode["silverLabel"]:setString(data[1][2])
 
                         PostNotice(NoticeKey.MainMenuScene_Update)
                         PostNotice(NoticeKey.CommonUpdate_Label_Silver)
@@ -833,13 +833,15 @@ function HeroList:ctor(tag)
                         self.sellIndex[j] = true
                         local isExist = false
                         for k = 1, #self.sellTable do
-                            if self.sellTable[k] == self.sellList[j]["_id"] then
+                            if self.sellTable[k] == self.sellList[j]["id"] then
                                 isExist = true
                                 break
                             end
                         end
                         if isExist ~= true then
-                            self.sellTable[#self.sellTable + 1] = self.sellList[j]["_id"]
+                            self.sellTable[#self.sellTable + 1] = self.sellList[j]["id"]
+                            dump(#self.sellTable)
+                            dump(self.sellTable)
                         end
                     end
                 end
