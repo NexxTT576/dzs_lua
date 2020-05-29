@@ -444,14 +444,14 @@ function WorldBossScene:ctor()
             -- 先判断VIP等级（缺少功能判断）
             if self._isAutoBattle then
                 self._isAutoBattle = false
-                autoBtn:setTitleForState(CCString:create("自动攻击"), CCControlStateNormal)
+                autoBtn:setTitleForState("自动攻击", cc.CONTROL_STATE_NORMAL)
             else
                 local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.WorldBoss_AutoBattle, game.player:getLevel(), game.player:getVip())
                 if not bHasOpen then
                     show_tip_label(prompt)
                 else
                     self._isAutoBattle = true
-                    autoBtn:setTitleForState(CCString:create("取消自动攻击"), CCControlStateNormal)
+                    autoBtn:setTitleForState("取消自动攻击", cc.CONTROL_STATE_NORMAL)
                     if self._attackTime <= 0 and self._bossLife > 0 then
                         self:getPlayerBattleData()
                     end
@@ -641,11 +641,11 @@ function WorldBossScene:updateAttackCDTime(battleWait)
     self._attackTime = battleWait
     local attackBtn = self._rootnode["attackBtn"]
     if self._attackTime > 0 then
-        attackBtn:setTitleForState(CCString:create(tostring(format_time(self._attackTime))), CCControlStateNormal)
+        attackBtn:setTitleForState(tostring(format_time(self._attackTime)), cc.CONTROL_STATE_NORMAL)
         self._rootnode["fuhuo_texiao"]:setVisible(true)
     else
         self._attackTime = -1
-        attackBtn:setTitleForState(CCString:create("攻 击"), CCControlStateNormal)
+        attackBtn:setTitleForState("攻 击", cc.CONTROL_STATE_NORMAL)
         self._rootnode["fuhuo_texiao"]:setVisible(false)
 
         if self._isAutoBattle then

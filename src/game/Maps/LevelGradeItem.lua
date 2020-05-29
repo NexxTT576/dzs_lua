@@ -82,10 +82,10 @@ function LevelGradeItem:ctor(param)
             if self._secWait > 0 then
                 self._clearCD_node:setVisible(true)
                 rootnode["goldNumLbl"]:setString(_needGold)
-                self._fight10Btn:setTitleForState(CCString:create(tostring(format_time(self._secWait))), CCControlStateNormal)
+                self._fight10Btn:setTitleForState(tostring(format_time(self._secWait)), cc.CONTROL_STATE_NORMAL)
                 resetctrbtnimage(self._fight10Btn, "#levelinfo_btn_zhantimes_wait.png")
             else
-                self._fight10Btn:setTitleForState(CCString:create(self._lianzhanCnt), CCControlStateNormal)
+                self._fight10Btn:setTitleForState(self._lianzhanCnt, cc.CONTROL_STATE_NORMAL)
                 resetctrbtnimage(self._fight10Btn, "#levelinfo_btn_zhantimes.png")
             end
 
@@ -96,7 +96,7 @@ function LevelGradeItem:ctor(param)
                         if self._secWait <= 0 then
                             self:updateBtnMsg(self._lianzhanCnt)
                         else
-                            self._fight10Btn:setTitleForState(CCString:create(tostring(format_time(self._secWait))), CCControlStateNormal)
+                            self._fight10Btn:setTitleForState(tostring(format_time(self._secWait)), cc.CONTROL_STATE_NORMAL)
                         end
                     end
                 end,
@@ -189,7 +189,7 @@ function LevelGradeItem:updateBtnMsg(lianzhanCnt)
         end
 
         if self._lianzhanCnt > 0 then
-            self._fight10Btn:setTitleForState(CCString:create("战" .. self._lianzhanCnt .. "次"), CCControlStateNormal)
+            self._fight10Btn:setTitleForState("战" .. self._lianzhanCnt .. "次", cc.CONTROL_STATE_NORMAL)
             resetctrbtnimage(self._fight10Btn, "#levelinfo_btn_zhantimes_wait.png")
         else
             self._fight10Btn:setVisible(false)

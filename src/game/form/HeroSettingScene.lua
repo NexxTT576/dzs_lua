@@ -181,9 +181,9 @@ function HeroSettingScene:ctor(showType)
 
     local function refreshBtnText()
         if self._showType == SHOWTYPE.SPIRIT then
-            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_equip.png", {scale9 = true}), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_equip.png", {scale9 = true}), cc.CONTROL_STATE_NORMAL)
         else
-            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_zhenqi.png", {scale9 = true}), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setBackgroundSpriteForState(display.newSprite("#zhenrong_btn_zhenqi.png", {scale9 = true}), cc.CONTROL_STATE_NORMAL)
         end
     end
 

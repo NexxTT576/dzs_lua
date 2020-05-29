@@ -149,7 +149,7 @@ function SettingLayer:ctor()
         if (device.platform == "android") then
             btnText = "返回"
         end
-        rootnode["returnLoginBtn"]:setTitleForState(CCString:create(btnText), CCControlStateNormal)
+        rootnode["returnLoginBtn"]:setTitleForState(btnText, cc.CONTROL_STATE_NORMAL)
 
         --21.5
     end

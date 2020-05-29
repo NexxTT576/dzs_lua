@@ -834,7 +834,7 @@ function BattleLayer:initSkipDramaBtn()
     if self.skipDramaBtn == nil then
         local btnSprite = display.newSprite("#jump_drama_btn.png", {scale9 = true})
         self.skipDramaBtn = CCControlButton:create("", FONTS_NAME.font_fzcy, 30)
-        self.skipDramaBtn:setBackgroundSpriteForState(btnSprite, CCControlStateNormal)
+        self.skipDramaBtn:setBackgroundSpriteForState(btnSprite, cc.CONTROL_STATE_NORMAL)
         self.skipDramaBtn:setPreferredSize(cc.size(144, 50))
         self.skipDramaBtn:registerControlEventHandler(
             function()

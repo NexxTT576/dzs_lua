@@ -165,9 +165,9 @@ function EnemyFormScene:ctor(showType, enemyID)
 
     local function refreshBtnText()
         if self._showType == SHOWTYPE.SPIRIT then
-            self._rootnode["spiritAndEquipBtn"]:setTitleForState(CCString:create("装备"), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setTitleForState("装备", cc.CONTROL_STATE_NORMAL)
         else
-            self._rootnode["spiritAndEquipBtn"]:setTitleForState(CCString:create("精元"), CCControlStateNormal)
+            self._rootnode["spiritAndEquipBtn"]:setTitleForState("精元", cc.CONTROL_STATE_NORMAL)
         end
     end
 

@@ -50,7 +50,7 @@ function KaifuRewardCell:checkEnabled()
             rewardBtn:setVisible(false)
             self._rootnode["tag_has_get"]:setVisible(true)
         else
-            -- rewardBtn:setTitleForState(CCString:create("领取"), CCControlStateNormal)
+            -- rewardBtn:setTitleForState(CCString:create("领取"), cc.CONTROL_STATE_NORMAL)
             rewardBtn:setEnabled(true)
         end
     end

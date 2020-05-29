@@ -669,7 +669,7 @@ function HeroInfoScene:ctor(param, infoType)
     if infoType == 3 then
         self._rootnode["changeBtn"]:setVisible(false)
         self._rootnode["qiangHuBtn"]:setVisible(false)
-        self._rootnode["jinJieBtn"]:setTitleForState(CCString:create("返回"), CCControlStateNormal)
+        self._rootnode["jinJieBtn"]:setTitleForState("返回", cc.CONTROL_STATE_NORMAL)
     end
 
     --    refresh()
