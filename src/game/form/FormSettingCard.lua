@@ -43,7 +43,6 @@ function FormSettingCard:ctor(param)
     local _sz = _bg:getContentSize()
     local _pos = cc.p(_sz.width / 2, _sz.height / 2)
 
-    _bg:setTouchEnabled(true)
     rootnode["lvNum_node"]:setVisible(false)
 
     local nameLabel =
@@ -58,84 +57,55 @@ function FormSettingCard:ctor(param)
     nameLabel:setPosition(nameLabel:getContentSize().width / 2, 0)
 
     local image
-    local function touchBegan(event)
-        --        dump(event)
-        --        if image and image:numberOfRunningActions() > 0 then
-        --            return false
-        --        end
 
-        if self:isInCard(event.x, event.y) then
-            if _bOpen then
-                image = _bg:getChildByTag(123)
-                if image then --用来检测是否有卡牌
-                    _touchBegan(
-                        {
-                            cardnode = self,
-                            image = image,
-                            event = event
-                        }
-                    )
-                    return true
-                end
-            else
-                show_tip_label(string.format("当前位置%d级开启", self:getOpenLv()))
-            end
-            _touchBegan(
-                {
-                    cardnode = self,
-                    event = event
-                }
-            )
-            return false
-        end
-        return false
+    --[[
+    @desc: 
+    author:tulilu
+    time:2020-06-01 19:07:01
+        --@touch: luaIde#cc.Touch
+    	--@event: luaIde#cc.EventTouch
+    @return:
+]]
+    local function touchBegan(touch, event)
+        _touchBegan(
+            {
+                cardnode = event:getCurrentTarget():getParent():getParent():getParent(),
+                image = event:getCurrentTarget(),
+                event = touch
+            }
+        )
+        return true
     end
 
-    local function touchMoved(event)
-        if image then
-            _touchMove(
-                {
-                    cardnode = self,
-                    image = image,
-                    event = event
-                }
-            )
-        end
+    local function touchMoved(touch, event)
+        _touchMove(
+            {
+                cardnode = event:getCurrentTarget():getParent():getParent():getParent(),
+                image = event:getCurrentTarget(),
+                event = touch
+            }
+        )
     end
 
-    local function touchEnded(event)
-        if image then
-            _touchEnd(
-                {
-                    cardnode = self,
-                    image = image,
-                    event = event
-                }
-            )
-        end
+    local function touchEnded(touch, event)
+        _touchEnd(
+            {
+                cardnode = event:getCurrentTarget():getParent():getParent():getParent(),
+                image = event:getCurrentTarget(),
+                event = touch
+            }
+        )
     end
 
     self.setTouchEnabled = function(_, b)
         _bg:setTouchEnabled(b)
     end
 
-    _bg:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
-        function(event)
-            if event.name == "began" then
-                return touchBegan(event)
-            elseif event.name == "moved" then
-                touchMoved(event)
-            elseif event.name == "ended" then
-                touchEnded(event)
-            end
-        end
-    )
-
     self.equipCard = function(_, cardData)
         if _bOpen and type(cardData) == "table" then
             rootnode["lvLabel"]:setString(tostring(cardData.level))
             rootnode["lvNum_node"]:setVisible(true)
+            --@RefType luaIde#cc.Node
             local card =
                 TouchCard.new(
                 {
@@ -148,6 +118,28 @@ function FormSettingCard:ctor(param)
             )
             card:setPosition(_pos)
             _bg:addChild(card)
+            setTouchEnabled(card, true)
+            addNodeEventListener(
+                card,
+                cc.Handler.EVENT_TOUCH_BEGAN,
+                function(touch, event)
+                    return touchBegan(touch, event)
+                end
+            )
+            addNodeEventListener(
+                card,
+                cc.Handler.EVENT_TOUCH_MOVED,
+                function(touch, event)
+                    touchMoved(touch, event)
+                end
+            )
+            addNodeEventListener(
+                card,
+                cc.Handler.EVENT_TOUCH_ENDED,
+                function(touch, event)
+                    touchEnded(touch, event)
+                end
+            )
 
             if cardData.resId == 1 or cardData.resId == 2 then
                 nameLabel:setString(game.player:getPlayerName())
@@ -170,7 +162,7 @@ function FormSettingCard:ctor(param)
     end
 
     self.isInCard = function(_, x, y)
-        if (cc.rect(0, 0, _sz.width, _sz.height):containsPoint(_bg:convertToNodeSpace(cc.p(x, y)))) then
+        if (cc.rectContainsPoint(cc.rect(0, 0, _sz.width, _sz.height), _bg:convertToNodeSpace(cc.p(x, y)))) then
             return true
         else
             return false

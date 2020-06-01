@@ -35,12 +35,8 @@ local function setHero(pos, id, listener)
         {
             callback = function(data)
                 --            dump(data)
-                if #data["0"] > 0 then
-                    show_tip_label(data["0"])
-                else
-                    if listener then
-                        listener(data)
-                    end
+                if listener then
+                    listener(data)
                 end
             end,
             pos = pos,
@@ -105,7 +101,9 @@ local function createFormSettingLayer(param)
             sz = _sz,
             zdlNum = _zdlNum,
             closeListener = function()
-                _closeListener(bHasChange)
+                if _closeListener then
+                    _closeListener(bHasChange)
+                end
             end,
             exchangeFunc = exchangeFunc
         }
@@ -123,12 +121,8 @@ function FormCtrl.createFormSettingLayer(param)
         fmtRequest(
             {
                 callback = function(data)
-                    if #data["0"] > 0 then
-                        show_tip_label(data["0"])
-                    else
-                        param.list = data["1"]
-                        createFormSettingLayer(param)
-                    end
+                    param.list = data[1]
+                    createFormSettingLayer(param)
                 end
             }
         )

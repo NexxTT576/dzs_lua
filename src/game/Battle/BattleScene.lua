@@ -183,7 +183,7 @@ function BattleScene:checkIsLevelup(param)
 end
 
 function BattleScene:releaseUI()
-    display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    --display.removeSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
     display.removeSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
     display.removeSpriteFrames("ui/rank_list.plist", "ui/rank_list.png")
     display.removeSpriteFrames("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")

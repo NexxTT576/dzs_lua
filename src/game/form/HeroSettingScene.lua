@@ -366,7 +366,7 @@ function HeroSettingScene:setForm()
 
     self._rootnode["heroInfoView"]:setVisible(false)
     self._rootnode["bottomInfoView"]:setVisible(false)
-    self._rootnode["touchNode"]:setTouchEnabled(false)
+    setTouchEnabled(self._rootnode["touchNode"], false)
 
     local formCtrl = require("game.form.FormCtrl")
     self._formSettingView =
@@ -379,7 +379,7 @@ function HeroSettingScene:setForm()
             pos = cc.p(display.cx, display.cy - 20),
             closeListener = function()
                 self:refreshHero(self._index)
-                self._rootnode["touchNode"]:setTouchEnabled(true)
+                setTouchEnabled(self._rootnode["touchNode"], true)
                 self._formSettingView = nil
             end,
             callback = handler(self, HeroSettingScene.resetFormData)
@@ -682,8 +682,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
     self._rootnode["levelNode"]:setVisible(true)
     self._onAddHero = false
     if self._formSettingView then
-        self._formSettingView:removeSelf()
-        self._rootnode["touchNode"]:setTouchEnabled(true)
+        setTouchEnabled(self._rootnode["touchNode"], true)
         self._formSettingView = nil
     end
 

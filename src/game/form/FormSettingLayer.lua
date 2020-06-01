@@ -105,15 +105,15 @@ function FormSettingLayer:ctor(param)
 
     local function touchMove(param)
         local posX, posY = param.image:getPosition()
-        param.image:setPosition(posX + param.event.x - param.event:getPreviousLocation().x, posY + param.event.y - param.event:getPreviousLocation().y)
+        param.image:setPosition(posX + param.event:getLocation().x - param.event:getPreviousLocation().x, posY + param.event:getLocation().y - param.event:getPreviousLocation().y)
     end
 
     local function touchEnd(param)
         local bSwitch = false
         local index = 0
         for k, v in ipairs(cards) do
-            if v:isInCard(param.event.x, param.event.y) == true and v ~= param.cardnode then
-                bSwitch = v:switchWithCard(param.cardnode, param.event.x, param.event.y)
+            if v:isInCard(param.event:getLocation().x, param.event:getLocation().y) == true and v ~= param.cardnode then
+                bSwitch = v:switchWithCard(param.cardnode, param.event:getLocation().x, param.event:getLocation().y)
                 index = v:getIndex()
                 break
             end
@@ -136,13 +136,13 @@ function FormSettingLayer:ctor(param)
                 {
                     cc.CallFunc:create(
                         function()
-                            param.cardnode:setTouchEnabled(false)
+                            setTouchEnabled(param.image, false)
                         end
                     ),
-                    CCMoveTo:create(0.1, cc.p(_x, _y)),
+                    cc.MoveTo:create(0.1, cc.p(_x, _y)),
                     cc.CallFunc:create(
                         function()
-                            param.cardnode:setTouchEnabled(true)
+                            setTouchEnabled(param.image, true)
                         end
                     )
                 }

@@ -185,9 +185,10 @@ function SubMap:initLevelInfo(subMap)
                 color = fontColor,
                 x = nameBg:getContentSize().width / 2,
                 y = nameBg:getContentSize().height / 2,
-                align = cc.TEXT_ALIGNMENT_CENTER
+                align = cc.TEXT_ALIGNMENT_RIGHT
             }
         )
+
         nameBg:addChild(nameLabel)
 
         --star
@@ -201,9 +202,10 @@ function SubMap:initLevelInfo(subMap)
                 color = display.COLOR_WHITE,
                 x = nameBg:getContentSize().width / 2,
                 y = -nameBg:getContentSize().height * 0.8,
-                align = cc.TEXT_ALIGNMENT_CENTER
+                align = cc.TEXT_ALIGNMENT_RIGHT
             }
         )
+
         nameBg:addChild(starLabel)
 
         local starIcon = display.newSprite("#bigmap_star.png")
@@ -287,7 +289,7 @@ function SubMap:checkLevelReward(subMapID)
                 }
             )
 
-            curNumLbl:setPosition(-curNumLbl:getContentSize().width, 0)
+            curNumLbl:setPosition(-curNumLbl:getContentSize().width + 10, 0)
             boxStarNumLbl:removeAllChildren()
             boxStarNumLbl:addChild(curNumLbl)
 
@@ -380,7 +382,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
                     }
                 )
 
-                tNumLbl:setPosition(-tNumLbl:getContentSize().width, 0)
+                tNumLbl:setPosition(-tNumLbl:getContentSize().width + 10, 0)
                 local allStarLabel = self._rootnode["allStarLabel"]
                 allStarLabel:removeAllChildren()
                 allStarLabel:addChild(tNumLbl)
@@ -398,7 +400,7 @@ function SubMap:getSubLevelList(id, refreshSubInfoFunc)
                     }
                 )
 
-                curNumLbl:setPosition(-curNumLbl:getContentSize().width, 0)
+                curNumLbl:setPosition(-curNumLbl:getContentSize().width + 10, 0)
                 local curStarLabel = self._rootnode["curStarLabel"]
                 curStarLabel:removeAllChildren()
                 curStarLabel:addChild(curNumLbl)
@@ -621,6 +623,8 @@ function SubMap:createMapNode()
 end
 
 function SubMap:onEnter()
+    display.loadSpriteFrames("ui/ui_submap.plist", "ui/ui_submap.png")
+    display.loadSpriteFrames("bigmap/bigmap.plist", "bigmap/bigmap.png")
     game.runningScene = self
 
     local soundName = ResMgr.getSound(data_world_world[self.subMapInfo.world].bgm)
