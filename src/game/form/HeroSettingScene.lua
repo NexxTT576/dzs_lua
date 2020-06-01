@@ -577,11 +577,10 @@ function HeroSettingScene:setBtnEnable(b)
     end
     for i = 1, 6 do
         local key = "equipBtn_" .. tostring(i)
-
-        self._rootnode[key]["_setTouchEnabled"] = b
+        setTouchEnabled(self._rootnode[key], b)
     end
 
-    self._rootnode["touchNode"]["_setTouchEnabled"] = b
+    setTouchEnabled(self._rootnode["touchNode"], b)
 end
 
 local ST_COLOR = {

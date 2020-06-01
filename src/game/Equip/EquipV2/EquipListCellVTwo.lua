@@ -53,18 +53,16 @@ function EquipListCellVTwo:create(param)
 
     self.headIcon = self._rootnode["headIcon"]
 
-    self._rootnode["head_touch_node"]:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            if event.name == "began" then
-                GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-                HeroSettingModel.resetIndexByPos(self.nameList[self.pos])
-                self.createEquipInfoLayer(self.cellIndex)
-                return true
-            end
+    addNodeEventListener(
+        self._rootnode["head_touch_node"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
+            GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+            HeroSettingModel.resetIndexByPos(self.nameList[self.pos])
+            self.createEquipInfoLayer(self.cellIndex)
         end
     )
-    self._rootnode["head_touch_node"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["head_touch_node"], true)
 
     self.lvNum = self._rootnode["lvNum"]
     self.tabSprite = self._rootnode["tabIcon"]
