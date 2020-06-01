@@ -98,6 +98,7 @@ function BattleScene:result(data)
                         -- dump(data)
                         local bgName = "bigmap_1"
                         if data ~= nil then
+                            -- GameStateManager:ChangeState(GAME_STATE.STATE_FUBEN, {bigMapID = 11})
                             local isOpenNewBigmap = false
                             if game.player:getBattleData().cur_bigMapId ~= 0 and data.battleWorldID > game.player:getBattleData().cur_bigMapId then
                                 isOpenNewBigmap = true

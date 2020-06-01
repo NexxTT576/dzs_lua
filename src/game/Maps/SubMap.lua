@@ -97,7 +97,8 @@ function SubMap:ctor(param)
                 if TutoMgr.notLock() then
                     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
                     PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    display.replaceScene(require("game.Maps.BigMap").new(curBigMapID))
+                    -- display.runScene(require("game.Maps.BigMap").new(curBigMapID))
+                    GameStateManager:ChangeState(GAME_STATE.STATE_FUBEN, {bigMapID = curBigMapID})
                 end
             end
         end,

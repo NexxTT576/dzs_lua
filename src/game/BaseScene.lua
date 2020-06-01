@@ -16,6 +16,7 @@ function BaseScene:ctor(param)
     -- local unTouchLayer = display.newColorLayer(ccc4(55,55,55,100))
     -- unTouchLayer:setTouchEnabled(true)
     -- self:addChild(unTouchLayer,1000000)
+    display.loadSpriteFrames("ui/ui_bottom_layer.plist", "ui/ui_bottom_layer.pvr.ccz")
 
     --顶部框和底部框固定
     local BOTTOM_HEIGHT = 115.2
@@ -63,10 +64,11 @@ function BaseScene:ctor(param)
 
     game.runningScene = self
 
-    local proxy = CCBProxy:create()
+    --@RefType luaIde#cc.CCBProxy
+    local proxy = cc.CCBProxy:create()
     self._rootnode = {}
 
-    local node = CCBReaderLoad("public/window_scene", proxy, self._rootnode)
+    local node = CCBReaderLoad("public/window_scene.ccbi", proxy, self._rootnode)
     node:setContentSize(cc.size(display.width, display.height))
     node:setPosition(display.cx, display.cy)
     self:addChild(node, 3)
