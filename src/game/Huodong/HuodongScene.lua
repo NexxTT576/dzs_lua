@@ -1,12 +1,6 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-08-04 15:35:15
- -- @version 
- --
- --]]
 local data_huodong_huodong = require("data.data_huodong_huodong")
 
+--@SuperType luaIde#cc.Scene
 local HuodongScene =
     class(
     "HuodongScene",
@@ -24,8 +18,7 @@ local WORLDBOSS_TAG = 5
 local YABIAO = 6
 
 function HuodongScene:ctor(...)
-    -- body
-
+    self:enableNodeEvents()
     ResMgr.createBefTutoMask(self)
     local bg = display.newSprite("ui/ui_huodong/ui_huodong_bg.jpg")
     bg:setScale(display.width / bg:getContentSize().width)
