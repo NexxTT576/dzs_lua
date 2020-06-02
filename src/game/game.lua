@@ -7,6 +7,7 @@
 require("utility.Func")
 require("utility.BottomBtnEvent")
 require("network.GameRequest")
+data_error_error = require("data.data_error_error")
 game = {
     --@RefType Player
     player = require("game.Player").new(),

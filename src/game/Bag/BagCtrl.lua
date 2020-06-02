@@ -19,7 +19,7 @@ local _bagInfo = {
 }
 
 local _bRequest = false
-local RequestInfo = require("network.RequestInfo")
+
 local data_item_item = require("data.data_item_item")
 function BagCtrl.request(callback)
     if _bRequest then

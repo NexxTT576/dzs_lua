@@ -44,10 +44,11 @@ function BagItem:create(param)
         CCControlEventTouchUpInside
     )
 
-    self._rootnode["iconSprite"]:setTouchEnabled(true)
-    self._rootnode["iconSprite"]:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
+    setTouchEnabled(self._rootnode["iconSprite"], true)
+    addNodeEventListener(
+        self._rootnode["iconSprite"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
             if _useListener then
                 _useListener(self, 2)
             end

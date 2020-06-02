@@ -19,7 +19,7 @@ local YABIAO = 6
 
 function HuodongScene:ctor(...)
     self:enableNodeEvents()
-    ResMgr.createBefTutoMask(self)
+
     local bg = display.newSprite("ui/ui_huodong/ui_huodong_bg.jpg")
     bg:setScale(display.width / bg:getContentSize().width)
     bg:setPosition(display.width / 2, display.height / 2)
@@ -30,6 +30,13 @@ function HuodongScene:ctor(...)
 
     self.topSize = self.top:getTopLayerContentSize()
     self.bottomSize = self.top:getBottomContentSize()
+    performWithDelay(
+        self,
+        function()
+            ResMgr.createBefTutoMask(self)
+        end,
+        0.05
+    )
 end
 
 --[[

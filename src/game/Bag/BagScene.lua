@@ -28,8 +28,6 @@ local Item = {
     [VIEW_TYPE.BAG_SKILL] = require("game.Bag.SkillItem")
 }
 
-local RequestInfo = require("network.RequestInfo")
-
 function BagScene:onTab(tag)
     for i = 1, 2 do
         if tag == i then
@@ -959,16 +957,16 @@ end
 
 function BagScene:initdata(data1, data2)
     --请求内外功
-    game.player:setSkills(data1["1"])
+    game.player:setSkills(data1["itemAry"])
     -- dump(data["1"])
     self._item[VIEW_TYPE.BAG_SKILL] = game.player:getSkills()
-    self._cap[VIEW_TYPE.BAG_SKILL] = {data1["2"], data1["3"]}
-    self._cost[VIEW_TYPE.BAG_SKILL] = {data1["4"], data1["5"]}
+    self._cap[VIEW_TYPE.BAG_SKILL] = {data1["member"], data1["denominator"]}
+    self._cost[VIEW_TYPE.BAG_SKILL] = {data1["cost"], data1["size"]}
 
     -- bagitem
-    self._item[VIEW_TYPE.BAG_ITEM] = data2["1"]
-    self._cap[VIEW_TYPE.BAG_ITEM] = {data2["2"], data2["3"]}
-    self._cost[VIEW_TYPE.BAG_ITEM] = {data2["4"], data2["5"]}
+    self._item[VIEW_TYPE.BAG_ITEM] = data2["itemAry"]
+    self._cap[VIEW_TYPE.BAG_ITEM] = {data2["member"], data2["denominator"]}
+    self._cost[VIEW_TYPE.BAG_ITEM] = {data2["cost"], data2["size"]}
 
     self:updateBageItem()
 end

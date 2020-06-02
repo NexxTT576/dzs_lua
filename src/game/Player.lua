@@ -857,42 +857,15 @@ function Player:checkIsSelfByAcc(acc)
 end
 
 function Player:getBagReq(cb)
-    local RequestInfo = require("network.RequestInfo")
-    local reqs = {}
-    local data1, data2
-    --请求内外功
-    table.insert(
-        reqs,
-        RequestInfo.new(
-            {
-                modulename = "skill",
-                funcname = "list",
-                param = {},
-                oklistener = function(data)
-                    data1 = data
+    GameRequest.skill.list(
+        {},
+        function(data1)
+            GameRequest.packet.list(
+                {},
+                function(data2)
+                    cb(data1, data2)
                 end
-            }
-        )
-    )
-
-    table.insert(
-        reqs,
-        RequestInfo.new(
-            {
-                modulename = "packet",
-                funcname = "list",
-                param = {},
-                oklistener = function(data)
-                    data2 = data
-                end
-            }
-        )
-    )
-
-    RequestHelperV2.request2(
-        reqs,
-        function()
-            cb(data1, data2)
+            )
         end
     )
 end
