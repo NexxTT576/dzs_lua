@@ -210,7 +210,7 @@ function ActivityItemView:setUpView()
                                         cellDatas = self._data.rewords
                                     }
                                 )
-                                CCDirector:sharedDirector():getRunningScene():addChild(msgBox, 1000)
+                                CCDirector:getInstance():getRunningScene():addChild(msgBox, 1000)
                             end
                         end
                     }

@@ -285,7 +285,7 @@ function DuiHuanItemView:createItemView(index, node, data)
                         describe = data_item_item[data.id].dis
                         })
 
-        	CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000)
+        	CCDirector:getInstance():getRunningScene():addChild(itemInfo, 100000)
     	end
     end)--]]
     newTTFLabelWithShadow(

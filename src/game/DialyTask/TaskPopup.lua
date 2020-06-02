@@ -176,7 +176,7 @@ function TaskPopup:setUpView()
     display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
     display.loadSpriteFrames("ui/ui_icon_frame.plist", "ui/ui_icon_frame.png")
 
-    local winSize = CCDirector:sharedDirector():getWinSize()
+    local winSize = CCDirector:getInstance():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
     mask:setColor(cc.c3b(0, 0, 0))
@@ -265,8 +265,8 @@ function TaskPopup:setUpRadioBtns()
     self.group =
         cc.ui.UICheckBoxButtonGroup.new(display.LEFT_TO_RIGHT):addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.task):align(display.LEFT_CENTER)):addButton(
         cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.road):align(display.LEFT_CENTER)
-    ):--align(display.LEFT_CENTER))
-     --:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+    ):--:addButton(cc.ui.UICheckBoxButton.new(RADIO_BUTTON_IMAGES.collect)
+     --align(display.LEFT_CENTER))
 
     onButtonSelectChanged(
         function(event)

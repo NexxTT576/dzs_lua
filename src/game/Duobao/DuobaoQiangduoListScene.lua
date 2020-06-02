@@ -294,7 +294,7 @@ function DuobaoQiangduoListScene:ctor(param)
     self._rootnode["backBtn"]:registerControlEventHandler(
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-            CCDirector:sharedDirector():popToRootScene()
+            CCDirector:getInstance():popToRootScene()
         end,
         CCControlEventTouchUpInside
     )

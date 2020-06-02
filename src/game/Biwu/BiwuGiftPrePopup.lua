@@ -98,7 +98,7 @@ function BiwuGiftRrePopup:ctor(rank)
 end
 
 function BiwuGiftRrePopup:setUpView()
-    local winSize = CCDirector:sharedDirector():getWinSize()
+    local winSize = CCDirector:getInstance():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
     mask:setColor(cc.c3b(0, 0, 0))

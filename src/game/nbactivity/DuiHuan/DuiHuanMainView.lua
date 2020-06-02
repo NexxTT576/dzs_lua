@@ -87,7 +87,7 @@ function DuiHuanMainView:setUpView(param)
                     confirmFunc = func
                 }
             )
-            CCDirector:sharedDirector():getRunningScene():addChild(msgBox, 1000)
+            CCDirector:getInstance():getRunningScene():addChild(msgBox, 1000)
         end
         self:exchange(func, id)
     end
@@ -166,10 +166,10 @@ function DuiHuanMainView:setUpView(param)
                                     describe = data_item_item[itemdata.id].dis
                                 }
                             )
-                            CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000)
+                            CCDirector:getInstance():getRunningScene():addChild(itemInfo, 100000)
                         else
                             local descLayer = require("game.Spirit.SpiritInfoLayer").new(4, {resId = itemdata.id})
-                            CCDirector:sharedDirector():getRunningScene():addChild(descLayer, 1000)
+                            CCDirector:getInstance():getRunningScene():addChild(descLayer, 1000)
                         end
                         break
                     end
@@ -305,8 +305,8 @@ function DuiHuanMainView:setUpExtraView(param)
                 sender:setScale(0.9)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
-                if not CCDirector:sharedDirector():getRunningScene():getChildByTag(10000000) then
-                    CCDirector:sharedDirector():getRunningScene():addChild(require("game.nbactivity.DuiHuan.DuiHuanGiftPopup").new(), 1222222, 10000000)
+                if not CCDirector:getInstance():getRunningScene():getChildByTag(10000000) then
+                    CCDirector:getInstance():getRunningScene():addChild(require("game.nbactivity.DuiHuan.DuiHuanGiftPopup").new(), 1222222, 10000000)
                 end
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             elseif eventType == EventType.cancel then

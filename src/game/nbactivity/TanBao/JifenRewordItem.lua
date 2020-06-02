@@ -83,7 +83,7 @@ function JifenRewordItem:refreshItem(param)
                     }
                 )
 
-                CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000)
+                CCDirector:getInstance():getRunningScene():addChild(itemInfo, 100000)
             end
         end
     )

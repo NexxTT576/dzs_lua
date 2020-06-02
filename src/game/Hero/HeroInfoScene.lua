@@ -551,7 +551,7 @@ function HeroInfoScene:ctor(param, infoType)
     end
 
     local function change()
-        CCDirector:sharedDirector():popToRootScene()
+        CCDirector:getInstance():popToRootScene()
 
         push_scene(
             require("game.form.HeroChooseScene").new(

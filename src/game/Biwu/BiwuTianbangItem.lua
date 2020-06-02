@@ -255,7 +255,7 @@ function BiwuTianbangItem:createHeroView(index, node, data, dataall)
                 end
                 local layer = require("game.form.EnemyFormLayer").new(1, dataall.acc, nil, guidName)
                 layer:setPosition(0, 0)
-                CCDirector:sharedDirector():getRunningScene():addChild(layer, 1000000)
+                CCDirector:getInstance():getRunningScene():addChild(layer, 1000000)
             elseif eventType == EventType.cancel then
                 sender:setScale(1.0)
             end

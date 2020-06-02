@@ -98,7 +98,7 @@ function WaBaoGiftPopup:ctor(rank)
 end
 
 function WaBaoGiftPopup:setUpView()
-    local winSize = CCDirector:sharedDirector():getWinSize()
+    local winSize = CCDirector:getInstance():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
     mask:setColor(cc.c3b(0, 0, 0))
@@ -232,10 +232,10 @@ end
 
 function WaBaoGiftPopup:onIconClick(data)
     if tonumber(data.type) ~= 6 then
-        if not CCDirector:sharedDirector():getRunningScene():getChildByTag(1111) then
+        if not CCDirector:getInstance():getRunningScene():getChildByTag(1111) then
             local closeFunc = function()
-                if CCDirector:sharedDirector():getRunningScene():getChildByTag(1111) then
-                    CCDirector:sharedDirector():getRunningScene():removeChildByTag(1111, true)
+                if CCDirector:getInstance():getRunningScene():getChildByTag(1111) then
+                    CCDirector:getInstance():getRunningScene():removeChildByTag(1111, true)
                 end
             end
             local itemInfo =
@@ -248,17 +248,17 @@ function WaBaoGiftPopup:onIconClick(data)
                     endFunc = closeFunc
                 }
             )
-            CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000000, 1111)
+            CCDirector:getInstance():getRunningScene():addChild(itemInfo, 100000000, 1111)
         end
     else
         local closeFunc = function()
-            if CCDirector:sharedDirector():getRunningScene():getChildByTag(1111) then
-                CCDirector:sharedDirector():getRunningScene():removeChildByTag(1111, true)
+            if CCDirector:getInstance():getRunningScene():getChildByTag(1111) then
+                CCDirector:getInstance():getRunningScene():removeChildByTag(1111, true)
             end
         end
-        if not CCDirector:sharedDirector():getRunningScene():getChildByTag(1111) then
+        if not CCDirector:getInstance():getRunningScene():getChildByTag(1111) then
             local descLayer = require("game.Spirit.SpiritInfoLayer").new(4, {resId = tonumber(data.type)}, nil, closeFunc)
-            CCDirector:sharedDirector():getRunningScene():addChild(descLayer, 100000000, 1111)
+            CCDirector:getInstance():getRunningScene():addChild(descLayer, 100000000, 1111)
         end
     end
 end

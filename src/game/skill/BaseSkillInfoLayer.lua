@@ -182,7 +182,7 @@ function BaseSkillInfoLayer:ctor(param)
     local function change()
         self._rootnode["changeBtn"]:setEnabled(false)
 
-        --        CCDirector:sharedDirector():popToRootScene()
+        --        CCDirector:getInstance():popToRootScene()
         push_scene(
             require("game.form.SkillChooseScene").new(
                 {

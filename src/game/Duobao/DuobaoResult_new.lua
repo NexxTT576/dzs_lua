@@ -510,7 +510,7 @@ end
 
 function DuobaoResult:confirmFunc()
     if self._getDebris == true then
-        CCDirector:sharedDirector():popToRootScene()
+        CCDirector:getInstance():popToRootScene()
     else
         pop_scene()
     end

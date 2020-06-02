@@ -50,8 +50,8 @@ function WaBaoMainView:setUpView(param)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-                if not CCDirector:sharedDirector():getRunningScene():getChildByTag(10000000) then
-                    CCDirector:sharedDirector():getRunningScene():addChild(require("game.nbactivity.WaBao.WaBaoGiftPopup").new(), 1222222, 10000000)
+                if not CCDirector:getInstance():getRunningScene():getChildByTag(10000000) then
+                    CCDirector:getInstance():getRunningScene():addChild(require("game.nbactivity.WaBao.WaBaoGiftPopup").new(), 1222222, 10000000)
                 end
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             elseif eventType == EventType.cancel then
@@ -73,7 +73,7 @@ function WaBaoMainView:setUpView(param)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
                 local layer = require("game.SplitStove.SplitDescLayer").new(4)
-                CCDirector:sharedDirector():getRunningScene():addChild(layer, 100)
+                CCDirector:getInstance():getRunningScene():addChild(layer, 100)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             elseif eventType == EventType.cancel then
                 sender:setScale(1)
@@ -374,7 +374,7 @@ function WaBaoMainView:showItemDetail(node, data)
                     }
                 )
 
-                CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 100000)
+                CCDirector:getInstance():getRunningScene():addChild(itemInfo, 100000)
             elseif eventType == EventType.cancel then
                 sender:setScale(0.7)
             end
@@ -667,11 +667,11 @@ end
 function WaBaoMainView:createArmature(dataTemp, func)
     local secondArm = function()
         local callback = function()
-            if CCDirector:sharedDirector():getRunningScene():getChildByTag(11111) then
-                CCDirector:sharedDirector():getRunningScene():removeChildByTag(11111)
+            if CCDirector:getInstance():getRunningScene():getChildByTag(11111) then
+                CCDirector:getInstance():getRunningScene():removeChildByTag(11111)
             end
-            if CCDirector:sharedDirector():getRunningScene():getChildByTag(22222) then
-                CCDirector:sharedDirector():getRunningScene():removeChildByTag(22222)
+            if CCDirector:getInstance():getRunningScene():getChildByTag(22222) then
+                CCDirector:getInstance():getRunningScene():removeChildByTag(22222)
             end
             if self:getChildByTag(1000) then
                 self:removeChildByTag(1000)
@@ -688,7 +688,7 @@ function WaBaoMainView:createArmature(dataTemp, func)
                 confirmFunc = callback
             }
         )
-        CCDirector:sharedDirector():getRunningScene():addChild(msgBox, 1000)
+        CCDirector:getInstance():getRunningScene():addChild(msgBox, 1000)
         local bgEffect =
             ResMgr.createArma(
             {
@@ -699,10 +699,10 @@ function WaBaoMainView:createArmature(dataTemp, func)
         )
         bgEffect:setScale(0.6)
         bgEffect:setPosition(display.width / 2, display.height / 2)
-        CCDirector:sharedDirector():getRunningScene():addChild(bgEffect, 10, 22222)
+        CCDirector:getInstance():getRunningScene():addChild(bgEffect, 10, 22222)
     end
 
-    local winSize = CCDirector:sharedDirector():getWinSize()
+    local winSize = CCDirector:getInstance():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
     mask:setColor(cc.c3b(0, 0, 0))
@@ -724,7 +724,7 @@ function WaBaoMainView:createArmature(dataTemp, func)
     )
     bgEffect:setScale(0.6)
     bgEffect:setPosition(display.width / 2, display.height / 2)
-    CCDirector:sharedDirector():getRunningScene():addChild(bgEffect, 10, 11111)
+    CCDirector:getInstance():getRunningScene():addChild(bgEffect, 10, 11111)
 end
 
 function WaBaoMainView:refresh()

@@ -204,7 +204,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                             isRetain = true
                         }
                     )
-                    jiantouEff:setPosition((subMapData.x_axis) * TILE_WIDTH - jiantouEff:getContentSize().width / 2, buildBtn:getPositionY() + btnH * 1.1)
+                    jiantouEff:setPosition((subMapData.x_axis) * TILE_WIDTH, buildBtn:getPositionY() + btnH * 1.1)
 
                     self.bg:addChild(jiantouEff, maxZorder)
 
@@ -217,7 +217,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
                             isRetain = true
                         }
                     )
-                    boEff:setPosition(subMapData.x_axis * TILE_WIDTH - boEff:getContentSize().width / 2, subMapData.y_axis * TILE_HEIGHT - boEff:getContentSize().height)
+                    boEff:setPosition(subMapData.x_axis * TILE_WIDTH, subMapData.y_axis * TILE_HEIGHT - boEff:getContentSize().height)
 
                     self.bg:addChild(boEff, maxZorder - i - 1)
                 end

@@ -154,7 +154,7 @@ function YabiaoItemView:setUpView(param)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
-                CCDirector:sharedDirector():getRunningScene():addChild(
+                CCDirector:getInstance():getRunningScene():addChild(
                     require("game.Yabiao.YabiaoDetailView").new(
                         {
                             roleId = self._roleId,

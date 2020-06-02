@@ -109,7 +109,7 @@ end
 -- @param scene 新的场景
 function replaceScene(scene)
     -- 去掉所有未完成的动作
-    CCDirector:sharedDirector():getActionManager():removeAllActions()
+    CCDirector:getInstance():getActionManager():removeAllActions()
     display.replaceScene(scene, "fade", 0.5, ccc3(255, 255, 255))
 end
 

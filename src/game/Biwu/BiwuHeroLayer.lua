@@ -109,7 +109,7 @@ function BiwuHeroLayer:setUpLabelView()
                         remainnum = self.dataCenter.role.buynum
                     }
 
-                    CCDirector:sharedDirector():getRunningScene():addChild(require("game.Biwu.BiwuByTimesCountBox").new(param, fuc), 100000)
+                    CCDirector:getInstance():getRunningScene():addChild(require("game.Biwu.BiwuByTimesCountBox").new(param, fuc), 100000)
                 elseif eventType == EventType.cancel then
                     sender:setScale(1.0)
                 end
@@ -218,8 +218,8 @@ function BiwuHeroLayer:setUpLabelView()
                 sender:setScale(0.9)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
-                if not CCDirector:sharedDirector():getRunningScene():getChildByTag(10000000) then
-                    CCDirector:sharedDirector():getRunningScene():addChild(require("game.Biwu.BiwuGiftPrePopup").new(self.dataCenter.role.paiming), 1222222, 10000000)
+                if not CCDirector:getInstance():getRunningScene():getChildByTag(10000000) then
+                    CCDirector:getInstance():getRunningScene():addChild(require("game.Biwu.BiwuGiftPrePopup").new(self.dataCenter.role.paiming), 1222222, 10000000)
                 end
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             elseif eventType == EventType.cancel then
@@ -367,7 +367,7 @@ function BiwuHeroLayer:createHeros(pos, index)
                 if self._isWeekDay then
                     local layer = require("game.form.EnemyFormLayer").new(1, self.dataCenter.enemy[index].acc)
                     layer:setPosition(0, 0)
-                    CCDirector:sharedDirector():getRunningScene():addChild(layer, 1000000)
+                    CCDirector:getInstance():getRunningScene():addChild(layer, 1000000)
                 else
                     if self.dataCenter.role.cishu == 0 then
                         show_tip_label("您的今日挑战次数为0")

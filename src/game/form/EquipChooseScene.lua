@@ -202,21 +202,17 @@ function EquipChooseScene:ctor(param)
                                 {
                                     pos = _index,
                                     subpos = _subIndex,
-                                    id = _data[cellIdx + 1].data._id,
+                                    id = _data[cellIdx + 1].data.id,
                                     callback = function(data)
                                         --                            dump(data["1"])
                                         PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                                        if string.len(data["0"]) > 0 then
-                                            CCMessageBox(data["0"], "Tip")
-                                        else
-                                            putoff()
-                                            if _callback then
-                                                _data[cellIdx + 1].data.pos = _index
-                                                _data[cellIdx + 1].data.cid = _cid
-                                                _callback(data)
-                                            end
-                                            pop_scene()
+                                        putoff()
+                                        if _callback then
+                                            _data[cellIdx + 1].data.pos = _index
+                                            _data[cellIdx + 1].data.cid = _cid
+                                            _callback(data)
                                         end
+                                        pop_scene()
                                     end
                                 }
                             )

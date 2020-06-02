@@ -174,10 +174,10 @@ function XianShiItemView:create(param)
                             describe = data_item_item[tonumber(itemData.id)].describe
                         }
                     )
-                    CCDirector:sharedDirector():getRunningScene():addChild(itemInfo, 10000)
+                    CCDirector:getInstance():getRunningScene():addChild(itemInfo, 10000)
                 else
                     local descLayer = require("game.Spirit.SpiritInfoLayer").new(4, {resId = tonumber(itemData.id)}, nil, closeFunc)
-                    CCDirector:sharedDirector():getRunningScene():addChild(descLayer, 10000000)
+                    CCDirector:getInstance():getRunningScene():addChild(descLayer, 10000000)
                 end
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             elseif eventType == EventType.cancel then

@@ -151,7 +151,7 @@ end
 ---
 -- 创建蒙板
 function BiwuBuyMsgBox:createMask()
-    local winSize = CCDirector:sharedDirector():getWinSize()
+    local winSize = CCDirector:getInstance():getWinSize()
     local mask = CCLayerColor:create()
     mask:setContentSize(winSize)
     mask:setColor(cc.c3b(0, 0, 0))

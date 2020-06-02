@@ -305,7 +305,7 @@ function TanbaoMainView:setUpView(param)
             elseif eventType == EventType.ended then
                 sender:setScale(1)
                 local layer = require("game.SplitStove.SplitDescLayer").new(3)
-                CCDirector:sharedDirector():getRunningScene():addChild(layer, 100)
+                CCDirector:getInstance():getRunningScene():addChild(layer, 100)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             elseif eventType == EventType.cancel then
                 sender:setScale(1)

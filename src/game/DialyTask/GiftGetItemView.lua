@@ -100,7 +100,7 @@ function GiftGetItemView:setUpView()
                                     cellDatas = TaskModel:getInstance():getGiftList(self._data.id)
                                 }
                             )
-                            CCDirector:sharedDirector():getRunningScene():addChild(msgBox, 1000)
+                            CCDirector:getInstance():getRunningScene():addChild(msgBox, 1000)
                         end
                     end
                 }

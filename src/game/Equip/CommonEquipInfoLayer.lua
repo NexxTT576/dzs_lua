@@ -1,5 +1,6 @@
 local data_item_nature = require("data.data_item_nature")
 local data_item_item = require("data.data_item_item")
+--@SuperType ShadeLayer
 local CommonEquipInfoLayer =
     class(
     "CommonEquipInfoLayer",
@@ -26,7 +27,8 @@ function CommonEquipInfoLayer:initSuit()
 end
 
 function CommonEquipInfoLayer:ctor(param, infoType)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
+
     local _info = param.info
     local _subIndex = param.subIndex
     local _index = param.index
@@ -118,7 +120,7 @@ function CommonEquipInfoLayer:ctor(param, infoType)
 
     local function change()
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        CCDirector:sharedDirector():popToRootScene()
+        CCDirector:getInstance():popToRootScene()
         push_scene(
             require("game.form.EquipChooseScene").new(
                 {

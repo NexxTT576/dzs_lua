@@ -867,7 +867,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                 local equipNodeName = "equipNode_" .. tostring(v.subpos)
                 local equipBaseInfo = data_item_item[v.resId]
 
-                local path = CCFileUtils:sharedFileUtils():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
+                local path = CCFileUtils:getInstance():fullPathForFilename(ResMgr.getIconImage(equipBaseInfo.icon, ResMgr.EQUIP))
                 local s = ResMgr.getIconSprite({id = v.resId, resType = ResMgr.EQUIP, hasCorner = true})
                 --display.newSprite(path)
                 s:setPosition(self._rootnode[equipNodeName]:getContentSize().width / 2, self._rootnode[equipNodeName]:getContentSize().height / 2)
@@ -1302,7 +1302,7 @@ function HeroSettingScene:initEquip()
         if tag < 5 then
             local d = self:getEquipByID(info.objId)
             if d then
-                self._rootnode["equipBtn_" .. tostring(tag)]:setTouchEnabled(false)
+                setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], false)
                 local layer =
                     require("game.Equip.CommonEquipInfoLayer").new(
                     {
@@ -1310,7 +1310,7 @@ function HeroSettingScene:initEquip()
                         subIndex = tag,
                         info = d,
                         closeListener = function()
-                            self._rootnode["equipBtn_" .. tostring(tag)]:setTouchEnabled(true)
+                            setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], true)
                         end,
                         listener = function()
                             RequestHelperV2.request(

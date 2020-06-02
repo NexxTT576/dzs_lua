@@ -116,7 +116,7 @@ end
 
 function YabiaoController:_hasComplete(data)
     --增加押镖完成界面
-    CCDirector:sharedDirector():getRunningScene():addChild(
+    CCDirector:getInstance():getRunningScene():addChild(
         require("game.Yabiao.YabiaoCompletePopup").new(
             {
                 confirmFunc = function()
