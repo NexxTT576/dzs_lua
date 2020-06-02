@@ -154,7 +154,8 @@ function ShopWindow:ctor(bGoShowList)
             }
         )
         --
-        self:schedule(
+        schedule(
+            self,
             function()
                 if self._bDelayTime > 0 then
                     self._bDelayTime = self._bDelayTime - 1
@@ -171,10 +172,10 @@ function ShopWindow:ctor(bGoShowList)
         )
     end
 
-    if (display.widthInPixels / display.heightInPixels) == 0.75 then
+    if (display.sizeInPixels.width / display.sizeInPixels.height) == 0.75 then
         self._rootnode["pubNode"]:setScale(0.75)
         self._rootnode["pubNode"]:setPositionY(self._rootnode["pubNode"]:getPositionY() + 45)
-    elseif (display.widthInPixels / display.heightInPixels) > 0.66 then
+    elseif (display.sizeInPixels.width / display.sizeInPixels.height) > 0.66 then
         self._rootnode["pubNode"]:setScale(0.85)
         self._rootnode["pubNode"]:setPositionY(self._rootnode["pubNode"]:getPositionY() + 25)
     end

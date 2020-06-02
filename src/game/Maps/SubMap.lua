@@ -46,8 +46,13 @@ function SubMap:ctor(param)
     self.battleId = param.battleId
 
     game.runningScene = self
-
-    ResMgr.createBefTutoMask(self)
+    performWithDelay(
+        self,
+        function()
+            ResMgr.createBefTutoMask(self)
+        end,
+        0.01
+    )
 
     local subMap = param.subMap
     local subMapID = param.submapID
