@@ -47,16 +47,20 @@ function Broadcast:reqCurBList()
     GameRequest.Broadcast.updateList(
         {
             callback = function(data)
-                GameModel.updateData(data[5])
-                -- 编辑当前的广播内容
-                --@TODO 2020-05-16 20:40:23 一个是紧急广播 一个是普通广播 后端逻辑对不上 先放一放
-                game.urgencyBroadcast:addToUrgencyBroadcast(data[2])
-                self:addBroadStrFromSever(data)
+                GameModel.updateData(data["5"])
+                if data["0"] ~= "" then
+                    dump(data["0"])
+                else
+                    -- 编辑当前的广播内容
+                    --@TODO 2020-05-16 20:40:23 一个是紧急广播 一个是普通广播 后端逻辑对不上 先放一放
+                    game.urgencyBroadcast:addToUrgencyBroadcast(data["2"])
+                    self:addBroadStrFromSever(data)
 
-                local mailTip = data[4]
-                if (mailTip ~= nil) then
-                    game.player:setMailTip(mailTip)
-                    PostNotice(NoticeKey.MAIL_TIP_UPDATE)
+                    local mailTip = data["4"]
+                    if (mailTip ~= nil) then
+                        game.player:setMailTip(mailTip)
+                        PostNotice(NoticeKey.MAIL_TIP_UPDATE)
+                    end
                 end
             end
         }
@@ -162,11 +166,12 @@ function Broadcast:addBroadStrFromSever(data)
         self._waitBroadcastList = {}
     end
 
-    for i, v in ipairs(data[1]) do
-        if data[1][i].time > 0 then
-            table.insert(self._waitBroadcastList, data[1][i])
+    for i, v in ipairs(data["1"]) do
+        if data["1"][i].time > 0 then
+            table.insert(self._waitBroadcastList, data["1"][i])
         else
-            local contentStr = self:createBroadParamByData(data[1][i])
+            -- dump(data["1"][i])
+            local contentStr = self:createBroadParamByData(data["1"][i])
             if contentStr ~= nil then
                 table.insert(self._bufferBStr, contentStr)
             end
