@@ -71,35 +71,31 @@ function IapMgr:buyGoldIos(...)
                     serverId = tostring(game.player.m_serverID),
                     callback = function(data)
                         dump(data)
-                        if data["0"] ~= "" then
-                            dump(data.err)
-                        else
-                            self._orderId = data.rtnObj.token
+                        self._orderId = data.rtnObj.token
 
-                            iapRequest.tdRequestLog(
-                                {
-                                    orderId = self._orderId,
-                                    productName = self._itemData.productName,
-                                    price = self._itemData.price,
-                                    currencyType = "CNY",
-                                    paymentType = CSDKShell.SDK_TYPE
-                                }
-                            )
-                            local ret =
-                                CSDKShell.BuyAsynCoins(
-                                {
-                                    price = self._itemData.price,
-                                    coins = self._itemData.basegold,
-                                    name = self._itemData.productName,
-                                    orderId = self._orderId,
-                                    accId = game.player.m_uid,
-                                    payDescription = tostring(game.player.m_serverID), -- 游戏分区
-                                    isMonthCard = self._itemData.isMonthCard,
-                                    gameId = data_serverurl_serverurl[checkint(CSDKShell.getChannelID())].gameId,
-                                    md5Key = data_serverurl_serverurl[checkint(CSDKShell.getChannelID())].md5Key
-                                }
-                            )
-                        end
+                        -- iapRequest.tdRequestLog(
+                        --     {
+                        --         orderId = self._orderId,
+                        --         productName = self._itemData.productName,
+                        --         price = self._itemData.price,
+                        --         currencyType = "CNY",
+                        --         paymentType = CSDKShell.SDK_TYPE
+                        --     }
+                        -- )
+                        -- local ret =
+                        --     CSDKShell.BuyAsynCoins(
+                        --     {
+                        --         price = self._itemData.price,
+                        --         coins = self._itemData.basegold,
+                        --         name = self._itemData.productName,
+                        --         orderId = self._orderId,
+                        --         accId = game.player.m_uid,
+                        --         payDescription = tostring(game.player.m_serverID), -- 游戏分区
+                        --         isMonthCard = self._itemData.isMonthCard,
+                        --         gameId = data_serverurl_serverurl[checkint(CSDKShell.getChannelID())].gameId,
+                        --         md5Key = data_serverurl_serverurl[checkint(CSDKShell.getChannelID())].md5Key
+                        --     }
+                        -- )
                     end
                 }
             )
@@ -176,55 +172,51 @@ function IapMgr:buyGoldAndroid()
                     money = self._itemData.price,
                     callback = function(data)
                         dump(data)
-                        if data["0"] ~= "" then
-                            dump(data.err)
-                        else
-                            self._orderId = data.rtnObj.token
+                        self._orderId = data.rtnObj.token
 
-                            iapRequest.tdRequestLog(
-                                {
-                                    orderId = self._orderId,
-                                    productName = self._itemData.productName,
-                                    price = self._itemData.price,
-                                    currencyType = "CNY",
-                                    paymentType = CSDKShell.SDK_TYPE
-                                }
-                            )
+                        iapRequest.tdRequestLog(
+                            {
+                                orderId = self._orderId,
+                                productName = self._itemData.productName,
+                                price = self._itemData.price,
+                                currencyType = "CNY",
+                                paymentType = CSDKShell.SDK_TYPE
+                            }
+                        )
 
-                            local userId = game.player.m_uid
-                            local bIndex, eIndex = string.find(userId, "__")
-                            if bIndex then
-                                userId = string.sub(userId, eIndex + 1)
-                            end
-
-                            CSDKShell.BuyAsynCoins(
-                                {
-                                    price = self._itemData.price,
-                                    coins = self._itemData.basegold,
-                                    productName = self._itemData.productName,
-                                    productId = self._itemData.payitemId,
-                                    orderId = self._orderId,
-                                    accId = userId,
-                                    payDescription = tostring(game.player.m_serverID), -- 游戏分区
-                                    isMonthCard = tostring(self._itemData.isMonthCard),
-                                    notifyUri = CSDKShell.getIapNotifyUrlByChannelId(),
-                                    extendInfo = getExtendInfo(),
-                                    bHoolPay = tostring(bHoolPay == APPOPEN_STATE.open),
-                                    -- vivo
-                                    vivoOrder = data.rtnObj.vivoOrder or "",
-                                    vivoSignature = data.rtnObj.vivoSignature or "",
-                                    goodsID = self._itemData.index, -- 购买的真实id
-                                    -- 金立
-                                    submitTime = data.rtnObj.submit_time or "",
-                                    -- 酷派
-                                    openId = game.player.m_extendData.openid or "",
-                                    expiresIn = game.player.m_extendData.expires_in or "",
-                                    accessToken = game.player.m_extendData.access_token or "",
-                                    refreshToken = game.player.m_extendData.refresh_token or "",
-                                    coolpadItemId = self._itemData.coolpadItemId
-                                }
-                            )
+                        local userId = game.player.m_uid
+                        local bIndex, eIndex = string.find(userId, "__")
+                        if bIndex then
+                            userId = string.sub(userId, eIndex + 1)
                         end
+
+                        -- CSDKShell.BuyAsynCoins(
+                        --     {
+                        --         price = self._itemData.price,
+                        --         coins = self._itemData.basegold,
+                        --         productName = self._itemData.productName,
+                        --         productId = self._itemData.payitemId,
+                        --         orderId = self._orderId,
+                        --         accId = userId,
+                        --         payDescription = tostring(game.player.m_serverID), -- 游戏分区
+                        --         isMonthCard = tostring(self._itemData.isMonthCard),
+                        --         notifyUri = CSDKShell.getIapNotifyUrlByChannelId(),
+                        --         extendInfo = getExtendInfo(),
+                        --         bHoolPay = tostring(bHoolPay == APPOPEN_STATE.open),
+                        --         -- vivo
+                        --         vivoOrder = data.rtnObj.vivoOrder or "",
+                        --         vivoSignature = data.rtnObj.vivoSignature or "",
+                        --         goodsID = self._itemData.index, -- 购买的真实id
+                        --         -- 金立
+                        --         submitTime = data.rtnObj.submit_time or "",
+                        --         -- 酷派
+                        --         openId = game.player.m_extendData.openid or "",
+                        --         expiresIn = game.player.m_extendData.expires_in or "",
+                        --         accessToken = game.player.m_extendData.access_token or "",
+                        --         refreshToken = game.player.m_extendData.refresh_token or "",
+                        --         coolpadItemId = self._itemData.coolpadItemId
+                        --     }
+                        -- )
                     end
                 }
             )

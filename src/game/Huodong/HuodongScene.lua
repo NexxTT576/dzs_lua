@@ -66,14 +66,10 @@ function HuodongScene:toHuoDong(index)
                 {
                     callback = function(data)
                         dump(data)
-                        if data["0"] ~= "" then
-                            CCMessageBox(data["0"], "Error")
+                        if data[1] <= 0 then
+                            GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS)
                         else
-                            if data["1"] <= 0 then
-                                GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS)
-                            else
-                                GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS_NORMAL, data)
-                            end
+                            GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS_NORMAL, data)
                         end
                     end
                 }

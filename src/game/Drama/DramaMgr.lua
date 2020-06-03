@@ -26,7 +26,7 @@ function DramaMgr.runDramaBefWorld(bigMapId, endFunc)
         RequestHelper.getDramaValue(
             {
                 callback = function(data)
-                    dramaValueData = data["1"]
+                    dramaValueData = data[1]
                     local num = dramaValueData[1]
 
                     if num < bigMapId then
@@ -162,7 +162,7 @@ function DramaMgr.createChoseLayer(data)
     if SHOW_DRAMA then
         local msg = {}
         msg.dramaSceneId = 1
-        msg.battleData = data["6"]
+        msg.battleData = data[6]
         msg.nextFunc = dramaEndStartLogin
         GameStateManager:ChangeState(GAME_STATE.DRAMA_SCENE, msg)
     else
@@ -186,8 +186,8 @@ function DramaMgr.dramaMachine(index, dramaTable, dramaEndFunc)
 end
 
 function DramaMgr.request(data)
-    game.player:init(data["1"])
-    game.player.m_gamenote = data["2"]
+    game.player:init(data[1])
+    game.player.m_gamenote = data[2]
     TutoMgr.getServerNum(
         function(plotNum)
             if plotNum == 0 and game.player.m_level == 1 then

@@ -1,7 +1,6 @@
---
-
 local data_jinjie_jinjie = require("data.data_jinjie_jinjie")
 
+--@SuperType ShadeLayer
 local HeroJinJie =
     class(
     "HeroJinJie",
@@ -308,7 +307,7 @@ function HeroJinJie:ctor(param)
     self.removeListener = param.removeListener
     self.incomeType = param.incomeType
     print("self.income" .. self.incomeType)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     --	if self.incomeType == FROM_LIST then
     local listInfo = param.listInfo

@@ -189,36 +189,25 @@ function BagScene:ctor(tag)
                 {
                     ids = ids,
                     callback = function(data)
-                        if string.len(data["0"]) > 0 then
-                        else
-                            --                    data["1"] --获得银币
-                            --                    data["2"] --总银币
-                            show_tip_label(string.format("恭喜获得银币%d", data["1"]))
-                            game.player:setSilver(data["2"])
-                            PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-                            self:updateList()
-                        end
-                    end
-                }
-            )
-        elseif self._curView == VIEW_TYPE.BAG_SKILL then
-            local req =
-                RequestInfo.new(
-                {
-                    modulename = "skill",
-                    funcname = "sell",
-                    param = {
-                        ids = ids
-                    },
-                    oklistener = function(data)
-                        show_tip_label(string.format("恭喜获得银币%d", data["1"]))
-                        game.player:setSilver(data["2"])
+                        show_tip_label(string.format("恭喜获得银币%d", data[1]))
+                        game.player:setSilver(data[2])
                         PostNotice(NoticeKey.CommonUpdate_Label_Silver)
                         self:updateList()
                     end
                 }
             )
-            RequestHelperV2.request(req)
+        elseif self._curView == VIEW_TYPE.BAG_SKILL then
+            GameRequest.skill.sell(
+                {
+                    ids = ids
+                },
+                function(data)
+                    show_tip_label(string.format("恭喜获得银币%d", data[1]))
+                    game.player:setSilver(data[2])
+                    PostNotice(NoticeKey.CommonUpdate_Label_Silver)
+                    self:updateList()
+                end
+            )
         end
     end
 

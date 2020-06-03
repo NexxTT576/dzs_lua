@@ -58,8 +58,7 @@ function HeroChoseCell:create(param)
             print("unSel")
 
             self.choseFunc({op = 2, cellIndex = self.cellIndex})
-        end,
-        CCControlEventTouchUpInside
+        end
     )
 
     self._rootnode["unSelIcon"]:registerScriptTapHandler(
@@ -71,8 +70,7 @@ function HeroChoseCell:create(param)
                 print("sel")
             --增加
             end
-        end,
-        CCControlEventTouchUpInside
+        end
     )
 
     self.headIcon = self._rootnode["headIcon"]

@@ -446,7 +446,7 @@ function BattleLayer:battleCallBack(data)
     end
     self.totalData = data
 
-    self.battleData = data["2"][1]
+    self.battleData = data[2][1]
 
     --初始化下一轮战斗需要的卡牌
     local function initBattle()
@@ -3050,7 +3050,7 @@ function BattleLayer:battleResult()
     end
 
     if self.fubenType == JINGYING_FUBEN then
-        local waveData = self.totalData["5"]
+        local waveData = self.totalData[5]
 
         local maxLv = waveData[1]
         local curLv = waveData[3] --已通关的关卡数
@@ -3067,7 +3067,7 @@ function BattleLayer:battleResult()
     elseif self.fubenType == HUODONG_FUBEN then
         -- dump(self.totalData)
 
-        local waveData = self.totalData["5"]
+        local waveData = self.totalData[5]
 
         -- local maxLv = waveData[1]
         local curLv = waveData[1] --已通关的关卡数

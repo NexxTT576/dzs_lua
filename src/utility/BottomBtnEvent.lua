@@ -25,7 +25,7 @@ function BottomBtnEvent.registerBottomEvent(btnMaps)
                         param = {},
                         callback = function(data)
                             game.player.m_formation = data
-                            -- dump(game.player.m_formation["2"])
+
                             nextState = GAME_STATE.STATE_ZHENRONG
                             GameStateManager:ChangeState(nextState, msg)
                         end

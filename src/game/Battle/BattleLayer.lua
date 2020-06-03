@@ -608,8 +608,8 @@ end
 
 function BattleLayer:playSkipBattle()
     self.isPlayBat = false
-    local friendResultData = self.totalData["2"][1].f1
-    local enemyResultData = self.totalData["2"][1].f2
+    local friendResultData = self.totalData[2][1].f1
+    local enemyResultData = self.totalData[2][1].f2
 
     local count = 0
 
@@ -3130,7 +3130,7 @@ function BattleLayer:battleResult()
     self.isAbleJump = false
 
     if self.fubenType == JINGYING_FUBEN then
-        local waveData = self.totalData["5"]
+        local waveData = self.totalData[5]
 
         local maxLv = waveData[1]
         local curLv = waveData[3] --已通关的关卡数
@@ -3147,7 +3147,7 @@ function BattleLayer:battleResult()
     elseif self.fubenType == HUODONG_FUBEN then
         -- dump(self.totalData)
 
-        local waveData = self.totalData["5"]
+        local waveData = self.totalData[5]
 
         -- local maxLv = waveData[1]
         local curLv = waveData[1] --已通关的关卡数

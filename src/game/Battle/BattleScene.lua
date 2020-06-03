@@ -117,22 +117,6 @@ function BattleScene:result(data)
                                 PageMemoModel.bigMapID = 0
                             end
 
-                            -- self._curLevel = {
-                            --     bigMap = data["1"],  --大地图
-                            --     subMap = data["2"],  --小地图
-                            --     level  = data["3"]   --小关卡
-                            -- }
-                            -- self._subMap = data["4"]
-
-                            -- 大地图背景
-                            -- 默认为最大关卡地图，否则根据选择显示
-                            -- local mapId = bigMapID or data["1"]
-                            -- bgName = data_world_world[mapId].background
-
-                            -- 世界地图背景音乐
-                            -- local soundName = ResMgr.getSound(data_world_world[data["1"]].bgm)
-                            -- GameAudio.playMusic(soundName, true)
-
                             local isRefresh = false
 
                             print("isisisisisisisisis " .. game.player.m_maxLevel)

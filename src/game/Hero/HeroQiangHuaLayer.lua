@@ -46,23 +46,23 @@ function HeroQiangHuaLayer:playQiangHuaAnim(cardBg)
 end
 
 function HeroQiangHuaLayer:updateQiangHua(param)
-    self:setUpSilver(self.updateQiangHuaData["2"])
+    self:setUpSilver(self.updateQiangHuaData[2])
 
     self._rootnode["xiahunPage"]:setVisible(false)
     self._rootnode["qianghua_btn_node"]:setVisible(true)
     self._rootnode["qianghuaPage"]:setVisible(true)
     self._rootnode["xiahun_btn_node"]:setVisible(false)
 
-    local baseStates = self.updateQiangHuaData["1"]["base"]
+    local baseStates = self.updateQiangHuaData[1]["base"]
     for i = 1, #baseStates do
         self._rootnode["baseState" .. i]:setString(baseStates[i])
     end
 
-    local addStates = self.updateQiangHuaData["1"]["add"]
-    local cost = self.updateQiangHuaData["1"]["cost"]
+    local addStates = self.updateQiangHuaData[1]["add"]
+    local cost = self.updateQiangHuaData[1]["cost"]
 
     self.cost = cost
-    local getExp = self.updateQiangHuaData["1"]["curExp"]
+    local getExp = self.updateQiangHuaData[1]["curExp"]
 
     if self.costNumWithShadow == nil then
         self.costNumWithShadow =
@@ -159,10 +159,10 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         end
     end
 
-    local curLv = self.updateQiangHuaData["1"]["curLv"]
-    local nextLv = self.updateQiangHuaData["1"]["lv"]
+    local curLv = self.updateQiangHuaData[1]["curLv"]
+    local nextLv = self.updateQiangHuaData[1]["lv"]
 
-    local limit = self.updateQiangHuaData["1"]["limit"]
+    local limit = self.updateQiangHuaData[1]["limit"]
     local normalBarSprite = self._rootnode["empty"]
 
     if self.addBar == nil then
@@ -200,7 +200,7 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         self.addBar:stopAllActions()
     end
 
-    local level = self.updateQiangHuaData["1"]["lv"]
+    local level = self.updateQiangHuaData[1]["lv"]
     self._rootnode["lvNum"]:setString(level)
     self.level = level
     self._rootnode["lvNum"]:stopAllActions()
@@ -216,8 +216,8 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         self.addBar:setPercentage(100)
         self:shineLvl(curLv, nextLv)
     else
-        local curExp = self.updateQiangHuaData["1"]["curExp"]
-        local addExp = self.updateQiangHuaData["1"]["exp"]
+        local curExp = self.updateQiangHuaData[1]["curExp"]
+        local addExp = self.updateQiangHuaData[1]["exp"]
         self.addBar:setPercentage(addExp / limit * 100)
         self.normalBar:setPercentage(curExp / limit * 100)
     end
@@ -226,15 +226,15 @@ function HeroQiangHuaLayer:updateQiangHua(param)
         self.curLevel = level
     end
 
-    local starNum = self.updateQiangHuaData["1"]["star"]
+    local starNum = self.updateQiangHuaData[1]["star"]
     self._rootnode["qh_card_bg"]:setSpriteFrame(display.newSprite("#card_ui_bg_" .. starNum .. ".png"):getSpriteFrame())
     --    dump(starNum)
     for i = 1, 5 do
         self._rootnode["star" .. i]:setVisible(i <= starNum)
     end
 
-    local resId = self.updateQiangHuaData["1"]["resId"]
-    local cls = self.updateQiangHuaData["1"]["cls"]
+    local resId = self.updateQiangHuaData[1]["resId"]
+    local cls = self.updateQiangHuaData[1]["cls"]
 
     self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(resId, cls))
     local heroStaticData = ResMgr.getCardData(resId)
@@ -425,7 +425,7 @@ function HeroQiangHuaLayer:updateListData(data)
         -- print("self.index"..self.index)
         -- dump(self.heroList)
         local cellData = self.heroList[self.index]
-        local changeData = data["1"]
+        local changeData = data[1]
         --        dump(data)
         if cellData ~= nil then
             cellData["cls"] = changeData["cls"]
@@ -447,7 +447,7 @@ function HeroQiangHuaLayer:ctor(param)
     self.resetList = param.resetList --更新list的函数
     self.curLevel = 0
 
-    self.objId = self.heroList[self.index]["_id"]
+    self.objId = self.heroList[self.index]["id"]
     printf(self.objId)
     -- dump(self.heroList)
     self.xiahunLv = 0
@@ -467,7 +467,7 @@ function HeroQiangHuaLayer:ctor(param)
                     -- if stars < 4 then
                     --星级小于五
                     if rawlist[i].lock ~= 1 then -- 加锁的不能吃掉
-                        if rawlist[i]["_id"] ~= self.objId then
+                        if rawlist[i]["id"] ~= self.objId then
                             -- dump(rawlist[i])
                             --不是要强化的主卡牌
                             self.sellAbleList[#self.sellAbleList + 1] = rawlist[i]
@@ -752,7 +752,7 @@ function HeroQiangHuaLayer:clearData()
     print("clear clear")
     local objList = {}
     for i = 1, #self.choseTable do
-        local objId = self.sellAbleList[self.choseTable[i]]["_id"]
+        local objId = self.sellAbleList[self.choseTable[i]]["id"]
         objList[#objList + 1] = objId
 
         -- table.remove(self.sellAbleList,self.choseTable[i])
@@ -760,10 +760,10 @@ function HeroQiangHuaLayer:clearData()
 
     for i = 1, #objList do
         for j = 1, #self.sellAbleList do
-            if self.sellAbleList[j]["_id"] == objList[i] then
+            if self.sellAbleList[j]["id"] == objList[i] then
                 table.remove(self.sellAbleList, j)
                 for k = 1, #self.heroList do
-                    if self.heroList[k]["_id"] == objList[i] then
+                    if self.heroList[k]["id"] == objList[i] then
                         table.remove(self.heroList, k)
                         break
                     end
@@ -790,7 +790,7 @@ function HeroQiangHuaLayer:sendRes(param)
         idsTable[#idsTable + 1] = self.objId
 
         for i = 1, #self.choseTable do
-            idsTable[#idsTable + 1] = self.sellAbleList[self.choseTable[i]]["_id"]
+            idsTable[#idsTable + 1] = self.sellAbleList[self.choseTable[i]]["id"]
         end
 
         local sellStr = ""
@@ -806,27 +806,23 @@ function HeroQiangHuaLayer:sendRes(param)
             {
                 callback = function(data)
                     ResMgr.removeMaskLayer()
-                    if #data["0"] > 0 then
-                        show_tip_label(data["0"])
+                    if param.op == 2 then
+                        self.isQiangHuaAlready = true
+                        --清空两个表中的数据
+                        self:clearData()
+
+                        game.player.m_silver = game.player.m_silver - self.cost
+                        self.top:setSilver(game.player.m_silver)
+                        data.op = 2
                     else
-                        if param.op == 2 then
-                            self.isQiangHuaAlready = true
-                            --清空两个表中的数据
-                            self:clearData()
-
-                            game.player.m_silver = game.player.m_silver - self.cost
-                            self.top:setSilver(game.player.m_silver)
-                            data.op = 2
-                        else
-                            data.op = 1
-                        end
-
-                        self.updateQiangHuaData = data
-
-                        -- dump(data)
-                        self:updateListData(data)
-                        self:updateQiangHua({op = param.op})
+                        data.op = 1
                     end
+
+                    self.updateQiangHuaData = data
+
+                    -- dump(data)
+                    self:updateListData(data)
+                    self:updateQiangHua({op = param.op})
                 end,
                 errback = function(data)
                     if param.op == 1 then
