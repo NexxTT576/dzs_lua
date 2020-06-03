@@ -1,5 +1,6 @@
 require("game.Bag.BagCtrl")
 local data_item_item = require("data.data_item_item")
+--@SuperType BaseScene
 local BagScene =
     class(
     "ItemChooseScene",
@@ -58,6 +59,7 @@ end
 
 function BagScene:ctor(tag)
     ResMgr.removeBefLayer()
+    self:enableNodeEvents()
 
     if tag == nil or type(tag) ~= "number" or tag < 0 or tag > 2 then
         self._curView = VIEW_TYPE.BAG_ITEM

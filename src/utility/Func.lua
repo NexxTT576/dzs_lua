@@ -422,3 +422,20 @@ function resetbtn(btn, parentNode, zorder)
     btn:release()
     btn:setTouchEnabled(true)
 end
+
+local SEC_OF_MIN = 60
+local SEC_OF_HOUR = 3600
+
+function format_time(t)
+    local hour = math.floor(t / SEC_OF_HOUR)
+    local min = math.floor((t % SEC_OF_HOUR) / SEC_OF_MIN)
+    local sec = t - hour * SEC_OF_HOUR - min * SEC_OF_MIN
+    return string.format("%02d:%02d:%02d", hour, min, sec)
+end
+
+function format_time_unit(t)
+    local hour = math.floor(t / SEC_OF_HOUR)
+    local min = math.floor((t % SEC_OF_HOUR) / SEC_OF_MIN)
+    local sec = t - hour * SEC_OF_HOUR - min * SEC_OF_MIN
+    return string.format("%02d小时%02d分%02d秒", hour, min, sec)
+end

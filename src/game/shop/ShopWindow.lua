@@ -1,10 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-6-24
--- Time: 下午4:16
--- To change this template use File | Settings | File Templates.
-
+--@SuperType BaseScene
 local ShopWindow =
     class(
     "ShopWindow",
@@ -30,6 +24,8 @@ local aMaxTime = 48 * 60 * 60
 local MAX_ZODER = 100
 --
 function ShopWindow:ctor(bGoShowList)
+    self:enableNodeEvents()
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     game.runningScene = self
     self._bExit = false
     -- ResMgr.createBefTutoMask(self)
@@ -46,12 +42,8 @@ function ShopWindow:ctor(bGoShowList)
                     {
                         callback = function(data)
                             dump(data)
-                            if string.len(data["0"]) > 0 then
-                                CCMessageBox(data["0"], "Tip")
-                            else
-                                self._itemsData = data
-                                self:onItemsView()
-                            end
+                            self._itemsData = data
+                            self:onItemsView()
                         end
                     }
                 )
@@ -109,46 +101,41 @@ function ShopWindow:ctor(bGoShowList)
             {
                 callback = function(data)
                     dump(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
+
+                    self._zhaomulingNum = data[1]["n"] --招募令数量
+                    self._bDelayTime = data[2][1] --中级招募剩余时间
+                    self._aDelayTime = data[2][2] --高级招募剩余时间
+
+                    if self._bDelayTime < 0 or self._bDelayTime > bMaxTime then
+                        self._bDelayTime = bMaxTime
+                        CCMessageBox("服务器端倒计时时间有问题", "Tip")
+                    end
+                    if self._aDelayTime < 0 or self._aDelayTime > aMaxTime then
+                        self._aDelayTime = aMaxTime
+                        CCMessageBox("服务器端倒计时时间有问题", "Tip")
+                    end
+
+                    self._nextNBCardTime = data[3]
+                    --下次获得金卡的招募次数
+                    dump(self._nextNBCardTime)
+
+                    self._rootnode["zhaomulingNumLabel"]:setString(tostring(self._zhaomulingNum))
+                    self._rootnode["bCardDelayTimeLabel"]:setString(format_time(self._bDelayTime))
+                    self._rootnode["aCardDelayTimeLabel"]:setString(format_time(self._aDelayTime))
+
+                    self:checkIsShowFreeLbl()
+                    if (data[4][2] ~= 0) then
+                        self._rootnode["tag_first_4"]:setVisible(false)
+                    end
+
+                    if (data[4][3] ~= 0) then
+                        self._rootnode["tag_first_5"]:setVisible(false)
                     else
-                        dump(data["2"])
+                        self._rootnode["tag_first_5"]:setVisible(true)
+                    end
 
-                        self._zhaomulingNum = data["1"]["n"] --招募令数量
-                        self._bDelayTime = data["2"][1] --中级招募剩余时间
-                        self._aDelayTime = data["2"][2] --高级招募剩余时间
-
-                        if self._bDelayTime < 0 or self._bDelayTime > bMaxTime then
-                            self._bDelayTime = bMaxTime
-                            CCMessageBox("服务器端倒计时时间有问题", "Tip")
-                        end
-                        if self._aDelayTime < 0 or self._aDelayTime > aMaxTime then
-                            self._aDelayTime = aMaxTime
-                            CCMessageBox("服务器端倒计时时间有问题", "Tip")
-                        end
-
-                        self._nextNBCardTime = data["3"]
-                        --下次获得金卡的招募次数
-                        dump(self._nextNBCardTime)
-
-                        self._rootnode["zhaomulingNumLabel"]:setString(tostring(self._zhaomulingNum))
-                        self._rootnode["bCardDelayTimeLabel"]:setString(format_time(self._bDelayTime))
-                        self._rootnode["aCardDelayTimeLabel"]:setString(format_time(self._aDelayTime))
-
-                        self:checkIsShowFreeLbl()
-                        if (data["4"][2] ~= 0) then
-                            self._rootnode["tag_first_4"]:setVisible(false)
-                        end
-
-                        if (data["4"][3] ~= 0) then
-                            self._rootnode["tag_first_5"]:setVisible(false)
-                        else
-                            self._rootnode["tag_first_5"]:setVisible(true)
-                        end
-
-                        if bGoShowList == true then
-                            onTabBtn(2)
-                        end
+                    if bGoShowList == true then
+                        onTabBtn(2)
                     end
                 end
             }
@@ -436,26 +423,26 @@ function ShopWindow:onItemsView()
 
     local _data = {}
     dump(self._itemsData)
-    for _, v in ipairs(self._itemsData["1"]) do
+    for _, v in ipairs(self._itemsData[1]) do
         local item
         if v.itemId > 4000 then
             item = data_item_item[v.itemId]
             --            local price = v.price + v.addPrice * self._itemsData["2"][v.id].hadBuy
             --            min（price+m*addPrice，price+maxN*addPrice）
-            local price = math.min(v.price + v.addPrice * self._itemsData["2"][v.id].hadBuy, v.price + v.maxN * v.addPrice)
+            local price = math.min(v.price + v.addPrice * self._itemsData[2][v.id].hadBuy, v.price + v.maxN * v.addPrice)
             table.insert(
                 _data,
                 {
                     name = item.name,
                     itemId = v.itemId,
                     icon = item.icon,
-                    maxnum = self._itemsData["2"][v.id].max,
-                    remainnum = self._itemsData["2"][v.id].cnt,
+                    maxnum = self._itemsData[2][v.id].max,
+                    remainnum = self._itemsData[2][v.id].cnt,
                     price = price,
-                    hadBuy = self._itemsData["2"][v.id].hadBuy,
+                    hadBuy = self._itemsData[2][v.id].hadBuy,
                     desc = item.describe,
                     baseprice = v.price,
-                    havenum = self._itemsData["2"][v.id].hadCnt,
+                    havenum = self._itemsData[2][v.id].hadCnt,
                     coinType = v.coinType,
                     id = v.id,
                     addPrice = v.addPrice,
@@ -477,10 +464,10 @@ function ShopWindow:onItemsView()
                 function()
                     dump(_data[idx + 1])
 
-                    for _, v in ipairs(self._itemsData["1"]) do
+                    for _, v in ipairs(self._itemsData[1]) do
                         if v.itemId == _data[idx + 1].itemId then
-                            self._itemsData["2"][v.id].cnt = remainnum
-                            self._itemsData["2"][v.id].hadBuy = _data[idx + 1].hadBuy
+                            self._itemsData[2][v.id].cnt = remainnum
+                            self._itemsData[2][v.id].hadBuy = _data[idx + 1].hadBuy
                         --                        v.price = _data[idx + 1].price
                         --                        show_tip_label("hello")
                         end
@@ -499,12 +486,8 @@ function ShopWindow:onItemsView()
                         {
                             callback = function(data)
                                 dump(data)
-                                if string.len(data["0"]) > 0 then
-                                    CCMessageBox(data["0"], "Tip")
-                                else
-                                    self._itemsData = data
-                                    self:onItemsView()
-                                end
+                                self._itemsData = data
+                                self:onItemsView()
                             end
                         }
                     )

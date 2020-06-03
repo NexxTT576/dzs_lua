@@ -1,11 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-8-4
--- Time: 下午4:12
--- To change this template use File | Settings | File Templates.
---
-
 local data_star_star = require("data.data_star_star")
 local data_item_nature = require("data.data_item_nature")
 local data_mingjiang_mingjiang = require("data.data_mingjiang_mingjiang")

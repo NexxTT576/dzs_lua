@@ -107,7 +107,6 @@ function GameStateManager:ChangeState(nextState, msg)
             display.runScene(scene)
         elseif (nextState == GAME_STATE.STATE_BEIBAO) then
             local function reqBag(data1, data2)
-                -- body
                 scene = require("game.Bag.BagScene").new(msg)
                 scene:initdata(data1, data2)
                 display.runScene(scene)

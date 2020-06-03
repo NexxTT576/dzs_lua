@@ -8,10 +8,6 @@ end
 
 function BottomBtnEvent.registerBottomEvent(btnMaps)
     local function onTouchBtn(tag)
-        -- if  ResMgr.isBottomEnabled == false then
-        --     return
-        -- end
-
         if BottomBtnEvent.canTouchEnabled ~= nil and BottomBtnEvent.canTouchEnabled == true then
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)

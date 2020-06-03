@@ -83,13 +83,6 @@ function BuyCountBox:ctor(param, callback, errorCB)
     local remainnum = param.remainnum - 1
 
     local function getCost()
-        --        if  m>maxN-1
-        --        s=（price+maxN*addPrice）*n
-        --        else   if  m+n<maxN+2
-        --        s=n*now+n*(n-1)*addPrice/2
-        --        else
-        --            s=(maxN-m+1)*(price+m*addPrice)+(maxN-m+1)*(maxN-m)*addPrice/2+(m+n-maxN-1)*(price+maxN*addPrice)
-
         local tmpNum = (param.hadBuy + num) --总共购买次数
         local costNum = 0
         if param.hadBuy > (param.maxN - 1) then
@@ -109,11 +102,8 @@ function BuyCountBox:ctor(param, callback, errorCB)
     end
 
     rootnode["costLabel"]:setString(tostring(getCost()))
-    local function onNumBtn(event, sender)
+    local function onNumBtn(sender)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
-        if (event == nil) then
-            return
-        end
         local tag = sender:getTag()
         if 1 == tag then -- +1
             if (-1 == param.maxnum) or (remainnum > 0) then
@@ -162,7 +152,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     rootnode["reduce10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
     rootnode["reduce1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
 
-    onNumBtn(_, rootnode["add1Btn"])
+    onNumBtn(rootnode["add1Btn"])
 
     rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)
@@ -172,28 +162,23 @@ function BuyCountBox:ctor(param, callback, errorCB)
                     {
                         callback = function(data)
                             dump(data)
-                            -- device.showAlert("buy","cb")
-                            if string.len(data["0"]) > 0 then
-                                CCMessageBox(data["0"], "Tip")
-                            else
-                                local price = math.min(param.baseprice + param.addPrice * data["1"].hadBuy, param.baseprice + param.maxN * param.addPrice)
-                                printf("======== %d", remainnum)
-                                param.remainnum = remainnum
-                                param.hadBuy = param.hadBuy + num
-                                param.havenum = param.havenum + num
-                                param.price = price
-                                game.player:setGold(data["2"])
-                                game.player:setSilver(data["3"])
+                            local price = math.min(param.baseprice + param.addPrice * data[1].hadBuy, param.baseprice + param.maxN * param.addPrice)
+                            printf("======== %d", remainnum)
+                            param.remainnum = remainnum
+                            param.hadBuy = param.hadBuy + num
+                            param.havenum = param.havenum + num
+                            param.price = price
+                            game.player:setGold(data[2])
+                            game.player:setSilver(data[3])
 
-                                if callback then
-                                    callback()
-                                end
-
-                                PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-                                PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-
-                                num = 0
+                            if callback then
+                                callback()
                             end
+
+                            PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                            PostNotice(NoticeKey.CommonUpdate_Label_Silver)
+
+                            num = 0
                             onClose()
                         end,
                         errback = function()
