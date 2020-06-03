@@ -79,8 +79,8 @@ function BuyCountBox:ctor(param, callback, errorCB)
     -- rootnode["nameLabel"]:setString(param.name)
     rootnode["costLabel"]:setString("0")
 
-    local num = 1
-    local remainnum = param.remainnum - 1
+    local num = 0
+    local remainnum = param.remainnum
 
     local function getCost()
         local tmpNum = (param.hadBuy + num) --总共购买次数

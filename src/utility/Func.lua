@@ -439,3 +439,12 @@ function format_time_unit(t)
     local sec = t - hour * SEC_OF_HOUR - min * SEC_OF_MIN
     return string.format("%02d小时%02d分%02d秒", hour, min, sec)
 end
+
+function arrangeTTFByPosX(cells)
+    --按照X位置排序
+    for i = 1, #cells do
+        if i ~= 1 then
+            cells[i]:setPositionX(cells[i - 1]:getPositionX() + cells[i - 1]:getContentSize().width)
+        end
+    end
+end

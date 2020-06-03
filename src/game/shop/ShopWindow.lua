@@ -53,11 +53,7 @@ function ShopWindow:ctor(bGoShowList)
                 {
                     callback = function(data)
                         dump(data)
-                        if data.err ~= "" then
-                            dump(data.err)
-                        else
-                            self:onVipLibaoView(data)
-                        end
+                        self:onVipLibaoView(data)
                     end
                 }
             )
@@ -542,8 +538,8 @@ function ShopWindow:onVipLibaoView(data)
     self._rootnode["tag_hero_ui"]:setVisible(false)
     self._rootnode["itemsBg"]:setVisible(true)
 
-    local getLevelGiftAry = data.rtnObj.getLevelGiftAry
-    local curVipLevel = data.rtnObj.curVipLevel
+    local getLevelGiftAry = data.getLevelGiftAry
+    local curVipLevel = data.curVipLevel
     local rewardDatas = {}
 
     for i, viplevelData in ipairs(data_viplevel_viplevel) do
@@ -612,24 +608,18 @@ function ShopWindow:createVipLibaoListView(param)
                 vipLv = cell:getVipLevel(),
                 callback = function(data)
                     dump(data)
-                    if data.err ~= "" then
-                        dump(data.err)
-                        cell:setBuyBtnEnabled(true)
-                    else
-                        -- result:   领取结果 1-成功 2-失败
-                        local rtnObj = data.rtnObj
-                        local result = rtnObj.result
-                        if result == 1 then
-                            table.insert(getLevelGiftAry, cell:getVipLevel())
-                            cell:getReward(getLevelGiftAry)
-                            show_tip_label(data_error_error[2700001].prompt)
+                    local rtnObj = data
+                    local result = rtnObj.result
+                    if result == 1 then
+                        table.insert(getLevelGiftAry, cell:getVipLevel())
+                        cell:getReward(getLevelGiftAry)
+                        show_tip_label(data_error_error[2700001].prompt)
 
-                            game.player:updateMainMenu({silver = rtnObj.silver, gold = rtnObj.gold})
-                            PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-                            PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-                        else
-                            cell:setBuyBtnEnabled(true)
-                        end
+                        game.player:updateMainMenu({silver = rtnObj.silver, gold = rtnObj.gold})
+                        PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                        PostNotice(NoticeKey.CommonUpdate_Label_Silver)
+                    else
+                        cell:setBuyBtnEnabled(true)
                     end
                 end
             }

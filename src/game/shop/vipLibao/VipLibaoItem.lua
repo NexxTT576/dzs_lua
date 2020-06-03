@@ -71,7 +71,7 @@ function VipLibaoItem:create(param)
     )
 
     local itemIcon = self._rootnode["itemIcon"]
-    itemIcon:setTouchEnabled(true)
+    setTouchEnabled(itemIcon, true)
 
     -- 礼包详情
     local function itemInformation()
@@ -88,15 +88,13 @@ function VipLibaoItem:create(param)
         )
         game.runningScene:addChild(layer, MAX_ZORDER)
     end
-
-    itemIcon:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            if (event.name == "began") then
-                itemIcon:setTouchEnabled(false)
-                itemInformation()
-                return true
-            end
+    addNodeEventListener(
+        itemIcon,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
+            itemIcon:setTouchEnabled(false)
+            itemInformation()
+            return true
         end
     )
 
