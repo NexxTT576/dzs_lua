@@ -145,17 +145,12 @@ function CommonEquipInfoLayer:ctor(param, infoType)
                 pos = _index,
                 subpos = _subIndex,
                 callback = function(data)
-                    -- dump(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                    else
-                        _info.pos = 0
-                        _info.cid = 0
-                        if _listener then
-                            _listener(data)
-                        end
-                        self:removeSelf()
+                    _info.pos = 0
+                    _info.cid = 0
+                    if _listener then
+                        _listener(data)
                     end
+                    self:removeSelf()
                 end
             }
         )

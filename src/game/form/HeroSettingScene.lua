@@ -836,7 +836,7 @@ function HeroSettingScene:refreshHero(index, bScrollHead)
                 local s =
                     require("game.Spirit.SpiritIcon").new(
                     {
-                        id = v._id,
+                        id = v.id,
                         resId = v.resId,
                         lv = v.level,
                         exp = v.curExp or 0,
@@ -1272,7 +1272,7 @@ end
 
 function HeroSettingScene:getEquipByID(id)
     for k, v in ipairs(game.player:getEquipments()) do
-        if v._id == id then
+        if v.id == id then
             return v
         end
     end
@@ -1281,7 +1281,7 @@ end
 
 function HeroSettingScene:getSkillByID(id)
     for k, v in ipairs(game.player:getSkills()) do
-        if v._id == id then
+        if v.id == id then
             return v
         end
     end
@@ -1290,7 +1290,7 @@ end
 
 function HeroSettingScene:getSpiritByID(id)
     for k, v in ipairs(game.player:getSpirit()) do
-        if v._id == id then
+        if v.id == id then
             return v
         end
     end
@@ -1300,7 +1300,7 @@ end
 function HeroSettingScene:initEquip()
     local function onIcon(tag, info)
         if tag < 5 then
-            local d = self:getEquipByID(info.objId)
+            local d = self:getEquipByID(info.id)
             if d then
                 setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], false)
                 local layer =
@@ -1313,18 +1313,12 @@ function HeroSettingScene:initEquip()
                             setTouchEnabled(self._rootnode["equipBtn_" .. tostring(tag)], true)
                         end,
                         listener = function()
-                            RequestHelperV2.request(
-                                RequestInfo.new(
-                                    {
-                                        modulename = "fmt",
-                                        funcname = "list",
-                                        param = {},
-                                        oklistener = function(data)
-                                            self:resetFormData(data)
-                                            self:refreshHero(self._index)
-                                        end
-                                    }
-                                )
+                            GameRequest.fmt.list(
+                                {},
+                                function(data)
+                                    self:resetFormData(data)
+                                    self:refreshHero(self._index)
+                                end
                             )
                         end
                     }

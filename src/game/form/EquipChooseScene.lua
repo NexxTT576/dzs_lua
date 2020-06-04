@@ -204,7 +204,6 @@ function EquipChooseScene:ctor(param)
                                     subpos = _subIndex,
                                     id = _data[cellIdx + 1].data.id,
                                     callback = function(data)
-                                        --                            dump(data["1"])
                                         PostNotice(NoticeKey.REMOVE_TUTOLAYER)
                                         putoff()
                                         if _callback then
