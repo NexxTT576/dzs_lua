@@ -38,17 +38,11 @@ function HeroJinJie:updateListData(leftData)
 end
 
 function HeroJinJie:removeCard(removeList)
-    -- print("remove ")
-    -- dump(removeList)
-    -- print("befffffffff "..#HeroModel.totalTable)
-    -- dump(HeroModel.totalTable[2])
     --如果不为空
     if removeList ~= nil then
         for i = 1, #removeList do
             dump(removeList[i])
             for k = 1, #HeroModel.totalTable do
-                -- print("kk")
-                -- print("HeroModel.totalTable[k][]"..HeroModel.totalTable[k]["id"])
                 if HeroModel.totalTable[k]["id"] == removeList[i] then
                     table.remove(HeroModel.totalTable, k)
                     break
@@ -56,20 +50,17 @@ function HeroJinJie:removeCard(removeList)
             end
         end
     end
-    -- print("afffffffff "..#HeroModel.totalTable)
 end
 
 function HeroJinJie:init(data)
-    -- PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-    -- ResMgr.removeMaskLayer()
     self.data = data
     print("jinjiedatata ")
     dump(data)
-    local removeList = data["8"]
+    local removeList = data[8]
 
     self:removeCard(removeList)
 
-    local leftData = data["2"]
+    local leftData = data[2]
     local leftResID = leftData["resId"]
     local leftCls = leftData["cls"]
     self.cls = leftCls
@@ -92,8 +83,6 @@ function HeroJinJie:init(data)
 
     --更新列表上的数据，将来更新的话
     self:updateListData(leftData)
-
-    -- table.insert(leftBase,1,leftLv)
 
     --<<--- 左边板子上的内容
     self._rootnode["image"]:setSpriteFrame(ResMgr.getHeroFrame(leftResID, leftCls))
@@ -120,7 +109,6 @@ function HeroJinJie:init(data)
     self.leftHeroName:setString(leftNameStr)
     self.leftHeroName:setColor(NAME_COLOR[starNum])
 
-    -- self.leftHeroCls:setPosition(self.leftHeroName:getPositionX()+self.leftHeroName:getContentSize().width,self.leftHeroName:getPositionY())
     if leftCls == 0 then
         self.leftHeroCls:setVisible(false)
     else
@@ -141,16 +129,11 @@ function HeroJinJie:init(data)
     --<<---右边板子上的内容
     local isReachLimit = false
 
-    -- self.resId = leftResID
-
-    local rightData = data["3"]
-    -- dump(data["3"])
+    local rightData = data[3]
 
     if rightData.base == nil then
         isReachLimit = true
-        -- local tip = require("utility.NormalBanner").new({tipContext="已经达到进阶上限"})
-        --        self.boardNode:addChild(tip,1000000)
-        -- show_tip_label("已经达到进阶上限")
+
         ResMgr.showErr(200007)
         self._rootnode["right_info"]:setVisible(false)
         self._rootnode["card_right"]:setVisible(false)
@@ -159,6 +142,7 @@ function HeroJinJie:init(data)
         self.costNum = 0
         self._rootnode["scrow_node"]:removeAllChildren()
     else
+        -- scrow_node:setPositionX(scrow_node:getParent():getPositionX() + 50)
         self._rootnode["right_info"]:setVisible(true)
         self._rootnode["card_right"]:setVisible(true)
         self._rootnode["arrow"]:setVisible(true)
@@ -202,7 +186,6 @@ function HeroJinJie:init(data)
 
         self.rightHeroName:setColor(NAME_COLOR[starNum])
 
-        -- self.leftHeroCls:setPosition(self.leftHeroName:getPositionX()+self.leftHeroName:getContentSize().width,self.leftHeroName:getPositionY())
         if rightCls == 0 then
             self.rightHeroCls:setVisible(false)
         else
@@ -219,9 +202,9 @@ function HeroJinJie:init(data)
         end
 
         -->>---
-        self.costNum = data["5"]
+        self.costNum = data[5]
         -- 	--
-        local itemData = data["4"]
+        local itemData = data[4]
         self.notEnough = true
 
         self.costData = itemData
@@ -235,8 +218,6 @@ function HeroJinJie:init(data)
             local itemType = itemData[i]["t"]
 
             if itemsNeedNum > itemsHaveNum then
-                -- needColor = FONT_COLOR.RED
-                -- requireColor = FONT_COLOR.RED
                 self.notEnough = false
             end
         end
@@ -259,6 +240,7 @@ function HeroJinJie:init(data)
 
         self._rootnode["scrow_node"]:removeAllChildren()
 
+        --@RefType TableViewExt
         local itemList =
             require("utility.TableViewExt").new(
             {
@@ -269,14 +251,16 @@ function HeroJinJie:init(data)
                 cellSize = require("game.Hero.JinJieCell").new():getContentSize()
             }
         )
-        -- itemList:setScale(3)
+
         self._rootnode["scrow_node"]:addChild(itemList)
+        --@RefType luaIde#cc.Node
+        local scrow_node = self._rootnode["scrow_node"]
     end
 
     self._rootnode["cost_silver"]:setString(self.costNum)
 
     -- 无法进阶
-    if (data["1"] == 0 and data["3"].base == nil) then
+    if (data[1] == 0 and data[3].base == nil) then
         self._rootnode["jingLianBtn"]:setVisible(false)
         self._rootnode["right_info"]:setVisible(false)
         self._rootnode["card_right"]:setVisible(false)
@@ -321,29 +305,16 @@ function HeroJinJie:ctor(param)
     --function(num) self:setCurNum(num)end}
     --	end
 
-    --<<增加上下的框
-    -- self.bottom = require("game.scenes.BottomLayer").new(true)
-    -- self:addChild(self.bottom,1)
-
-    -- self.top = require("game.scenes.TopLayer").new()
-    -- self:addChild(self.top,1)
-    -->
-
     local proxy = CCBProxy:create()
     self._rootnode = {}
     local node = CCBReaderLoad("hero/hero_jinjie.ccbi", proxy, self._rootnode)
-    --,self)   --cc.size(display.width, display.height - self.bottom:getContentSize().height - self.top:getContentSize().height )
-    -- local node = CCBReaderLoad("hero/hero_jinjie.ccbi", proxy, self._rootnode,self,cc.size(display.width, display.height - self.bottom:getContentSize().height - 72 ))
-    -- node:setAnchorPoint(cc.p(0.5,0))
+
     node:setPosition(display.width / 2, display.height / 2) --self.bottom:getContentSize().height)
     self:addChild(node)
 
     local curHeight = node:getContentSize().height
     local orHeight = 633
     local scale = curHeight / orHeight
-
-    -- self._rootnode["card_left"]:setScale(self._rootnode["card_left"]:getScale() * scale)
-    -- self._rootnode["card_right"]:setScale(self._rootnode["card_right"]:getScale() * scale)
 
     self.leftHeroName =
         newTTFLabelWithShadow(
@@ -455,9 +426,6 @@ function HeroJinJie:ctor(param)
 
                             self._rootnode["jingLianBtn"]:setEnabled(false)
                             self._rootnode["backBtn"]:setEnabled(false)
-                            -- ResMgr.delayFunc(1,function()
-                            --     self._rootnode["jingLianBtn"]:setEnabled(true)
-                            -- end,self)
 
                             self.curOp = JINJIE_OP
                             RequestHelper.getJinJieRes(
@@ -506,15 +474,15 @@ function HeroJinJie:ctor(param)
                                         PostNotice(NoticeKey.CommonUpdate_Label_Silver)
                                         -- self.top:setSilver(game.player.m_silver)
 
-                                        game.player.m_class = data["2"].cls
+                                        game.player.m_class = data[2].cls
 
                                         -- 广播 侠客进阶成功 (进阶到5级以上)
-                                        if data["2"] ~= nil and data["2"].cls > 5 then
-                                            local heroInfo = ResMgr.getCardData(data["2"].resId)
+                                        if data[2] ~= nil and data[2].cls > 5 then
+                                            local heroInfo = ResMgr.getCardData(data[2].resId)
                                             Broad_heroLevelUpData.heroName = heroInfo.name
                                             Broad_heroLevelUpData.type = heroInfo.type
-                                            Broad_heroLevelUpData.star = heroInfo.star[data["2"].cls + 1]
-                                            Broad_heroLevelUpData.class = data["2"].cls
+                                            Broad_heroLevelUpData.star = heroInfo.star[data[2].cls + 1]
+                                            Broad_heroLevelUpData.class = data[2].cls
 
                                             game.broadcast:showHeroLevelUp()
                                         end

@@ -200,7 +200,7 @@ function HeroList:init(data)
         RequestHelper.getHeroDebrisList(
             {
                 callback = function(listData)
-                    local debrisList = listData["1"]
+                    local debrisList = listData["itemAry"]
                     HeroModel.debrisData = debrisList
 
                     local function createCollectLayer(debrisId)
@@ -212,51 +212,31 @@ function HeroList:init(data)
                         RequestHelper.sendHeChengHeroRes(
                             {
                                 callback = function(listData)
-                                    if listData["5"] == true then
+                                    if listData[5] == true then
                                         ResMgr.showMsg(2)
                                     else
-                                        if string.len(listData["0"]) > 0 then
-                                            CCMessageBox(listData["0"], "Tip")
+                                        local isFull = listData[3] or false
+
+                                        if not isFull then
+                                            self.upDebrisFunc()
+                                            show_tip_label("侠客合成成功")
                                         else
-                                            local isFull = listData["3"] or false
+                                            local bagObj = listData[4]
 
-                                            if not isFull then
-                                                self.upDebrisFunc()
-                                                show_tip_label("侠客合成成功")
-                                            else
-                                                local bagObj = listData["4"]
+                                            -- 判断背包空间是否足，如否则提示扩展空间
+                                            local function extendBag(data)
+                                                -- 更新背包最大数量
+                                                self:setMaxNum(checkint(self._rootnode["maxNum"]:getString()) + bagObj[1].size)
 
-                                                -- 判断背包空间是否足，如否则提示扩展空间
-                                                local function extendBag(data)
-                                                    -- 更新背包最大数量
-                                                    self:setMaxNum(checkint(self._rootnode["maxNum"]:getString()) + bagObj[1].size)
-
-                                                    -- 更新第一个背包，先判断当前拥有数量是否小于上限，若是则接着提示下一个背包类型需要扩展，否则更新cost和size
-                                                    if bagObj[1].curCnt < data["1"] then
-                                                        table.remove(bagObj, 1)
-                                                    else
-                                                        bagObj[1].cost = data["4"]
-                                                        bagObj[1].size = data["5"]
-                                                    end
-
-                                                    if #bagObj > 0 then
-                                                        self:addChild(
-                                                            require("utility.LackBagSpaceLayer").new(
-                                                                {
-                                                                    bagObj = bagObj,
-                                                                    callback = function(data)
-                                                                        extendBag(data)
-                                                                    end
-                                                                }
-                                                            ),
-                                                            MAX_ZORDER
-                                                        )
-                                                    else
-                                                        isFull = false
-                                                    end
+                                                -- 更新第一个背包，先判断当前拥有数量是否小于上限，若是则接着提示下一个背包类型需要扩展，否则更新cost和size
+                                                if bagObj[1].curCnt < data[1] then
+                                                    table.remove(bagObj, 1)
+                                                else
+                                                    bagObj[1].cost = data[4]
+                                                    bagObj[1].size = data[5]
                                                 end
 
-                                                if isFull then
+                                                if #bagObj > 0 then
                                                     self:addChild(
                                                         require("utility.LackBagSpaceLayer").new(
                                                             {
@@ -268,7 +248,23 @@ function HeroList:init(data)
                                                         ),
                                                         MAX_ZORDER
                                                     )
+                                                else
+                                                    isFull = false
                                                 end
+                                            end
+
+                                            if isFull then
+                                                self:addChild(
+                                                    require("utility.LackBagSpaceLayer").new(
+                                                        {
+                                                            bagObj = bagObj,
+                                                            callback = function(data)
+                                                                extendBag(data)
+                                                            end
+                                                        }
+                                                    ),
+                                                    MAX_ZORDER
+                                                )
                                             end
                                         end
                                     end
@@ -770,27 +766,21 @@ function HeroList:ctor(tag)
             {
                 type = 8,
                 callback = function(data)
-                    --                dump(data)
+                    local bagCountMax = data[1]
+                    local costGold = data[2]
+                    local curGold = data[3]
+                    game.player:setBagCountMax(bagCountMax)
+                    game.player:setGold(curGold)
+                    self:updateLabel()
+                    self:setMaxNum(bagCountMax)
 
-                    if (string.len(data["0"]) == 0) then
-                        local bagCountMax = data["1"]
-                        local costGold = data["2"]
-                        local curGold = data["3"]
-                        game.player:setBagCountMax(bagCountMax)
-                        game.player:setGold(curGold)
-                        self:updateLabel()
-                        self:setMaxNum(bagCountMax)
+                    self._cost[1] = data[4]
+                    self._cost[2] = data[5]
 
-                        self._cost[1] = data["4"]
-                        self._cost[2] = data["5"]
+                    -- show_tip_label("卡牌上限提升至"..bagCountMax)
+                    ResMgr.showErr(200025)
 
-                        -- show_tip_label("卡牌上限提升至"..bagCountMax)
-                        ResMgr.showErr(200025)
-
-                        PostNotice(NoticeKey.MainMenuScene_Update)
-                    else
-                        CCMessageBox(data["0"], "Error")
-                    end
+                    PostNotice(NoticeKey.MainMenuScene_Update)
                 end
             }
         )

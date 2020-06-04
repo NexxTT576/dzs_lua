@@ -342,8 +342,8 @@ function HeroQiangHuaLayer:updateXiaHun(param)
     self._rootnode["xiahun_btn_node"]:setVisible(true)
 
     self.addBar:stopAllActions()
-    local baseNums = self.xiahunData["1"]["base"]
-    local addNums = self.xiahunData["1"]["add"]
+    local baseNums = self.xiahunData[1]["base"]
+    local addNums = self.xiahunData[1]["add"]
 
     for i = 1, 4 do
         self._rootnode["baseState" .. i]:setString(baseNums[i])
@@ -356,22 +356,22 @@ function HeroQiangHuaLayer:updateXiaHun(param)
         end
     end
 
-    local costNum = self.xiahunData["1"]["cost"]
+    local costNum = self.xiahunData[1]["cost"]
     self._rootnode["cost_silver_num"]:setString(costNum)
 
     self.xiahunCostNum = costNum
 
-    local getExp = self.xiahunData["1"]["exp"]
+    local getExp = self.xiahunData[1]["exp"]
 
     self._rootnode["get_exp_num"]:setString(getExp)
 
-    self.curXiaHunNum = self.xiahunData["1"]["hun"][1]
-    self.needXiaHunNum = self.xiahunData["1"]["hun"][2]
+    self.curXiaHunNum = self.xiahunData[1]["hun"][1]
+    self.needXiaHunNum = self.xiahunData[1]["hun"][2]
 
     self._rootnode["cur_xiahun_num"]:setString(self.curXiaHunNum)
     self._rootnode["need_xiahun_num"]:setString(self.needXiaHunNum)
 
-    local curLevelNum = self.xiahunData["1"]["lv"]
+    local curLevelNum = self.xiahunData[1]["lv"]
     -- self._rootnode["lvNum"]:setString(curLevelNum )
     -- self._rootnode["orLvNum"]:setString(curLevelNum +1)
     self:shineLvl(curLevelNum, curLevelNum + 1)
@@ -404,9 +404,9 @@ function HeroQiangHuaLayer:updateXiaHun(param)
 
     self:shineFont(self.addBar)
 
-    local resId = self.xiahunData["1"]["resId"]
-    local cls = self.xiahunData["1"]["cls"]
-    local starNum = self.xiahunData["1"].star
+    local resId = self.xiahunData[1]["resId"]
+    local cls = self.xiahunData[1]["cls"]
+    local starNum = self.xiahunData[1].star
 
     local heroStaticData = ResMgr.getCardData(resId)
     local job = heroStaticData["job"]
@@ -845,7 +845,7 @@ function HeroQiangHuaLayer:sendRes(param)
                     -- self:xiaHunUpdate(data)
                     self.xiahunData = data
 
-                    local silver = data["2"]
+                    local silver = data[2]
                     game.player.m_silver = silver
                     PostNotice(NoticeKey.CommonUpdate_Label_Silver)
                     self.top:setSilver(game.player.m_silver)

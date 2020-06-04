@@ -318,7 +318,7 @@ end
             outlineColor = cc.c3b(0, 0, 0),
             font = FONTS_NAME.font_haibao,
             align = cc.TEXT_ALIGNMENT_CENTER}
-    @return:
+    @return: luaIde#cc.Label
 ]]
 function newTTFLabelWithOutline(param)
     if param.text == nil then
@@ -384,7 +384,9 @@ function newTTFLabel(param)
         param.y = 0
     end
     --@RefType luaIde#cc.Label
-    local lb = cc.Label:createWithTTF(param.text, param.font, param.size)
+    local lb = cc.Label:create()
+    lb:setString(param.text)
+    lb:setSystemFontSize(param.size)
     lb:setTextColor(param.color)
     lb:setAlignment(param.align)
     lb:setVerticalAlignment(param.valign)

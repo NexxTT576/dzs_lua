@@ -1,7 +1,7 @@
 local data_shentong_shentong = require("data.data_shentong_shentong")
 
 local data_talent_talent = require("data.data_talent_talent")
-
+--@SuperType luaIde#cc.Layer
 local HeroJinJieEndLayer =
     class(
     "HeroJinJieEndLayer",
@@ -29,7 +29,7 @@ function HeroJinJieEndLayer:ctor(param)
 
     self.removeListener = param.removeListener
 
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self:setContentSize(cc.size(display.width, display.height))
 

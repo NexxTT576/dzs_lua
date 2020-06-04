@@ -277,7 +277,7 @@ function HeroListCell:refresh(id, viewType, isSel)
         self.heroName:setString(nameStr)
         self.heroName:setPosition(self.heroName:getContentSize().width / 2 + 20, self._rootnode["nameBg"]:getContentSize().height * 0.5)
         self.heroCls:setContentSize(self.heroCls:getContentSize())
-        self.heroCls:setAnchorPoint(cc.p(0, 0.5))
+        self.heroCls:setAnchorPoint(cc.p(0, 1))
         self.heroCls:setPosition(self.heroName:getPositionX() + self.heroName:getContentSize().width / 2 + 10, self.heroName:getPositionY() + self.heroName:getContentSize().height / 2)
 
         self.price = curCardData["price"]

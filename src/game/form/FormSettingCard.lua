@@ -147,7 +147,7 @@ function FormSettingCard:ctor(param)
                 nameLabel:setString(card:getName())
             end
 
-            nameLabel:setColor(NAME_COLOR[card:getStar(card:getStar())])
+            nameLabel:setTextColor(NAME_COLOR[card:getStar(card:getStar())])
             if card:getCls() > 0 then
                 rootnode["clsLabel"]:setString(string.format("+%d", card:getCls()))
                 rootnode["clsLabel"]:setPosition(nameLabel:getContentSize().width / 2, 0)
@@ -184,7 +184,7 @@ function FormSettingCard:ctor(param)
             else
                 nameLabel:setString(card:getName())
             end
-            nameLabel:setColor(NAME_COLOR[card:getStar(card:getStar())])
+            nameLabel:setTextColor(NAME_COLOR[card:getStar(card:getStar())])
 
             if card:getCls() > 0 then
                 rootnode["clsLabel"]:setString(string.format("+%d", card:getCls()))

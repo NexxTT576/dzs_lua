@@ -267,23 +267,19 @@ function EquipListScene:init(data)
                 type = 1,
                 callback = function(data)
                     dump(data)
-                    if (#data["0"] == 0) then
-                        local bagCountMax = data["1"]
-                        local costGold = data["2"]
-                        local curGold = data["3"]
-                        self._cost[1] = data["4"]
-                        self._cost[2] = data["5"]
-                        game.player:setBagCountMax(bagCountMax)
-                        game.player:setGold(curGold)
-                        updateLabel()
-                        self:setMaxNum(bagCountMax)
-                        -- show_tip_label("装备背包上限提升至"..bagCountMax)
-                        ResMgr.showErr(500014)
+                    local bagCountMax = data[1]
+                    local costGold = data[2]
+                    local curGold = data[3]
+                    self._cost[1] = data[4]
+                    self._cost[2] = data[5]
+                    game.player:setBagCountMax(bagCountMax)
+                    game.player:setGold(curGold)
+                    updateLabel()
+                    self:setMaxNum(bagCountMax)
+                    -- show_tip_label("装备背包上限提升至"..bagCountMax)
+                    ResMgr.showErr(500014)
 
-                        PostNotice(NoticeKey.MainMenuScene_Update)
-                    else
-                        CCMessageBox(data["0"], "Error")
-                    end
+                    PostNotice(NoticeKey.MainMenuScene_Update)
                 end
             }
         )

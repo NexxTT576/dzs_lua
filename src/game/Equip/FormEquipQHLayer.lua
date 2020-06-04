@@ -1,27 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-8-27
---
 local data_equipen_equipen = require("data.data_equipen_equipen")
 local data_item_nature = require("data.data_item_nature")
 local data_item_item = require("data.data_item_item")
@@ -32,7 +8,6 @@ local FormEquipQHLayer =
         return require("utility.ShadeLayer").new()
     end
 )
-local RequestInfo = require("network.RequestInfo")
 
 local ccs = ccs or {}
 ccs.MovementEventType = {
@@ -77,7 +52,7 @@ function FormEquipQHLayer:ctor(param)
         }
     )
     self._rootnode["itemNameLabel"]:addChild(nameLabel)
-    nameLabel:setColor(NAME_COLOR[_baseInfo.quality])
+    nameLabel:setTextColor(NAME_COLOR[_baseInfo.quality])
 
     --  刷新动态信息
     local function refresh(tmpLv)
@@ -111,12 +86,6 @@ function FormEquipQHLayer:ctor(param)
             self._rootnode["propLableName_" .. tostring(k)]:setString(nature.nature .. "：")
             self._rootnode["propLabel_" .. tostring(k)]:setString(valStr)
             self._rootnode["propLabel_n_" .. tostring(k)]:setString(nextValStr)
-
-            --            for i, natureIdx in ipairs(EQUIP_BASE_PROP_MAPPPING) do
-            --                if v == natureIdx then
-            --                    _info.base[i] = value
-            --                end
-            --            end
         end
 
         local ratio = _baseInfo["ratio"] / 10000
@@ -145,8 +114,6 @@ function FormEquipQHLayer:ctor(param)
     end
 
     local function playAnim(level)
-        --
-        --        equip_tisheng.png
         local sprite
         if level >= 2 then
             sprite = display.newSprite("#equip_qianghua_baoji.png")

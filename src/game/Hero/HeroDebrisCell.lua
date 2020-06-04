@@ -94,35 +94,33 @@ function HeroDebrisCell:create(param)
     self:addChild(node)
 
     self.headIcon = self._rootnode["headIcon"]
-    self.headIcon:setTouchEnabled(true)
-    self.headIcon:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            if event.name == "began" then
-                self.headIcon:setTouchEnabled(false)
-                ResMgr.delayFunc(
-                    0.8,
-                    function()
-                        self.headIcon:setTouchEnabled(true)
-                    end,
-                    self
-                )
+    setTouchEnabled(self.headIcon, true)
+    addNodeEventListener(
+        self.headIcon,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
+            self.headIcon:setTouchEnabled(false)
+            ResMgr.delayFunc(
+                0.8,
+                function()
+                    self.headIcon:setTouchEnabled(true)
+                end,
+                self
+            )
 
-                local itemInfo =
-                    require("game.Huodong.ItemInformation").new(
-                    {
-                        id = self.itemId,
-                        type = 8
-                    }
-                )
+            local itemInfo =
+                require("game.Huodong.ItemInformation").new(
+                {
+                    id = self.itemId,
+                    type = 8
+                }
+            )
 
-                display.getRunningScene():addChild(itemInfo, 100000)
-
-                return true
-            end
+            display.getRunningScene():addChild(itemInfo, 100000)
+            return true
         end
     )
-    -- self.heroName = self._rootnode["heroName"]
+
     self.heroName =
         newTTFLabelWithShadow(
         {

@@ -119,8 +119,7 @@ function EquipListCellVTwo:create(param)
             self._rootnode["unSelIcon"]:setVisible(true)
             removeSellItem(self.objId, self.index)
             changeSoldMoney(0 - self.silver)
-        end,
-        CCControlEventTouchUpInside
+        end
     )
 
     self._rootnode["unSelIcon"]:registerScriptTapHandler(
@@ -129,8 +128,7 @@ function EquipListCellVTwo:create(param)
             self._rootnode["selIcon"]:setVisible(true)
             addSellItem(self.objId, self.index)
             changeSoldMoney(self.silver)
-        end,
-        CCControlEventTouchUpInside
+        end
     )
     local hee = param.id
 

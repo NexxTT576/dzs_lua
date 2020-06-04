@@ -1,5 +1,3 @@
---
-
 local COMMON_VIEW = 1
 local SALE_VIEW = 2
 local COLOR_GREEN = cc.c3b(0, 255, 0)
@@ -65,14 +63,13 @@ function JinJieCell:refresh(id)
         end
 
         ResMgr.refreshIcon({id = self.resId, itemBg = self.itemIcon, resType = itemType})
-        -- self.itemIcon:setPosition(self.itemIcon:getContentSize().width/2*0.8,self.itemIcon:getContentSize().height/2*0.8)
-        -- self.itemIcon:setScale(0.8)
-        self.itemIcon:setPosition(self.itemIcon:getContentSize().width / 2, self.viewSize.height / 2)
-        self.itemIcon:setTouchEnabled(true)
 
-        self.itemIcon:addNodeEventListener(
-            cc.NODE_TOUCH_EVENT,
-            function(event)
+        self.itemIcon:setPosition(50, self.viewSize.height / 2)
+        setTouchEnabled(self.itemIcon, true)
+
+        addNodeEventListener(
+            cc.Handler.EVENT_TOUCH_BEGAN,
+            function()
                 local itemInfo =
                     require("game.Huodong.ItemInformation").new(
                     {
@@ -92,9 +89,9 @@ function JinJieCell:refresh(id)
         self.need:setString("/" .. needStr)
 
         if hasNumStr >= needStr then
-            self.hasNum:setColor(COLOR_GREEN)
+            self.hasNum:setTextColor(COLOR_GREEN)
         else
-            self.hasNum:setColor(FONT_COLOR.RED)
+            self.hasNum:setTextColor(FONT_COLOR.RED)
         end
 
         self.need:setPosition(self:getContentSize().width - 15 - self.need:getContentSize().width / 2, self.need:getContentSize().height / 2 + 7)
