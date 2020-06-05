@@ -197,47 +197,41 @@ function FormEquipQHLayer:ctor(param)
             show_tip_label("银币不足")
             return
         end
-        --
-        local req =
-            RequestInfo.new(
+
+        GameRequest.equip.qianghua(
             {
-                modulename = "equip",
-                funcname = "qianghua",
-                param = {
-                    auto = tag,
-                    id = _info._id
-                },
-                oklistener = function(data)
-                    dump(data)
-                    self._rootnode["autoBtn"]:setEnabled(false)
-                    self._rootnode["qianghuaBtn"]:setEnabled(false)
-                    PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                    local i = 1
-                    local offsetLV = data["2"] - _info.level
-                    local tmpLV = _info.level
-                    local sss
-                    sss = function()
-                        playAnim(data["1"][i].lv)
-                        tmpLV = tmpLV + data["1"][i].lv
-                        refresh(tmpLV)
-                        i = i + 1
-                        if data["1"][i] then
-                            self:qiangHuaAnim(sss)
-                        else
-                            self._rootnode["autoBtn"]:setEnabled(true)
-                            self._rootnode["qianghuaBtn"]:setEnabled(true)
-                        end
+                auto = tag,
+                id = _info._id
+            },
+            function(data)
+                dump(data)
+                self._rootnode["autoBtn"]:setEnabled(false)
+                self._rootnode["qianghuaBtn"]:setEnabled(false)
+                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                local i = 1
+                local offsetLV = data[2] - _info.level
+                local tmpLV = _info.level
+                local sss
+                sss = function()
+                    playAnim(data[1][i].lv)
+                    tmpLV = tmpLV + data[1][i].lv
+                    refresh(tmpLV)
+                    i = i + 1
+                    if data["1"][i] then
+                        self:qiangHuaAnim(sss)
+                    else
+                        self._rootnode["autoBtn"]:setEnabled(true)
+                        self._rootnode["qianghuaBtn"]:setEnabled(true)
                     end
-                    self.isQianghua = true
-                    addProp(offsetLV)
-                    game.player:setSilver(data["3"])
-                    PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-                    self:qiangHuaAnim(sss)
-                    _info.level = data["2"]
                 end
-            }
+                self.isQianghua = true
+                addProp(offsetLV)
+                game.player:setSilver(data[3])
+                PostNotice(NoticeKey.CommonUpdate_Label_Silver)
+                self:qiangHuaAnim(sss)
+                _info.level = data[2]
+            end
         )
-        RequestHelperV2.request(req)
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(close, CCControlEventTouchUpInside)

@@ -161,17 +161,12 @@ function JianghuScene:ctor()
     RequestHelper.jianghu.list(
         {
             callback = function(data)
-                --            dump(data)
-                if #data["0"] > 0 then
-                    show_tip_label(data["0"])
-                else
-                    self._heroData = data["1"]
-                    self._showHero = data["3"]
-                    self._stars = data["4"]
-                    self:groupHero()
-                    self:refreshGift(data["2"])
-                    self:refresh(self._showHero)
-                end
+                self._heroData = data[1]
+                self._showHero = data[3]
+                self._stars = data[4]
+                self:groupHero()
+                self:refreshGift(data[2])
+                self:refresh(self._showHero)
             end
         }
     )
@@ -184,13 +179,13 @@ function JianghuScene:ctor()
         self._groupHerosData[v] = {}
     end
 
-    if (display.widthInPixels / display.heightInPixels) > 0.67 then
+    if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.67 then
         local posX, posY = self._rootnode["imageNode"]:getPosition()
         self._rootnode["imageNode"]:setPosition(posX, posY - 90)
     end
 
     local rect = self._rootnode["blueBar"]:getTextureRect()
-    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.origin.x, rect.origin.y, 0, rect.size.height))
+    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.x, rect.y, 0, rect.height))
 end
 
 function JianghuScene:refreshGift(data)
@@ -221,7 +216,7 @@ end
 function JianghuScene:initTouchNode()
     local touchNode = self._rootnode["touchNode"]
     local MOVE_OFFSET = touchNode:getContentSize().width / 3
-    touchNode:setTouchEnabled(true)
+    setTouchEnabled(touchNode, true)
 
     local currentNode
     local targPosX, targPosY = self._rootnode["imageSprite"]:getPosition()
@@ -246,6 +241,14 @@ function JianghuScene:initTouchNode()
     end
 
     local offsetX = 0
+
+    --[[
+    @desc: 
+    author:tulilu
+    time:2020-06-05 16:15:33
+        --@event: 
+    @return:
+]]
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
         if self._index and (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
@@ -325,16 +328,25 @@ function JianghuScene:initTouchNode()
         end
     end
 
-    touchNode:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    addNodeEventListener(
+        touchNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
-            if event.name == "began" then
-                return onTouchBegan(event)
-            elseif event.name == "moved" then
-                onTouchMove(event)
-            elseif event.name == "ended" then
-                onTouchEnded(event)
-            end
+            return onTouchBegan(event)
+        end
+    )
+    addNodeEventListener(
+        touchNode,
+        cc.Handler.EVENT_TOUCH_MOVED,
+        function(event)
+            return onTouchMove(event)
+        end
+    )
+    addNodeEventListener(
+        touchNode,
+        cc.Handler.EVENT_TOUCH_ENDED,
+        function(event)
+            return onTouchEnded(event)
         end
     )
 end
@@ -393,7 +405,7 @@ function JianghuScene:refreshExpBar(info)
         end
     end
 
-    local size = self._rootnode["barBg"]:getTextureRect().size
+    local size = cc.size(self._rootnode["barBg"]:getTextureRect().width, self._rootnode["barBg"]:getTextureRect().height)
     local rect = self._rootnode["blueBar"]:getTextureRect()
     local card = ResMgr.getCardData(info.resId)
 
@@ -403,7 +415,7 @@ function JianghuScene:refreshExpBar(info)
     self._rootnode["lvLabel"]:setString(tostring(info.level))
 
     local w = size.width * (info.curExp / maxExp)
-    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.origin.x, rect.origin.y, w, size.height))
+    self._rootnode["blueBar"]:setTextureRect(cc.rect(rect.x, rect.y, w, size.height))
 
     --    直接升级几率=1/（当前等级+2）+当前经验/升级所需经验/（当前等级+2）
     local prop = 1 / (info.level + 2) + info.curExp / maxExp / (info.level + 2)

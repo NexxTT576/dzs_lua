@@ -168,7 +168,7 @@ function EquipListCellVTwo:refresh(id, viewType, isSel)
     end
 
     self.cellIndex = id
-    self.objId = self.cellData["_id"]
+    self.objId = self.cellData["id"]
     self.baseData = self.cellData["base"]
     self.curExp = self.cellData["curExp"]
     self.lvl = self.cellData["level"]

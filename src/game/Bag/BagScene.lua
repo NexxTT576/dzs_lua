@@ -230,28 +230,24 @@ function BagScene:extend(extType)
         {
             callback = function(data)
                 dump(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Error")
-                else
-                    local bagCountMax = data["1"]
-                    --local costGold    = data["2"]
-                    local curGold = data["3"]
-                    if extType == 4 then
-                        self._cost[VIEW_TYPE.BAG_SKILL][1] = data["4"]
-                        self._cost[VIEW_TYPE.BAG_SKILL][2] = data["5"]
-                        self._cap[VIEW_TYPE.BAG_SKILL][2] = bagCountMax
-                    elseif extType == 7 then
-                        self._cost[VIEW_TYPE.BAG_ITEM][1] = data["4"]
-                        self._cost[VIEW_TYPE.BAG_ITEM][2] = data["5"]
-                        self._cap[VIEW_TYPE.BAG_ITEM][2] = bagCountMax
-                    end
-
-                    self._rootnode["maxNumLabel"]:setString(self._cap[self._curView][2] or 0)
-
-                    game.player:setGold(curGold)
-
-                    PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                local bagCountMax = data[1]
+                --local costGold    = data["2"]
+                local curGold = data[3]
+                if extType == 4 then
+                    self._cost[VIEW_TYPE.BAG_SKILL][1] = data[4]
+                    self._cost[VIEW_TYPE.BAG_SKILL][2] = data[5]
+                    self._cap[VIEW_TYPE.BAG_SKILL][2] = bagCountMax
+                elseif extType == 7 then
+                    self._cost[VIEW_TYPE.BAG_ITEM][1] = data[4]
+                    self._cost[VIEW_TYPE.BAG_ITEM][2] = data[5]
+                    self._cap[VIEW_TYPE.BAG_ITEM][2] = bagCountMax
                 end
+
+                self._rootnode["maxNumLabel"]:setString(self._cap[self._curView][2] or 0)
+
+                game.player:setGold(curGold)
+
+                PostNotice(NoticeKey.CommonUpdate_Label_Gold)
             end,
             type = tostring(extType)
         }
@@ -451,16 +447,16 @@ function BagScene:showReward(items)
         local itemInfo = data_item_item[v.id]
 
         -- 侠客
-        if (v.t == 8) then
+        if (v.type == 8) then
             local data_card_card = require("data.data_card_card")
             itemInfo = data_card_card[v.id]
         end
 
-        if v.t ~= nil and v.t == 0 then
-            msg = msg .. tostring(v.n) .. " "
+        if v.type ~= nil and v.type == 0 then
+            msg = msg .. tostring(v.num) .. " "
             msg = msg .. itemInfo.name
         else
-            local iconType = ResMgr.getResType(v.t) or ResMgr.ITEM
+            local iconType = ResMgr.getResType(v.type) or ResMgr.ITEM
             table.insert(
                 itemData,
                 {
@@ -469,7 +465,7 @@ function BagScene:showReward(items)
                     name = itemInfo.name,
                     describe = itemInfo.describe,
                     iconType = iconType,
-                    num = v.n or 0
+                    num = v.num or 0
                 }
             )
             if itemInfo.type == BAG_TYPE.wuxue then
@@ -500,52 +496,48 @@ function BagScene:onUse(item, cnt)
     RequestHelper.useItem(
         {
             callback = function(data)
-                if #data["0"] > 0 then
-                    CCMessageBox(data["0"], "Tip")
+                if data[5] then
+                    self:bagFull(data[6])
+                    return
+                end
+
+                --更新列表
+                if #data[1] ~= #self._item[self._curView] then
+                    self._item[self._curView] = data[1]
+                    self._bagItemList:resetCellNum(#self._item[self._curView], false, false)
                 else
-                    if data["5"] then
-                        self:bagFull(data["6"])
-                        return
-                    end
+                    self._item[self._curView] = data[1]
+                    self._bagItemList:resetCellNum(#self._item[self._curView], true, false)
+                end
 
-                    --更新列表
-                    if #data["1"] ~= #self._item[self._curView] then
-                        self._item[self._curView] = data["1"]
-                        self._bagItemList:resetCellNum(#self._item[self._curView], false, false)
-                    else
-                        self._item[self._curView] = data["1"]
-                        self._bagItemList:resetCellNum(#self._item[self._curView], true, false)
-                    end
+                --跟新售出列表
+                self:getSaleItems()
 
-                    --跟新售出列表
-                    self:getSaleItems()
+                --获得物品
+                local items = data[2]
 
-                    --获得物品
-                    local items = data["2"]
+                if (type(items) == "table") then
+                    self:showReward(items)
+                end
 
-                    if (type(items) == "table") then
-                        self:showReward(items)
-                    end
+                self._cap[self._curView][1] = #data[1]
+                self._rootnode["curNumLabel"]:setString(tostring(self._cap[self._curView][1]))
 
-                    self._cap[self._curView][1] = #data["1"]
-                    self._rootnode["curNumLabel"]:setString(tostring(self._cap[self._curView][1]))
+                --                  银币和金币
+                if data[3] ~= game.player:getGold() then
+                    game.player:setGold(data[3])
+                    PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                end
 
-                    --                  银币和金币
-                    if data["3"] ~= game.player:getGold() then
-                        game.player:setGold(data["3"])
-                        PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-                    end
-
-                    if data["4"] ~= game.player:getSilver() then
-                        game.player:setSilver(data["4"])
-                        PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-                    end
+                if data[4] ~= game.player:getSilver() then
+                    game.player:setSilver(data[4])
+                    PostNotice(NoticeKey.CommonUpdate_Label_Silver)
                 end
                 --更新玩家信息
                 RequestHelper.getBaseInfo(
                     {
                         callback = function(data)
-                            local basedata = data["1"]
+                            local basedata = data[1]
                             local param = {silver = basedata.silver, gold = basedata.gold, lv = basedata.level, zhanli = basedata.attack, vip = basedata.vip}
                             param.exp = basedata.exp[1]
                             param.maxExp = basedata.exp[2]
@@ -556,7 +548,7 @@ function BagScene:onUse(item, cnt)
                             param.maxTili = basedata.physVal[2]
 
                             game.player:updateMainMenu(param)
-                            local checkAry = data["2"]
+                            local checkAry = data[2]
                             game.player:updateNotification(checkAry)
                         end
                     }

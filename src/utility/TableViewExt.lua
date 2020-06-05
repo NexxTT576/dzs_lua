@@ -119,7 +119,7 @@ function TableViewExt:ctor(param)
     --    tableView:setTouchSwallowEnabled(true)
 
     self.setTouchSwallowEnabled = function(_, b)
-        tableView:setTouchSwallowEnabled(b)
+        setTouchSwallowEnabled(tableView, b)
     end
 
     self.getCellNum = function(_)

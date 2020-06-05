@@ -488,7 +488,7 @@ function EquipListScene:init(data)
     local function clearSellData()
         for i = 1, #self.sellTable do
             for j = 1, #self.sellList do
-                if self.sellTable[i] == self.sellList[j]["_id"] then
+                if self.sellTable[i] == self.sellList[j]["id"] then
                     table.remove(self.sellList, j)
                     break
                 end
@@ -497,7 +497,7 @@ function EquipListScene:init(data)
 
         for i = 1, #self.sellTable do
             for j = 1, #self.commonList do
-                if self.sellTable[i] == self.commonList[j]["_id"] then
+                if self.sellTable[i] == self.commonList[j]["id"] then
                     table.remove(self.commonList, j)
                     break
                 end
@@ -533,14 +533,10 @@ function EquipListScene:init(data)
                 {
                     callback = function(data)
                         dump(data)
-                        if #data["0"] > 0 then
-                            show_tip_label(data["0"])
-                        else
-                            game.player.m_silver = data["1"][2]
-                            show_tip_label("出售成功,获得" .. data["1"][1] .. "银币")
-                            self._rootnode["silverLabel"]:setString(data["1"][2])
-                            PostNotice(NoticeKey.MainMenuScene_Update)
-                        end
+                        game.player.m_silver = data[1][2]
+                        show_tip_label("出售成功,获得" .. data[1][1] .. "银币")
+                        self._rootnode["silverLabel"]:setString(data[1][2])
+                        PostNotice(NoticeKey.MainMenuScene_Update)
                         clearSellData()
                     end,
                     ids = sellStr

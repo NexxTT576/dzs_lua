@@ -65,7 +65,7 @@ function UseCountBox:ctor(param)
         remainnum = havenum
     end
 
-    local function onNumBtn(event, sender)
+    local function onNumBtn(sender)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         local tag = sender:getTag()
 
@@ -131,7 +131,7 @@ function UseCountBox:ctor(param)
     rootnode["reduce10Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
     rootnode["reduce1Btn"]:registerControlEventHandler(onNumBtn, CCControlEventTouchUpInside)
 
-    onNumBtn(_, rootnode["add1Btn"])
+    onNumBtn(rootnode["add1Btn"])
 
     rootnode["confirmBtn"]:registerControlEventHandler(
         function(eventName, sender)

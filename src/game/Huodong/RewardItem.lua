@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.08.04
- --
- --]]
 local RewardItem =
     class(
     "RewardItem",
@@ -94,7 +88,7 @@ function RewardItem:refreshItem(param)
         }
     )
 
-    nameLbl:setPosition(-nameLbl:getContentSize().width / 2, nameLbl:getContentSize().height / 2)
+    nameLbl:setPosition(0, nameLbl:getContentSize().height / 2)
     self._rootnode[nameKey]:removeAllChildren()
     self._rootnode[nameKey]:addChild(nameLbl)
 end

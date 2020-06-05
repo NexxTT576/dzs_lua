@@ -1,3 +1,4 @@
+--@SuperType ShadeLayer
 local RewardMsgBox =
     class(
     "RewardMsgBox",
@@ -76,7 +77,7 @@ function RewardMsgBox:onExit()
 end
 
 function RewardMsgBox:ctor(param)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
     self._confirmFunc = param.confirmFunc
 
     local proxy = CCBProxy:create()
