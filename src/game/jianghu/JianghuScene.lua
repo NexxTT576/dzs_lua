@@ -5,6 +5,7 @@ local data_starachieve_starachieve = require("data.data_starachieve_starachieve"
 local data_shangxiansheding_shangxiansheding = require("data.data_shangxiansheding_shangxiansheding")
 
 require("data.data_error_error")
+--@SuperType BaseScene
 local JianghuScene =
     class(
     "JianghuScene",
@@ -29,6 +30,7 @@ local HEROTYPE = {
 
 function JianghuScene:ctor()
     ResMgr.removeBefLayer()
+    self:enableNodeEvents()
     --    dump(self._rootnode)
     local bShow = false
     self._rootnode["popBtn"]:registerScriptTapHandler(
