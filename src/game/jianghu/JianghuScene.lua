@@ -66,10 +66,6 @@ function JianghuScene:ctor()
 
     self._rootnode["heroShowBtn"]:registerControlEventHandler(
         function(a, b, c, d)
-            --        dump(self._groupHerosData)
-            --        self._rootnode["heroShowBtn"]:setEnabled(false)
-            --        self._rootnode["heroTargetBtn"]:setEnabled(false)
-
             local scene =
                 require("game.jianghu.HeroShowScene").new(
                 {
@@ -83,8 +79,8 @@ function JianghuScene:ctor()
                     end
                 }
             )
-            display.wrapSceneWithTransition(scene, "turnOffTiles", 0.2)
-            push_scene(scene)
+            display.runScene(scene, "turnOffTiles", 0.2)
+            -- push_scene(scene)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
         CCControlEventTouchUpInside
@@ -102,8 +98,6 @@ function JianghuScene:ctor()
 
     self._rootnode["sendAllBtn"]:registerControlEventHandler(
         function()
-            --
-
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if #self._giftData <= 0 then
                 show_tip_label(data_error_error[2100003].prompt)
@@ -154,11 +148,8 @@ function JianghuScene:ctor()
         end,
         CCControlEventTouchUpInside
     )
-    --
+
     self._giftData = {}
-    --    for i = 1, 10 do
-    --        table.insert(self._giftData, i)
-    --    end
 
     RequestHelper.jianghu.list(
         {
@@ -244,13 +235,6 @@ function JianghuScene:initTouchNode()
 
     local offsetX = 0
 
-    --[[
-    @desc: 
-    author:tulilu
-    time:2020-06-05 16:15:33
-        --@event: 
-    @return:
-]]
     local function onTouchBegan(event)
         local sz = touchNode:getContentSize()
         if self._index and (cc.rect(0, 0, sz.width, sz.height):containsPoint(touchNode:convertToNodeSpace(cc.p(event.x, event.y)))) then
@@ -572,90 +556,85 @@ function JianghuScene:sendGift(cell)
                 itemId = gifId,
                 multi = t,
                 callback = function(data)
-                    --                dump(data)
-                    if #data["0"] > 0 then
-                        show_tip_label(data["0"])
-                    else
-                        local msg = {}
-                        local hero = self._groupHerosData[self._viewType][self._index.row][self._index.col]
+                    local msg = {}
+                    local hero = self._groupHerosData[self._viewType][self._index.row][self._index.col]
 
-                        if hero.level < data["1"]["level"] then
-                            local starInfo
-                            for k, v in ipairs(data_star_star) do
-                                if v.card == hero.resId then
-                                    starInfo = v
-                                    break
-                                end
-                            end
-
-                            if starInfo then
-                                local propValue = {}
-                                for k = hero.level + 1, data["1"]["level"] do
-                                    if propValue[starInfo.arr_nature[k]] then
-                                        propValue[starInfo.arr_nature[k]] = propValue[starInfo.arr_nature[k]] + starInfo.arr_num[k]
-                                    else
-                                        propValue[starInfo.arr_nature[k]] = starInfo.arr_num[k]
-                                    end
-                                end
-                                msg.propValue = propValue
+                    if hero.level < data[1]["level"] then
+                        local starInfo
+                        for k, v in ipairs(data_star_star) do
+                            if v.card == hero.resId then
+                                starInfo = v
+                                break
                             end
                         end
 
-                        self._groupHerosData[self._viewType][self._index.row][self._index.col].curExp = data["1"]["curExp"]
-                        self._groupHerosData[self._viewType][self._index.row][self._index.col].level = data["1"]["level"]
-                        self:refreshExpBar(self._groupHerosData[self._viewType][self._index.row][self._index.col])
+                        if starInfo then
+                            local propValue = {}
+                            for k = hero.level + 1, data[1]["level"] do
+                                if propValue[starInfo.arr_nature[k]] then
+                                    propValue[starInfo.arr_nature[k]] = propValue[starInfo.arr_nature[k]] + starInfo.arr_num[k]
+                                else
+                                    propValue[starInfo.arr_nature[k]] = starInfo.arr_num[k]
+                                end
+                            end
+                            msg.propValue = propValue
+                        end
+                    end
 
-                        if data["2"][1] > 0 then
-                            --                        table.insert(msg, string.format("送礼暴击，好感度+%d", data["2"][1]))
-                            local effect =
-                                ResMgr.createArma(
+                    self._groupHerosData[self._viewType][self._index.row][self._index.col].curExp = data[1]["curExp"]
+                    self._groupHerosData[self._viewType][self._index.row][self._index.col].level = data[1]["level"]
+                    self:refreshExpBar(self._groupHerosData[self._viewType][self._index.row][self._index.col])
+
+                    if data[2][1] > 0 then
+                        --                        table.insert(msg, string.format("送礼暴击，好感度+%d", data["2"][1]))
+                        local effect =
+                            ResMgr.createArma(
+                            {
+                                resType = ResMgr.UI_EFFECT,
+                                armaName = "jianghulu_songlibaoji",
+                                isRetain = false,
+                                finishFunc = function()
+                                end
+                            }
+                        )
+                        effect:setPosition(self._rootnode["imageSprite"]:getContentSize().width / 2, self._rootnode["imageSprite"]:getContentSize().height * 0.3)
+                        self._rootnode["imageSprite"]:addChild(effect, 10)
+                    else
+                        if data[2][1] > 0 or data[2][2] > 0 then
+                            table.insert(msg, string.format("好感+%d，好感度提升", data[1].addExp))
+                        else
+                            table.insert(msg, string.format("好感+%d", data[1].addExp))
+                        end
+                    end
+
+                    local achieve = self:showNewAchieve(data[3])
+                    if achieve then
+                        table.insert(msg, achieve)
+                    end
+                    self:showTip(msg)
+
+                    -- 单次送礼
+                    if cell then
+                        local idx = cell:getIdx() + 1
+                        self._giftData[idx].num = self._giftData[idx].num - 1
+                        if self._giftData[idx].num > 0 then
+                            cell:refresh(
                                 {
-                                    resType = ResMgr.UI_EFFECT,
-                                    armaName = "jianghulu_songlibaoji",
-                                    isRetain = false,
-                                    finishFunc = function()
-                                    end
+                                    itemData = self._giftData[idx]
                                 }
                             )
-                            effect:setPosition(self._rootnode["imageSprite"]:getContentSize().width / 2, self._rootnode["imageSprite"]:getContentSize().height * 0.3)
-                            self._rootnode["imageSprite"]:addChild(effect, 10)
                         else
-                            if data["2"][1] > 0 or data["2"][2] > 0 then
-                                table.insert(msg, string.format("好感+%d，好感度提升", data["1"].addExp))
-                            else
-                                table.insert(msg, string.format("好感+%d", data["1"].addExp))
-                            end
+                            table.remove(self._giftData, idx)
+                            self._gitfListView:resetListByNumChange(#self._giftData)
                         end
+                    else
+                        self:refreshGift(data[4])
+                    end
 
-                        local achieve = self:showNewAchieve(data["3"])
-                        if achieve then
-                            table.insert(msg, achieve)
-                        end
-                        self:showTip(msg)
-
-                        -- 单次送礼
-                        if cell then
-                            local idx = cell:getIdx() + 1
-                            self._giftData[idx].num = self._giftData[idx].num - 1
-                            if self._giftData[idx].num > 0 then
-                                cell:refresh(
-                                    {
-                                        itemData = self._giftData[idx]
-                                    }
-                                )
-                            else
-                                table.remove(self._giftData, idx)
-                                self._gitfListView:resetListByNumChange(#self._giftData)
-                            end
-                        else
-                            self:refreshGift(data["4"])
-                        end
-
-                        if #self._giftData == 0 then
-                            self._rootnode["emptyNode"]:setVisible(true)
-                        else
-                            self._rootnode["emptyNode"]:setVisible(false)
-                        end
+                    if #self._giftData == 0 then
+                        self._rootnode["emptyNode"]:setVisible(true)
+                    else
+                        self._rootnode["emptyNode"]:setVisible(false)
                     end
                 end
             }

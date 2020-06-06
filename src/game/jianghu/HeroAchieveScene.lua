@@ -72,8 +72,10 @@ function Item:refresh(param)
         self._rootnode["item_1"]:setVisible(false)
         self._rootnode["expLabel"]:setString(string.format("%d/%d", _stars, _itemData.good))
 
-        local origin = self._rootnode["expBar"]:getTextureRect().origin
-        local size = self._rootnode["barBg"]:getTextureRect().size
+        --@RefType luaIde#cc.Rect
+        local origin = self._rootnode["expBar"]:getTextureRect()
+        --@RefType luaIde#cc.Rect
+        local size = self._rootnode["barBg"]:getTextureRect()
         self._rootnode["expBar"]:setTextureRect(cc.rect(origin.x, origin.y, size.width * (_stars / _itemData.good), size.height))
     end
 end

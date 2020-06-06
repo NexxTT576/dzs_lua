@@ -1,28 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-10-4
---
-
 local HeroShowScene =
     class(
     "HeroShowScene",
@@ -63,6 +38,8 @@ function HeroShowScene:ctor(param)
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             pop_scene()
+            -- PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+            -- GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
         end,
         CCControlEventTouchUpInside
     )
@@ -98,14 +75,16 @@ function HeroShowScene:ctor(param)
 end
 
 function HeroShowScene:refresh()
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:registerScriptTapHandler(
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        --@return luaIde#cc.Touch
         function(event)
-            --        dump(event)
-            posX = event.x
-            posY = event.y
+            posX = event:getLocation().x
+            posY = event:getLocation().y
         end
     )
 

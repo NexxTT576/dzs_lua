@@ -23,7 +23,7 @@ function BaseSceneExt:ctor(param)
     --  上部的条
     local topNode
     if _topFile then
-        topNode = CCBuilderReaderLoad(_topFile, self._proxy, self._rootnode)
+        topNode = CCBReaderLoad(_topFile, self._proxy, self._rootnode)
         topNode:setPosition(display.cx, display.height)
         self:addChild(topNode, 2)
 
@@ -37,7 +37,7 @@ function BaseSceneExt:ctor(param)
     --  是否替换下部的按钮
     local bottomNode
     if _bottomFile then
-        bottomNode = CCBuilderReaderLoad(_bottomFile, self._proxy, self._rootnode)
+        bottomNode = CCBReaderLoad(_bottomFile, self._proxy, self._rootnode)
         bottomNode:setPosition(display.cx, 0)
         self:addChild(bottomNode, 2)
 
@@ -56,7 +56,7 @@ function BaseSceneExt:ctor(param)
     local contentNode
     if _contentFile then
         printf("content node")
-        contentNode = CCBuilderReaderLoad(_contentFile, self._proxy, self._rootnode, self, cc.size(display.width + _adjustSize.width, display.height - _topL - _bottomL + _adjustSize.height))
+        contentNode = CCBReaderLoad(_contentFile, self._proxy, self._rootnode, self, cc.size(display.width + _adjustSize.width, display.height - _topL - _bottomL + _adjustSize.height))
         self:addChild(contentNode, 1)
         contentNode:setPosition(display.width / 2, _bottomL)
     end
@@ -98,7 +98,8 @@ function BaseSceneExt:ctor(param)
 
     if self._rootnode["nowTimeLabel"] then
         self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
-        self._rootnode["nowTimeLabel"]:schedule(
+        schedule(
+            self._rootnode["nowTimeLabel"],
             function()
                 self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
             end,
@@ -106,7 +107,7 @@ function BaseSceneExt:ctor(param)
         )
     end
 
-    addbackevent(self)
+    -- addbackevent(self)
 
     self:refreshChoukaNotice()
 end
