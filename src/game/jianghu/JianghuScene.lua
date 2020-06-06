@@ -79,8 +79,8 @@ function JianghuScene:ctor()
                     end
                 }
             )
-            display.runScene(scene, "turnOffTiles", 0.2)
-            -- push_scene(scene)
+            --display.runScene(scene, "turnOffTiles", 0.2)
+            push_scene(scene)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
         CCControlEventTouchUpInside

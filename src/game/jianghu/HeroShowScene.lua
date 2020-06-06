@@ -1,3 +1,4 @@
+--@SuperType BaseSceneExt
 local HeroShowScene =
     class(
     "HeroShowScene",
@@ -38,8 +39,6 @@ function HeroShowScene:ctor(param)
         function()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             pop_scene()
-            -- PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-            -- GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
         end,
         CCControlEventTouchUpInside
     )
