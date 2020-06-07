@@ -12,3 +12,8 @@ publish/
 **/*.pdb
 **/*.prefs
 **/*.user
+**/*.iml
+**/*.bin
+**/libcocos2dx/build
+**/app/.cxx
+**/*.idea

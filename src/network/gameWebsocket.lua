@@ -12,7 +12,7 @@ ws.maxReqNum = 99999
 
 function ws.init(cb)
     --@RefType luaIde#cc.WebSocket
-    ws.wsSendString = cc.WebSocket:create("ws://127.0.0.1:8080/ws")
+    ws.wsSendString = cc.WebSocket:create("ws://118.25.57.248:8080/ws")
     ws.wsSendString:registerScriptHandler(
         function()
             print("WEBSOCKET_OPEN")
