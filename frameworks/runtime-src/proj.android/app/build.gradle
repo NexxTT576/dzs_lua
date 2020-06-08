@@ -159,11 +159,15 @@ def compileLua(srcDir, dstDir, doCompile, is64bit, doEncrypt) {
     }
 }
 
+
+
 android.applicationVariants.all { variant ->
+
     // delete previous files first
     delete "${buildDir}/intermediates/assets/${variant.dirName}"
 
     variant.mergeAssets.doLast {
+
         copy {
            from "${buildDir}/../../../../../res"
            into "${buildDir}/intermediates/assets/${variant.dirName}/res"
