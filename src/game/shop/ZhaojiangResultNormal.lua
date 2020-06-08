@@ -1,11 +1,4 @@
---[[
- --
- -- add by vicky
- -- 2014.08.25
- --
---]]
---
-
+--@SuperType ShadeLayer
 local ZhaojiangResultNormal =
     class(
     "ZhaojiangResultNormal",
@@ -105,7 +98,7 @@ function ZhaojiangResultNormal:ctor(param)
 
     self.removeListener = param.removeListener
 
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     local _type = param.type
     local _heroList = param.herolist

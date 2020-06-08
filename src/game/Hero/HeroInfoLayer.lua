@@ -1,28 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-10-10
---
-
 local data_item_nature = require("data.data_item_nature")
 local data_talent_talent = require("data.data_talent_talent")
 local data_jiban_jiban = require("data.data_jiban_jiban")
@@ -39,6 +14,7 @@ local ST_COLOR = {
     cc.c3b(218, 129, 29)
 }
 
+--@SuperType ShadeLayer
 local HeroInfoLayer =
     class(
     "HeroInfoLayer",
@@ -470,7 +446,7 @@ end
 --2:list
 --3:shop
 function HeroInfoLayer:ctor(param, infoType)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self.removeListener = param.removeListener
 
@@ -958,48 +934,44 @@ function HeroInfoLayer:requestHeroInfo(listener)
         {
             cid = self._info.objId,
             callback = function(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Tip")
-                else
-                    self._detailInfo = data["1"]
-                    self._detailInfo.levelLimit = data["2"]
+                self._detailInfo = data[1]
+                self._detailInfo.levelLimit = data[2]
 
-                    self:refresh()
-                    local addBtn
-                    local label
-                    if self.getUpgradeBtn1 then
-                        addBtn = self:getUpgradeBtn1()
-                    end
-
-                    if self.getNumLabel then
-                        label = self:getNumLabel()
-                    end
-
-                    if self.infoType == 2 then
-                        if self._detailInfo.lock == 0 then
-                            self._rootnode["lock_btn"]:setVisible(true)
-                            self._rootnode["unlock_btn"]:setVisible(false)
-                        else
-                            self._rootnode["lock_btn"]:setVisible(false)
-                            self._rootnode["unlock_btn"]:setVisible(true)
-                        end
-
-                        if self._detailInfo.resId == 1 or self._detailInfo.resId == 2 then
-                            self._rootnode["lock_node"]:setVisible(false)
-                        else
-                            self._rootnode["lock_node"]:setVisible(true)
-                        end
-                    end
-                    local closeBtn = self._rootnode["closeBtn"]
-
-                    TutoMgr.addBtn("heroinfo_shentong_num", label)
-                    TutoMgr.addBtn("heroinfo_shentong_plus", addBtn)
-                    TutoMgr.addBtn("heroinfo_close_btn", closeBtn)
-
-                    TutoMgr.active()
-                    self._rootnode["jinJieBtn"]:setEnabled(true)
-                    self._rootnode["qiangHuBtn"]:setEnabled(true)
+                self:refresh()
+                local addBtn
+                local label
+                if self.getUpgradeBtn1 then
+                    addBtn = self:getUpgradeBtn1()
                 end
+
+                if self.getNumLabel then
+                    label = self:getNumLabel()
+                end
+
+                if self.infoType == 2 then
+                    if self._detailInfo.lock == 0 then
+                        self._rootnode["lock_btn"]:setVisible(true)
+                        self._rootnode["unlock_btn"]:setVisible(false)
+                    else
+                        self._rootnode["lock_btn"]:setVisible(false)
+                        self._rootnode["unlock_btn"]:setVisible(true)
+                    end
+
+                    if self._detailInfo.resId == 1 or self._detailInfo.resId == 2 then
+                        self._rootnode["lock_node"]:setVisible(false)
+                    else
+                        self._rootnode["lock_node"]:setVisible(true)
+                    end
+                end
+                local closeBtn = self._rootnode["closeBtn"]
+
+                TutoMgr.addBtn("heroinfo_shentong_num", label)
+                TutoMgr.addBtn("heroinfo_shentong_plus", addBtn)
+                TutoMgr.addBtn("heroinfo_close_btn", closeBtn)
+
+                TutoMgr.active()
+                self._rootnode["jinJieBtn"]:setEnabled(true)
+                self._rootnode["qiangHuBtn"]:setEnabled(true)
             end
         }
     )

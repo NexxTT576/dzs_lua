@@ -123,7 +123,7 @@ function HeroShowLayer:init()
     local node = CCBReaderLoad("shop/shop_hero_show.ccbi", proxy, self._rootnode)
     node:setPosition(display.cx, display.cy)
     self:addChild(node)
-
+    --@RefType luaIde#cc.Label
     local tipLabel =
         newTTFLabelWithShadow(
         {
@@ -134,7 +134,7 @@ function HeroShowLayer:init()
             size = 22
         }
     )
-
+    tipLabel:setAnchorPoint(0, 0.5)
     self._rootnode["tipLabelNode"]:addChild(tipLabel)
 
     local function close()

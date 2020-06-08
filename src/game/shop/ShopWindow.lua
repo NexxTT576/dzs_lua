@@ -235,7 +235,7 @@ function ShopWindow:onPubView()
     else
         local function refreshLabel(tag, data, num)
             -- 更新距离下次免费招募时间
-            local delayTime = data["2"]
+            local delayTime = data[2]
 
             if tag == 2 then
                 self._rootnode["tag_first_4"]:setVisible(false)
@@ -254,7 +254,7 @@ function ShopWindow:onPubView()
                     delayTime = aMaxTime
                     CCMessageBox("服务器端倒计时时间有问题", "Tip")
                 end
-                self._nextNBCardTime = data["4"]
+                self._nextNBCardTime = data[4]
                 self._aDelayTime = delayTime
                 self._rootnode["aCardDelayTimeLabel"]:setString(format_time(self._aDelayTime))
             end
@@ -262,7 +262,7 @@ function ShopWindow:onPubView()
             self:checkIsShowFreeLbl()
 
             -- 更新玩家金币剩余数量
-            game.player:setGold(data["3"])
+            game.player:setGold(data[3])
 
             -- 更新免费抽卡次数
             if tag == 2 or (tag == 3 and num == 1) then
@@ -287,45 +287,41 @@ function ShopWindow:onPubView()
             RequestHelper.recrute(
                 {
                     callback = function(data)
-                        if string.len(data["0"]) > 0 then
-                            CCMessageBox(data["0"], "Tip")
-                        else
-                            refreshLabel(tag, data, num or 1)
+                        refreshLabel(tag, data, num or 1)
 
-                            local herolist = data["1"]
-                            local heroName = ""
-                            for k, v in pairs(herolist) do
-                                local heroId = v.id
-                                local heroInfo = ResMgr.getCardData(heroId)
-                                if heroInfo.star[1] >= 5 then
-                                    -- 广播 玩家招募5星级侠客成功
-                                    Broad_getHeroData.heroName = heroInfo.name
-                                    Broad_getHeroData.type = heroInfo.type
-                                    Broad_getHeroData.star = heroInfo.star[1]
+                        local herolist = data[1]
+                        local heroName = ""
+                        for k, v in pairs(herolist) do
+                            local heroId = v.id
+                            local heroInfo = ResMgr.getCardData(heroId)
+                            if heroInfo.star[1] >= 5 then
+                                -- 广播 玩家招募5星级侠客成功
+                                Broad_getHeroData.heroName = heroInfo.name
+                                Broad_getHeroData.type = heroInfo.type
+                                Broad_getHeroData.star = heroInfo.star[1]
 
-                                    game.broadcast:showPlayerGetHero()
-                                end
+                                game.broadcast:showPlayerGetHero()
                             end
+                        end
 
-                            local param = {
-                                type = tag,
-                                leftTime = self._nextNBCardTime,
-                                zhaomulingNum = self._zhaomulingNum,
-                                herolist = data["1"],
-                                buyListener = getOneHero,
-                                removeListener = function()
-                                    self._rootnode["tag_preview"]:setEnabled(true)
-                                end
-                            }
-                            if #data["1"] == 1 then
-                                self:addChild(require("game.shop.ZhaojiangResultNormal").new(param), MAX_ZODER)
-                            elseif #data["1"] == 10 then
-                                self:addChild(require("game.shop.ZhaojiangResultTen").new(param), MAX_ZODER)
+                        local param = {
+                            type = tag,
+                            leftTime = self._nextNBCardTime,
+                            zhaomulingNum = self._zhaomulingNum,
+                            herolist = data[1],
+                            buyListener = getOneHero,
+                            removeListener = function()
+                                self._rootnode["tag_preview"]:setEnabled(true)
                             end
+                        }
+                        if #data[1] == 1 then
+                            self:addChild(require("game.shop.ZhaojiangResultNormal").new(param), MAX_ZODER)
+                        elseif #data[1] == 10 then
+                            self:addChild(require("game.shop.ZhaojiangResultTen").new(param), MAX_ZODER)
+                        end
 
-                            if fromLayer ~= nil then
-                                fromLayer:removeFromParent(true)
-                            end
+                        if fromLayer ~= nil then
+                            fromLayer:removeFromParent(true)
                         end
                     end,
                     t = tag,

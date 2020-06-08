@@ -23,7 +23,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
 
     -- close button
     subNode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
                 transition.sequence(
