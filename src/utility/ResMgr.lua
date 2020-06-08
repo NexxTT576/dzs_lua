@@ -1434,25 +1434,25 @@ ResMgr.highEndDevice = nil
 function ResMgr.isHighEndDevice()
     if (ResMgr.highEndDevice == nil) then
         local isHigh = true
-        if (device.platform == "android") then
-            local totalMemory = nil
-            if (CSDKShell.GetDeviceInfo().totalMemory ~= nil) then
-                totalMemory = checkint(CSDKShell.GetDeviceInfo().totalMemory)
-            end
+        -- if (device.platform == "android") then
+        --     local totalMemory = nil
+        --     if (CSDKShell.GetDeviceInfo().totalMemory ~= nil) then
+        --         totalMemory = checkint(CSDKShell.GetDeviceInfo().totalMemory)
+        --     end
 
-            if (totalMemory ~= nil and totalMemory < 1000) then
-                isHigh = false
-            elseif (totalMemory == nil) then
-                local devices = require("data.data_android_device_android_device")
-                local deviceType = CSDKShell.GetDeviceInfo().deviceType
-                for k, v in pairs(devices) do
-                    if (v.str_name == deviceType) then
-                        isHigh = true
-                        break
-                    end
-                end
-            end
-        end
+        --     if (totalMemory ~= nil and totalMemory < 1000) then
+        --         isHigh = false
+        --     elseif (totalMemory == nil) then
+        --         local devices = require("data.data_android_device_android_device")
+        --         local deviceType = CSDKShell.GetDeviceInfo().deviceType
+        --         for k, v in pairs(devices) do
+        --             if (v.str_name == deviceType) then
+        --                 isHigh = true
+        --                 break
+        --             end
+        --         end
+        --     end
+        -- end
         ResMgr.highEndDevice = isHigh
     end
 

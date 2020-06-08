@@ -30,10 +30,12 @@ function VersionCheckScene:ctor()
     self:addChild(btn)
     btn:addClickEventListener(
         function()
-            if cc.PLATFORM_OS_WINDOWS == cc.Application:getInstance():getTargetPlatform() then
-                print("准备进入游戏")
-                GameStateManager:ChangeState(GAME_STATE.STATE_LOGIN)
-            end
+            -- if cc.PLATFORM_OS_WINDOWS == cc.Application:getInstance():getTargetPlatform() then
+            --     print("准备进入游戏")
+            --     GameStateManager:ChangeState(GAME_STATE.STATE_LOGIN)
+            -- end
+            print("准备进入游戏")
+            GameStateManager:ChangeState(GAME_STATE.STATE_LOGIN)
         end
     )
 end
