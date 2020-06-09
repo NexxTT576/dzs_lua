@@ -69,7 +69,8 @@ function ChallengeFubenCell:refreshItem(itemData)
     else
         self:setBtnEnabled(false)
         itemBgName = "#cfb_item_bg_gray.png"
-        iconBg = display.newGraySprite(titlIconName, {0.4, 0.4, 0.4, 0.1})
+        iconBg = display.newSprite(titlIconName)
+        iconBg:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
     end
 
     local itemBg = display.newSprite(itemBgName, 0, 0, {scale9 = true, size = bgNode:getContentSize()})

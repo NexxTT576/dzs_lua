@@ -13,7 +13,7 @@ local function main()
 end
 
 function __G__TRACKBACK__1(errMessage)
-    --debugXpCall()
+    debugXpCall()
     __G__TRACKBACK__(errMessage)
 end
 

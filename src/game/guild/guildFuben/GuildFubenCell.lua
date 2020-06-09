@@ -50,7 +50,8 @@ function GuildFubenCell:refreshItem(itemData)
 
     local itemBg
     if itemData.state == FUBEN_STATE.notOpen then
-        itemBg = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
+        itemBg = display.newSprite(imagePath)
+        itemBg:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
     else
         itemBg = display.newSprite(imagePath)
     end

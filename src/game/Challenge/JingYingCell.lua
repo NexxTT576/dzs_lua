@@ -1,5 +1,5 @@
 local data_jingyingfuben_jingyingfuben = require("data.data_jingyingfuben_jingyingfuben")
-
+--@SuperType luaIde#cc.TableViewCell
 local JingYingCell =
     class(
     "JingYingCell",
@@ -22,7 +22,7 @@ function JingYingCell:getTutoBtn()
 end
 
 function JingYingCell:refresh(id, isAllLvlDone)
-    local index = self.totalNum + 1 - id --因为这个是从下到上排列的，所以呢，肯定是这个样子的
+    local index = id --因为这个是从下到上排列的，所以呢，肯定是这个样子的
     print("index" .. index .. " total num  " .. self.totalNum .. "  id  " .. id)
     local name = data_jingyingfuben_jingyingfuben[index]["icon"]
     local imagePath = "ui/ui_jingying_fb/" .. name .. ".png"
@@ -47,8 +47,9 @@ function JingYingCell:refresh(id, isAllLvlDone)
         -- itemCover = display.newSprite(imageCoverName)
         itemCover = display.newSprite(imageCoverName, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     else
-        item = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
-        -- itemCover = display.newGraySprite(imageCoverName, {0.4, 0.4, 0.3, 0.1})
+        --@RefType luaIde#cc.Sprite
+        item = display.newSprite(imagePath)
+        item:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         itemCover = display.newSprite(imageCoverNameGray, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
         -- itemCover:setColor(cc.c3b(100,100,100))
         self.isAllowPlay = false

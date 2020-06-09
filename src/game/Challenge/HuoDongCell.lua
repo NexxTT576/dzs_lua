@@ -53,7 +53,8 @@ function HuoDongCell:refresh(aid)
         item = display.newSprite(imagePath)
         itemCover = display.newSprite(imageCoverName, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     else
-        item = display.newGraySprite(imagePath, {0.4, 0.4, 0.4, 0.1})
+        item = display.newSprite(imagePath)
+        item:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         itemCover = display.newSprite(imageCoverNameGray, 0, 0, {scale9 = true, size = cc.size(item:getContentSize().width + 20, item:getContentSize().height + 20)})
     end
     item:setPosition(self._rootnode["bg_node"]:getContentSize().width / 2, self._rootnode["bg_node"]:getContentSize().height / 2)
@@ -90,7 +91,7 @@ function HuoDongCell:refresh(aid)
 
         if huodongData.isbuy == 1 then
             local plusBtn =
-                ui.newImageMenuItem(
+                newImageMenuItem(
                 {
                     image = "#plus_btn.png",
                     imageSelected = "#plus_btn.png",
@@ -107,7 +108,8 @@ function HuoDongCell:refresh(aid)
             )
             plusBtn:setScale(0.8)
             plusBtn:setPosition(plusBtn:getContentSize().width / 2 - 30, numLbl:getContentSize().height / 2)
-            leftCntLbl:addChild(ui.newMenu({plusBtn}))
+
+            leftCntLbl:addChild(newMenu({plusBtn}))
         end
 
         local itemID = HuoDongFuBenModel.getItemID(actId)

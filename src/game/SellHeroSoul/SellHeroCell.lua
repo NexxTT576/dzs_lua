@@ -96,7 +96,7 @@ function SellHeroCell:ctor(data)
     self.unseleBtn = nil
 
     self.selBtn =
-        ui.newImageMenuItem(
+        newImageMenuItem(
         {
             image = "#herolist_selected.png",
             listener = function()
@@ -108,10 +108,10 @@ function SellHeroCell:ctor(data)
     )
     self.selBtn:setVisible(false)
     self.selBtn:setPosition(bgWidth * 0.9, bgHeight * 0.45)
-    self:addChild(ui.newMenu({self.selBtn}))
+    self:addChild(newMenu({self.selBtn}))
 
     self.unseleBtn =
-        ui.newImageMenuItem(
+        newImageMenuItem(
         {
             image = "#herolist_select_bg.png",
             listener = function()
@@ -122,7 +122,7 @@ function SellHeroCell:ctor(data)
         }
     )
     self.unseleBtn:setPosition(bgWidth * 0.9, bgHeight * 0.45)
-    self:addChild(ui.newMenu({self.unseleBtn}))
+    self:addChild(newMenu({self.unseleBtn}))
 
     self:runEnterAnim()
 end

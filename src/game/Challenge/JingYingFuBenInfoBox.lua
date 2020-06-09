@@ -2,6 +2,7 @@ require("game.GameConst")
 local data_item_item = require("data.data_item_item")
 local data_jingyingfuben_jingyingfuben = require("data.data_jingyingfuben_jingyingfuben")
 
+--@SuperType ShadeLayer
 local JingYingFuBenInfoBox =
     class(
     "JingYingFuBenInfoBox",
@@ -27,7 +28,7 @@ function JingYingFuBenInfoBox:ctor(index, removeFunc)
     display.loadSpriteFrames("ui/ui_shuxingIcon.plist", "ui/ui_shuxingIcon.png")
 
     self.index = index
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
     local proxy = CCBProxy:create()
     local ccbReader = proxy:createCCBReader()
     local rootnode = rootnode or {}

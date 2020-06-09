@@ -1186,7 +1186,7 @@ function MainMenuScene:UpdateQuickAccess(...)
         if canShow == true then
             if v and v == 1 then
                 local item =
-                    ui.newImageMenuItem(
+                    newImageMenuItem(
                     {
                         image = string.format("#2015_03_03_%d.png", k),
                         imageSelected = string.format("#2015_03_03_%d.png", k),
@@ -1197,7 +1197,7 @@ function MainMenuScene:UpdateQuickAccess(...)
             end
         end
     end
-    local menu = ui.newMenu(menus)
+    local menu = newMenu(menus)
     menu:alignItemsHorizontally()
     self._rootnode["quickAccessNode"]:addChild(menu)
 end

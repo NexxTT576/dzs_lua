@@ -53,7 +53,7 @@ function ChoseStarLvlLayer:ctor(param)
         local unselBtn = nil
 
         selBtn =
-            ui.newImageMenuItem(
+            newImageMenuItem(
             {
                 image = "#herolist_selected.png",
                 listener = function()
@@ -65,11 +65,11 @@ function ChoseStarLvlLayer:ctor(param)
         )
         selBtn:setVisible(false)
         selBtn:setPosition(boardWidth * 0.2, curY)
-        self:addChild(ui.newMenu({selBtn}))
+        self:addChild(newMenu({selBtn}))
         sels[#sels + 1] = selBtn
 
         unselBtn =
-            ui.newImageMenuItem(
+            newImageMenuItem(
             {
                 image = "#herolist_select_bg.png",
                 listener = function()
@@ -80,7 +80,7 @@ function ChoseStarLvlLayer:ctor(param)
             }
         )
         unselBtn:setPosition(boardWidth * 0.2, curY)
-        self:addChild(ui.newMenu({unselBtn}))
+        self:addChild(newMenu({unselBtn}))
         unSels[#unSels + 1] = unselBtn
 
         offsetY = barBg:getContentSize().height * 0.7

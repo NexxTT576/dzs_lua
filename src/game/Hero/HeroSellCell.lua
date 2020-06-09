@@ -171,7 +171,7 @@ function HeroSellCell:create(param)
     end
 
     self.selBtn =
-        ui.newImageMenuItem(
+        newImageMenuItem(
         {
             image = "#herolist_selected.png",
             listener = selFunc
@@ -179,17 +179,17 @@ function HeroSellCell:create(param)
     )
     self.selBtn:setVisible(false)
     self.selBtn:setPosition(bgWidth * 0.9, bgHeight * 0.45)
-    self.bg:addChild(ui.newMenu({self.selBtn}))
+    self.bg:addChild(newMenu({self.selBtn}))
 
     self.unseleBtn =
-        ui.newImageMenuItem(
+        newImageMenuItem(
         {
             image = "#herolist_select_bg.png",
             listener = unSelFunc
         }
     )
     self.unseleBtn:setPosition(bgWidth * 0.9, bgHeight * 0.45)
-    self.bg:addChild(ui.newMenu({self.unseleBtn}))
+    self.bg:addChild(newMenu({self.unseleBtn}))
 
     if sel == true then
         unSelFunc()

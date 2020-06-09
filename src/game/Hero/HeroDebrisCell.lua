@@ -99,11 +99,11 @@ function HeroDebrisCell:create(param)
         self.headIcon,
         cc.Handler.EVENT_TOUCH_BEGAN,
         function()
-            self.headIcon:setTouchEnabled(false)
+            setTouchEnabled(self.headIcon, false)
             ResMgr.delayFunc(
                 0.8,
                 function()
-                    self.headIcon:setTouchEnabled(true)
+                    setTouchEnabled(self.headIcon, true)
                 end,
                 self
             )

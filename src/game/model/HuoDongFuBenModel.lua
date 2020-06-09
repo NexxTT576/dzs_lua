@@ -1,10 +1,10 @@
-local HuoDongFuBenModel  = {}
+local HuoDongFuBenModel = {}
 -- HuoDongFuBenModel.rawData = nil
 
-function HuoDongFuBenModel.setRestNum(id, num) 
+function HuoDongFuBenModel.setRestNum(id, num)
     --设置剩余次数
     local fubenData = HuoDongFuBenModel.getFubenData(id)
-    fubenData.surplusCnt = num 
+    fubenData.surplusCnt = num
 end
 
 function HuoDongFuBenModel.getRestNum(id)
@@ -19,7 +19,7 @@ end
 
 function HuoDongFuBenModel.getFubenData(id)
     -- body
-    return HuoDongFuBenModel.rawData["1"][tostring(id)]
+    return HuoDongFuBenModel.rawData[1][tostring(id)]
 end
 
 function HuoDongFuBenModel.getItemID(id)
@@ -28,12 +28,10 @@ function HuoDongFuBenModel.getItemID(id)
     -- body
 end
 
-function HuoDongFuBenModel.getItemNum(id)    
+function HuoDongFuBenModel.getItemNum(id)
     local fubenData = HuoDongFuBenModel.getFubenData(id)
     return fubenData.num
 end
-
-
 
 function HuoDongFuBenModel.initData(data)
     HuoDongFuBenModel.rawData = data
@@ -44,23 +42,15 @@ function HuoDongFuBenModel.initData(data)
 end
 
 function HuoDongFuBenModel.getBuyCnt()
-    return HuoDongFuBenModel.rawData["2"].buyCnt
+    return HuoDongFuBenModel.rawData[2].buyCnt
 end
-
-
-
-
-
-
 
 function HuoDongFuBenModel.getLimit()
-    return HuoDongFuBenModel.rawData["2"].limit
+    return HuoDongFuBenModel.rawData[2].limit
 end
 
-
-function  HuoDongFuBenModel.getFubenList()
-    return HuoDongFuBenModel.rawData["1"]
+function HuoDongFuBenModel.getFubenList()
+    return HuoDongFuBenModel.rawData[1]
 end
 
-
-return HuoDongFuBenModel 
+return HuoDongFuBenModel

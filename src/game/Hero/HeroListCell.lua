@@ -52,21 +52,13 @@ function HeroListCell:create(param)
     self.headIcon = self._rootnode["headIcon"]
     self.clsTTF = self._rootnode["cls"]
 
-    -- MppUI.refreshShadowLabel({
-    -- 	text = "0",
-    --        size = 20,
-    --        color = cc.c3b(85,210,68),
-    --        shadowColor = cc.c3b(0,0,0),
-    --        font = FONTS_NAME.font_fzcy,
-    --        align = cc.TEXT_ALIGNMENT_LEFT,
-    --        label = self.clsTTF
-    -- 	})
-
-    -- self.heroName:setPosition(self.heroName:getContentSize().width/2,self._rootnode["nameBg"]:getContentSize().height*0.5)
-
     setTouchEnabled(self._rootnode["touchNode"], true)
     local bTouch = false
     local offsetX = 0
+    -- if self.cellIndex == 0 then
+    --     print(self.cellIndex)
+    -- end
+
     addNodeEventListener(
         self._rootnode["touchNode"],
         cc.Handler.EVENT_TOUCH_BEGAN,
@@ -80,7 +72,7 @@ function HeroListCell:create(param)
         self._rootnode["touchNode"],
         cc.Handler.EVENT_TOUCH_MOVED,
         function(t)
-            if event.x - offsetX > 5 or event.x - offsetX < -5 then
+            if t:getLocation().x - offsetX > 5 or t:getLocation().x - offsetX < -5 then
                 bTouch = false
             end
         end

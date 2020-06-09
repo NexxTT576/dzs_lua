@@ -450,3 +450,58 @@ function arrangeTTFByPosX(cells)
         end
     end
 end
+
+function newImageMenuItem(params)
+    local s1 = ""
+    local s2 = ""
+    if params.image then
+        s1 = params.image
+    end
+    if params.imageSelected then
+        s2 = params.imageSelected
+    end
+    local l = cc.MenuItemImage:create(s1, s2)
+    l:registerScriptTapHandler(params.listener)
+    return l
+end
+
+function newMenu(items)
+    local menu
+    menu = cc.Menu:create()
+
+    for k, item in pairs(items) do
+        if not tolua.isnull(item) then
+            menu:addChild(item, 0, item:getTag())
+        end
+    end
+
+    menu:setPosition(0, 0)
+    return menu
+end
+
+function setControlBtnEvent(btn, func, soundFunc)
+    btn:registerControlEventHandler(
+        function(sender)
+            sender:runAction(
+                transition.sequence(
+                    {
+                        -- CCScaleTo:create(0.08, 0.8),
+                        CCCallFunc:create(
+                            function()
+                                if soundFunc ~= nil then
+                                    soundFunc()
+                                else
+                                    GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+                                end
+                                func()
+                            end
+                        )
+                        -- CCScaleTo:create(0.1, 1.2),
+                        -- CCScaleTo:create(0.02, 1)
+                    }
+                )
+            )
+        end,
+        CCControlEventTouchUpInside
+    )
+end

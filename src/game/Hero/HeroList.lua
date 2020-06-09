@@ -598,13 +598,10 @@ function HeroList:init(data)
                 cell:refresh(idx, COMMON_VIEW, self.sellIndex[idx + 1])
             end
 
-            --
-
             local function refreshSellFunc(cell, idx)
                 cell:refresh(idx, SALE_VIEW, self.sellIndex[idx + 1])
             end
             self.sellList = HeroModel.getSellAbleTable()
-            --
 
             if self.isFirstInitHeroTable == nil then
                 self.isFirstInitHeroTable = false

@@ -117,9 +117,11 @@ function LevelGradeItem:ctor(param)
 
             local icon
             if _grade == 2 then
-                icon = display.newGraySprite("#levelinfo_normal_icon.png", {0.1, 0.3, 0.5, 0.1})
+                icon = display.newSprite("#levelinfo_normal_icon.png")
+                itemBg:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
             elseif _grade == 3 then
-                icon = display.newGraySprite("#levelinfo_hard_icon.png", {0.1, 0.3, 0.5, 0.1})
+                icon = display.newSprite("#levelinfo_hard_icon.png")
+                itemBg:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
             end
 
             icon:setPosition(rootnode[iconKey]:getPosition())

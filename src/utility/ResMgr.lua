@@ -829,7 +829,8 @@ function ResMgr.refreshIcon(param)
     tempBg = display.newSprite(string.format("#icon_frame_bg_%d.png", itemStar or 1))
 
     if isGray == true then
-        local fileter = display.newGraySprite(string.format("#icon_frame_bg_%d.png", itemStar or 1), {0.4, 0.4, 0.4, 0.1})
+        local fileter = display.newSprite(string.format("#icon_frame_bg_%d.png", itemStar or 1))
+        fileter:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         fileter:setPosition(itemBg:getContentSize().width / 2, itemBg:getContentSize().height / 2)
         itemBg:addChild(fileter)
         itemBg:removeChildByTag(FILETER_TAG, true)
@@ -839,7 +840,8 @@ function ResMgr.refreshIcon(param)
     local item = itemBg:getChildByTag(IMAGE_TAG)
     if item == nil then
         if isGray == true then
-            item = display.newGraySprite(path, {0.4, 0.4, 0.4, 0.1})
+            item = display.newSprite(path)
+            item:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         else
             item = display.newSprite(path)
         end
@@ -851,7 +853,8 @@ function ResMgr.refreshIcon(param)
         local tempItem
 
         if isGray == true then
-            tempItem = display.newGraySprite(path, {0.4, 0.4, 0.4, 0.1})
+            tempItem = display.newSprite(path)
+            tempItem:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         else
             tempItem = display.newSprite(path)
         end
@@ -863,7 +866,8 @@ function ResMgr.refreshIcon(param)
 
     if itemFrame == nil then
         if isGray == true then
-            itemFrame = display.newGraySprite(string.format("#icon_frame_board_%d.png", itemStar or 1), {0.4, 0.4, 0.4, 0.1})
+            itemFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
+            tempItem:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         else
             itemFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
         end

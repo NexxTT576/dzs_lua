@@ -51,7 +51,7 @@ local STItem =
             local infoNode = CCBReaderLoad("hero/hero_shentong_info.ccbi", proxy, rootnode, display.newNode(), infoSize)
             rootnode["nameItemName"]:setString(string.format("%s(%d/%d)", v.info.name, v.lv, #v.map.arr_talent))
 
-            rootnode["descLabel"]:setDimensions(cc.size(infoNode:getContentSize().width * 0.95, rootnode["descLabel"]:getDimensions().height))
+            rootnode["descLabel"]:setDimensions(infoNode:getContentSize().width * 0.95, rootnode["descLabel"]:getDimensions().height)
             rootnode["descLabel"]:setString(v.info.type)
             rootnode["descLabel"]:setColor(cc.c3b(86, 59, 32))
 
