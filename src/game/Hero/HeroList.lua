@@ -558,7 +558,7 @@ function HeroList:init(data)
                             info = {
                                 resId = HeroModel.totalTable[index].resId,
                                 levelLimit = 8888,
-                                objId = HeroModel.totalTable[index]._id
+                                objId = HeroModel.totalTable[index].id
                             },
                             cellIndex = index,
                             createJinjieLayer = createJinjieLayer,
@@ -604,6 +604,8 @@ function HeroList:init(data)
             self.sellList = HeroModel.getSellAbleTable()
 
             if self.isFirstInitHeroTable == nil then
+                -- self.scrollLayerNode:addChild(self.sellHeroTable)
+                -- self.sellHeroTable:setVisible(false)
                 self.isFirstInitHeroTable = false
 
                 self.heroTable = nil

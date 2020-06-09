@@ -55,9 +55,6 @@ function HeroListCell:create(param)
     setTouchEnabled(self._rootnode["touchNode"], true)
     local bTouch = false
     local offsetX = 0
-    -- if self.cellIndex == 0 then
-    --     print(self.cellIndex)
-    -- end
 
     addNodeEventListener(
         self._rootnode["touchNode"],
@@ -84,6 +81,7 @@ function HeroListCell:create(param)
             if bTouch then
                 -- ResMgr.createMaskLayer()
                 PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                print("Fsdfasdf", self.index)
                 param.onHeadIcon(self.index)
             end
         end
