@@ -1,10 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-7
--- Time: 下午4:55
--- To change this template use File | Settings | File Templates.
---
 local EquipListScene =
     class(
     "EquipListScene",

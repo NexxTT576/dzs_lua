@@ -102,7 +102,7 @@ function ChallengeScene:updateJingYingList()
 
                     if cell:getIsAllowPlay() then
                         if JingYingModel.getRestNum() > 0 then
-                            local layer = require("game.Challenge.JingYingFuBenInfoBox").new(totalNum - cell:getIdx(), removeFunc)
+                            local layer = require("game.Challenge.JingYingFuBenInfoBox").new(cell:getIdx() + 1, removeFunc)
                             display.getRunningScene():addChild(layer, 10000)
                         else
                             removeFunc()
@@ -425,6 +425,7 @@ function ChallengeScene:ctor(viewType)
     self:checkDayLeftCnt({})
 
     self._bExit = false
+    self:enableNodeEvents()
 end
 
 function ChallengeScene:onEnter()

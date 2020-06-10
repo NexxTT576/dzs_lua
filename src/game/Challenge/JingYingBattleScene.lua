@@ -35,13 +35,13 @@ end
 
 function JingYingBattleScene:result(data)
     print("jing ying jingying ")
-    self.battleData = data["2"][1]
+    self.battleData = data[2][1]
 
     local atkData = self.battleData.d[#self.battleData.d]
     local win = atkData["win"]
 
-    self.rewardItem = data["3"]
-    self.rewardCoin = data["4"]
+    self.rewardItem = data[3]
+    self.rewardCoin = data[4]
 
     local resultLayer =
         require("game.Battle.BattleResult").new(
@@ -67,8 +67,8 @@ function JingYingBattleScene:checkIsLevelup(data)
     dump(data)
     -- 当前等级
     local beforeLevel = game.player.getLevel() -- 之前等级
-    local curlevel = data["6"] or beforeLevel
-    local curExp = data["7"] or 0
+    local curlevel = data[6] or beforeLevel
+    local curExp = data[7] or 0
 
     -- 没有更新当前等级的最大exp
 
