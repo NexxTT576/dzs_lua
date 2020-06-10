@@ -734,8 +734,8 @@ function MainMenuScene:bottomBtns_2(posY)
     -- moreFuncTouchNode:addNodeEventListener(
     --     cc.NODE_TOUCH_CAPTURE_EVENT,
     --     function(event)
-    --         local posX = event.x
-    --         local posY = event.y
+    --         local posX = event:getLocation().x
+    --         local posY = event:getLocation().y
     --         local pos = moreFuncNode:convertToNodeSpace(ccp(posX, posY))
     --         if cc.rect(0, 0, moreFuncNode:getContentSize().width, moreFuncNode:getContentSize().height):containsPoint(pos) == false then
     --             checkTouchMoreFuncNode()

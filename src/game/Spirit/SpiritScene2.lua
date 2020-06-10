@@ -320,8 +320,8 @@ function SpiritScene2:initListView2()
         cc.NODE_TOUCH_CAPTURE_EVENT,
         function(event)
             if event.name == "began" then
-                posX = event.x
-                posY = event.y
+                posX = event:getLocation().x
+                posY = event:getLocation().y
                 return true
             elseif event.name == "ended" then
                 self:refreshArrow()

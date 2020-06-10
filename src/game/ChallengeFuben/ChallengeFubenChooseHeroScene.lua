@@ -361,14 +361,15 @@ function ChallengeFubenChooseHeroScene:getEmptyPos()
 end
 
 function ChallengeFubenChooseHeroScene:initHeroListView()
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
-            posX = event.x
-            posY = event.y
+            posX = event:getLocation().x
+            posY = event:getLocation().y
         end
     )
 

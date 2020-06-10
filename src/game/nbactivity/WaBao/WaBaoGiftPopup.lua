@@ -206,8 +206,8 @@ function WaBaoGiftPopup:selectContent(innerContainer, index)
     touchNode:addNodeEventListener(
         cc.NODE_TOUCH_CAPTURE_EVENT,
         function(event)
-            self.posX = event.x
-            self.posY = event.y
+            self.posX = event:getLocation().x
+            self.posY = event:getLocation().y
         end
     )
     self:addChild(touchNode, 20)

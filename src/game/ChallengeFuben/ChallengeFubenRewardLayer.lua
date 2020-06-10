@@ -122,8 +122,8 @@ function ChallengeFubenRewardLayer:createListView(rewardDataList)
         self._touchNode,
         cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
-            posX = event.x
-            posY = event.y
+            posX = event:getLocation().x
+            posY = event:getLocation().y
         end
     )
 

@@ -99,8 +99,8 @@ function DuiHuanMainView:setUpView(param)
     touchNode:addNodeEventListener(
         cc.NODE_TOUCH_CAPTURE_EVENT,
         function(event)
-            posX = event.x
-            posY = event.y
+            posX = event:getLocation().x
+            posY = event:getLocation().y
         end
     )
     touchNode:setContentSize(cc.size(display.width, display.height))

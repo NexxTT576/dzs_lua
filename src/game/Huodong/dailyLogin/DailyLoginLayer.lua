@@ -198,8 +198,8 @@ function DailyLoginLayer:init(data)
     self._rootnode["touchNode"]:addNodeEventListener(
         cc.NODE_TOUCH_CAPTURE_EVENT,
         function(event)
-            posX = event.x
-            posY = event.y
+            posX = event:getLocation().x
+            posY = event:getLocation().y
         end
     )
 
