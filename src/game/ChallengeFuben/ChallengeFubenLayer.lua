@@ -77,7 +77,7 @@ function ChallengeFubenLayer:ctor(param)
                             end
                         }
                     )
-                    game.runningScene:addChild(buyMsgBox, self:getZOrder() + 1)
+                    game.runningScene:addChild(buyMsgBox, self:getLocalZOrder() + 1)
                 end
             end,
             CCControlEventTouchUpInside
@@ -101,7 +101,7 @@ function ChallengeFubenLayer:ctor(param)
                     end
                 }
             )
-            game.runningScene:addChild(layer, self:getZOrder() + 1)
+            game.runningScene:addChild(layer, self:getLocalZOrder() + 1)
         end,
         CCControlEventTouchUpInside
     )
@@ -322,7 +322,7 @@ function ChallengeFubenLayer:createFbListView(fbDataList)
                                 end
                             }
                         )
-                        game.runningScene:addChild(tipLayer, self:getZOrder() + 1)
+                        game.runningScene:addChild(tipLayer, self:getLocalZOrder() + 1)
                     else
                         toBat(cell, self._fmt)
                     end

@@ -147,7 +147,7 @@ function DuobaoResult:initWin(data)
             -- 判断耐力是否足够
             if game.player.m_energy < 2 then
                 local layer = require("game.Duobao.DuobaoBuyMsgBox").new({})
-                game.runningScene:addChild(layer, self:getZOrder() + 1)
+                game.runningScene:addChild(layer, self:getLocalZOrder() + 1)
                 snatchAgainBtn:setEnabled(true)
             else
                 self._snatchAgain(self._snatchIndex)

@@ -646,7 +646,7 @@ function EnemyFormLayer:initEquip()
                         end
                     }
                 )
-                game.runningScene:addChild(layer, self:getZOrder() + 1)
+                game.runningScene:addChild(layer, self:getLocalZOrder() + 1)
             else
                 printf("数据为空")
             end
@@ -665,7 +665,7 @@ function EnemyFormLayer:initEquip()
                         end
                     }
                 )
-                game.runningScene:addChild(layer, self:getZOrder() + 1)
+                game.runningScene:addChild(layer, self:getLocalZOrder() + 1)
             else
                 printf("数据为空")
             end

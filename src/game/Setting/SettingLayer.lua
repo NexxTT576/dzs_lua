@@ -50,7 +50,7 @@ function SettingLayer:ctor()
                     end
                 }
             )
-            game.runningScene:addChild(cdkeyRewardLayer, self:getZOrder() + 1)
+            game.runningScene:addChild(cdkeyRewardLayer, self:getLocalZOrder() + 1)
         end,
         CCControlEventTouchUpInside
     )

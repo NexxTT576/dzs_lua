@@ -36,7 +36,7 @@ end
 function JingYingModel.buySuccess(data)
     print("buySuccess")
     dump(data)
-    local rtnObj = data.rtnObj
+    local rtnObj = data
     JingYingModel.rawData[2].surplusCnt = rtnObj.surplusCnt
     JingYingModel.rawData[2].buyCnt = rtnObj.buyCnt
     JingYingModel.refreshGold(rtnObj.gold)

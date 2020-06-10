@@ -115,11 +115,12 @@ function ChallengeFubenRewardLayer:createListView(rewardDataList)
 
     local cellContentSize = require(fileName).new():getContentSize()
 
-    self._touchNode:setTouchEnabled(true)
+    setTouchEnabled(self._touchNode, true)
     local posX = 0
     local posY = 0
-    self._touchNode:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    addNodeEventListener(
+        self._touchNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
             posX = event.x
             posY = event.y
@@ -171,7 +172,7 @@ function ChallengeFubenRewardLayer:onInformation(itemData)
                 end
             }
         )
-        game.runningScene:addChild(itemInfo, self:getZOrder() + 1)
+        game.runningScene:addChild(itemInfo, self:getLocalZOrder() + 1)
     end
 end
 

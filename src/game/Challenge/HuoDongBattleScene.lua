@@ -109,8 +109,8 @@ end
 function HuoDongBattleScene:jieFuResult(data)
     print("dummmmmmm")
     dump(data)
-    self.totoNumValue = data["6"]
-    self.moneyValue = data["4"][1].n
+    self.totoNumValue = data[6]
+    self.moneyValue = data[4][1].n
     -- self.curSilverNum:setString(self.moneyValue)
     -- self.curSilverNum:setPosition(self._numrootnode["get_silver"]:getContentSize().width + self.curSilverNum:getContentSize().width/2,self._numrootnode["get_silver"]:getContentSize().height/2)
 

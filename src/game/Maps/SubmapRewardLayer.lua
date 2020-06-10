@@ -174,7 +174,7 @@ function SubmapRewardLayer:getReward()
                             }
                         )
 
-                        game.runningScene:addChild(msgBox, self:getZOrder())
+                        game.runningScene:addChild(msgBox, self:getLocalZOrder())
 
                         self:removeFromParent(true)
                     end

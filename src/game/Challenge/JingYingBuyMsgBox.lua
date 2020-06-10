@@ -92,6 +92,7 @@ function JingYingBuyMsgBox:previewInit()
             end
         }
     )
+    vipTTF:setPositionY(vipTTF:getPositionY() - 15)
     -- msg:setPosition(display.width/2, display.height/2)
     self:addChild(msg)
 end

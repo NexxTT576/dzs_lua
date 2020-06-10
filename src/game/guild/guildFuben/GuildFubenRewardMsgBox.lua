@@ -81,7 +81,7 @@ function GuildFubenRewardMsgBox:initRewardListView(cellDatas)
                             }
                         )
 
-                        game.runningScene:addChild(itemInfo, self:getZOrder() + 1)
+                        game.runningScene:addChild(itemInfo, self:getLocalZOrder() + 1)
                     end
                 end
             end

@@ -260,20 +260,18 @@ function ChallengeScene:updateHuoDongList()
                                 sysId = fbInfo.sys_id,
                                 callback = function(data)
                                     dump(data)
-                                    if data.err == "" then
-                                        game.runningScene:addChild(
-                                            require("game.ChallengeFuben.ChallengeFubenLayer").new(
-                                                {
-                                                    fbId = actId,
-                                                    rtnObj = data.rtnObj,
-                                                    refreshCellFunc = function()
-                                                        self:sendHuoDongReq()
-                                                    end
-                                                }
-                                            ),
-                                            MAX_ZODER
-                                        )
-                                    end
+                                    game.runningScene:addChild(
+                                        require("game.ChallengeFuben.ChallengeFubenLayer").new(
+                                            {
+                                                fbId = actId,
+                                                rtnObj = data,
+                                                refreshCellFunc = function()
+                                                    self:sendHuoDongReq()
+                                                end
+                                            }
+                                        ),
+                                        MAX_ZODER
+                                    )
                                 end
                             }
                         )

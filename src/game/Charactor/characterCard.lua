@@ -599,7 +599,7 @@ function characterCard:ctor(param)
             if name == "began" then
                 if bgBone:getDisplayManager():getBoundingBox():containsPoint(bgBone:convertToNodeSpace(cc.p(x, y))) then
                     self:runAction(cc.ScaleTo:create(0.1, 1.1))
-                    self:setLocalZOrder(self:getZOrder() + 1)
+                    self:setLocalZOrder(self:getLocalZOrder() + 1)
                     return true
                 else
                     -- printf("Hello")
@@ -609,7 +609,7 @@ function characterCard:ctor(param)
                 self:setPosition(self:getParent():convertToNodeSpace(cc.p(x, y)))
             elseif name == "ended" then
                 self:runAction(cc.ScaleTo:create(0.1, 1))
-                self:setLocalZOrder(self:getZOrder() - 1)
+                self:setLocalZOrder(self:getLocalZOrder() - 1)
                 touchEndListener(self)
             end
         end

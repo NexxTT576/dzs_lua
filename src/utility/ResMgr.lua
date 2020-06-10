@@ -505,8 +505,9 @@ function ResMgr.getVipIconTTF()
     local lvTTF =
         newBMFontLabel(
         {
-            text = "VIP" .. vipLv,
+            text = vipLv,
             font = "fonts/font_vip.fnt",
+            size = 22,
             align = cc.TEXT_ALIGNMENT_LEFT
         }
     )

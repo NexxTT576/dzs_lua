@@ -194,7 +194,7 @@ function ChongzhiLayer:initData(data, isRefresh)
                         }
                     )
 
-                    game.runningScene:addChild(vipInfoLayer, self:getZOrder() + 1)
+                    game.runningScene:addChild(vipInfoLayer, self:getLocalZOrder() + 1)
                 end,
                 CCControlEventTouchUpInside
             )
@@ -388,7 +388,7 @@ function ChongzhiLayer:initVipRewardInfo(viplevelData)
                             describe = itemData.describe
                         }
                     )
-                    game.runningScene:addChild(itemInfo, self:getZOrder() + 1)
+                    game.runningScene:addChild(itemInfo, self:getLocalZOrder() + 1)
                 end
             }
         )
@@ -439,7 +439,7 @@ function ChongzhiLayer:initVipRewardInfo(viplevelData)
                         end
                     }
                 )
-                game.runningScene:addChild(itemInfo, self:getZOrder() + 1)
+                game.runningScene:addChild(itemInfo, self:getLocalZOrder() + 1)
             end
         }
     )
