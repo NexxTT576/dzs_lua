@@ -47,7 +47,7 @@ function BagItem:create(param)
     setTouchEnabled(self._rootnode["iconSprite"], true)
     addNodeEventListener(
         self._rootnode["iconSprite"],
-        cc.Handler.EVENT_TOUCH_BEGAN,
+        cc.Handler.EVENT_TOUCH_ENDED,
         function()
             if _useListener then
                 _useListener(self, 2)

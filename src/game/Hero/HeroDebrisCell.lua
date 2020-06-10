@@ -97,7 +97,7 @@ function HeroDebrisCell:create(param)
     setTouchEnabled(self.headIcon, true)
     addNodeEventListener(
         self.headIcon,
-        cc.Handler.EVENT_TOUCH_BEGAN,
+        cc.Handler.EVENT_TOUCH_ENDED,
         function()
             setTouchEnabled(self.headIcon, false)
             ResMgr.delayFunc(

@@ -153,67 +153,59 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
         end
 
         if node["__eventListener"] == nil then
+            local rshandle = function(touch, event, he)
+                --@RefType luaIde#cc.Touch
+                local t = touch
+                --@RefType luaIde#cc.Event
+                local e = event
+                --@RefType luaIde#cc.Node
+                local target = e:getCurrentTarget()
+                local dt = target
+                while dt ~= nil do
+                    if dt:isVisible() == false then
+                        return false
+                    end
+                    dt = dt:getParent()
+                end
+                local locationInNode = target:convertToNodeSpace(t:getLocation())
+                local s = target:getContentSize()
+                local targetPos = target:getPositionX()
+                local rect = cc.rect(0, 0, s.width, s.height)
+                if cc.rectContainsPoint(rect, locationInNode) then
+                    if eventListenerHanders[he] then
+                        return eventListenerHanders[he](t, e)
+                    end
+                end
+                return true
+            end
             --@RefType luaIde#cc.EventListenerTouchOneByOne
             local listener = cc.EventListenerTouchOneByOne:create()
             listener:registerScriptHandler(
                 function(touch, event)
-                    --@RefType luaIde#cc.Touch
-                    local t = touch
-                    --@RefType luaIde#cc.Event
-                    local e = event
-                    --@RefType luaIde#cc.Node
-                    local target = e:getCurrentTarget()
-                    local dt = target
-                    while dt ~= nil do
-                        if dt:isVisible() == false then
-                            return false
-                        end
-                        dt = dt:getParent()
-                    end
-                    local locationInNode = target:convertToNodeSpace(t:getLocation())
-                    local s = target:getContentSize()
-                    local targetPos = target:getPositionX()
-                    local rect = cc.rect(0, 0, s.width, s.height)
-                    if cc.rectContainsPoint(rect, locationInNode) then
-                        if eventListenerHanders[eventType] then
-                            return eventListenerHanders[eventType](t, e)
-                        end
-                    end
-                    return false
+                    return rshandle(touch, event, cc.Handler.EVENT_TOUCH_BEGAN)
                 end,
-                eventType
+                cc.Handler.EVENT_TOUCH_BEGAN
+            )
+            listener:registerScriptHandler(
+                function(touch, event)
+                    return rshandle(touch, event, cc.Handler.EVENT_TOUCH_MOVED)
+                end,
+                cc.Handler.EVENT_TOUCH_MOVED
+            )
+            listener:registerScriptHandler(
+                function(touch, event)
+                    return rshandle(touch, event, cc.Handler.EVENT_TOUCH_CANCELLED)
+                end,
+                cc.Handler.EVENT_TOUCH_CANCELLED
+            )
+            listener:registerScriptHandler(
+                function(touch, event)
+                    return rshandle(touch, event, cc.Handler.EVENT_TOUCH_ENDED)
+                end,
+                cc.Handler.EVENT_TOUCH_ENDED
             )
             node:getEventDispatcher():addEventListenerWithSceneGraphPriority(listener, node)
             node["__eventListener"] = listener
-        else
-            node["__eventListener"]:registerScriptHandler(
-                function(touch, event)
-                    --@RefType luaIde#cc.Touch
-                    local t = touch
-                    --@RefType luaIde#cc.Event
-                    local e = event
-                    --@RefType luaIde#cc.Node
-                    local target = e:getCurrentTarget()
-                    local dt = target
-                    while dt ~= nil do
-                        if dt:isVisible() == false then
-                            return false
-                        end
-                        dt = dt:getParent()
-                    end
-                    local locationInNode = target:convertToNodeSpace(t:getLocation())
-                    local s = target:getContentSize()
-                    local targetPos = target:getPositionX()
-                    local rect = cc.rect(0, 0, s.width, s.height)
-                    if cc.rectContainsPoint(rect, locationInNode) then
-                        if eventListenerHanders[eventType] then
-                            return eventListenerHanders[eventType](t, e)
-                        end
-                    end
-                    return false
-                end,
-                eventType
-            )
         end
     end
 end

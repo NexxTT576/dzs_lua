@@ -33,7 +33,7 @@ function ItemInformation:ctor(param)
         self:addChild(node)
 
         subnode["closeBtn"]:registerControlEventHandler(
-            function(eventName, sender)
+            function(sender)
                 GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
                 sender:runAction(
                     transition.sequence(
@@ -72,7 +72,7 @@ function ItemInformation:ctor(param)
                 align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
-
+        nameLbl:setAnchorPoint(cc.p(0, 0.5))
         nameLbl:setPosition(0, subnode["itemNameLbl"]:getContentSize().height / 2)
         subnode["itemNameLbl"]:addChild(nameLbl)
 

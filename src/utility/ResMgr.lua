@@ -836,6 +836,7 @@ function ResMgr.refreshIcon(param)
         itemBg:removeChildByTag(FILETER_TAG, true)
         fileter:setTag(FILETER_TAG)
     end
+    itemBg:setSpriteFrame(tempBg:getSpriteFrame())
 
     local item = itemBg:getChildByTag(IMAGE_TAG)
     if item == nil then
