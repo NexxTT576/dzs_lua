@@ -163,6 +163,13 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
                     local e = event
                     --@RefType luaIde#cc.Node
                     local target = e:getCurrentTarget()
+                    local dt = target
+                    while dt ~= nil do
+                        if dt:isVisible() == false then
+                            return false
+                        end
+                        dt = dt:getParent()
+                    end
                     local locationInNode = target:convertToNodeSpace(t:getLocation())
                     local s = target:getContentSize()
                     local targetPos = target:getPositionX()
@@ -172,7 +179,7 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
                             return eventListenerHanders[eventType](t, e)
                         end
                     end
-                    return true
+                    return false
                 end,
                 eventType
             )
@@ -187,6 +194,13 @@ function addNodeEventListener(node, eventType, cb, isRefresh)
                     local e = event
                     --@RefType luaIde#cc.Node
                     local target = e:getCurrentTarget()
+                    local dt = target
+                    while dt ~= nil do
+                        if dt:isVisible() == false then
+                            return false
+                        end
+                        dt = dt:getParent()
+                    end
                     local locationInNode = target:convertToNodeSpace(t:getLocation())
                     local s = target:getContentSize()
                     local targetPos = target:getPositionX()
