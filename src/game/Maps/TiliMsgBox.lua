@@ -1,12 +1,6 @@
---[[
- --
- -- add by vicky
- -- 2014.09.23
- --
- --]]
 require("game.GameConst")
 local data_item_item = require("data.data_item_item")
-
+--@SuperType ShadeLayer
 local TiliMsgBox =
     class(
     "TiliMsgBox",
@@ -20,7 +14,6 @@ function TiliMsgBox:ctor(param)
 
     local proxy = CCBProxy:create()
     local ccbReader = proxy:createCCBReader()
-    local rootnode = rootnode or {}
 
     self._rootnode = {}
     local node = CCBReaderLoad("ccbi/fuben/tili_msgBox.ccbi", proxy, self._rootnode)
@@ -120,8 +113,8 @@ function TiliMsgBox:buyFunc()
 end
 
 function TiliMsgBox:init()
-    self.itemNum = self.data["2"] --玩家拥有的体力丹的数量
-    local buyData = self.data["1"]
+    self.itemNum = self.data[2] --玩家拥有的体力丹的数量
+    local buyData = self.data[1]
     self.goldNum = buyData["gold"]
     self.cnt = buyData["cnt"] --剩余可购买数量
     self.costNum = buyData["coin"] --当前购买所需花费金钱
@@ -143,12 +136,8 @@ function TiliMsgBox:sendReq()
         {
             callback = function(data)
                 dump(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Error")
-                else
-                    self.data = data
-                    self:init()
-                end
+                self.data = data
+                self:init()
             end,
             id = self.id
         }

@@ -476,18 +476,6 @@ function SubMapInfoLayer:createBuyMsgBox()
     display.getRunningScene():addChild(buySubMapBox, 1000)
 end
 
--- function SubMapInfoLayer:revBuyMsgBox()
---     self._dayCnt = SubMapModel.getRestNum()
---     self.restNum:setString(tostring(self._dayCnt))
---     self._hastouchLianzhan = false
-
---     for k,v in pairs(self._levelItems) do
-
---         -- v:updateBtnMsg(SubMapModel.getLianZhanNum())
---         v:buyUpdate(SubMapModel.getLianZhanNum())
---     end
--- end
-
 function SubMapInfoLayer:normalFight(grade, levelData, isPassed)
     -- 判断挑战次数
     if self._dayCnt <= 0 then

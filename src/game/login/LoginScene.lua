@@ -8,6 +8,7 @@ local LoginScene =
 )
 
 function LoginScene:ctor()
+    ResMgr.battleTimeScale = cc.UserDefault:getInstance():getIntegerForKey("time_scale")
     self:init()
     GameAudio.preloadMusic(ResMgr.getSFX(SFX_NAME.u_queding))
     GameAudio.playMainmenuMusic(true)

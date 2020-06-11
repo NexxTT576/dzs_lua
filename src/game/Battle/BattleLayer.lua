@@ -3203,6 +3203,7 @@ function BattleLayer:initTimeScale(...)
                 self.timeScale = 1
                 ResMgr.battleTimeScale = 1
             end
+            cc.UserDefault:getInstance():setIntegerForKey("time_scale",ResMgr.battleTimeScale )
             local spdFrame = display.newSprite("#battle_spd_" .. self.timeScale .. ".png")
             self.speedBtn:setSpriteFrame(spdFrame:getSpriteFrame())
             ResMgr.setTimeScale(ResMgr.battleTimeScale)

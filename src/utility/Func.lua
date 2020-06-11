@@ -484,15 +484,22 @@ function newMenu(items)
     menu:setPosition(0, 0)
     return menu
 end
-
+--[[
+    @desc: 
+    author:tulilu
+    time:2020-06-11 18:34:51
+    --@btn: luaIde#cc.Node
+	--@func:
+	--@soundFunc: 
+    @return:
+]]
 function setControlBtnEvent(btn, func, soundFunc)
     btn:registerControlEventHandler(
         function(sender)
             sender:runAction(
                 transition.sequence(
                     {
-                        -- CCScaleTo:create(0.08, 0.8),
-                        CCCallFunc:create(
+                        cc.CallFunc:create(
                             function()
                                 if soundFunc ~= nil then
                                     soundFunc()
@@ -502,8 +509,6 @@ function setControlBtnEvent(btn, func, soundFunc)
                                 func()
                             end
                         )
-                        -- CCScaleTo:create(0.1, 1.2),
-                        -- CCScaleTo:create(0.02, 1)
                     }
                 )
             )

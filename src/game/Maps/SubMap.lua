@@ -593,18 +593,6 @@ function SubMap:createMapNode()
         PageMemoModel.saveOffset("submap_" .. self.subMapID, self._scrollItemList)
     end
 
-    -- mark the submap pos for submap list
-
-    -- if (game.player.submapOffsetId == self.subMapInfo.id and game.player:getSubmapOffet().y ~= 0  and self._scrollItemList:getCellNum() > 3) then
-
-    -- PageMemoModel.resetOffset("submap_"..self.subMapID,self._scrollItemList)
-
-    --     if(self._scrollItemList:getCellNum() * self._scrollItemList:cellAtIndex(1):getContentSize().height > self._scrollItemList:getContentSize().height) then
-    --         self._scrollItemList:setContentOffset(game.player:getSubmapOffet())
-    --     end
-
-    -- end
-    -- self._rootnode["frameBg"]:addChild(self._scrollItemList)
     self._listViewNode:removeAllChildren(true)
     self._listViewNode:addChild(self._scrollItemList)
     --新手引导
@@ -618,7 +606,6 @@ function SubMap:createMapNode()
 
     TutoMgr.addBtn("submap_baoxiang_box", self._rootnode["box_icon_1"])
     TutoMgr.addBtn("submap_btn_zhenrong", self._rootnode["zhenrongBtn"])
-    TutoMgr.active()
 end
 
 function SubMap:onEnter()
@@ -687,8 +674,8 @@ function SubMap:onEnter()
     if (GAME_DEBUG == true) then
         ResMgr.showTextureCache()
     end
-    -- print("rereree   "..self._scrollItemList:getContentOffset().y)
-    -- PageMemoModel.resetOffset("submap_"..self.subMapID,self._scrollItemList)
+
+    TutoMgr.active()
 end
 
 function SubMap:onExit()
