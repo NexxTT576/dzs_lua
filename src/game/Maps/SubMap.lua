@@ -321,49 +321,43 @@ function SubMap:checkLevelReward(subMapID)
             else
                 CCMessageBox(state, "服务器端返回的关卡奖励，状态有问题！")
             end
-
-            setTouchEnabled(boxIcon, true)
             removeAllNodeEventListeners(boxIcon)
+            setTouchEnabled(boxIcon, true)
             addNodeEventListener(
                 boxIcon,
-                cc.NODE_TOUCH_EVENT,
+                cc.Handler.EVENT_TOUCH_BEGAN,
                 function(event)
-                    dump(event)
-                    -- dump(TutoMgr.isBtnLocked)
-                    if event.name == "began" then
-                        GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
+                    GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
-                        if ResMgr.isInSubInfo ~= true and ResMgr.intoSubMap ~= true then
-                            if TutoMgr.notLock() then
-                                setTouchEnabled(boxIcon, false)
-                                PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-                                ResMgr.createBefTutoMask(self)
-                                local rewardLayer =
-                                    require("game.Maps.SubmapRewardLayer").new(
-                                    {
-                                        id = subMapID,
-                                        hard = self._allLevelReward[i].hard,
-                                        needStar = self._allLevelReward[i].star,
-                                        itemData = self._allLevelReward[i].itemData,
-                                        bagState = self._subMapInfo.bagVO,
-                                        state = _boxState[i],
-                                        updateListener = function(hard)
-                                            self._subMapInfo.infoVO.box[hard] = 3
-                                            boxIcon:setSpriteFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
-                                            boxIcon:removeChildByTag(EFFECT_TAG, true)
-                                        end,
-                                        closeListener = function()
-                                            setTouchEnabled(boxIcon, true)
-                                        end
-                                    }
-                                )
-                                self:addChild(rewardLayer, OPENLAYER_ZORDER)
-                            end
+                    if ResMgr.isInSubInfo ~= true and ResMgr.intoSubMap ~= true then
+                        if TutoMgr.notLock() then
+                            setTouchEnabled(boxIcon, false)
+                            PostNotice(NoticeKey.REMOVE_TUTOLAYER)
+                            ResMgr.createBefTutoMask(self)
+                            local rewardLayer =
+                                require("game.Maps.SubmapRewardLayer").new(
+                                {
+                                    id = subMapID,
+                                    hard = self._allLevelReward[i].hard,
+                                    needStar = self._allLevelReward[i].star,
+                                    itemData = self._allLevelReward[i].itemData,
+                                    bagState = self._subMapInfo.bagVO,
+                                    state = _boxState[i],
+                                    updateListener = function(hard)
+                                        self._subMapInfo.infoVO.box[hard] = 3
+                                        boxIcon:setSpriteFrame(display.newSprite("#submap_box_end_" .. i .. ".png"):getSpriteFrame())
+                                        boxIcon:removeChildByTag(EFFECT_TAG, true)
+                                    end,
+                                    closeListener = function()
+                                        setTouchEnabled(boxIcon, true)
+                                    end
+                                }
+                            )
+                            self:addChild(rewardLayer, OPENLAYER_ZORDER)
                         end
-
-                        return true
-                    elseif event.name == "end" then
                     end
+
+                    return true
                 end
             )
         end

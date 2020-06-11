@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.16
- --
- --]]
 local STATE_TYPE = {
     normal = 1, -- 不可领取
     canGet = 2, -- 可领取
@@ -12,6 +6,7 @@ local STATE_TYPE = {
 
 local MAX_ZORDER = 100
 
+--@SuperType ShadeLayer
 local SubmapRewardLayer =
     class(
     "SubmapRewardLayer",
@@ -34,7 +29,8 @@ function SubmapRewardLayer:onExit()
 end
 
 function SubmapRewardLayer:ctor(param)
-    self:setNodeEventEnabled(true)
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
+    self:enableNodeEvents()
     local needStar = param.needStar
     local state = param.state
     self._itemData = param.itemData
@@ -152,32 +148,28 @@ function SubmapRewardLayer:getReward()
                 t = self._hard,
                 callback = function(data)
                     dump(data)
-                    if (data["0"] ~= "") then
-                        dump(data["0"])
-                    else
-                        ResMgr.removeMaskLayer()
-                        self._rootnode["rewardBtn"]:setVisible(false)
-                        self._rootnode["tag_has_get"]:setVisible(true)
+                    ResMgr.removeMaskLayer()
+                    self._rootnode["rewardBtn"]:setVisible(false)
+                    self._rootnode["tag_has_get"]:setVisible(true)
 
-                        -- 领取奖励之后，重新请求更新本关卡的内容
-                        if self._updateListener ~= nil then
-                            self._updateListener(self._hard)
-                        end
-
-                        -- 弹出得到奖励提示框
-                        local title = "恭喜您获得如下奖励："
-                        local msgBox =
-                            require("game.Huodong.RewardMsgBox").new(
-                            {
-                                title = title,
-                                cellDatas = self._itemData
-                            }
-                        )
-
-                        game.runningScene:addChild(msgBox, self:getLocalZOrder())
-
-                        self:removeFromParent(true)
+                    -- 领取奖励之后，重新请求更新本关卡的内容
+                    if self._updateListener ~= nil then
+                        self._updateListener(self._hard)
                     end
+
+                    -- 弹出得到奖励提示框
+                    local title = "恭喜您获得如下奖励："
+                    local msgBox =
+                        require("game.Huodong.RewardMsgBox").new(
+                        {
+                            title = title,
+                            cellDatas = self._itemData
+                        }
+                    )
+
+                    game.runningScene:addChild(msgBox, self:getLocalZOrder())
+
+                    self:removeFromParent(true)
                 end
             }
         )
@@ -225,7 +217,7 @@ function SubmapRewardLayer:refreshItem()
         elseif v.iconType == ResMgr.HERO then
             nameColor = ResMgr.getHeroNameColor(v.id)
         end
-
+        --@RefType luaIde#cc.Label
         local nameLbl =
             newTTFLabelWithShadow(
             {
@@ -237,8 +229,7 @@ function SubmapRewardLayer:refreshItem()
                 align = cc.TEXT_ALIGNMENT_LEFT
             }
         )
-
-        nameLbl:setPosition(-nameLbl:getContentSize().width / 2, nameLbl:getContentSize().height / 2)
+        nameLbl:setPosition(0, nameLbl:getContentSize().height / 2)
         self._rootnode[nameKey]:removeAllChildren()
         self._rootnode[nameKey]:addChild(nameLbl)
     end

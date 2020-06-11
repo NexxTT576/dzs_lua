@@ -1306,7 +1306,7 @@ function RequestHelper.getBattleReward(param)
         m = "battle",
         a = "award",
         id = param.id,
-        t = param.t
+        type = param.t
     }
     request(msg, _callback)
 end

@@ -906,7 +906,7 @@ function ResMgr.refreshIcon(param)
             }
         )
 
-        numLbl:setPosition(itemFrame:getContentSize().width - numLbl:getContentSize().width - 5, numLbl:getContentSize().height / 2)
+        numLbl:setPosition(itemFrame:getContentSize().width - numLbl:getContentSize().width / 2 - 5, numLbl:getContentSize().height / 2)
         itemFrame:addChild(numLbl)
     end
 

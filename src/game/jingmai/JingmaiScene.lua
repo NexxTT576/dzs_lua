@@ -41,7 +41,13 @@ end
 local NAME_MAPPING = {"强控", "坚守", "急攻"}
 function JingmaiScene:ctor()
     game.runningScene = self
-    ResMgr.createBefTutoMask(self)
+    performWithDelay(
+        self,
+        function()
+            ResMgr.createBefTutoMask(self)
+        end,
+        0.05
+    )
 
     local proxy = CCBProxy:create()
     self._animNode = CCBReaderLoad("jingmai/jingmai_open_anim.ccbi", proxy, self._rootnode)
@@ -110,19 +116,15 @@ function JingmaiScene:ctor()
                 {
                     callback = function(data)
                         dump(data)
-                        if string.len(data["0"]) > 0 then
-                            CCMessageBox(data["0"], "Tip")
-                        else
-                            self:runAnim(self._info.order - 1, self._info.order)
+                        self:runAnim(self._info.order - 1, self._info.order)
 
-                            self._starNum = data["1"] --副本星数
-                            game.player:setSilver(data["2"]) --银币数
-                            self._info.type = self._index
-                            self._info.order = data["4"] --穴位
-                            self._info.level = data["3"] --等级
+                        self._starNum = data[1] --副本星数
+                        game.player:setSilver(data[2]) --银币数
+                        self._info.type = self._index
+                        self._info.order = data[4] --穴位
+                        self._info.level = data[3] --等级
 
-                            self:refresh()
-                        end
+                        self:refresh()
                     end,
                     t = t
                 }
@@ -458,22 +460,18 @@ function JingmaiScene:request()
         {
             callback = function(data)
                 dump(data)
-                if string.len(data["0"]) > 0 then
-                    CCMessageBox(data["0"], "Error")
-                else
-                    self._starNum = data["1"] --副本星数
-                    game.player:setGold(data["3"]) --金币数
-                    game.player:setSilver(data["4"]) --银币数
+                self._starNum = data[1] --副本星数
+                game.player:setGold(data[3]) --金币数
+                game.player:setSilver(data[4]) --银币数
 
-                    self._info = {
-                        type = data["6"], --类型
-                        order = data["2"], --穴位 穴位和等级都为0时候，满级
-                        level = data["5"] --等级
-                    }
-                    self._itemNum = data["7"] --道具数
+                self._info = {
+                    type = data[6], --类型
+                    order = data[2], --穴位 穴位和等级都为0时候，满级
+                    level = data[5] --等级
+                }
+                self._itemNum = data[7] --道具数
 
-                    self:refresh()
-                end
+                self:refresh()
             end
         }
     )
