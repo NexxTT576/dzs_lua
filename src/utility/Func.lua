@@ -111,7 +111,7 @@ function setTouchEnabled(node, b)
         print("setTouchEnabled", "参数错误")
     else
         if node["__eventListener"] == nil then
-            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil, false)
+            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil)
         end
         --@RefType luaIde#cc.EventListenerTouchOneByOne
         local eventListener = node["__eventListener"]
@@ -124,7 +124,7 @@ function setTouchSwallowEnabled(node, b)
         print("setTouchSwallowEnabled", "参数错误")
     else
         if node["__eventListener"] == nil then
-            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil, false)
+            addNodeEventListener(node, cc.Handler.EVENT_TOUCH_BEGAN, nil)
         end
         --@RefType luaIde#cc.EventListenerTouchOneByOne
         local eventListener = node["__eventListener"]
@@ -141,16 +141,14 @@ end
 	--@cb: 
     @return:
 ]]
-function addNodeEventListener(node, eventType, cb, isRefresh)
+function addNodeEventListener(node, eventType, cb)
     if eventType == cc.Handler.EVENT_TOUCH_BEGAN or eventType == cc.Handler.EVENT_TOUCH_MOVED or eventType == cc.Handler.EVENT_TOUCH_CANCELLED or eventType == cc.Handler.EVENT_TOUCH_ENDED then
         local eventListenerHanders = node["__eventListenerHanders"]
         if eventListenerHanders == nil then
             eventListenerHanders = {}
             node["__eventListenerHanders"] = eventListenerHanders
         end
-        if isRefresh ~= false then
-            eventListenerHanders[eventType] = cb
-        end
+        eventListenerHanders[eventType] = cb
 
         if node["__eventListener"] == nil then
             local rshandle = function(touch, event, he)

@@ -88,34 +88,34 @@ function EquipDebrisCellVTwo:create(param)
     self:addChild(node)
 
     self.headIcon = self._rootnode["headIcon"]
-    self.headIcon:setTouchEnabled(true)
-    self.headIcon:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            if event.name == "began" then
-                self.headIcon:setTouchEnabled(false)
-                ResMgr.delayFunc(
-                    0.8,
-                    function()
-                        self.headIcon:setTouchEnabled(true)
-                    end,
-                    self
-                )
+    setTouchEnabled(self.headIcon, true)
+    addNodeEventListener(
+        self.headIcon,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
+            self.headIcon:setTouchEnabled(false)
+            ResMgr.delayFunc(
+                0.8,
+                function()
+                    self.headIcon:setTouchEnabled(true)
+                end,
+                self
+            )
 
-                local itemInfo =
-                    require("game.Huodong.ItemInformation").new(
-                    {
-                        id = self.itemId,
-                        type = 3
-                    }
-                )
+            local itemInfo =
+                require("game.Huodong.ItemInformation").new(
+                {
+                    id = self.itemId,
+                    type = 3
+                }
+            )
 
-                display.getRunningScene():addChild(itemInfo, 100000)
+            display.getRunningScene():addChild(itemInfo, 100000)
 
-                return true
-            end
+            return true
         end
     )
+
     -- self.heroName = self._rootnode["heroName"]
     self.heroName =
         newTTFLabelWithShadow(
@@ -126,15 +126,6 @@ function EquipDebrisCellVTwo:create(param)
         }
     )
     self._rootnode["heroName"]:addChild(self.heroName)
-
-    -- self.resId = 0
-
-    -- local itemInfo = require("game.Huodong.ItemInformation").new({
-    --     id = self.itemId,
-    --     type = 1
-    --     })
-
-    --  display.getRunningScene():addChild(itemInfo, 100000)
 
     self.curNum = self._rootnode["curNum"]
     self.maxNum = self._rootnode["maxNum"]

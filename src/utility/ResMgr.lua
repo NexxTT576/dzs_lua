@@ -575,7 +575,9 @@ function ResMgr.createBefTutoMask(node)
 end
 
 function ResMgr.removeMaskLayer()
-    PostNotice(NoticeKey.REMOVE_MASKLAYER)
+    if ResMgr.greenLayer ~= nil and ResMgr.greenLayer:getParent() ~= nil then
+        ResMgr.greenLayer:removeSelf()
+    end
 end
 
 function ResMgr.createTouchLayer(node)

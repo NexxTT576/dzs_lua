@@ -188,13 +188,13 @@ function EquipListScene:init(data)
                         self.sellIndex[j] = true
                         local isExist = false
                         for k = 1, #self.sellTable do
-                            if self.sellTable[k] == self.sellList[j]["_id"] then
+                            if self.sellTable[k] == self.sellList[j]["id"] then
                                 isExist = true
                                 break
                             end
                         end
                         if isExist ~= true then
-                            self.sellTable[#self.sellTable + 1] = self.sellList[j]["_id"]
+                            self.sellTable[#self.sellTable + 1] = self.sellList[j]["id"]
                         end
                     end
                 end
@@ -561,12 +561,6 @@ function EquipListScene:init(data)
             self._rootnode["numTag"]:setVisible(true)
 
             local function createXiLianLayer(indexId)
-                --                local XiLianLayer = require("game.Equip.EquipXiLianLayer").new({
-                --                    _id = indexId,
-                --                    listData = self.commonList,
-                --                    removeListener = function() self:reloadBroadcast() end
-                --                })
-                --                self:addChild(XiLianLayer,103)
                 local layer =
                     require("game.Equip.FormEquipXiLianLayer").new(
                     {

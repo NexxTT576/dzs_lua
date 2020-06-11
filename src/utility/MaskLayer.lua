@@ -50,13 +50,12 @@ function MaskLayer:ctor(param)
     addNodeEventListener(
         self,
         cc.Handler.EVENT_TOUCH_BEGAN,
-        function(event, x, y)
+        function(event)
             if self.touchFunc ~= nil then
                 self.touchFunc()
             end
             return true
-        end,
-        1
+        end
     )
     setTouchSwallowEnabled(self, true)
 end

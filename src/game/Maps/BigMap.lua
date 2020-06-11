@@ -1,15 +1,8 @@
---[[
- --
- -- @authors shan 
- -- @date    2014-05-12 15:40:06
- -- @version 
- --
- --]]
 local data_world_world = require("data.data_world_world")
 local data_field_field = require("data.data_field_field")
 
 local MAX_ZORDER = 1111
-
+--@SuperType luaIde#cc.Scene
 local BigMap =
     class(
     "BigMap",
@@ -20,8 +13,7 @@ local BigMap =
 
 function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
     game.runningScene = self
-    -- TODO
-    -- ResMgr.createBefTutoMask(self)
+
     local bigMapID = enterBigMapID
 
     self.isFirst = false
@@ -30,7 +22,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
     else
         self.isFirst = true
     end
-    -- print("savessssss "..bigMapID)
+
     PageMemoModel.bigMapID = bigMapID
 
     local TILE_WIDTH = 32
@@ -277,7 +269,7 @@ function BigMap:ctor(enterBigMapID, subMapID, worldFunc, dontReq)
             nameBg:addChild(starLabel)
 
             local starIcon = display.newSprite("#bigmap_star.png")
-            starIcon:setPosition(nameBg:getContentSize().width * 0.68 + starIcon:getContentSize().width / 2, -nameBg:getContentSize().height / 2)
+            starIcon:setPosition(nameBg:getContentSize().width * 0.68 + starIcon:getContentSize().width, -nameBg:getContentSize().height / 2)
             nameBg:addChild(starIcon)
 
             -- 未解锁关卡 用云遮罩

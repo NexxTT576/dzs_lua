@@ -1,27 +1,3 @@
---
---                   _ooOoo_
---                  o8888888o
---                  88" . "88
---                  (| -_- |)
---                  O\  =  /O
---               ____/`---'\____
---             .'  \\|     |//  `.
---            /  \\|||  :  |||//  \
---           /  _||||| -:- |||||-  \
---           |   | \\\  -  /// |   |
---           | \_|  ''\---/''  |   |
---           \  .-\__  `-`  ___/-. /
---         ___`. .'  /--.--\  `. . __
---      ."" '<  `.___\_<|>_/___.'  >'"".
---     | | :  `- \`.;`\ _ /`;.`/ - ` : | |
---     \  \ `-.   \_ __\ /__ _/   .-` /  /
---======`-.____`-.___\_____/___.-`____.-'======
---                   `=---='
---^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
---                 Buddha bless
---
--- 日期：14-12-2
---
 local data_config_config = require("data.data_config_config")
 local data_item_item = require("data.data_item_item")
 local data_collect_collect = require("data.data_collect_collect")
@@ -45,25 +21,26 @@ local _bRequest = true
 local function _requestState(callback)
     local reqs = {}
     if _bRequest then
-        local bFinish = 0
         GameRequest.spirit.list(
             {},
-            function()
-                SpiritCtrl.set("size", {num = data["2"], max = data["3"]})
-                game.player:setSpirit(data["1"])
-                SpiritCtrl.insert(data["1"])
-                bFinish = bFinish + 1
-            end
-        )
-        GameRequest.spirit.start(
-            {},
-            function()
-                SpiritCtrl.set("level", data["2"])
-                SpiritCtrl.set("item", data["4"])
+            function(data)
+                SpiritCtrl.set("size", {num = data["member"], max = data["denominator"]})
+                game.player:setSpirit(data["itemAry"])
+                SpiritCtrl.insert(data["itemAry"])
 
-                game.player:setSilver(data["3"])
-                game.player:setGold(data["5"])
-                bFinish = bFinish + 1
+                GameRequest.spirit.start(
+                    {},
+                    function(data1)
+                        SpiritCtrl.set("level", data1[2])
+                        SpiritCtrl.set("item", data1[4])
+
+                        game.player:setSilver(data1[3])
+                        game.player:setGold(data1[5])
+                        if callback then
+                            callback()
+                        end
+                    end
+                )
             end
         )
     else

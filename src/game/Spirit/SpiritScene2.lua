@@ -1,15 +1,9 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-7
--- Time: 下午4:55
--- To change this template use File | Settings | File Templates.
---
 local data_config_config = require("data.data_config_config")
 local data_item_item = require("data.data_item_item")
 local data_collect_collect = require("data.data_collect_collect")
 require("data.data_error_error")
 
+--@SuperType BaseScene
 local SpiritScene2 =
     class(
     "SpiritScene",
@@ -23,7 +17,6 @@ local SpiritScene2 =
     end
 )
 
-local RequestInfo = require("network.RequestInfo")
 local TAB_TAG = {
     INFO = 1,
     LIST = 2
@@ -304,6 +297,7 @@ function SpiritScene2:ctor(param)
     if tag == TAB_TAG.LIST then
         onTabBtn(2)
     end
+    self:enableNodeEvents()
 end
 
 function SpiritScene2:initListView2()

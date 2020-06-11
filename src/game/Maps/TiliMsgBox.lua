@@ -83,24 +83,20 @@ function TiliMsgBox:buyFunc()
             {
                 callback = function(data)
                     dump(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                    else
-                        --购买并使用体力丹
-                        game.player:updateMainMenu(
-                            {
-                                silver = data["3"],
-                                gold = data["2"],
-                                tili = game.player.m_strength + self.tiliNum
-                            }
-                        )
+                    --购买并使用体力丹
+                    game.player:updateMainMenu(
+                        {
+                            silver = data["3"],
+                            gold = data["2"],
+                            tili = game.player.m_strength + self.tiliNum
+                        }
+                    )
 
-                        if self.upateListener ~= nil then
-                            self.upateListener()
-                        end
-
-                        self:removeSelf()
+                    if self.upateListener ~= nil then
+                        self.upateListener()
                     end
+
+                    self:removeSelf()
                 end,
                 id = self.shopId,
                 n = 1,

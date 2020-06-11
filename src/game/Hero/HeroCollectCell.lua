@@ -43,6 +43,7 @@ function HeroCollectCell:refresh(id)
             align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
+    bigMapTTF:setAnchorPoint(0, 0.5)
     self.fubenName:addChild(bigMapTTF)
 
     local subMapTTF =
@@ -56,6 +57,7 @@ function HeroCollectCell:refresh(id)
             align = cc.TEXT_ALIGNMENT_LEFT
         }
     )
+    subMapTTF:setAnchorPoint(0, 0.5)
     subMapTTF:setPosition(bigMapTTF:getPositionX() + bigMapTTF:getContentSize().width + 20, bigMapTTF:getPositionY())
     self.fubenName:addChild(subMapTTF)
 
@@ -63,8 +65,8 @@ function HeroCollectCell:refresh(id)
     --判断当前的大地图能不能点
     --判断当前的小地图能不能点
     --如果两个都能点则将按钮设置可点击，否则则设置为不能点击
-    local maxFiledId = self.lvlData["2"]
-    local maxSubId = self.lvlData["3"]
+    local maxFiledId = self.lvlData.battleFieldID
+    local maxSubId = self.lvlData.battleLvID
 
     if self.fieldId <= maxFiledId and self.battleId <= maxSubId then
         self.goto_btn:setEnabled(true)
@@ -121,8 +123,6 @@ function HeroCollectCell:create(param)
 
     self.data = param.listData
     self.lvlData = param.lvlData
-
-    -- self._subMap = self.lvlData["4"]
 
     local proxy = CCBProxy:create()
     self._rootnode = {}

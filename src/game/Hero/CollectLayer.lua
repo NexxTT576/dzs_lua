@@ -38,6 +38,7 @@ function CollectLayer:ctor(itemId, itemType)
     self._rootnode["head_node"]:addChild(headIcon)
 
     -- self._rootnode["titleLabel"]:setString(trName.."关卡掉落信息")
+    self._rootnode["titleLabel"]:setAnchorPoint(0.5, 0.75)
 
     ResMgr.refreshIcon({itemBg = headIcon, id = itemId, resType = colType})
 
@@ -113,14 +114,11 @@ function CollectLayer:ctor(itemId, itemType)
         {
             id = bigMapID,
             callback = function(data)
-                if data["0"] == "" then
-                    self.lvlData = data
-                    if data_item_item[itemId].output ~= nil and #(data_item_item[itemId].output) ~= 0 then
-                        createList()
-                    else
-                        createNothingFont()
-                    end
+                self.lvlData = data
+                if data_item_item[itemId].output ~= nil and #(data_item_item[itemId].output) ~= 0 then
+                    createList()
                 else
+                    createNothingFont()
                 end
             end
         }

@@ -20,13 +20,12 @@ function ShadeLayer:ctor(param)
     addNodeEventListener(
         self,
         cc.Handler.EVENT_TOUCH_BEGAN,
-        function(event, x, y)
+        function()
             if self.touchFunc ~= nil then
                 self.touchFunc()
             end
             return true
-        end,
-        1
+        end
     )
     setTouchSwallowEnabled(self, true)
 end
