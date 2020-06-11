@@ -1,10 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-22
--- Time: 下午10:28
--- To change this template use File | Settings | File Templates.
---
+--@SuperType luaIde#cc.Node
 local FormSettingCard =
     class(
     "FormSettingCard",
@@ -12,7 +6,7 @@ local FormSettingCard =
         return display.newNode()
     end
 )
-
+--@SuperType CardObj
 local TouchCard =
     class(
     "TouchCard",
@@ -112,8 +106,8 @@ function FormSettingCard:ctor(param)
                     id = cardData.resId,
                     cls = cardData.cls,
                     lv = cardData.level,
-                    -- star= cardData.star
-                    star = 1
+                    star = cardData.star
+                    --star = 1
                 }
             )
             card:setPosition(_pos)
@@ -184,7 +178,7 @@ function FormSettingCard:ctor(param)
             else
                 nameLabel:setString(card:getName())
             end
-            nameLabel:setTextColor(NAME_COLOR[card:getStar(card:getStar())])
+            nameLabel:setTextColor(NAME_COLOR[card:getStar()])
 
             if card:getCls() > 0 then
                 rootnode["clsLabel"]:setString(string.format("+%d", card:getCls()))

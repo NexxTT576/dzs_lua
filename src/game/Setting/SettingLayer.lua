@@ -1,11 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.15
- --
- --]]
--- local MAX_ZODER = 1100
-
 local SettingLayer =
     class(
     "SettingLayer",

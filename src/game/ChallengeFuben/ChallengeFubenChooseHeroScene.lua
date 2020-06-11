@@ -29,6 +29,7 @@ local ChallengeFubenChooseHeroScene =
 )
 
 function ChallengeFubenChooseHeroScene:ctor(param)
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     local _bg = display.newSprite("ui_common/common_bg.png")
     local _bgW = display.width
 
@@ -230,7 +231,7 @@ function ChallengeFubenChooseHeroScene:ctor(param)
                                 touchEnabled = true,
                                 list = formHero,
                                 bTmpPos = true,
-                                zdlNum = data.rtnObj,
+                                zdlNum = data,
                                 closeListener = function(bHasChange)
                                     for k, v in ipairs(self._formHero) do
                                         v.pos = formHero[k].pos

@@ -14,7 +14,7 @@ function SleepLayer:ctor(param)
     local contentNode = CCBReaderLoad("nbhuodong/nbhuodong_scene.ccbi", proxy, rootnode, self, viewSize)
     self:addChild(contentNode)
     --    bg2
-    if (display.widthInPixels / display.heightInPixels) > 0.67 then
+    if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.67 then
         rootnode["bg2"]:setPositionY(rootnode["bg2"]:getPositionY() - rootnode["bg2"]:getContentSize().height * 0.06)
     end
     local function onGetup()

@@ -132,7 +132,7 @@ function SkillRefineLayer:ctor(param)
     ResMgr.removeBefLayer()
 
     --  屏幕适配
-    if (display.widthInPixels / display.heightInPixels) > 0.67 then
+    if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.67 then
         self._rootnode["infoNode"]:setScale(0.8)
         local posX, posY = self._rootnode["infoNode"]:getPosition()
         self._rootnode["infoNode"]:setPosition(posX + self._rootnode["infoNode"]:getContentSize().width * 0.1, posY)

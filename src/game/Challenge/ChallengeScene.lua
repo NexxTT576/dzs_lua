@@ -342,6 +342,7 @@ end
 function ChallengeScene:ctor(viewType)
     local viewType = viewType or JINGYING_VIEW
     display.loadSpriteFrames("ui/ui_coin_icon.plist", "ui/ui_coin_icon.png")
+    display.loadSpriteFrames("ui/ui_common_button.plist", "ui/ui_common_button.png")
     game.runningScene = self
 
     -- TODO

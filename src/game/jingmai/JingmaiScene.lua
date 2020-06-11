@@ -1,12 +1,6 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-8-4
--- Time: 下午4:36
--- To change this template use File | Settings | File Templates.
---
 local data_jingmai_jingmai = require("data.data_jingmai_jingmai")
 local data_item_nature = require("data.data_item_nature")
+--@SuperType BaseSceneExt
 local JingmaiScene =
     class(
     "JingmaiScene",
@@ -49,25 +43,19 @@ function JingmaiScene:ctor()
     game.runningScene = self
     ResMgr.createBefTutoMask(self)
 
-    --    local _bg = display.newSprite("ui_common/jingmai_gx_bg.jpg")
-    --    local _bg = display.newSprite("ui_common/jingmai_sw_bg.jpg")
-
-    --    _bg:setScaleX(display.width / _bg:getContentSize().width)
-    --    _bg:setScaleY(self:getContentHeight() / _bg:getContentSize().height)
-
     local proxy = CCBProxy:create()
     self._animNode = CCBReaderLoad("jingmai/jingmai_open_anim.ccbi", proxy, self._rootnode)
     self._animNode:retain()
     --    animNode:setPosition(display.cx, display.cy)
     --    self:addChild(animNode, 100)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     self.top = require("game.scenes.TopLayer").new()
     self:addChild(self.top, 1)
-    if (display.widthInPixels / display.heightInPixels) == 0.75 then
+    if (display.sizeInPixels.width / display.sizeInPixels.height) == 0.75 then
         -- self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+45)
         self._rootnode["tag_hero_pos"]:setScale(0.9)
-    elseif (display.widthInPixels / display.heightInPixels) > 0.66 then
+    elseif (display.sizeInPixels.width / display.sizeInPixels.height) > 0.66 then
         -- self._rootnode["tag_hero_pos"]:setScale(0.85)
         -- self._rootnode["tag_hero_pos"]:setPositionY(self._rootnode["tag_hero_pos"]:getPositionY()+150)
     else --
@@ -224,7 +212,7 @@ function JingmaiScene:refreshBg()
     for i = 1, 3 do
         self._rootnode[string.format("type_%d", i)]:setVisible(self._index == i)
 
-        if (display.widthInPixels / display.heightInPixels) > 0.67 then
+        if (display.sizeInPixels.width / display.sizeInPixels.height) > 0.67 then
             self._rootnode[string.format("type_%d", i)]:setScale(0.9)
         end
     end
