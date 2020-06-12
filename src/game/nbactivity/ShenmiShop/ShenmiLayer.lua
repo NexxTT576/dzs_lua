@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.10.08
- --
- --]]
 local data_card_card = require("data.data_card_card")
 local data_item_item = require("data.data_item_item")
 require("data.data_error_error")
@@ -18,6 +12,7 @@ local RefreshType = {
     Gold = 3 -- 元宝
 }
 
+--@SuperType luaIde#cc.Node
 local ShenmiLayer =
     class(
     "ShenmiLayer",
@@ -35,24 +30,19 @@ function ShenmiLayer:getList(bRefresh)
         {
             refresh = refresh,
             callback = function(data)
-                dump(data)
-                if data["0"] ~= "" then
-                    dump(data["0"])
-                else
-                    if bRefresh == true then
-                        if self._refreshType == RefreshType.Gold then
-                            game.player:setGold(self._refreshNum - self._goldcost)
-                            PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-                        else
-                            local curRefreshType = data["5"]
-                            if curRefreshType == RefreshType.Gold then
-                                show_tip_label(data_error_error[2400010].prompt)
-                            end
+                if bRefresh == true then
+                    if self._refreshType == RefreshType.Gold then
+                        game.player:setGold(self._refreshNum - self._goldcost)
+                        PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                    else
+                        local curRefreshType = data[5]
+                        if curRefreshType == RefreshType.Gold then
+                            show_tip_label(data_error_error[2400010].prompt)
                         end
                     end
-
-                    self:init(data)
                 end
+
+                self:init(data)
             end
         }
     )
@@ -60,7 +50,7 @@ end
 
 function ShenmiLayer:ctor(param)
     local viewSize = param.viewSize
-    self:setNodeEventEnabled(true)
+
     self._hunyuNum = 0
     self._time = TIME
     self._goldcost = 20
@@ -136,7 +126,8 @@ function ShenmiLayer:ctor(param)
     self._rootnode["time_lbl"]:setString(tostring(format_time(self._time)))
     self._rootnode["cost_gold"]:setString(tostring(self._goldcost))
     self:updateRefreshMsg()
-    -- self:getList(false)
+
+    self:enableNodeEvents()
 end
 
 function ShenmiLayer:updateRefreshMsg()
@@ -174,15 +165,15 @@ function ShenmiLayer:updateRefreshMsg()
 end
 
 function ShenmiLayer:init(data)
-    local listAry = data["1"]
-    self._time = data["2"] -- 倒计时
-    self._goldcost = data["6"] -- 金币刷新花费数
-    self._vipFreeTimes = data["7"] -- 免费刷新上限
+    local listAry = data[1]
+    self._time = data[2] -- 倒计时
+    self._goldcost = data[6] -- 金币刷新花费数
+    self._vipFreeTimes = data[7] -- 免费刷新上限
     -- 元宝刷新次数上限
-    self._goldRefreshTimes = data["8"] or self._goldRefreshTimes
+    self._goldRefreshTimes = data[8] or self._goldRefreshTimes
 
-    self:updateHunYuNum(data["3"]) -- 魂玉数
-    self:updateRefreshNum(data["4"], data["5"]) -- 刷新数、刷新类型
+    self:updateHunYuNum(data[3]) -- 魂玉数
+    self:updateRefreshNum(data[4], data[5]) -- 刷新数、刷新类型
 
     local itemDataList = {}
     for i, v in ipairs(listAry) do
@@ -274,51 +265,47 @@ function ShenmiLayer:createListView(itemDataList)
 
                         cell:updateExchangeBtn(true)
 
-                        if string.len(data["0"]) > 0 then
-                            CCMessageBox(data["0"], "Error")
+                        -- 更新背包状态
+                        bagObj = data[1]
+                        if #bagObj > 0 then
+                            game.runningScene:addChild(
+                                require("utility.LackBagSpaceLayer").new(
+                                    {
+                                        bagObj = bagObj,
+                                        callback = function(data)
+                                            extendBag(data)
+                                        end
+                                    }
+                                ),
+                                MAX_ZODER
+                            )
                         else
-                            -- 更新背包状态
-                            bagObj = data["1"]
-                            if #bagObj > 0 then
-                                game.runningScene:addChild(
-                                    require("utility.LackBagSpaceLayer").new(
-                                        {
-                                            bagObj = bagObj,
-                                            callback = function(data)
-                                                extendBag(data)
-                                            end
-                                        }
-                                    ),
-                                    MAX_ZODER
-                                )
-                            else
-                                if itemData.moneyType == 1 then
-                                    game.player:setGold(game.player:getGold() - itemData.price)
-                                    PostNotice(NoticeKey.CommonUpdate_Label_Gold)
-                                elseif itemData.moneyType == 2 then
-                                    game.player:setSilver(game.player:getSilver() - itemData.price)
-                                    PostNotice(NoticeKey.CommonUpdate_Label_Silver)
-                                end
-                                -- 弹出购买的物品确认框
-                                local cellDatas = {}
-                                table.insert(cellDatas, itemData)
-                                game.runningScene:addChild(
-                                    require("game.Huodong.rewardInfo.RewardInfoMsgBox").new(
-                                        {
-                                            cellDatas = cellDatas,
-                                            num = 1
-                                        }
-                                    ),
-                                    MAX_ZODER
-                                )
-
-                                -- 更新魂玉数
-                                self:updateHunYuNum(data["2"])
-
-                                -- 更新兑换次数
-                                itemData.limitNum = data["3"]
-                                cell:updateExchangeNum(itemData.limitNum)
+                            if itemData.moneyType == 1 then
+                                game.player:setGold(game.player:getGold() - itemData.price)
+                                PostNotice(NoticeKey.CommonUpdate_Label_Gold)
+                            elseif itemData.moneyType == 2 then
+                                game.player:setSilver(game.player:getSilver() - itemData.price)
+                                PostNotice(NoticeKey.CommonUpdate_Label_Silver)
                             end
+                            -- 弹出购买的物品确认框
+                            local cellDatas = {}
+                            table.insert(cellDatas, itemData)
+                            game.runningScene:addChild(
+                                require("game.Huodong.rewardInfo.RewardInfoMsgBox").new(
+                                    {
+                                        cellDatas = cellDatas,
+                                        num = 1
+                                    }
+                                ),
+                                MAX_ZODER
+                            )
+
+                            -- 更新魂玉数
+                            self:updateHunYuNum(data[2])
+
+                            -- 更新兑换次数
+                            itemData.limitNum = data[3]
+                            cell:updateExchangeNum(itemData.limitNum)
                         end
                     end
                 }
@@ -426,16 +413,6 @@ function ShenmiLayer:Refresh()
         elseif self._refreshNum < self._goldcost then
             show_tip_label(data_error_error[100004].prompt)
         else
-            -- local refreshMsgBox = require("game.nbactivity.ShenmiShop.ShenmiRefreshGoldMsgBox").new({
-            --     costNum = self._goldcost,
-            --     refreshNum = self._goldRefreshTimes,
-            --     confirmFunc = function()
-            --         self._goldRefreshTimes = self._goldRefreshTimes - 1
-            --         self:getList(true)
-            --     end
-            -- })
-            -- game.runningScene:addChild(refreshMsgBox, MAX_ZODER)
-
             self._goldRefreshTimes = self._goldRefreshTimes - 1
             self:getList(true)
         end
@@ -470,7 +447,7 @@ function ShenmiLayer:onEnter()
     end
 
     self.scheduler = require("utility.scheduler")
-    self._schedule = self.scheduler.scheduleGlobal(updateTime, 1, false)
+    self._schedule = self.scheduler.scheduleGlobal(updateTime, 1)
 
     local touchMaskLayer =
         require("utility.TouchMaskLayer").new(

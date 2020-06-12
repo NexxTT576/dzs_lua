@@ -78,7 +78,7 @@ function SpiritScene2:ctor(param)
     self._rootnode["equipSpiritBtn"]:registerControlEventHandler(
         function(eventName, sender)
             local equipSpiritScene = require("game.form.HeroSettingScene").new(2)
-            display.replaceScene(equipSpiritScene)
+            display.runScene(equipSpiritScene)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
         CCControlEventTouchDown

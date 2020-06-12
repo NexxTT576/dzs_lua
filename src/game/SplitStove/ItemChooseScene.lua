@@ -146,7 +146,7 @@ function ItemChooseScene:ctor(param)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     end
 
-    self._rootnode["returnBtn"]:registerScriptTapHandler(close)
+    self._rootnode["returnBtn"]:registerScriptTouchHandler(close)
     self._rootnode["okBtn"]:registerControlEventHandler(onConfirmBtn, CCControlEventTouchDown)
 
     self._rootnode["returnBtn"]:registerControlEventHandler(

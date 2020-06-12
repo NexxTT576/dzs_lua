@@ -1,13 +1,5 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-15
--- Time: 下午5:50
--- To change this template use File | Settings | File Templates.
---
-
 local data_item_nature = require("data.data_item_nature")
-
+--@SuperType luaIde#cc.TableViewCell
 local Item =
     class(
     "Item",
@@ -100,7 +92,7 @@ function Item:refresh(param)
     self._rootnode["iconSprite"]:addChild(
         require("game.Spirit.SpiritIcon").new(
             {
-                id = _itemData.data._id,
+                id = _itemData.data.id,
                 resId = _itemData.data.resId,
                 lv = _itemData.data.level,
                 exp = _itemData.data.curExp or 0
@@ -109,6 +101,7 @@ function Item:refresh(param)
     )
 end
 
+--@SuperType BaseScene
 local SpiritChooseScene =
     class(
     "SpiritChooseScene",
@@ -164,11 +157,7 @@ function SpiritChooseScene:ctor(param)
 
     local _data = {}
     for k, v in ipairs(game.player:getSpirit(sortFunc)) do
-        --        dump(v)
-
-        --        if _objId then
-        --            printf("%d, %d", _objId, v.objId)
-        if data_item_item[v.resId].arr_nature == nil or _objId == v.objId then
+        if data_item_item[v.resId].arr_nature == nil or _objId == v.id then
         else
             table.insert(
                 _data,
@@ -178,16 +167,6 @@ function SpiritChooseScene:ctor(param)
                 }
             )
         end
-        --        else
-        --            if _filter[data_item_item[v.resId].pos] or data_item_item[v.resId].arr_nature == nil then
-        --
-        --            else
-        --                table.insert(_data, {
-        --                    baseData = data_item_item[v.resId],
-        --                    data = v
-        --                })
-        --            end
-        --        end
     end
 
     local function onEquip(cellIdx)
@@ -200,31 +179,27 @@ function SpiritChooseScene:ctor(param)
             {
                 pos = _index,
                 subpos = _subIndex,
-                id = _data[cellIdx + 1].data._id,
+                id = _data[cellIdx + 1].data.id,
                 callback = function(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                    else
-                        printf("pos = %d, ccid =%d", _index, _cid)
+                    printf("pos = %d, ccid =%d", _index, _cid)
 
-                        for k, v in ipairs(game.player:getSpirit()) do
-                            if v.pos == _index and v.cid == _cid and v.subpos == _subIndex then
-                                dump(v)
+                    for k, v in ipairs(game.player:getSpirit()) do
+                        if v.pos == _index and v.cid == _cid and v.subpos == _subIndex then
+                            dump(v)
 
-                                v.pos = 0
-                                v.cid = 0
-                                v.subpos = 0
-                                break
-                            end
+                            v.pos = 0
+                            v.cid = 0
+                            v.subpos = 0
+                            break
                         end
-                        _data[cellIdx + 1].data.pos = _index
-                        _data[cellIdx + 1].data.cid = _cid
-                        _data[cellIdx + 1].data.subpos = _subIndex
-                        require("game.Spirit.SpiritCtrl").refresh()
-                        pop_scene()
-                        if _callback then
-                            _callback(data)
-                        end
+                    end
+                    _data[cellIdx + 1].data.pos = _index
+                    _data[cellIdx + 1].data.cid = _cid
+                    _data[cellIdx + 1].data.subpos = _subIndex
+                    require("game.Spirit.SpiritCtrl").refresh()
+                    pop_scene()
+                    if _callback then
+                        _callback(data)
                     end
                 end
             }
@@ -267,11 +242,13 @@ function SpiritChooseScene:ctor(param)
     )
     self._scrollItemList:setPosition(0, 0)
     self._rootnode["listView"]:addChild(self._scrollItemList)
+
+    self:enableNodeEvents()
 end
 
 function SpiritChooseScene:onEnter()
     game.runningScene = self
-    self:regNotice()
+    -- self:regNotice()
     PostNotice(NoticeKey.UNLOCK_BOTTOM)
 end
 

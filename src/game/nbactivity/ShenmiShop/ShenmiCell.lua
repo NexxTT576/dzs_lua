@@ -46,15 +46,19 @@ function ShenmiCell:create(param)
 
     local rewardIcon = self._rootnode["itemIcon"]
     self:setIconTouchEnabled(true)
-    rewardIcon:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
+    addNodeEventListener(
+        rewardIcon,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function()
             self:setIconTouchEnabled(false)
-            if (event.name == "began") then
-                return true
-            elseif (event.name == "ended") then
-                informationFunc(self)
-            end
+            return true
+        end
+    )
+    addNodeEventListener(
+        rewardIcon,
+        cc.Handler.EVENT_TOUCH_ENDED,
+        function()
+            informationFunc(self)
         end
     )
 
@@ -62,7 +66,7 @@ function ShenmiCell:create(param)
 end
 
 function ShenmiCell:setIconTouchEnabled(bEnabled)
-    self._rootnode["itemIcon"]:setTouchEnabled(bEnabled)
+    setTouchEnabled(self._rootnode["itemIcon"], bEnabled)
 end
 
 function ShenmiCell:updateExchangeBtn(bEnabled)

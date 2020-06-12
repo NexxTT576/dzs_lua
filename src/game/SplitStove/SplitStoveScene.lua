@@ -1,14 +1,6 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 6/30/14
--- Time: 10:51 AM
--- To change this template use File | Settings | File Templates.
---
-
---
 local data_item_item = require("data.data_item_item")
 
+--@SuperType luaIde#cc.TableViewCell
 local Item =
     class(
     "item",
@@ -74,6 +66,7 @@ function Item:refresh(param)
     self.numLabel:setPosition(cc.p(self:getContentSize().width - self.numLabel:getContentSize().width / 2 - 10, self:getContentSize().height * 0.5))
 end
 
+--@SuperType BaseScene
 local SplitStoveScene =
     class(
     "SplitStoveScene",
@@ -185,7 +178,7 @@ function SplitStoveScene:ctor()
     local function onAddBtn(tag)
         --        if self._viewType == VIEW_TYPE.REFINE then
         --            if self._itemsData then
-        self._rootnode["btn" .. tostring(tag)]:setTouchEnabled(false)
+        setTouchEnabled(self._rootnode["btn" .. tostring(tag)], false)
         initHero()
         initEquip()
         push_scene(
@@ -201,7 +194,7 @@ function SplitStoveScene:ctor()
                             resetQuickBtn(0)
                         end
                         self:refreshItem(splitType, data)
-                        self._rootnode["btn" .. tostring(tag)]:setTouchEnabled(true)
+                        setTouchEnabled(self._rootnode["btn" .. tostring(tag)], true)
                     end
                 }
             )
@@ -214,7 +207,7 @@ function SplitStoveScene:ctor()
     end
 
     --  快速添加
-    local function onQuickAddBtn(eventName, sender)
+    local function onQuickAddBtn(sender)
         local t
         if sender:getTag() == LIAN_HUA_TYEP.HERO then
             t = LIAN_HUA_TYEP.HERO
@@ -352,8 +345,15 @@ function SplitStoveScene:ctor()
 
     for i = 0, 4 do
         local key = "btn" .. tostring(i)
-        self._rootnode[key]:addNodeEventListener(cc.NODE_TOUCH_EVENT, c_func(onAddBtn, i))
-        self._rootnode[key]:setTouchEnabled(true)
+        -- self._rootnode[key]:addNodeEventListener(cc.NODE_TOUCH_EVENT, c_func(onAddBtn, i))
+        addNodeEventListener(
+            self._rootnode[key],
+            cc.Handler.EVENT_TOUCH_ENDED,
+            function()
+                onAddBtn(i)
+            end
+        )
+        setTouchEnabled(self._rootnode[key], true)
     end
 
     self._rootnode["lianhuaBtn"]:registerControlEventHandler(
@@ -449,22 +449,18 @@ function SplitStoveScene:ctor()
     RequestHelper.split.status(
         {
             callback = function(data)
-                --            dump(data["1"])
-                if string.len(data["0"]) > 0 then
-                    show_tip_label(data["0"])
-                else
-                    table.sort(data["1"], sort)
+                table.sort(data[1], sort)
 
-                    self._list = {
-                        [LIAN_HUA_TYEP.HERO] = data["1"],
-                        [LIAN_HUA_TYEP.EQUIP] = data["2"]
-                    }
-                    initHero()
-                    initEquip()
-                end
+                self._list = {
+                    [LIAN_HUA_TYEP.HERO] = data[1],
+                    [LIAN_HUA_TYEP.EQUIP] = data[2]
+                }
+                initHero()
+                initEquip()
             end
         }
     )
+    self:enableNodeEvents()
 end
 
 function SplitStoveScene:bagFull(info)
@@ -559,13 +555,13 @@ function SplitStoveScene:refreshItem(selectedType, data)
             for kk, vv in ipairs(self._list[self._selectedType][k][rtn]) do
                 if items[vv.id] then
                     items[vv.id] = {
-                        n = items[vv.id].n + vv.n,
-                        t = vv.t
+                        n = items[vv.id].n + vv.num,
+                        t = vv.type
                     }
                 else
                     items[vv.id] = {
-                        n = vv.n,
-                        t = vv.t
+                        n = vv.num,
+                        t = vv.type
                     }
                 end
             end
@@ -671,7 +667,7 @@ function SplitStoveScene:updateResult(data)
     local itemData = {}
     for k, v in ipairs(data) do
         local itemInfo = data_item_item[v.id]
-        local iconType = ResMgr.getResType(v.t) or ResMgr.ITEM
+        local iconType = ResMgr.getResType(v.type) or ResMgr.ITEM
         table.insert(
             itemData,
             {
@@ -680,12 +676,12 @@ function SplitStoveScene:updateResult(data)
                 name = itemInfo.name,
                 describe = itemInfo.describe,
                 iconType = iconType,
-                num = v.n or 0,
+                num = v.num or 0,
                 hideCorner = true
             }
         )
         if 2 == v.id then
-            game.player:addSilver(v.n)
+            game.player:addSilver(v.num)
         end
     end
 
@@ -724,46 +720,42 @@ function SplitStoveScene:onLianHua(callback)
         RequestHelper.split.refine(
             {
                 callback = function(data)
-                    if string.len(data["0"]) > 0 then
-                        show_tip_label(data["0"])
-                    else
-                        self:removeData(ids)
-                        self:clearIcon()
+                    self:removeData(ids)
+                    self:clearIcon()
 
-                        local effect =
-                            ResMgr.createArma(
-                            {
-                                resType = ResMgr.UI_EFFECT,
-                                armaName = "lianhuatexiao",
-                                isRetain = false,
-                                finishFunc = function()
-                                    dump(data)
-                                    GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_duobaohecheng))
-                                    self:updateResult(data["1"])
-                                    self:setIconVisible(true)
-                                    self._rootnode["lianhuaBtn"]:setEnabled(true)
-                                    self._rootnode["quickAddBtn_1"]:setEnabled(true)
-                                    self._rootnode["quickAddBtn_2"]:setEnabled(true)
-                                    self._rootnode["descBtn"]:setEnabled(true)
+                    local effect =
+                        ResMgr.createArma(
+                        {
+                            resType = ResMgr.UI_EFFECT,
+                            armaName = "lianhuatexiao",
+                            isRetain = false,
+                            finishFunc = function()
+                                dump(data)
+                                GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_duobaohecheng))
+                                self:updateResult(data[1])
+                                self:setIconVisible(true)
+                                self._rootnode["lianhuaBtn"]:setEnabled(true)
+                                self._rootnode["quickAddBtn_1"]:setEnabled(true)
+                                self._rootnode["quickAddBtn_2"]:setEnabled(true)
+                                self._rootnode["descBtn"]:setEnabled(true)
 
-                                    self._selectedType = LIAN_HUA_TYEP.HERO
-                                    self._selected = {}
+                                self._selectedType = LIAN_HUA_TYEP.HERO
+                                self._selected = {}
 
-                                    resetctrbtnimage(self._rootnode["quickAddBtn_1"], BTN_NAME_MAPPING[1])
-                                    resetctrbtnimage(self._rootnode["quickAddBtn_2"], BTN_NAME_MAPPING[2])
-                                    self._rootnode[string.format("quickAddBtn_%d", 1)].index = nil
-                                    self._rootnode[string.format("quickAddBtn_%d", 2)].index = nil
-                                    self._animIsRunning = false
+                                resetctrbtnimage(self._rootnode["quickAddBtn_1"], BTN_NAME_MAPPING[1])
+                                resetctrbtnimage(self._rootnode["quickAddBtn_2"], BTN_NAME_MAPPING[2])
+                                self._rootnode[string.format("quickAddBtn_%d", 1)].index = nil
+                                self._rootnode[string.format("quickAddBtn_%d", 2)].index = nil
+                                self._animIsRunning = false
 
-                                    if callback then
-                                        callback()
-                                    end
+                                if callback then
+                                    callback()
                                 end
-                            }
-                        )
-                        effect:setPosition(display.width / 2, display.height / 2)
-                        self:addChild(effect, 1000)
-                    end
+                            end
+                        }
+                    )
+                    effect:setPosition(display.width / 2, display.height / 2)
+                    self:addChild(effect, 1000)
                 end,
                 t = tostring(self._selectedType),
                 ids = ids

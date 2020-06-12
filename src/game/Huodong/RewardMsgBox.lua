@@ -25,7 +25,7 @@ function RewardMsgBox:initButton()
 
     TutoMgr.addBtn("lingqu_confirm", self._rootnode["confirmBtn"])
     -- TutoMgr.addBtn("lingqu_close_btn",self._rootnode["closeBtn"])
-    TutoMgr.active()
+    -- TutoMgr.active()
 end
 
 function RewardMsgBox:initRewardListView(cellDatas)
@@ -75,9 +75,12 @@ function RewardMsgBox:onExit()
     TutoMgr.removeBtn("lingqu_confirm")
     -- TutoMgr.removeBtn("lingqu_close_btn")
 end
+function RewardMsgBox:onEnter()
+    TutoMgr.active()
+end
 
 function RewardMsgBox:ctor(param)
-    self:enableNodeEvents()
+    -- self:enableNodeEvents()
     self._confirmFunc = param.confirmFunc
 
     local proxy = CCBProxy:create()
@@ -94,14 +97,6 @@ function RewardMsgBox:ctor(param)
 
     self:initButton()
     self:initRewardListView(cellDatas)
-
-    -- layer:setScale(0.2)
-    -- layer:runAction(transition.sequence({
-    -- 	cc.ScaleTo:create(0.2,1.2),
-    -- 	cc.ScaleTo:create(0.1,1.1),
-    -- 	cc.ScaleTo:create(0.1,0.9),
-    -- 	cc.ScaleTo:create(0.2,1),
-    -- 	}))
 end
 
 return RewardMsgBox
