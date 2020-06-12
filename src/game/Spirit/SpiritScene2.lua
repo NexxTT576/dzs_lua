@@ -146,7 +146,7 @@ function SpiritScene2:ctor(param)
 
     initTab()
     local moveFront
-    local function onStart(eventName, sender)
+    local function onStart(sender)
         local tag = sender:getTag()
         self._ctrl.onStart(
             tag,
@@ -164,12 +164,12 @@ function SpiritScene2:ctor(param)
     self._rootnode["startOneBtn"]:registerControlEventHandler(onStart, CCControlEventTouchDown)
     self._rootnode["superStartBtn"]:registerControlEventHandler(onStart, CCControlEventTouchDown)
     self._rootnode["start10Btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.LianShici_Zhenqi, game.player:getLevel(), game.player:getVip())
             if not bHasOpen then
                 show_tip_label(prompt)
             else
-                onStart(eventName, sender)
+                onStart(sender)
             end
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
@@ -306,23 +306,28 @@ function SpiritScene2:initListView2()
         return
     end
 
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     self._rootnode["touchNode"]:setLocalZOrder(1)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
-            if event.name == "began" then
-                posX = event:getLocation().x
-                posY = event:getLocation().y
-                return true
-            elseif event.name == "ended" then
-                self:refreshArrow()
-            end
+            posX = event:getLocation().x
+            posY = event:getLocation().y
+            return true
         end
     )
-    self._rootnode["touchNode"]:setTouchSwallowEnabled(false)
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_ENDED,
+        function()
+            self:refreshArrow()
+        end
+    )
+    setTouchSwallowEnabled(self._rootnode["touchNode"], false)
     local showList = self._ctrl.get("showList")
     local sz = self._rootnode["itemsBg"]:getContentSize()
     local item = require("game.Spirit.SpiritShowItem")
@@ -374,7 +379,7 @@ function SpiritScene2:initListView2()
                 if i >= 1 and i <= 5 then
                     local info = showList[idx]
                     if info and info[i] then
-                        self:onTouchIcon(info[i].data._id)
+                        self:onTouchIcon(info[i].data.id)
                     end
                 end
             end
@@ -483,7 +488,8 @@ function SpiritScene2:onEnter()
             self:initListView2()
         end
     else
-        self._rootnode["infoView"]:performWithDelay(
+        performWithDelay(
+            self._rootnode["infoView"],
             function()
                 self:initListView2()
                 self:resetArrow()

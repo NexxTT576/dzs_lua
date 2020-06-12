@@ -263,7 +263,7 @@ function SpiritDescLayer:ctor(closeListener)
 
         local bTouch
         local function onTouchMove(event)
-            if math.abs(event.y - event:getPreviousLocation().y) > 5 or math.abs(event.x - event:getPreviousLocation().x) > 5 then
+            if math.abs(event:getLocation().y - event:getPreviousLocation().y) > 5 or math.abs(event:getLocation().x - event:getPreviousLocation().x) > 5 then
                 bTouch = false
             end
         end
@@ -272,8 +272,8 @@ function SpiritDescLayer:ctor(closeListener)
             if bTouch then
                 local nodes = self._tableLayout:getNodes()
                 for k, v in ipairs(nodes) do
-                    local pos = v:convertToNodeSpace(cc.p(event.x, event.y))
-                    if cc.rect(0, 0, v:getContentSize().width, v:getContentSize().height):containsPoint(pos) then
+                    local pos = v:convertToNodeSpace(cc.p(event:getLocation().x, event:getLocation().y))
+                    if cc.rectContainsPoint(cc.rect(0, 0, v:getContentSize().width, v:getContentSize().height), pos) then
                         dump(self._selectTypeSpirits[k])
 
                         local descLayer =
@@ -312,17 +312,26 @@ function SpiritDescLayer:ctor(closeListener)
             )
         end
 
-        self._scrollView:addNodeEventListener(
-            cc.NODE_TOUCH_CAPTURE_EVENT,
+        addNodeEventListener(
+            self._scrollView,
+            cc.Handler.EVENT_TOUCH_BEGAN,
+            function()
+                bTouch = true
+                return true
+            end
+        )
+        addNodeEventListener(
+            self._scrollView,
+            cc.Handler.EVENT_TOUCH_MOVED,
             function(event)
-                if event.name == "began" then
-                    bTouch = true
-                    return true
-                elseif event.name == "moved" then
-                    onTouchMove(event)
-                elseif event.name == "ended" then
-                    onTouchEnded(event)
-                end
+                onTouchMove(event)
+            end
+        )
+        addNodeEventListener(
+            self._scrollView,
+            cc.Handler.EVENT_TOUCH_ENDED,
+            function(event)
+                onTouchEnded(event)
             end
         )
     end

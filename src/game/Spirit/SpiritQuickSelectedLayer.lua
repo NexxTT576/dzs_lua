@@ -1,11 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-18
--- Time: 下午6:32
--- To change this template use File | Settings | File Templates.
---
-
+--@SuperType ShadeLayer
 local SpiritQuickSelectedLayer =
     class(
     "SpiritQuickSelectedLayer",
@@ -74,7 +67,7 @@ function SpiritQuickSelectedLayer:ctor(callback)
     end
 
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(
                 sender,
                 function()
@@ -86,14 +79,14 @@ function SpiritQuickSelectedLayer:ctor(callback)
     )
 
     self._rootnode["chooseAllBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(sender, onSelecteAllBtn)
         end,
         CCControlEventTouchDown
     )
 
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(sender, onConfirmBtn)
         end,
         CCControlEventTouchDown

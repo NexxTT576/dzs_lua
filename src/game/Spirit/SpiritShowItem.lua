@@ -62,7 +62,7 @@ function SpiritShowItem:refresh(param)
             local icon =
                 require("game.Spirit.SpiritIcon").new(
                 {
-                    id = _itemData[i].data._id,
+                    id = _itemData[i].data.id,
                     resId = _itemData[i].data.resId,
                     lv = _itemData[i].data.level,
                     exp = _itemData[i].data.curExp or 0,

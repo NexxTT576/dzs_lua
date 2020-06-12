@@ -168,7 +168,7 @@ function BagScene:ctor(tag)
                 if self._curView == VIEW_TYPE.BAG_ITEM then
                     table.insert(ids, self._canSaleItems[k].itemId)
                 elseif self._curView == VIEW_TYPE.BAG_SKILL then
-                    table.insert(ids, self._canSaleItems[k]._id)
+                    table.insert(ids, self._canSaleItems[k].id)
                 end
             end
         end
@@ -343,7 +343,7 @@ function BagScene:removeItem(id)
                 break
             end
         elseif self._curView == VIEW_TYPE.BAG_SKILL then
-            if v._id == id then
+            if v.id == id then
                 table.remove(self._item[self._curView], k)
                 break
             end
@@ -357,7 +357,7 @@ function BagScene:removeItem(id)
                 break
             end
         elseif self._curView == VIEW_TYPE.BAG_SKILL then
-            if v._id == id then
+            if v.id == id then
                 table.remove(self._canSaleItems, k)
                 break
             end
@@ -373,7 +373,7 @@ function BagScene:updateList()
             if self._curView == VIEW_TYPE.BAG_ITEM then
                 table.insert(ids, self._canSaleItems[k].itemId)
             elseif self._curView == VIEW_TYPE.BAG_SKILL then
-                table.insert(ids, self._canSaleItems[k]._id)
+                table.insert(ids, self._canSaleItems[k].id)
             end
         end
     end
@@ -620,7 +620,7 @@ function BagScene:onBtn(cell, tag)
                     end
                 end,
                 op = 1,
-                cids = self._item[self._curView][cell:getIdx() + 1]._id
+                cids = self._item[self._curView][cell:getIdx() + 1].id
             }
         )
     end
@@ -639,18 +639,18 @@ function BagScene:onBtn(cell, tag)
                 funcname = "qianghua",
                 param = {
                     op = 1,
-                    cids = self._item[self._curView][cell:getIdx() + 1]._id
+                    cids = self._item[self._curView][cell:getIdx() + 1].id
                 },
                 oklistener = function(data)
                     -- dump(data)
-                    data["1"]._id = self._item[self._curView][cell:getIdx() + 1]._id
+                    data["1"].id = self._item[self._curView][cell:getIdx() + 1].id
                     local layer =
                         require("game.skill.SkillQiangHuaLayer").new(
                         {
                             info = data["1"],
                             callback = function()
                                 for k, v in pairs(self._item[self._curView]) do
-                                    if v._id == data["1"]._id then
+                                    if v.id == data["1"].id then
                                         v.curExp = data["1"].exp
                                         v.level = data["1"].lv
                                         v.baseRate = data["1"].baseRate
@@ -699,7 +699,7 @@ function BagScene:onBtn(cell, tag)
                     dump(data)
                     dump(self._item[self._curView][cell:getIdx() + 1])
 
-                    data.rtnObj._id = self._item[self._curView][cell:getIdx() + 1]._id
+                    data.rtnObj.id = self._item[self._curView][cell:getIdx() + 1].id
                     data.rtnObj.resId = self._item[self._curView][cell:getIdx() + 1].resId
                     data.rtnObj.num = 7
 

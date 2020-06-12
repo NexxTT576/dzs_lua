@@ -1,10 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-18
--- Time: 下午4:16
--- To change this template use File | Settings | File Templates.
---
 local data_jingyuantype_jingyuantype = require("data.data_jingyuantype_jingyuantype")
 local data_item_nature = require("data.data_item_nature")
 local data_soul_soul = require("data.data_soul_soul")
@@ -30,7 +23,7 @@ end
 local function get_max_exp(lv, quality)
     return data_soul_soul[lv + 1].arr_exp[quality]
 end
-
+--@SuperType SpiritIcon
 local SpiritTouchIcon =
     class(
     "SpiritTouchIcon",
@@ -48,7 +41,7 @@ end
 function SpiritTouchIcon:setSelected(b)
     self._selectedTagSprite:setVisible(b)
 end
-
+--@SuperType luaIde#cc.TableViewCell
 local SpiritItem =
     class(
     "SpiritShowItem",
@@ -85,7 +78,7 @@ function SpiritItem:refresh(param)
             local icon =
                 SpiritTouchIcon.new(
                 {
-                    id = _itemData[i].data._id,
+                    id = _itemData[i].data.id,
                     resId = _itemData[i].data.resId,
                     lv = _itemData[i].data.level,
                     exp = _itemData[i].data.curExp or 0,
@@ -107,6 +100,7 @@ function SpiritItem:touch(param)
     PostNotice(NoticeKey.SpiritUpgradeScene_UpdateExpBar)
 end
 
+--@SuperType BaseScen
 local SpiritUpgradeScene =
     class(
     "SpiritUpgradeScene",
@@ -156,12 +150,10 @@ function SpiritUpgradeScene:ctor(index)
 
         local curExp = _item.data.curExp
         local maxExp = get_max_exp(_item.data.level, _item.data.quality)
-        self._rootnode["expBar"]:setTextureRect(
-            cc.rect(self._rootnode["expBar"]:getTextureRect().origin.x, self._rootnode["expBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
-        )
+        self._rootnode["expBar"]:setTextureRect(cc.rect(self._rootnode["expBar"]:getTextureRect().x, self._rootnode["expBar"]:getTextureRect().y, BAR_RECT.width * (curExp / maxExp), BAR_RECT.height))
 
         self._rootnode["tmpExpBar"]:setTextureRect(
-            cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * (curExp / maxExp), BAR_RECT.size.height)
+            cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().x, self._rootnode["tmpExpBar"]:getTextureRect().y, BAR_RECT.width * (curExp / maxExp), BAR_RECT.height)
         )
 
         self._rootnode["curExpLabel"]:setString(tostring(curExp))
@@ -226,9 +218,7 @@ function SpiritUpgradeScene:ctor(index)
             scaleX = 1
         end
         self._rootnode["curExpLabel"]:setString(tostring(tmpExp))
-        self._rootnode["tmpExpBar"]:setTextureRect(
-            cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().origin.x, self._rootnode["tmpExpBar"]:getTextureRect().origin.y, BAR_RECT.size.width * scaleX, BAR_RECT.size.height)
-        )
+        self._rootnode["tmpExpBar"]:setTextureRect(cc.rect(self._rootnode["tmpExpBar"]:getTextureRect().x, self._rootnode["tmpExpBar"]:getTextureRect().y, BAR_RECT.width * scaleX, BAR_RECT.height))
         if tmpLv > _item.data.level then
             self._rootnode["nextLevelLabel"]:setVisible(true)
             self._rootnode["nextLevelLabel"]:setString(tostring(tmpLv))
@@ -258,7 +248,7 @@ function SpiritUpgradeScene:ctor(index)
         local icon =
             require("game.Spirit.SpiritIcon").new(
             {
-                id = _item.data._id,
+                id = _item.data.id,
                 resId = _item.data.resId,
                 lv = _item.data.level,
                 exp = _item.data.curExp or 0,
@@ -361,23 +351,28 @@ function SpiritUpgradeScene:ctor(index)
 
     -- 精元列表
     local function initListView()
-        self._rootnode["touchNode"]:setTouchEnabled(true)
+        setTouchEnabled(self._rootnode["touchNode"], true)
         self._rootnode["touchNode"]:setLocalZOrder(1)
         local posX = 0
         local posY = 0
-        self._rootnode["touchNode"]:addNodeEventListener(
-            cc.NODE_TOUCH_CAPTURE_EVENT,
+
+        addNodeEventListener(
+            self._rootnode["touchNode"],
+            cc.Handler.EVENT_TOUCH_BEGAN,
             function(event)
-                if event.name == "began" then
-                    posX = event:getLocation().x
-                    posY = event:getLocation().y
-                    return true
-                elseif event.name == "ended" then
-                    updateArrow()
-                end
+                posX = event:getLocation().x
+                posY = event:getLocation().y
+                return true
             end
         )
-        self._rootnode["touchNode"]:setTouchSwallowEnabled(false)
+        addNodeEventListener(
+            self._rootnode["touchNode"],
+            cc.Handler.EVENT_TOUCH_ENDED,
+            function()
+                updateArrow()
+            end
+        )
+        setTouchSwallowEnabled(self._rootnode["touchNode"], false)
 
         self._spiritListView =
             require("utility.TableViewExt").new(
@@ -442,7 +437,7 @@ function SpiritUpgradeScene:ctor(index)
         for row, rv in ipairs(_spiritList) do
             for col, cv in ipairs(rv) do
                 if _selected[row] and _selected[row][col] then
-                    table.insert(idx, cv.data._id)
+                    table.insert(idx, cv.data.id)
                 end
             end
         end
@@ -500,12 +495,12 @@ function SpiritUpgradeScene:ctor(index)
         local ids = getSelectedID()
         if #ids > 0 then
             _spiritCtrl.upgrade(
-                _item.data._id,
+                _item.data.id,
                 ids,
                 function(data)
-                    _item.data.curExp = data["1"].curExp
-                    _item.data.level = data["1"].level
-                    _item.data.props = data["1"].props
+                    _item.data.curExp = data[1].curExp
+                    _item.data.level = data[1].level
+                    _item.data.props = data[1].props
 
                     refreshListView()
                     refreshExpBar()
@@ -534,7 +529,7 @@ function SpiritUpgradeScene:ctor(index)
             i = 255
         end
     end
-    self._rootnode["tmpExpBar"]:schedule(expBarEffect, 0.01)
+    schedule(self._rootnode["tmpExpBar"], expBarEffect, 0.01)
 
     initBaseInfo()
     resetContentSize()
@@ -553,6 +548,7 @@ function SpiritUpgradeScene:ctor(index)
 
     self.initListView = initListView
     RegNotice(self, refreshTmpExpBar, NoticeKey.SpiritUpgradeScene_UpdateExpBar)
+    self:enableNodeEvents()
 end
 
 function SpiritUpgradeScene:onEnter()

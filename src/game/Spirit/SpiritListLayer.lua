@@ -134,7 +134,7 @@ function SpiritItem:refresh(param)
     self._rootnode["iconSprite"]:addChild(
         require("game.Spirit.SpiritIcon").new(
             {
-                id = _itemData.data._id,
+                id = _itemData.data.id,
                 resId = _itemData.data.resId,
                 lv = _itemData.data.level,
                 exp = _itemData.data.curExp or 0

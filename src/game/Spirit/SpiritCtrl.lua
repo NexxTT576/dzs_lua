@@ -52,7 +52,7 @@ end
 
 local function _getIndexByID(id)
     for k, v in ipairs(_spiritInfo.spiritList) do
-        if v.data._id == id then
+        if v.data.id == id then
             return k
         end
     end
@@ -60,7 +60,7 @@ end
 
 local function _removeSpiritByID(id)
     for k, v in ipairs(_spiritInfo.spiritList) do
-        if v.data._id == id then
+        if v.data.id == id then
             printf("rm  %s", id)
             table.remove(_spiritInfo.spiritList, k)
             break
@@ -114,7 +114,7 @@ end
 function SpiritCtrl.getIndexByID(id)
     local ret = 0
     for k, v in ipairs(_spiritInfo.spiritList) do
-        if v.data._id == id then
+        if v.data.id == id then
             ret = k
             break
         end
@@ -133,7 +133,7 @@ function SpiritCtrl.groupUpgradeSpirit(item, t)
 
     local i = 1
     for k, v in ipairs(_spiritInfo.spiritList) do
-        if item.baseData.pos == 51 or (item.data._id ~= v.data._id and v.data.pos == 0 and item.baseData.quality >= v.data.quality) then
+        if item.baseData.pos == 51 or (item.data.id ~= v.data.id and v.data.pos == 0 and item.baseData.quality >= v.data.quality) then
             if i % 5 == 1 then
                 table.insert(t, {})
             end
@@ -176,7 +176,7 @@ function SpiritCtrl.groupSpirit(data)
                     table.insert(_spiritInfo.showList, {})
                 end
                 i = i + 1
-                table.insert(_spiritInfo.showList[#_spiritInfo.showList], _spiritInfo.spiritList[_getIndexByID(v._id)])
+                table.insert(_spiritInfo.showList[#_spiritInfo.showList], _spiritInfo.spiritList[_getIndexByID(v.id)])
             end
         end
     else
@@ -228,13 +228,13 @@ function SpiritCtrl.onStart(tag, callback)
         RequestHelper.spirit.start(
             {
                 callback = function(data)
-                    SpiritCtrl.insert(data["1"])
-                    SpiritCtrl.set("level", data["2"])
-                    SpiritCtrl.set("item", data["4"])
+                    SpiritCtrl.insert(data[1])
+                    SpiritCtrl.set("level", data[2])
+                    SpiritCtrl.set("item", data[4])
 
-                    game.player:setSilver(data["3"])
-                    game.player:setGold(data["5"])
-                    callback(data["1"])
+                    game.player:setSilver(data[3])
+                    game.player:setGold(data[5])
+                    callback(data[1])
                 end,
                 t = tag
             }
@@ -243,9 +243,9 @@ function SpiritCtrl.onStart(tag, callback)
         RequestHelper.spirit.nbstart(
             {
                 callback = function(data)
-                    SpiritCtrl.set("level", data["1"])
-                    SpiritCtrl.set("item", data["3"])
-                    game.player:setGold(data["2"])
+                    SpiritCtrl.set("level", data[1])
+                    SpiritCtrl.set("item", data[3])
+                    game.player:setGold(data[2])
                     callback()
                 end
             }
@@ -311,7 +311,7 @@ function SpiritCtrl.enterSpiritScene(msg)
                     ctrl = SpiritCtrl
                 }
             )
-            display.replaceScene(_scene)
+            display.runScene(_scene)
         end
     )
 end

@@ -40,7 +40,7 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
     local icon =
         require("game.Spirit.SpiritIcon").new(
         {
-            id = data._id,
+            id = data.id,
             resId = data.resId,
             lv = data.level or 0,
             exp = data.curExp or 0,
@@ -123,7 +123,7 @@ function SpiritInfoLayer:ctor(optType, data, listener, closeListener)
         self:removeSelf()
         if optType == 1 then
             local ctrl = require("game.Spirit.SpiritCtrl")
-            local idx = ctrl.getIndexByID(data._id)
+            local idx = ctrl.getIndexByID(data.id)
             if idx > 0 then
                 listener(true)
                 ctrl.pushUpgradeScene(idx)

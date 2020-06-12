@@ -1,10 +1,4 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-7-10
--- Time: 下午5:52
--- To change this template use File | Settings | File Templates.
---
+--@SuperType luaIde#cc.Node
 local data_item_item = require("data.data_item_item")
 local SpiritIcon =
     class(
