@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2015.01.04 
- --
- --]]
 require("data.data_error_error")
 local data_config_union_config_union = require("data.data_config_union_config_union")
 local data_feature_switch_config = require("data.data_feature_switch_config")

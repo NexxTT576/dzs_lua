@@ -468,7 +468,8 @@ function ShenmiLayer:onEnter()
             }
         }
     )
-    game.runningScene:addChild(touchMaskLayer)
+    --game.runningScene:addChild(touchMaskLayer)
+    self:addChild(touchMaskLayer)
 end
 
 function ShenmiLayer:onExit()
