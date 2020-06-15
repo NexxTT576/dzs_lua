@@ -60,8 +60,8 @@ function RankListModel.sendListReq(param)
 end
 
 function RankListModel.initData(type, data)
-    RankListModel.listVec[type] = data.rtnObj.infos
-    RankListModel.myRankVec[type] = data.rtnObj.myRank
+    RankListModel.listVec[type] = data.infos
+    RankListModel.myRankVec[type] = data.myRank
 end
 
 function RankListModel.getList(type)

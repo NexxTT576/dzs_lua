@@ -1,11 +1,3 @@
---
--- Created by IntelliJ IDEA.
--- User: douzi
--- Date: 14-8-14
--- Time: 下午4:49
--- To change this template use File | Settings | File Templates.
---
-
 local RankListScene =
     class(
     "RankListScene",
@@ -73,7 +65,7 @@ function RankListScene:initUpDetail(type)
         self._rootnode["ttf_" .. type .. "_1"]:setString("")
         local norecord = ResMgr.createShadowMsgTTF({text = "2000名以外", color = cc.c3b(255, 222, 0), size = 24})
         --n
-        norecord:setPosition(self._rootnode["ttf_" .. type .. "_1"]:getPositionX(), self._rootnode["ttf_" .. type .. "_1"]:getPositionY())
+        norecord:setPosition(self._rootnode["ttf_" .. type .. "_1"]:getPositionX() + 70, self._rootnode["ttf_" .. type .. "_1"]:getPositionY())
         self._rootnode["ttf_" .. type .. "_1"]:getParent():addChild(norecord)
     end
 
@@ -91,7 +83,8 @@ function RankListScene:initUpDetail(type)
 
     if self._rootnode["right_icon_" .. type] ~= nil then
         local iconPos =
-            cc.p(self._rootnode["ttf_" .. type .. "_2"]:getPositionX() + self._rootnode["ttf_" .. type .. "_2"]:getContentSize().width, self._rootnode["ttf_" .. type .. "_2"]:getPositionY())
+            cc.p(self._rootnode["ttf_" .. type .. "_2"]:getPositionX() + self._rootnode["ttf_" .. type .. "_2"]:getContentSize().width * 1.5, self._rootnode["ttf_" .. type .. "_2"]:getPositionY())
+
         self._rootnode["right_icon_" .. type]:setPosition(iconPos)
     end
 

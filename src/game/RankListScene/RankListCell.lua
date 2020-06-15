@@ -76,7 +76,7 @@ function RankListCell:refreshCellContent()
     -- --更新头像
     self.heroNameTTF:setString(self.name)
 
-    self.heroNameTTF:setColor(heroNameColor)
+    self.heroNameTTF:setTextColor(heroNameColor)
 
     self.zhanliTTF:setString(self.battlepoint)
     ResMgr.refreshIcon({id = self.resId, itemBg = self._rootnode["headIcon"], resType = ResMgr.HERO, cls = self.cls})
@@ -108,6 +108,8 @@ function RankListCell:refreshCellContent()
     self.lvlTTF:setString(self.grade) -- 等级
     self.lvlTTF:setPosition(self._rootnode["lvl_icon"]:getPositionX() + self._rootnode["lvl_icon"]:getContentSize().width, self._rootnode["lvl_icon"]:getPositionY())
     self.starNumTTF:setString(self.battleStars)
+    self.starNumTTF:setAnchorPoint(cc.p(1, 0.5))
+    self.starNumTTF:setPositionX(self.starNumTTF:getPositionX() - 20)
 
     if self.battleId ~= 0 then
         local fieldName = data_field_field[data_battle_battle[self.battleId].field].name
@@ -196,8 +198,8 @@ function RankListCell:create(param)
 end
 
 function RankListCell:initHeadIcon()
-    self.headIcon:setTouchEnabled(true)
-    self.headIcon:setTouchSwallowEnabled(false)
+    setTouchEnabled(self.headIcon, true)
+    setTouchSwallowEnabled(self.headIcon, false)
 
     ResMgr.setNodeEvent(
         {

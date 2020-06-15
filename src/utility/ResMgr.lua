@@ -328,47 +328,67 @@ function ResMgr.setNodeEvent(param)
     curNode.lastPressTime = 0
     local maxInter = param.maxInterval or 0.15
 
-    curNode:addNodeEventListener(
-        cc.NODE_TOUCH_EVENT,
-        function(event)
-            dump(event)
-            local touchPos = cc.p(event.x, event.y)
-            local isInViewBg
-            if tableViewRect == nil then --如果没传 说明不是在tableview或者scrollview里
-                isInViewBg = true
-            else
-                isInViewBg = tableViewRect:containsPoint(touchPos)
-            end
-            if isInViewBg == true then
-                if event.name == "began" then
-                    local curTime = os.clock()
-                    if curTime - curNode.lastPressTime < maxInter then
-                        return true
-                    end
-                    curNode.lastPressTime = curTime
-                    isMoved = false
-                    -- curNode:setTouchEnabled(false)
+    local f = function(event, name)
+        --@RefType luaIde#cc.Touch
+        local event1 = event
+        local touchPos = cc.p(event1:getLocation().x, event1:getLocation().y)
+        local isInViewBg
+        if tableViewRect == nil then --如果没传 说明不是在tableview或者scrollview里
+            isInViewBg = true
+        else
+            isInViewBg = tableViewRect:containsPoint(touchPos)
+        end
+        if isInViewBg == true then
+            if name == "began" then
+                local curTime = os.clock()
+                if curTime - curNode.lastPressTime < maxInter then
                     return true
-                elseif event.name == "moved" then
-                    if math.abs(event.y - event:getPreviousLocation().y) > 10 or math.abs(event.x - event:getPreviousLocation().x) > 10 then
-                        isMoved = true
-                    end
-                elseif event.name == "ended" then
-                    ResMgr.delayFunc(
-                        1,
-                        function()
-                            -- curNode:setTouchEnabled(true)
-                            isMoved = false
-                        end,
-                        self
-                    )
-                    if isMoved ~= true then
-                        if touchFunc ~= nil then
-                            touchFunc()
-                        end
+                end
+                curNode.lastPressTime = curTime
+                isMoved = false
+                -- curNode:setTouchEnabled(false)
+                return true
+            elseif name == "moved" then
+                if math.abs(touchPos.y - event:getPreviousLocation().y) > 10 or math.abs(touchPos.x - event:getPreviousLocation().x) > 10 then
+                    isMoved = true
+                end
+            elseif name == "ended" then
+                ResMgr.delayFunc(
+                    1,
+                    function()
+                        -- curNode:setTouchEnabled(true)
+                        isMoved = false
+                    end,
+                    self
+                )
+                if isMoved ~= true then
+                    if touchFunc ~= nil then
+                        touchFunc()
                     end
                 end
             end
+        end
+    end
+
+    addNodeEventListener(
+        curNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function(event)
+            return f(event, "began")
+        end
+    )
+    addNodeEventListener(
+        curNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function(event)
+            return f(event, "moved")
+        end
+    )
+    addNodeEventListener(
+        curNode,
+        cc.Handler.EVENT_TOUCH_BEGAN,
+        function(event)
+            return f(event, "ended")
         end
     )
 end
