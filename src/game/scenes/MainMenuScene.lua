@@ -1,9 +1,7 @@
---[[
-    luaide  模板位置位于 Template/FunTemplate/NewFileTemplate.lua 其中 Template 为配置路径 与luaide.luaTemplatesDir
-    luaide.luaTemplatesDir 配置 https://www.showdoc.cc/web/#/luaide?page_id=713062580213505
-    author:tulilu
-    time:2020-05-13 17:42:52
-]]
+local URGENCY_BROADCAST_ZORDER = 1130
+local HUODONG_TAG = 113
+local HUODONG_ZORDER = 113
+
 --@SuperType luaIde#cc.Scene
 local MainMenuScene =
     class(
@@ -34,6 +32,74 @@ end
 
 function MainMenuScene:onEnter()
     display.removeUnusedSpriteFrames()
+    game.runningScene = self
+
+    -- 更新玩家信息
+    RequestHelper.getBaseInfo(
+        {
+            callback = function(data)
+                local basedata = data[1]
+                local param = {silver = basedata.silver, gold = basedata.gold, lv = basedata.level, zhanli = basedata.attack, vip = basedata.vip}
+                param.exp = basedata.exp[1]
+                param.maxExp = basedata.exp[2]
+                param.naili = basedata.resisVal[1]
+                param.maxNaili = basedata.resisVal[2]
+
+                param.tili = basedata.physVal[1]
+                param.maxTili = basedata.physVal[2]
+
+                param.hasBuyGold = data[3]
+
+                game.player:updateMainMenu(param)
+                -- self:refreshPlayerBoard()
+                PostNotice(NoticeKey.MainMenuScene_Update)
+
+                local checkAry = data[2]
+                game.player:updateNotification(checkAry)
+                self:refreshNotice()
+            end
+        }
+    )
+
+    if self.scheduler == nil then
+        self.scheduler = require("utility.scheduler")
+    end
+
+    -- 请求是否有未读聊天信息、青龙boss开启状态
+    local function getUnRead()
+        GameRequest.chat.getUnRead(
+            {
+                name = game.player:getPlayerName(),
+                type = "1",
+                callback = function(data)
+                    dump(data)
+                    local rtnObj = data
+                    game.player:setChatNewNum(rtnObj.worldUnreadNum or 0)
+                    PostNotice(NoticeKey.MainMenuScene_chatNewNum)
+
+                    local param = {}
+                    param.sleepState = rtnObj.sleepState
+                    param.bossState = rtnObj.bossState
+                    param.limitCardstate = rtnObj.limitCardstate
+                    param.unionBossState = rtnObj.unionBossState
+                    param.bbqState = rtnObj.bbqState
+                    param.caiquan = rtnObj.caiquan
+                    param.yabiao = rtnObj.yabiao
+                    param.rouletteStatus = rtnObj.rouletteStatus
+
+                    game.player:updateMainMenu(param)
+                    if rtnObj.unionBossState == GUILD_QL_CHALLENGE_STATE.hasOpen then
+                        game.player:getGuildMgr():setGuildInfo({id = rtnObj.unionId})
+                    end
+                    --self:UpdateQuickAccess()
+                end
+            }
+        )
+    end
+
+    getUnRead()
+    self.schedulerUnread = self.scheduler.scheduleGlobal(getUnRead, 60, false)
+
     self.blackLayer = display.newLayer(cc.c4b(0, 0, 0, 0))
     self:addChild(self.blackLayer)
     local proxy = CCBProxy:create()
@@ -775,55 +841,47 @@ function MainMenuScene:bottomBtns_2(posY)
     local function onTouch(tag)
         GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         PostNotice(NoticeKey.REMOVE_TUTOLAYER)
-        -- 设置
-        if (tag == tagNames[1]) then
-            -- 真气（精元）
-            -- GameStateManager:ChangeState(GAME_STATE.STATE_SETTING)
 
+        if (tag == tagNames[1]) then
+            -- 设置
+            -- GameStateManager:ChangeState(GAME_STATE.STATE_SETTING)
             if self:getChildByTag(HUODONG_TAG) == nil then
                 local settingLayer = require("game.Setting.SettingLayer").new()
                 self:addChild(settingLayer, HUODONG_ZORDER, HUODONG_TAG)
             end
         elseif (tag == tagNames[2]) then
-            -- 炼化炉
-            --            show_tip_label(data_error_error[2800001].prompt)
+            -- 真气（精元）
             GameStateManager:ChangeState(GAME_STATE.STATE_JINGYUAN)
         elseif (tag == tagNames[3]) then
-            -- 装备
+            -- 炼化炉
             GameStateManager:ChangeState(GAME_STATE.STATE_LIANHUALU)
         elseif (tag == tagNames[4]) then
-            -- 侠客
+            -- 装备
             GameStateManager:ChangeState(GAME_STATE.STATE_EQUIPMENT)
         elseif (tag == tagNames[5]) then
-            -- 挑战
+            -- 侠客
             GameStateManager:ChangeState(GAME_STATE.STATE_XIAKE)
         elseif (tag == tagNames[6]) then
-            -- 经脉
+            -- 挑战
             GameStateManager:ChangeState(GAME_STATE.STATE_TIAOZHAN)
         elseif (tag == tagNames[7]) then
-            -- 聊天
+            -- 经脉
             GameStateManager:ChangeState(GAME_STATE.STATE_JINGMAI)
         elseif (tag == tagNames[8]) then
-            -- 群侠录
+            -- 聊天
             if self:getChildByTag(HUODONG_TAG) == nil then
                 RewardLayerMgr.createLayerByType(RewardLayerMgrType.chat, self, HUODONG_ZORDER, HUODONG_TAG)
             end
         elseif tag == tagNames[9] then
-            -- 邮件
+            -- 群侠录
             GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
         elseif (tag == tagNames[12]) then
-            --        elseif (tag == "tag_kezhan") then
-            --            GameStateManager:ChangeState(GAME_STATE.STATE_JINGCAI_HUODONG, nbActivityShowType.KeZhan)
+            -- 邮件
             GameStateManager:ChangeState(GAME_STATE.STATE_MAIL)
         elseif tag == "tag_pet" then
-            if (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_APPSTORE_HANS) then
-                CSDKShell.openAdvertisement()
-            else
-                show_tip_label(data_error_error[2800001].prompt)
-            end
+            show_tip_label(data_error_error[2800001].prompt)
         elseif tag == "tag_friend" then
             --一点这个 清除所在状态
-            -- GameModel.friendActive = 0
             GameStateManager:ChangeState(GAME_STATE.STATE_FRIENDS)
         elseif tag == "tag_bangpai" then
             -- 公告
@@ -838,7 +896,7 @@ function MainMenuScene:bottomBtns_2(posY)
                     callback = function(data)
                         -- dump(data)
                         tips:setVisible(false)
-                        game.player.m_gamenote = data.rtnObj
+                        game.player.m_gamenote = data
                         local noteLayer = require("game.Huodong.GameNote").new()
                         self:addChild(noteLayer, HUODONG_ZORDER, HUODONG_TAG)
                     end

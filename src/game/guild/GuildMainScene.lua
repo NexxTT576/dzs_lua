@@ -11,8 +11,11 @@ local GuildMainScene =
     "GuildMainScene",
     function()
         local bottomFile = "guild/guild_bottom_frame_main_normal.ccbi"
-
-        local jopType = game.player:getGuildMgr():getGuildInfo().m_jopType
+        local gi = game.player:getGuildMgr():getGuildInfo()
+        local jopType
+        if gi ~= nil then
+            jopType = gi.m_jopType
+        end
         if jopType ~= GUILD_JOB_TYPE.normal then
             bottomFile = "guild/guild_bottom_frame_main.ccbi"
         end

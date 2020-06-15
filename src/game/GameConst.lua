@@ -48,7 +48,7 @@ ENABLE_DENGJITOUZI = true
 ENABLE_CHEAT = true
 
 -- 帮派
-ENABLE_GUILD = true
+ENABLE_GUILD = false
 
 -- 副本战斗跳过
 DEBUG_BATTLE_SKIP = false
@@ -56,6 +56,7 @@ DEBUG_BATTLE_SKIP = false
 TutoMgr = require("game.Tutorial.TutoMgr")
 DramaMgr = require("game.Drama.DramaMgr")
 OpenCheck = require("game.OpenSystem.OpenCheck")
+RewardLayerMgr = require("utility.RewardLayerMgr")
 
 --Model类
 

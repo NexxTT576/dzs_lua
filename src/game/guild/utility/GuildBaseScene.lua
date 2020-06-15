@@ -198,7 +198,8 @@ function GuildBaseScene:ctor(param)
 
     if self._rootnode["nowTimeLabel"] then
         self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
-        self._rootnode["nowTimeLabel"]:schedule(
+        schedule(
+            self._rootnode["nowTimeLabel"],
             function()
                 self._rootnode["nowTimeLabel"]:setString(GetSystemTime())
             end,

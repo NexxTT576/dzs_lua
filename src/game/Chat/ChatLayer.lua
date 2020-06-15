@@ -59,11 +59,7 @@ function ChatLayer:reGetChatList()
             account = self.friendAccount,
             callback = function(data)
                 -- dump(data)
-                if string.len(data["0"]) > 0 then
-                    dump(data["0"])
-                else
-                    self:updateChatData(data)
-                end
+                self:updateChatData(data)
                 self._updateTime = kUpdateTime
             end
         }
@@ -71,11 +67,16 @@ function ChatLayer:reGetChatList()
 end
 
 function ChatLayer:load()
-    return GameState.load()
+    local s = cc.UserDefault:getInstance():getStringForKey("chatLayer")
+    if s == "" then
+        return {}
+    else
+        return json.decode(s)
+    end
 end
 
 function ChatLayer:save(curChatData)
-    GameState.save(curChatData)
+    cc.UserDefault:getInstance():setStringForKey("chatLayer", json.encode(curChatData))
 end
 
 function ChatLayer:writeToChatData(tableMsg)
@@ -98,6 +99,18 @@ function ChatLayer:writeToChatData(tableMsg)
         end
 
         self:save(curChatData)
+    end
+
+    for i, v in ipairs(curChatData) do
+        v.name = v.sendRoleName
+        v.recname = v.receiveRoleName
+        v.vip = v.sendRoleVip
+        v.sex = v.sendRoleSex
+        v.msg = v.sendMsg
+        v.para1 = v.sendPara1
+        v.para2 = v.sendPara2
+        v.para3 = v.sendPara3
+        v.t = v.createTime
     end
 
     return curChatData
@@ -128,12 +141,8 @@ function ChatLayer:sendMsg(msg)
             para3 = "",
             callback = function(data)
                 dump(data)
-                if data.errCode ~= nil and data.errCode > 0 then
-                    show_tip_label(data_error_error[data.errCode].prompt)
-                else
-                    self._lastChatMsg = msg
-                    self:sendMsgSuccess(msg)
-                end
+                self._lastChatMsg = msg
+                self:sendMsgSuccess(msg)
             end
         }
     )
@@ -182,6 +191,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
         CCControlEventTouchUpInside
     )
 
+    --@RefType luaIde#cc.Node
     local chatNode = self._rootnode["chatBox_node"]
     local cntSize = chatNode:getContentSize()
 
@@ -206,6 +216,8 @@ function ChatLayer:ctor(data, chatType, chatIndex)
 
     chatNode:addChild(self._editBox)
 
+    chatNode:setPosition(cc.p(180, 30))
+
     self._time = 0
 
     self._height = 0
@@ -222,26 +234,6 @@ function ChatLayer:initFile()
         self:initFriendChat()
         self.fileName = tostring(game.player.m_uid) .. "_chatWith_" .. tostring(self.friendAccount) .. "_Data.json"
     end
-
-    local function eventListen(param)
-        -- dump(param)
-        local returnValue = {}
-        if param.errorCode then
-            dump("读取存储文件失败error:" .. param.errorCode)
-        else
-            if param.name == "save" then
-                dump("save:")
-                returnValue = param.values
-            elseif param.name == "load" then
-                dump("load:")
-                returnValue = param.values
-            end
-        end
-
-        return returnValue
-    end
-
-    GameState.init(eventListen, self.fileName)
 end
 
 function ChatLayer:initFriendChat()
@@ -274,7 +266,7 @@ function ChatLayer:init(data)
         end
     end
 
-    local msgAry = self:writeToChatData(curData["1"])
+    local msgAry = self:writeToChatData(curData)
 
     for i, v in ipairs(msgAry) do
         dump(v)
@@ -304,7 +296,7 @@ end
 
 -- 加载新消息
 function ChatLayer:updateChatData(data)
-    local msgAry = self:writeToChatData(data["1"])
+    local msgAry = self:writeToChatData(data)
     local last
     local count = #self._dumpList
     if count <= 0 then
@@ -451,7 +443,8 @@ end
 
 function ChatLayer:initTimeSchedule()
     self:reGetChatList()
-    self:schedule(
+    schedule(
+        self,
         function()
             if self._time > 0 then
                 self._time = self._time - 1

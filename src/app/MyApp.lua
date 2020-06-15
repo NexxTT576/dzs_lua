@@ -32,6 +32,7 @@ for _, v in ipairs(SearchPath) do
 end
 
 require("game.GameConst")
+require("game.guild.utility.GuildGameConst")
 
 GameAudio = require("utility.GameAudio")
 ResMgr = require("utility.ResMgr")

@@ -258,24 +258,24 @@ function GameStateManager:ChangeState(nextState, msg)
             scene = require("game.HandBook.HandBook").new()
             display.runScene(scene)
         elseif nextState == GAME_STATE.STATE_GUILD then
+            -- local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.Guild, game.player:getLevel(), game.player:getVip())
+            -- if not bHasOpen then
+            --     show_tip_label(prompt)
+            --     canShow = false
+            -- else
+            --     local function toGuildScene(...)
+            --         local scene
+            --         if game.player:getGuildMgr():getIsInUnion() == false then
+            --             scene = require("game.guild.guildList.GuildListScene").new(true)
+            --         else
+            --             scene = require("game.guild.GuildMainScene").new(msg)
+            --         end
+            --         display.runScene(scene)
+            --     end
+            --     game.player:getGuildMgr():RequestInfo(toGuildScene)
+            -- end
             -- 帮派列表
-            local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.Guild, game.player:getLevel(), game.player:getVip())
-            if not bHasOpen then
-                show_tip_label(prompt)
-                canShow = false
-            else
-                local function toGuildScene(...)
-                    local scene
-                    if game.player:getGuildMgr():getIsInUnion() == false then
-                        scene = require("game.guild.guildList.GuildListScene").new(true)
-                    else
-                        scene = require("game.guild.GuildMainScene").new(msg)
-                    end
-                    display.runScene(scene)
-                end
-
-                game.player:getGuildMgr():RequestInfo(toGuildScene)
-            end
+            show_tip_label("帮派不开放!")
         elseif nextState == GAME_STATE.STATE_GUILD_GUILDLIST then
             -- 帮派主界面
             local function toGuildListScene()
