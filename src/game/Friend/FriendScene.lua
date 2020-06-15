@@ -51,7 +51,8 @@ function FriendScene:initTimeNode()
 
     FriendModel.chatListReq()
 
-    self.timeNode:schedule(
+    schedule(
+        self.timeNode,
         function()
             FriendModel.chatListReq()
         end,
@@ -224,8 +225,8 @@ function FriendScene:initEditBox()
         {
             image = "#text_frame.png",
             size = boxSize,
-            x = self._rootnode["ed_box"]:getPositionX() + boxSize.width / 2,
-            y = self._rootnode["ed_box"]:getPositionY()
+            x = self._rootnode["ed_box"]:getPositionX() + 300,
+            y = self._rootnode["ed_box"]:getPositionY() + 20
         }
     )
     self._rootnode["ed_box"]:getParent():addChild(self._editBox)
