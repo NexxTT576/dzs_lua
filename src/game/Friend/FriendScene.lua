@@ -220,6 +220,7 @@ end
 
 function FriendScene:initEditBox()
     local boxSize = self._rootnode["ed_box"]:getContentSize()
+    --@TODO 2020-06-15 20:19:35 dddd
     self._editBox =
         newEditBox(
         {
