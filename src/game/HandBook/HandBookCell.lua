@@ -80,8 +80,8 @@ function HandBookCell:ctor(param)
             touchNode:setContentSize(iconWidth, iconHeight)
             headIcon:addChild(touchNode)
 
-            touchNode:setTouchEnabled(true)
-            touchNode:setTouchSwallowEnabled(false)
+            setTouchEnabled(touchNode, true)
+            setTouchSwallowEnabled(touchNode, false)
             local isMoved = false
 
             local viewBg = HandBookModel.viewBg
@@ -92,40 +92,44 @@ function HandBookCell:ctor(param)
 
             local viewRect = CCRect(viewWorldPos.x - viewWidth / 2, viewWorldPos.y, viewWidth, viewHeight)
 
-            touchNode:addNodeEventListener(
-                cc.NODE_TOUCH_EVENT,
+            addNodeEventListener(
+                touchNode,
+                cc.Handler.EVENT_TOUCH_BEGAN,
+                function()
+                    setTouchEnabled(touchNode, false)
+                    return true
+                end
+            )
+            addNodeEventListener(
+                touchNode,
+                cc.Handler.EVENT_TOUCH_MOVED,
                 function(event)
-                    local touchPos = cc.p(event.x, event.y)
-                    local isInViewBg = viewRect:containsPoint(touchPos)
-                    if isInViewBg == true then
-                        if event.name == "began" then
-                            touchNode:setTouchEnabled(false)
-
-                            return true
-                        elseif event.name == "moved" then
-                            if math.abs(event.y - event:getPreviousLocation().y) > 5 then
-                                isMoved = true
-                            end
-                        elseif event.name == "ended" then
-                            ResMgr.delayFunc(
-                                0.8,
-                                function()
-                                    touchNode:setTouchEnabled(true)
-                                    isMoved = false
-                                end,
-                                self
-                            )
-                            if isMoved ~= true then
-                                local itemInfo =
-                                    require("game.Huodong.ItemInformation").new(
-                                    {
-                                        id = arrId[i],
-                                        type = itemType
-                                    }
-                                )
-                                display.getRunningScene():addChild(itemInfo, 100000)
-                            end
-                        end
+                    if math.abs(event:getLocation().y - event:getPreviousLocation().y) > 5 then
+                        isMoved = true
+                    end
+                end
+            )
+            addNodeEventListener(
+                touchNode,
+                cc.Handler.EVENT_TOUCH_ENDED,
+                function(event)
+                    ResMgr.delayFunc(
+                        0.8,
+                        function()
+                            setTouchEnabled(touchNod, true)
+                            isMoved = false
+                        end,
+                        self
+                    )
+                    if isMoved ~= true then
+                        local itemInfo =
+                            require("game.Huodong.ItemInformation").new(
+                            {
+                                id = arrId[i],
+                                type = itemType
+                            }
+                        )
+                        display.getRunningScene():addChild(itemInfo, 100000)
                     end
                 end
             )

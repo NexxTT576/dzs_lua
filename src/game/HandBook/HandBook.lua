@@ -1,6 +1,4 @@
---
-
---
+--@SuperType BaseScene
 local HandBook =
     class(
     "HandBook",
@@ -74,8 +72,8 @@ function HandBook:init()
         self.subNode[i] = {}
         self.mainNode[i] = display.newNode()
         self._rootnode["cur_bar_bg"]:addChild(self.mainNode[i])
-        self._rootnode["cur_bar_bg"]:setTouchEnabled(true)
-        self._rootnode["cur_bar_bg"]:setTouchSwallowEnabled(true)
+        setTouchEnabled(self._rootnode["cur_bar_bg"], true)
+        setTouchSwallowEnabled(self._rootnode["cur_bar_bg"], true)
         for j = 1, 4 do
             if self._rootnode["tab_" .. i .. "_" .. j] ~= nil then
                 self.subNode[i][j] = display.newNode()
@@ -173,6 +171,7 @@ function HandBook:ctor()
     )
     -- self:init()
     self:SendReq()
+    self:enableNodeEvents()
 end
 
 function HandBook:onSubBtn(tag, subTag)
@@ -214,6 +213,7 @@ function HandBook:reloadBroadcast()
 end
 
 function HandBook:onEnter()
+    game.runningScene = self
     self:regNotice()
     PostNotice(NoticeKey.UNLOCK_BOTTOM)
 

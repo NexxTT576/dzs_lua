@@ -252,7 +252,7 @@ function JianghuScene:initTouchNode()
 
     local function onTouchMove(event)
         local posX, posY = currentNode:getPosition()
-        currentNode:setPosition(posX + event.x - event:getPreviousLocation().x, posY)
+        currentNode:setPosition(posX + event:getLocation().x - event:getPreviousLocation().x, posY)
     end
 
     local function onTouchEnded(event)
