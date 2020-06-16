@@ -414,7 +414,7 @@ function newEditBox(param)
         edit:setPositionX(param.x)
     end
     if param.y ~= nil then
-        edit:setPositionX(param.y)
+        edit:setPositionY(param.y)
     end
     return edit
 end

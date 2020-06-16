@@ -287,8 +287,8 @@ function FriendModel.searchReq(id)
             content = FriendModel.searchContent,
             flag = curFlag,
             callback = function(data)
-                FriendModel.listVec[RECOMMEND_TYPE] = data.rtnObj.searchList or {}
-                FriendModel.searchFlag = data.rtnObj.flag
+                FriendModel.listVec[RECOMMEND_TYPE] = data.searchList or {}
+                FriendModel.searchFlag = data.flag
 
                 if #FriendModel.listVec[RECOMMEND_TYPE] == 0 then
                     ResMgr.showErr(FRIEND_KEY.NO_PLAYER_KEY)

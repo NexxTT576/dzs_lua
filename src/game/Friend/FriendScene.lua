@@ -226,8 +226,8 @@ function FriendScene:initEditBox()
         {
             image = "#text_frame.png",
             size = boxSize,
-            x = self._rootnode["ed_box"]:getPositionX() + 300,
-            y = self._rootnode["ed_box"]:getPositionY() + 20
+            x = self._rootnode["ed_box"]:getPositionX(),
+            y = self._rootnode["ed_box"]:getPositionY()
         }
     )
     self._rootnode["ed_box"]:getParent():addChild(self._editBox)
