@@ -757,7 +757,7 @@ function ResMgr.refreshItemWithTagNumName(param)
         }
     )
 
-    nameLbl:setPosition(itemBg:getContentSize().width / 2 - nameLbl:getContentSize().width / 2, -nameLbl:getContentSize().height / 2)
+    nameLbl:setPosition(itemBg:getContentSize().width / 2, -nameLbl:getContentSize().height / 2)
 
     local numTTF = ResMgr.createShadowMsgTTF({text = itemNum, color = cc.c3b(58, 209, 73), size = 22})
     numTTF:setAnchorPoint(cc.p(1, 0))
@@ -854,7 +854,8 @@ function ResMgr.refreshIcon(param)
     if isGray == true then
         local fileter = display.newSprite(string.format("#icon_frame_bg_%d.png", itemStar or 1))
         fileter:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
-        fileter:setPosition(itemBg:getContentSize().width / 2, itemBg:getContentSize().height / 2)
+        fileter:setPosition(itemBg:getContentSize().width / 2, itemBg:getContentSize().height)
+        fileter:setAnchorPoint(0, 0)
         itemBg:addChild(fileter)
         itemBg:removeChildByTag(FILETER_TAG, true)
         fileter:setTag(FILETER_TAG)
@@ -890,8 +891,8 @@ function ResMgr.refreshIcon(param)
 
     if itemFrame == nil then
         if isGray == true then
+            --tempItem:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
             itemFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
-            tempItem:setGLProgramState(cc.GLProgramState:getOrCreateWithGLProgramName("ShaderUIGrayScale"))
         else
             itemFrame = display.newSprite(string.format("#icon_frame_board_%d.png", itemStar or 1))
         end
@@ -953,7 +954,7 @@ function ResMgr.refreshIcon(param)
                     }
                 )
                 suitArma:setPosition(itemBg:getContentSize().width / 2, itemBg:getContentSize().height / 2)
-                suitArma:setTouchEnabled(false)
+                setTouchEnabled(suitArma, false)
 
                 itemBg:addChild(suitArma)
                 suitArma:setTag(SUIT_ARMA_TAG)

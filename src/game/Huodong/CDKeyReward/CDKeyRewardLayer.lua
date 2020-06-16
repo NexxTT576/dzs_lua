@@ -1,14 +1,8 @@
---[[
- --
- -- add by vicky
- -- 2014.10.01
- --
- --]]
 local data_error_error = require("data.data_error_error")
 local data_item_item = require("data.data_item_item")
 
 local ZORDER = 100
-
+--@SuperType ShadeLayer
 local CDKeyRewardLayer =
     class(
     "CDKeyRewardLayer",
@@ -75,7 +69,7 @@ function CDKeyRewardLayer:sendReq(cdkey)
 end
 
 function CDKeyRewardLayer:ctor(param)
-    self:setNodeEventEnabled(true)
+    self:enableNodeEvents()
 
     local endFunc = param.endFunc
 
