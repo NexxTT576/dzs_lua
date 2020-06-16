@@ -225,7 +225,7 @@ function GuildZuofangLayer:ctor(data)
     self._rootnode["titleLabel"]:setString("帮派作坊")
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -392,7 +392,7 @@ function GuildZuofangLayer:initBtnEvent()
 
     -- 普通生产
     normalBuildBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             buildFunc(GUILD_ZF_WORK_TYPE.normal)
         end,
         CCControlEventTouchUpInside
@@ -400,7 +400,7 @@ function GuildZuofangLayer:initBtnEvent()
 
     -- 加班生产
     fastBuildBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             buildFunc(GUILD_ZF_WORK_TYPE.fast)
         end,
         CCControlEventTouchUpInside
@@ -408,7 +408,7 @@ function GuildZuofangLayer:initBtnEvent()
 
     -- 普通生产立即结束
     normalEndBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             endFunc()
         end,
         CCControlEventTouchUpInside
@@ -416,7 +416,7 @@ function GuildZuofangLayer:initBtnEvent()
 
     -- 加班生产立即结束
     fastEndBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             endFunc()
         end,
         CCControlEventTouchUpInside

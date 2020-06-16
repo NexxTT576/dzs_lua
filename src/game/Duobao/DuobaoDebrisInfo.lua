@@ -69,7 +69,7 @@ function DuobaoDebrisInfo:ctor(param)
     self:addChild(node)
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
                 transition.sequence(

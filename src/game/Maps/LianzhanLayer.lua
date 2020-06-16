@@ -230,7 +230,7 @@ function LianzhanLayer:ctor(param)
 
     -- 关闭
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             local submapID = game.player.m_cur_normal_fuben_ID
             local data_field_field = require("data.data_field_field")
             local clickedBigMapId = data_field_field[submapID].world

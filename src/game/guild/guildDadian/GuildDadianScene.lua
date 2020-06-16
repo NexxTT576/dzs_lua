@@ -135,7 +135,7 @@ function GuildDadianScene:ctor(data)
     self._rootnode["titleLabel"]:setString("帮派大殿")
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
         end,

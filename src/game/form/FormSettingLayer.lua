@@ -73,7 +73,7 @@ function FormSettingLayer:ctor(param)
 
     rootnode["titleLabel"]:setString("设置阵型")
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeSelf()
             if _closeListener then

@@ -185,7 +185,7 @@ function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if closeFunc ~= nil then
                 closeFunc()
@@ -196,7 +196,7 @@ function EnemyFormLayer:ctor(showType, enemyID, closeFunc, guidName)
     )
 
     self._rootnode["spiritAndEquipBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._showType == SHOWTYPE.SPIRIT then
                 self._showType = 1

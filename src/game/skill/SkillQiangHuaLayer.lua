@@ -108,7 +108,7 @@ function SkillQiangHuaLayer:ctor(param)
     end
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             _callback()
             self:removeSelf()
@@ -117,7 +117,7 @@ function SkillQiangHuaLayer:ctor(param)
     )
 
     self._rootnode["qianghuaBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if checkint(self._rootnode["costNum"]:getString()) > game.player:getSilver() then
                 show_tip_label("您的银币不足")
@@ -135,7 +135,7 @@ function SkillQiangHuaLayer:ctor(param)
     )
 
     self._rootnode["autoBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:autoSelected()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,

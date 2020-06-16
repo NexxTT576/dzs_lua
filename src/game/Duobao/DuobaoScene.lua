@@ -724,7 +724,7 @@ function DuobaoScene:ctor()
     self._bScrollEnabled = true
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
         end,

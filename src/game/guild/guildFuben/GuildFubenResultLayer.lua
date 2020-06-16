@@ -31,7 +31,7 @@ function GuildFubenResultLayer:ctor(param)
 
     -- 关闭按钮
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeBtnFunc()
         end,
@@ -40,7 +40,7 @@ function GuildFubenResultLayer:ctor(param)
 
     -- 确定按钮
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeBtnFunc()
         end,

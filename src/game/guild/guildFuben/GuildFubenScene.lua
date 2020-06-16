@@ -178,7 +178,7 @@ function GuildFubenScene:ctor(param)
 
     -- 返回
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
         end,
@@ -188,7 +188,7 @@ function GuildFubenScene:ctor(param)
     -- 输出排行
     local shuchuBtn = self._rootnode["shuchuBtn"]
     shuchuBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             shuchuBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:showRankLayer()
@@ -199,7 +199,7 @@ function GuildFubenScene:ctor(param)
     -- 帮派副本 说明
     local helpBtn = self._rootnode["helpBtn"]
     helpBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             helpBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local helpLayer =

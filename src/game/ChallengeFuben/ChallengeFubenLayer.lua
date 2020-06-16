@@ -41,7 +41,7 @@ function ChallengeFubenLayer:ctor(param)
 
     -- 关闭按钮
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -89,7 +89,7 @@ function ChallengeFubenLayer:ctor(param)
     -- 查看概率掉落
     local checkBtn = self._rootnode["check_reward_btn"]
     checkBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             checkBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local layer =
@@ -109,7 +109,7 @@ function ChallengeFubenLayer:ctor(param)
     -- 布阵按钮
     local buzhenBtn = self._rootnode["buzhen_btn"]
     buzhenBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             buzhenBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             push_scene(

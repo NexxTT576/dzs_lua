@@ -102,7 +102,7 @@ function GuildQinglongLayer:ctor(data)
     self:createShadowLbl(tostring(self._bossLevel), cc.c3b(0, 219, 52), self._rootnode["boss_level_lbl"], 20)
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -169,7 +169,7 @@ function GuildQinglongLayer:ctor(data)
     local extraRewardBtn = self._rootnode["extraRewardBtn"]
     -- 输出排行
     shuchuBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             shuchuBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local function toLayer(data)
@@ -196,7 +196,7 @@ function GuildQinglongLayer:ctor(data)
 
     -- 奖励预览
     extraRewardBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             extraRewardBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local function confirmFunc()

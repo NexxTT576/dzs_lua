@@ -33,7 +33,7 @@ function WorldBossExtraRewardLayer:ctor(param)
 
     -- 关闭
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then
                 confirmFunc()

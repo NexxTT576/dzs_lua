@@ -56,7 +56,7 @@ function SpiritItem:create(param)
     --    end)
 
     self._rootnode["upgradeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self._rootnode["upgradeBtn"]:setEnabled(false)
             if _listener then

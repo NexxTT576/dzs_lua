@@ -34,7 +34,7 @@ function ShenmiGoldMsgBox:ctor(param)
     end
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if game.player:getGold() < itemData.price then
                 show_tip_label(data_error_error[100004].prompt)
             elseif confirmFunc ~= nil then
@@ -46,14 +46,14 @@ function ShenmiGoldMsgBox:ctor(param)
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             onClose()
         end,
         CCControlEventTouchUpInside
     )
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             onClose()
         end,
         CCControlEventTouchUpInside

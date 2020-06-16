@@ -45,7 +45,7 @@ function DengjiTouziItem:create(param)
     self:refreshItem(itemData)
 
     self._rootnode["rewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rewardListener ~= nil then
                 rewardListener(self)

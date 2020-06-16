@@ -133,7 +133,7 @@ function GuildFubenRewardMsgBox:ctor(param)
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if closeFunc ~= nil then
                 closeFunc(self)
@@ -144,7 +144,7 @@ function GuildFubenRewardMsgBox:ctor(param)
     )
 
     self._rootnode["rewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:setBtnEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rewardFunc ~= nil then

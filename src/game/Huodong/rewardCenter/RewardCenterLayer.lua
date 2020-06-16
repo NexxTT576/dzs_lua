@@ -1,9 +1,4 @@
---[[
- --
- -- add by vicky
- -- 2014.08.11
- --
- --]]
+--@SuperType ShadeLayer
 local RewardCenterLayer =
     class(
     "RewardCenterLayer",
@@ -299,7 +294,7 @@ function RewardCenterLayer:ctor(data)
 
     -- 关闭
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
                 transition.sequence(
@@ -319,7 +314,7 @@ function RewardCenterLayer:ctor(data)
     -- 全部领取
     local collectAllBtn = self._rootnode["collect_all_btn"]
     collectAllBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             collectAllBtn:setEnabled(false)
             sender:runAction(

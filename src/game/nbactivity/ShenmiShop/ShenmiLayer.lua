@@ -107,7 +107,7 @@ function ShenmiLayer:ctor(param)
     self._rootnode["listView_node"]:addChild(self._listViewNode)
 
     self._rootnode["lianhuaBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_LIANHUALU)
         end,
@@ -115,7 +115,7 @@ function ShenmiLayer:ctor(param)
     )
 
     self._rootnode["refreshBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:Refresh()
         end,

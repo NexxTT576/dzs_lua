@@ -357,7 +357,7 @@ function LevelRewardLayer:ctor(data)
     self._rootnode["titleLabel"]:setString("等级礼包")
 
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             sender:runAction(
                 transition.sequence(

@@ -172,7 +172,7 @@ function ZhaojiangResultNormal:ctor(param)
 
     -- 退出
     self._rootnode["exitBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
             PostNotice(NoticeKey.CommonUpdate_Label_Gold)
@@ -185,7 +185,7 @@ function ZhaojiangResultNormal:ctor(param)
     TutoMgr.active()
     --  继续招将
     self._rootnode["zhaojiangBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (_type == 1 and _zhaomulingNum <= 0) then
                 show_tip_label("道具不足")

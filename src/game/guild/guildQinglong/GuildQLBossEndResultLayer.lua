@@ -25,7 +25,7 @@ function GuildQLBossEndResultLayer:ctor(param)
     self:addChild(node)
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if confirmFunc ~= nil then
                 confirmFunc()

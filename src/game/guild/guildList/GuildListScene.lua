@@ -185,7 +185,7 @@ function GuildListScene:ctor(isFromMainMenuScene)
 
     -- 排行榜
     self._rootnode["rankBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:addChild(require("game.guild.guildRank.GuildRankLayer").new(), MAX_ZORDER)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
@@ -194,7 +194,7 @@ function GuildListScene:ctor(isFromMainMenuScene)
 
     -- 返回
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._isFromMainMenuScene == true then
                 GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
@@ -213,7 +213,7 @@ function GuildListScene:createSearchBox()
 
     -- 查询
     self._rootnode["searchBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local textStr = self._editBox:getText()
             if textStr == "" then

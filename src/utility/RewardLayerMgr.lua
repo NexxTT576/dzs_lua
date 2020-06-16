@@ -73,12 +73,8 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             {
                 callback = function(data)
                     dump(data)
-                    if data["0"] ~= "" then
-                        dump(data["0"])
-                    else
-                        local layer = require("game.Huodong.onlineReward.OnlineRewardLayer").new(data)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
+                    local layer = require("game.Huodong.onlineReward.OnlineRewardLayer").new(data)
+                    parent:addChild(layer, ZOrder, Tag)
                 end
             }
         )
@@ -87,12 +83,8 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             {
                 callback = function(data)
                     -- dump(data)
-                    if data["0"] ~= "" then
-                        dump(data["0"])
-                    else
-                        local layer = require("game.Huodong.rewardCenter.RewardCenterLayer").new(data)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
+                    local layer = require("game.Huodong.rewardCenter.RewardCenterLayer").new(data)
+                    parent:addChild(layer, ZOrder, Tag)
                 end
             }
         )

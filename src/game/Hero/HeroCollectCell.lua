@@ -138,7 +138,7 @@ function HeroCollectCell:create(param)
     self.goto_btn = self._rootnode["goto_btn"]
 
     self.goto_btn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:getLvlList()
         end,
         CCControlEventTouchUpInside

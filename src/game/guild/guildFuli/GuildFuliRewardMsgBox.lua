@@ -29,7 +29,7 @@ function GuildFuliRewardMsgBox:ctor(param)
     end
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
         end,
@@ -37,7 +37,7 @@ function GuildFuliRewardMsgBox:ctor(param)
     )
 
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
         end,

@@ -27,7 +27,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
 
     local closeBtn = self._rootNode["tag_close"]
     closeBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if (cb ~= nil) then
                 cb()
             end
@@ -39,7 +39,7 @@ function PlayerInfoLayer:ctor(mainMenuNode, cb)
 
     local okBtn = self._rootNode["tag_ok_btn"]
     okBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             sender:runAction(
                 transition.sequence(
                     {

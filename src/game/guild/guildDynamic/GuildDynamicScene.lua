@@ -48,7 +48,7 @@ function GuildDynamicScene:ctor(data)
 
     -- 返回
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
         end,

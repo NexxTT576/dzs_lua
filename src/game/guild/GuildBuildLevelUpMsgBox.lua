@@ -44,7 +44,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
     end
 
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
         end,
@@ -52,7 +52,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
         end,
@@ -60,7 +60,7 @@ function GuildBuildLevelUpMsgBox:ctor(param)
     )
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
             local guildMgr = game.player:getGuildMgr()

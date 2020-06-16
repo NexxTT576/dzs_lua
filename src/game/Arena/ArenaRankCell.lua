@@ -143,7 +143,7 @@ function ArenaRankCell:create(param)
     -- })
 
     self._rootnode["form_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if ENABLE_ZHENRONG then
                 _createFormFunc(self:getIdx())

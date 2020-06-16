@@ -33,21 +33,21 @@ function DengjiTouziBuyMsgbox:ctor(param)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if confirmListen ~= nil then
                 confirmListen()
             end

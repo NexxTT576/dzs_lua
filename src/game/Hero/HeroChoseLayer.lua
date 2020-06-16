@@ -40,7 +40,7 @@ function HeroChoseLayer:ctor(param)
 
     local topBtn = self.topNode["backBtn"]
     topBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             PostNotice(NoticeKey.MAINSCENE_SHOW_BOTTOM_LAYER)
             self.updateFunc()
             self.setUpBottomVisible()
@@ -70,7 +70,7 @@ function HeroChoseLayer:ctor(param)
 
     local confirmBtn = self.bottomNode["confirmBtn"]
     confirmBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             PostNotice(NoticeKey.MAINSCENE_SHOW_BOTTOM_LAYER)
             self.setUpBottomVisible()
             self.updateFunc()

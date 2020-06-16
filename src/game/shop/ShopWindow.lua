@@ -164,7 +164,7 @@ function ShopWindow:ctor(bGoShowList)
     end
 
     self._rootnode["tag_preview"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["tag_preview"]:setEnabled(false)
 
             local layer = require("game.shop.HeroShowLayer").new()

@@ -139,7 +139,7 @@ function GuildManagerLayer:ctor()
     end
 
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
         end,

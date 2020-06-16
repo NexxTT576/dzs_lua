@@ -134,7 +134,7 @@ function MonthCardLayer:initData(data)
 
     -- 购买按钮
     self._rootnode["buyBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if self._isCanBuy then
                 self:buyFunc()
             else
@@ -148,7 +148,7 @@ function MonthCardLayer:initData(data)
     -- 领取奖励按钮
     local getRewardBtn = self._rootnode["getRewardBtn"]
     getRewardBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             getRewardBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._days > 0 and not self._isHasGet then

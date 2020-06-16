@@ -35,7 +35,7 @@ function OpenLayer:ctor(param)
     local confirmBtn = self._rootnode["confirmBtn"]
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
     confirmBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
             if self._confirmFunc ~= nil then
@@ -53,7 +53,7 @@ function OpenLayer:ctor(param)
     TutoMgr.addBtn("gongnengkaifang_btn_confirm", layer)
 
     goBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
             if self._goFunc ~= nil then

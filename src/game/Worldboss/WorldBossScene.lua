@@ -322,7 +322,7 @@ function WorldBossScene:ctor()
     self._rootnode["guwu_silver_num"]:setString(tostring(self._guwuSilverNum))
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if self._isAutoBattle then
                 local lblTTF =
@@ -362,7 +362,7 @@ function WorldBossScene:ctor()
     -- 布阵
     local buzhenBtn = self._rootnode["buzhenBtn"]
     buzhenBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             buzhenBtn:setEnabled(false)
             local formCtrl = require("game.form.FormCtrl")
             formCtrl.createFormSettingLayer(
@@ -380,7 +380,7 @@ function WorldBossScene:ctor()
     )
 
     self._rootnode["shuchuBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addChild(require("game.Worldboss.WorldBossRankLayer").new(), MAX_ZORDER)
         end,
@@ -388,7 +388,7 @@ function WorldBossScene:ctor()
     )
 
     self._rootnode["extraRewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
             self:addChild(
@@ -425,7 +425,7 @@ function WorldBossScene:ctor()
 
     -- 攻击按钮
     self._rootnode["attackBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._attackTime > 0 then
                 show_tip_label(data_error_error[1400].prompt)
@@ -439,7 +439,7 @@ function WorldBossScene:ctor()
     -- 自动攻击按钮
     local autoBtn = self._rootnode["autoBtn"]
     autoBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             -- 先判断VIP等级（缺少功能判断）
             if self._isAutoBattle then
@@ -463,7 +463,7 @@ function WorldBossScene:ctor()
 
     -- 复活
     self._rootnode["fuhuoBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._attackTime <= 0 then
                 show_tip_label(data_error_error[1405].prompt)
@@ -478,7 +478,7 @@ function WorldBossScene:ctor()
 
     -- 银币鼓舞
     self._rootnode["silverBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._silverTime > 0 then
                 show_tip_label(data_error_error[1404].prompt)
@@ -495,7 +495,7 @@ function WorldBossScene:ctor()
 
     -- 元宝鼓舞
     self._rootnode["goldBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._totalHurtAdd >= self._guwuLimit then
                 show_tip_label(data_error_error[1403].prompt)

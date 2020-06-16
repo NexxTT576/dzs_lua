@@ -352,7 +352,7 @@ function ChallengeScene:ctor(viewType)
     self.jingyingPlusBtn = self._rootnode["jingying_plus_btn"]
 
     self.jingyingPlusBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addJingYingNum()
         end,
@@ -360,7 +360,7 @@ function ChallengeScene:ctor(viewType)
     )
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_MAIN_MENU)
         end,

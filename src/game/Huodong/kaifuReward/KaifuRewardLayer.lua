@@ -296,7 +296,7 @@ function KaifuRewardLayer:ctor(data)
     self._rootnode["titleLabel"]:setString("开服礼包")
 
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,

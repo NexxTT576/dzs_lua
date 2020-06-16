@@ -33,7 +33,7 @@ function WorldBossBattleResultLayer:ctor(param)
     end
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if confirmFunc ~= nil then
                 confirmFunc()
@@ -43,7 +43,7 @@ function WorldBossBattleResultLayer:ctor(param)
     )
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             if confirmFunc ~= nil then
                 confirmFunc()

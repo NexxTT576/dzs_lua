@@ -127,7 +127,7 @@ function HuaShanScene:ctor()
     self._rootnode["yunNode"]:addChild(effect, 100)
 
     self._rootnode["rewardShowBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             local layer = require("game.huashan.HuaShanRewardShow").new()
             self:addChild(layer, 100)
         end,

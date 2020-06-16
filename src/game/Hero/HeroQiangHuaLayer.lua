@@ -576,7 +576,7 @@ function HeroQiangHuaLayer:ctor(param)
 
     self.backBtn = self._rootnode["backBtn"]
     self.backBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             for i = 1, #self.sellAbleList do
                 self.sellAbleList[i]["isChosen"] = false
@@ -591,7 +591,7 @@ function HeroQiangHuaLayer:ctor(param)
     )
 
     self._rootnode["xiahun_back_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             for i = 1, #self.sellAbleList do
                 self.sellAbleList[i]["isChosen"] = false
@@ -609,7 +609,7 @@ function HeroQiangHuaLayer:ctor(param)
     self.cost = 0
     self.qianghuaBtn = self._rootnode["qianghuaBtn"]
     self.qianghuaBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self.qianghuaBtn:setEnabled(false)
             PostNotice(NoticeKey.REMOVE_TUTOLAYER)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -643,7 +643,7 @@ function HeroQiangHuaLayer:ctor(param)
 
     self.autoBtn = self._rootnode["autoBtn"]
     self.autoBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if #self.choseTable < 5 then
                 self:autoSel()
@@ -659,7 +659,7 @@ function HeroQiangHuaLayer:ctor(param)
     self.xiahunCostNum = 0
 
     self._rootnode["xiahun_qianghua_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if ResMgr.isEnoughSilver(self.xiahunCostNum) then --判断银币是否足够
                 if self.curXiaHunNum >= self.needXiaHunNum then
@@ -682,7 +682,7 @@ function HeroQiangHuaLayer:ctor(param)
     )
 
     self._rootnode["xiahun_5_time_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if ResMgr.isEnoughSilver(self.xiahunCostNum) then --判断银币是否足够
                 if self.curXiaHunNum >= self.needXiaHunNum then

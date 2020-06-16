@@ -44,7 +44,7 @@ function GuildFuliItem:create(param)
     self:addChild(node)
 
     self._rootnode["openBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if openFunc ~= nil then
                 self:setBtnEnabled(false)
@@ -55,7 +55,7 @@ function GuildFuliItem:create(param)
     )
 
     self._rootnode["rewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if rewardFunc ~= nil then
                 self:setBtnEnabled(false)

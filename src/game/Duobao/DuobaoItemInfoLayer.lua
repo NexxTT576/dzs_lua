@@ -125,7 +125,7 @@ function DuobaoItemInfoLayer:ctor(param)
 
     self._rootnode["closeBtn"]:setVisible(true)
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
         end,
@@ -133,7 +133,7 @@ function DuobaoItemInfoLayer:ctor(param)
     )
 
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
         end,

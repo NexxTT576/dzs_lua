@@ -59,7 +59,7 @@ function SpiritScene2:ctor(param)
     end
 
     self._rootnode["spiritInfoBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["spiritInfoBtn"]:setEnabled(false)
             self._rootnode["equipSpiritBtn"]:setEnabled(false)
             local spiritInfoLayer =
@@ -76,7 +76,7 @@ function SpiritScene2:ctor(param)
     )
 
     self._rootnode["equipSpiritBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             local equipSpiritScene = require("game.form.HeroSettingScene").new(2)
             display.runScene(equipSpiritScene)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))

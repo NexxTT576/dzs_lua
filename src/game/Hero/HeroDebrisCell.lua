@@ -144,14 +144,14 @@ function HeroDebrisCell:create(param)
     self.unDoneTTF = self._rootnode["undone"]
 
     self.checkBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             createDiaoLuoLayer(self.itemId)
         end,
         CCControlEventTouchUpInside
     )
 
     self.hechengBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             hechengFunc(
                 {
                     id = self.itemId,

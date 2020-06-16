@@ -137,7 +137,7 @@ function EquipDebrisCellVTwo:create(param)
     self.unDoneTTF = self._rootnode["undone"]
 
     self.checkBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             print("itete" .. self.itemId)
             createDiaoLuoLayer(self.itemId)
         end,
@@ -145,7 +145,7 @@ function EquipDebrisCellVTwo:create(param)
     )
 
     self.hechengBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             hechengFunc(
                 {
                     id = self.itemId,

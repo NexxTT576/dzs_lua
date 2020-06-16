@@ -32,7 +32,7 @@ function Item:create(param)
 
     resetctrbtnimage(self._rootnode["upgradeBtn"], "#item_board_zb.png")
     self._rootnode["upgradeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["upgradeBtn"]:setEnabled(false)
             if _listener then
                 _listener(self:getIdx())
@@ -134,7 +134,7 @@ function SpiritChooseScene:ctor(param)
     local _sz = self._rootnode["listView"]:getContentSize()
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["backBtn"]:setEnabled(false)
             pop_scene()
         end,

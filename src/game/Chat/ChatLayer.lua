@@ -175,7 +175,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
 
     -- 关闭
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -184,7 +184,7 @@ function ChatLayer:ctor(data, chatType, chatIndex)
 
     -- 发送
     self._rootnode["sendBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:checkMsg(self._editBox:getText())
         end,

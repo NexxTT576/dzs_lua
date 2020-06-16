@@ -28,7 +28,7 @@ function UseCountBox:ctor(param)
     end
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
         end,
@@ -134,7 +134,7 @@ function UseCountBox:ctor(param)
     onNumBtn(rootnode["add1Btn"])
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if num > 0 then
                 listener(num)

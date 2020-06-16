@@ -95,7 +95,7 @@ end
 function WorldBossNormalScene:ctor(data)
     ResMgr.removeBefLayer()
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_HUODONG)
         end,
@@ -103,7 +103,7 @@ function WorldBossNormalScene:ctor(data)
     )
 
     self._rootnode["shuchuBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addChild(require("game.Worldboss.WorldBossRankLayer").new(), MAX_ZORDER)
         end,
@@ -111,7 +111,7 @@ function WorldBossNormalScene:ctor(data)
     )
 
     self._rootnode["extraRewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addChild(
                 require("game.Worldboss.WorldBossExtraRewardLayer").new(
@@ -128,7 +128,7 @@ function WorldBossNormalScene:ctor(data)
     )
 
     self._rootnode["battleBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_WORLD_BOSS)
         end,

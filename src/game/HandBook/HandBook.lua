@@ -164,7 +164,7 @@ function HandBook:ctor()
     ResMgr.removeBefLayer()
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
         end,
         CCControlEventTouchUpInside

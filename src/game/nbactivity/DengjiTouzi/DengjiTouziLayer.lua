@@ -128,7 +128,7 @@ function DengjiTouziLayer:initData(data)
     -- 充值按钮
     local chongzhiBtn = self._rootnode["chongzhiBtn"]
     chongzhiBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             local chongzhiLayer = require("game.shop.Chongzhi.ChongzhiLayer").new()
             game.runningScene:addChild(chongzhiLayer, MAX_ZORDER)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
@@ -139,7 +139,7 @@ function DengjiTouziLayer:initData(data)
     -- 购买按钮
     local buyBtn = self._rootnode["buyBtn"]
     buyBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if self._hasBuy == false then
                 local bHasOpen, prompt = OpenCheck.getOpenLevelById(OPENCHECK_TYPE.DengjiTouzi_buy, game.player:getLevel(), game.player:getVip())
                 if not bHasOpen then

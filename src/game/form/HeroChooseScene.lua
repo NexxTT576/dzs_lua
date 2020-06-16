@@ -47,7 +47,7 @@ function Item:create(param)
     self._rootnode["hjSprite"]:addChild(self.pzLabel)
 
     self._rootnode["equipBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["equipBtn"]:setEnabled(false)
 
             if _listener then
@@ -140,7 +140,7 @@ function HeroChooseScene:ctor(param)
     local _sz = self._rootnode["listView"]:getContentSize()
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["backBtn"]:setEnabled(false)
             pop_scene()
             if _closelistener then

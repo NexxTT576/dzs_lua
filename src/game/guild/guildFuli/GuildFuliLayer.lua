@@ -227,7 +227,7 @@ function GuildFuliLayer:ctor(data)
     self._rootnode["titleLabel"]:setString("帮派福利")
 
     self._rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:removeFromParent(true)
         end,

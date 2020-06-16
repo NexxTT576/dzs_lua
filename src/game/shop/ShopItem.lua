@@ -33,7 +33,7 @@ function ShopItem:create(param)
     self:addChild(node)
 
     self._rootnode["buyBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if _listener then
                 _listener(self:getIdx())

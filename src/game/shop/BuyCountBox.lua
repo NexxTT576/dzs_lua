@@ -37,7 +37,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     --    rootnode["closeBtnPos"]:addChild(closeBtn)
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
         end,
@@ -45,7 +45,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             onClose()
         end,
@@ -155,7 +155,7 @@ function BuyCountBox:ctor(param, callback, errorCB)
     onNumBtn(rootnode["add1Btn"])
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if num > 0 then
                 RequestHelper.buy(

@@ -204,7 +204,7 @@ function HeroSettingScene:ctor(showType)
     end
 
     self._rootnode["spiritAndEquipBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if self._showType == SHOWTYPE.SPIRIT then
                 self._showType = 1
             else
@@ -217,7 +217,7 @@ function HeroSettingScene:ctor(showType)
     )
 
     self._rootnode["quickEquipBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             -- if game.player:getLevel() < 11 then
             --     show_tip_label("此功能11级开放")
             --     return
@@ -297,7 +297,7 @@ function HeroSettingScene:ctor(showType)
     )
 
     self._rootnode["heroSettingBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:setForm()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,

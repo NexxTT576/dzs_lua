@@ -132,7 +132,7 @@ function LevelGradeItem:ctor(param)
     end
 
     self._fightBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self:setBtnDisabled()
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (self.isPressed == false) then

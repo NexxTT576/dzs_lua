@@ -1,13 +1,8 @@
---[[
- --
- -- add by vicky
- -- 2014.08.08
- --
- --]]
 local data_item_item = require("data.data_item_item")
 
 local ZORDER = 100
 
+--@SuperType ShadeLayer
 local OnlineRewardLayer =
     class(
     "OnlineRewardLayer",
@@ -91,7 +86,8 @@ function OnlineRewardLayer:onReward()
 end
 
 function OnlineRewardLayer:initTimeSchedule()
-    self:schedule(
+    schedule(
+        self,
         function()
             if self.delayTime > 0 then
                 self.delayTime = self.delayTime - 1
@@ -129,14 +125,14 @@ function OnlineRewardLayer:initData(data)
     self:initTimeSchedule()
 
     -- 距离领取奖励的时间
-    game.player.m_onlineRewardTime = data["3"]
+    game.player.m_onlineRewardTime = data[3]
     self.delayTime = game.player.m_onlineRewardTime
 
-    game.player.m_isShowOnlineReward = data["4"]
-    self.isFull = data["2"] or false
-    local rewardId = data["1"]
-    self.giftList = data["5"]
-    self.bagObj = data["6"]
+    game.player.m_isShowOnlineReward = data[4]
+    self.isFull = data[2] or false
+    local rewardId = data[1]
+    self.giftList = data[5]
+    self.bagObj = data[6]
 
     if (self.delayTime <= 0) then
         self._rootnode["getRewardBtn"]:setEnabled(true)
@@ -246,21 +242,18 @@ function OnlineRewardLayer:ctor(data)
     for i = 1, 4 do
         -- 点击道具，显示道具功能信息
         local rewardIcon = self._rootnode["reward_icon_" .. tostring(i)]
-        rewardIcon:setTouchEnabled(true)
-        rewardIcon:addNodeEventListener(
-            cc.NODE_TOUCH_EVENT,
-            function(event)
-                if (event.name == "began") then
-                    return true
-                elseif (event.name == "ended") then
-                    self:onInformation(i)
-                end
+        setTouchEnabled(rewardIcon, true)
+        addNodeEventListener(
+            rewardIcon,
+            cc.Handler.EVENT_TOUCH_ENDED,
+            function()
+                self:onInformation(i)
             end
         )
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             sender:runAction(
                 transition.sequence(
@@ -279,7 +272,7 @@ function OnlineRewardLayer:ctor(data)
 
     local getRewardBtn = self._rootnode["getRewardBtn"]
     getRewardBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             getRewardBtn:setEnabled(false)
             sender:runAction(

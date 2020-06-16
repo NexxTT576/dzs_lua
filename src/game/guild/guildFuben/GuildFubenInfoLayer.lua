@@ -36,7 +36,7 @@ function GuildFubenInfoLayer:ctor(param)
 
     -- X按钮
     self._rootnode["returnBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeBtnFunc()
         end,
@@ -56,7 +56,7 @@ function GuildFubenInfoLayer:ctor(param)
 
     -- 关闭按钮
     closeBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeBtnFunc()
         end,
@@ -69,7 +69,7 @@ function GuildFubenInfoLayer:ctor(param)
 
     -- 进入按钮
     enterBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             enterBtnEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             game.player:getGuildMgr():RequestFubenChooseCard(

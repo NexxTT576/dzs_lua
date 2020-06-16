@@ -105,7 +105,7 @@ function GuildMainScene:ctor(buildType)
 
     -- 其他帮派
     self._rootnode["check_guildList_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD_GUILDLIST)
         end,
@@ -115,7 +115,7 @@ function GuildMainScene:ctor(buildType)
     -- 修改帮派公告
     local modifyBtn = self._rootnode["modify_btn"]
     modifyBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             modifyBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:addChild(

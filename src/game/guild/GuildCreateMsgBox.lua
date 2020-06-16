@@ -84,7 +84,7 @@ function GuildCreateMsgBox:ctor()
     end
 
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             closeFunc()
         end,
@@ -92,7 +92,7 @@ function GuildCreateMsgBox:ctor()
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             closeFunc()
         end,
@@ -100,7 +100,7 @@ function GuildCreateMsgBox:ctor()
     )
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local textStr = self._editBox:getText()
             if textStr == "" then

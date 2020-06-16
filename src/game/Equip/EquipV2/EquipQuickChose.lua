@@ -55,7 +55,7 @@ function EquipQuickChose:ctor(callback)
     end
 
     self._rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(
                 sender,
                 function()
@@ -68,14 +68,14 @@ function EquipQuickChose:ctor(callback)
     )
 
     self._rootnode["chooseAllBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(sender, onSelecteAllBtn)
         end,
         CCControlEventTouchUpInside
     )
 
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             btn_effect(sender, onConfirmBtn)
         end,
         CCControlEventTouchUpInside

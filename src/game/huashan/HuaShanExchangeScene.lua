@@ -324,7 +324,7 @@ function HuaShanExchangeScene:ctor()
     self.listView = self._rootnode["listView"]
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             GameStateManager:ChangeState(GAME_STATE.STATE_HUASHAN)
         end,

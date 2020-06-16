@@ -150,7 +150,7 @@ function GuildMemberScene:ctor(param)
 
     -- 返回
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_GUILD)
         end,
@@ -159,7 +159,7 @@ function GuildMemberScene:ctor(param)
 
     -- 按时间排序
     self._rootnode["sort_time_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:setVerifySortType(SORT_TYPE.time)
         end,
@@ -168,7 +168,7 @@ function GuildMemberScene:ctor(param)
 
     -- 默认排序
     self._rootnode["sort_normal_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
 
             self:setVerifySortType(SORT_TYPE.normal)
@@ -178,7 +178,7 @@ function GuildMemberScene:ctor(param)
 
     -- 一键拒绝
     self._rootnode["reject_total_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["reject_total_btn"]:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (self._verifyListData ~= nil and #self._verifyListData > 0) or (self._timeListData ~= nil and #self._timeListData > 0) then

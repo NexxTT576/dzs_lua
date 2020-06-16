@@ -15,7 +15,7 @@ function SettingLayer:ctor()
 
     rootnode["titleLabel"]:setString("设 置")
     rootnode["tag_close"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -31,7 +31,7 @@ function SettingLayer:ctor()
     -- CDKey兑换
     local cdkeyBtn = rootnode["cdkeyBtn"]
     cdkeyBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             cdkeyBtn:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local cdkeyRewardLayer =
@@ -58,7 +58,7 @@ function SettingLayer:ctor()
     end
 
     rootnode["music_bg_open_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSoundEnable(false)
             GameAudio.stopMusic()
@@ -69,7 +69,7 @@ function SettingLayer:ctor()
     )
 
     rootnode["music_bg_close_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSoundEnable(true)
             GameAudio.playMainmenuMusic(true)
@@ -91,7 +91,7 @@ function SettingLayer:ctor()
     end
 
     rootnode["music_sfx_open_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSfxEnable(false)
             rootnode["music_sfx_close_btn"]:setVisible(true)
@@ -101,7 +101,7 @@ function SettingLayer:ctor()
     )
 
     rootnode["music_sfx_close_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameAudio.setSfxEnable(true)
             GameAudio.playMainmenuMusic(true)
@@ -112,7 +112,7 @@ function SettingLayer:ctor()
     )
 
     rootnode["handbook_btn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_HANDBOOK)
         end,
@@ -148,7 +148,7 @@ function SettingLayer:ctor()
     -- sdk 用户中心
     sdkCenter()
     rootnode["returnLoginBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if (device.platform == "android") then
                 if

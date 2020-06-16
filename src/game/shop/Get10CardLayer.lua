@@ -71,7 +71,7 @@ function Get10CardLayer:ctor(isOneFree, times, listener)
     )
 
     subNode["tag_zhaojiang_10"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if listener then
                 listener(10)

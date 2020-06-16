@@ -23,14 +23,14 @@ function ChongzhiBuyMonthCardMsgbox:ctor(param)
     end
 
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside
     )
 
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             if confirmListen ~= nil then
                 confirmListen()
             end
@@ -40,7 +40,7 @@ function ChongzhiBuyMonthCardMsgbox:ctor(param)
     )
 
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             closeFunc()
         end,
         CCControlEventTouchUpInside

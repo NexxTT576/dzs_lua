@@ -27,7 +27,7 @@ function LianzhanMsgBox:ctor(param)
 
     -- 确认
     rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if listener ~= nil then
                 listener()
@@ -39,7 +39,7 @@ function LianzhanMsgBox:ctor(param)
 
     -- 关闭
     rootnode["closeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,
@@ -48,7 +48,7 @@ function LianzhanMsgBox:ctor(param)
 
     -- 关闭
     rootnode["cancelBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
         end,

@@ -178,14 +178,14 @@ function HeroList:init(data)
     numTag:setLocalZOrder(20)
 
     self._rootnode["sellBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             self:onSaleView()
         end,
         CCControlEventTouchUpInside
     )
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:onCommonView()
         end,
@@ -785,7 +785,7 @@ function HeroList:ctor(tag)
         )
     end
     self._rootnode["expandBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             if self._cost[1] ~= -1 then
                 local layer =
@@ -853,7 +853,7 @@ function HeroList:ctor(tag)
 
     --按星级出售界面
     self._rootnode["sellStarBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["sellStarBtn"]:setEnabled(false)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             local small = cc.ScaleTo:create(0.1, 0.8)

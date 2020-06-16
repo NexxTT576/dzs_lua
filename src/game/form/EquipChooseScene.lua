@@ -28,7 +28,7 @@ function Item:create(param)
     self:addChild(node)
 
     self._rootnode["upgradeBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["upgradeBtn"]:setEnabled(false)
             if _listener then
                 _listener(self:getIdx())
@@ -150,7 +150,7 @@ function EquipChooseScene:ctor(param)
     local _sz = self._rootnode["listView"]:getContentSize()
 
     self._rootnode["backBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             self._rootnode["backBtn"]:setEnabled(false)
             _callback()
             pop_scene()

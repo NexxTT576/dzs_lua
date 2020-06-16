@@ -298,7 +298,7 @@ function ArenaResult:initLost(data)
 
     -- 武将强化
     self._rootnode["wujiangBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_XIAKE)
         end,
@@ -307,7 +307,7 @@ function ArenaResult:initLost(data)
 
     -- 装备强化
     self._rootnode["zhuangbeiBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_EQUIPMENT)
         end,
@@ -316,7 +316,7 @@ function ArenaResult:initLost(data)
 
     -- 阵容
     self._rootnode["goZhenrongBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ZHENRONG)
         end,
@@ -325,7 +325,7 @@ function ArenaResult:initLost(data)
 
     -- 侠客送礼
     self._rootnode["heroRewardBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameStateManager:ChangeState(GAME_STATE.STATE_JIANGHULU)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
         end,
@@ -334,7 +334,7 @@ function ArenaResult:initLost(data)
 
     -- 真气
     self._rootnode["zhenqiBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_JINGYUAN)
         end,
@@ -388,7 +388,7 @@ function ArenaResult:ctor(param)
     end
 
     self._rootnode["confirmBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             GameStateManager:ChangeState(GAME_STATE.STATE_ARENA)
         end,
@@ -397,7 +397,7 @@ function ArenaResult:ctor(param)
 
     local replayBtn = self._rootnode["replayBtn"]
     replayBtn:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             replayBtn:setEnabled(false)
             local function closeFunc(node)

@@ -228,7 +228,7 @@ function ZhaojiangResultTen:ctor(param)
 
     -- 退出
     self._rootnode["exitBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_guanbi))
             self:removeFromParent(true)
             PostNotice(NoticeKey.CommonUpdate_Label_Gold)
@@ -238,7 +238,7 @@ function ZhaojiangResultTen:ctor(param)
 
     -- 购买1个
     self._rootnode["buyOneBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             --            self:getOneHero(1)
             if _buyListener then
@@ -252,7 +252,7 @@ function ZhaojiangResultTen:ctor(param)
     -- 购买10个
     self._rootnode["buyTenBtn"]:setEnabled(false)
     self._rootnode["buyTenBtn"]:registerControlEventHandler(
-        function(eventName, sender)
+        function(sender)
             GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_queding))
             --            self:getOneHero(10)
             if _buyListener then
