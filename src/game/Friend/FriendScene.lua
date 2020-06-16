@@ -143,6 +143,7 @@ function FriendScene:initTableviews()
 end
 
 function FriendScene:onMoreBtn()
+    FriendModel.isSearch = false
     --发送请求，更新列表
     FriendModel.updateRecommendList()
 end
@@ -310,6 +311,7 @@ function FriendScene:initDetailNode()
 
     self.restNaili = ResMgr.createShadowMsgTTF({size = 26, text = "今日剩余领取次数：", color = cc.c3b(255, 255, 255)})
     orNode:addChild(self.restNaili)
+    self.restNaili:setAnchorPoint(cc.p(0, 0.5))
     self.restNaili:setPosition(orX, orY)
 
     self.restNailiNum = ResMgr.createShadowMsgTTF({size = 26, text = "0", color = cc.c3b(0, 219, 52)})

@@ -121,26 +121,26 @@ function SettingLayer:ctor()
 
     local function sdkCenter(...)
         local btnText = "用户中心"
-        if (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_91 or CSDKShell.GetSDKTYPE() == CSDKShell.SDKTYPES.IOS_91_OFFICIAL) then
-            btnText = "91中心"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_PP) then
-            btnText = "PP中心"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_TB) then
-            btnText = "同步推"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_ITOOLS) then
-            btnText = "itools"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_KUAIYONG) then
-            btnText = "快用"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_XY) then
-            btnText = "XY"
-        elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_AS) then
-            btnText = "爱思"
-        end
+        -- if (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_91 or CSDKShell.GetSDKTYPE() == CSDKShell.SDKTYPES.IOS_91_OFFICIAL) then
+        --     btnText = "91中心"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_PP) then
+        --     btnText = "PP中心"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_TB) then
+        --     btnText = "同步推"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_ITOOLS) then
+        --     btnText = "itools"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_KUAIYONG) then
+        --     btnText = "快用"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_XY) then
+        --     btnText = "XY"
+        -- elseif (CSDKShell.SDK_TYPE == CSDKShell.SDKTYPES.IOS_AS) then
+        --     btnText = "爱思"
+        -- end
 
-        -- TOdo
-        if (device.platform == "android") then
-            btnText = "返回"
-        end
+        -- -- TOdo
+        -- if (device.platform == "android") then
+        --     btnText = "返回"
+        -- end
         rootnode["returnLoginBtn"]:setTitleForState(btnText, cc.CONTROL_STATE_NORMAL)
 
         --21.5

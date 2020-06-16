@@ -84,7 +84,7 @@ function FriendModel.updateRecommendList(param)
             {
                 num = 6,
                 callback = function(data)
-                    FriendModel.listVec[2] = data.rtnObj
+                    FriendModel.listVec[2] = data
                     FriendModel.updateList(RECOMMEND_TYPE)
                 end
             }
