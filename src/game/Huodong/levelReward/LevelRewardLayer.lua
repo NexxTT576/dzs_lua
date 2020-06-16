@@ -53,38 +53,34 @@ function LevelRewardLayer:onReward(cell)
                 callback = function(data)
                     cell:setRewardEnabled(true)
 
-                    if (string.len(data["0"]) > 0) then
-                        show_tip_label(data["0"])
-                    else
-                        table.insert(self.hasRewardLvs, cell:getLevel())
+                    table.insert(self.hasRewardLvs, cell:getLevel())
 
-                        cell:getReward(self.hasRewardLvs)
+                    cell:getReward(self.hasRewardLvs)
 
-                        -- 弹出得到奖励提示框
-                        local title = "恭喜您获得如下奖励："
-                        local index = cell:getIdx() + 1
-                        local msgBox =
-                            require("game.Huodong.RewardMsgBox").new(
-                            {
-                                title = title,
-                                cellDatas = self.cellDatas[index].itemData
-                            }
-                        )
+                    -- 弹出得到奖励提示框
+                    local title = "恭喜您获得如下奖励："
+                    local index = cell:getIdx() + 1
+                    local msgBox =
+                        require("game.Huodong.RewardMsgBox").new(
+                        {
+                            title = title,
+                            cellDatas = self.cellDatas[index].itemData
+                        }
+                    )
 
-                        self:addChild(msgBox, ZORDER)
+                    self:addChild(msgBox, ZORDER)
 
-                        --更新玩家数据
-                        game.player:updateMainMenu({silver = data["1"].silver, gold = data["1"].gold})
-                        PostNotice(NoticeKey.MainMenuScene_Update)
+                    --更新玩家数据
+                    game.player:updateMainMenu({silver = data[1].silver, gold = data[1].gold})
+                    PostNotice(NoticeKey.MainMenuScene_Update)
 
-                        game.player:setDengjilibao(game.player:getDengjilibao() - 1)
+                    game.player:setDengjilibao(game.player:getDengjilibao() - 1)
 
-                        if self:checkIsCollectAllReward() then
-                            game.player.m_isSHowDengjiLibao = false
-                        end
-
-                        PostNotice(NoticeKey.MainMenuScene_DengjiLibao)
+                    if self:checkIsCollectAllReward() then
+                        game.player.m_isSHowDengjiLibao = false
                     end
+
+                    PostNotice(NoticeKey.MainMenuScene_DengjiLibao)
                 end
             }
         )
@@ -149,10 +145,10 @@ function LevelRewardLayer:init(data)
     local curLevel_index = 1
 
     -- 需要服务器端返回，领取的等级奖励有哪些等级
-    self.hasRewardLvs = data["1"]
-    self.isFull = data["2"]
-    self.giftList = data["3"]
-    self.bagObj = data["4"]
+    self.hasRewardLvs = data[1]
+    self.isFull = data[2]
+    self.giftList = data[3]
+    self.bagObj = data[4]
     self.cellDatas = {}
 
     for i, v in ipairs(self.giftList) do
@@ -223,11 +219,12 @@ function LevelRewardLayer:init(data)
 
     local cellContentSize = require("game.Huodong.levelReward.LevelRewardCell").new():getContentSize()
 
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
             posX = event:getLocation().x
             posY = event:getLocation().y

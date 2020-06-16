@@ -16,11 +16,7 @@ function KaifuRewardLayer:sendRequest()
         {
             callback = function(data)
                 dump(data)
-                if data["0"] ~= "" then
-                    dump(data["0"])
-                else
-                    self:init(data)
-                end
+                self:init(data)
             end
         }
     )
@@ -35,33 +31,29 @@ function KaifuRewardLayer:onReward(cell)
                 -- dump(data)
                 cell:setRewardEnabled(true)
 
-                if data["0"] ~= "" then
-                    dump(data["0"])
-                else
-                    table.insert(self._hasRewardDays, cell:getDay())
+                table.insert(self._hasRewardDays, cell:getDay())
 
-                    cell:getReward(self._hasRewardDays)
+                cell:getReward(self._hasRewardDays)
 
-                    --更新玩家数据
-                    game.player:updateMainMenu({silver = data["1"].silver, gold = data["1"].gold})
-                    PostNotice(NoticeKey.MainMenuScene_Update)
+                --更新玩家数据
+                game.player:updateMainMenu({silver = data[1].silver, gold = data[1].gold})
+                PostNotice(NoticeKey.MainMenuScene_Update)
 
-                    game.player:setKaifuLibao(game.player:getKaifuLibao() - 1)
-                    PostNotice(NoticeKey.MainMenuScene_KaifuLibao)
+                game.player:setKaifuLibao(game.player:getKaifuLibao() - 1)
+                PostNotice(NoticeKey.MainMenuScene_KaifuLibao)
 
-                    -- 弹出得到奖励提示框
-                    local title = "恭喜您获得如下奖励："
-                    local index = cell:getIdx() + 1
-                    local msgBox =
-                        require("game.Huodong.RewardMsgBox").new(
-                        {
-                            title = title,
-                            cellDatas = self._cellDatas[index].itemData
-                        }
-                    )
+                -- 弹出得到奖励提示框
+                local title = "恭喜您获得如下奖励："
+                local index = cell:getIdx() + 1
+                local msgBox =
+                    require("game.Huodong.RewardMsgBox").new(
+                    {
+                        title = title,
+                        cellDatas = self._cellDatas[index].itemData
+                    }
+                )
 
-                    self:addChild(msgBox, ZORDER)
-                end
+                self:addChild(msgBox, ZORDER)
             end
         }
     )
@@ -98,10 +90,10 @@ function KaifuRewardLayer:onInformation(param)
 end
 
 function KaifuRewardLayer:init(data)
-    self._curDay = data["1"]
+    self._curDay = data[1]
     -- 需要服务器端返回，领取的奖励有哪些天
-    self._hasRewardDays = data["2"]
-    self._giftList = data["3"]
+    self._hasRewardDays = data[2]
+    self._giftList = data[3]
     self._cellDatas = {}
 
     for i, v in ipairs(self._giftList) do
@@ -130,7 +122,7 @@ function KaifuRewardLayer:init(data)
             self._cellDatas,
             {
                 id = v.id,
-                day = v.day,
+                day = v.id,
                 itemData = itemData
             }
         )
@@ -163,11 +155,12 @@ function KaifuRewardLayer:init(data)
         )
     end
 
-    self._rootnode["touchNode"]:setTouchEnabled(true)
+    setTouchEnabled(self._rootnode["touchNode"], true)
     local posX = 0
     local posY = 0
-    self._rootnode["touchNode"]:addNodeEventListener(
-        cc.NODE_TOUCH_CAPTURE_EVENT,
+    addNodeEventListener(
+        self._rootnode["touchNode"],
+        cc.Handler.EVENT_TOUCH_BEGAN,
         function(event)
             posX = event:getLocation().x
             posY = event:getLocation().y
@@ -212,15 +205,15 @@ end
 -- 默认将可领取奖励的第一天置顶显示
 function KaifuRewardLayer:checkTopCell()
     local minDay_index = 1 -- 可领取的最低等级索引
-    local minDay = self._giftList[1].day
+    local minDay = self._giftList[1].id
 
     -- 判断是否还有可领取的等级礼包，若有则置顶，否则置顶玩家下次领取的最小等级
     local needTop = false
     for i, v in ipairs(self._giftList) do
-        if v.day <= self._curDay then
+        if v.id <= self._curDay then
             local has = false
             for j, vl in ipairs(self._hasRewardDays) do
-                if vl == v.day then
+                if vl == v.id then
                     has = true
                     break
                 end
@@ -233,8 +226,8 @@ function KaifuRewardLayer:checkTopCell()
 
     if needTop then
         for i, v in ipairs(self._giftList) do
-            if v.day <= self._curDay and v.day > minDay then
-                minDay = v.day
+            if v.id <= self._curDay and v.id > minDay then
+                minDay = v.id
                 minDay_index = i
             end
         end
@@ -249,17 +242,17 @@ function KaifuRewardLayer:checkTopCell()
         end
 
         for i, v in ipairs(self._giftList) do
-            if v.day <= self._curDay then
-                if not isHasGot(v.day) and v.day < minDay then
-                    minDay = v.day
+            if v.id <= self._curDay then
+                if not isHasGot(v.id) and v.id < minDay then
+                    minDay = v.id
                     minDay_index = i
                 end
             end
         end
     else
         for i, v in ipairs(self._giftList) do
-            if v.day > self._curDay then
-                minDay = v.day
+            if v.id > self._curDay then
+                minDay = v.id
                 minDay_index = i
                 break
             end

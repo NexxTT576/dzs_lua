@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.12.02 
- --
- --]]
 local data_mail_mail = require("data.data_mail_mail")
 local data_item_item = require("data.data_item_item")
 require("data.data_error_error")
@@ -33,6 +27,7 @@ local DayStr = {
     "十四天前"
 }
 
+--@SuperType BaseScene
 local MailScene =
     class(
     "MailScene",
@@ -54,31 +49,27 @@ function MailScene:reqMailData(viewType, bGetMore, curMailId)
             mailId = curMailId,
             callback = function(data)
                 dump(data)
-                if data.err ~= "" then
-                    dump(data.err)
-                else
-                    if bGetMore == false then
-                        self._mailTotalNum = data.rtnObj.mailCnt
-                    end
+                if bGetMore == false then
+                    self._mailTotalNum = data.mailCnt
+                end
 
-                    -- 若是刷新，记录上一次tableView的位置
-                    local lastPosIndex = 0
-                    if bGetMore == true then
-                        lastPosIndex = #self._itemDatas - 1
-                    end
+                -- 若是刷新，记录上一次tableView的位置
+                local lastPosIndex = 0
+                if bGetMore == true then
+                    lastPosIndex = #self._itemDatas - 1
+                end
 
-                    self:initMailData(data.rtnObj.mailList)
+                self:initMailData(data.mailList)
 
-                    self:reloadListView(viewType, lastPosIndex)
+                self:reloadListView(viewType, lastPosIndex)
 
-                    if (viewType == SHOWTYPE.BATTLE) then
-                        self._rootnode["mail_battle_notice"]:setVisible(false)
-                        game.player:resetMailBattle()
-                    elseif (viewType == SHOWTYPE.SYSTEM) then
-                        self._rootnode["mail_system_notice"]:setVisible(false)
-                        game.player:resetMailSystem()
-                    elseif (viewType == SHOWTYPE.FRIENDS) then
-                    end
+                if (viewType == SHOWTYPE.BATTLE) then
+                    self._rootnode["mail_battle_notice"]:setVisible(false)
+                    game.player:resetMailBattle()
+                elseif (viewType == SHOWTYPE.SYSTEM) then
+                    self._rootnode["mail_system_notice"]:setVisible(false)
+                    game.player:resetMailSystem()
+                elseif (viewType == SHOWTYPE.FRIENDS) then
                 end
             end
         }
@@ -152,6 +143,7 @@ function MailScene:ctor()
         self._rootnode["mail_system_notice"]:setVisible(false)
         game.player:resetMailSystem()
     end
+    self:enableNodeEvents()
 end
 
 function MailScene:onEnter()

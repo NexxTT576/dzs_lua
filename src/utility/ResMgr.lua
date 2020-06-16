@@ -1245,7 +1245,7 @@ end
 
 --[[
     @desc: 背包类型
-    author:tulilu
+   
     time:2020-05-12 19:21:36
     --@bagType: 
     @return: 
@@ -1279,7 +1279,7 @@ end
 
 --[[
     @desc: 以后可能会根据平台使用不同的音乐文件
-    author:tulilu
+   
     time:2020-05-12 19:21:22
     --@filename: 
     @return:
@@ -1292,7 +1292,7 @@ end
 --[[
     @desc: SFX_NAME在GameConst中，列出所有音效的文件名
     GameAudio.playSound(ResMgr.getSFX(SFX_NAME.u_shengli))
-    author:tulilu
+   
     time:2020-05-12 19:20:19
     --@filename: 
     @return:

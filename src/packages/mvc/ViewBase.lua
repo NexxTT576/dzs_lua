@@ -39,7 +39,7 @@ end
 
 --[[
     @desc: 
-    author:tulilu
+   
     time:2020-05-12 16:27:22
     @return: AppBase
 ]]

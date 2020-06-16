@@ -1,7 +1,7 @@
 --[[
     luaide  模板位置位于 Template/FunTemplate/NewFileTemplate.lua 其中 Template 为配置路径 与luaide.luaTemplatesDir
     luaide.luaTemplatesDir 配置 https://www.showdoc.cc/web/#/luaide?page_id=713062580213505
-    author:tulilu
+   
     time:2020-05-13 18:40:32
 ]]
 --@SuperType luaIde#cc.Node
@@ -171,7 +171,7 @@ end
 
 --[[
     @desc: 游戏底部 按键 event ui跳转
-    author:tulilu
+   
     time:2020-05-13 20:07:05
     --@tag: 
     @return:

@@ -1,7 +1,7 @@
 --[[
     luaide  模板位置位于 Template/FunTemplate/NewFileTemplate.lua 其中 Template 为配置路径 与luaide.luaTemplatesDir
     luaide.luaTemplatesDir 配置 https://www.showdoc.cc/web/#/luaide?page_id=713062580213505
-    author:tulilu
+   
     time:2020-05-13 18:33:06
 ]]
 function c_func(f, ...)
@@ -140,7 +140,7 @@ end
 
 --[[
     @desc: 
-    author:tulilu
+   
     time:2020-05-18 20:16:13
     --@node: luaIde#cc.Node
 	--@eventType: 
@@ -240,7 +240,7 @@ end
 
 --[[
     @desc: 
-    author:tulilu
+   
     time:2020-05-20 11:41:52
     --@param:  {   text = self._debrisName,
             size = 30,
@@ -320,7 +320,7 @@ end
 
 --[[
     @desc: 
-    author:tulilu
+   
     time:2020-05-20 11:41:52
     --@param:  {   text = self._debrisName,
             size = 30,
@@ -490,7 +490,7 @@ function newMenu(items)
 end
 --[[
     @desc: 
-    author:tulilu
+   
     time:2020-06-11 18:34:51
     --@btn: luaIde#cc.Node
 	--@func:

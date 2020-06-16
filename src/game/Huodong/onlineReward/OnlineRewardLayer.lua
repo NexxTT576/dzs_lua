@@ -50,35 +50,30 @@ function OnlineRewardLayer:onReward()
             {
                 callback = function(data)
                     dump(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                        return
-                    else
-                        -- 更新金币银币等
-                        game.player:updateMainMenu({silver = data["1"].silver, gold = data["1"].gold})
-                        PostNotice(NoticeKey.MainMenuScene_Update)
+                    -- 更新金币银币等
+                    game.player:updateMainMenu({silver = data[1].silver, gold = data[1].gold})
+                    PostNotice(NoticeKey.MainMenuScene_Update)
 
-                        game.player.m_onlineRewardTime = data["3"]
-                        self.delayTime = game.player.m_onlineRewardTime
+                    game.player.m_onlineRewardTime = data[3]
+                    self.delayTime = game.player.m_onlineRewardTime
 
-                        -- 是否显示在线奖励，如否，则按钮消失
-                        game.player.m_isShowOnlineReward = data["2"]
+                    -- 是否显示在线奖励，如否，则按钮消失
+                    game.player.m_isShowOnlineReward = data[2]
 
-                        local title = "恭喜您获得如下奖励："
-                        local msgBox =
-                            require("game.Huodong.RewardMsgBox").new(
-                            {
-                                title = title,
-                                cellDatas = self.cellDatas
-                            }
-                        )
+                    local title = "恭喜您获得如下奖励："
+                    local msgBox =
+                        require("game.Huodong.RewardMsgBox").new(
+                        {
+                            title = title,
+                            cellDatas = self.cellDatas
+                        }
+                    )
 
-                        self:getParent():addChild(msgBox)
+                    self:getParent():addChild(msgBox)
 
-                        PostNotice(NoticeKey.MainMenuScene_OnlineReward)
+                    PostNotice(NoticeKey.MainMenuScene_OnlineReward)
 
-                        self:removeFromParent(true)
-                    end
+                    self:removeFromParent(true)
                 end
             }
         )

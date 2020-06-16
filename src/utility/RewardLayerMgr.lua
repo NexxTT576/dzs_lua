@@ -45,12 +45,8 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             {
                 callback = function(data)
                     dump(data)
-                    if data["0"] ~= "" then
-                        dump(data["0"])
-                    else
-                        local layer = require("game.Huodong.kaifuReward.KaifuRewardLayer").new(data)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
+                    local layer = require("game.Huodong.kaifuReward.KaifuRewardLayer").new(data)
+                    parent:addChild(layer, ZOrder, Tag)
                 end
             }
         )
@@ -59,12 +55,8 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             {
                 callback = function(data)
                     dump(data)
-                    if string.len(data["0"]) > 0 then
-                        CCMessageBox(data["0"], "Tip")
-                    else
-                        local layer = require("game.Huodong.levelReward.LevelRewardLayer").new(data)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
+                    local layer = require("game.Huodong.levelReward.LevelRewardLayer").new(data)
+                    parent:addChild(layer, ZOrder, Tag)
                 end
             }
         )

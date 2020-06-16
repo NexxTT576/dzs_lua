@@ -54,7 +54,7 @@ function FormSettingCard:ctor(param)
 
     --[[
     @desc: 
-    author:tulilu
+   
     time:2020-06-01 19:07:01
         --@touch: luaIde#cc.Touch
     	--@event: luaIde#cc.EventTouch
