@@ -1,9 +1,3 @@
---[[
- --
- -- add by vicky
- -- 2014.08.02
- --
- --]]
 local ZORDER = 100
 local listViewDisH = 95
 
@@ -114,11 +108,6 @@ function DailyLoginLayer:onInformation(param)
 end
 
 function DailyLoginLayer:init(data)
-    if string.len(data["0"]) > 0 then
-        CCMessageBox(data["0"], "Tip")
-        return
-    end
-
     local data_item_item = require("data.data_item_item")
     --
 

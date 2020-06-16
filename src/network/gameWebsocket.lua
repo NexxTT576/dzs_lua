@@ -30,9 +30,11 @@ function ws.init(cb)
             local _rid = data["_rid"]
             if ws.handers[_rid] ~= nil then
                 dump(ws.handers[_rid].reqData)
-                if ws.handers[_rid].cb ~= nil then
+                if ws.handers[_rid].cb ~= nil and data.code == 0 then
                     ws.handers[_rid].cb(data.body)
                     ws.handers[_rid] = nil
+                elseif data.code ~= 0 then
+                    show_tip_label(data.msg)
                 end
             end
         end,

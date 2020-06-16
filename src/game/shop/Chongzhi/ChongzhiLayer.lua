@@ -28,11 +28,12 @@ function ChongzhiLayer:getDataList(isRefresh)
         {
             callback = function(data)
                 dump(data)
-                if data["0"] ~= "" then
-                    CCMessageBox(data["0"], "error")
-                else
-                    self:initData(data, isRefresh)
-                end
+                show_tip_label("不开放")
+                -- if data["0"] ~= "" then
+                --     CCMessageBox(data["0"], "error")
+                -- else
+                --     self:initData(data, isRefresh)
+                -- end
             end
         }
     )

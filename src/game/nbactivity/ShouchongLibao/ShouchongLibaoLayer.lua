@@ -23,11 +23,7 @@ function ShouchongLibaoLayer:ctor(param)
     local node = CCBReaderLoad("nbhuodong/shouchong_libao_layer.ccbi", proxy, self._rootnode, self, viewSize)
     self:addChild(node)
 
-    if CSDKShell.GetSDKTYPE() == CSDKShell.SDKTYPES.IOS_APPSTORE_HANS then
-        self._rootnode["tag_zuigaofanli"]:setVisible(false)
-    else
-        self._rootnode["tag_zuigaofanli"]:setVisible(true)
-    end
+    self._rootnode["tag_zuigaofanli"]:setVisible(true)
 
     local titleIcon = self._rootnode["title_icon"]
     local bottomNode = self._rootnode["bottom_node"]

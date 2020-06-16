@@ -27,19 +27,16 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             }
         )
     elseif layerType == RewardLayerMgrType.dailyLogin then
-        RequestHelper.dailyLoginReward.getInfo(
-            {
-                callback = function(data)
-                    dump(data)
-                    if data["0"] ~= "" then
-                        dump(data["0"])
-                    else
-                        local layer = require("game.Huodong.dailyLogin.DailyLoginLayer").new(data)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
-                end
-            }
-        )
+        -- RequestHelper.dailyLoginReward.getInfo(
+        --     {
+        --         callback = function(data)
+        --             dump(data)
+        --             local layer = require("game.Huodong.dailyLogin.DailyLoginLayer").new(data)
+        --             parent:addChild(layer, ZOrder, Tag)
+        --         end
+        --     }
+        -- )
+        show_tip_label("后端源码数据对不上")
     elseif layerType == RewardLayerMgrType.kaifuReward then
         RequestHelper.kaifuReward.getInfo(
             {
@@ -85,13 +82,8 @@ function RewardLayerMgr.createLayerByType(layerType, parent, zorder, tag)
             {
                 callback = function(data)
                     -- dump(data)
-                    if data["0"] ~= "" then
-                        dump(data["0"])
-                    else
-                        -- local layer = require("game.DialyTask.TaskPopup").new(data,self)
-                        local layer = require("game.DialyTask.TaskPopup").new(data, parent)
-                        parent:addChild(layer, ZOrder, Tag)
-                    end
+                    local layer = require("game.DialyTask.TaskPopup").new(data, parent)
+                    parent:addChild(layer, ZOrder, Tag)
                 end
             }
         )
