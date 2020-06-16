@@ -268,8 +268,8 @@ function FriendCell:create(param)
 end
 
 function FriendCell:initHeadIcon()
-    self.headIcon:setTouchEnabled(false)
-    self.headIcon:setTouchSwallowEnabled(false)
+    setTouchEnabled(self.headIcon, false)
+    setTouchSwallowEnabled(self.headIcon, false)
 
     ResMgr.setNodeEvent(
         {

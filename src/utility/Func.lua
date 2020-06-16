@@ -87,7 +87,13 @@ function PostNotice(key, msg)
 end
 
 function RegNotice(target, cb, key)
-    local listener1 = cc.EventListenerCustom:create(key, cb)
+    local listener1 =
+        cc.EventListenerCustom:create(
+        key,
+        function(e)
+            cb(e._usedata)
+        end
+    )
     target["listener_" .. key] = listener1
     local eventDispatcher = target:getEventDispatcher()
     eventDispatcher:addEventListenerWithFixedPriority(listener1, 1)

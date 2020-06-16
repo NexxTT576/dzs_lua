@@ -1,4 +1,4 @@
---
+--@SuperType BaseScene
 local FriendScene =
     class(
     "FriendScene",
@@ -35,6 +35,7 @@ function FriendScene:ctor(tag)
             end
         }
     )
+    self:enableNodeEvents()
 end
 
 function FriendScene:init()
@@ -433,8 +434,8 @@ end
 function FriendScene:onEnter()
     RegNotice(
         self,
-        function(timeStr, indexData)
-            local curIndex = indexData:getValue()
+        function(indexData)
+            local curIndex = indexData
             self:updateByIndex(curIndex)
         end,
         NoticeKey.UPDATE_FRIEND

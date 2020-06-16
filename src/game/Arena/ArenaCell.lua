@@ -54,8 +54,8 @@ end
 function ArenaCell:regNotice()
     RegNotice(
         self,
-        function(timeStr, ss)
-            local curTime = ss:getValue()
+        function(ss)
+            local curTime = ss
             self._rootnode["rest_time"]:setString(format_time(curTime))
         end,
         NoticeKey.ArenaRestTime
