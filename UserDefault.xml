@@ -3,13 +3,13 @@
     <saved>true</saved>
     <enable_sfx>true</enable_sfx>
     <enable_music>false</enable_music>
-    <isBattle>true</isBattle>
-    <accid>1592365925</accid>
-    <playerName>庞盛男</playerName>
+    <isBattle>false</isBattle>
+    <accid>1592385018</accid>
+    <playerName>钮芷容</playerName>
     <big1102>true</big1102>
     <big1103>true</big1103>
     <time_scale>3</time_scale>
     <big1104>true</big1104>
     <big1105>true</big1105>
-    <chatLayer>t_1592365872</chatLayer>
+    <chatLayer>t_1592384932</chatLayer>
 </userDefaultRoot>
