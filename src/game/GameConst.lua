@@ -1,5 +1,5 @@
 if (device.platform == "windows" or device.platform == "mac") then
-    GAME_DEBUG = false
+    GAME_DEBUG = true
     DEV_BUILD = true
 end
 

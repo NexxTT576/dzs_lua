@@ -3,13 +3,13 @@
     <saved>true</saved>
     <enable_sfx>true</enable_sfx>
     <enable_music>false</enable_music>
-    <isBattle>false</isBattle>
-    <accid>1590745603</accid>
-    <playerName>苗雨安</playerName>
+    <isBattle>true</isBattle>
+    <accid>1592365925</accid>
+    <playerName>庞盛男</playerName>
     <big1102>true</big1102>
     <big1103>true</big1103>
     <time_scale>3</time_scale>
     <big1104>true</big1104>
     <big1105>true</big1105>
-    <chatLayer>[{"sendRoleSex":3,"receiveRoleId":0,"createTime":"Jun 15, 2020 3:52:27 PM","receiveRoleName":"","sendPara1":"","sendMsg":"啊","sendRoleId":6011,"id":1,"sendPara3":"","sendRoleVip":4,"type":1,"sendRoleName":"尤太君","account":"test__100034","sendRoleFaction":"","sendPara2":""},{"sendRoleSex":3,"receiveRoleId":0,"createTime":"Jun 15, 2020 4:24:26 PM","receiveRoleName":"","sendPara1":"","sendMsg":"方法","sendRoleId":6011,"id":2,"sendPara3":"","sendRoleVip":4,"type":1,"sendRoleName":"尤太君","account":"test__100034","sendRoleFaction":"","sendPara2":""},{"sendRoleSex":3,"receiveRoleId":0,"createTime":"Jun 15, 2020 4:26:23 PM","receiveRoleName":"","sendPara1":"","sendMsg":"发","sendRoleId":6011,"id":3,"sendPara3":"","type":1,"sendRoleName":"尤太君","sendRoleVip":4,"account":"test__100034","sendRoleFaction":"","sendPara2":""}]</chatLayer>
+    <chatLayer>t_1592365872</chatLayer>
 </userDefaultRoot>

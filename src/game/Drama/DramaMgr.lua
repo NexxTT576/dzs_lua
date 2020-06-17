@@ -162,7 +162,7 @@ function DramaMgr.createChoseLayer(data)
     if SHOW_DRAMA then
         local msg = {}
         msg.dramaSceneId = 1
-        msg.battleData = data[6]
+        msg.battleData = data["6"]
         msg.nextFunc = dramaEndStartLogin
         GameStateManager:ChangeState(GAME_STATE.DRAMA_SCENE, msg)
     else

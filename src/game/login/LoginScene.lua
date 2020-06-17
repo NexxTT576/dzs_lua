@@ -15,6 +15,7 @@ function LoginScene:ctor()
 end
 
 function LoginScene:init()
+    print("aa", os.time())
     local proxy = cc.CCBProxy:create()
     self._rootnode = {}
     local contentNode = CCBReaderLoad("login/login_scene.ccbi", proxy, self._rootnode, self, cc.size(display.width, display.height))
@@ -70,7 +71,7 @@ function LoginScene:init()
             require("network.RequestHelper")
             RequestHelper.game.login(
                 {
-                    acc = "test__100034",
+                    acc = self:getAcc(),
                     callback = function(data)
                         if data["3"] == 1 then
                             --@TODO 2020-05-13 16:25:27 新用户
@@ -87,6 +88,15 @@ function LoginScene:init()
 end
 
 function LoginScene:onExit()
+end
+
+function LoginScene:getAcc()
+    local acc = cc.UserDefault:getInstance():getStringForKey("game_acc")
+    if acc == nil or acc == "" then
+        acc = "t_" .. os.time()
+        cc.UserDefault:getInstance():setStringForKey("chatLayer", acc)
+    end
+    return acc
 end
 
 return LoginScene
